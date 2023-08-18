@@ -1,0 +1,5 @@
+package com.danius.fireeditor.controllers;
+
+public class CheatController {
+
+}

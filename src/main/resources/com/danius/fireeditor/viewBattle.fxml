@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.BattleController">
+   <children>
+      <AnchorPane prefHeight="394.0" prefWidth="485.0">
+         <children>
+            <ComboBox fx:id="comboArmy" layoutX="23.0" layoutY="30.0" prefWidth="150.0" promptText="Army" />
+            <Spinner fx:id="spinX1" editable="true" layoutX="291.0" layoutY="30.0" prefHeight="26.0" prefWidth="61.0" />
+            <Spinner fx:id="spinY1" editable="true" layoutX="385.0" layoutY="30.0" prefHeight="26.0" prefWidth="61.0" />
+            <Spinner fx:id="spinX2" editable="true" layoutX="291.0" layoutY="84.0" prefHeight="26.0" prefWidth="61.0" />
+            <Spinner fx:id="spinY2" editable="true" layoutX="385.0" layoutY="84.0" prefHeight="26.0" prefWidth="61.0" />
+            <Spinner fx:id="spinCurrentHp" editable="true" layoutX="189.0" layoutY="30.0" prefHeight="26.0" prefWidth="61.0" />
+            <ComboBox fx:id="comboTrait" layoutX="23.0" layoutY="183.0" prefWidth="150.0" promptText="Trait Flags" />
+            <ComboBox fx:id="comboBattle" layoutX="246.0" layoutY="183.0" prefWidth="150.0" promptText="Battle Flags" />
+            <CheckBox fx:id="checkTrait" layoutX="179.0" layoutY="187.0" mnemonicParsing="false" text="Set" />
+            <CheckBox fx:id="checkBattle" layoutX="402.0" layoutY="187.0" mnemonicParsing="false" text="Set" />
+            <Label layoutX="25.0" layoutY="122.0" prefHeight="36.0" prefWidth="253.0" text="Character IDs have their trait flags&#10;hardcoded. Most flags will be unset." />
+            <Label fx:id="lblTrait" layoutX="24.0" layoutY="162.0" text="Trait Flags" />
+            <Label fx:id="lblBattle" layoutX="246.0" layoutY="162.0" text="Battle Flags" />
+            <Label layoutX="291.0" layoutY="8.0" text="Map Coordinates 1" />
+            <Label layoutX="291.0" layoutY="62.0" text="Map Coordinates 2" />
+            <Label layoutX="360.0" layoutY="88.0" text="X" />
+            <Label layoutX="360.0" layoutY="34.0" text="X" />
+            <Label layoutX="453.0" layoutY="88.0" text="Y" />
+            <Label layoutX="453.0" layoutY="34.0" text="Y" />
+            <Label layoutX="190.0" layoutY="10.0" text="Current HP" />
+            <Label layoutX="25.0" layoutY="10.0" text="Army" />
+            <Spinner fx:id="spinDeploy" editable="true" layoutX="188.0" layoutY="83.0" prefHeight="26.0" prefWidth="61.0" />
+            <Label layoutX="188.0" layoutY="62.0" text="Deployment Slot" />
+            <Spinner fx:id="spinBattle" editable="true" layoutX="26.0" layoutY="83.0" prefHeight="26.0" prefWidth="70.0" />
+            <Spinner fx:id="spinVictory" editable="true" layoutX="103.0" layoutY="83.0" prefHeight="26.0" prefWidth="70.0" />
+            <Label layoutX="26.0" layoutY="63.0" text="Battles" />
+            <Label layoutX="103.0" layoutY="63.0" text="Victories" />
+            <Label layoutX="246.0" layoutY="122.0" prefHeight="36.0" prefWidth="253.0" text="Most battle flags are only used&#10;during a battle, with some exceptions." />
+            <Button fx:id="btnTonics" layoutX="21.0" layoutY="237.0" mnemonicParsing="false" onAction="#enableAllTonics" prefWidth="150.0" text="Enable all Tonic Stats" />
+            <Button fx:id="btnUnusedStats" layoutX="246.0" layoutY="237.0" mnemonicParsing="false" onAction="#enableAllUnusedStats" prefWidth="150.0" text="Enable all Unused Stats" />
+            <Label layoutX="22.0" layoutY="218.0" text="Temporal Stats" />
+            <Label layoutX="247.0" layoutY="218.0" text="Unused Temporal Stat Modifiers" />
+            <Label layoutX="21.0" layoutY="273.0" prefHeight="78.0" prefWidth="316.0" text="Unused Temporal Stat Modifiers:&#10;STR +2, MAG +2, DEF +2, RES +2&#10;STR +4, MAG +4, SKL +4, SPD +4, LCK +8, DEF +4, RES +4&#10;All Stats +12 (No HP), Movement +2&#10;" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

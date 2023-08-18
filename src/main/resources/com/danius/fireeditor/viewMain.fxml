@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.MainController">
+    <children>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="846.0">
+            <children>
+                <TabPane layoutY="24.0" prefHeight="424.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="10700.0" tabMinWidth="70.0">
+                    <tabs>
+                        <Tab fx:id="tabUnit" text="Unit Editor">
+                            <fx:include fx:id="unitTab" source="viewUnit.fxml" />
+                        </Tab>
+                        <Tab fx:id="tabConvoy" text="Convoy Editor">
+                            <fx:include fx:id="convoyTab" source="viewItems.fxml" />
+                        </Tab>
+                        <Tab fx:id="tabChapter" text="Chapter Data">
+                            <fx:include fx:id="chapterTab" source="viewChapter.fxml" />
+                        </Tab>
+                    </tabs>
+                </TabPane>
+                <MenuBar layoutY="-2.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open Save File" />
+                                <MenuItem mnemonicParsing="false" onAction="#importUnit" text="Import Unit" />
+                                <MenuItem mnemonicParsing="false" onAction="#exportUnit" text="Export Unit" />
+                                <MenuItem mnemonicParsing="false" onAction="#exportDecomp" text="Save Decompressed" />
+                                <MenuItem mnemonicParsing="false" onAction="#exportComp" text="Save Compressed" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

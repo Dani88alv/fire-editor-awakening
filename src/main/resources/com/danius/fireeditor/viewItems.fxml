@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.ConvoyController">
+
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="787.0">
+      <children>
+         <TableView fx:id="tableConvoy" layoutX="12.0" layoutY="40.0" prefHeight="342.0" prefWidth="322.0">
+            <columns>
+               <TableColumn fx:id="nameColumn" prefWidth="106.39999008178711" text="Item" />
+               <TableColumn fx:id="amountColumn" prefWidth="77.5999755859375" text="Total Uses" />
+               <TableColumn fx:id="totalUsesColumn" prefWidth="121.59999084472656" text="Total Amount" />
+            </columns>
+         </TableView>
+         <Label layoutX="14.0" layoutY="8.0" text="Regular Items">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Label>
+         <TableView fx:id="tableRefi" layoutX="368.0" layoutY="40.0" prefHeight="342.0" prefWidth="367.0">
+            <columns>
+               <TableColumn fx:id="colRefiName" prefWidth="152.00006103515625" text="Item" />
+               <TableColumn fx:id="colRefiAmount" prefWidth="77.5999755859375" text="Total Uses" />
+               <TableColumn fx:id="colRefiUses" prefWidth="121.59999084472656" text="Total Amount" />
+            </columns>
+         </TableView>
+         <Label layoutX="368.0" layoutY="8.0" text="Forged Weapons">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Label>
+      </children>
+    </AnchorPane>
+
+
+</VBox>

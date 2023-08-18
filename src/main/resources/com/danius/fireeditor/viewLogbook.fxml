@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.LogController">
+   <children>
+      <TabPane prefHeight="307.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Main Build">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="615.0">
+                     <children>
+                        <AnchorPane prefHeight="269.0" prefWidth="622.0">
+                           <children>
+                              <Button layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#addLogData" prefWidth="130.0" text="Add Avatar Data" />
+                              <Button layoutX="155.0" layoutY="231.0" mnemonicParsing="false" onAction="#removeLogData" prefHeight="26.0" prefWidth="130.0" text="Remove Avatar Data" />
+                              <TextField fx:id="txtName" layoutX="16.0" layoutY="27.0" />
+                              <CheckBox fx:id="checkCard" layoutX="215.0" layoutY="82.0" mnemonicParsing="false" text="Is Einherjar" />
+                              <TextField fx:id="txtLogId" layoutX="14.0" layoutY="78.0" prefHeight="26.0" prefWidth="183.0" text="Logbook ID" />
+                              <Spinner fx:id="spinBuild" layoutX="394.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" />
+                              <Spinner fx:id="spinFace" layoutX="463.0" layoutY="167.0" prefHeight="26.0" prefWidth="62.0" />
+                              <Spinner fx:id="spinVoice" layoutX="341.0" layoutY="114.0" prefHeight="26.0" prefWidth="62.0" />
+                              <Spinner fx:id="spinHair" layoutX="532.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" />
+                              <Label layoutX="16.0" layoutY="193.0" prefHeight="36.0" prefWidth="199.0" text="Units cannot store avatar data and&#10;child data at the same time." />
+                              <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="450.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@avatar_m/build_01_00.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="451.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@avatar_m/back_01_00.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="451.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@avatar_m/hair_01_00.png" />
+                                 </image>
+                              </ImageView>
+                              <CheckBox fx:id="checkGender" layoutX="533.0" layoutY="228.0" mnemonicParsing="false" text="Female" />
+                              <ColorPicker fx:id="colorPickerHair" layoutX="381.0" layoutY="224.0" />
+                              <Label layoutX="534.0" layoutY="149.0" text="Hair" />
+                              <Label layoutX="464.0" layoutY="149.0" text="Face" />
+                              <Label layoutX="397.0" layoutY="149.0" text="Build" />
+                              <Label layoutX="14.0" layoutY="104.0" prefHeight="78.0" prefWidth="199.0" text="The logbook ID is a random&#10;number used to keep track&#10;of duplicated avatars. It also&#10;manages the Einherjar portraits." />
+                              <Label layoutX="19.0" layoutY="7.0" text="Unit Name" />
+                              <Label layoutX="15.0" layoutY="59.0" text="Logbook ID (Hexadecimal)" />
+                              <ComboBox fx:id="comboCard" layoutX="199.0" layoutY="145.0" prefHeight="26.0" prefWidth="116.0" promptText="Einherjar" />
+                              <Button fx:id="btnSetLogId" layoutX="199.0" layoutY="114.0" mnemonicParsing="false" onAction="#setLogIdToCard" prefHeight="26.0" prefWidth="116.0" text="Set Logbook ID to" />
+                              <Label layoutX="341.0" layoutY="93.0" text="Voice" />
+                              <ComboBox fx:id="comboAsset" layoutX="184.0" layoutY="26.0" prefHeight="26.0" prefWidth="79.0" promptText="Asset" />
+                              <ComboBox fx:id="comboFlaw" layoutX="275.0" layoutY="26.0" prefHeight="26.0" prefWidth="79.0" promptText="Flaw" />
+                              <Label layoutX="185.0" layoutY="5.0" text="Asset" />
+                              <Label layoutX="276.0" layoutY="7.0" text="Flaw" />
+                              <Label layoutX="383.0" layoutY="203.0" text="Hair Color" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Card Profile">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Spinner fx:id="spinExpression" layoutX="23.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinIdentity" layoutX="23.0" layoutY="174.0" prefHeight="26.0" prefWidth="62.0" />
+                        <ComboBox fx:id="comboPairingSlot" layoutX="125.0" layoutY="175.0" prefHeight="26.0" prefWidth="95.0" promptText="Slot" />
+                        <ComboBox fx:id="comboWife" layoutX="272.0" layoutY="222.0" prefHeight="26.0" prefWidth="135.0" promptText="Wife" />
+                        <ComboBox fx:id="comboHusband" layoutX="124.0" layoutY="222.0" prefHeight="26.0" prefWidth="135.0" promptText="Husband" />
+                        <Spinner fx:id="spinTrait" layoutX="23.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinHome" layoutX="23.0" layoutY="127.0" prefHeight="26.0" prefWidth="62.0" />
+                        <ComboBox fx:id="comboClass" layoutX="462.0" layoutY="222.0" prefHeight="26.0" prefWidth="122.0" promptText="Class" />
+                        <Spinner fx:id="spinValues" layoutX="23.0" layoutY="222.0" prefHeight="26.0" prefWidth="62.0" />
+                        <TextField fx:id="txtProfile" layoutX="339.0" layoutY="30.0" prefHeight="26.0" prefWidth="246.0" />
+                        <TextField fx:id="txtGreeting" layoutX="339.0" layoutY="79.0" prefHeight="26.0" prefWidth="246.0" />
+                        <Label layoutX="340.0" layoutY="11.0" text="Profile Message" />
+                        <TextField fx:id="txtChallenge" layoutX="339.0" layoutY="127.0" prefHeight="26.0" prefWidth="246.0" />
+                        <Label layoutX="340.0" layoutY="59.0" text="Greetings Message" />
+                        <Label layoutX="340.0" layoutY="107.0" text="Challenge Message" />
+                        <TextField fx:id="txtRecruit" layoutX="339.0" layoutY="173.0" prefHeight="26.0" prefWidth="246.0" />
+                        <Label layoutX="340.0" layoutY="154.0" text="Recruitment Message" />
+                        <Label layoutX="125.0" layoutY="204.0" text="Husband" />
+                        <Label layoutX="274.0" layoutY="204.0" text="Wife" />
+                        <Label layoutX="127.0" layoutY="156.0" text="S-Pairings" />
+                        <Label layoutX="464.0" layoutY="204.0" text="Class" />
+                        <Spinner fx:id="spinDifficulty" layoutX="127.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinPenalty" layoutX="127.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Label layoutX="24.0" layoutY="12.0" text="Expression" />
+                        <Label layoutX="25.0" layoutY="61.0" text="Trait" />
+                        <Label layoutX="24.0" layoutY="107.0" text="Home" />
+                        <Label layoutX="24.0" layoutY="155.0" text="Identity" />
+                        <Label layoutX="25.0" layoutY="203.0" text="Values" />
+                        <Spinner fx:id="spinDay" layoutX="225.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinMonth" layoutX="225.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Label layoutX="128.0" layoutY="12.0" text="Difficulty" />
+                        <Label layoutX="128.0" layoutY="60.0" text="Game Mode" />
+                        <Label layoutX="225.0" layoutY="12.0" text="Birthday (Day)" />
+                        <Label layoutX="226.0" layoutY="60.0" text="Birthday (Month)" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>
