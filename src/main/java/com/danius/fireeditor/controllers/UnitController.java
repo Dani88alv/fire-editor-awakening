@@ -79,7 +79,8 @@ public class UnitController {
             //The listview is loaded
             listViewUnit.setItems(FXCollections.observableArrayList( //Loads the unit group
                     unitBlock.unitList.get(comboUnitGroup.getSelectionModel().getSelectedIndex())));
-            listViewUnit.getSelectionModel().selectFirst(); //Selects the first unit of the group
+            listViewUnit.getSelectionModel().selectLast();
+            listViewUnit.getSelectionModel().selectFirst();
             displayUnitCount();
         }
     }

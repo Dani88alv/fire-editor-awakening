@@ -174,8 +174,8 @@ public class Names {
             /*84*/ "Galeforce", "Lifetaker", "Conquest", "Shadowgift",
             /*88*/ "All Stats +2", "Paragon", "Iote's Shield", "Limit Breaker",
             /*92*/ "Dragonskin", "Rightful God", "Hawkeye", "Luna+",
-            /*96*/ "Vantage+", "Pasive+", "Aegis+", "Resistance +10",
-            /*100*/ "Agressor", "Rally Heart", "Bond", "Dummy"
+            /*96*/ "Vantage+", "Pavise+", "Aegis+", "Resistance +10",
+            /*100*/ "Aggressor", "Rally Heart", "Bond", "Dummy"
     );
 
     public static final List<String> armies = Arrays.asList(
@@ -235,7 +235,7 @@ public class Names {
             "Ephraim's Lance", "Finn's Lance", "Bronze Axe", "Iron Axe",
             "Steel Axe", "Silver Sxe", "Brave Axe", "Hand Axe",
             "Short Axe", "Tomahawk", "Hammer", "Bolt Axe",
-            "Killer Axe", "Vengance", "Wolf Berg", "Hauteclare",
+            "Killer Axe", "Vengeance", "Wolf Berg", "Hauteclere",
             "Helswath", "Armads", "Ladle", "Imposing Axe",
             "Volant Axe", "Glass Axe", "Superior Axe", "Titania's Axe",
             "Orsin's Hatchet", "Hector's Axe", "Bronze Bow", "Iron Bow",

@@ -98,7 +98,7 @@
                </AnchorPane>
                <Label layoutX="18.0" layoutY="147.0" text="Growth" />
                <Label layoutX="173.0" layoutY="24.0" text="Unit ID" />
-               <Button fx:id="btnLegalSkills" layoutX="288.0" layoutY="226.0" mnemonicParsing="false" onAction="#maxSkillsLegal" prefHeight="26.0" prefWidth="110.0" text="Set All Legal Skills" />
+               <Button fx:id="btnLegalSkills" layoutX="288.0" layoutY="226.0" mnemonicParsing="false" onAction="#maxSkillsLegal" prefHeight="26.0" prefWidth="110.0" text="All Legal Skills" />
                <Button fx:id="btnMaxStats" layoutX="288.0" layoutY="189.0" mnemonicParsing="false" onAction="#maxStats" prefHeight="26.0" prefWidth="110.0" text="Max Stats" />
                <Spinner fx:id="spinUnitId" editable="true" layoutX="172.0" layoutY="43.0" prefHeight="26.0" prefWidth="80.0" />
                <ComboBox fx:id="comboGroupMove" layoutX="344.0" layoutY="349.0" prefHeight="26.0" prefWidth="121.0" promptText="Move to" />
