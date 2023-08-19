@@ -24,12 +24,12 @@ public class RawFlags {
     Ylisse, Plegia, Risen, Ruffian, etc
      */
     public int army() {
-        int point = 0x2;
+        int point = 0x1;
         return bytes[point] & 0xFF;
     }
 
     public void setArmy(int army) {
-        int point = 0x2;
+        int point = 0x1;
         bytes[point] = (byte) (army & 0xFF);
     }
 
@@ -37,12 +37,12 @@ public class RawFlags {
     Deployment slot, maybe it is used after a battle to order the units
      */
     public int slotParty() {
-        int point = 0x3;
+        int point = 0x2;
         return bytes[point] & 0xFF;
     }
 
     public void setSlotParty(int slot) {
-        int point = 0x3;
+        int point = 0x2;
         bytes[point] = (byte) (slot & 0xFF);
     }
 
@@ -90,7 +90,7 @@ public class RawFlags {
     0x80: ?
      */
     public String traitFlagString() {
-        int point = 0x8;
+        int point = 0x7;
         byte[] array = Arrays.copyOfRange(bytes, point, point + 4);
         return bytesToReversedBinaryString(array);
     }
@@ -117,13 +117,13 @@ public class RawFlags {
     0x8: Portrait Change (?)
      */
     public String battleFlagString() {
-        int point = 0x10;
+        int point = 0xF;
         byte[] array = Arrays.copyOfRange(bytes, point, point + 4);
         return bytesToReversedBinaryString(array);
     }
 
     public void setTraitFlag(int flag, boolean set) {
-        int point = 0x8;
+        int point = 0x7;
         //The flag is set
         char[] flagsChar = traitFlagString().toCharArray();
         if (set) flagsChar[flag] = '1';
@@ -137,7 +137,7 @@ public class RawFlags {
     }
 
     public void setBattleFlag(int flag, boolean set) {
-        int point = 0x10;
+        int point = 0xF;
         //The flag is set
         char[] flagsChar = battleFlagString().toCharArray();
         if (set) flagsChar[flag] = '1';
@@ -174,25 +174,25 @@ public class RawFlags {
 
     //Stat boolean flags, excluding the tonics (slots 0-10)
     public boolean statAdditionFlag(int slot) {
-        int point = 0x1D;
+        int point = 0x1C;
         int value = bytes[point + slot] & 0xFF;
         return value > 0;
     }
 
     public void setStatAddition(int slot, boolean isTrue) {
-        int point = 0x1D;
+        int point = 0x1C;
         if (isTrue) bytes[point + slot] = 0x1;
         else bytes[point + slot] = 0x0;
     }
 
     //Tonic Bitflags
     public String tonicFlagString() {
-        int point = 0x28;
+        int point = 0x27;
         return byteToReversedBinaryString(bytes[point]);
     }
 
     public void setTonicFlag(int flag, boolean set){
-        int point = 0x28;
+        int point = 0x27;
         //The flag is set
         char[] flagsChar = tonicFlagString().toCharArray();
         if (set) flagsChar[flag] = '1';
@@ -205,12 +205,12 @@ public class RawFlags {
 
     //Weird Stat Addition Bitflags
     public String extraStatsFlagString() {
-        int point = 0x29;
+        int point = 0x28;
         return byteToReversedBinaryString(bytes[point]);
     }
 
     public void setExtraStatFlag(int flag, boolean set){
-        int point = 0x29;
+        int point = 0x28;
         //The flag is set
         char[] flagsChar = tonicFlagString().toCharArray();
         if (set) flagsChar[flag] = '1';
@@ -223,15 +223,15 @@ public class RawFlags {
 
     //Easier methods
     public void setAllTonicFlags(){
-        int point = 0x28;
+        int point = 0x27;
         bytes[point] = (byte) (0xFF);
     }
 
     public void setAllUnusedStats(){
         //Extra Stats Bitflags
-        bytes[0x29] = (byte) (0xFF);
+        bytes[0x28] = (byte) (0xFF);
         //Regular Flags
-        for (int i = 0x1D; i <= 0x27; i++){
+        for (int i = 0x1C; i <= 0x26; i++){
             bytes[i] = (byte) (0x1);
         }
     }

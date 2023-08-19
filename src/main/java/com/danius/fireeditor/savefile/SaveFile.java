@@ -14,7 +14,7 @@ import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
 public abstract class SaveFile {
-    public byte[] decompressBytes(byte[] all, int start) {
+    public static byte[] decompressBytes(byte[] all, int start) {
         ByteArrayOutputStream out = null;
         byte[] data = null;
         try {

@@ -144,8 +144,9 @@ public class UnitBlock {
                     byte[] gBlock, cBlock = null, lBlock = null;
                     //Checks the size of the support block and adds the value to the static general block size
                     int supportSize = blockBytes[offset + 0x43] & 0xFF;
+                    int unknownSize = blockBytes[offset + 0x43 + supportSize + 1] & 0xFF;
                     //The general block is copied
-                    gBlock = Arrays.copyOfRange(blockBytes, offset, Unit.GBLOCK_SIZE + supportSize + offset);
+                    gBlock = Arrays.copyOfRange(blockBytes, offset, Unit.GBLOCK_SIZE + supportSize + unknownSize + offset);
                     //Checks if there is a child block next (00 01)
                     if (gBlock[gBlock.length - 2] == 0 && gBlock[gBlock.length - 1] == 1) {
                         cBlock = Arrays.copyOfRange(blockBytes, offset + gBlock.length,

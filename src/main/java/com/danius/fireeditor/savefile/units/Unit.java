@@ -22,10 +22,8 @@ public class Unit {
     public RawInventory rawInventory; //Inventory
     public RawBlock2 rawBlock2; //Current Skills and Weapon EXP
     public RawSupport rawSupport; //Support conversations, size variable
-
-    /*
-    Las tónicas están en la segunda mitad aparentemente
-     */
+    //Sometimes it appears in Map save files, unknown use
+    public byte[] rawUnknown;
     public RawFlags rawFlags; //?? Battle Flags? TODO: 0x28 tonic status (binary)
     public RawSkill rawSkill; //Learned Skills
     public RawBlockEnd rawBlockEnd; //AI and Misc Stuff
@@ -53,10 +51,13 @@ public class Unit {
             this.rawBlock2 = new RawBlock2(Arrays.copyOfRange(unitBytes, length, length + 0x10));
             length += rawBlock2.length();
             this.rawSupport = new RawSupport(
-                    Arrays.copyOfRange(unitBytes, length, length + (unitBytes[length] & 0xFF) + 1),
-                    rawBlock1.unitId());
+                    Arrays.copyOfRange(unitBytes, length,
+                            length + (unitBytes[length] & 0xFF) + 1), rawBlock1.unitId());
             length += rawSupport.length();
-            this.rawFlags = new RawFlags(Arrays.copyOfRange(unitBytes, length, length + 0x2B));
+            this.rawUnknown = Arrays.copyOfRange(unitBytes, length,
+                    length + (unitBytes[length] & 0xFF) + 1);
+            length += rawUnknown.length;
+            this.rawFlags = new RawFlags(Arrays.copyOfRange(unitBytes, length, length + 0x2A));
             length += rawFlags.bytes().length;
             this.rawSkill = new RawSkill(Arrays.copyOfRange(unitBytes, length, length + 0xD));
             length += rawSkill.length();
@@ -77,6 +78,7 @@ public class Unit {
             outputStream.write(rawInventory.getBlockBytes());
             outputStream.write(rawBlock2.bytes());
             if (rawSupport != null) outputStream.write(rawSupport.bytes());
+            outputStream.write(rawUnknown);
             outputStream.write(rawFlags.bytes());
             outputStream.write(rawSkill.bytes());
             outputStream.write(rawBlockEnd.getBlockBytes());
@@ -96,7 +98,7 @@ public class Unit {
             //0x39 is the last current skill pointer, then it comes the support conversations
             //findFBlockStart(unitBytes);
             //Checks the size of the unit to determine their type
-            int sizeExtraBlock = unitBytes.length - (GBLOCK_SIZE + rawSupport.length() - 1);
+            int sizeExtraBlock = unitBytes.length - (GBLOCK_SIZE + rawSupport.length() + rawUnknown.length - 2);
             //The units are split into 1 or 2 blocks
             //Child Units (have a child block)
             if (sizeExtraBlock == CBLOCK_SIZE) {

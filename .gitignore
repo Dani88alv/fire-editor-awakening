@@ -1,4 +1,5 @@
 templates
+src/main/java/com/danius/fireeditor/savefile/Main.java
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
