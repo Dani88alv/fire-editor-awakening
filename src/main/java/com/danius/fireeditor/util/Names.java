@@ -3,6 +3,7 @@ package com.danius.fireeditor.util;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Supports;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -205,6 +206,16 @@ public class Names {
             "Unknown_3_0", "Tiki Meditating", "Unknown_3_2", "Unknown_3_3",
             "Unknown_3_4", "Unknown_3_5", "Unknown_3_6", "Unknown_3_7"
     );
+
+    public static List<String> getItemNames(int totalCount){
+        List<String> names = new ArrayList<>();
+        int vanillaCount = itemNames.size();
+        for (int i = 0; i < totalCount; i++){
+            if (i >= vanillaCount) names.add("Modded Item #" + (i - vanillaCount + 1));
+            else names.add(itemNames.get(i));
+        }
+        return names;
+    }
 
     /*
     None: 0x0

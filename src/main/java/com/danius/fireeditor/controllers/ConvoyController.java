@@ -44,32 +44,38 @@ public class ConvoyController {
 
     //Loads the table with a regular item amount list
     public void loadItemTable(List<Integer> inventoryMain, List<Integer> inventoryRefi) {
-        //The tables are cleared up
-        tableConvoy.getItems().clear();
-        tableRefi.getItems().clear();
-        List<String> itemNames = Names.itemNames;
-        List<String> refiNames = refiBlock.refiNames();
-        List<Integer> refiId = refiBlock.refiIds();
-        //The values are loaded
-        for (int i = 0; i < Math.min(itemNames.size(), inventoryMain.size()); i++) {
-            tableConvoy.getItems().add(new DataItem(itemNames.get(i), inventoryMain.get(i), i));
-        }
-        for (int i = 0; i < inventoryRefi.size(); i++) {
-            tableRefi.getItems().add(new DataItem(refiNames.get(i), inventoryRefi.get(i), refiId.get(i)));
-        }
-        //The table columns are set up
-        if (!addedListeners) {
-            colRefiName.setCellValueFactory(new PropertyValueFactory<>("stringData"));
-            colRefiAmount.setCellValueFactory(new PropertyValueFactory<>("numberData"));
-            colRefiAmount.setCellFactory(spinnerCellFactory(true));
-            colRefiUses.setCellValueFactory(cellData -> cellData.getValue().totalUsesProperty());
+        try {
+            //The tables are cleared up
+            tableConvoy.getItems().clear();
+            tableRefi.getItems().clear();
+            List<String> itemNames = Names.getItemNames(tranBlock.regularItemCount());
+            List<String> refiNames = refiBlock.refiNames();
+            List<Integer> refiId = refiBlock.refiIds();
+            //The values are loaded
+            for (int i = 0; i < itemNames.size(); i++) {
+                tableConvoy.getItems().add(new DataItem(itemNames.get(i), inventoryMain.get(i), i));
+            }
+            for (int i = 0; i < inventoryRefi.size(); i++) {
+                tableRefi.getItems().add(new DataItem(refiNames.get(i), inventoryRefi.get(i), refiId.get(i)));
+            }
+            //The table columns are set up
+            if (!addedListeners) {
+                colRefiName.setCellValueFactory(new PropertyValueFactory<>("stringData"));
+                colRefiAmount.setCellValueFactory(new PropertyValueFactory<>("numberData"));
+                colRefiAmount.setCellFactory(spinnerCellFactory(true));
+                colRefiUses.setCellValueFactory(cellData -> cellData.getValue().totalUsesProperty());
 
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("stringData"));
-            amountColumn.setCellValueFactory(new PropertyValueFactory<>("numberData"));
-            amountColumn.setCellFactory(spinnerCellFactory(false));
-            totalUsesColumn.setCellValueFactory(cellData -> cellData.getValue().totalUsesProperty());
+                nameColumn.setCellValueFactory(new PropertyValueFactory<>("stringData"));
+                amountColumn.setCellValueFactory(new PropertyValueFactory<>("numberData"));
+                amountColumn.setCellFactory(spinnerCellFactory(false));
+                totalUsesColumn.setCellValueFactory(cellData -> cellData.getValue().totalUsesProperty());
+            }
+            addedListeners = true;
         }
-        addedListeners = true;
+        catch (Exception e){
+            throw new RuntimeException();
+        }
+
     }
 
     //The list is not fully override if there are modded item slots

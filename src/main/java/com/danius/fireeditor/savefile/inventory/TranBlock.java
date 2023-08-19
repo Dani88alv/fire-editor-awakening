@@ -112,7 +112,8 @@ public class TranBlock {
     }
 
     public static String amountString(int id, int amount) {
-        int maxValue = itemAmounts.get(id);
+        int maxValue = 0;
+        if (id < itemAmounts.size()) maxValue = itemAmounts.get(id);
         if (amount == 0) return "None";
         if (maxValue == 0) maxValue = 1;
         int quotient = amount / maxValue;

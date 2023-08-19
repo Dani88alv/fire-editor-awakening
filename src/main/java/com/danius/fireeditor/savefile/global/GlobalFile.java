@@ -1,5 +1,6 @@
-package com.danius.fireeditor.savefile;
+package com.danius.fireeditor.savefile.global;
 
+import com.danius.fireeditor.savefile.SaveFile;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 public class GlobalFile extends SaveFile {
     public byte[] fileBytes;
     private byte[] blockIndex;
-    private byte[] blockUser; //Support conversations, hair colors, difficulty unlocked
+    private byte[] blockUser; //Support conversations, hair colors, difficulties, avatar default data
     private byte[] blockDg18; //Logbook units
 
     public GlobalFile(byte[] fileBytes) {
