@@ -15,7 +15,8 @@ import java.nio.file.Files;
 
 public class MainController {
 
-    private String path = System.getProperty("user.dir");
+    //private String path = System.getProperty("user.dir");
+    private String path = "C:\\Users\\user1\\AppData\\Roaming\\Citra\\sdmc\\Nintendo 3DS\\00000000000000000000000000000000\\00000000000000000000000000000000\\title\\00040000\\000a0500\\data\\00000001\\";
     //private String path = "";
 
     @FXML

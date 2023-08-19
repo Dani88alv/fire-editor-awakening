@@ -1,25 +1,15 @@
 package com.danius.fireeditor.savefile;
 
-import com.danius.fireeditor.savefile.units.SkillLogic;
+import com.danius.fireeditor.savefile.global.GlobalFile;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
-import javafx.scene.image.Image;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Objects;
 
 
 public class Main {
     public static void main(String[] args) {
+        String citraUs = "C:\\Users\\user1\\AppData\\Roaming\\Citra\\sdmc\\Nintendo 3DS\\00000000000000000000000000000000\\00000000000000000000000000000000\\title\\00040000\\000a0500\\data\\00000001\\";
+        String download = "C:\\Users\\user1\\Downloads\\Chapter0 (1)";
+        byte[] fileBytes = Hex.getFileBytes(download);
+        Hex.writeFile(SaveFile.decompressBytes(fileBytes, 0xC0), download);
 
     }
 
