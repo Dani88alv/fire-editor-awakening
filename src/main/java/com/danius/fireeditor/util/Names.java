@@ -32,11 +32,11 @@ public class Names {
     }
 
     public static String itemName2(int id, int maxCount) {
-        int vanillaCount = itemNames.size();
-        if (id > vanillaCount + 150) {
-            int itemId = maxCount - vanillaCount;
-            return "Outrealm Item #" + itemId;
-        } else if (id >= vanillaCount) {
+        int vanillaCount = Names.itemNames.size();
+        if (id >= vanillaCount && id < maxCount) {
+            int itemId = id - vanillaCount + 1;
+            return "Modded Item #" + itemId;
+        } else if (id >= maxCount && id <= maxCount + 150) {
             int itemId = id - maxCount + 1;
             return "Forged Weapon #" + itemId;
         } else return itemNames.get(id);
