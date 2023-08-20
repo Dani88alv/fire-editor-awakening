@@ -52,7 +52,7 @@
             </font>
          </Button>
          <Spinner fx:id="spinPenalty" editable="true" layoutX="172.0" layoutY="64.0" prefHeight="26.0" prefWidth="60.0" />
-         <Spinner fx:id="spinMoney" editable="true" layoutX="292.0" layoutY="123.0" prefHeight="26.0" prefWidth="90.0" />
+         <Spinner fx:id="spinMoney" editable="true" layoutX="292.0" layoutY="116.0" prefHeight="26.0" prefWidth="90.0" />
          <Spinner fx:id="spinDlcTurns" editable="true" layoutX="555.0" layoutY="345.0" prefHeight="26.0" prefWidth="60.0" />
          <ComboBox fx:id="comboChapterDlc" layoutX="556.0" layoutY="289.0" prefHeight="26.0" prefWidth="160.0" promptText="Chapter" />
          <Label layoutX="22.0" layoutY="44.0" text="Difficulty" />
@@ -66,7 +66,7 @@
          <Label layoutX="557.0" layoutY="269.0" text="Chapter Slot" />
          <Label layoutX="556.0" layoutY="323.0" text="Turns" />
          <Label layoutX="292.0" layoutY="44.0" text="Total Playtime" />
-         <Label layoutX="293.0" layoutY="104.0" text="Money" />
+         <Label layoutX="293.0" layoutY="98.0" text="Money" />
          <ComboBox fx:id="comboChapter" layoutX="459.0" layoutY="64.0" prefWidth="130.0" promptText="Chapter" />
          <ComboBox fx:id="comboChapterData" layoutX="606.0" layoutY="64.0" prefHeight="26.0" prefWidth="117.0" promptText="State" />
          <Label layoutX="460.0" layoutY="10.0" text="Map Data">
@@ -80,6 +80,9 @@
                <Font size="18.0" />
             </font>
          </Label>
+         <Spinner fx:id="spinRenown" editable="true" layoutX="292.0" layoutY="170.0" prefHeight="26.0" prefWidth="90.0" />
+         <Label layoutX="293.0" layoutY="151.0" text="Renown" />
+         <Button layoutX="261.0" layoutY="207.0" mnemonicParsing="false" onAction="#resetRenownFlags" prefHeight="26.0" prefWidth="150.0" text="Reset Renown Item Flags" />
       </children>
     </AnchorPane>
 

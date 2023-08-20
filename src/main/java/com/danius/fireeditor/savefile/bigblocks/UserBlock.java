@@ -113,6 +113,22 @@ public class UserBlock {
         Hex.setByte4(rawMoney, 0x0, value);
     }
 
+    public int renown() {
+        return Hex.getByte4(rawBlockEnd, 0x0);
+    }
+
+    public void setRenown(int value) {
+        Hex.setByte4(rawBlockEnd, 0x0, value);
+    }
+
+    public void resetRenownFlags() {
+        int point = 0xE;
+        for (int i = point; i < point + 0x5; i++) {
+            rawBlockEnd[i] = (byte) 0x0;
+        }
+    }
+
+
     public String report() {
         String report = "";
         //Difficulty Settings

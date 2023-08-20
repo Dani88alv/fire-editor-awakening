@@ -6,6 +6,8 @@ import com.danius.fireeditor.savefile.bigblocks.GmapBlock;
 import com.danius.fireeditor.savefile.bigblocks.HeaderBlock;
 import com.danius.fireeditor.savefile.bigblocks.UserBlock;
 import com.danius.fireeditor.util.Names;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,9 +18,11 @@ public class ChapterController {
     public HeaderBlock headerBlock;
     public Du26Block du26Block;
     public GmapBlock gmapBlock;
+    private boolean listenersAdded = false;
     @FXML
     private Spinner<Integer> spinCreditTime, spinCreditTurns,
-            spinTime, spinMoney, spinPenalty, spinDlcTurns;
+            spinTime, spinMoney, spinPenalty, spinDlcTurns,
+            spinRenown;
     @FXML
     private ComboBox<String> comboChapterDlc, comboCreditChapter,
             comboUnit1, comboUnit2, comboClass1, comboClass2, comboCreditSlot,
@@ -68,6 +72,8 @@ public class ChapterController {
         userBlock.setPlaytime(spinTime.getValue() * 60);
         headerBlock.setPlaytime(spinTime.getValue() * 60);
         userBlock.setMoney(spinMoney.getValue());
+        userBlock.setRenown(spinRenown.getValue());
+        du26Block.setDuelRenown(spinRenown.getValue());
         //Credits and DLC
         du26Block.setDlcTurn(comboChapterDlc.getSelectionModel().getSelectedIndex(), spinDlcTurns.getValue());
         updateCredits(comboCreditSlot.getSelectionModel().getSelectedIndex());
@@ -88,6 +94,7 @@ public class ChapterController {
             checkLunatic.setSelected(userBlock.rawDifficulty.isLunaticPlus());
             spinMoney.getValueFactory().setValue(userBlock.money());
             spinTime.getValueFactory().setValue(userBlock.playtime() / 60);
+            spinRenown.getValueFactory().setValue(userBlock.renown());
             //Credits Data
             ObservableList<String> progress = FXCollections.observableArrayList();
             for (int i = 0; i < userBlock.progress.size(); i++) {
@@ -117,6 +124,7 @@ public class ChapterController {
         //General data
         UI.setSpinnerTimer(spinTime, 216000000);
         UI.setSpinnerNumeric(spinMoney, 999999);
+        UI.setSpinnerNumeric(spinRenown, 99999);
         UI.setSpinnerNumeric(spinPenalty, 255);
         ObservableList<String> difficulty = FXCollections.observableArrayList("Normal", "Hard", "Lunatic");
         comboDifficulty.setItems(difficulty);
@@ -145,6 +153,10 @@ public class ChapterController {
         //Gmap
         ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Not Beaten");
         comboChapterData.setItems(chapterState);
+    }
+
+    public void resetRenownFlags(){
+        userBlock.resetRenownFlags();
     }
 
     public void addCreditListeners() {

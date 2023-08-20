@@ -34,6 +34,11 @@ public class Du26Block {
         rawSpot = Hex.getFileBytes(String.valueOf(file));
     }
 
+    public void setDuelRenown(int value) {
+        int point = 0xE;
+        Hex.setByte4(rawStreet, point, value);
+    }
+
     public byte[] bytes() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
