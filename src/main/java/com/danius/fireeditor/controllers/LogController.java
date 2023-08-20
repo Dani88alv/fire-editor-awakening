@@ -1,5 +1,7 @@
 package com.danius.fireeditor.controllers;
 
+import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Unit;
@@ -69,6 +71,14 @@ public class LogController {
         ObservableList<String> classes = FXCollections.observableArrayList();
         classes.addAll(Names.classNames);
         comboClass.setItems(classes);
+        int vanillaCount = Constants.MAX_CLASSES;
+        int modCount = FireEditor.maxClasses();
+        if (modCount > vanillaCount) {
+            for (int i = vanillaCount; i < modCount; i++) {
+                String className = "Mod Class#" + (i + 1 - vanillaCount);
+                comboClass.getItems().add(className);
+            }
+        }
         //S-Pairings
         ObservableList<String> units = FXCollections.observableArrayList();
         units.addAll(Names.unitNames);

@@ -192,7 +192,7 @@ public class Unit {
     public String report() {
         String text = "\n";
         //Unit Name and General Data
-        text += unitName() + ": " + Names.classNames.get(rawBlock1.unitClass());
+        text += unitName() + ": " + Names.className(rawBlock1.unitClass());
         text += "\n" + "Modifiers: " + Arrays.toString(modifiers());
         //Stats
         text += "\n" + rawBlock1.report();

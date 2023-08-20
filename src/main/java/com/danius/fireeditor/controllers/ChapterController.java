@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.bigblocks.Du26Block;
 import com.danius.fireeditor.savefile.bigblocks.GmapBlock;
 import com.danius.fireeditor.savefile.bigblocks.HeaderBlock;
@@ -88,6 +89,15 @@ public class ChapterController {
             this.headerBlock = FireEditor.chapterFile.blockHeader;
             this.du26Block = FireEditor.chapterFile.blockDu26;
             this.gmapBlock = FireEditor.chapterFile.blockGmap;
+            //The modded classes are checked
+            int modCount = FireEditor.maxClasses();
+            int vanillaCount = Constants.MAX_CLASSES;
+            if (modCount > vanillaCount) {
+                for (int i = vanillaCount; i < modCount; i++) {
+                    String className = "Mod Class#" + (i + 1 - vanillaCount);
+                    comboClass1.getItems().add(className);
+                }
+            }
             //General Data
             comboDifficulty.getSelectionModel().select(userBlock.rawDifficulty.difficulty());
             spinPenalty.getValueFactory().setValue(userBlock.rawDifficulty.penaltyId());
@@ -155,7 +165,7 @@ public class ChapterController {
         comboChapterData.setItems(chapterState);
     }
 
-    public void resetRenownFlags(){
+    public void resetRenownFlags() {
         userBlock.resetRenownFlags();
     }
 

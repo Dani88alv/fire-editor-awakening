@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
@@ -66,10 +67,21 @@ public class UnitController {
         disableElements(false);
     }
 
+
+
     public void loadUnitBlock() {
         if (FireEditor.chapterFile != null && FireEditor.unitController != null) {
             //The unit block is set
             this.unitBlock = FireEditor.chapterFile.blockUnit;
+            //The modded classes are retrieved
+            int maxClasses = FireEditor.maxClasses();
+            int currentClasses = comboClass.getItems().size() - 1;
+            if (maxClasses > Constants.MAX_CLASSES && maxClasses > currentClasses) {
+                for (int i = 0; i < maxClasses - currentClasses; i++) {
+                    comboClass.getItems().add("Mod Class #" + (i + 1));
+                }
+            }
+
             //The unit group is selected, chosen between blue units or main units
             if (unitBlock.unitList.get(0x0).size() > 0) {
                 comboUnitGroup.getSelectionModel().select(0x0);
@@ -94,8 +106,7 @@ public class UnitController {
         spinUnitId.getValueFactory().setValue(unit.rawBlock1.unitId());
         colorHair.setValue(Hex.hexToColor(unit.rawBlockEnd.getHairColor()));
         //Unit class
-        int unitClass = (unit.rawBlock1.unitClass() > Names.classNames.size()) ? 0x52 : unit.rawBlock1.unitClass();
-        comboClass.getSelectionModel().select(unitClass);
+        comboClass.getSelectionModel().select(unit.rawBlock1.unitClass());
         //Battle Stats
         txtLevel.setText(String.valueOf(unit.rawBlock1.level()));
         txtExp.setText(String.valueOf(unit.rawBlock1.exp()));
@@ -207,7 +218,7 @@ public class UnitController {
     }
 
     @FXML
-    public void maxSkillsLegal(){
+    public void maxSkillsLegal() {
         updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
         listViewUnit.getSelectionModel().getSelectedItem().setLegalSkills();
         setFields(listViewUnit.getSelectionModel().getSelectedItem());

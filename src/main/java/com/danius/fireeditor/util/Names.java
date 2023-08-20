@@ -1,7 +1,10 @@
 package com.danius.fireeditor.util;
 
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Supports;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +25,7 @@ public class Names {
     }
 
     public static String className(int id) {
-        if (id > classNames.size()) return "Outrealm Class";
+        if (id > Constants.MAX_CLASSES) return "Outrealm Class " + (Constants.MAX_CLASSES - id + 2);
         return classNames.get(id);
     }
 
@@ -207,10 +210,10 @@ public class Names {
             "Unknown_3_4", "Unknown_3_5", "Unknown_3_6", "Unknown_3_7"
     );
 
-    public static List<String> getItemNames(int totalCount){
+    public static List<String> getItemNames(int totalCount) {
         List<String> names = new ArrayList<>();
         int vanillaCount = itemNames.size();
-        for (int i = 0; i < totalCount; i++){
+        for (int i = 0; i < totalCount; i++) {
             if (i >= vanillaCount) names.add("Modded Item #" + (i - vanillaCount + 1));
             else names.add(itemNames.get(i));
         }
