@@ -113,6 +113,18 @@ public class ChapterController {
             comboCreditSlot.setItems(progress);
             //Disable the fields if the chapter count is 0 (Premonition Map Save File)
             disableCredits(userBlock.progress.size() == 0);
+            //The modded map entries from the credits are checked
+            int totalChapters = comboCreditChapter.getItems().size();
+            //Modded Chapters are checked
+            for (int i = 0; i < userBlock.progress.size(); i++) {
+                if (userBlock.progress.get(i).chapterId() > totalChapters) {
+                    totalChapters = userBlock.progress.get(i).chapterId();
+                }
+            }
+            int currentChapters = comboCreditChapter.getItems().size();
+            for (int i = currentChapters; i <= totalChapters; i++) {
+                comboCreditChapter.getItems().add("Mod Chapter #" + (i - currentChapters + 1));
+            }
             if (userBlock.progress.size() > 0) {
                 comboCreditSlot.getSelectionModel().select(0);
             }
@@ -152,7 +164,8 @@ public class ChapterController {
         comboClass2.setItems(classes);
         //Chapter Names
         ObservableList<String> chapters = FXCollections.observableArrayList();
-        for (int i = 0; i < 52; i++) {
+        //The names are stored
+        for (int i = 0; i <= Constants.MAX_CHAPTERS; i++) {
             chapters.add(chapterName(i));
         }
         comboCreditChapter.setItems(chapters);
@@ -269,7 +282,7 @@ public class ChapterController {
         } else if (id > 28 && id <= 51) {
             int chapter = id - 28;
             return "Paralogue " + chapter;
-        } else return "Unknown";
+        } else return "Mod Chapter #" + (Constants.MAX_CHAPTERS - id + 1);
     }
 
     public String gChapterName(int id) {
