@@ -1,14 +1,10 @@
 package com.danius.fireeditor.util;
 
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Supports;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class Names {
@@ -20,7 +16,7 @@ public class Names {
             id = id - 4096;
             return "Map NPC " + (id + 1);
         }
-        if (id >= unitNames.size()) return "Outrealm Unit";
+        if (id >= unitNames.size()) return "Outrealm Unit #" + (unitNames.size() - id + 1);
         return unitNames.get(id);
     }
 
@@ -46,6 +42,10 @@ public class Names {
     }
 
     public static String supportLevel(int unitId, int value, int slot) {
+        //Checks if it is a modded unit
+        int[] validSupports = Supports.getSupportUnits(unitId);
+        if (slot >= validSupports.length) return "Unknown";
+        //Valid supports
         int type = Supports.getSupportTypes(unitId)[slot];
         int[] maxValues = Supports.supportValues().get(type);
         if (value < maxValues[0]) return "D-Rank";

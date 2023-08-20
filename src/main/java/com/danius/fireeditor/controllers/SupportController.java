@@ -43,9 +43,14 @@ public class SupportController {
         if (unit != null) {
             //Unit Selection
             ObservableList<String> unitNames = FXCollections.observableArrayList();
+            int totalCount = unit.rawSupport.supportCount();
             int[] characters = Supports.getSupportUnits(unit.rawBlock1.unitId());
-            for (int i = 0; i < characters.length; i++) {
-                unitNames.add(Names.unitName(characters[i] - 1));
+            for (int character : characters) {
+                unitNames.add(Names.unitName(character - 1));
+            }
+            //If there are modded supports, they are added
+            for (int i = characters.length; i < totalCount; i++) {
+                unitNames.add("Mod Support #" + (i - characters.length + 1));
             }
             comboUnit.setItems(unitNames);
             comboUnit.getSelectionModel().select(0);
@@ -75,7 +80,7 @@ public class SupportController {
     }
 
     @FXML
-    private void setUnitsToLevel(){
+    private void setUnitsToLevel() {
         int level = comboLevel.getSelectionModel().getSelectedIndex();
         unit.rawSupport.setAllSupportsTo(level);
         int selectedUnit = comboUnit.getSelectionModel().getSelectedIndex();
@@ -83,7 +88,7 @@ public class SupportController {
         setLabelLevel();
     }
 
-    private void setLabelLevel(){
+    private void setLabelLevel() {
         int value = spinValue.getValue();
         int slot = comboUnit.getSelectionModel().getSelectedIndex();
         lblLevel.setText(Names.supportLevel(unit.rawBlock1.unitId(), value, slot));
