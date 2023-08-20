@@ -12,15 +12,9 @@ Save Editor for Fire Emblem Awakening, made in Java. Supports:
 * Java 20 Development Kit
 
 ## Usage
-Edit ```launch.bat``` with Notepad and replace the Java path with your Java 20 installation directory: 
+If you don't have Java 20 installed, download it from the official website (0x64 Installer): https://www.oracle.com/java/technologies/downloads/#jdk20-windows
 
-``` set "java20_path=C:\Program Files\Java\jdk-20\bin\java.exe"```
-
-Run ```launch.bat``` and open a ```Chapter``` or ```Map``` save file.
-
-If you already have Java 20 set in your "Path" Environment Variables, and it is at the top of the priority list, you can also run:
-
-```java -jar "Fire Editor Awakening.jar"```
+Run ``Fire Editor Awakening.jar`` from the Releases page and open a Chapter or Map save file.
 
 ### Remember to back up your save file before using this tool!
 
