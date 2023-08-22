@@ -69,7 +69,6 @@ public class RawBlock1 {
         return blockBytes[0x12] & 0xFF;
     }
 
-    //TODO: Check the class max level
     public void setLevel(int level) {
         blockBytes[0x12] = (byte) level;
     }
@@ -116,7 +115,7 @@ public class RawBlock1 {
     }
 
     public void setMovement(int movement) {
-        if (movement >= 0 && movement <= 99) blockBytes[0x15] = (byte) (movement & 0xFF);
+        blockBytes[0x15] = (byte) (movement & 0xFF);
     }
 
     /*

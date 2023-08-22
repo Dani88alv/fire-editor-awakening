@@ -2,7 +2,6 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.ChapterFile;
-import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,14 +18,16 @@ public class MainController {
     private String path = System.getProperty("user.dir");
 
     @FXML
-    private Tab tabConvoy, tabChapter, tabUnit;
+    private Tab tabConvoy, tabChapter, tabUnit, tabCheats;
 
     public void initialize() {
+        FireEditor.mainController = this;
         if (FireEditor.chapterFile == null) {
             FireEditor.unitController.disableElements(true);
             FireEditor.unitController.comboUnitGroup.setDisable(true);
             tabConvoy.setDisable(true);
             tabChapter.setDisable(true);
+            tabCheats.setDisable(true);
         }
     }
 
@@ -39,11 +40,20 @@ public class MainController {
         path = file.getParent();
         //The blocks are initialized
         try {
-            FireEditor.chapterFile = new ChapterFile(Files.readAllBytes(file.toPath()));
+            reloadTabs(Files.readAllBytes(file.toPath()));
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public void reloadTabs(byte[] fileBytes){
+        try {
+            FireEditor.chapterFile = new ChapterFile(fileBytes);
             FireEditor.unitController.loadUnitBlock();
             FireEditor.unitController.comboUnitGroup.setDisable(false);
             tabConvoy.setDisable(false);
             tabChapter.setDisable(false);
+            tabCheats.setDisable(false);
             FireEditor.convoyController.loadBlocks();
             FireEditor.chapterController.loadBlocks();
             FireEditor.maxClasses = FireEditor.maxClasses();
@@ -141,7 +151,7 @@ public class MainController {
         }
     }
 
-    private byte[] compileBlocks(boolean decomp) {
+    public byte[] compileBlocks(boolean decomp) {
         //The current unit is updated
         Unit currentUnit = FireEditor.unitController.listViewUnit.getSelectionModel().getSelectedItem();
         FireEditor.unitController.updateUnitFromFields(currentUnit);

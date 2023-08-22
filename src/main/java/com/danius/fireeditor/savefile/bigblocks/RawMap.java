@@ -17,5 +17,5 @@ public class RawMap {
         bytes[0x1] = (byte) (value & 0xFF);
     }
 
-    //TODO 0x5 boss class, 0x3-0x4 need to be 0x1 in order to activate it
+    //0x5 boss class, 0x3-0x4 need to be 0x1 in order to activate it
 }

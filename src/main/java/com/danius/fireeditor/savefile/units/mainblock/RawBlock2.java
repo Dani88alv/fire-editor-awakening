@@ -39,6 +39,10 @@ public class RawBlock2 {
         skills[point + (slot * 2)] = (byte) (skill & 0xFF);
     }
 
+    public void resetCurrentSkills() {
+        for (int i = 0; i < 5; i++) setCurrentSkill(0, i);
+    }
+
     /*
     Retrieves a list of the weapon exp values
     Order: Sword, Lance, Axe, Bow, Tome, Stave

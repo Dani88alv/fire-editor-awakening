@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -126,6 +127,22 @@ public class ChildBlock {
 
     public void setSupportSibling(int points) {
         footer[0x1] = (byte) (points & 0xFF);
+    }
+
+    public void setAllSupportsToLevel(int level) {
+        //Gets the type of support of the parameter character
+        int type = 4;
+        //Gets the max values of the type gotten
+        int[] maxValues = Supports.supportValues().get(type);
+        if (level == 0) {
+            setSupportParent(true, maxValues[0]);
+            setSupportParent(false, maxValues[0]);
+            setSupportSibling(0);
+        } else {
+            setSupportParent(true, maxValues[level - 1]);
+            setSupportParent(false, maxValues[level - 1]);
+            setSupportSibling(maxValues[level - 1]);
+        }
     }
 
     /*

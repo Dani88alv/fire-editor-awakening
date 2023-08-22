@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -7,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="222.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.ItemController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.ItemController">
    <children>
-      <AnchorPane prefHeight="232.0" prefWidth="290.0">
+      <AnchorPane prefHeight="262.0" prefWidth="410.0">
          <children>
             <ComboBox fx:id="comboItem1" layoutX="7.0" layoutY="44.0" prefHeight="26.0" prefWidth="157.0" promptText="Item 1" />
             <ComboBox fx:id="comboItem2" layoutX="7.0" layoutY="76.0" prefHeight="26.0" prefWidth="158.0" promptText="Item 2" />
@@ -21,13 +22,19 @@
             <Label layoutX="191.0" layoutY="17.0" text="Uses" />
             <CheckBox fx:id="checkItem2" layoutX="273.0" layoutY="80.0" mnemonicParsing="false" text="Equip" />
             <CheckBox fx:id="checkItem3" layoutX="273.0" layoutY="111.0" mnemonicParsing="false" text="Equip" />
-            <CheckBox fx:id="checkItem4" layoutX="273.0" layoutY="144.0" mnemonicParsing="false" text="Equip" />
-            <CheckBox fx:id="checkItem5" layoutX="273.0" layoutY="175.0" mnemonicParsing="false" text="Equip" />
+            <CheckBox fx:id="checkItem4" layoutX="273.0" layoutY="143.0" mnemonicParsing="false" text="Equip" />
+            <CheckBox fx:id="checkItem5" layoutX="273.0" layoutY="174.0" mnemonicParsing="false" text="Equip" />
             <Spinner fx:id="spinItem1" editable="true" layoutX="189.0" layoutY="43.0" prefHeight="26.0" prefWidth="60.0" />
             <Spinner fx:id="spinItem2" editable="true" layoutX="189.0" layoutY="75.0" prefHeight="26.0" prefWidth="60.0" />
             <Spinner fx:id="spinItem3" editable="true" layoutX="189.0" layoutY="107.0" prefHeight="26.0" prefWidth="60.0" />
             <Spinner fx:id="spinItem4" editable="true" layoutX="189.0" layoutY="139.0" prefHeight="26.0" prefWidth="60.0" />
             <Spinner fx:id="spinItem5" editable="true" layoutX="189.0" layoutY="171.0" prefHeight="26.0" prefWidth="60.0" />
+            <CheckBox fx:id="dropItem1" layoutX="339.0" layoutY="48.0" mnemonicParsing="false" text="Drop" />
+            <CheckBox fx:id="dropItem2" layoutX="339.0" layoutY="79.0" mnemonicParsing="false" text="Drop" />
+            <CheckBox fx:id="dropItem3" layoutX="339.0" layoutY="112.0" mnemonicParsing="false" text="Drop" />
+            <CheckBox fx:id="dropItem4" layoutX="339.0" layoutY="143.0" mnemonicParsing="false" text="Drop" />
+            <CheckBox fx:id="dropItem5" layoutX="339.0" layoutY="174.0" mnemonicParsing="false" text="Drop" />
+            <Button layoutX="147.0" layoutY="211.0" mnemonicParsing="false" onAction="#setMaxAmount" prefHeight="26.0" prefWidth="116.0" text="Max Amount" />
          </children>
       </AnchorPane>
    </children>

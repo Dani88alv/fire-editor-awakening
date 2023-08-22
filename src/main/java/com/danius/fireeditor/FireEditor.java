@@ -1,9 +1,7 @@
 package com.danius.fireeditor;
 
-import com.danius.fireeditor.controllers.ChapterController;
-import com.danius.fireeditor.controllers.ConvoyController;
+import com.danius.fireeditor.controllers.*;
 import com.danius.fireeditor.savefile.ChapterFile;
-import com.danius.fireeditor.controllers.UnitController;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
 import com.danius.fireeditor.util.Names;
@@ -19,6 +17,8 @@ public class FireEditor extends Application {
     public static UnitController unitController;
     public static ConvoyController convoyController;
     public static ChapterController chapterController;
+    public static CheatController cheatController;
+    public static MainController mainController;
 
     public static int maxClasses = Constants.MAX_CLASSES;
     public static int maxArmies = Constants.MAX_ARMY;

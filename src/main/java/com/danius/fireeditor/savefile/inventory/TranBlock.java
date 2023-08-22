@@ -94,9 +94,7 @@ public class TranBlock {
     }
 
     //Maxes the full main inventory
-    public void maxItemAmount() {
-        int weaponAmount = 99;
-        int consumeAmount = 99;
+    public void maxItemAmount(int weaponAmount, int consumeAmount) {
         for (int i = 1; i < itemAmounts.size(); i++) {
             if (i < 0x9C) setItemAmount(i, weaponAmount);
             else setItemAmount(i, consumeAmount);

@@ -25,7 +25,9 @@ public class ChapterController {
     @FXML
     private ComboBox<String> comboChapterDlc, comboCreditChapter,
             comboUnit1, comboUnit2, comboClass1, comboClass2, comboCreditSlot,
-            comboDifficulty, comboChapter, comboChapterData;
+            comboDifficulty;
+    @FXML
+    ComboBox<String> comboChapter, comboChapterData;
     @FXML
     private CheckBox checkLunatic;
 
@@ -172,7 +174,7 @@ public class ChapterController {
         dlcChapters.addAll(Names.chapterDlcNames);
         comboChapterDlc.setItems(dlcChapters);
         //Gmap
-        ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Not Beaten");
+        ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Unlocked");
         comboChapterData.setItems(chapterState);
     }
 
@@ -292,7 +294,7 @@ public class ChapterController {
             return "Paralogue " + chapter;
         } else if (id == 50) return "Outrealm Gate";
         else {
-            return "Modded Map";
+            return "Mod Chapter #" + (Constants.MAX_CHAPTERS - id + 1);
         }
     }
 }

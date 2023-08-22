@@ -173,20 +173,9 @@ public class Unit {
     }
 
     //Max out the unit
-    public void ultraMegaCheatLol() {
+    public void maxStats() {
         //MAX STATS (Growth, level, weapon exp)
         Stats.setMaxStatsHigh(this);
-        //Extra Movement +2
-        rawBlock1.setMovement(2);
-        //Battle Data
-        rawBlockEnd.setVictories(9999);
-        rawBlockEnd.setBattles(9999);
-        //ALL SUPPORTS TO S-PENDING
-        //rawSupport.expandBlock();
-        //rawSupport.setAllSupportsTo(3);
-        //ALL SKILLS
-        rawSkill.setAll(true);
-        //TODO Tonic Flags
     }
 
     public String report() {

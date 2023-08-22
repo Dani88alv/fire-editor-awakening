@@ -23,6 +23,9 @@
                         <Tab fx:id="tabChapter" text="Chapter Data">
                             <fx:include fx:id="chapterTab" source="viewChapter.fxml" />
                         </Tab>
+                        <Tab fx:id="tabCheats" text="Cheats">
+                            <fx:include fx:id="cheatTab" source="viewCheats.fxml" />
+                        </Tab>
                     </tabs>
                 </TabPane>
                 <MenuBar layoutY="-2.0">

@@ -9,7 +9,7 @@ import java.util.List;
 public class RefiBlock {
     public boolean isWest;
     private final byte[] blockHeader;
-    private List<Refinement> refiList;
+    public List<Refinement> refiList;
 
     public RefiBlock(byte[] blockBytes, boolean isWest) {
         this.blockHeader = Arrays.copyOfRange(blockBytes, 0, 0x7); //Header (5) + count + unknown

@@ -277,7 +277,7 @@ public class UnitController {
         //Battle Stats
         UI.setNumericTextField(txtLevel, 30);
         UI.setNumericTextField(txtExp, 99);
-        UI.setNumericTextField(txtBoots, 99);
+        UI.setNumericTextField(txtBoots, 255);
         //Growth Stats
         UI.setNumericTextField(txtGrowthHp, 255);
         UI.setNumericTextField(txtGrowthStr, 255);
