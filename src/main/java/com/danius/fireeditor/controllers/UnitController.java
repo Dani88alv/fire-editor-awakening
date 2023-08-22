@@ -24,9 +24,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class UnitController {
-    /*
-    TODO: CREATE METHOD TO CLEAR ALL THE FIELDS WHEN A EMPTY GROUP IS SELECTED, AND ADD IF CLAUSES TO THE BUTTONS
-     */
     @FXML
     public static WeaponExpController weaponExpController;
     @FXML
@@ -74,7 +71,7 @@ public class UnitController {
             //The unit block is set
             this.unitBlock = FireEditor.chapterFile.blockUnit;
             //The modded classes are retrieved
-            int maxClasses = FireEditor.maxClasses();
+            int maxClasses = FireEditor.maxClasses;
             int currentClasses = comboClass.getItems().size() - 1;
             if (maxClasses > Constants.MAX_CLASSES && maxClasses > currentClasses) {
                 for (int i = 0; i < maxClasses - currentClasses; i++) {
@@ -528,7 +525,7 @@ public class UnitController {
                 int supportId = listViewUnit.getSelectionModel().getSelectedItem().rawSupport.unitId;
                 int[] supportList = Supports.getSupportUnits(supportId);
                 //If it is an invalid unit, do NOT open the window
-                if (supportList.length == 0) return;
+                //if (supportList.length == 0) return;
                 //Check the support block size
                 listViewUnit.getSelectionModel().getSelectedItem().rawSupport.expandBlock();
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());

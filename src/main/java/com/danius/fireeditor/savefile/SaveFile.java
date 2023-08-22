@@ -3,6 +3,7 @@ package com.danius.fireeditor.savefile;
 import com.danius.fireeditor.compression.DataView;
 import com.danius.fireeditor.compression.Huffman;
 import com.danius.fireeditor.compression.Uint8Array;
+import com.danius.fireeditor.util.Hex;
 import com.danius.fireeditor.util.HexConverts;
 
 import java.io.ByteArrayOutputStream;
@@ -14,6 +15,29 @@ import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
 public abstract class SaveFile {
+    public static byte[] autoDecompress(byte[] fileBytes) {
+        byte[] edni = Hex.toByte("45 44 4E 49"); //EDNI
+        byte[] pmoc = Hex.toByte("50 4D 4F 43"); //PMOC
+
+        int region = 0x0;
+        boolean isDecomp = false;
+        byte[] global = Hex.getByte4Array(fileBytes, 0x0);
+        byte[] us = Hex.getByte4Array(fileBytes, 0xC0);
+        byte[] jp = Hex.getByte4Array(fileBytes, 0x80);
+
+        if (Arrays.equals(global, edni) || Arrays.equals(global, pmoc)) {
+            isDecomp = true;
+        } else if (Arrays.equals(us, edni) || Arrays.equals(us, pmoc)) {
+            region = 0xC0;
+            isDecomp = true;
+        } else if (Arrays.equals(jp, edni) || Arrays.equals(jp, pmoc)) {
+            region = 0x80;
+            isDecomp = true;
+        }
+        if (isDecomp) return decompressBytes(fileBytes, region);
+        return fileBytes;
+    }
+
     public static byte[] decompressBytes(byte[] all, int start) {
         ByteArrayOutputStream out = null;
         byte[] data = null;

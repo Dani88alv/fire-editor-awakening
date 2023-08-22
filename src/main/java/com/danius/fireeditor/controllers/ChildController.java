@@ -202,11 +202,11 @@ public class ChildController {
         int[] maxValues = Supports.supportValues().get(4);
         if (value < maxValues[0]) return "D-Rank";
         else if (value == maxValues[0]) return "C-Pending";
-        else if (value < maxValues[1]) return "C-Rank";
-        else if (value == maxValues[1]) return "B-Pending";
-        else if (value < maxValues[2]) return "B-Rank";
-        else if (value == maxValues[2]) return "A-Pending";
-        else if (value == maxValues[3]) return "A-Rank";
+        else if (value < maxValues[2]) return "C-Rank";
+        else if (value == maxValues[2]) return "B-Pending";
+        else if (value < maxValues[4]) return "B-Rank";
+        else if (value == maxValues[4]) return "A-Pending";
+        else if (value == maxValues[5]) return "A-Rank";
         return "?";
     }
 

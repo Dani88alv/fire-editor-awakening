@@ -20,10 +20,8 @@ public class FireEditor extends Application {
     public static ConvoyController convoyController;
     public static ChapterController chapterController;
 
-    public static String citraUS = "C:\\Users\\user1\\AppData\\Roaming\\Citra\\sdmc\\Nintendo 3DS\\00000000000000000000000000000000\\00000000000000000000000000000000\\title\\00040000\\000a0500\\data\\00000001\\";
-    String citraJP = "C:\\Users\\user1\\AppData\\Roaming\\Citra\\sdmc\\Nintendo 3DS\\00000000000000000000000000000000\\00000000000000000000000000000000\\title\\00040000\\00072000\\data\\00000001\\";
-    String citraEU = "C:\\Users\\user1\\AppData\\Roaming\\Citra\\sdmc\\Nintendo 3DS\\00000000000000000000000000000000\\00000000000000000000000000000000\\title\\00040000\\0009f100\\data\\00000001\\";
-    String path = citraUS + "Chapter2";
+    public static int maxClasses = Constants.MAX_CLASSES;
+    public static int maxArmies = Constants.MAX_ARMY;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -72,5 +70,18 @@ public class FireEditor extends Application {
             }
         }
         return maxClasses;
+    }
+
+    public static int maxArmies(){
+        int maxArmies = Constants.MAX_ARMY;
+        for (int i = 0; i < chapterFile.blockUnit.unitList.size(); i++) {
+            for (int j = 0; j < chapterFile.blockUnit.unitList.get(i).size(); j++) {
+                int army =chapterFile.blockUnit.unitList.get(i).get(j).rawFlags.army();
+                if (army > Constants.MAX_ARMY) {
+                    if (army > maxArmies) maxArmies = army;
+                }
+            }
+        }
+        return maxArmies;
     }
 }

@@ -17,7 +17,6 @@ import java.nio.file.Files;
 public class MainController {
 
     private String path = System.getProperty("user.dir");
-    //private String path = "";
 
     @FXML
     private Tab tabConvoy, tabChapter, tabUnit;
@@ -47,6 +46,8 @@ public class MainController {
             tabChapter.setDisable(false);
             FireEditor.convoyController.loadBlocks();
             FireEditor.chapterController.loadBlocks();
+            FireEditor.maxClasses = FireEditor.maxClasses();
+            FireEditor.maxArmies = FireEditor.maxArmies();
         } catch (Exception e) {
             throw new RuntimeException();
         }

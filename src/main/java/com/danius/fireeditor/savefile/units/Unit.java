@@ -24,7 +24,7 @@ public class Unit {
     public RawSupport rawSupport; //Support conversations, size variable
     //Sometimes it appears in Map save files, unknown use
     public byte[] rawUnknown;
-    public RawFlags rawFlags; //?? Battle Flags? TODO: 0x28 tonic status (binary)
+    public RawFlags rawFlags; //Battle Flags
     public RawSkill rawSkill; //Learned Skills
     public RawBlockEnd rawBlockEnd; //AI and Misc Stuff
     //Additional blocks
@@ -182,8 +182,8 @@ public class Unit {
         rawBlockEnd.setVictories(9999);
         rawBlockEnd.setBattles(9999);
         //ALL SUPPORTS TO S-PENDING
-        rawSupport.expandBlock();
-        rawSupport.setAllSupportsTo(3);
+        //rawSupport.expandBlock();
+        //rawSupport.setAllSupportsTo(3);
         //ALL SKILLS
         rawSkill.setAll(true);
         //TODO Tonic Flags

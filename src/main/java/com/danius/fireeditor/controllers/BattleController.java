@@ -1,5 +1,7 @@
 package com.danius.fireeditor.controllers;
 
+import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Names;
 import javafx.beans.value.ChangeListener;
@@ -33,11 +35,11 @@ public class BattleController {
         setFields();
     }
 
-    public void enableAllUnusedStats(){
+    public void enableAllUnusedStats() {
         unit.rawFlags.setAllTonicFlags();
     }
 
-    public void enableAllTonics(){
+    public void enableAllTonics() {
         unit.rawFlags.setAllUnusedStats();
     }
 
@@ -81,6 +83,9 @@ public class BattleController {
         ObservableList<String> battleFlags = FXCollections.observableArrayList(Names.battleFlags);
         comboBattle.setItems(battleFlags);
         ObservableList<String> armies = FXCollections.observableArrayList(Names.armies);
+        for (int i = Constants.MAX_ARMY; i < FireEditor.maxArmies; i++) {
+            armies.add("Extra #" + (FireEditor.maxArmies() - Constants.MAX_ARMY + 1));
+        }
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);
         //Listeners

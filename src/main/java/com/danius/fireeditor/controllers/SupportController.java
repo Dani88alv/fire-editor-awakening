@@ -8,6 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -22,11 +23,14 @@ public class SupportController {
     Spinner<Integer> spinValue;
     @FXML
     Label lblLevel;
+    @FXML
+    Button btnRemoveSupport, btnSetAll;
 
     public void initialize() {
         UI.setSpinnerNumeric(spinValue, 0x16);
         ObservableList<String> levelOptions = FXCollections.observableArrayList(
-                "C-Pending", "B-Pending", "A-Pending", "S-Pending");
+                "D-Rank", "C-Pending", "C-Rank", "B-Pending", "B-Rank",
+                "A-Pending", "A-Rank", "S-Pending", "S-Rank");
         comboLevel.setItems(levelOptions);
         comboLevel.getSelectionModel().select(0);
         setupComboUnit();
@@ -34,9 +38,11 @@ public class SupportController {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
-        setFields();
-        setupSpinners(spinValue);
-        setLabelLevel();
+        if (unit.rawSupport.supportCount() > 0) {
+            setFields();
+            setupSpinners(spinValue);
+            setLabelLevel();
+        } else disableElements();
     }
 
     public void setFields() {
@@ -50,7 +56,7 @@ public class SupportController {
             }
             //If there are modded supports, they are added
             for (int i = characters.length; i < totalCount; i++) {
-                unitNames.add("Mod Support #" + (i - characters.length + 1));
+                unitNames.add("Extra Support #" + (i - characters.length + 1));
             }
             comboUnit.setItems(unitNames);
             comboUnit.getSelectionModel().select(0);
@@ -86,6 +92,31 @@ public class SupportController {
         int selectedUnit = comboUnit.getSelectionModel().getSelectedIndex();
         spinValue.getValueFactory().setValue(unit.rawSupport.supportValue(selectedUnit));
         setLabelLevel();
+    }
+
+    @FXML
+    private void removeExtraSupports() {
+        unit.rawSupport.removeExtraSupports();
+        int currentSupports = comboUnit.getItems().size();
+        int slotsToRemove = currentSupports - unit.rawSupport.supportCount();
+        for (int i = 0; i < slotsToRemove; i++) {
+            if (comboUnit.getItems().size() != 0) {
+                int aa = comboUnit.getItems().size();
+                comboUnit.getSelectionModel().selectFirst();
+            }
+            comboUnit.getItems().remove(comboUnit.getItems().size() - 1);
+        }
+        if (comboUnit.getItems().size() == 0) {
+            disableElements();
+        } else comboUnit.getSelectionModel().select(0);
+    }
+
+    private void disableElements() {
+        comboUnit.setDisable(true);
+        spinValue.setDisable(true);
+        btnRemoveSupport.setDisable(true);
+        btnSetAll.setDisable(true);
+        comboLevel.setDisable(true);
     }
 
     private void setLabelLevel() {

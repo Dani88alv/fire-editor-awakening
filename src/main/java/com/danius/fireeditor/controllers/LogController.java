@@ -72,7 +72,7 @@ public class LogController {
         classes.addAll(Names.classNames);
         comboClass.setItems(classes);
         int vanillaCount = Constants.MAX_CLASSES;
-        int modCount = FireEditor.maxClasses();
+        int modCount = FireEditor.maxClasses;
         if (modCount > vanillaCount) {
             for (int i = vanillaCount; i < modCount; i++) {
                 String className = "Mod Class#" + (i + 1 - vanillaCount);

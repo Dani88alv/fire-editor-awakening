@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.SupportController">
    <children>
       <AnchorPane prefHeight="119.0" prefWidth="460.0">
          <children>
-            <ComboBox fx:id="comboUnit" layoutX="30.0" layoutY="46.0" prefHeight="26.0" prefWidth="139.0" promptText="Support Unit" />
-            <Spinner fx:id="spinValue" layoutX="182.0" layoutY="46.0" prefHeight="26.0" prefWidth="62.0" />
-            <Label layoutX="184.0" layoutY="24.0" text="Support Points" />
-            <Button layoutX="302.0" layoutY="25.0" mnemonicParsing="false" onAction="#setUnitsToLevel" text="Set All Supports To" />
+            <ComboBox fx:id="comboUnit" layoutX="30.0" layoutY="28.0" prefHeight="26.0" prefWidth="139.0" promptText="Support Unit" />
+            <Spinner fx:id="spinValue" layoutX="181.0" layoutY="28.0" prefHeight="26.0" prefWidth="62.0" />
+            <Label layoutX="181.0" layoutY="8.0" text="Support Points" />
+            <Button fx:id="btnSetAll" layoutX="302.0" layoutY="25.0" mnemonicParsing="false" onAction="#setUnitsToLevel" text="Set All Supports To" />
             <ComboBox fx:id="comboLevel" layoutX="301.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" promptText="Level" />
-            <Label fx:id="lblLevel" layoutX="185.0" layoutY="76.0" text="Level" />
+            <Label fx:id="lblLevel" layoutX="184.0" layoutY="58.0" text="Level" />
+            <Button fx:id="btnRemoveSupport" layoutX="30.0" layoutY="77.0" mnemonicParsing="false" onAction="#removeExtraSupports" text="Clear Extra Supports" />
          </children>
       </AnchorPane>
    </children>

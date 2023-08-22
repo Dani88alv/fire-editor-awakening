@@ -24,11 +24,11 @@ public class Du26Block {
     }
 
     public void addSpotpass() {
-        String relativePath = "com/danius/fireeditor/templates/blocks/rawSpotpass";
+        String relativePath = "com/danius/fireeditor/templates/blocks/rawSpotpassShort";
         File file = new File("src/main/resources/" + relativePath);
         byte[] rawSpot = Hex.getFileBytes(String.valueOf(file));
         byte[] header = Hex.toByte("AD 55 0A 19 01");
-        int offset = Hex.indexOf(rawMain, header, 0x0, 0) - header.length;
+        int offset = Hex.indexOf(rawMain, header, 0x0, 3);
         System.arraycopy(rawSpot, 0, rawMain, offset, rawSpot.length);
     }
 

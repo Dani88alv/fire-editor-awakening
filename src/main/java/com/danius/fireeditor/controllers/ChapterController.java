@@ -7,8 +7,6 @@ import com.danius.fireeditor.savefile.bigblocks.GmapBlock;
 import com.danius.fireeditor.savefile.bigblocks.HeaderBlock;
 import com.danius.fireeditor.savefile.bigblocks.UserBlock;
 import com.danius.fireeditor.util.Names;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +17,7 @@ public class ChapterController {
     public HeaderBlock headerBlock;
     public Du26Block du26Block;
     public GmapBlock gmapBlock;
-    private boolean listenersAdded = false;
+
     @FXML
     private Spinner<Integer> spinCreditTime, spinCreditTurns,
             spinTime, spinMoney, spinPenalty, spinDlcTurns,
@@ -90,7 +88,7 @@ public class ChapterController {
             this.du26Block = FireEditor.chapterFile.blockDu26;
             this.gmapBlock = FireEditor.chapterFile.blockGmap;
             //The modded classes are checked
-            int modCount = FireEditor.maxClasses();
+            int modCount = FireEditor.maxClasses;
             int vanillaCount = Constants.MAX_CLASSES;
             if (modCount > vanillaCount) {
                 for (int i = vanillaCount; i < modCount; i++) {

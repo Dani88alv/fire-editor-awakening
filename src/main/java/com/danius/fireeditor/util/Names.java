@@ -50,13 +50,13 @@ public class Names {
         int[] maxValues = Supports.supportValues().get(type);
         if (value < maxValues[0]) return "D-Rank";
         else if (value == maxValues[0]) return "C-Pending";
-        else if (value < maxValues[1]) return "C-Rank";
-        else if (value == maxValues[1]) return "B-Pending";
-        else if (value < maxValues[2]) return "B-Rank";
-        else if (value == maxValues[2]) return "A-Pending";
-        else if (value < maxValues[3] || type == 0) return "A-Rank";
-        else if (value == maxValues[3]) return "S-Pending";
-        else if (value == maxValues[4] || value > maxValues[4]) return "S-Rank";
+        else if (value < maxValues[2]) return "C-Rank";
+        else if (value == maxValues[2]) return "B-Pending";
+        else if (value < maxValues[4]) return "B-Rank";
+        else if (value == maxValues[4]) return "A-Pending";
+        else if (value < maxValues[6] || type == 0) return "A-Rank";
+        else if (value == maxValues[6]) return "S-Pending";
+        else if (value >= maxValues[7]) return "S-Rank";
         return "";
     }
 
@@ -69,18 +69,16 @@ public class Names {
             "None", "HP", "Str", "Mag", "Skill", "Spd", "Lck", "Def", "Res"
     );
 
-    public static final List<String> modifNames2 = Arrays.asList(
-            "HP", "Str", "Mag", "Skill", "Spd", "Lck", "Def", "Res"
-    );
-
     public static final List<String> cardDifficulty = Arrays.asList(
             "Normal", "Hard", "Lunatic"
     );
+
     private static final List<String> cardPenaltyNames = Arrays.asList(
             "Classic", "Casual", "Lunatic+ Classic", "Lunatic+ Casual",
             "Classic Beaten", "Casual Beaten", "Lunatic+ Classic Beaten", "Lunatic+ Casual Beaten",
             "Dummy", "Not Displayed"
     );
+
     public static final List<String> unitNames = Arrays.asList(
             "Avatar (M)", "Avatar (F)", "Logbook Unit", "Chrom",
             "Lissa", "Frederick", "Virion", "Sully", "Vaike", "Stahl", "Miriel",

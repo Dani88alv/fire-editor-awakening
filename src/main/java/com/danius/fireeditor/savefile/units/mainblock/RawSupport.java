@@ -23,7 +23,13 @@ public class RawSupport {
     }
 
     public int supportValue(int slot) {
-        return supportValues.get(slot);
+        int value = 0;
+        try {
+            value = supportValues.get(slot);
+        } catch (Exception ignored) {
+
+        }
+        return value;
     }
 
     /*
@@ -40,7 +46,8 @@ public class RawSupport {
         int type = Supports.getSupportTypes(unitId)[slot];
         //Gets the max values of the type gotten
         int[] maxValues = Supports.supportValues().get(type);
-        setSupportValue(slot, maxValues[level]);
+        if (level == 0) setSupportValue(slot, 0);
+        else setSupportValue(slot, maxValues[level - 1]);
     }
 
     /*
@@ -81,7 +88,7 @@ public class RawSupport {
     /*
     Removes additional bytes from modded supports
      */
-    public void removeModSupports() {
+    public void removeExtraSupports() {
         try {
             int[] characters = Supports.getSupportUnits(unitId);
             //If there are extra bytes, remove them
@@ -109,9 +116,6 @@ public class RawSupport {
         this.unitId = unitId;
     }
 
-    /*
-    TODO
-     */
     public String report() {
         String report = "";
         report += "Supports: " + supportValues;
