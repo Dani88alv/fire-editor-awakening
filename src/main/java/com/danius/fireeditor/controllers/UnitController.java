@@ -34,11 +34,11 @@ public class UnitController {
     @FXML
     public ListView<Unit> listViewUnit;
     @FXML
-    private Label labelUnitName, lblUnitCount, lblSkillCount;
+    private Label labelUnitName, lblUnitCount;
     @FXML
-    private Button btnMaxStats, btnMaxSkills, btnMoveUnit, btnDuplicate, btnRemove,
+    private Button btnMaxStats, btnMoveUnit, btnDuplicate, btnRemove,
             btnOpenWeapon, btnOpenBattle, btnOpenSupport, btnOpenChild, btnOpenAvatar,
-            btnOpenItem, btnLegalSkills;
+            btnOpenItem;
     @FXML
     private TextField txtLevel, txtExp, txtBoots,
             txtStatHp, txtStatStr, txtStatMag, txtStatSkl, txtStatSpd, txtStatLck, txtStatDef, txtStatRes,
@@ -46,13 +46,9 @@ public class UnitController {
     @FXML
     private Spinner<Integer> spinUnitId;
     @FXML
-    private ComboBox<String> comboClass,
-            comboSkillL, comboCSkill1, comboCSkill2, comboCSkill3, comboCSkill4, comboCSkill5,
-            comboGroupMove;
+    private ComboBox<String> comboClass, comboGroupMove;
     @FXML
     public ComboBox<String> comboUnitGroup;
-    @FXML
-    private CheckBox checkSkillL;
     @FXML
     private ColorPicker colorHair;
 
@@ -120,24 +116,6 @@ public class UnitController {
         txtGrowthLck.setText(String.valueOf(growth[5]));
         txtGrowthDef.setText(String.valueOf(growth[6]));
         txtGrowthRes.setText(String.valueOf(growth[7]));
-        //Current Skills
-        int[] currentSkills = unit.rawBlock2.getCurrentSkills();
-        comboCSkill1.getSelectionModel().select(currentSkills[0]);
-        comboCSkill2.getSelectionModel().select(currentSkills[1]);
-        comboCSkill3.getSelectionModel().select(currentSkills[2]);
-        comboCSkill4.getSelectionModel().select(currentSkills[3]);
-        comboCSkill5.getSelectionModel().select(currentSkills[4]);
-        //Learned Skills
-        List<Integer> skills = unit.rawSkill.getLearnedSkills();
-        //Sets the default skill position
-        if (skills.size() > 0) {
-            comboSkillL.getSelectionModel().select(skills.get(skills.size() - 1));
-            checkSkillL.setSelected(true);
-        } else {
-            comboSkillL.getSelectionModel().select(0x1);
-            checkSkillL.setSelected(false);
-        }
-        displaySkillCount(unit.rawSkill.skillCount());
         setFieldsStats();
     }
 
@@ -163,12 +141,6 @@ public class UnitController {
             unit.rawBlock1.setGrowth(Integer.parseInt(txtGrowthLck.getText()), 5);
             unit.rawBlock1.setGrowth(Integer.parseInt(txtGrowthDef.getText()), 6);
             unit.rawBlock1.setGrowth(Integer.parseInt(txtGrowthRes.getText()), 7);
-            //Equipped Skills
-            unit.rawBlock2.setCurrentSkill(comboCSkill1.getSelectionModel().getSelectedIndex(), 0);
-            unit.rawBlock2.setCurrentSkill(comboCSkill2.getSelectionModel().getSelectedIndex(), 1);
-            unit.rawBlock2.setCurrentSkill(comboCSkill3.getSelectionModel().getSelectedIndex(), 2);
-            unit.rawBlock2.setCurrentSkill(comboCSkill4.getSelectionModel().getSelectedIndex(), 3);
-            unit.rawBlock2.setCurrentSkill(comboCSkill5.getSelectionModel().getSelectedIndex(), 4);
             //Updates the current list
             int unitGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
             unitBlock.unitList.set(unitGroup, listViewUnit.getItems());
@@ -290,17 +262,6 @@ public class UnitController {
         //Classes
         ObservableList<String> classes = FXCollections.observableArrayList(Names.classNames);
         comboClass.setItems(classes);
-        //Skills
-        ObservableList<String> skills = FXCollections.observableArrayList(Names.skillNames);
-        comboCSkill1.setItems(skills);
-        comboCSkill2.setItems(skills);
-        comboCSkill3.setItems(skills);
-        comboCSkill4.setItems(skills);
-        comboCSkill5.setItems(skills);
-        comboSkillL.setItems(skills);
-        //Learned Skills
-        setupComboSkill();
-        setupCheckSkill();
         //IMPORTANT ORDER
         setupUnitList(listViewUnit);
         setupComboGroup();
@@ -323,16 +284,6 @@ public class UnitController {
         txtGrowthDef.setDisable(disable);
         txtGrowthRes.setDisable(disable);
         btnMaxStats.setDisable(disable);
-        //Skills
-        comboSkillL.setDisable(disable);
-        checkSkillL.setDisable(disable);
-        comboCSkill1.setDisable(disable);
-        comboCSkill2.setDisable(disable);
-        comboCSkill3.setDisable(disable);
-        comboCSkill4.setDisable(disable);
-        comboCSkill5.setDisable(disable);
-        btnMaxSkills.setDisable(disable);
-        btnLegalSkills.setDisable(disable);
         //Other
         btnMoveUnit.setDisable(disable);
         btnDuplicate.setDisable(disable);
@@ -344,33 +295,6 @@ public class UnitController {
         btnOpenChild.setDisable(disable);
         btnOpenAvatar.setDisable(disable);
         btnOpenItem.setDisable(disable);
-    }
-
-    /*
-    Updates the checkbox of learned skills
-     */
-    private void setupComboSkill() {
-        comboSkillL.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && listViewUnit.getSelectionModel().getSelectedItem() != null) {
-                int selectedSkill = comboSkillL.getSelectionModel().getSelectedIndex();
-                Unit unit = listViewUnit.getSelectionModel().getSelectedItem();
-                List<Integer> skills = unit.rawSkill.getLearnedSkills();
-                checkSkillL.setSelected(skills.contains(selectedSkill));
-            }
-        });
-    }
-
-    /*
-    Updates the learned skills each time the checkbox is updated
-     */
-    private void setupCheckSkill() {
-        checkSkillL.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && listViewUnit.getSelectionModel().getSelectedItem() != null) {
-                int skill = comboSkillL.getSelectionModel().getSelectedIndex();
-                listViewUnit.getSelectionModel().getSelectedItem().rawSkill.setLearnedSkill(newValue, skill);
-                displaySkillCount(listViewUnit.getSelectionModel().getSelectedItem().rawSkill.skillCount());
-            }
-        });
     }
 
     private void setupComboGroup() {
@@ -455,13 +379,32 @@ public class UnitController {
         txtStatRes.setText(String.valueOf(currentStats[7]));
     }
 
-
-    private void displaySkillCount(int count) {
-        lblSkillCount.setText("Learned Skills (" + count + ")");
-    }
-
     public void displayUnitCount() {
         lblUnitCount.setText("Units: " + listViewUnit.getItems().size() + "/255");
+    }
+
+    public void openSkills(ActionEvent event){
+        try {
+            if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
+                //The current fields are updated
+                updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
+                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewSkills.fxml"));
+                Parent root = fxmlLoader.load();
+                // Get the selected value from the main view's controller
+                Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
+                // Pass the selected value to the second view's controller
+                SkillController skillController = fxmlLoader.getController();
+                skillController.setUnit(selectedValue);
+                // Create a new stage for the secondary view
+                Stage secondaryStage = new Stage();
+                secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
+                secondaryStage.setTitle("Skills");
+                secondaryStage.setScene(new Scene(root));
+                secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*

@@ -9,7 +9,7 @@ import java.util.List;
 public class RawSkill {
 
     public static final int MAX_SKILL = 0x66;
-    private String skillString;
+    public String skillString;
 
     public RawSkill(byte[] blockBytes) {
         this.skillString = byteArrayToBinaryString(blockBytes);
@@ -25,6 +25,10 @@ public class RawSkill {
             if (skillString.charAt(i) == '1') learnedSkills.add(i);
         }
         return learnedSkills;
+    }
+
+    public boolean isSkillSet(int slot){
+        return skillString.charAt(slot) == '1';
     }
 
     /*

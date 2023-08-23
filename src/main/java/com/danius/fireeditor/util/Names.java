@@ -177,7 +177,7 @@ public class Names {
             /*88*/ "All Stats +2", "Paragon", "Iote's Shield", "Limit Breaker",
             /*92*/ "Dragonskin", "Rightful God", "Hawkeye", "Luna+",
             /*96*/ "Vantage+", "Pavise+", "Aegis+", "Resistance +10",
-            /*100*/ "Aggressor", "Rally Heart", "Bond", "Dummy"
+            /*100*/ "Aggressor", "Rally Heart", "Bond", "Unused Skill Slot"
     );
 
     public static final List<String> armies = Arrays.asList(
