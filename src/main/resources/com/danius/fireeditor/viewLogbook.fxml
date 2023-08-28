@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.LogController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.LogController">
    <children>
       <TabPane prefHeight="307.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -27,11 +27,11 @@
                               <Button layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#addLogData" prefWidth="130.0" text="Add Avatar Data" />
                               <Button layoutX="155.0" layoutY="231.0" mnemonicParsing="false" onAction="#removeLogData" prefHeight="26.0" prefWidth="130.0" text="Remove Avatar Data" />
                               <TextField fx:id="txtName" layoutX="16.0" layoutY="27.0" />
-                              <CheckBox fx:id="checkCard" layoutX="215.0" layoutY="82.0" mnemonicParsing="false" text="Is Einherjar" />
+                              <CheckBox fx:id="checkCard" layoutX="279.0" layoutY="83.0" mnemonicParsing="false" text="Is Einherjar" />
                               <TextField fx:id="txtLogId" layoutX="14.0" layoutY="78.0" prefHeight="26.0" prefWidth="183.0" text="Logbook ID" />
                               <Spinner fx:id="spinBuild" layoutX="394.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" />
                               <Spinner fx:id="spinFace" layoutX="463.0" layoutY="167.0" prefHeight="26.0" prefWidth="62.0" />
-                              <Spinner fx:id="spinVoice" layoutX="341.0" layoutY="114.0" prefHeight="26.0" prefWidth="62.0" />
+                              <Spinner fx:id="spinVoice" layoutX="366.0" layoutY="26.0" prefHeight="26.0" prefWidth="62.0" />
                               <Spinner fx:id="spinHair" layoutX="532.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" />
                               <Label layoutX="16.0" layoutY="193.0" prefHeight="36.0" prefWidth="199.0" text="Units cannot store avatar data and&#10;child data at the same time." />
                               <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="450.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -57,14 +57,15 @@
                               <Label layoutX="14.0" layoutY="104.0" prefHeight="78.0" prefWidth="199.0" text="The logbook ID is a random&#10;number used to keep track&#10;of duplicated avatars. It also&#10;manages the Einherjar portraits." />
                               <Label layoutX="19.0" layoutY="7.0" text="Unit Name" />
                               <Label layoutX="15.0" layoutY="59.0" text="Logbook ID (Hexadecimal)" />
-                              <ComboBox fx:id="comboCard" layoutX="199.0" layoutY="145.0" prefHeight="26.0" prefWidth="116.0" promptText="Einherjar" />
-                              <Button fx:id="btnSetLogId" layoutX="199.0" layoutY="114.0" mnemonicParsing="false" onAction="#setLogIdToCard" prefHeight="26.0" prefWidth="116.0" text="Set Logbook ID to" />
-                              <Label layoutX="341.0" layoutY="93.0" text="Voice" />
+                              <ComboBox fx:id="comboCard" layoutX="203.0" layoutY="148.0" prefHeight="26.0" prefWidth="116.0" promptText="Einherjar" />
+                              <Button fx:id="btnSetLogId" layoutX="203.0" layoutY="116.0" mnemonicParsing="false" onAction="#setLogIdToCard" prefHeight="26.0" prefWidth="116.0" text="Set Logbook ID to" />
+                              <Label layoutX="367.0" layoutY="7.0" text="Voice" />
                               <ComboBox fx:id="comboAsset" layoutX="184.0" layoutY="26.0" prefHeight="26.0" prefWidth="79.0" promptText="Asset" />
                               <ComboBox fx:id="comboFlaw" layoutX="275.0" layoutY="26.0" prefHeight="26.0" prefWidth="79.0" promptText="Flaw" />
                               <Label layoutX="185.0" layoutY="5.0" text="Asset" />
                               <Label layoutX="276.0" layoutY="7.0" text="Flaw" />
                               <Label layoutX="383.0" layoutY="203.0" text="Hair Color" />
+                              <Button fx:id="btnRandomId" layoutX="204.0" layoutY="79.0" mnemonicParsing="false" onAction="#setRandomId" text="Random" />
                            </children>
                         </AnchorPane>
                      </children>

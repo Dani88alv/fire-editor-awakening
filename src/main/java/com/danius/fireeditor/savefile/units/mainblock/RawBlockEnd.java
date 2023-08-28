@@ -10,6 +10,36 @@ public class RawBlockEnd {
         this.blockBytes = blockBytes;
     }
 
+    public boolean deadFlag1() {
+        int point = 0x35;
+        return (blockBytes[point] & 0xFF) == 1;
+    }
+
+    public boolean deadFlag2() {
+        int point = 0x38;
+        return (blockBytes[point] & 0xFF) == 1;
+    }
+
+    public void setDeadFlag1(boolean set) {
+        int point = 0x35;
+        blockBytes[point] = (byte) (set ? 1 : 0);
+    }
+
+    public void setDeadFlag2(boolean set) {
+        int point = 0x38;
+        blockBytes[point] = (byte) (set ? 1 : 0);
+    }
+
+    public int retireChapter(){
+        int point = 0x37;
+        return blockBytes[point] & 0xFF;
+    }
+
+    public void setRetireChapter(int value){
+        int point = 0x37;
+        blockBytes[point] = (byte) (value & 0xFF);
+    }
+
     public String getHairColor() {
         int pointer = 0x39;
         byte[] hairColorBytes = new byte[3];
@@ -23,7 +53,7 @@ public class RawBlockEnd {
     }
 
 
-    public void setHairColor(String hexString){
+    public void setHairColor(String hexString) {
         int pointer = 0x39;
         Hex.setColorToByteArray(blockBytes, pointer, hexString);
     }

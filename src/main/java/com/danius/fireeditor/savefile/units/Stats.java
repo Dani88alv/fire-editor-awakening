@@ -2,7 +2,9 @@ package com.danius.fireeditor.savefile.units;
 
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Stats {
 
@@ -12,30 +14,112 @@ public class Stats {
     Los stats actuales es stats base clase + base personaje + growth (sin superar el límite)
      */
 
-    public static void setMaxStatsHigh(Unit unit) {
-        unit.rawBlock1.setMaxGrowth();
-        int[] maxStats = calcMaxStats(unit);
-        unit.rawBlock1.setCurrentHp(maxStats[0]); //Updates the current HP to match out
-        unit.rawBlock1.setLevelMax(); //Updates the level and experience
-        unit.rawBlock2.setMaxWeaponExp(); //Sets the max weapon exp
+    public static boolean hasLimitBreaker(Unit unit) {
+        boolean hasLimit = false;
+        for (int i = 0; i < 5; i++) {
+            if (unit.rawBlock2.getCurrentSkills()[i] == 91) hasLimit = true;
+        }
+        return hasLimit;
     }
 
-    /*
-    Updates the growth of a unit to max the stats
-    It works but when a unit changes class, the growth might not be at the highest value
-    It also does not consider limit break
-     */
-    public static void setMaxStats(Unit unit) {
-        int[] maxStats = calcMaxStats(unit);
-        int[] currentStats = calcCurrentStats(unit);
-        int[] growths = unit.rawBlock1.growth();
-        for (int i = 0; i < maxStats.length; i++) {
-            //If the current stats are lower, update them
-            if (currentStats[i] < maxStats[i]) {
-                int extraGrowth = maxStats[i] - currentStats[i]; //Points left to max out
-                unit.rawBlock1.setGrowth(growths[i] + extraGrowth, i);
+    public static int rating(Unit unit, boolean limitBreak) {
+        int[] totalStats = calcCurrentStats(unit, limitBreak);
+        int[] buffs = allBuffs(unit);
+        int total = 0;
+        for (int i = 1; i < totalStats.length; i++) total += totalStats[i] + buffs[i];
+        return total;
+    }
+
+    public static int[] allBuffs(Unit unit) {
+        int[] buffTemporal = temporalBuffs(unit);
+        int[] buffItem = itemBuff(unit);
+        int[] skillBuffs = skillBuffs(unit);
+        for (int i = 0; i < buffTemporal.length; i++) {
+            buffTemporal[i] += buffItem[i] + skillBuffs[i];
+        }
+        return buffTemporal;
+    }
+
+    public static int[] skillBuffs(Unit unit) {
+        //0 HP - 1 STR - 2 MAG - 3 SKL - 4 - SPD - 5 LCK - 6 DEF - 7 RES
+        int[] buffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        int[] activeSkills = unit.rawBlock2.getCurrentSkills();
+        List<Integer> repeatedSkills = new ArrayList<>();
+        for (int activeSkill : activeSkills) {
+            if (!repeatedSkills.contains(activeSkill)) {
+                if (activeSkill == 1) buffs[0] += 5;
+                else if (activeSkill == 2) buffs[1] += 2;
+                else if (activeSkill == 3) buffs[2] += 2;
+                else if (activeSkill == 4) buffs[3] += 2;
+                else if (activeSkill == 5) buffs[4] += 2;
+                else if (activeSkill == 6) buffs[6] += 2;
+                else if (activeSkill == 7) buffs[7] += 2;
+                else if (activeSkill == 53) buffs[5] += 4;
+                else if (activeSkill == 99) buffs[7] += 10;
+                else if (activeSkill == 88) for (int j = 1; j < buffs.length; j++) buffs[j] += 2;
+            }
+            repeatedSkills.add(activeSkill);
+        }
+        return buffs;
+    }
+
+    public static int[] itemBuff(Unit unit) {
+        int[] buffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        for (int i = 0; i < unit.rawInventory.items.size(); i++) {
+            if (unit.rawInventory.items.get(i).equipped()) {
+                int id = unit.rawInventory.items.get(i).itemId();
+                if (itemBuffList().containsKey(id)) buffs = itemBuffList().get(id);
+                break;
             }
         }
+        return buffs;
+    }
+
+    public static int[] temporalBuffs(Unit unit) {
+        //0 HP - 1 STR - 2 MAG - 3 SKL - 4 - SPD - 5 LCK - 6 DEF - 7 RES
+        int[] buffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        byte[] rawFlags = unit.rawFlags.bytes;
+        //RES unused byte
+        buffs[7] += rawFlags[0x1A] & 0xFF;
+        //Unused Flags
+        if ((rawFlags[0x1C] & 0xFF) > 0) { //STR+2, MAG+2, DEF+2, RES+2
+            buffs[1] += 2;
+            buffs[2] += 2;
+            buffs[6] += 2;
+            buffs[7] += 2;
+        }
+        if ((rawFlags[0x1D] & 0xFF) > 0) buffs[1] += 4; //STR+4
+        if ((rawFlags[0x1E] & 0xFF) > 0) buffs[2] += 4; //MAG+4
+        if ((rawFlags[0x1F] & 0xFF) > 0) buffs[3] += 4; //SKL+4
+        if ((rawFlags[0x20] & 0xFF) > 0) buffs[4] += 4; //SPD+4
+        if ((rawFlags[0x21] & 0xFF) > 0) buffs[5] += 8; //LCK+8
+        if ((rawFlags[0x22] & 0xFF) > 0) buffs[6] += 4; //DEF+4
+        if ((rawFlags[0x23] & 0xFF) > 0) buffs[7] += 4; //RES+4
+        if ((rawFlags[0x24] & 0xFF) > 0) { //All Stats +4 (No HP)
+            for (int i = 1; i < buffs.length; i++) buffs[i] += 4;
+        }
+        if ((rawFlags[0x26] & 0xFF) > 0) { //All Stats +4, Movement+1 (No HP)
+            for (int i = 1; i < buffs.length; i++) buffs[i] += 2;
+        }
+        //Tonic flags
+        String tonics = unit.rawFlags.tonicFlagString();
+        for (int i = 0; i < tonics.length(); i++) {
+            if (tonics.charAt(i) == '1') {
+                if (i == 0) buffs[i] += 5;
+                else buffs[i] += 2;
+            }
+        }
+        //Unused Tonic flags
+        String extraFlags = unit.rawFlags.barrackFlagString();
+        for (int i = 1; i < extraFlags.length(); i++) if (extraFlags.charAt(i) == '1') buffs[i] += 4;
+
+        return buffs;
+    }
+
+    public static void setMaxStatsHigh(Unit unit) {
+        unit.rawBlock1.setMaxGrowth();
+        int[] maxStats = calcMaxStats(unit, hasLimitBreaker(unit));
+        //if (unit.rawSkill.skillString.charAt())
         unit.rawBlock1.setCurrentHp(maxStats[0]); //Updates the current HP to match out
         unit.rawBlock1.setLevelMax(); //Updates the level and experience
         unit.rawBlock2.setMaxWeaponExp(); //Sets the max weapon exp
@@ -44,8 +128,8 @@ public class Stats {
     /*
     Adds all the stats together to calculate the current stats
      */
-    public static int[] calcCurrentStats(Unit unit) {
-        int[] maxStats = calcMaxStats(unit);
+    public static int[] calcCurrentStats(Unit unit, boolean limitBreak) {
+        int[] maxStats = calcMaxStats(unit, limitBreak);
         int[] growths = unit.rawBlock1.growth();
         int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
         int[] classAddition = getClassAddition(unit.rawBlock1.unitClass()); //Hardcoded
@@ -57,16 +141,18 @@ public class Stats {
 
         for (int i = 0; i < growths.length; i++) {
             growths[i] += unitAddition[i] + classAddition[i];
-            if (growths[i] > maxStats[i]) growths[i] = maxStats[i]; //If it is higher than the limit
+            if (growths[i] > 255) growths[i] -= 256; //If higher than the actual limit size
+            else if (growths[i] > maxStats[i]) growths[i] = maxStats[i]; //If it is higher than the limit
         }
         return growths;
     }
 
-    public static int[] calcMaxStats(Unit unit) {
+    public static int[] calcMaxStats(Unit unit, boolean limitBreaker) {
         int[] modif = calcModif(unit);
         int[] maxClass = getClassMax(unit.rawBlock1.unitClass());
         for (int i = 0; i < maxClass.length; i++) {
             maxClass[i] += modif[i];
+            if (limitBreaker && i != 0) maxClass[i] += 10;
         }
         return maxClass;
     }
@@ -182,6 +268,38 @@ public class Stats {
         if (id >= classAdditions().size() || id < 0) return classAdditions().get(0x52);
         else return classAdditions().get(id);
     }
+
+    public static int getMoveTotal(Unit unit) {
+        int move = getMoveClass(unit.rawBlock1.unitClass()) + getMoveBuff(unit) + unit.rawBlock1.movement();
+        if (move > 255) move-= 256;
+        return move;
+    }
+
+    public static int getMoveBuff(Unit unit) {
+        int buff = 0;
+        int[] activeSkills = unit.rawBlock2.getCurrentSkills();
+        if ((unit.rawFlags.bytes[0x25] & 0xFF) > 0) buff += 1; // Unused Movement+1
+        if ((unit.rawFlags.bytes[0x26] & 0xFF) > 0) buff += 1; // Unused All Stats +4, Movement+1 (No HP)
+        for (int value : activeSkills) if (value == 11) buff += 1; //Skill Movement +1
+        return buff;
+    }
+
+    private static int getMoveClass(int unitClass) {
+        if (unitClass >= classMove.length) return 5;
+        else return classMove[unitClass];
+    }
+
+    private static final int[] classMove = new int[]{
+            5, 5, 6, 6, 5, 5, 6, 6, 7, 7,
+            4, 4, 8, 8, 7, 7, 5, 5, 5, 5,
+            5, 5, 5, 5, 6, 6, 6, 6, 8, 8,
+            6, 6, 5, 5, 5, 5, 6, 6, 6, 6,
+            6, 6, 7, 8, 8, 7, 7, 8, 8, 8,
+            8, 7, 5, 5, 5, 5, 5, 5, 8, 6,
+            6, 6, 6, 8, 8, 6, 6, 5, 6, 6,
+            6, 5, 5, 5, 5, 6, 8, 6, 0, 0,
+            6, 6, 5
+    };
 
     /*
     Modifiers of each Non-Avatar & Logbook Unit
@@ -524,6 +642,39 @@ public class Stats {
         chars.put(0x50, new int[]{80, 42, 38, 40, 41, 45, 39, 43}); //Dread Fighter
         chars.put(0x51, new int[]{80, 40, 39, 42, 42, 45, 41, 40}); //Bride
         chars.put(0x52, new int[]{60, 20, 20, 20, 20, 30, 20, 20}); //Dummy
+        return chars;
+    }
+
+    private static HashMap<Integer, int[]> itemBuffList() {
+        //0 HP - 1 STR - 2 MAG - 3 SKL - 4 SPD - 5 LCK - 6 DEF - 7 RES
+        HashMap<Integer, int[]> chars = new HashMap<Integer, int[]>();
+        chars.put(12, new int[]{0, 0, 0, 3, 0, 0, 0, 0}); //Missletainn
+        chars.put(19, new int[]{0, 0, 0, 0, 0, 0, 0, 5}); //Tyrfing
+        chars.put(20, new int[]{0, 0, 0, 0, 5, 0, 0, 0}); //Mystletainn
+        chars.put(21, new int[]{0, 0, 0, 5, 0, 0, 0, 0}); //Balmung
+        chars.put(22, new int[]{0, 0, 0, 0, 0, 0, 0, 5}); //Sol Katti
+        chars.put(23, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Ragnell
+        chars.put(24, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Ragnell (Priam)
+        chars.put(34, new int[]{0, 0, 0, 0, 2, 0, 0, 2}); //Seliph's Blade
+        chars.put(49, new int[]{0, 5, 0, 0, 0, 0, 0, 0}); //Gae Bolg
+        chars.put(48, new int[]{0, 0, 5, 0, 0, 0, 0, 0}); //Gungnir
+        chars.put(56, new int[]{0, 2, 0, 0, 2, 0, 0, 0}); //Ephraim's Lance
+        chars.put(57, new int[]{0, 0, 0, 0, 0, 2, 2, 0}); //Finn's Lance
+        chars.put(72, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Helswath
+        chars.put(73, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Armads
+        chars.put(81, new int[]{0, 2, 0, 0, 0, 0, 2, 0}); //Hector's Axe
+        chars.put(92, new int[]{0, 0, 0, 0, 5, 0, 0, 0}); //Yewfelle
+        chars.put(93, new int[]{0, 0, 0, 0, 0, 10, 0, 0}); //Nidhogg
+        chars.put(94, new int[]{0, 5, 0, 0, 0, 0, 0, 0}); //Double Bow
+        chars.put(106, new int[]{0, 0, 5, 0, 0, 0, 0, 0}); //Valflame
+        chars.put(111, new int[]{0, 0, 0, 5, 0, 0, 0, 0}); //Mjnolnir
+        chars.put(116, new int[]{0, 0, 0, 0, 5, 0, 0, 0}); //Forseti
+        chars.put(118, new int[]{0, 0, 0, 0, 0, 0, 5, 5}); //Book of Naga
+        chars.put(127, new int[]{0, 0, 0, 0, 0, 0, 2, 2}); //Micaiah's Pyre
+        chars.put(145, new int[]{0, 8, 5, 3, 2, 0, 10, 7}); //Dragonstone
+        chars.put(146, new int[]{0, 11, 6, 5, 4, 0, 13, 9}); //Dragonstone +
+        chars.put(147, new int[]{0, 3, 0, 5, 5, 4, 1, 0}); //Beaststone
+        chars.put(148, new int[]{0, 5, 0, 8, 8, 6, 4, 2}); //Beaststone +
         return chars;
     }
 }

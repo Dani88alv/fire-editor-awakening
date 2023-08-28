@@ -1,7 +1,5 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.util.Hex;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,9 +10,9 @@ public class RawFlags {
     Battle related data, a lot of flags
      */
 
-    private final byte[] bytes;
+    public final byte[] bytes;
 
-    //0x1-0x2: ?
+    //0x0: ?
 
     public RawFlags(byte[] bytes) {
         this.bytes = bytes;
@@ -151,35 +149,43 @@ public class RawFlags {
     }
 
     /*
-    TODO Testear Supports en combate con seeds of trust
-    0x14-0x19: ??
-    0x1A: Byte identifier?
-    0x1B: RES Addition (Any Value)
-    0x1C: ??
-    0x1D: STR+2, MAG+2, DEF+2, RES+2
-    0x1E: STR+4
-    0x1F: MAG+4
-    0x20: SKL+4
-    0x21: SPD+4
-    0x22: LCK+8
-    0x23: DEF+4
-    0x24: RES+4
-    0x25: All Stats +4 (No HP)
-    0x26: Movement+1
-    0x27: All Stats +4, Movement+1 (No HP)
-    0x28: Tonic Flags (+5 HP, +2 Other)
-    0x29: More flags (+4 every stat, HP does not work)
-    0x2A: ??
+    0x13-0x18: ??
+    0x19: 0x2, do not mess with it
+    0x1A: RES Boost (Pure Water)
+    0x1B: ??
+    0x1C: STR+2, MAG+2, DEF+2, RES+2
+    0x1D: STR+4
+    0x1E: MAG+4
+    0x1F: SKL+4
+    0x20: SPD+4
+    0x21: LCK+8
+    0x22: DEF+4
+    0x23: RES+4
+    0x24: All Stats +4 (No HP)
+    0x25: Movement+1
+    0x26: All Stats +2, Movement+1 (No HP)
+    0x27: Tonic Bitflags (+5 HP, +2 Other)
+    0x28: Barrack boost bitflags (+4 every stat, HP does not work)
+    0x29: ??
      */
 
+    //Pure Water Buff
+    public int resBuff() {
+        return bytes[0x1A] & 0xFF;
+    }
+
+    public void setResBuff(int value) {
+        bytes[0x1A] = (byte) (value);
+    }
+
     //Stat boolean flags, excluding the tonics (slots 0-10)
-    public boolean statAdditionFlag(int slot) {
+    public boolean skillBuffFlag(int slot) {
         int point = 0x1C;
         int value = bytes[point + slot] & 0xFF;
         return value > 0;
     }
 
-    public void setStatAddition(int slot, boolean isTrue) {
+    public void setSkillBuffFlag(int slot, boolean isTrue) {
         int point = 0x1C;
         if (isTrue) bytes[point + slot] = 0x1;
         else bytes[point + slot] = 0x0;
@@ -191,7 +197,7 @@ public class RawFlags {
         return byteToReversedBinaryString(bytes[point]);
     }
 
-    public void setTonicFlag(int flag, boolean set){
+    public void setTonicFlag(int flag, boolean set) {
         int point = 0x27;
         //The flag is set
         char[] flagsChar = tonicFlagString().toCharArray();
@@ -203,13 +209,13 @@ public class RawFlags {
         System.arraycopy(flagsArray, 0, bytes, point, flagsArray.length);
     }
 
-    //Weird Stat Addition Bitflags
-    public String extraStatsFlagString() {
+    //Barrack Buffs Bitflags
+    public String barrackFlagString() {
         int point = 0x28;
         return byteToReversedBinaryString(bytes[point]);
     }
 
-    public void setExtraStatFlag(int flag, boolean set){
+    public void setBarrackFlag(int flag, boolean set) {
         int point = 0x28;
         //The flag is set
         char[] flagsChar = tonicFlagString().toCharArray();
@@ -222,16 +228,16 @@ public class RawFlags {
     }
 
     //Easier methods
-    public void setAllTonicFlags(){
+    public void setAllTonicFlags() {
         int point = 0x27;
         bytes[point] = (byte) (0xFF);
     }
 
-    public void setAllUnusedStats(){
+    public void setAllOtherBuffs() {
         //Extra Stats Bitflags
         bytes[0x28] = (byte) (0xFF);
         //Regular Flags
-        for (int i = 0x1C; i <= 0x26; i++){
+        for (int i = 0x1C; i <= 0x26; i++) {
             bytes[i] = (byte) (0x1);
         }
     }

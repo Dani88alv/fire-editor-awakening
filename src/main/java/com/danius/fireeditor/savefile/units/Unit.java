@@ -130,8 +130,8 @@ public class Unit {
         return Stats.calcModif(this);
     }
 
-    public int[] currentStats() {
-        return Stats.calcCurrentStats(this);
+    public int[] currentStats(boolean limitBreaker) {
+        return Stats.calcCurrentStats(this, limitBreaker);
     }
 
     public void setLegalSkills() {

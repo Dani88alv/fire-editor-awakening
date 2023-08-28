@@ -9,4 +9,5 @@ public class Constants {
     public static final int MAX_ARMY = 11; //0 to 11
     public static final int MAX_MAPS = 0; //Over world Maps
     public static final int MAX_CHAPTERS = 51; //Credit Chapters
+    public static final int MAX_PLAYABLE = 0x33;
 }

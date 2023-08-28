@@ -1,70 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.UnitController">
+<VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.UnitController">
 
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="787.0">
         <children>
-            <ListView fx:id="listViewUnit" layoutX="13.0" layoutY="23.0" prefHeight="298.0" prefWidth="134.0" />
+            <ListView fx:id="listViewUnit" layoutX="13.0" layoutY="30.0" prefHeight="298.0" prefWidth="134.0" />
             <Label fx:id="lblUnitCount" layoutX="14.0" layoutY="5.0" prefHeight="18.0" prefWidth="133.0" text="Units" />
          <ComboBox fx:id="comboUnitGroup" layoutX="14.0" layoutY="347.0" prefHeight="28.0" prefWidth="134.0" promptText="Unit Groups" />
                 <AnchorPane layoutX="151.0" layoutY="2.0" minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="605.0">
                     <children>
       
-                                                                              <Label fx:id="labelUnitName" layoutX="18.0" layoutY="11.0" prefHeight="27.0" prefWidth="201.0" text="Units">
+                                                                              <Label fx:id="labelUnitName" layoutX="20.0" layoutY="6.0" prefHeight="27.0" prefWidth="201.0" text="Units">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="comboClass" layoutX="18.0" layoutY="42.0" prefHeight="26.0" prefWidth="133.0" promptText="Class" />
-                        <AnchorPane layoutX="255.0" layoutY="18.0" prefHeight="62.0" prefWidth="182.0">
+                        <ComboBox fx:id="comboClass" layoutX="444.0" layoutY="29.0" prefHeight="26.0" prefWidth="133.0" promptText="Class" />
+                        <AnchorPane layoutX="293.0" layoutY="4.0" prefHeight="62.0" prefWidth="162.0">
                             <children>
-                                <TextField fx:id="txtLevel" layoutX="13.0" layoutY="25.0" prefHeight="26.0" prefWidth="34.0" />
-                                <Label layoutX="16.0" layoutY="5.0" text="Level" />
-                                <TextField fx:id="txtExp" layoutX="60.0" layoutY="25.0" prefHeight="26.0" prefWidth="34.0" />
-                                <Label layoutX="67.0" layoutY="5.0" text="EXP" />
-                                <TextField fx:id="txtBoots" layoutX="107.0" layoutY="25.0" prefHeight="26.0" prefWidth="34.0" />
-                                <Label layoutX="109.0" layoutY="5.0" text="Boots" />
+                                <Label layoutX="10.0" layoutY="3.0" text="Level" />
+                                <Label layoutX="75.0" layoutY="3.0" text="EXP" />
+                     <Spinner fx:id="spinLevel" editable="true" layoutX="8.0" layoutY="25.0" prefHeight="26.0" prefWidth="55.0" />
+                     <Spinner fx:id="spinExp" editable="true" layoutX="74.0" layoutY="25.0" prefHeight="26.0" prefWidth="55.0" />
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="61.0" layoutY="66.0" prefHeight="80.0" prefWidth="335.0">
+                        <AnchorPane layoutX="207.0" layoutY="67.0" prefHeight="62.0" prefWidth="387.0">
                             <children>
-                                <TextField fx:id="txtStatHp" disable="true" layoutX="6.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <Label layoutX="15.0" layoutY="27.0" text="HP" />
-                                <TextField fx:id="txtStatStr" disable="true" layoutX="47.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <TextField fx:id="txtStatMag" disable="true" layoutX="88.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <TextField fx:id="txtStatSkl" disable="true" layoutX="129.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <TextField fx:id="txtStatSpd" disable="true" layoutX="170.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <TextField fx:id="txtStatLck" disable="true" layoutX="211.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <TextField fx:id="txtStatDef" disable="true" layoutX="252.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <TextField fx:id="txtStatRes" disable="true" layoutX="294.0" layoutY="45.0" prefHeight="26.0" prefWidth="34.0" />
-                                <Label layoutX="54.0" layoutY="27.0" text="STR" />
-                                <Label layoutX="92.0" layoutY="27.0" text="MAG" />
-                                <Label layoutX="137.0" layoutY="27.0" text="SKL" />
-                                <Label layoutX="176.0" layoutY="27.0" text="SPD" />
-                                <Label layoutX="218.0" layoutY="27.0" text="LCK" />
-                                <Label layoutX="258.0" layoutY="27.0" text="DEF" />
-                                <Label layoutX="300.0" layoutY="27.0" text="RES" />
+                                <TextField fx:id="txtBuffHp" disable="true" layoutX="6.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <Label layoutX="15.0" layoutY="3.0" text="HP" />
+                                <TextField fx:id="txtBuffStr" disable="true" layoutX="47.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <TextField fx:id="txtBuffMag" disable="true" layoutX="88.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <TextField fx:id="txtBuffSkl" disable="true" layoutX="129.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <TextField fx:id="txtBuffSpd" disable="true" layoutX="170.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <TextField fx:id="txtBuffLck" disable="true" layoutX="211.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <TextField fx:id="txtBuffDef" disable="true" layoutX="252.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <TextField fx:id="txtBuffRes" disable="true" layoutX="294.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                                <Label layoutX="54.0" layoutY="3.0" text="STR" />
+                                <Label layoutX="92.0" layoutY="3.0" text="MAG" />
+                                <Label layoutX="137.0" layoutY="3.0" text="SKL" />
+                                <Label layoutX="176.0" layoutY="3.0" text="SPD" />
+                                <Label layoutX="218.0" layoutY="3.0" text="LCK" />
+                                <Label layoutX="258.0" layoutY="3.0" text="DEF" />
+                                <Label layoutX="300.0" layoutY="3.0" text="RES" />
+                     <TextField fx:id="txtBuffMove" disable="true" layoutX="337.0" layoutY="23.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <Label layoutX="338.0" layoutY="2.0" text="Move" />
                             </children>
                         </AnchorPane>
-                        <Label layoutX="24.0" layoutY="115.0" text="Stats" />
+                        <Label layoutX="173.0" layoutY="130.0" text="Stats" />
       
-                                                                              <Button fx:id="btnOpenSupport" layoutX="155.0" layoutY="230.0" mnemonicParsing="false" onAction="#openSupports" prefHeight="26.0" prefWidth="110.0" text="Supports" />
-                  <Button fx:id="btnRemove" layoutX="479.0" layoutY="349.0" mnemonicParsing="false" onAction="#unitDelete" prefHeight="26.0" prefWidth="92.0" text="Delete Unit" />
-               <Button fx:id="btnOpenWeapon" layoutX="157.0" layoutY="270.0" mnemonicParsing="false" onAction="#openWeaponExp" prefHeight="26.0" prefWidth="110.0" text="Weapon EXP" />
-               <Button fx:id="btnDuplicate" layoutX="479.0" layoutY="310.0" mnemonicParsing="false" onAction="#unitDuplicate" prefHeight="26.0" text="Duplicate Unit" />
-               <Button fx:id="btnOpenItem" layoutX="29.0" layoutY="270.0" mnemonicParsing="false" onAction="#openItem" prefHeight="26.0" prefWidth="110.0" text="Items" />
-               <AnchorPane layoutX="60.0" layoutY="138.0" prefHeight="42.0" prefWidth="335.0">
+                                                                              <Button fx:id="btnOpenSupport" layoutX="145.0" layoutY="275.0" mnemonicParsing="false" onAction="#openSupports" prefHeight="26.0" prefWidth="110.0" text="Supports" />
+                  <Button fx:id="btnRemove" layoutX="492.0" layoutY="354.0" mnemonicParsing="false" onAction="#unitDelete" prefHeight="26.0" prefWidth="92.0" text="Delete Unit" />
+               <Button fx:id="btnDuplicate" layoutX="492.0" layoutY="315.0" mnemonicParsing="false" onAction="#unitDuplicate" prefHeight="26.0" text="Duplicate Unit" />
+               <Button fx:id="btnOpenItem" layoutX="17.0" layoutY="275.0" mnemonicParsing="false" onAction="#openItem" prefHeight="26.0" prefWidth="110.0" text="Items" />
+               <AnchorPane layoutX="207.0" layoutY="155.0" prefHeight="42.0" prefWidth="387.0">
                   <children>
                      <TextField fx:id="txtGrowthHp" layoutX="6.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
                      <TextField fx:id="txtGrowthStr" layoutX="47.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
@@ -74,21 +76,57 @@
                      <TextField fx:id="txtGrowthLck" layoutX="211.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
                      <TextField fx:id="txtGrowthDef" layoutX="252.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
                      <TextField fx:id="txtGrowthRes" layoutX="294.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtGrowthMove" layoutX="337.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
                   </children>
                </AnchorPane>
-               <Label layoutX="18.0" layoutY="147.0" text="Growth" />
-               <Label layoutX="173.0" layoutY="24.0" text="Unit ID" />
-               <Button fx:id="btnMaxStats" layoutX="288.0" layoutY="189.0" mnemonicParsing="false" onAction="#maxStats" prefHeight="26.0" prefWidth="110.0" text="Max Stats" />
-               <Spinner fx:id="spinUnitId" editable="true" layoutX="172.0" layoutY="43.0" prefHeight="26.0" prefWidth="80.0" />
-               <ComboBox fx:id="comboGroupMove" layoutX="344.0" layoutY="349.0" prefHeight="26.0" prefWidth="121.0" promptText="Move to" />
-               <Button fx:id="btnMoveUnit" layoutX="344.0" layoutY="311.0" mnemonicParsing="false" onAction="#moveUnitToGroup" text="Move Unit To" />
-               <Button fx:id="btnOpenBattle" layoutX="157.0" layoutY="310.0" mnemonicParsing="false" onAction="#openBattle" prefHeight="26.0" prefWidth="110.0" text="Battle Data" />
-               <Button fx:id="btnOpenChild" layoutX="29.0" layoutY="349.0" mnemonicParsing="false" onAction="#openChild" prefHeight="26.0" prefWidth="110.0" text="Child Data" />
-               <Button fx:id="btnOpenAvatar" layoutX="157.0" layoutY="349.0" mnemonicParsing="false" onAction="#openLog" prefHeight="26.0" prefWidth="110.0" text="Avatar Data" />
-               <ColorPicker fx:id="colorHair" layoutX="437.0" layoutY="241.0" />
-               <Label layoutX="438.0" layoutY="219.0" text="Hair Color (Offspring)" />
-               <Button layoutX="29.0" layoutY="230.0" mnemonicParsing="false" onAction="#openSkills" prefHeight="26.0" prefWidth="110.0" text="Skills" />
-               <Button layoutX="29.0" layoutY="310.0" mnemonicParsing="false" onAction="#openSkills" prefHeight="26.0" prefWidth="110.0" text="Flags" />
+               <Label layoutX="167.0" layoutY="166.0" text="Growth" />
+               <Label layoutX="213.0" layoutY="7.0" text="Unit ID" />
+               <Button fx:id="btnMaxStats" layoutX="414.0" layoutY="199.0" mnemonicParsing="false" onAction="#maxGrowth" prefHeight="26.0" prefWidth="99.0" text="Max Growth" />
+               <Spinner fx:id="spinUnitId" editable="true" layoutX="213.0" layoutY="29.0" prefHeight="26.0" prefWidth="80.0" />
+               <ComboBox fx:id="comboGroupMove" layoutX="357.0" layoutY="354.0" prefHeight="26.0" prefWidth="121.0" promptText="Move to" />
+               <Button fx:id="btnMoveUnit" layoutX="357.0" layoutY="316.0" mnemonicParsing="false" onAction="#moveUnitToGroup" text="Move Unit To" />
+               <Button fx:id="btnOpenBattle" layoutX="145.0" layoutY="315.0" mnemonicParsing="false" onAction="#openBattle" prefHeight="26.0" prefWidth="110.0" text="Other" />
+               <Button fx:id="btnOpenChild" layoutX="17.0" layoutY="354.0" mnemonicParsing="false" onAction="#openChild" prefHeight="26.0" prefWidth="110.0" text="Child Data" />
+               <Button fx:id="btnOpenAvatar" layoutX="145.0" layoutY="354.0" mnemonicParsing="false" onAction="#openLog" prefHeight="26.0" prefWidth="110.0" text="Avatar Data" />
+               <ColorPicker fx:id="colorHair" layoutX="17.0" layoutY="195.0" />
+               <Label layoutX="18.0" layoutY="176.0" text="Hair Color (Offspring)" />
+               <Button fx:id="btnOpenSkills" layoutX="17.0" layoutY="237.0" mnemonicParsing="false" onAction="#openSkills" prefHeight="26.0" prefWidth="110.0" text="Skills" />
+               <Button fx:id="btnOpenFlags" layoutX="17.0" layoutY="315.0" mnemonicParsing="false" onAction="#openFlags" prefHeight="26.0" prefWidth="110.0" text="Flags" />
+               <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@avatar_m/build_01_00.png" />
+                  </image>
+               </ImageView>
+               <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@avatar_m/back_01_00.png" />
+                  </image>
+               </ImageView>
+               <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@avatar_m/hair_01_00.png" />
+                  </image>
+               </ImageView>
+               <TextField fx:id="txtModif" disable="true" editable="false" layoutX="422.0" layoutY="264.0" />
+               <AnchorPane layoutX="207.0" layoutY="119.0" prefHeight="42.0" prefWidth="387.0">
+                  <children>
+                     <TextField fx:id="txtStatHp" disable="true" layoutX="6.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatStr" disable="true" layoutX="47.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatMag" disable="true" layoutX="88.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatSkl" disable="true" layoutX="129.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatSpd" disable="true" layoutX="170.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatLck" disable="true" layoutX="211.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatDef" disable="true" layoutX="252.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatRes" disable="true" layoutX="294.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                     <TextField fx:id="txtStatMove" disable="true" layoutX="337.0" layoutY="7.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+                  </children>
+               </AnchorPane>
+               <Label layoutX="173.0" layoutY="95.0" text="Buffs" />
+               <CheckBox fx:id="checkLimit" layoutX="214.0" layoutY="202.0" mnemonicParsing="false" text="Calculate with Limit Breaker" />
+               <Label layoutX="423.0" layoutY="242.0" text="Modifiers" />
+               <Label layoutX="445.0" layoutY="9.0" text="Class" />
+               <TextField fx:id="txtTotalStat" disable="true" layoutX="545.0" layoutY="198.0" prefHeight="26.0" prefWidth="34.0" text="0" />
+               <Label layoutX="546.0" layoutY="229.0" text="Rating" />
                     </children>
                 </AnchorPane>
         </children>

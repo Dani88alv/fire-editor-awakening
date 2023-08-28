@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.FlagController">
+   <children>
+      <AnchorPane prefHeight="696.0" prefWidth="831.0">
+         <children>
+            <AnchorPane fx:id="paneTrait" layoutX="14.0" layoutY="53.0" prefHeight="180.0" prefWidth="539.0" />
+            <Label layoutX="14.0" layoutY="14.0" text="Trait Flags">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="582.0" layoutY="14.0" text="Skill &amp; Barrack Boosts">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="paneBuff" layoutX="584.0" layoutY="53.0" prefHeight="240.0" prefWidth="204.0" />
+            <AnchorPane fx:id="paneBattle" layoutX="14.0" layoutY="290.0" prefHeight="180.0" prefWidth="539.0" />
+            <Label layoutX="14.0" layoutY="251.0" text="Battle Flags">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="paneTonicUnused" layoutX="584.0" layoutY="300.0" prefHeight="170.0" prefWidth="204.0" />
+            <Label layoutX="13.0" layoutY="479.0" text="Tonics">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="paneTonic" layoutX="14.0" layoutY="516.0" prefHeight="48.0" prefWidth="300.0" />
+            <Label layoutX="157.0" layoutY="6.0" prefHeight="36.0" prefWidth="254.0" text="Character IDs have their trait flags&#10;hardcoded. Most flags will be unset." />
+            <Label layoutX="157.0" layoutY="243.0" prefHeight="36.0" prefWidth="253.0" text="Most battle flags are only used&#10;during a battle, with some exceptions." />
+            <Button layoutX="517.0" layoutY="530.0" mnemonicParsing="false" onAction="#setAllTonics" prefHeight="30.0" prefWidth="131.0" text="Set All Tonics" />
+            <Button layoutX="664.0" layoutY="485.0" mnemonicParsing="false" onAction="#setAllBuffs" prefHeight="30.0" prefWidth="131.0" text="Set All Buffs" />
+            <Button layoutX="664.0" layoutY="530.0" mnemonicParsing="false" onAction="#unsetAllBuffs" prefHeight="30.0" prefWidth="131.0" text="Unset All Buffs" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

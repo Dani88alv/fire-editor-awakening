@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.CreditController">
+   <children>
+      <AnchorPane prefHeight="394.0" prefWidth="485.0">
+         <children>
+            <AnchorPane layoutX="7.0" layoutY="105.0" prefHeight="102.0" prefWidth="500.0">
+               <children>
+                  <ComboBox fx:id="comboUnit1" layoutX="14.0" layoutY="14.0" prefWidth="130.0" promptText="Unit 1" />
+                  <ComboBox fx:id="comboClass1" layoutX="14.0" layoutY="65.0" prefWidth="130.0" promptText="Class 1" />
+                  <ComboBox fx:id="comboUnit2" layoutX="161.0" layoutY="14.0" prefWidth="130.0" promptText="Unit 2" />
+                  <ComboBox fx:id="comboClass2" layoutX="161.0" layoutY="65.0" prefWidth="130.0" promptText="Class 2" />
+                  <ComboBox fx:id="comboCreditChapter" layoutX="308.0" layoutY="14.0" prefWidth="130.0" promptText="Chapter" />
+                  <Label layoutX="17.0" layoutY="-4.0" text="Unit 1" />
+                  <Label layoutX="16.0" layoutY="46.0" text="Unit 1 (Class)" />
+                  <Label layoutX="163.0" layoutY="-4.0" text="Unit 2" />
+                  <Label layoutX="163.0" layoutY="47.0" text="Unit 2 (Class)" />
+                  <Label layoutX="310.0" layoutY="-4.0" text="Chapter" />
+                  <Spinner fx:id="spinCreditTurns" editable="true" layoutX="428.0" layoutY="64.0" prefHeight="26.0" prefWidth="60.0" />
+                  <Label layoutX="428.0" layoutY="45.0" text="Turns" />
+                  <Label layoutX="309.0" layoutY="45.0" text="Playtime" />
+                  <Spinner fx:id="spinCreditTime" editable="true" layoutX="308.0" layoutY="64.0" prefHeight="26.0" prefWidth="90.0" />
+               </children>
+            </AnchorPane>
+            <ComboBox fx:id="comboCreditSlot" layoutX="20.0" layoutY="59.0" prefWidth="150.0" promptText="Slot" />
+            <Label layoutX="20.0" layoutY="7.0" text="Credits Records">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="39.0" text="Chapter Slot" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

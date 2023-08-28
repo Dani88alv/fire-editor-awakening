@@ -7,8 +7,8 @@ import java.io.File;
 import java.util.Arrays;
 
 public class Du26Block {
-    private final byte[] rawMain; //TODO: Divide the SpotPass/StreetPass encounters and StreetPass Team
-    private final byte[] rawEnd; //Dlc Turns and EVST data
+    private final byte[] rawMain; //SpotPass/StreetPass encounters, SpotPass settings, streetpass team settings
+    private final byte[] rawEnd; //Dlc Turns
 
     public Du26Block(byte[] bytes) {
         this.rawMain = Arrays.copyOfRange(bytes, 0x0, bytes.length - 0x98);
@@ -29,10 +29,11 @@ public class Du26Block {
         byte[] rawSpot = Hex.getFileBytes(String.valueOf(file));
         byte[] header = Hex.toByte("AD 55 0A 19 01");
         int offset = Hex.indexOf(rawMain, header, 0x0, 3);
+        if (offset == -1) return;
         System.arraycopy(rawSpot, 0, rawMain, offset, rawSpot.length);
     }
 
-    public void setDuelRenown(int value) {
+    public void setWirelessRenown(int value) {
         int point = 0xE;
         Hex.setByte4(rawMain, point, value);
     }

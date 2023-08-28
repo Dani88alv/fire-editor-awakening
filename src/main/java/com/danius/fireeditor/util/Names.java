@@ -16,7 +16,7 @@ public class Names {
             id = id - 4096;
             return "Map NPC " + (id + 1);
         }
-        if (id >= unitNames.size()) return "Outrealm Unit #" + (unitNames.size() - id + 1);
+        if (id >= unitNames.size()) return "Outrealm Unit #" + (id - unitNames.size() + 1);
         return unitNames.get(id);
     }
 
@@ -88,7 +88,7 @@ public class Names {
             "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome",
             "Morgan (M)", "Morgan (F)", "Yarne", "Laurent", "Noire", "Nah",
             "Tiki", "Gangrel", "Walhart", "Emmeryn", "Yen'fay", "Aversa", "Priam",
-            "Marth", "Dummy/Maiden", "Monster", "Monster (+)", "Merchant"
+            "Marth", "Dummy/Maiden", "Risen", "Risen (+)", "Merchant"
     );
 
 
@@ -188,24 +188,62 @@ public class Names {
 
     public static final List<String> traitFlags = Arrays.asList(
             "Female", "Hero", "Player", "Advanced Class",
-            "Boss/Leader", "Defeat Condition", "Movement Ban", "Force Battle Animations",
-            "Battle Animation Ban", "Defeated Experience +20", "Defeated Experience -10", "Unknown_1_3",
+            "Boss/Leader", "Defeat Condition", "Movement Ban", "Force Battle Anim.",
+            "Battle Anim. Ban", "Defeated Exp +20", "Defeated Exp -10", "Unknown 1-3",
             "Marth/Lucina", "Walhart", "Aversa", "Owain",
             "Manakete", "Taguel", "Destroy Villages", "Crit Ban",
-            "Avoid Ban", "Enemy Only", "Special Performances", "Guest",
-            "Original Marth", "Entombed Experience", "Delivery Face", "White Dragon",
-            "Unknown_3_4", "Unknown_3_5", "Unknown_3_6", "Unknown_3_7"
+            "Avoid Ban", "Enemy Only", "Special Performance", "Guest",
+            "Original Marth", "Entombed Exp", "Delivery Face", "White Dragon",
+            "Unknown 3-4", "Unknown 3-5", "Unknown 3-6", "Unknow 3-7"
     );
 
     public static final List<String> battleFlags = Arrays.asList(
-            "Moved in this turn", "Paired Up (Front)", "Paired Up (Back)", "Unknown_0_3",
-            "Unknown_0_4", "Unknown_0_5", "Unknown_0_6", "Unknown_0_7",
-            "Unknown_1_0", "Unknown_1_1", "Unknown_1_2", "Unknown_1_3",
-            "Unknown_1_4", "Unknown_1_5", "Unknown_1_6", "Unknown_1_7",
-            "Unknown_2_0", "Unknown_2_1", "Unknown_2_2", "Galeforce Used?",
-            "Unknown_2_4", "Unknown_2_5", "Married to Maiden", "Unknown_2_7",
-            "Unknown_3_0", "Tiki Meditating", "Unknown_3_2", "Unknown_3_3",
-            "Unknown_3_4", "Unknown_3_5", "Unknown_3_6", "Unknown_3_7"
+            "Moved in this turn", "Paired Up (Front)", "Paired Up (Back)", "Retired/Dead (Classic)",
+            "Unknown 0-4", "Unknown 0-5", "Unknown 0-6", "Retired on Current Map",
+            "Unknown 1-0", "Unknown 1-1", "Unknown 1-2", "Unknown 1-3",
+            "Unknown 1-4", "Unknown 1-5", "Unknown 1-6", "Unknown 1-7",
+            "Unknown 2-0", "Unknown 2-1", "Unknown 2-2", "Galeforce Used?",
+            "Unknown 2-4", "Unknown 2-5", "Married to Maiden", "Unknown 2-7",
+            "Unknown 3-0", "Tiki Meditating", "Unknown 3-2", "Unknown 3-3",
+            "Unknown 3-4", "Unknown 3-5", "Unknown 3-6", "Unknown 3-7"
+    );
+
+    public static final List<String> buffSkills = Arrays.asList(
+            "STR,MAG,DEF,RES +2 (Special Dance)", "STR +4 (Rally Strength)",
+            "MAG +4 (Rally Magic)", "SKL +4 (Rally Skill)", "SPD +4 (Rally Speed)",
+            "LCK +8 (Rally Luck)", "DEF +4 (Rally Defense)", "RES +4 (Rally Resistance)",
+            "All Stats +4 (Rally Spectrum)", "Movement +1 (Rally Movement)",
+            "All Stats +2, Mov +1 (Rally Heart)"
+    );
+
+    public static final List<String> buffTonics = Arrays.asList(
+            "HP +5", "STR +2", "MAG +2", "SKL +2",
+            "SPD +2", "LCK +2", "DEF +2", "RES +2"
+    );
+
+    public static final List<String> buffBarracks = Arrays.asList(
+            "Unknown", "STR +4", "MAG +4", "SKL +4",
+            "SPD +4", "LCK +4", "DEF +4", "RES +4"
+    );
+
+    public static final List<String> retireChapters = Arrays.asList(
+            "None", "Premonition", "Southtown",
+
+            "West of Ylisstol", "The Northroad", "The Longfort", "Arena Ferox",
+            "Border Pass", "Ylisstol", "Breakneck Pass", "Border Sands",
+            "Plegia Castle Courtyard", "The Midmire", "Border Wastes", "Port Ferox",
+            "Carrion Isle", "The Searoad", "Valm Harbour", "The Mila Tree",
+            "Fort Steiger", "The Demon's Ingle", "Valm Castle Approach", "Valm Castle",
+            "Plegia Castle", "Table Approach", "The Dragon's Table", "Mount Prism",
+            "Origin Peak", "Grima",
+
+            "The Farfort", "The Twin's Turf", "Peaceful Village", "The Twin's Hideout",
+            "Sage's Hamlet", "Great Gate", "Mila Shrine Ruins", "Duelling Grounds",
+            "Verdant Forest", "Mercenary Fortress", "Wyvern Valley", "The Ruins of Time",
+            "Law's End", "Desert Oasis", "Kidnapper's Keep", "Manor of Lost Souls",
+            "Divine Dragon Grounds", "Sea-King's Throne", "Conqueror's Whetstone", "Mountain Village",
+            "Warrior's Tomb", "Wellspring of Truth", "Garden of Giants",
+            "Outrealm Gate", "Unknown", "Plegia Castle"
     );
 
     public static List<String> getItemNames(int totalCount) {

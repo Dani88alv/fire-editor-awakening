@@ -1,12 +1,9 @@
 package com.danius.fireeditor.savefile;
 
-import com.danius.fireeditor.savefile.bigblocks.Du26Block;
+import com.danius.fireeditor.savefile.bigblocks.*;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.units.UnitBlock;
-import com.danius.fireeditor.savefile.bigblocks.GmapBlock;
-import com.danius.fireeditor.savefile.bigblocks.HeaderBlock;
-import com.danius.fireeditor.savefile.bigblocks.UserBlock;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -32,7 +29,7 @@ public class ChapterFile extends SaveFile {
     public TranBlock blockTran; //Inventory Data
     private byte[] blockMapBattle; //Map Data? - Map Exclusive
     public Du26Block blockDu26; //StreetPass & SpotPass Data
-    private byte[] blockEvst; // ???
+    private EvstBlock blockEvst; //Barrack
     private int region; //0xC0 = US/EU, 0x80 = JP
     public boolean isChapter = true; //Chapter or Map save file
 
@@ -122,9 +119,9 @@ public class ChapterFile extends SaveFile {
         blockDu26 = new Du26Block(Arrays.copyOfRange(fileBytes,
                 Hex.getByte4(blockIndex, offset), Hex.getByte4(blockIndex, offset + 4)));
         offset += 4;
-        //??
-        blockEvst = Arrays.copyOfRange(fileBytes,
-                Hex.getByte4(blockIndex, offset), fileBytes.length);
+        //Barrack Data
+        blockEvst = new EvstBlock(Arrays.copyOfRange(fileBytes,
+                Hex.getByte4(blockIndex, offset), fileBytes.length));
     }
 
     /*
@@ -165,7 +162,7 @@ public class ChapterFile extends SaveFile {
             this.blockMapBattle = Arrays.copyOfRange(bytes, mapb, du26);
         }
         this.blockDu26 = new Du26Block(Arrays.copyOfRange(bytes, du26, evst));
-        this.blockEvst = Arrays.copyOfRange(bytes, evst, bytes.length);
+        this.blockEvst = new EvstBlock(Arrays.copyOfRange(bytes, evst, bytes.length));
     }
 
 
@@ -188,7 +185,7 @@ public class ChapterFile extends SaveFile {
             outputStream.write(blockTran.getBlockBytes());
             if (!isChapter) outputStream.write(blockMapBattle);
             outputStream.write(blockDu26.bytes());
-            outputStream.write(blockEvst);
+            outputStream.write(blockEvst.bytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

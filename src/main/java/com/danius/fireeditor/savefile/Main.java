@@ -1,12 +1,11 @@
 package com.danius.fireeditor.savefile;
 
-import com.danius.fireeditor.savefile.global.GlobalFile;
-import com.danius.fireeditor.util.Hex;
+import java.io.IOException;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
 
     }
-
 }

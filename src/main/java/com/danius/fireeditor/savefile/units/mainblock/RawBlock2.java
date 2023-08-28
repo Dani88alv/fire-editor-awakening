@@ -20,6 +20,7 @@ public class RawBlock2 {
 
     public byte[] bytes() throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        fixCurrentSkills();
         outputStream.write(skills);
         outputStream.write(weaponExp);
         return outputStream.toByteArray();
@@ -38,6 +39,28 @@ public class RawBlock2 {
         int point = 0x0;
         skills[point + (slot * 2)] = (byte) (skill & 0xFF);
     }
+
+    //If Non-Active Skill is before any valid skills, the skill menu will be glitched
+    public void fixCurrentSkills() {
+        int[] activeSkills = getCurrentSkills();
+        //The array if fixed
+        for (int i = 0; i < activeSkills.length - 1; i++) {
+            if (activeSkills[i] == 0) {
+                for (int j = i + 1; j < activeSkills.length; j++) {
+                    if (activeSkills[j] != 0) {
+                        // Swap the elements
+                        int temp = activeSkills[i];
+                        activeSkills[i] = activeSkills[j];
+                        activeSkills[j] = temp;
+                        break;
+                    }
+                }
+            }
+        }
+        //The values are updated
+        for (int i = 0; i < activeSkills.length; i++) setCurrentSkill(activeSkills[i], i);
+    }
+
 
     public void resetCurrentSkills() {
         for (int i = 0; i < 5; i++) setCurrentSkill(0, i);

@@ -148,7 +148,7 @@ public class Supports {
         chars.put(0x17, new int[]{0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 3, 1}); //Olivia
         chars.put(0x18, new int[]{0, 1, 0, 0, 1, 1, 1, 2, 1, 1, 1, 1, 1, 3, 1, 1}); //Cherche
         chars.put(0x19, new int[]{0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2}); //Henry
-        chars.put(0x1A, new int[]{1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 3, 1}); //Lucina
+        chars.put(0x1A, new int[]{0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 3, 1}); //Lucina
         chars.put(0x1B, new int[]{0, 1, 0}); //Say'ri
         chars.put(0x1C, new int[]{0, 1, 0}); //Basilio
         chars.put(0x1D, new int[]{0, 1, 0}); //Flavia
