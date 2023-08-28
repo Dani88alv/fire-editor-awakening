@@ -28,18 +28,18 @@
          </Button>
          <Spinner fx:id="spinPenalty" editable="true" layoutX="172.0" layoutY="64.0" prefHeight="26.0" prefWidth="60.0" />
          <Spinner fx:id="spinMoney" editable="true" layoutX="292.0" layoutY="116.0" prefHeight="26.0" prefWidth="90.0" />
-         <Spinner fx:id="spinDlcTurns" editable="true" layoutX="664.0" layoutY="357.0" prefHeight="26.0" prefWidth="60.0" />
-         <ComboBox fx:id="comboChapterDlc" layoutX="476.0" layoutY="357.0" prefHeight="26.0" prefWidth="172.0" promptText="Chapter" />
+         <Spinner fx:id="spinDlcTurns" editable="true" layoutX="664.0" layoutY="342.0" prefHeight="26.0" prefWidth="60.0" />
+         <ComboBox fx:id="comboChapterDlc" layoutX="476.0" layoutY="342.0" prefHeight="26.0" prefWidth="172.0" promptText="Chapter" />
          <Label layoutX="22.0" layoutY="44.0" text="Difficulty" />
          <Label layoutX="172.0" layoutY="45.0" text="Game Mode" />
          <Label layoutX="152.0" layoutY="93.0" prefHeight="96.0" prefWidth="139.0" text="The Game Mode ID&#10;needs more research.&#10;Set it to 0 to play on &#10;Classic and 4 to play on&#10;Casual." />
-         <Label layoutX="477.0" layoutY="306.0" text="DLC Chapters">
+         <Label layoutX="477.0" layoutY="291.0" text="DLC Chapters">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <Label layoutX="477.0" layoutY="337.0" text="Chapter Slot" />
-         <Label layoutX="665.0" layoutY="335.0" text="Turns" />
+         <Label layoutX="477.0" layoutY="322.0" text="Chapter Slot" />
+         <Label layoutX="664.0" layoutY="322.0" text="Turns" />
          <Label layoutX="292.0" layoutY="44.0" text="Total Playtime" />
          <Label layoutX="293.0" layoutY="98.0" text="Money" />
          <ComboBox fx:id="comboChapter" layoutX="459.0" layoutY="64.0" prefWidth="130.0" promptText="Chapter" />
