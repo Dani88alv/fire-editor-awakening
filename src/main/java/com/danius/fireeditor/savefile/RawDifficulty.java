@@ -1,5 +1,7 @@
 package com.danius.fireeditor.savefile;
 
+import com.danius.fireeditor.util.Bitflag;
+
 public class RawDifficulty {
 
     public byte[] bytes;
@@ -21,6 +23,27 @@ public class RawDifficulty {
 
     public void setPenalty(int id) {
         bytes[0x0] = (byte) (id & 0xFF);
+    }
+
+    /*
+    TODO Map flags
+    0: 0x1
+    1: 0x2
+    2: 0x4 Casual
+    3: 0x8
+    4: 0x10
+    5: 0x20 Cutscene?
+    6: 0x40
+    7: 0x80
+     */
+    public boolean gameModeFlag(int slot) {
+        int point = 0x0;
+        return Bitflag.byte1ToReversedBinaryString(bytes[point]).charAt(slot) == '1';
+    }
+
+    public void setGameModeFlag(int slot, boolean set) {
+        int point = 0x0;
+        Bitflag.setByte1Flag(bytes, point, slot, set);
     }
 
     /*

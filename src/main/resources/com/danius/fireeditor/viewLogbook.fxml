@@ -49,8 +49,8 @@
                                     <Image url="@avatar_m/hair_01_00.png" />
                                  </image>
                               </ImageView>
-                              <CheckBox fx:id="checkGender" layoutX="533.0" layoutY="228.0" mnemonicParsing="false" text="Female" />
-                              <ColorPicker fx:id="colorPickerHair" layoutX="381.0" layoutY="224.0" />
+                              <CheckBox fx:id="checkGender" layoutX="533.0" layoutY="236.0" mnemonicParsing="false" text="Female" />
+                              <ColorPicker fx:id="colorPickerHair" layoutX="381.0" layoutY="232.0" />
                               <Label layoutX="534.0" layoutY="149.0" text="Hair" />
                               <Label layoutX="464.0" layoutY="149.0" text="Face" />
                               <Label layoutX="397.0" layoutY="149.0" text="Build" />
@@ -64,7 +64,7 @@
                               <ComboBox fx:id="comboFlaw" layoutX="275.0" layoutY="26.0" prefHeight="26.0" prefWidth="79.0" promptText="Flaw" />
                               <Label layoutX="185.0" layoutY="5.0" text="Asset" />
                               <Label layoutX="276.0" layoutY="7.0" text="Flaw" />
-                              <Label layoutX="383.0" layoutY="203.0" text="Hair Color" />
+                              <Label layoutX="383.0" layoutY="211.0" text="Hair Color" />
                               <Button fx:id="btnRandomId" layoutX="204.0" layoutY="79.0" mnemonicParsing="false" onAction="#setRandomId" text="Random" />
                            </children>
                         </AnchorPane>
@@ -76,15 +76,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Spinner fx:id="spinExpression" layoutX="23.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
-                        <Spinner fx:id="spinIdentity" layoutX="23.0" layoutY="174.0" prefHeight="26.0" prefWidth="62.0" />
-                        <ComboBox fx:id="comboPairingSlot" layoutX="125.0" layoutY="175.0" prefHeight="26.0" prefWidth="95.0" promptText="Slot" />
-                        <ComboBox fx:id="comboWife" layoutX="272.0" layoutY="222.0" prefHeight="26.0" prefWidth="135.0" promptText="Wife" />
-                        <ComboBox fx:id="comboHusband" layoutX="124.0" layoutY="222.0" prefHeight="26.0" prefWidth="135.0" promptText="Husband" />
-                        <Spinner fx:id="spinTrait" layoutX="23.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" />
-                        <Spinner fx:id="spinHome" layoutX="23.0" layoutY="127.0" prefHeight="26.0" prefWidth="62.0" />
-                        <ComboBox fx:id="comboClass" layoutX="454.0" layoutY="222.0" prefHeight="26.0" prefWidth="133.0" promptText="Class" />
-                        <Spinner fx:id="spinValues" layoutX="23.0" layoutY="222.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinExpression" editable="true" layoutX="23.0" layoutY="30.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinIdentity" editable="true" layoutX="23.0" layoutY="179.0" prefHeight="26.0" prefWidth="62.0" />
+                        <ComboBox fx:id="comboPairingSlot" layoutX="125.0" layoutY="183.0" prefHeight="26.0" prefWidth="95.0" promptText="Slot" />
+                        <ComboBox fx:id="comboWife" layoutX="272.0" layoutY="230.0" prefHeight="26.0" prefWidth="135.0" promptText="Wife" />
+                        <ComboBox fx:id="comboHusband" layoutX="124.0" layoutY="230.0" prefHeight="26.0" prefWidth="135.0" promptText="Husband" />
+                        <Spinner fx:id="spinTrait" editable="true" layoutX="23.0" layoutY="78.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinHome" editable="true" layoutX="23.0" layoutY="128.0" prefHeight="26.0" prefWidth="62.0" />
+                        <ComboBox fx:id="comboClass" layoutX="454.0" layoutY="230.0" prefHeight="26.0" prefWidth="133.0" promptText="Class" />
+                        <Spinner fx:id="spinValues" editable="true" layoutX="23.0" layoutY="228.0" prefHeight="26.0" prefWidth="62.0" />
                         <TextField fx:id="txtProfile" layoutX="339.0" layoutY="30.0" prefHeight="26.0" prefWidth="246.0" />
                         <TextField fx:id="txtGreeting" layoutX="339.0" layoutY="79.0" prefHeight="26.0" prefWidth="246.0" />
                         <Label layoutX="340.0" layoutY="11.0" text="Profile Message" />
@@ -93,23 +93,25 @@
                         <Label layoutX="340.0" layoutY="107.0" text="Challenge Message" />
                         <TextField fx:id="txtRecruit" layoutX="339.0" layoutY="173.0" prefHeight="26.0" prefWidth="246.0" />
                         <Label layoutX="340.0" layoutY="154.0" text="Recruitment Message" />
-                        <Label layoutX="125.0" layoutY="204.0" text="Husband" />
-                        <Label layoutX="274.0" layoutY="204.0" text="Wife" />
-                        <Label layoutX="127.0" layoutY="156.0" text="S-Pairings" />
-                        <Label layoutX="455.0" layoutY="204.0" text="Class" />
-                        <Spinner fx:id="spinDifficulty" layoutX="127.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
-                        <Spinner fx:id="spinPenalty" layoutX="127.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" />
-                        <Label layoutX="24.0" layoutY="12.0" text="Expression" />
-                        <Label layoutX="25.0" layoutY="61.0" text="Trait" />
-                        <Label layoutX="24.0" layoutY="107.0" text="Home" />
-                        <Label layoutX="24.0" layoutY="155.0" text="Identity" />
-                        <Label layoutX="25.0" layoutY="203.0" text="Values" />
-                        <Spinner fx:id="spinDay" layoutX="225.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
-                        <Spinner fx:id="spinMonth" layoutX="225.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" />
-                        <Label layoutX="128.0" layoutY="12.0" text="Difficulty" />
-                        <Label layoutX="128.0" layoutY="60.0" text="Game Mode" />
-                        <Label layoutX="225.0" layoutY="12.0" text="Birthday (Day)" />
-                        <Label layoutX="226.0" layoutY="60.0" text="Birthday (Month)" />
+                        <Label layoutX="125.0" layoutY="212.0" text="Husband" />
+                        <Label layoutX="274.0" layoutY="212.0" text="Wife" />
+                        <Label layoutX="127.0" layoutY="164.0" text="S-Pairings" />
+                        <Label layoutX="455.0" layoutY="212.0" text="Class" />
+                        <Label layoutX="24.0" layoutY="10.0" text="Expression" />
+                        <Label layoutX="25.0" layoutY="60.0" text="Trait" />
+                        <Label layoutX="24.0" layoutY="109.0" text="Home" />
+                        <Label layoutX="24.0" layoutY="160.0" text="Identity" />
+                        <Label layoutX="25.0" layoutY="209.0" text="Values" />
+                        <Spinner fx:id="spinDay" editable="true" layoutX="127.0" layoutY="129.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Spinner fx:id="spinMonth" editable="true" layoutX="219.0" layoutY="130.0" prefHeight="26.0" prefWidth="62.0" />
+                        <Label layoutX="127.0" layoutY="109.0" text="Birthday (Day)" />
+                        <Label layoutX="220.0" layoutY="111.0" text="Birthday (Month)" />
+                        <ComboBox fx:id="comboDifficulty" layoutX="126.0" layoutY="30.0" prefHeight="26.0" prefWidth="130.0" promptText="Difficulty" />
+                        <CheckBox fx:id="checkGameCasual" layoutX="129.0" layoutY="62.0" mnemonicParsing="false" text="Casual" />
+                        <CheckBox fx:id="checkGameLunaplus" layoutX="129.0" layoutY="82.0" mnemonicParsing="false" text="Lunatic +" />
+                        <CheckBox fx:id="checkGameBeaten" layoutX="236.0" layoutY="62.0" mnemonicParsing="false" text="Story Beaten" />
+                        <CheckBox fx:id="checkGameHidden" layoutX="236.0" layoutY="82.0" mnemonicParsing="false" text="Hidden" />
+                        <Label layoutX="126.0" layoutY="11.0" text="Difficulty Settings" />
                      </children></AnchorPane>
             </content>
           </Tab>

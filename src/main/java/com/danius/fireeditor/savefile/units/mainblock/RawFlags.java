@@ -1,5 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.util.Bitflag;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -90,7 +92,7 @@ public class RawFlags {
     public String traitFlagString() {
         int point = 0x7;
         byte[] array = Arrays.copyOfRange(bytes, point, point + 4);
-        return bytesToReversedBinaryString(array);
+        return Bitflag.bytesToReversedBinaryString(array);
     }
 
     //0xC-0xF: ?
@@ -117,7 +119,7 @@ public class RawFlags {
     public String battleFlagString() {
         int point = 0xF;
         byte[] array = Arrays.copyOfRange(bytes, point, point + 4);
-        return bytesToReversedBinaryString(array);
+        return Bitflag.bytesToReversedBinaryString(array);
     }
 
     public void setTraitFlag(int flag, boolean set) {
@@ -128,7 +130,7 @@ public class RawFlags {
         else flagsChar[flag] = '0';
         //The string is converted back to byte array
         String flagString = new String(flagsChar);
-        byte[] flagsArray = binaryStringToByteArray(flagString);
+        byte[] flagsArray = Bitflag.binaryStringToByteArray(flagString);
         for (int i = 0; i < flagsArray.length; i++) {
             bytes[point + i] = flagsArray[i];
         }
@@ -142,7 +144,7 @@ public class RawFlags {
         else flagsChar[flag] = '0';
         //The string is converted back to byte array
         String flagString = new String(flagsChar);
-        byte[] flagsArray = binaryStringToByteArray(flagString);
+        byte[] flagsArray = Bitflag.binaryStringToByteArray(flagString);
         for (int i = 0; i < flagsArray.length; i++) {
             bytes[point + i] = flagsArray[i];
         }
@@ -194,37 +196,23 @@ public class RawFlags {
     //Tonic Bitflags
     public String tonicFlagString() {
         int point = 0x27;
-        return byteToReversedBinaryString(bytes[point]);
+        return Bitflag.byte1ToReversedBinaryString(bytes[point]);
     }
 
     public void setTonicFlag(int flag, boolean set) {
         int point = 0x27;
-        //The flag is set
-        char[] flagsChar = tonicFlagString().toCharArray();
-        if (set) flagsChar[flag] = '1';
-        else flagsChar[flag] = '0';
-        //The string is converted back to byte array
-        String flagString = new String(flagsChar);
-        byte[] flagsArray = binaryStringToByteArray(flagString);
-        System.arraycopy(flagsArray, 0, bytes, point, flagsArray.length);
+        Bitflag.setByte1Flag(bytes, point, flag, set);
     }
 
     //Barrack Buffs Bitflags
     public String barrackFlagString() {
         int point = 0x28;
-        return byteToReversedBinaryString(bytes[point]);
+        return Bitflag.byte1ToReversedBinaryString(bytes[point]);
     }
 
     public void setBarrackFlag(int flag, boolean set) {
         int point = 0x28;
-        //The flag is set
-        char[] flagsChar = tonicFlagString().toCharArray();
-        if (set) flagsChar[flag] = '1';
-        else flagsChar[flag] = '0';
-        //The string is converted back to byte array
-        String flagString = new String(flagsChar);
-        byte[] flagsArray = binaryStringToByteArray(flagString);
-        System.arraycopy(flagsArray, 0, bytes, point, flagsArray.length);
+        Bitflag.setByte1Flag(bytes, point, flag, set);
     }
 
     //Easier methods
@@ -234,12 +222,14 @@ public class RawFlags {
     }
 
     public void setAllOtherBuffs() {
-        //Extra Stats Bitflags
+        //Barrack Bitflags
         bytes[0x28] = (byte) (0xFF);
-        //Regular Flags
+        //Skill Flags
         for (int i = 0x1C; i <= 0x26; i++) {
             bytes[i] = (byte) (0x1);
         }
+        //Pure Water
+        setResBuff(5);
     }
 
     public List<Integer> traitFlagList() {
@@ -272,45 +262,5 @@ public class RawFlags {
     public byte[] bytes() {
         return bytes;
     }
-
-    private String byteToReversedBinaryString(byte b) {
-        String binaryString = String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
-        StringBuilder reversedString = new StringBuilder(binaryString).reverse();
-
-        return reversedString.toString();
-    }
-
-    private String bytesToReversedBinaryString(byte[] byteArray) {
-        StringBuilder combinedString = new StringBuilder();
-
-        for (byte b : byteArray) {
-            String binaryString = String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
-            StringBuilder reversedString = new StringBuilder(binaryString).reverse();
-            combinedString.append(reversedString);
-        }
-
-        return combinedString.toString();
-    }
-
-    /*
-   Un-reverses the order of byteArrayToBinaryString to properly write the block to the unit
-    */
-    private static byte[] binaryStringToByteArray(String binaryString) {
-        int length = binaryString.length();
-        byte[] byteArray = new byte[length / 8];
-        for (int i = 0; i < length; i += 8) {
-            String byteString = binaryString.substring(i, i + 8);
-            StringBuilder reversedByteString = new StringBuilder(byteString).reverse();
-            try {
-                byte b = (byte) Integer.parseInt(reversedByteString.toString(), 2);
-                byteArray[i / 8] = b;
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid binary digit found: " + reversedByteString);
-                // Handle the error case as needed (e.g., assign a default value, skip the byte, etc.)
-            }
-        }
-        return byteArray;
-    }
-
 
 }

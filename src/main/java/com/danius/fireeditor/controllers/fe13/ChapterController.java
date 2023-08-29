@@ -25,13 +25,13 @@ public class ChapterController {
     public GmapBlock gmapBlock;
 
     @FXML
-    private Spinner<Integer> spinTime, spinMoney, spinPenalty, spinDlcTurns, spinRenown;
+    private Spinner<Integer> spinTime, spinMoney, spinDlcTurns, spinRenown;
     @FXML
     private ComboBox<String> comboChapterDlc, comboDifficulty;
     @FXML
     ComboBox<String> comboChapter, comboChapterData;
     @FXML
-    private CheckBox checkLunatic;
+    private CheckBox checkLunatic, checkCasual;
 
     public void initialize() {
         FireEditor.chapterController = this;
@@ -67,10 +67,12 @@ public class ChapterController {
         //Updates the general settings in the user block and header block
         userBlock.rawDifficulty.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
         headerBlock.rawDifficulty.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
-        userBlock.rawDifficulty.setPenalty(spinPenalty.getValue());
-        headerBlock.rawDifficulty.setPenalty(spinPenalty.getValue());
+        //Difficulty
         userBlock.rawDifficulty.setLunaticPlus(checkLunatic.isSelected());
+        userBlock.rawDifficulty.setGameModeFlag(2, checkCasual.isSelected());
         headerBlock.rawDifficulty.setLunaticPlus(checkLunatic.isSelected());
+        headerBlock.rawDifficulty.setGameModeFlag(2, checkCasual.isSelected());
+        //Other
         userBlock.setPlaytime(spinTime.getValue() * 60);
         headerBlock.setPlaytime(spinTime.getValue() * 60);
         userBlock.setMoney(spinMoney.getValue());
@@ -91,8 +93,8 @@ public class ChapterController {
             this.gmapBlock = FireEditor.chapterFile.blockGmap;
             //General Data
             comboDifficulty.getSelectionModel().select(userBlock.rawDifficulty.difficulty());
-            spinPenalty.getValueFactory().setValue(userBlock.rawDifficulty.penaltyId());
             checkLunatic.setSelected(userBlock.rawDifficulty.isLunaticPlus());
+            checkCasual.setSelected(userBlock.rawDifficulty.gameModeFlag(2));
             spinMoney.getValueFactory().setValue(userBlock.money());
             spinTime.getValueFactory().setValue(userBlock.playtime() / 60);
             spinRenown.getValueFactory().setValue(userBlock.renown());
@@ -114,7 +116,6 @@ public class ChapterController {
         UI.setSpinnerTimer(spinTime, 216000000);
         UI.setSpinnerNumeric(spinMoney, 999999);
         UI.setSpinnerNumeric(spinRenown, 99999);
-        UI.setSpinnerNumeric(spinPenalty, 255);
         ObservableList<String> difficulty = FXCollections.observableArrayList("Normal", "Hard", "Lunatic");
         comboDifficulty.setItems(difficulty);
         //DLC Chapters

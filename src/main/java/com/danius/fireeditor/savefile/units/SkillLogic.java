@@ -85,8 +85,8 @@ public class SkillLogic {
         List<Integer> traitFlags = unit.rawFlags.traitFlagList();
         int id = unit.rawBlock1.unitId();
         boolean isFemale = isFemaleUnit(unit);
-        //Manakete Skills (Einherjar Tiki) (Manakete flag, female and avatar ID)
-        if (traitFlags.contains(16) && id >= 0 && id <= 2 && isFemaleUnit(unit)) {
+        //Manakete Skills (Einherjar Tiki) (Manakete flag)
+        if (traitFlags.contains(16)) {
             extraSkills.add(getSkillsFromClass(0x44).get(0));
             extraSkills.add(getSkillsFromClass(0x44).get(1));
         }
@@ -115,7 +115,6 @@ public class SkillLogic {
         extraSkills.add(0x59); //Paragon
         extraSkills.add(0x5A); //Iote's Shield
         extraSkills.add(0x5B); //Limit Breaker
-        //TODO Current Class Skills + Promoted zzz
         int unitClass = unit.rawBlock1.unitClass();
         //Enemy Skills
         if (id == 0x36 || id == 0x37) {

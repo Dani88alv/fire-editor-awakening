@@ -1,15 +1,13 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
 import com.danius.fireeditor.savefile.units.Unit;
+import com.danius.fireeditor.util.Bitflag;
 import com.danius.fireeditor.util.Names;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class LogBlock {
@@ -350,7 +348,7 @@ public class LogBlock {
 
     public void setLogIdRandom() {
         StringBuilder logId = new StringBuilder();
-        try{
+        try {
             for (int i = 0; i < 26; i++) {
                 Random random = new Random();
                 int randomNumber = random.nextInt(16); // Generates a random number between 0x0 - 0xF
@@ -358,8 +356,7 @@ public class LogBlock {
                 logId.append(hexValue);
             }
             setLogId(String.valueOf(logId));
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(logId);
         }
     }
@@ -451,19 +448,20 @@ public class LogBlock {
         mainBlock[point + (slot * 2) + 1] = (byte) (female & 0xFF);
     }
 
-    /*
-    Card Data
-    Lunatic+ is considered a penalty and will override difficulty ID
-    When the penalty is lunatic+, difficulty is always lunatic
+    /*Game Mode Bitflag
+    0 0x1: Casual
+    1 0x2: Lunatic+
+    2 0x4: Game Beaten
+    3 0x8: Hidden
      */
-    public int penalty() {
+    public boolean gameModeFlag(int slot) {
         int point = 0x61;
-        return mainBlock[point] & 0xFF;
+        return Bitflag.byte1ToReversedBinaryString(mainBlock[point]).charAt(slot) == '1';
     }
 
-    public void setPenalty(int value) {
+    public void setGameModeFlag(int slot, boolean set) {
         int point = 0x61;
-        mainBlock[point] = (byte) (value & 0xFF);
+        Bitflag.setByte1Flag(mainBlock, point, slot, set);
     }
 
     /*
@@ -492,19 +490,8 @@ public class LogBlock {
         text += "\n" + "Asset: " + Names.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + Names.modifNames.get(getAssetFlaw()[1]);
         text += "\n" + "Build: " + Arrays.toString(getFullBuild()) + " Birthday: " + Arrays.toString(getBirthday());
         text += "\n" + "Logbook Hair: #" + getLogHairColor();
-        //StreetPass Card
-        text += "\n" + "StreetPass Card: " + Arrays.toString(getProfileCard());
-        //Card Difficulty
-        text += "\n" + "Difficulty: " + Names.cardDifficulty.get(difficulty()) +
-                " (" + Names.cardPenalty(penalty()) + ")";
-        //S-Pairings (MU only)
-        int pairingCount = pairingCount();
-        text += "\n" + "S-Pairings " + "(" + pairingCount + "): ";
-        for (int i = 0; i < pairingCount; i++) {
-            text += Names.unitName(getPairing(i)[0]) + "-" + Names.unitName(getPairing(i)[1]) + ", ";
-        }
-        text = text.substring(0, text.length() - 2);
-        //TODO: dialogues?
         return text;
     }
+
+
 }

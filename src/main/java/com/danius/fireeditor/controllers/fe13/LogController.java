@@ -27,7 +27,7 @@ public class LogController {
     private Unit unit;
     private boolean isWest;
     @FXML
-    private ComboBox<String> comboCard, comboAsset, comboFlaw;
+    private ComboBox<String> comboCard, comboAsset, comboFlaw, comboDifficulty;
     @FXML
     private Button btnSetLogId, btnRandomId;
     @FXML
@@ -35,7 +35,8 @@ public class LogController {
     @FXML
     private TextField txtLogId, txtName;
     @FXML
-    private CheckBox checkGender, checkCard;
+    private CheckBox checkGender, checkCard,
+            checkGameCasual, checkGameLunaplus, checkGameBeaten, checkGameHidden;
     @FXML
     private ColorPicker colorPickerHair;
     @FXML
@@ -49,8 +50,6 @@ public class LogController {
         txtLogId.setText("0");
         UI.setHexTextField(txtLogId, 26);
         //Profile Card
-        UI.setSpinnerNumeric(spinDifficulty, 2);
-        UI.setSpinnerNumeric(spinPenalty, 255);
         UI.setSpinnerNumeric(spinExpression, 255);
         UI.setSpinnerNumeric(spinTrait, 255);
         UI.setSpinnerNumeric(spinHome, 255);
@@ -58,7 +57,8 @@ public class LogController {
         UI.setSpinnerNumeric(spinIdentity, 255);
         UI.setSpinnerNumeric(spinDay, 31);
         UI.setSpinnerNumeric(spinMonth, 12);
-        //Comboboxes
+        ObservableList<String> difficulty = FXCollections.observableArrayList("Normal", "Hard", "Lunatic");
+        comboDifficulty.setItems(difficulty);
         //Einherjar names
         ObservableList<String> cardUnits = FXCollections.observableArrayList();
         cardUnits.addAll(Names.spotPassNames);
@@ -166,7 +166,7 @@ public class LogController {
     }
 
     @FXML
-    private void setRandomId(){
+    private void setRandomId() {
         unit.rawLog.setLogIdRandom();
         txtLogId.setText(unit.rawLog.getLogId());
     }
@@ -266,6 +266,11 @@ public class LogController {
         UI.setTextField(txtGreeting, unit.rawLog.MESSAGE_CHARACTERS);
         UI.setTextField(txtRecruit, unit.rawLog.MESSAGE_CHARACTERS);
         //Profile options
+        setupCombobox(comboDifficulty);
+        setupCheckboxFlag(checkGameCasual, 0);
+        setupCheckboxFlag(checkGameLunaplus, 1);
+        setupCheckboxFlag(checkGameBeaten, 2);
+        setupCheckboxFlag(checkGameHidden, 3);
         setupCombobox(comboClass);
         setupProfileSpinners(spinExpression);
         setupProfileSpinners(spinHome);
@@ -274,8 +279,6 @@ public class LogController {
         setupProfileSpinners(spinIdentity);
         setupProfileSpinners(spinDay);
         setupProfileSpinners(spinMonth);
-        setupProfileSpinners(spinDifficulty);
-        setupProfileSpinners(spinPenalty);
         //S-Pairings
         setupComboPairingSlot();
         setupComboHusband();
@@ -305,6 +308,12 @@ public class LogController {
         checkbox.selectedProperty().addListener(listener);
     }
 
+    private void setupCheckboxFlag(CheckBox checkBox, int slot) {
+        checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            unit.rawLog.setGameModeFlag(slot, checkBox.isSelected());
+        });
+    }
+
     private void setupCombobox(ComboBox<String> comboBox) {
         comboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -312,57 +321,29 @@ public class LogController {
                 unit.rawLog.setAsset(comboAsset.getSelectionModel().getSelectedIndex());
                 unit.rawLog.setFlaw(comboFlaw.getSelectionModel().getSelectedIndex());
                 unit.rawLog.setProfileCard(comboClass.getSelectionModel().getSelectedIndex(), 0);
+                unit.rawLog.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
                 FireEditor.unitController.setFieldsStats(unit);
             }
         });
     }
-
-    /*
-    Changes the color of the hair color sprite
-     */
-    public static Image fillImageWithColor(Image image, String hexColor) {
-        // Convert hex color to JavaFX Color
-        Color fillColor = Color.web(hexColor);
-        int width = (int) image.getWidth();
-        int height = (int) image.getHeight();
-        // Create a writable image with the same dimensions as the original image
-        WritableImage filledImage = new WritableImage(width, height);
-        // Get the pixel reader for the original image
-        PixelReader pixelReader = image.getPixelReader();
-        // Get the pixel writer for the filled image
-        PixelWriter pixelWriter = filledImage.getPixelWriter();
-        // Fill the image with the specified color
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                Color pixelColor = pixelReader.getColor(x, y);
-                if (pixelColor.isOpaque()) {
-                    // Use the fill color for opaque pixels
-                    pixelWriter.setColor(x, y, fillColor);
-                } else {
-                    // Preserve transparency for transparent pixels
-                    pixelWriter.setColor(x, y, pixelColor);
-                }
-            }
-        }
-        return filledImage;
-    }
-
-
     /*
     PROFILE CARD CODE
      */
 
     @FXML
     private Spinner<Integer> spinExpression, spinTrait, spinHome, spinIdentity, spinValues,
-            spinDifficulty, spinPenalty, spinDay, spinMonth;
+            spinDay, spinMonth;
     @FXML
     private ComboBox<String> comboClass, comboPairingSlot, comboWife, comboHusband;
     @FXML
     private TextField txtProfile, txtGreeting, txtChallenge, txtRecruit;
 
     private void loadProfileFields() {
-        spinDifficulty.getValueFactory().setValue(unit.rawLog.difficulty());
-        spinPenalty.getValueFactory().setValue(unit.rawLog.penalty());
+        comboDifficulty.getSelectionModel().select(unit.rawLog.difficulty());
+        checkGameCasual.setSelected(unit.rawLog.gameModeFlag(0));
+        checkGameLunaplus.setSelected(unit.rawLog.gameModeFlag(1));
+        checkGameBeaten.setSelected(unit.rawLog.gameModeFlag(2));
+        checkGameHidden.setSelected(unit.rawLog.gameModeFlag(3));
         spinDay.getValueFactory().setValue(unit.rawLog.getBirthday()[0]);
         spinMonth.getValueFactory().setValue(unit.rawLog.getBirthday()[1]);
         spinExpression.getValueFactory().setValue(unit.rawLog.getProfileCard()[1]);
@@ -430,15 +411,16 @@ public class LogController {
                 unit.rawLog.setProfileCard(spinIdentity.getValue(), 4);
                 unit.rawLog.setProfileCard(spinValues.getValue(), 5);
                 unit.rawLog.setBirthday(spinDay.getValue(), spinMonth.getValue());
-                unit.rawLog.setPenalty(spinPenalty.getValue());
-                unit.rawLog.setDifficulty(spinDifficulty.getValue());
             }
         });
     }
 
     private void disableProfileFields(boolean disable) {
-        spinDifficulty.setDisable(disable);
-        spinPenalty.setDisable(disable);
+        comboDifficulty.setDisable(disable);
+        checkGameCasual.setDisable(disable);
+        checkGameLunaplus.setDisable(disable);
+        checkGameBeaten.setDisable(disable);
+        checkGameHidden.setDisable(disable);
         spinDay.setDisable(disable);
         spinMonth.setDisable(disable);
         spinExpression.setDisable(disable);
