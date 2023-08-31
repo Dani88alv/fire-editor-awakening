@@ -87,20 +87,12 @@ public class RawBlockEnd {
 
     /*
     Adds or remove the terminator of the additional block
+    00 01 child
+    01 06 log
      */
-    public void addOffsetChild() {
-        blockBytes[length() - 2] = 0x0;
-        blockBytes[length() - 1] = 0x1;
-    }
-
-    public void addOffsetLog() {
-        blockBytes[length() - 2] = 0x1;
-        blockBytes[length() - 1] = 0x6;
-    }
-
-    public void removeOffsetBlock() {
-        blockBytes[length() - 2] = 0x0;
-        blockBytes[length() - 1] = 0x0;
+    public void setTerminator(int byte1, int byte2) {
+        blockBytes[length() - 2] = (byte) (byte1 & 0xFF);
+        blockBytes[length() - 1] = (byte) (byte2 & 0xFF);
     }
 
     public String report() {

@@ -1,10 +1,10 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.bigblocks.UserBlock;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.other.UserBlock;
+import com.danius.fireeditor.util.Names13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,7 +24,7 @@ public class CreditController {
         setupElements();
         //The modded classes are checked
         int modCount = FireEditor.maxClasses;
-        int vanillaCount = Constants.MAX_CLASSES;
+        int vanillaCount = Constants13.MAX_CLASSES;
         if (modCount > vanillaCount) {
             for (int i = vanillaCount; i < modCount; i++) {
                 String className = "Mod Class#" + (i + 1 - vanillaCount);
@@ -71,19 +71,19 @@ public class CreditController {
         //Units
         ObservableList<String> units = FXCollections.observableArrayList();
         units.add("None");
-        units.addAll(Names.unitNames);
+        units.addAll(Names13.unitNames);
         comboUnit1.setItems(units);
         comboUnit2.setItems(units);
         //Classes
         ObservableList<String> classes = FXCollections.observableArrayList();
         classes.add("None");
-        classes.addAll(Names.classNames);
+        classes.addAll(Names13.classNames);
         comboClass1.setItems(classes);
         comboClass2.setItems(classes);
         //Chapter Names
         ObservableList<String> chapters = FXCollections.observableArrayList();
         //The names are stored
-        for (int i = 0; i <= Constants.MAX_CHAPTERS; i++) {
+        for (int i = 0; i <= Constants13.MAX_CHAPTERS; i++) {
             chapters.add(chapterName(i));
         }
         comboCreditChapter.setItems(chapters);
@@ -179,6 +179,6 @@ public class CreditController {
         } else if (id > 28 && id <= 51) {
             int chapter = id - 28;
             return "Paralogue " + chapter;
-        } else return "Mod Chapter #" + (Constants.MAX_CHAPTERS - id + 1);
+        } else return "Mod Chapter #" + (Constants13.MAX_CHAPTERS - id + 1);
     }
 }

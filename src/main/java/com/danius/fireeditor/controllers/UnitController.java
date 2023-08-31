@@ -1,15 +1,14 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.controllers.*;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
-import com.danius.fireeditor.util.Portrait;
+import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Portrait13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,7 +71,7 @@ public class UnitController {
             //The modded classes are retrieved
             int maxClasses = FireEditor.maxClasses;
             int currentClasses = comboClass.getItems().size() - 1;
-            if (maxClasses > Constants.MAX_CLASSES && maxClasses > currentClasses) {
+            if (maxClasses > Constants13.MAX_CLASSES && maxClasses > currentClasses) {
                 for (int i = 0; i < maxClasses - currentClasses; i++) {
                     comboClass.getItems().add("Mod Class #" + (i + 1));
                 }
@@ -123,7 +122,7 @@ public class UnitController {
     }
 
     public void setImage() {
-        Image[] images = Portrait.setImage(listViewUnit.getSelectionModel().getSelectedItem());
+        Image[] images = Portrait13.setImage(listViewUnit.getSelectionModel().getSelectedItem());
         imgBuild.setImage(images[0]);
         if (images[1] != null) imgHairColor.setImage(images[1]);
         else imgHairColor.setImage(null);
@@ -157,7 +156,7 @@ public class UnitController {
     public void unitDuplicate() {
         ObservableList<Unit> unitList = listViewUnit.getItems();
         Unit selectedUnit = listViewUnit.getSelectionModel().getSelectedItem();
-        if (selectedUnit != null && unitList.size() < 255) {
+        if (selectedUnit != null && unitList.size() < 200) {
             //Create a new instance of the selected unit
             updateUnitFromFields(selectedUnit);
             Unit duplicatedUnit = new Unit(selectedUnit.getUnitBytes());
@@ -194,7 +193,7 @@ public class UnitController {
         int groupTarget = comboGroupMove.getSelectionModel().getSelectedIndex();
         int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
         //If there is enough room
-        if (unitBlock.unitList.get(groupTarget).size() < 255) {
+        if (unitBlock.unitList.get(groupTarget).size() < 200) {
             //If it is being moved to dead units, set the dead flag
             if (groupTarget == 4 && currentGroup != 4) {
                 listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, true);
@@ -221,7 +220,7 @@ public class UnitController {
     }
 
     public void addUnit(Unit unit) {
-        if (listViewUnit.getItems().size() > 255) return;
+        if (listViewUnit.getItems().size() >= 200) return;
         // Get the selected index
         int selectedIndex = comboUnitGroup.getSelectionModel().getSelectedIndex();
         // Update the listViewUnit with the corresponding data
@@ -283,7 +282,7 @@ public class UnitController {
         UI.setNumericTextField(txtGrowthRes, 255);
         UI.setNumericTextField(txtGrowthMove, 255);
         //Classes
-        ObservableList<String> classes = FXCollections.observableArrayList(Names.classNames);
+        ObservableList<String> classes = FXCollections.observableArrayList(Names13.classNames);
         comboClass.setItems(classes);
         //IMPORTANT ORDER
         setupUnitList(listViewUnit);
@@ -456,7 +455,7 @@ public class UnitController {
     }
 
     public void displayUnitCount() {
-        lblUnitCount.setText("Units: " + listViewUnit.getItems().size() + "/255");
+        lblUnitCount.setText("Units: " + listViewUnit.getItems().size() + "/200");
     }
 
     public void openFlags(ActionEvent event) {
@@ -598,7 +597,7 @@ public class UnitController {
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
                 //The Logbook block size is updated
-                if (selectedValue.hasLogBlock) selectedValue.rawLog.changeRegion(unitBlock.isWest);
+                //if (selectedValue.rawLog != null) selectedValue.rawLog.changeRegion(unitBlock.isWest);
                 // Pass the selected value to the second view's controller
                 LogController logController = fxmlLoader.getController();
                 logController.setUnit(selectedValue, unitBlock.isWest);

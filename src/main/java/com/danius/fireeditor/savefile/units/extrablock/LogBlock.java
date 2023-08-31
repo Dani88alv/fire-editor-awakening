@@ -2,7 +2,7 @@ package com.danius.fireeditor.savefile.units.extrablock;
 
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Bitflag;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -105,6 +105,10 @@ public class LogBlock {
         //Character limit
         this.NAME_CHARACTERS = (nameBlock.length / 2) - 1;
         this.MESSAGE_CHARACTERS = (textStreet.length / 2) - 1;
+    }
+
+    public void setTerminator(boolean set) {
+        footer[0x0] = (byte) ((set) ? 1 : 0);
     }
 
     public String getName() {
@@ -487,7 +491,7 @@ public class LogBlock {
         text += "Logbook ID: " + getLogId();
         text += isWest ? " (US/EU)" : " (JP)";
         //Build
-        text += "\n" + "Asset: " + Names.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + Names.modifNames.get(getAssetFlaw()[1]);
+        text += "\n" + "Asset: " + Names13.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + Names13.modifNames.get(getAssetFlaw()[1]);
         text += "\n" + "Build: " + Arrays.toString(getFullBuild()) + " Birthday: " + Arrays.toString(getBirthday());
         text += "\n" + "Logbook Hair: #" + getLogHairColor();
         return text;

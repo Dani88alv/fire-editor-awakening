@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.ConvoyController">
+<VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.ConvoyController">
 
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="787.0">
       <children>

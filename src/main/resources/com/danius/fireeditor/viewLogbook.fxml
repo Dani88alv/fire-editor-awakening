@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.LogController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.LogController">
    <children>
       <TabPane prefHeight="307.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -33,7 +33,6 @@
                               <Spinner fx:id="spinFace" layoutX="463.0" layoutY="167.0" prefHeight="26.0" prefWidth="62.0" />
                               <Spinner fx:id="spinVoice" layoutX="366.0" layoutY="26.0" prefHeight="26.0" prefWidth="62.0" />
                               <Spinner fx:id="spinHair" layoutX="532.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" />
-                              <Label layoutX="16.0" layoutY="193.0" prefHeight="36.0" prefWidth="199.0" text="Units cannot store avatar data and&#10;child data at the same time." />
                               <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="450.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@avatar_m/build_01_00.png" />

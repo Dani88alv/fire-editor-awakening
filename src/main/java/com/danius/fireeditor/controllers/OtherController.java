@@ -1,11 +1,11 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawBlock2;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -99,14 +99,14 @@ public class OtherController {
         UI.setSpinnerNumeric(spinTome, maxExp);
         UI.setSpinnerNumeric(spinStave, maxExp);
         //Combobox
-        ObservableList<String> armies = FXCollections.observableArrayList(Names.armies);
-        for (int i = Constants.MAX_ARMY; i < FireEditor.maxArmies; i++) {
-            armies.add("Extra #" + (FireEditor.maxArmies() - Constants.MAX_ARMY + 1));
+        ObservableList<String> armies = FXCollections.observableArrayList(Names13.armies);
+        for (int i = Constants13.MAX_ARMY; i < FireEditor.maxArmies; i++) {
+            armies.add("Extra #" + (FireEditor.maxArmies() - Constants13.MAX_ARMY + 1));
         }
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);
 
-        ObservableList<String> retireChapters = FXCollections.observableArrayList(Names.retireChapters);
+        ObservableList<String> retireChapters = FXCollections.observableArrayList(Names13.retireChapters);
         comboRetire.setItems(retireChapters);
         comboRetire.getSelectionModel().select(0);
         //Listeners

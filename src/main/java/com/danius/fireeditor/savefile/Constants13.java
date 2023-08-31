@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile;
 
-public class Constants {
+public class Constants13 {
 
     public static final int MAX_ITEM_COUNT = 201; //0 to 201
     public static final int MAX_FORGE_COUNT = 150;

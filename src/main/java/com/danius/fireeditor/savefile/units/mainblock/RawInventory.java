@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 
 import java.io.ByteArrayOutputStream;
@@ -24,7 +24,7 @@ public class RawInventory {
         for (RawItem item : items) {
             int itemId = item.itemId();
             //Only vanilla and non-forged items are modified
-            if (itemId <= Constants.MAX_ITEM_COUNT) {
+            if (itemId <= Constants13.MAX_ITEM_COUNT) {
                 item.setUses(TranBlock.itemAmounts.get(itemId));
             }
         }

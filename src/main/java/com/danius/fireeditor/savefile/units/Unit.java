@@ -4,12 +4,11 @@ import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.*;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 public class Unit {
     public static int GBLOCK_SIZE = 0xBB;
@@ -30,8 +29,6 @@ public class Unit {
     //Additional blocks
     public ChildBlock rawChild; //Parent Data
     public LogBlock rawLog; //Logbook data
-    public boolean hasChildBlock = false;
-    public boolean hasLogBlock = false;
 
     public Unit(byte[] unitBytes) {
         splitBlocks(unitBytes);
@@ -82,10 +79,10 @@ public class Unit {
             outputStream.write(rawFlags.bytes());
             outputStream.write(rawSkill.bytes());
             outputStream.write(rawBlockEnd.getBlockBytes());
-            if (hasChildBlock) outputStream.write(rawChild.bytes());
-            if (hasLogBlock) outputStream.write(rawLog.getBytes());
+            if (rawLog != null) outputStream.write(rawLog.getBytes());
+            if (rawChild != null) outputStream.write(rawChild.bytes());
         } catch (Exception e) {
-            throw new RuntimeException("Unable to compile back unit: " + Names.unitName(rawBlock1.unitId()));
+            throw new RuntimeException("Unable to compile back unit: " + Names13.unitName(rawBlock1.unitId()));
         }
         return outputStream.toByteArray();
     }
@@ -102,15 +99,26 @@ public class Unit {
             //The units are split into 1 or 2 blocks
             //Child Units (have a child block)
             if (sizeExtraBlock == CBLOCK_SIZE) {
-                this.hasChildBlock = true;
                 this.rawChild = new ChildBlock(Arrays.copyOfRange(unitBytes,
                         unitBytes.length - sizeExtraBlock, unitBytes.length));
             }
             //Avatar and Logbook Units (have a logbook block)
             else if (sizeExtraBlock == LBLOCK_SIZE_US || sizeExtraBlock == LBLOCK_SIZE_JP) {
-                this.hasLogBlock = true;
                 this.rawLog = new LogBlock(Arrays.copyOfRange(unitBytes,
                         unitBytes.length - sizeExtraBlock, unitBytes.length));
+            }
+            //Avatar + Child Unit!
+            else if (sizeExtraBlock == (LBLOCK_SIZE_US + CBLOCK_SIZE) ||
+                    sizeExtraBlock == (LBLOCK_SIZE_JP + CBLOCK_SIZE)) {
+                //The child block is parsed first
+                int offsetChild = unitBytes.length - CBLOCK_SIZE;
+                this.rawChild = new ChildBlock(
+                        Arrays.copyOfRange(unitBytes, offsetChild, unitBytes.length));
+                //The logbook block size is calculated
+                int logSize = sizeExtraBlock - CBLOCK_SIZE;
+                int offsetLog = unitBytes.length - CBLOCK_SIZE - logSize;
+                this.rawLog = new LogBlock(Arrays.copyOfRange(unitBytes,
+                        offsetLog, unitBytes.length - CBLOCK_SIZE));
             }
             //Invalid extra block, aborting
             else if (sizeExtraBlock != 0) {
@@ -122,8 +130,8 @@ public class Unit {
     }
 
     public String unitName() {
-        if (hasLogBlock) return rawLog.getName();
-        return Names.unitName(rawBlock1.unitId());
+        if (rawLog != null) return rawLog.getName();
+        return Names13.unitName(rawBlock1.unitId());
     }
 
     public int[] modifiers() {
@@ -140,36 +148,52 @@ public class Unit {
 
     //Adds a child block
     public void addBlockChild() {
-        if (!this.hasChildBlock) { //If they already are a child, don't override
-            rawBlockEnd.addOffsetChild();
+        //If it does not have any block
+        if (rawLog == null && rawChild == null) {
+            rawBlockEnd.setTerminator(0, 1);
             this.rawChild = new ChildBlock();
-            hasChildBlock = true;
-            this.rawLog = null;
-            hasLogBlock = false;
+        }
+        //If it is a mix unit
+        else if (rawLog != null && rawChild == null) {
+            rawBlockEnd.setTerminator(1, 6);
+            rawLog.setTerminator(true);
+            this.rawChild = new ChildBlock();
         }
     }
 
     //Adds a logbook block
     public void addBlockLog() throws IOException {
-        if (!this.hasLogBlock) { //If they already are an avatar, don't override
-            rawBlockEnd.addOffsetLog();
+        //If it does not have any block
+        if (rawLog == null && rawChild == null) {
+            rawBlockEnd.setTerminator(1, 6);
             this.rawLog = new LogBlock();
-            hasLogBlock = true;
-            this.rawChild = null;
-            hasChildBlock = false;
+            rawLog.setTerminator(false);
+        }
+        //If it is a mix unit
+        else if (rawLog == null) {
+            rawBlockEnd.setTerminator(1, 6);
+            this.rawLog = new LogBlock();
+            rawLog.setTerminator(true);
         }
     }
 
-    public void removeBlockExtra() {
-        hasChildBlock = false;
-        hasLogBlock = false;
-        rawLog = null;
-        rawChild = null;
-        rawBlockEnd.removeOffsetBlock();
+    public void removeBlockExtra(boolean deleteLog) {
+        //Remove Avatar Block
+        if (deleteLog) {
+            rawLog = null;
+            if (rawChild == null) rawBlockEnd.setTerminator(0, 0);
+            else rawBlockEnd.setTerminator(0, 1);
+        }
+        //Remove Child Block
+        else {
+            rawChild = null;
+            if (rawLog == null) rawBlockEnd.setTerminator(0, 0);
+            else rawLog.setTerminator(false);
+        }
     }
 
     public String reportBasic() {
-        return unitName() + " (" + Names.className(rawBlock1.unitClass()) + ") ";
+        return unitName() + " (" + Names13.className(rawBlock1.unitClass()) + ") ";
     }
 
     //Max out the unit
@@ -181,7 +205,7 @@ public class Unit {
     public String report() {
         String text = "\n";
         //Unit Name and General Data
-        text += unitName() + ": " + Names.className(rawBlock1.unitClass());
+        text += unitName() + ": " + Names13.className(rawBlock1.unitClass());
         text += "\n" + "Modifiers: " + Arrays.toString(modifiers());
         //Stats
         text += "\n" + rawBlock1.report();
@@ -194,8 +218,8 @@ public class Unit {
         //Other
         text += rawBlockEnd.report();
         //Additional data
-        if (hasChildBlock) text += "\n" + rawChild.report();
-        if (hasLogBlock) text += "\n" + rawLog.report();
+        if (rawChild != null) text += "\n" + rawChild.report();
+        if (rawLog != null) text += "\n" + rawLog.report();
         //text += "\n";
         return text;
     }

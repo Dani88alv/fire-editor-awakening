@@ -1,10 +1,6 @@
 package com.danius.fireeditor.savefile.units;
 
-import com.danius.fireeditor.util.Names;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Supports {
 

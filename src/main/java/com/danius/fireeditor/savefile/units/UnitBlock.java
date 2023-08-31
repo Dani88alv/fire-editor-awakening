@@ -147,22 +147,27 @@ public class UnitBlock {
                     int unknownSize = blockBytes[offset + 0x43 + supportSize + 1] & 0xFF;
                     //The general block is copied
                     gBlock = Arrays.copyOfRange(blockBytes, offset, Unit.GBLOCK_SIZE + supportSize + unknownSize + offset);
-                    //Checks if there is a child block next (00 01)
-                    if (gBlock[gBlock.length - 2] == 0 && gBlock[gBlock.length - 1] == 1) {
-                        cBlock = Arrays.copyOfRange(blockBytes, offset + gBlock.length,
-                                offset + gBlock.length + Unit.CBLOCK_SIZE);
-                    }
                     //Checks if there is a Logbook block next (01 06)
-                    else if (gBlock[gBlock.length - 2] == 1 && gBlock[gBlock.length - 1] == 6) {
+                    if (gBlock[gBlock.length - 2] == 1 && gBlock[gBlock.length - 1] == 6) {
                         lBlock = Arrays.copyOfRange(blockBytes, offset + gBlock.length,
                                 offset + gBlock.length + lBlockSize);
+                        //If it finds for some reason a child block next
+                        if (lBlock[lBlock.length - 1] == 1) {
+                            cBlock = Arrays.copyOfRange(blockBytes, offset + gBlock.length + lBlock.length,
+                                    offset + gBlock.length + lBlock.length + Unit.CBLOCK_SIZE);
+                        }
+                    }
+                    //Checks if there is a child block next (00 01)
+                    else if (gBlock[gBlock.length - 2] == 0 && gBlock[gBlock.length - 1] == 1) {
+                        cBlock = Arrays.copyOfRange(blockBytes, offset + gBlock.length,
+                                offset + gBlock.length + Unit.CBLOCK_SIZE);
                     }
                     //All the blocks are combined
                     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                     try {
                         outputStream.write(gBlock);
-                        if (cBlock != null) outputStream.write(cBlock);
                         if (lBlock != null) outputStream.write(lBlock);
+                        if (cBlock != null) outputStream.write(cBlock);
                     } catch (Exception ignored) {
                         throw new RuntimeException();
                     }

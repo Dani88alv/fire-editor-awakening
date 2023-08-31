@@ -1,16 +1,15 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
 
 import java.util.Arrays;
 
@@ -38,12 +37,12 @@ public class ChildController {
         ObservableList<String> unitNames = FXCollections.observableArrayList();
         unitNames.add("None");
         for (int i = 0; i <= 56; i++) {
-            unitNames.add(Names.unitName(i));
+            unitNames.add(Names13.unitName(i));
         }
         comboUnit.setItems(unitNames);
         //Assets and flaws
         ObservableList<String> modifiers = FXCollections.observableArrayList();
-        modifiers.addAll(Names.modifNames);
+        modifiers.addAll(Names13.modifNames);
         comboAsset.setItems(modifiers);
         comboFlaw.setItems(modifiers);
         //The fields are disabled
@@ -53,7 +52,7 @@ public class ChildController {
     public void setUnit(Unit unit) {
         this.unit = unit;
         displayModifiers();
-        if (this.unit.hasChildBlock) {
+        if (this.unit.rawChild != null) {
             disableFields(false);
             //Supports
             setSupportValues();
@@ -74,7 +73,7 @@ public class ChildController {
     }
 
     public void addChildData() {
-        if (!unit.hasChildBlock) {
+        if (unit.rawChild == null) {
             this.unit.addBlockChild();
             disableFields(false);
             if (!listenersAdded) addListeners();
@@ -83,7 +82,7 @@ public class ChildController {
         }
     }
 
-    public void setSupportValues(){
+    public void setSupportValues() {
         spinFather.getValueFactory().setValue(unit.rawChild.supportParentValue(true));
         spinMother.getValueFactory().setValue(unit.rawChild.supportParentValue(false));
         spinSibling.getValueFactory().setValue(unit.rawChild.supportSiblingValue());
@@ -91,8 +90,8 @@ public class ChildController {
     }
 
     public void removeChildData() {
-        if (unit.hasChildBlock) {
-            this.unit.removeBlockExtra();
+        if (unit.rawChild != null) {
+            this.unit.removeBlockExtra(false);
             disableFields(true);
             displayModifiers();
         }
@@ -114,7 +113,7 @@ public class ChildController {
      */
     private void setupComboUnit() {
         comboUnit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasChildBlock) {
+            if (newValue != null && unit != null && unit.rawChild != null) {
                 int slot = comboSlot.getSelectionModel().getSelectedIndex();
                 int unitId = comboUnit.getSelectionModel().getSelectedIndex();
                 if (unitId == 0) unitId = 65535;
@@ -127,7 +126,7 @@ public class ChildController {
 
     private void setupComboAsset() {
         comboAsset.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasChildBlock) {
+            if (newValue != null && unit != null && unit.rawChild != null)  {
                 int slot = comboSlot.getSelectionModel().getSelectedIndex();
                 unit.rawChild.setAsset(slot, comboAsset.getSelectionModel().getSelectedIndex());
                 displayModifiers();
@@ -137,7 +136,7 @@ public class ChildController {
 
     private void setupComboFlaw() {
         comboFlaw.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasChildBlock) {
+            if (newValue != null && unit != null && unit.rawChild != null) {
                 int slot = comboSlot.getSelectionModel().getSelectedIndex();
                 unit.rawChild.setFlaw(slot, comboFlaw.getSelectionModel().getSelectedIndex());
                 displayModifiers();
@@ -162,7 +161,7 @@ public class ChildController {
      */
     private void setupComboSlot() {
         comboSlot.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasChildBlock) {
+            if (newValue != null && unit != null && unit.rawChild != null) {
                 //The previous slot is updated
                 updateModifiers(oldValue.intValue());
                 int slot = (int) newValue;

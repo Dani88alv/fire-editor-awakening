@@ -1,6 +1,5 @@
 package com.danius.fireeditor.savefile.units;
 
-import java.security.Key;
 import java.util.*;
 
 public class SkillLogic {
@@ -20,7 +19,7 @@ public class SkillLogic {
             parentSkills.add(new ArrayList<>());
         }
         //The skills of each parent slot are stored
-        if (unit.hasChildBlock) {
+        if (unit.rawChild != null) {
             for (int i = 0; i < 6; i++) {
                 //The skills of each parent slot are stored
                 List<Integer> skills = getParentSkills(unit, i);
@@ -93,7 +92,7 @@ public class SkillLogic {
         //Conquest (Walhart)
         if (id == 0x2F) extraSkills.add(0x56);
         //Conquest (Einherjar Zephiel, DLC Ephraim)
-        if (unit.hasLogBlock) {
+        if (unit.rawLog != null) {
             if (unit.rawLog.hasEinherjarId() && (unit.rawLog.getLogIdLastByte() == 68) || unit.rawLog.getLogIdLastByte() == 0xD5) {
                 extraSkills.add(0x56);
             }
@@ -101,7 +100,7 @@ public class SkillLogic {
         //Shadowgift (Aversa)
         if (id == 0x32) extraSkills.add(0x57);
         //Shadowgift (DLC Micaiah, DLC Katarina)
-        if (unit.hasLogBlock) {
+        if (unit.rawLog != null) {
             if (unit.rawLog.hasEinherjarId() &&
                     (unit.rawLog.getLogIdLastByte() == 0xCB) || unit.rawLog.getLogIdLastByte() == 0xDB) {
                 extraSkills.add(0x56);
@@ -185,7 +184,7 @@ public class SkillLogic {
         //Check the hardcoded regular units (no avatars and enemies)
         if (id >= 0x3 && id <= 0x38 && id != 0x36 && id != 0x37) defaultGender = getUnitGenderFlag(id);
             //Check the avatar gender
-        else if (unit.hasLogBlock) defaultGender = unit.rawLog.getFullBuild()[4] == 1;
+        else if (unit.rawLog!= null) defaultGender = unit.rawLog.getFullBuild()[4] == 1;
         return defaultGender;
     }
 

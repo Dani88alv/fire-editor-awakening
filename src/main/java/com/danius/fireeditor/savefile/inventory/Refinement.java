@@ -4,7 +4,6 @@ import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class Refinement {

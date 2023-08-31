@@ -1,7 +1,7 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.ChapterFile;
+import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
@@ -53,7 +53,7 @@ public class MainController {
 
     public void reloadTabs(byte[] fileBytes) {
         try {
-            FireEditor.chapterFile = new ChapterFile(fileBytes);
+            FireEditor.chapterFile = new Chapter13(fileBytes);
             FireEditor.unitController.loadUnitBlock();
             FireEditor.unitController.comboUnitGroup.setDisable(false);
             tabConvoy.setDisable(false);
@@ -146,7 +146,7 @@ public class MainController {
             try {
                 byte[] data = Files.readAllBytes(file.toPath());
                 Unit unit = new Unit(data);
-                if (unit.hasLogBlock) unit.rawLog.changeRegion(isWest); //Converts the unit to the current region
+                if (unit.rawLog != null) unit.rawLog.changeRegion(isWest); //Converts the unit to the current region
                 if (totalSize <= 255) FireEditor.unitController.addUnit(unit);
                 totalSize++;
             } catch (Exception e) {

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.OtherController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.OtherController">
    <children>
       <AnchorPane prefHeight="394.0" prefWidth="485.0">
          <children>
@@ -29,11 +29,10 @@
                   <Label fx:id="lblSword" layoutX="121.0" layoutY="27.0" text="Rank" />
                   <Spinner fx:id="spinBow" editable="true" layoutX="51.0" layoutY="121.0" prefWidth="61.0" />
                   <Label layoutX="6.0" layoutY="125.0" text="Bow" />
-                  <Label fx:id="lblBow" layoutX="121.0" layoutY="60.0" text="Rank" />
                   <Spinner fx:id="spinLance" editable="true" layoutX="51.0" layoutY="56.0" prefWidth="61.0" />
                   <Label layoutX="6.0" layoutY="60.0" text="Lance" />
-                  <Label fx:id="lblLance" layoutX="121.0" layoutY="93.0" text="Rank" />
-                  <Label fx:id="lblAxe" layoutX="121.0" layoutY="125.0" text="Rank" />
+                  <Label fx:id="lblLance" layoutX="121.0" layoutY="61.0" text="Rank" />
+                  <Label fx:id="lblAxe" layoutX="121.0" layoutY="94.0" text="Rank" />
                   <Spinner fx:id="spinTome" editable="true" layoutX="51.0" layoutY="154.0" prefWidth="61.0" />
                   <Label layoutX="6.0" layoutY="158.0" text="Tome" />
                   <Label fx:id="lblTome" layoutX="121.0" layoutY="158.0" text="Rank" />
@@ -43,6 +42,7 @@
                   <Label layoutX="48.0" layoutY="-1.0" text="Weapon EXP" />
                   <Spinner fx:id="spinAxe" editable="true" layoutX="51.0" layoutY="89.0" prefWidth="61.0" />
                   <Label layoutX="6.0" layoutY="93.0" text="Axe" />
+                  <Label fx:id="lblBow" layoutX="121.0" layoutY="126.0" text="Rank" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="184.0" layoutY="72.0" prefHeight="111.0" prefWidth="189.0">

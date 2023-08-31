@@ -1,4 +1,4 @@
-package com.danius.fireeditor.savefile.bigblocks;
+package com.danius.fireeditor.savefile.other;
 
 public class RawMap {
 

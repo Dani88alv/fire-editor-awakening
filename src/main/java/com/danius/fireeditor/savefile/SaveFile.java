@@ -81,12 +81,12 @@ public abstract class SaveFile {
             compressedBytes = outputStream.toByteArray();
 
         } catch (IOException ex) {
-            Logger.getLogger(ChapterFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Chapter13.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 outputStream.close();
             } catch (IOException ex) {
-                Logger.getLogger(ChapterFile.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Chapter13.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return compressedBytes;

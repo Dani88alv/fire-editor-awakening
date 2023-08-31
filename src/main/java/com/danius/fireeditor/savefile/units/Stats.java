@@ -134,9 +134,14 @@ public class Stats {
         int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
         int[] classAddition = getClassAddition(unit.rawBlock1.unitClass()); //Hardcoded
         //If it has logbook data, +2 on their asset
-        if (unit.hasLogBlock) {
+        if (unit.rawLog != null) {
             int asset = unit.rawLog.getAssetFlaw()[0];
-            if (asset != 0) unitAddition[asset - 1] += 2; //-1 bc asset 0 is none, asset 1 is HP, but addition 0 is HP
+            if (asset != 0) {
+                if (asset == 255){
+                    System.out.println();
+                }
+                unitAddition[asset - 1] += 2; //-1 bc asset 0 is none, asset 1 is HP, but addition 0 is HP
+            }
         }
 
         for (int i = 0; i < growths.length; i++) {
@@ -159,10 +164,22 @@ public class Stats {
 
     /*
     Calculates the modifiers of a unit
+    TODO BOTH BLOCKS
      */
     public static int[] calcModif(Unit unit) {
-        if (unit.hasLogBlock) return calcModifLog(unit); //MU & Logbook
-        else if (unit.hasChildBlock) return calcModifChild(unit); //Child units
+        //Avatar AND Child Units
+        if (unit.rawLog != null && unit.rawChild != null) {
+            int[] assets = calcAssetFlaw(unit.rawLog.getAssetFlaw()[0], unit.rawLog.getAssetFlaw()[1]);
+            int[] modif = calcModifChild(unit);
+            //The child modifiers and the assets and flaws are added (including base modifiers)
+            for (int i = 0; i < assets.length; i++) {
+                modif[i] += assets[i];
+            }
+            return modif;
+        }
+        //Legal units
+        else if (unit.rawLog != null) return calcModifLog(unit); //MU & Logbook
+        else if (unit.rawChild != null) return calcModifChild(unit); //Child units
         else return getBaseModif(unit.rawBlock1.unitId());  //Regular units
     }
 
@@ -271,7 +288,7 @@ public class Stats {
 
     public static int getMoveTotal(Unit unit) {
         int move = getMoveClass(unit.rawBlock1.unitClass()) + getMoveBuff(unit) + unit.rawBlock1.movement();
-        if (move > 255) move-= 256;
+        if (move > 255) move -= 256;
         return move;
     }
 

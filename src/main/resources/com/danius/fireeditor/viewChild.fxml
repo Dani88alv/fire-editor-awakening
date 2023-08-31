@@ -8,32 +8,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.fe13.ChildController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.ChildController">
    <children>
       <AnchorPane prefHeight="243.0" prefWidth="535.0">
          <children>
-            <ComboBox fx:id="comboSlot" layoutX="37.0" layoutY="39.0" prefWidth="150.0" promptText="Parent Slot" />
-            <ComboBox fx:id="comboUnit" layoutX="37.0" layoutY="102.0" prefHeight="26.0" prefWidth="126.0" promptText="Unit" />
-            <ComboBox fx:id="comboAsset" layoutX="184.0" layoutY="102.0" prefHeight="26.0" prefWidth="79.0" promptText="Asset" />
-            <ComboBox fx:id="comboFlaw" layoutX="284.0" layoutY="102.0" prefHeight="26.0" prefWidth="79.0" promptText="Flaw" />
-            <Spinner fx:id="spinSibling" layoutX="412.0" layoutY="145.0" prefHeight="26.0" prefWidth="62.0" />
-            <Spinner fx:id="spinMother" layoutX="412.0" layoutY="89.0" prefHeight="26.0" prefWidth="62.0" />
-            <Spinner fx:id="spinFather" layoutX="412.0" layoutY="36.0" prefHeight="26.0" prefWidth="62.0" />
-            <Button layoutX="37.0" layoutY="190.0" mnemonicParsing="false" onAction="#addChildData" prefWidth="125.0" text="Add Child Data" />
-            <Button layoutX="183.0" layoutY="191.0" mnemonicParsing="false" onAction="#removeChildData" prefHeight="26.0" prefWidth="125.0" text="Remove Child Data" />
-            <TextField fx:id="txtModif" disable="true" editable="false" layoutX="216.0" layoutY="39.0" />
-            <Label layoutX="413.0" layoutY="16.0" text="Parent Support" />
-            <Label layoutX="413.0" layoutY="68.0" text="Mother Support" />
-            <Label layoutX="412.0" layoutY="124.0" text="Sibling Support" />
-            <Label fx:id="lblFather" layoutX="480.0" layoutY="41.0" text="Rank" />
-            <Label fx:id="lblMother" layoutX="480.0" layoutY="93.0" text="Rank" />
-            <Label fx:id="lblSibling" layoutX="479.0" layoutY="149.0" text="Rank" />
-            <Label layoutX="217.0" layoutY="18.0" text="Total Modifiers" />
-            <Label layoutX="38.0" layoutY="18.0" text="Parent Slot" />
-            <Label layoutX="38.0" layoutY="81.0" text="Unit" />
-            <Label layoutX="186.0" layoutY="81.0" text="Asset" />
-            <Label layoutX="285.0" layoutY="81.0" text="Flaw" />
-            <Label layoutX="326.0" layoutY="186.0" prefHeight="36.0" prefWidth="253.0" text="Units cannot store child data and&#10;avatar data at the same time." />
+            <ComboBox fx:id="comboSlot" layoutX="18.0" layoutY="39.0" prefWidth="150.0" promptText="Parent Slot" />
+            <ComboBox fx:id="comboUnit" layoutX="18.0" layoutY="102.0" prefHeight="26.0" prefWidth="126.0" promptText="Unit" />
+            <ComboBox fx:id="comboAsset" layoutX="165.0" layoutY="102.0" prefHeight="26.0" prefWidth="79.0" promptText="Asset" />
+            <ComboBox fx:id="comboFlaw" layoutX="265.0" layoutY="102.0" prefHeight="26.0" prefWidth="79.0" promptText="Flaw" />
+            <Spinner fx:id="spinSibling" layoutX="369.0" layoutY="141.0" prefHeight="26.0" prefWidth="62.0" />
+            <Spinner fx:id="spinMother" layoutX="369.0" layoutY="85.0" prefHeight="26.0" prefWidth="62.0" />
+            <Spinner fx:id="spinFather" layoutX="369.0" layoutY="32.0" prefHeight="26.0" prefWidth="62.0" />
+            <Button layoutX="18.0" layoutY="173.0" mnemonicParsing="false" onAction="#addChildData" prefWidth="125.0" text="Add Child Data" />
+            <Button layoutX="164.0" layoutY="174.0" mnemonicParsing="false" onAction="#removeChildData" prefHeight="26.0" prefWidth="125.0" text="Remove Child Data" />
+            <TextField fx:id="txtModif" disable="true" editable="false" layoutX="197.0" layoutY="39.0" />
+            <Label layoutX="370.0" layoutY="12.0" text="Parent Support" />
+            <Label layoutX="370.0" layoutY="64.0" text="Mother Support" />
+            <Label layoutX="369.0" layoutY="120.0" text="Sibling Support" />
+            <Label fx:id="lblFather" layoutX="437.0" layoutY="37.0" text="Rank" />
+            <Label fx:id="lblMother" layoutX="437.0" layoutY="89.0" text="Rank" />
+            <Label fx:id="lblSibling" layoutX="436.0" layoutY="145.0" text="Rank" />
+            <Label layoutX="198.0" layoutY="18.0" text="Total Modifiers" />
+            <Label layoutX="19.0" layoutY="18.0" text="Parent Slot" />
+            <Label layoutX="19.0" layoutY="81.0" text="Unit" />
+            <Label layoutX="167.0" layoutY="81.0" text="Asset" />
+            <Label layoutX="266.0" layoutY="81.0" text="Flaw" />
          </children>
       </AnchorPane>
    </children>

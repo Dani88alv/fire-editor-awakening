@@ -1,15 +1,14 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.units.SkillLogic;
-import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
-import com.danius.fireeditor.util.Portrait;
+import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Portrait13;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -17,10 +16,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LogController {
     private boolean listenersAdded = false;
@@ -61,20 +58,20 @@ public class LogController {
         comboDifficulty.setItems(difficulty);
         //Einherjar names
         ObservableList<String> cardUnits = FXCollections.observableArrayList();
-        cardUnits.addAll(Names.spotPassNames);
-        cardUnits.addAll(Names.dlcNames);
+        cardUnits.addAll(Names13.spotPassNames);
+        cardUnits.addAll(Names13.dlcNames);
         comboCard.setItems(cardUnits);
         comboCard.getSelectionModel().select(0);
         //Asset and flaw
         ObservableList<String> modifiers = FXCollections.observableArrayList();
-        modifiers.addAll(Names.modifNames);
+        modifiers.addAll(Names13.modifNames);
         comboAsset.setItems(modifiers);
         comboFlaw.setItems(modifiers);
         //Class
         ObservableList<String> classes = FXCollections.observableArrayList();
-        classes.addAll(Names.classNames);
+        classes.addAll(Names13.classNames);
         comboClass.setItems(classes);
-        int vanillaCount = Constants.MAX_CLASSES;
+        int vanillaCount = Constants13.MAX_CLASSES;
         int modCount = FireEditor.maxClasses;
         if (modCount > vanillaCount) {
             for (int i = vanillaCount; i < modCount; i++) {
@@ -84,7 +81,7 @@ public class LogController {
         }
         //S-Pairings
         ObservableList<String> units = FXCollections.observableArrayList();
-        units.addAll(Names.unitNames);
+        units.addAll(Names13.unitNames);
         units.set(0, "None/Avatar (M)");
         comboWife.setItems(units);
         comboHusband.setItems(units);
@@ -100,7 +97,7 @@ public class LogController {
     public void setUnit(Unit unit, boolean isWest) {
         this.unit = unit;
         this.isWest = isWest;
-        if (unit.hasLogBlock) {
+        if (unit.rawLog != null) {
             //unit.rawLog.changeRegion(isWest);
             disableFields(false);
             loadFields();
@@ -111,7 +108,7 @@ public class LogController {
     }
 
     public void addLogData() throws IOException {
-        if (!unit.hasLogBlock) {
+        if (unit.rawLog == null) {
             String unitName = unit.unitName();
             this.unit.addBlockLog();
             unit.rawLog.changeRegion(isWest);
@@ -131,8 +128,8 @@ public class LogController {
     }
 
     public void removeLogData() {
-        if (unit.hasLogBlock) {
-            this.unit.removeBlockExtra();
+        if (unit.rawLog != null) {
+            this.unit.removeBlockExtra(true);
             disableFields(true);
             FireEditor.unitController.setImage();
         }
@@ -227,7 +224,7 @@ public class LogController {
     Gets the sprites from the resources to display the avatar portrait
      */
     public void displayImage() {
-        Image[] images = Portrait.setImage(unit);
+        Image[] images = Portrait13.setImage(unit);
         if (images[0] != null) imgBuild.setImage(images[0]);
         else imgBuild.setImage(null);
         if (images[1] != null) imgHairColor.setImage(images[1]);
@@ -360,7 +357,7 @@ public class LogController {
 
     private void setupComboPairingSlot() {
         comboPairingSlot.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasLogBlock) {
+            if (newValue != null && unit != null && unit.rawLog != null) {
                 //The previous slot is updated
                 int slot = (int) newValue;
                 comboWife.getSelectionModel().select(unit.rawLog.getPairing(slot)[0]);
@@ -371,7 +368,7 @@ public class LogController {
 
     private void setupComboHusband() {
         comboWife.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasLogBlock) {
+            if (newValue != null && unit != null && unit.rawLog != null) {
                 int slot = comboPairingSlot.getSelectionModel().getSelectedIndex();
                 unit.rawLog.setPairingMale(slot, comboWife.getSelectionModel().getSelectedIndex());
             }
@@ -380,7 +377,7 @@ public class LogController {
 
     private void setupComboWife() {
         comboHusband.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.hasLogBlock) {
+            if (newValue != null && unit != null && unit.rawLog != null) {
                 int slot = comboPairingSlot.getSelectionModel().getSelectedIndex();
                 unit.rawLog.setPairingFemale(slot, comboHusband.getSelectionModel().getSelectedIndex());
             }

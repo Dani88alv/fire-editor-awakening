@@ -1,4 +1,4 @@
-package com.danius.fireeditor.savefile;
+package com.danius.fireeditor.savefile.other;
 
 import com.danius.fireeditor.util.Bitflag;
 
@@ -9,20 +9,6 @@ public class RawDifficulty {
     public RawDifficulty(byte[] bytes) {
         this.bytes = bytes;
         //TODO: en los mapas penalty tiene valores como 06
-        //if (bytes[0x0] != 0 && bytes[0x0] != 4) setPenalty(false); //Invalid values
-        //if (difficulty() > 2) setDifficulty(2); //Invalid Values
-    }
-
-    /*
-    Classic: 0
-    Casual: 4
-     */
-    public int penaltyId() {
-        return bytes[0x0] & 0xFF;
-    }
-
-    public void setPenalty(int id) {
-        bytes[0x0] = (byte) (id & 0xFF);
     }
 
     /*
@@ -75,8 +61,6 @@ public class RawDifficulty {
         if (difficulty() == 0) report += "Normal";
         if (difficulty() == 1) report += "Hard";
         if (difficulty() == 2) report += "Lunatic";
-        //Penalty
-        report += " (Mode: " + penaltyId() + ")";
         //Lunatic+ Flag
         if (isLunaticPlus()) report += " (Lunatic+)";
         return report;

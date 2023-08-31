@@ -1,7 +1,7 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.ChapterFile;
+import com.danius.fireeditor.savefile.Chapter13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ public class CheatController {
     }
 
     public void setSupports() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         int level = comboSupport.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
@@ -45,7 +45,7 @@ public class CheatController {
     }
 
     public void setSkillsAll() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSkill.setAll(true);
@@ -54,7 +54,7 @@ public class CheatController {
     }
 
     public void setSkillsLegal() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).setLegalSkills();
@@ -63,7 +63,7 @@ public class CheatController {
     }
 
     public void setSkillsReset() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSkill.setAll(false);
@@ -73,7 +73,7 @@ public class CheatController {
     }
 
     public void setMaxBattles() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlockEnd.setBattles(9999);
@@ -83,7 +83,7 @@ public class CheatController {
     }
 
     public void setMoveTwo() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlock1.setMovement(2);
@@ -92,7 +92,7 @@ public class CheatController {
     }
 
     public void setMoveHundred() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlock1.setMovement(100);
@@ -101,7 +101,7 @@ public class CheatController {
     }
 
     public void setMaxStats() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).maxStats();
@@ -110,7 +110,7 @@ public class CheatController {
     }
 
     public void setBuffs() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllTonicFlags();
@@ -121,7 +121,7 @@ public class CheatController {
 
     //Not even Grima could predict this
     public void pickAGodAndPray() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         int level = comboSupport.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
@@ -151,7 +151,7 @@ public class CheatController {
     }
 
     public void maxConvoy() {
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         //Convoy
         chapterFile.blockTran.maxItemAmount(900, 900);
         chapterFile.blockTran.maxForgedAmounts(FireEditor.chapterFile.blockRefi.refiList);
@@ -166,7 +166,7 @@ public class CheatController {
 
     public void unlockMaps() {
         FireEditor.chapterController.comboChapterData.getSelectionModel().select(2);
-        ChapterFile chapterFile = new ChapterFile(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         for (int i = 0; i < chapterFile.blockGmap.maps.size(); i++) {
             chapterFile.blockGmap.maps.get(i).setLockState(2);
         }

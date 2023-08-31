@@ -1,13 +1,13 @@
 package com.danius.fireeditor.util;
 
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.units.Supports;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Names {
+public class Names13 {
 
     //TODO: usar este método a partir de ahora y hacer la lista private
     public static String unitName(int id) {
@@ -21,7 +21,7 @@ public class Names {
     }
 
     public static String className(int id) {
-        if (id > Constants.MAX_CLASSES) return "Outrealm Class " + (Constants.MAX_CLASSES - id + 2);
+        if (id > Constants13.MAX_CLASSES) return "Outrealm Class " + (Constants13.MAX_CLASSES - id + 2);
         return classNames.get(id);
     }
 
@@ -31,7 +31,7 @@ public class Names {
     }
 
     public static String itemName2(int id, int maxCount) {
-        int vanillaCount = Names.itemNames.size();
+        int vanillaCount = Names13.itemNames.size();
         if (id >= vanillaCount && id < maxCount) {
             int itemId = id - vanillaCount + 1;
             return "Modded Item #" + itemId;
@@ -200,7 +200,7 @@ public class Names {
     public static final List<String> battleFlags = Arrays.asList(
             "Moved in this turn", "Paired Up (Front)", "Paired Up (Back)", "Retired/Dead (Classic)",
             "Unknown 0-4", "Unknown 0-5", "Unknown 0-6", "Retired on Current Map",
-            "Unknown 1-0", "Unknown 1-1", "Unknown 1-2", "Unknown 1-3",
+            "Unknown 1-0", "Unknown 1-1", "Selected for Battle", "Unknown 1-3",
             "Unknown 1-4", "Unknown 1-5", "Unknown 1-6", "Unknown 1-7",
             "Unknown 2-0", "Unknown 2-1", "Unknown 2-2", "Galeforce Used?",
             "Unknown 2-4", "Unknown 2-5", "Married to Maiden", "Unknown 2-7",

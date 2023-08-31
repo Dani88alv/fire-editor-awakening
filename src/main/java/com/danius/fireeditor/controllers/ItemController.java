@@ -1,10 +1,10 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -43,7 +43,7 @@ public class ItemController {
         //Item comboboxes
         ObservableList<String> items = FXCollections.observableArrayList();
         for (int i = 0; i < count; i++) {
-            items.add(Names.itemName2(i, regularItemCount));
+            items.add(Names13.itemName2(i, regularItemCount));
         }
         comboItem1.setItems(items);
         comboItem2.setItems(items);
@@ -59,7 +59,7 @@ public class ItemController {
         for (int i = 0; i < unit.rawInventory.items.size(); i++) {
             int itemId = unit.rawInventory.items.get(i).itemId();
             //Only vanilla and non-forged items are modified
-            if (itemId <= Constants.MAX_ITEM_COUNT) maxValues.add(TranBlock.itemAmounts.get(itemId));
+            if (itemId <= Constants13.MAX_ITEM_COUNT) maxValues.add(TranBlock.itemAmounts.get(itemId));
             else maxValues.add(unit.rawInventory.items.get(i).uses());
         }
         spinItem1.getValueFactory().setValue(maxValues.get(0));

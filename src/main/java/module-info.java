@@ -3,7 +3,6 @@ module com.example.fireeditor {
     requires javafx.fxml;
     requires java.logging;
 
-
     opens com.danius.fireeditor to javafx.fxml;
     exports com.danius.fireeditor;
     exports com.danius.fireeditor.util;
@@ -20,11 +19,9 @@ module com.example.fireeditor {
     opens com.danius.fireeditor.savefile.units.mainblock to javafx.fxml;
     exports com.danius.fireeditor.savefile.units.extrablock;
     opens com.danius.fireeditor.savefile.units.extrablock to javafx.fxml;
-    exports com.danius.fireeditor.savefile.bigblocks;
-    opens com.danius.fireeditor.savefile.bigblocks to javafx.fxml;
+    exports com.danius.fireeditor.savefile.other;
+    opens com.danius.fireeditor.savefile.other to javafx.fxml;
     exports com.danius.fireeditor.savefile.global;
     opens com.danius.fireeditor.savefile.global to javafx.fxml;
-    exports com.danius.fireeditor.controllers.fe13;
-    opens com.danius.fireeditor.controllers.fe13 to javafx.fxml;
 
 }

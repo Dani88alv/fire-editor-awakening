@@ -1,10 +1,10 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -49,7 +49,7 @@ public class ConvoyController {
             //The tables are cleared up
             tableConvoy.getItems().clear();
             tableRefi.getItems().clear();
-            List<String> itemNames = Names.getItemNames(tranBlock.regularItemCount());
+            List<String> itemNames = Names13.getItemNames(tranBlock.regularItemCount());
             List<String> refiNames = refiBlock.refiNames();
             List<Integer> refiId = refiBlock.refiIds();
             //The values are loaded

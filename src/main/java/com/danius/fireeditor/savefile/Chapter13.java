@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile;
 
-import com.danius.fireeditor.savefile.bigblocks.*;
+import com.danius.fireeditor.savefile.other.*;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.units.UnitBlock;
@@ -10,15 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class ChapterFile extends SaveFile {
-    /*
-    TODO: JP differences, convert JP to US and viceversa
-    User block is 1 byte larger in JP
-    Refinement names
-    Logbook block name and dialogues
-    StreetPass Team?
-    SpotPass & StreetPass Team on Map (Logbook block)
-     */
+public class Chapter13 extends SaveFile {
     public HeaderBlock blockHeader; //From 0x0 to 0xC0 (West) or 0x80 (JP)
     private byte[] blockIndex; //Stores the block addresses
     private byte[] blockPers; //?? - Map Exclusive
@@ -36,7 +28,7 @@ public class ChapterFile extends SaveFile {
     /*
     This class handles the Chapter save file blocks
      */
-    public ChapterFile(byte[] fileBytes) {
+    public Chapter13(byte[] fileBytes) {
         initialize(fileBytes);
         //The general data is printed
         System.out.println(blockUnit.reportCount());

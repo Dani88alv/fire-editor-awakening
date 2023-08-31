@@ -1,13 +1,12 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.bigblocks.Du26Block;
-import com.danius.fireeditor.savefile.bigblocks.GmapBlock;
-import com.danius.fireeditor.savefile.bigblocks.HeaderBlock;
-import com.danius.fireeditor.savefile.bigblocks.UserBlock;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.other.Du26Block;
+import com.danius.fireeditor.savefile.other.GmapBlock;
+import com.danius.fireeditor.savefile.other.HeaderBlock;
+import com.danius.fireeditor.savefile.other.UserBlock;
+import com.danius.fireeditor.util.Names13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -120,7 +119,7 @@ public class ChapterController {
         comboDifficulty.setItems(difficulty);
         //DLC Chapters
         ObservableList<String> dlcChapters = FXCollections.observableArrayList();
-        dlcChapters.addAll(Names.chapterDlcNames);
+        dlcChapters.addAll(Names13.chapterDlcNames);
         comboChapterDlc.setItems(dlcChapters);
         //Gmap
         ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Unlocked");
@@ -186,7 +185,7 @@ public class ChapterController {
             return "Paralogue " + chapter;
         } else if (id == 50) return "Outrealm Gate";
         else {
-            return "Mod Chapter #" + (Constants.MAX_CHAPTERS - id + 1);
+            return "Mod Chapter #" + (Constants13.MAX_CHAPTERS - id + 1);
         }
     }
 }

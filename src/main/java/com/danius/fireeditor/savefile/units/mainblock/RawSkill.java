@@ -1,9 +1,8 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RawSkill {
@@ -56,7 +55,7 @@ public class RawSkill {
         String report = "";
         report += "Learned Skills (" + skillCount() + "): ";
         for (Integer learnedSkill : getLearnedSkills()) {
-            report += Names.skillNames.get(learnedSkill) + ", ";
+            report += Names13.skillNames.get(learnedSkill) + ", ";
         }
         report = report.substring(0, report.length() - 2);
         return report;

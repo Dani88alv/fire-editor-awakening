@@ -1,18 +1,15 @@
-package com.danius.fireeditor.controllers.fe13;
+package com.danius.fireeditor.controllers;
 
-import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Names13;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.util.List;
 
 public class SupportController {
     private Unit unit;
@@ -57,7 +54,7 @@ public class SupportController {
             int totalCount = unit.rawSupport.supportCount();
             int[] characters = Supports.getSupportUnits(unit.rawBlock1.unitId());
             for (int character : characters) {
-                unitNames.add(Names.unitName(character - 1));
+                unitNames.add(Names13.unitName(character - 1));
             }
             //If there are modded supports, they are added
             for (int i = characters.length; i < totalCount; i++) {
@@ -127,7 +124,7 @@ public class SupportController {
     private void setLabelLevel() {
         int value = spinValue.getValue();
         int slot = comboUnit.getSelectionModel().getSelectedIndex();
-        lblLevel.setText(Names.supportLevel(unit.rawBlock1.unitId(), value, slot));
+        lblLevel.setText(Names13.supportLevel(unit.rawBlock1.unitId(), value, slot));
     }
 
 }
