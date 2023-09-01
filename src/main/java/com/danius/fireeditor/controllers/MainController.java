@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainController {
 
-    private String path = System.getProperty("user.dir");
+    public static String path = System.getProperty("user.dir");
     public static File backupFile;
 
     @FXML

@@ -12,6 +12,7 @@ public class SkillLogic {
         boolean isFemale = isFemaleUnit(unit);
         //Main skills
         List<Integer> regularSkills = getSkillsFromClass(hardcodedClasses(unitId, isFemale));
+        regularSkills.addAll(recruitedSkills(unitId));
         //Parent Skills (last skill slot inheritance)
         //The parent slots list is initialized
         List<List<Integer>> parentSkills = new ArrayList<>();
@@ -184,7 +185,7 @@ public class SkillLogic {
         //Check the hardcoded regular units (no avatars and enemies)
         if (id >= 0x3 && id <= 0x38 && id != 0x36 && id != 0x37) defaultGender = getUnitGenderFlag(id);
             //Check the avatar gender
-        else if (unit.rawLog!= null) defaultGender = unit.rawLog.getFullBuild()[4] == 1;
+        else if (unit.rawLog != null) defaultGender = unit.rawLog.getFullBuild()[4] == 1;
         return defaultGender;
     }
 
@@ -208,6 +209,21 @@ public class SkillLogic {
         if (skills == null) return new int[0];
         for (int i = 0; i < skills.length; i++) skills[i] -= 1;
         return skills;
+    }
+
+    public static List<Integer> recruitedSkills(int unitId) {
+        List<Integer> list = new ArrayList<>();
+        if (unitId < 46 || unitId > 51) return list;
+        //Only spotpass paralogue characters
+        int[] skills = new int[6];
+        if (unitId == 46) skills = new int[]{12, 11, 25, 46};
+        else if (unitId == 47) skills = new int[]{87};
+        else if (unitId == 48) skills = new int[]{3, 30, 56};
+        else if (unitId == 49) skills = new int[]{10, 78, 73, 48};
+        else if (unitId == 50) skills = new int[]{87, 5, 42, 62, 84};
+        else skills = new int[]{64, 65, 66, 74, 75};
+        for (int skill : skills) list.add(skill);
+        return list;
     }
 
     private static HashMap<Integer, int[]> classSkills() {
@@ -305,7 +321,7 @@ public class SkillLogic {
         chars.put(4, new int[]{6}); //Tactician M
         chars.put(5, new int[]{7}); //Tactician M
         chars.put(8, new int[]{12, 14}); //Cavalier M
-        chars.put(9, new int[]{13, 15}); //Cavalier M
+        chars.put(9, new int[]{13, 15}); //Cavalier F
         chars.put(10, new int[]{16, 14}); //Knight M
         chars.put(11, new int[]{17, 15}); //Knight F
         chars.put(18, new int[]{24, 25}); //Barbarian

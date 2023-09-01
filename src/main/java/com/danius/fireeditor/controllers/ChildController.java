@@ -1,5 +1,6 @@
 package com.danius.fireeditor.controllers;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
@@ -126,7 +127,7 @@ public class ChildController {
 
     private void setupComboAsset() {
         comboAsset.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && unit != null && unit.rawChild != null)  {
+            if (newValue != null && unit != null && unit.rawChild != null) {
                 int slot = comboSlot.getSelectionModel().getSelectedIndex();
                 unit.rawChild.setAsset(slot, comboAsset.getSelectionModel().getSelectedIndex());
                 displayModifiers();
@@ -212,5 +213,6 @@ public class ChildController {
 
     private void displayModifiers() {
         txtModif.setText(Arrays.toString(unit.modifiers()));
+        FireEditor.unitController.setFieldsStats(unit);
     }
 }

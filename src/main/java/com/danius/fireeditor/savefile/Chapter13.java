@@ -56,8 +56,6 @@ public class Chapter13 extends SaveFile {
             System.out.println("INDEX BLOCK MISMATCH, ATTEMPTING TO SEARCH MANUALLY");
             splitBlocksBackup(fileBytes);
         }
-
-
     }
 
     /*
@@ -218,7 +216,6 @@ public class Chapter13 extends SaveFile {
                 Hex.setByte4(blockIndex, 0x4 + i * 4, sum);
             }
         }
-
     }
 
     /*
