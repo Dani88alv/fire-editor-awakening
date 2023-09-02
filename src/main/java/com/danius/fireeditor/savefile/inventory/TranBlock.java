@@ -103,11 +103,14 @@ public class TranBlock {
 
     //Maxes the full refinement inventory
     public void maxForgedAmounts(List<Refinement> refiList) {
-        for (int i = 0; i < refiList.size(); i++) {
-            int amount = itemAmounts.get(refiList.get(i).weaponId());
-            setForgedUses(i, amount);
+        for (Refinement refinement : refiList) {
+            int maxUses = itemAmounts.get(refinement.weaponId());
+            int currentUses = inventoryRefi.get(refinement.position());
+            if (currentUses > maxUses) while (maxUses <= currentUses) maxUses *= 2;
+            setForgedUses(refinement.position(), maxUses);
         }
     }
+
 
     public static String amountString(int id, int amount) {
         int maxValue = 0;

@@ -3,7 +3,6 @@ package com.danius.fireeditor.savefile.inventory;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Arrays;
 
 public class Refinement {
@@ -24,8 +23,14 @@ public class Refinement {
         this.rawStats = Arrays.copyOfRange(refiBytes, 0x2 + rawName.length, refiBytes.length);
     }
 
-    //Only used when the block is combined again
-    public void setBlockPosition(int id) {
+    /*
+    Not always starts at 0, must be synced in the UI with the forged weapon inventory
+     */
+    public int position() {
+        return rawHeader[0] & 0xFF;
+    }
+
+    public void setPosition(int id) {
         rawHeader[0] = (byte) (id & 0xFF);
     }
 
@@ -34,15 +39,73 @@ public class Refinement {
         return Hex.byteArrayToString(nameArray);
     }
 
-    public int weaponId() {
-        return rawStats[0] & 0xFF;
+    public void setName(String name) {
+        if (name.length() > rawName.length) name = name.substring(0, rawName.length);
+        byte[] nameBytes = Hex.stringToByteArray(name, rawName.length);
+        System.arraycopy(nameBytes, 0, rawName, 0, nameBytes.length);
     }
 
-    public byte[] bytes() throws IOException {
+    public int weaponId() {
+        return Hex.getByte2(rawStats, 0x0);
+    }
+
+    public void setWeaponId(int value) {
+        Hex.setByte2(rawStats, 0x0, value);
+    }
+
+    /*
+    Might, hit and critical are not absolute, their values are added to the base weapon stats
+     */
+    public int might() {
+        int point = 0x2;
+        return rawStats[point] & 0xFF;
+    }
+
+    public void setMight(int value) {
+        int point = 0x2;
+        rawStats[point] = (byte) (value & 0xFF);
+    }
+
+    public int hit() {
+        int point = 0x3;
+        return rawStats[point] & 0xFF;
+    }
+
+    public void setHit(int value) {
+        int point = 0x3;
+        rawStats[point] = (byte) (value & 0xFF);
+    }
+
+    public int crit() {
+        int point = 0x4;
+        return rawStats[point] & 0xFF;
+    }
+
+    public void setCrit(int value) {
+        int point = 0x4;
+        rawStats[point] = (byte) (value & 0xFF);
+    }
+
+    public boolean isEnemy() {
+        int point = 0x5;
+        int value = rawStats[point];
+        return value == 1;
+    }
+
+    public void setFlagEnemy(boolean set) {
+        int point = 0x5;
+        rawStats[point] = (byte) ((set) ? 1 : 0);
+    }
+
+    public byte[] bytes() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        outputStream.write(rawHeader);
-        outputStream.write(rawName);
-        outputStream.write(rawStats);
+        try {
+            outputStream.write(rawHeader);
+            outputStream.write(rawName);
+            outputStream.write(rawStats);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
         return outputStream.toByteArray();
     }
 

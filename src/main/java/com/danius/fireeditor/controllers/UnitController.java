@@ -2,6 +2,7 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
@@ -319,7 +320,7 @@ public class UnitController {
         btnOpenSkills.setDisable(disable);
         btnOpenFlags.setDisable(disable);
         checkLimit.setDisable(disable);
-        if (disable){
+        if (disable) {
             imgBuild.setImage(null);
             imgHair.setImage(null);
             imgHairColor.setImage(null);
@@ -354,13 +355,25 @@ public class UnitController {
             //TODO Legal children units validation here
         });
         //If the Unit ID is changed, the name, portrait and stats are updated too
-        spinUnitId.valueProperty().addListener((observable, oldValue, newValue) -> {
+        spinUnitId.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 spinUnitId.increment(0);
                 listViewUnit.getSelectionModel().getSelectedItem().rawBlock1.setUnitId(spinUnitId.getValue());
                 listViewUnit.getSelectionModel().getSelectedItem().rawSupport.unitId = spinUnitId.getValue();
                 labelUnitName.setText(listViewUnit.getSelectionModel().getSelectedItem().unitName());
                 refreshData(listViewUnit.getSelectionModel().getSelectedItem());
+            }
+        });
+        spinLevel.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && listViewUnit.getSelectionModel().getSelectedItem() != null) {
+                spinLevel.increment(0);
+                listViewUnit.getSelectionModel().getSelectedItem().rawBlock1.setLevel(spinLevel.getValue());
+            }
+        });
+        spinExp.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && listViewUnit.getSelectionModel().getSelectedItem() != null) {
+                spinExp.increment(0);
+                listViewUnit.getSelectionModel().getSelectedItem().rawBlock1.setExp(spinExp.getValue());
             }
         });
         //If the class is changed, the portrait and stats are updated too
@@ -624,7 +637,7 @@ public class UnitController {
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
                 ItemController itemController = fxmlLoader.getController();
                 int itemCount = FireEditor.chapterFile.blockTran.regularItemCount();
-                itemController.setUnit(selectedValue, itemCount);
+                itemController.setUnit(selectedValue, itemCount, FireEditor.convoyController.refiBlock.refiList);
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();
                 secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows

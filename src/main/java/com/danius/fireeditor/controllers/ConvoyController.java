@@ -1,11 +1,14 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.controllers.UI;
+import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
+import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.util.Names13;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,59 +24,206 @@ public class ConvoyController {
     public TranBlock tranBlock;
     public RefiBlock refiBlock;
     @FXML
-    private TableView<DataItem> tableConvoy, tableRefi;
+    private ListView<Refinement> listViewRefi;
     @FXML
-    private TableColumn<DataItem, String> nameColumn, colRefiName;
+    private ComboBox<String> comboWeaponId;
     @FXML
-    private TableColumn<DataItem, Integer> amountColumn, colRefiAmount;
+    private Spinner<Integer> spinRefiUse, spinMight, spinHit, spinCrit, spinPos;
     @FXML
-    private TableColumn<DataItem, String> totalUsesColumn, colRefiUses;
+    private CheckBox checkRefiFlag;
+    @FXML
+    private TextField txtRefiName;
+    @FXML
+    private Label lblRefiAmount, lblRefiCount;
+    @FXML
+    private TableView<DataItem> tableConvoy;
+    @FXML
+    private TableColumn<DataItem, String> nameColumn;
+    @FXML
+    private TableColumn<DataItem, Integer> amountColumn;
+    @FXML
+    private TableColumn<DataItem, String> totalUsesColumn;
 
 
     public void initialize() {
         FireEditor.convoyController = this;
+        disableRefi(true);
+        ObservableList<String> items = FXCollections.observableArrayList(Names13.itemNames);
+        comboWeaponId.setItems(items);
+        UI.setSpinnerNumeric(spinRefiUse, 65535);
+        UI.setSpinnerNumeric(spinMight, 255);
+        UI.setSpinnerNumeric(spinHit, 255);
+        UI.setSpinnerNumeric(spinCrit, 255);
+        UI.setSpinnerNumeric(spinPos, 255);
+        UI.setTextField(txtRefiName, 18);
+        spinPos.setDisable(true);
+        setupRefiList();
         loadBlocks();
+        setupListeners();
+    }
+
+    public void cleanInventory() {
+        List<Integer> usedRefiPositions = new ArrayList<>();
+        //The used positions are stored
+        for (int i = 0; i < refiBlock.refiList.size(); i++) {
+            usedRefiPositions.add(refiBlock.refiList.get(i).position());
+        }
+        //The unused positions are cleared out
+        for (int i = 0; i < tranBlock.inventoryRefi.size(); i++) {
+            if (!usedRefiPositions.contains(i)) {
+                tranBlock.inventoryRefi.set(i, 0);
+            }
+        }
     }
 
     public void loadBlocks() {
         if (FireEditor.chapterFile != null) {
             this.tranBlock = FireEditor.chapterFile.blockTran;
             this.refiBlock = FireEditor.chapterFile.blockRefi;
-            loadItemTable(tranBlock.inventoryMain, tranBlock.inventoryRefi);
+            //The regular item table is loaded
+            cleanInventory();
+            loadItemTable(tranBlock.inventoryMain);
+            int regularItemCount = tranBlock.regularItemCount();
+            for (int i = comboWeaponId.getItems().size(); i < regularItemCount; i++) {
+                comboWeaponId.getItems().add("Modded Item #" + (i - Constants13.MAX_ITEM_COUNT));
+            }
+            //The refinement listview is loaded
+            loadRefiTable(refiBlock);
+            if (refiBlock.refiList.size() == 0) lblRefiCount.setText("Forged Weapon Count: 0");
         }
     }
 
+    public void setupListeners() {
+        checkRefiFlag.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            listViewRefi.getSelectionModel().getSelectedItem().setFlagEnemy(newValue);
+        });
+        comboWeaponId.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            if (listViewRefi.getSelectionModel().getSelectedItem() != null) {
+                listViewRefi.getSelectionModel().getSelectedItem().setWeaponId(newValue.intValue());
+                lblRefiAmount.setText(amountString(newValue.intValue(),
+                        tranBlock.inventoryRefi.get(listViewRefi.getSelectionModel().getSelectedItem().position())));
+            }
+        });
+        txtRefiName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (listViewRefi.getSelectionModel().getSelectedItem() != null) {
+                listViewRefi.getSelectionModel().getSelectedItem().setName(newValue);
+            }
+        });
+        spinRefiUse.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
+                spinRefiUse.increment(0);
+                tranBlock.setForgedUses(listViewRefi.getSelectionModel().getSelectedItem().position(),
+                        spinRefiUse.getValue());
+                lblRefiAmount.setText(amountString(listViewRefi.getSelectionModel().getSelectedItem().weaponId(),
+                        spinRefiUse.getValue()));
+            }
+        });
+        spinMight.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
+                spinMight.increment(0);
+                listViewRefi.getSelectionModel().getSelectedItem().setMight(spinMight.getValue());
+            }
+        });
+        spinHit.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
+                spinHit.increment(0);
+                listViewRefi.getSelectionModel().getSelectedItem().setHit(spinHit.getValue());
+            }
+        });
+        spinCrit.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            spinCrit.increment(0);
+            if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
+                listViewRefi.getSelectionModel().getSelectedItem().setCrit(spinCrit.getValue());
+            }
+        });
+    }
+
+    public void loseSpinnerFocus() {
+        spinMight.increment(0);
+        spinRefiUse.increment(0);
+        spinHit.increment(0);
+        spinCrit.increment(0);
+    }
+
+    public void setRefiFields(Refinement refi) {
+        comboWeaponId.getSelectionModel().select(refi.weaponId());
+        spinRefiUse.getValueFactory().setValue(tranBlock.inventoryRefi.get(refi.position()));
+        lblRefiAmount.setText(amountString(refi.weaponId(), tranBlock.inventoryRefi.get(refi.position())));
+        txtRefiName.setText(refi.getName());
+        spinMight.getValueFactory().setValue(refi.might());
+        spinCrit.getValueFactory().setValue(refi.crit());
+        spinHit.getValueFactory().setValue(refi.hit());
+        spinPos.getValueFactory().setValue(refi.position());
+        checkRefiFlag.setSelected(refi.isEnemy());
+    }
+
+    public void loadRefiTable(RefiBlock refiBlock) {
+        if (FireEditor.chapterFile != null) {
+            int size = refiBlock.refiList.size();
+            if (size == 0) {
+                disableRefi(true);
+                return;
+            }
+            disableRefi(false);
+            lblRefiCount.setText("Forged Weapon Count: " + size);
+            listViewRefi.setItems(FXCollections.observableArrayList(refiBlock.refiList));
+            listViewRefi.getSelectionModel().selectLast();
+            listViewRefi.getSelectionModel().selectFirst();
+        }
+    }
+
+    public void setupRefiList() {
+        listViewRefi.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(Refinement ref, boolean empty) {
+                super.updateItem(ref, empty);
+                if (empty || ref == null) {
+                    setText(null);
+                } else {
+                    setText(ref.toString());
+                }
+            }
+        });
+        listViewRefi.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Refinement refinement = new Refinement(newValue.bytes());
+                // When another Refinement is selected, the last refi is updated and the new one is loaded
+                //updateUnitFromFields(oldValue);
+                setRefiFields(refinement);
+            } //else disableElements(true);
+        });
+    }
+
+    public void disableRefi(boolean disable) {
+        spinRefiUse.setDisable(disable);
+        spinMight.setDisable(disable);
+        spinHit.setDisable(disable);
+        spinCrit.setDisable(disable);
+        checkRefiFlag.setDisable(disable);
+        txtRefiName.setDisable(disable);
+        comboWeaponId.setDisable(disable);
+        listViewRefi.setDisable(disable);
+    }
+
     //Loads the table with a regular item amount list
-    public void loadItemTable(List<Integer> inventoryMain, List<Integer> inventoryRefi) {
+    public void loadItemTable(List<Integer> inventoryMain) {
         try {
             //The tables are cleared up
             tableConvoy.getItems().clear();
-            tableRefi.getItems().clear();
             List<String> itemNames = Names13.getItemNames(tranBlock.regularItemCount());
-            List<String> refiNames = refiBlock.refiNames();
-            List<Integer> refiId = refiBlock.refiIds();
             //The values are loaded
             for (int i = 0; i < itemNames.size(); i++) {
                 tableConvoy.getItems().add(new DataItem(itemNames.get(i), inventoryMain.get(i), i));
             }
-            for (int i = 0; i < inventoryRefi.size(); i++) {
-                tableRefi.getItems().add(new DataItem(refiNames.get(i), inventoryRefi.get(i), refiId.get(i)));
-            }
             //The table columns are set up
             if (!addedListeners) {
-                colRefiName.setCellValueFactory(new PropertyValueFactory<>("stringData"));
-                colRefiAmount.setCellValueFactory(new PropertyValueFactory<>("numberData"));
-                colRefiAmount.setCellFactory(spinnerCellFactory(true));
-                colRefiUses.setCellValueFactory(cellData -> cellData.getValue().totalUsesProperty());
-
                 nameColumn.setCellValueFactory(new PropertyValueFactory<>("stringData"));
                 amountColumn.setCellValueFactory(new PropertyValueFactory<>("numberData"));
-                amountColumn.setCellFactory(spinnerCellFactory(false));
+                amountColumn.setCellFactory(spinnerCellFactory());
                 totalUsesColumn.setCellValueFactory(cellData -> cellData.getValue().totalUsesProperty());
             }
             addedListeners = true;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException();
         }
 
@@ -88,17 +238,9 @@ public class ConvoyController {
         return numberValues;
     }
 
-    public List<Integer> getRefiUses() {
-        List<Integer> numberValues = new ArrayList<>();
-        for (DataItem dataItem : tableRefi.getItems()) {
-            numberValues.add(dataItem.getNumberData());
-        }
-        return numberValues;
-    }
-
 
     //Setups somehow the table spinners
-    private Callback<TableColumn<DataItem, Integer>, TableCell<DataItem, Integer>> spinnerCellFactory(boolean refi) {
+    private Callback<TableColumn<DataItem, Integer>, TableCell<DataItem, Integer>> spinnerCellFactory() {
         return column -> new TableCell<>() {
             private final Spinner<Integer> spinner = new Spinner<>(0, Integer.MAX_VALUE, 0);
 
@@ -111,14 +253,22 @@ public class ConvoyController {
                     }
                     DataItem dataItem = getTableRow().getItem();
                     if (dataItem != null) {
-                        if (!refi) {
-                            int rowIndex = getTableRow().getIndex();
-                            dataItem.setNumberData(newValue);
-                            dataItem.setTotalUses(amountString(rowIndex, newValue));
-                        } else {
-                            dataItem.setNumberData(newValue);
-                            dataItem.setTotalUses(amountString(dataItem.id, newValue));
-                        }
+                        int rowIndex = getTableRow().getIndex();
+                        dataItem.setNumberData(newValue);
+                        dataItem.setTotalUses(amountString(rowIndex, newValue));
+                        tranBlock.inventoryMain.set(rowIndex, newValue);
+                    }
+                });
+                spinner.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+                    if (!isEditing()) {
+                        commitEdit(Integer.valueOf(newValue));
+                    }
+                    DataItem dataItem = getTableRow().getItem();
+                    if (dataItem != null) {
+                        int rowIndex = getTableRow().getIndex();
+                        dataItem.setNumberData(Integer.parseInt(newValue));
+                        dataItem.setTotalUses(amountString(rowIndex, Integer.parseInt(newValue)));
+                        tranBlock.inventoryMain.set(rowIndex, Integer.valueOf(newValue));
                     }
                 });
                 spinner.setEditable(true);
@@ -156,6 +306,7 @@ public class ConvoyController {
                 if (getTableRow() != null && getTableRow().getItem() != null) {
                     DataItem dataItem = (DataItem) getTableRow().getItem();
                     dataItem.setNumberData(newValue);
+                    tranBlock.inventoryMain.set(dataItem.id, newValue);
                 }
             }
         };

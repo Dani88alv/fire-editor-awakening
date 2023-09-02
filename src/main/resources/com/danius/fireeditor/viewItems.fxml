@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -23,18 +28,29 @@
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <TableView fx:id="tableRefi" layoutX="368.0" layoutY="40.0" prefHeight="342.0" prefWidth="367.0">
-            <columns>
-               <TableColumn fx:id="colRefiName" prefWidth="152.00006103515625" text="Item" />
-               <TableColumn fx:id="colRefiAmount" prefWidth="77.5999755859375" text="Total Uses" />
-               <TableColumn fx:id="colRefiUses" prefWidth="121.59999084472656" text="Total Amount" />
-            </columns>
-         </TableView>
          <Label layoutX="368.0" layoutY="8.0" text="Forged Weapons">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
+         <ListView fx:id="listViewRefi" layoutX="368.0" layoutY="65.0" prefHeight="319.0" prefWidth="148.0" />
+         <ComboBox fx:id="comboWeaponId" layoutX="541.0" layoutY="139.0" prefHeight="26.0" prefWidth="159.0" />
+         <Spinner fx:id="spinRefiUse" editable="true" layoutX="542.0" layoutY="197.0" prefHeight="26.0" prefWidth="92.0" />
+         <Label layoutX="543.0" layoutY="177.0" text="Item Amount" />
+         <Label fx:id="lblRefiCount" layoutX="369.0" layoutY="43.0" text="Weapon Count" />
+         <Label layoutX="543.0" layoutY="119.0" text="Item Type" />
+         <TextField fx:id="txtRefiName" layoutX="540.0" layoutY="87.0" prefHeight="26.0" prefWidth="159.0" />
+         <Label layoutX="542.0" layoutY="65.0" text="Custom Name" />
+         <Label fx:id="lblRefiAmount" layoutX="643.0" layoutY="201.0" text="Uses" />
+         <Spinner fx:id="spinMight" editable="true" layoutX="543.0" layoutY="254.0" prefHeight="26.0" prefWidth="62.0" />
+         <Spinner fx:id="spinHit" editable="true" layoutX="636.0" layoutY="254.0" prefHeight="26.0" prefWidth="62.0" />
+         <Spinner fx:id="spinCrit" editable="true" layoutX="543.0" layoutY="307.0" prefHeight="26.0" prefWidth="62.0" />
+         <Label layoutX="545.0" layoutY="233.0" text="Might" />
+         <Label layoutX="639.0" layoutY="233.0" text="Hit" />
+         <Label layoutX="545.0" layoutY="286.0" text="Crit" />
+         <Spinner fx:id="spinPos" disable="true" layoutX="636.0" layoutY="307.0" prefHeight="26.0" prefWidth="62.0" />
+         <Label layoutX="638.0" layoutY="287.0" text="Weapon Slot" />
+         <CheckBox fx:id="checkRefiFlag" layoutX="544.0" layoutY="354.0" mnemonicParsing="false" text="Enemy Weapon" />
       </children>
     </AnchorPane>
 

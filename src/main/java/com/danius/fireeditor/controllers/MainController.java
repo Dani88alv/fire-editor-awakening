@@ -182,20 +182,11 @@ public class MainController {
     }
 
     public byte[] compileBlocks(boolean decomp) {
-        //The current unit is updated
-        //FireEditor.unitController.updateUnitFromFields(
-        //        FireEditor.unitController.listViewUnit.getSelectionModel().getSelectedItem());
-        //The unit block is updated
-        FireEditor.chapterFile.blockUnit = FireEditor.unitController.unitBlock;
-        //The inventory is updated
-        FireEditor.chapterFile.blockTran.setItemAmountFromList(FireEditor.convoyController.getItemUses());
-        FireEditor.chapterFile.blockTran.inventoryRefi = FireEditor.convoyController.getRefiUses();
-        //The user block is updated
+        //The refinement uses are updated
+        //FireEditor.chapterFile.blockTran.setItemAmountFromList(FireEditor.convoyController.getItemUses());
+        FireEditor.convoyController.loseSpinnerFocus();
+        //The difficulty settings are updated
         FireEditor.chapterController.compileValues();
-        FireEditor.chapterFile.blockUser = FireEditor.chapterController.userBlock;
-        FireEditor.chapterFile.blockHeader = FireEditor.chapterController.headerBlock;
-        FireEditor.chapterFile.blockGmap = FireEditor.chapterController.gmapBlock;
-        FireEditor.chapterFile.blockDu26 = FireEditor.chapterController.du26Block;
         //The data is compiled
         byte[] data;
         if (decomp) data = FireEditor.chapterFile.getBytes();

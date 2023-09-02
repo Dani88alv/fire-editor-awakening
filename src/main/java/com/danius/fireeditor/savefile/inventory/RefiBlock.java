@@ -59,9 +59,8 @@ public class RefiBlock {
         try {
             outputStream.write(blockHeader);
             //All the weapons are looped
-            for (int i = 0; i < refiList.size(); i++) {
-                refiList.get(i).setBlockPosition(i); //The position is updated
-                outputStream.write(refiList.get(i).bytes());
+            for (Refinement refinement : refiList) {
+                outputStream.write(refinement.bytes());
             }
         } catch (IOException e) {
             e.printStackTrace();

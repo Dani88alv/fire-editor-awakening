@@ -62,9 +62,9 @@ public class OtherController {
         spinTome.getValueFactory().setValue(weaponExp[4]);
         spinStave.getValueFactory().setValue(weaponExp[5]);
         lblSword.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[0]));
-        lblBow.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[1]));
-        lblLance.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[2]));
-        lblAxe.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[3]));
+        lblLance.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[1]));
+        lblAxe.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[2]));
+        lblBow.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[3]));
         lblTome.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[4]));
         lblStave.setText(weaponLevel(unit.rawBlock2.getWeaponExp()[5]));
         //Listeners

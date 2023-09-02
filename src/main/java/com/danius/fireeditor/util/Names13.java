@@ -1,6 +1,8 @@
 package com.danius.fireeditor.util;
 
 import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.inventory.Refinement;
+import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Supports;
 
 import java.util.ArrayList;
@@ -38,6 +40,20 @@ public class Names13 {
         } else if (id >= maxCount && id <= maxCount + 150) {
             int itemId = id - maxCount + 1;
             return "Forged Weapon #" + itemId;
+        } else return itemNames.get(id);
+    }
+
+    public static String itemName2(int id, int maxCount, List<Refinement> refiList) {
+        int vanillaCount = Names13.itemNames.size();
+        if (id >= vanillaCount && id < maxCount) {
+            int itemId = id - vanillaCount + 1;
+            return "Modded Item #" + itemId;
+        } else if (id >= maxCount && id <= maxCount + 150) {
+            int position = id - maxCount;
+            for (Refinement refinement : refiList) {
+                if (refinement.position() == position) return refinement.getName();
+            }
+            return "Forged Weapon #" + (id - maxCount + 1);
         } else return itemNames.get(id);
     }
 
@@ -283,7 +299,7 @@ public class Names13 {
             "Gungnir", "Gae Bolg", "Log", "Miniature Lance",
             "Shockstick", "Glass Lance", "Superior Lance", "Sigurd's Lance",
             "Ephraim's Lance", "Finn's Lance", "Bronze Axe", "Iron Axe",
-            "Steel Axe", "Silver Sxe", "Brave Axe", "Hand Axe",
+            "Steel Axe", "Silver Axe", "Brave Axe", "Hand Axe",
             "Short Axe", "Tomahawk", "Hammer", "Bolt Axe",
             "Killer Axe", "Vengeance", "Wolf Berg", "Hauteclere",
             "Helswath", "Armads", "Ladle", "Imposing Axe",

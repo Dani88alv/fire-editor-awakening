@@ -33,11 +33,6 @@ public class Du26Block {
         System.arraycopy(rawSpot, 0, rawMain, offset, rawSpot.length);
     }
 
-    public void setWirelessRenown(int value) {
-        int point = 0xE;
-        Hex.setByte4(rawMain, point, value);
-    }
-
     public byte[] bytes() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {

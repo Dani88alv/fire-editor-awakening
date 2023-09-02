@@ -35,6 +35,7 @@ public class ChapterController {
     public void initialize() {
         FireEditor.chapterController = this;
         setupElements();
+        addUserListeners();
         addDlcListeners();
         addGmapListeners();
         loadBlocks();
@@ -71,17 +72,6 @@ public class ChapterController {
         userBlock.rawDifficulty.setGameModeFlag(2, checkCasual.isSelected());
         headerBlock.rawDifficulty.setLunaticPlus(checkLunatic.isSelected());
         headerBlock.rawDifficulty.setGameModeFlag(2, checkCasual.isSelected());
-        //Other
-        userBlock.setPlaytime(spinTime.getValue() * 60);
-        headerBlock.setPlaytime(spinTime.getValue() * 60);
-        userBlock.setMoney(spinMoney.getValue());
-        userBlock.setRenown(spinRenown.getValue());
-        du26Block.setWirelessRenown(spinRenown.getValue());
-        //Credits and DLC
-        du26Block.setDlcTurn(comboChapterDlc.getSelectionModel().getSelectedIndex(), spinDlcTurns.getValue());
-        //Gmap
-        gmapBlock.maps.get(comboChapter.getSelectionModel().getSelectedIndex()).setLockState(
-                comboChapterData.getSelectionModel().getSelectedIndex());
     }
 
     public void loadBlocks() {
@@ -130,15 +120,37 @@ public class ChapterController {
         userBlock.resetRenownFlags();
     }
 
+    public void addUserListeners() {
+        spinTime.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && userBlock != null) {
+                int value = spinTime.getValue();
+                userBlock.setPlaytime(value * 60);
+                headerBlock.setPlaytime(value * 60);
+            }
+        });
+        spinMoney.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && userBlock != null) userBlock.setMoney(Integer.parseInt(newValue));
+        });
+        spinRenown.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && userBlock != null) userBlock.setRenown(Integer.parseInt(newValue));
+        });
+    }
+
     public void addDlcListeners() {
         comboChapterDlc.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    if (userBlock != null && newValue != null && oldValue != null) {
+                    if (du26Block != null && newValue != null && oldValue != null) {
                         //The old selection is updated
                         if ((Integer) oldValue >= 0) du26Block.setDlcTurn((Integer) oldValue, spinDlcTurns.getValue());
                         spinDlcTurns.getValueFactory().setValue(du26Block.dlcTurn((Integer) newValue));
                     }
                 }
         );
+        spinDlcTurns.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && du26Block != null) {
+                spinDlcTurns.increment(0);
+                du26Block.setDlcTurn(comboChapterDlc.getSelectionModel().getSelectedIndex(), spinDlcTurns.getValue());
+            }
+        });
     }
 
     public void addGmapListeners() {
@@ -152,6 +164,14 @@ public class ChapterController {
                         if ((Integer) newValue != -1) {
                             comboChapterData.getSelectionModel().select(gmapBlock.maps.get((Integer) newValue).lockState());
                         }
+                    }
+                }
+        );
+        comboChapterData.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+                    if (gmapBlock != null && newValue != null && oldValue != null &&
+                            comboChapter.getSelectionModel().getSelectedItem() != null) {
+                        gmapBlock.maps.get(comboChapter.getSelectionModel().getSelectedIndex()).setLockState(
+                                comboChapterData.getSelectionModel().getSelectedIndex());
                     }
                 }
         );

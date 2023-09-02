@@ -1,13 +1,13 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.other.UserBlock;
 import com.danius.fireeditor.util.Names13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 
@@ -19,6 +19,8 @@ public class CreditController {
     @FXML
     private ComboBox<String> comboCreditChapter,
             comboUnit1, comboUnit2, comboClass1, comboClass2, comboCreditSlot;
+    @FXML
+    private Button btnRemoveRecord;
 
     public void initialize() {
         setupElements();
@@ -32,6 +34,26 @@ public class CreditController {
             }
         }
     }
+
+    public void removeRecord() {
+        int position = comboCreditSlot.getSelectionModel().getSelectedIndex();
+
+        if (position >= 0) {
+            userBlock.progress.remove(position);
+            comboCreditSlot.getItems().remove(position);
+
+            int size = comboCreditSlot.getItems().size();
+
+            if (size > 0) {
+                // If there are items left, select the first item
+                comboCreditSlot.getSelectionModel().select(0);
+            } else {
+                // If no items are left, handle the case accordingly
+                disableCredits(true);
+            }
+        }
+    }
+
 
     public void setBlock(UserBlock userBlock) {
         this.userBlock = userBlock;
@@ -93,7 +115,8 @@ public class CreditController {
         comboCreditSlot.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
                     //The old selection is updated
                     //updateCredits((Integer) oldValue);
-                    int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+                    int slot = validateSlot();
+                    if (slot == -1) return;
                     //Unit slots
                     int unit1 = userBlock.progress.get(slot).unitFirst();
                     int unit2 = userBlock.progress.get(slot).unitSecond();
@@ -116,46 +139,61 @@ public class CreditController {
                 }
         );
         comboUnit1.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+                    int slot = validateSlot();
+                    if (slot == -1) return;
                     int unit1 = comboUnit1.getSelectionModel().getSelectedIndex() - 1;
                     if (unit1 == -1) unit1 = 0xFFFF;
                     userBlock.progress.get(slot).setUnitFirst(unit1);
                 }
         );
         comboUnit2.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+                    int slot = validateSlot();
+                    if (slot == -1) return;
                     int unit2 = comboUnit2.getSelectionModel().getSelectedIndex() - 1;
                     if (unit2 == -1) unit2 = 0xFFFF;
                     userBlock.progress.get(slot).setUnitSecond(unit2);
                 }
         );
         comboClass1.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+                    int slot = validateSlot();
+                    if (slot == -1) return;
                     int class1 = comboClass1.getSelectionModel().getSelectedIndex() - 1;
                     if (class1 == -1) class1 = 0xFFFF;
                     userBlock.progress.get(slot).setClassFirst(class1);
                 }
         );
         comboClass2.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+                    int slot = validateSlot();
+                    if (slot == -1) return;
                     int class2 = comboClass2.getSelectionModel().getSelectedIndex() - 1;
                     if (class2 == -1) class2 = 0xFFFF;
                     userBlock.progress.get(slot).setClassSecond(class2);
                 }
         );
         comboCreditChapter.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+                    int slot = validateSlot();
+                    if (slot == -1) return;
                     userBlock.progress.get(slot).setChapterId(comboCreditChapter.getSelectionModel().getSelectedIndex());
                 }
         );
         spinCreditTime.valueProperty().addListener((observable, oldValue, newValue) -> {
-            int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+            int slot = validateSlot();
+            if (slot == -1) return;
             userBlock.progress.get(slot).setTime(spinCreditTime.getValue() * 60);
         });
         spinCreditTurns.valueProperty().addListener((observable, oldValue, newValue) -> {
-            int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+            int slot = validateSlot();
+            if (slot == -1) return;
             userBlock.progress.get(slot).setTurns(spinCreditTurns.getValue());
         });
+    }
+
+    public int validateSlot() {
+        int slot = comboCreditSlot.getSelectionModel().getSelectedIndex();
+        int size = comboCreditSlot.getItems().size();
+        if (size == 0) return -1;
+        else if (slot == -1) return 0;
+        return slot;
     }
 
     public void disableCredits(boolean disable) {
@@ -167,6 +205,7 @@ public class CreditController {
         comboClass2.setDisable(disable);
         spinCreditTime.setDisable(disable);
         spinCreditTurns.setDisable(disable);
+        btnRemoveRecord.setDisable(disable);
     }
 
     public String chapterName(int id) {

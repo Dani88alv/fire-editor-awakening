@@ -144,8 +144,8 @@ public class CheatController {
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllTonicFlags();
             chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllOtherBuffs();
             //ITEMS
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawInventory.maxAmount();
-            ;
+            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawInventory.maxAmount(
+                    FireEditor.chapterFile.blockRefi.refiList, FireEditor.chapterFile.blockTran.regularItemCount());
         }
         FireEditor.mainController.reloadTabs(chapterFile.getBytes());
     }
@@ -158,8 +158,8 @@ public class CheatController {
         //Equipped Items
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawInventory.maxAmount();
-            ;
+            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawInventory.maxAmount(
+                    FireEditor.chapterFile.blockRefi.refiList, FireEditor.chapterFile.blockTran.regularItemCount());
         }
         FireEditor.mainController.reloadTabs(chapterFile.getBytes());
     }

@@ -1,7 +1,9 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
+import com.danius.fireeditor.util.Names13;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -25,6 +27,39 @@ public class RawInventory {
             int itemId = item.itemId();
             //Only vanilla and non-forged items are modified
             if (itemId <= Constants13.MAX_ITEM_COUNT) {
+                item.setUses(TranBlock.itemAmounts.get(itemId));
+            }
+        }
+    }
+
+    public void maxAmount(List<Refinement> refiList, int maxCount) {
+        int vanillaCount = Names13.itemNames.size();
+        for (RawItem item : items) {
+            int itemId = item.itemId();
+            //Modded Items
+            if (itemId >= vanillaCount && itemId < maxCount) {
+            }
+            //Forged Weapons
+            else if (itemId >= maxCount && itemId <= maxCount + 150) {
+                int position = itemId - maxCount;
+                boolean found = false;
+                for (Refinement refinement : refiList) {
+                    if (refinement.position() == position) {
+                        int weaponId = refinement.weaponId();
+                        item.setUses(TranBlock.itemAmounts.get(weaponId));
+                        found = true;
+                    }
+                }
+                //If no valid weapon was found, it's removed to avoid problems
+                if (!found) {
+                    item.setUses(0);
+                    item.setItemId(0);
+                    item.setEquipped(false);
+                    item.setDropped(false);
+                }
+            }
+            //Regular items
+            else {
                 item.setUses(TranBlock.itemAmounts.get(itemId));
             }
         }
