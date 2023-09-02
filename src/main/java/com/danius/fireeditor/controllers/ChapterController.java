@@ -2,10 +2,7 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants13;
-import com.danius.fireeditor.savefile.other.Du26Block;
-import com.danius.fireeditor.savefile.other.GmapBlock;
-import com.danius.fireeditor.savefile.other.HeaderBlock;
-import com.danius.fireeditor.savefile.other.UserBlock;
+import com.danius.fireeditor.savefile.other.*;
 import com.danius.fireeditor.util.Names13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +19,7 @@ public class ChapterController {
     public HeaderBlock headerBlock;
     public Du26Block du26Block;
     public GmapBlock gmapBlock;
-
+    public EvstBlock evstBlock;
     @FXML
     private Spinner<Integer> spinTime, spinMoney, spinDlcTurns, spinRenown;
     @FXML
@@ -36,7 +33,7 @@ public class ChapterController {
         FireEditor.chapterController = this;
         setupElements();
         addUserListeners();
-        addDlcListeners();
+        //addDlcListeners();
         addGmapListeners();
         loadBlocks();
     }
@@ -46,8 +43,7 @@ public class ChapterController {
         alert.setTitle("SpotPass Data");
         alert.setHeaderText("This will reset all the SpotPass content. Proceed? \n" +
                 "WARNING: This feature has not been fully tested!");
-        alert.setContentText("If you already had SpotPass content downloaded, this will reset all the \"new\" flags " +
-                "(the recruited units will not be removed).");
+        alert.setContentText("If you already have SpotPass content downloaded, nothing will be modified.");
         // Add Confirm and Cancel buttons
         ButtonType confirmButton = new ButtonType("Confirm");
         ButtonType cancelButton = new ButtonType("Cancel");
@@ -80,6 +76,7 @@ public class ChapterController {
             this.headerBlock = FireEditor.chapterFile.blockHeader;
             this.du26Block = FireEditor.chapterFile.blockDu26;
             this.gmapBlock = FireEditor.chapterFile.blockGmap;
+            this.evstBlock = FireEditor.chapterFile.blockEvst;
             //General Data
             comboDifficulty.getSelectionModel().select(userBlock.rawDifficulty.difficulty());
             checkLunatic.setSelected(userBlock.rawDifficulty.isLunaticPlus());
@@ -88,7 +85,7 @@ public class ChapterController {
             spinTime.getValueFactory().setValue(userBlock.playtime() / 60);
             spinRenown.getValueFactory().setValue(userBlock.renown());
             //DLC
-            comboChapterDlc.getSelectionModel().select(0);
+            //comboChapterDlc.getSelectionModel().select(0);
             //Gmap Chapters
             ObservableList<String> chaptersMap = FXCollections.observableArrayList();
             for (int i = 0; i < gmapBlock.maps.size(); i++) {
@@ -110,7 +107,7 @@ public class ChapterController {
         //DLC Chapters
         ObservableList<String> dlcChapters = FXCollections.observableArrayList();
         dlcChapters.addAll(Names13.chapterDlcNames);
-        comboChapterDlc.setItems(dlcChapters);
+        //comboChapterDlc.setItems(dlcChapters);
         //Gmap
         ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Unlocked");
         comboChapterData.setItems(chapterState);
@@ -135,7 +132,7 @@ public class ChapterController {
             if (newValue != null && userBlock != null) userBlock.setRenown(Integer.parseInt(newValue));
         });
     }
-
+    /*
     public void addDlcListeners() {
         comboChapterDlc.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
                     if (du26Block != null && newValue != null && oldValue != null) {
@@ -152,6 +149,8 @@ public class ChapterController {
             }
         });
     }
+
+     */
 
     public void addGmapListeners() {
         comboChapter.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
@@ -188,6 +187,25 @@ public class ChapterController {
             Stage secondaryStage = new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
             secondaryStage.setTitle("Credits Records");
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openBarrack(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewBarrack.fxml"));
+            Parent root = fxmlLoader.load();
+            // Pass the selected value to the second view's controller
+            BarrackController barrackController = fxmlLoader.getController();
+            barrackController.setEvstBlock(evstBlock);
+            // Create a new stage for the secondary view
+            Stage secondaryStage = new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
+            secondaryStage.setTitle("Barrack Events");
             secondaryStage.setScene(new Scene(root));
             secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
 

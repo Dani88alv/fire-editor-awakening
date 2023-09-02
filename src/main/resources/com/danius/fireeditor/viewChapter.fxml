@@ -21,14 +21,14 @@
          <ComboBox fx:id="comboDifficulty" layoutX="21.0" layoutY="64.0" prefHeight="26.0" prefWidth="130.0" promptText="Difficulty" />
          <CheckBox fx:id="checkLunatic" layoutX="23.0" layoutY="136.0" mnemonicParsing="false" text="Lunatic+" />
          <Spinner fx:id="spinTime" editable="true" layoutX="183.0" layoutY="64.0" prefHeight="26.0" prefWidth="90.0" />
-         <Button layoutX="547.0" layoutY="157.0" mnemonicParsing="false" onAction="#addSpotpass" prefHeight="47.0" prefWidth="178.0" text="Unlock SpotPass Content">
+         <Button layoutX="543.0" layoutY="186.0" mnemonicParsing="false" onAction="#addSpotpass" prefHeight="47.0" prefWidth="178.0" text="Unlock SpotPass Content">
             <font>
                <Font size="14.0" />
             </font>
          </Button>
          <Spinner fx:id="spinMoney" editable="true" layoutX="290.0" layoutY="65.0" prefHeight="26.0" prefWidth="90.0" />
-         <Spinner fx:id="spinDlcTurns" editable="true" layoutX="664.0" layoutY="342.0" prefHeight="26.0" prefWidth="60.0" />
-         <ComboBox fx:id="comboChapterDlc" layoutX="476.0" layoutY="342.0" prefHeight="26.0" prefWidth="172.0" promptText="Chapter" />
+         <Spinner fx:id="spinDlcTurns" disable="true" editable="true" layoutX="664.0" layoutY="342.0" prefHeight="26.0" prefWidth="60.0" />
+         <ComboBox fx:id="comboChapterDlc" disable="true" layoutX="476.0" layoutY="342.0" prefHeight="26.0" prefWidth="172.0" promptText="Chapter" />
          <Label layoutX="22.0" layoutY="44.0" text="Difficulty" />
          <Label layoutX="477.0" layoutY="291.0" text="DLC Chapters">
             <font>
@@ -47,7 +47,7 @@
             </font>
          </Label>
          <Label layoutX="461.0" layoutY="46.0" text="Chapter" />
-         <Label layoutX="548.0" layoutY="123.0" text="SpotPass">
+         <Label layoutX="544.0" layoutY="152.0" text="SpotPass">
             <font>
                <Font size="18.0" />
             </font>
@@ -56,8 +56,10 @@
          <Label layoutX="184.0" layoutY="98.0" text="Renown" />
          <Button layoutX="153.0" layoutY="152.0" mnemonicParsing="false" onAction="#resetRenownFlags" prefHeight="26.0" prefWidth="150.0" text="Reset Renown Item Flags" />
          <Button layoutX="21.0" layoutY="330.0" mnemonicParsing="false" onAction="#openCredits" prefHeight="47.0" prefWidth="130.0" text="Credit Records" />
-         <Label layoutX="21.0" layoutY="310.0" text="Story &amp; Credits Data" />
+         <Label layoutX="22.0" layoutY="310.0" text="Story &amp; Credits Data" />
          <CheckBox fx:id="checkCasual" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" text="Casual" />
+         <Button layoutX="183.0" layoutY="330.0" mnemonicParsing="false" onAction="#openBarrack" prefHeight="47.0" prefWidth="130.0" text="Barrack Events" />
+         <Label layoutX="185.0" layoutY="309.0" text="Barrack Event Editor" />
       </children>
     </AnchorPane>
 

@@ -21,12 +21,12 @@ public class RawEvent {
      */
     public int eventType() {
         int point = 0x2;
-        return Hex.getByte2(bytes, point);
+        return bytes[point] & 0xFF;
     }
 
     public void setEventType(int id) {
         int point = 0x2;
-        Hex.setByte2(bytes, point, id);
+        bytes[point] = (byte) (id & 0xFF);
     }
 
     public int unit1() {
@@ -50,14 +50,14 @@ public class RawEvent {
     }
 
     //Only used on special conversations or birthdays
-    public int eventIcon(){
+    public int eventIcon() {
         int point = 0x7;
-        return bytes[0x7] & 0xFF;
+        return bytes[point] & 0xFF;
     }
 
-    public void setEventIcon(int value){
+    public void setEventIcon(int value) {
         int point = 0x7;
-        Hex.setByte2(bytes, point, value);
+        bytes[point] = (byte) (value & 0xFF);
     }
 
     public byte[] bytes() {

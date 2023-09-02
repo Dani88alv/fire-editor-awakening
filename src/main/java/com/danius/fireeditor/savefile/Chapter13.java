@@ -21,7 +21,7 @@ public class Chapter13 extends SaveFile {
     public TranBlock blockTran; //Inventory Data
     private byte[] blockMapBattle; //Map Data? - Map Exclusive
     public Du26Block blockDu26; //StreetPass & SpotPass Data
-    private EvstBlock blockEvst; //Barrack
+    public EvstBlock blockEvst; //Barrack
     private int region; //0xC0 = US/EU, 0x80 = JP
     public boolean isChapter = true; //Chapter or Map save file
 

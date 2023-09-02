@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.BarrackController">
+   <children>
+      <AnchorPane prefHeight="218.0" prefWidth="554.0">
+         <children>
+            <AnchorPane layoutX="7.0" layoutY="105.0" prefHeight="102.0" prefWidth="296.0">
+               <children>
+                  <ComboBox fx:id="comboUnit1" layoutX="13.0" layoutY="14.0" prefWidth="130.0" promptText="Unit 1" />
+                  <ComboBox fx:id="comboEvent" layoutX="13.0" layoutY="65.0" prefWidth="130.0" promptText="Event Type" />
+                  <ComboBox fx:id="comboUnit2" layoutX="161.0" layoutY="14.0" prefWidth="130.0" promptText="Unit 2" />
+                  <Label layoutX="16.0" layoutY="-4.0" text="Unit 1" />
+                  <Label layoutX="15.0" layoutY="46.0" text="Event Type" />
+                  <Label layoutX="163.0" layoutY="-4.0" text="Unit 2" />
+                  <Spinner fx:id="spinIcon" editable="true" layoutX="161.0" layoutY="66.0" prefHeight="26.0" prefWidth="60.0" />
+                  <Label layoutX="163.0" layoutY="47.0" text="Event Icon" />
+               </children>
+            </AnchorPane>
+            <ComboBox fx:id="comboSlot" layoutX="20.0" layoutY="59.0" prefWidth="150.0" promptText="Slot" />
+            <Label layoutX="20.0" layoutY="7.0" text="Barrack Events">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="39.0" text="Event Slot" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
