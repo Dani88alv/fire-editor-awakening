@@ -14,10 +14,20 @@ public class RawFlags {
 
     public final byte[] bytes;
 
-    //0x0: ?
-
     public RawFlags(byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    //0x0: Internal level?
+
+    public int hiddenLevel(){
+        int point = 0x0;
+        return bytes[point] & 0xFF;
+    }
+
+    public void setHiddenLevel(int value){
+        int point = 0x0;
+        bytes[point] = (byte) (value & 0xFF);
     }
 
     /*

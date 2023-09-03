@@ -5,69 +5,160 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.OtherController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.OtherController">
    <children>
-      <AnchorPane prefHeight="394.0" prefWidth="485.0">
-         <children>
-            <ComboBox fx:id="comboArmy" layoutX="189.0" layoutY="27.0" prefWidth="157.0" promptText="Army" />
-            <Spinner fx:id="spinCurrentHp" editable="true" layoutX="384.0" layoutY="30.0" prefHeight="26.0" prefWidth="61.0" />
-            <Label layoutX="385.0" layoutY="10.0" text="Current HP" />
-            <Label layoutX="191.0" layoutY="7.0" text="Army" />
-            <Spinner fx:id="spinDeploy" editable="true" layoutX="383.0" layoutY="83.0" prefHeight="26.0" prefWidth="61.0" />
-            <Label layoutX="383.0" layoutY="62.0" text="Deployment Slot" />
-            <Spinner fx:id="spinBattle" editable="true" layoutX="384.0" layoutY="140.0" prefHeight="26.0" prefWidth="70.0" />
-            <Spinner fx:id="spinVictory" editable="true" layoutX="384.0" layoutY="198.0" prefHeight="26.0" prefWidth="70.0" />
-            <Label layoutX="384.0" layoutY="120.0" text="Battles" />
-            <Label layoutX="384.0" layoutY="178.0" text="Victories" />
-            <AnchorPane layoutX="9.0" layoutY="7.0" prefHeight="226.0" prefWidth="170.0">
-               <children>
-                  <Spinner fx:id="spinSword" editable="true" layoutX="51.0" layoutY="23.0" prefWidth="61.0" />
-                  <Label layoutX="6.0" layoutY="27.0" text="Sword" />
-                  <Label fx:id="lblSword" layoutX="121.0" layoutY="27.0" text="Rank" />
-                  <Spinner fx:id="spinBow" editable="true" layoutX="51.0" layoutY="121.0" prefWidth="61.0" />
-                  <Label layoutX="6.0" layoutY="125.0" text="Bow" />
-                  <Spinner fx:id="spinLance" editable="true" layoutX="51.0" layoutY="56.0" prefWidth="61.0" />
-                  <Label layoutX="6.0" layoutY="60.0" text="Lance" />
-                  <Label fx:id="lblLance" layoutX="121.0" layoutY="61.0" text="Rank" />
-                  <Label fx:id="lblAxe" layoutX="121.0" layoutY="94.0" text="Rank" />
-                  <Spinner fx:id="spinTome" editable="true" layoutX="51.0" layoutY="154.0" prefWidth="61.0" />
-                  <Label layoutX="6.0" layoutY="158.0" text="Tome" />
-                  <Label fx:id="lblTome" layoutX="121.0" layoutY="158.0" text="Rank" />
-                  <Spinner fx:id="spinStave" editable="true" layoutX="51.0" layoutY="186.0" prefWidth="61.0" />
-                  <Label layoutX="6.0" layoutY="190.0" text="Stave" />
-                  <Label fx:id="lblStave" layoutX="121.0" layoutY="190.0" text="Rank" />
-                  <Label layoutX="48.0" layoutY="-1.0" text="Weapon EXP" />
-                  <Spinner fx:id="spinAxe" editable="true" layoutX="51.0" layoutY="89.0" prefWidth="61.0" />
-                  <Label layoutX="6.0" layoutY="93.0" text="Axe" />
-                  <Label fx:id="lblBow" layoutX="121.0" layoutY="126.0" text="Rank" />
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="184.0" layoutY="72.0" prefHeight="111.0" prefWidth="189.0">
-               <children>
-                  <Spinner fx:id="spinX1" editable="true" layoutX="7.0" layoutY="22.0" prefHeight="26.0" prefWidth="61.0" />
-                  <Spinner fx:id="spinY1" editable="true" layoutX="101.0" layoutY="22.0" prefHeight="26.0" prefWidth="61.0" />
-                  <Spinner fx:id="spinX2" editable="true" layoutX="7.0" layoutY="76.0" prefHeight="26.0" prefWidth="61.0" />
-                  <Spinner fx:id="spinY2" editable="true" layoutX="101.0" layoutY="76.0" prefHeight="26.0" prefWidth="61.0" />
-                  <Label layoutX="7.0" text="Map Coordinates 1" />
-                  <Label layoutX="7.0" layoutY="54.0" text="Map Coordinates 2" />
-                  <Label layoutX="76.0" layoutY="80.0" text="X" />
-                  <Label layoutX="76.0" layoutY="26.0" text="X" />
-                  <Label layoutX="169.0" layoutY="80.0" text="Y" />
-                  <Label layoutX="169.0" layoutY="26.0" text="Y" />
-               </children>
-            </AnchorPane>
-            <Spinner fx:id="spinResBuff" editable="true" layoutX="384.0" layoutY="251.0" prefHeight="26.0" prefWidth="70.0" />
-            <Button layoutX="51.0" layoutY="229.0" mnemonicParsing="false" onAction="#setMaxExp" prefHeight="26.0" prefWidth="82.0" text="Max EXP" />
-            <Label layoutX="385.0" layoutY="233.0" text="RES Boost" />
-            <ComboBox fx:id="comboRetire" layoutX="179.0" layoutY="225.0" prefWidth="157.0" promptText="Retired/Died On" />
-            <Label layoutX="180.0" layoutY="206.0" text="Retired/Died on" />
-            <CheckBox fx:id="checkRetire" layoutX="180.0" layoutY="257.0" mnemonicParsing="false" text="Retired (Classic Mode)" />
-            <CheckBox fx:id="checkDead1" layoutX="180.0" layoutY="278.0" mnemonicParsing="false" text="Retired Flag 1" />
-            <CheckBox fx:id="checkDead2" layoutX="281.0" layoutY="278.0" mnemonicParsing="false" text="Retired Flag 2" />
-         </children>
-      </AnchorPane>
+      <TabPane prefHeight="373.0" prefWidth="480.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="40.0">
+        <tabs>
+          <Tab text="Misc.">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="346.0" prefWidth="486.0">
+                           <children>
+                              <ComboBox fx:id="comboArmy" layoutX="189.0" layoutY="27.0" prefWidth="157.0" promptText="Army" />
+                              <Spinner fx:id="spinCurrentHp" editable="true" layoutX="384.0" layoutY="30.0" prefHeight="26.0" prefWidth="61.0" />
+                              <Label layoutX="385.0" layoutY="10.0" text="Current HP" />
+                              <Label layoutX="191.0" layoutY="7.0" text="Army" />
+                              <Spinner fx:id="spinDeploy" editable="true" layoutX="383.0" layoutY="83.0" prefHeight="26.0" prefWidth="61.0" />
+                              <Label layoutX="383.0" layoutY="62.0" text="Deployment Slot" />
+                              <Spinner fx:id="spinBattle" editable="true" layoutX="384.0" layoutY="140.0" prefHeight="26.0" prefWidth="70.0" />
+                              <Spinner fx:id="spinVictory" editable="true" layoutX="384.0" layoutY="198.0" prefHeight="26.0" prefWidth="70.0" />
+                              <Label layoutX="384.0" layoutY="120.0" text="Battles" />
+                              <Label layoutX="384.0" layoutY="178.0" text="Victories" />
+                              <AnchorPane layoutX="9.0" layoutY="7.0" prefHeight="226.0" prefWidth="170.0">
+                                 <children>
+                                    <Spinner fx:id="spinSword" editable="true" layoutX="51.0" layoutY="23.0" prefWidth="61.0" />
+                                    <Label layoutX="6.0" layoutY="27.0" text="Sword" />
+                                    <Label fx:id="lblSword" layoutX="121.0" layoutY="27.0" text="Rank" />
+                                    <Spinner fx:id="spinBow" editable="true" layoutX="51.0" layoutY="121.0" prefWidth="61.0" />
+                                    <Label layoutX="6.0" layoutY="125.0" text="Bow" />
+                                    <Spinner fx:id="spinLance" editable="true" layoutX="51.0" layoutY="56.0" prefWidth="61.0" />
+                                    <Label layoutX="6.0" layoutY="60.0" text="Lance" />
+                                    <Label fx:id="lblLance" layoutX="121.0" layoutY="61.0" text="Rank" />
+                                    <Label fx:id="lblAxe" layoutX="121.0" layoutY="94.0" text="Rank" />
+                                    <Spinner fx:id="spinTome" editable="true" layoutX="51.0" layoutY="154.0" prefWidth="61.0" />
+                                    <Label layoutX="6.0" layoutY="158.0" text="Tome" />
+                                    <Label fx:id="lblTome" layoutX="121.0" layoutY="158.0" text="Rank" />
+                                    <Spinner fx:id="spinStave" editable="true" layoutX="51.0" layoutY="186.0" prefWidth="61.0" />
+                                    <Label layoutX="6.0" layoutY="190.0" text="Stave" />
+                                    <Label fx:id="lblStave" layoutX="121.0" layoutY="190.0" text="Rank" />
+                                    <Label layoutX="48.0" layoutY="-1.0" text="Weapon EXP" />
+                                    <Spinner fx:id="spinAxe" editable="true" layoutX="51.0" layoutY="89.0" prefWidth="61.0" />
+                                    <Label layoutX="6.0" layoutY="93.0" text="Axe" />
+                                    <Label fx:id="lblBow" layoutX="121.0" layoutY="126.0" text="Rank" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="184.0" layoutY="72.0" prefHeight="111.0" prefWidth="189.0">
+                                 <children>
+                                    <Spinner fx:id="spinX1" editable="true" layoutX="7.0" layoutY="22.0" prefHeight="26.0" prefWidth="61.0" />
+                                    <Spinner fx:id="spinY1" editable="true" layoutX="101.0" layoutY="22.0" prefHeight="26.0" prefWidth="61.0" />
+                                    <Spinner fx:id="spinX2" editable="true" layoutX="7.0" layoutY="76.0" prefHeight="26.0" prefWidth="61.0" />
+                                    <Spinner fx:id="spinY2" editable="true" layoutX="101.0" layoutY="76.0" prefHeight="26.0" prefWidth="61.0" />
+                                    <Label layoutX="7.0" text="Map Coordinates 1" />
+                                    <Label layoutX="7.0" layoutY="54.0" text="Map Coordinates 2" />
+                                    <Label layoutX="76.0" layoutY="80.0" text="X" />
+                                    <Label layoutX="76.0" layoutY="26.0" text="X" />
+                                    <Label layoutX="169.0" layoutY="80.0" text="Y" />
+                                    <Label layoutX="169.0" layoutY="26.0" text="Y" />
+                                 </children>
+                              </AnchorPane>
+                              <Spinner fx:id="spinResBuff" editable="true" layoutX="384.0" layoutY="255.0" prefHeight="26.0" prefWidth="70.0" />
+                              <Button layoutX="51.0" layoutY="229.0" mnemonicParsing="false" onAction="#setMaxExp" prefHeight="26.0" prefWidth="82.0" text="Max EXP" />
+                              <Label layoutX="374.0" layoutY="236.0" text="Pure Water Boost" />
+                              <ComboBox fx:id="comboRetire" layoutX="189.0" layoutY="231.0" prefWidth="157.0" promptText="Retired/Died On" />
+                              <Label layoutX="190.0" layoutY="208.0" text="Retired/Died on" />
+                              <CheckBox fx:id="checkRetire" layoutX="190.0" layoutY="265.0" mnemonicParsing="false" text="Retired (Classic Mode)" />
+                              <CheckBox fx:id="checkDead1" layoutX="190.0" layoutY="288.0" mnemonicParsing="false" text="Unknown Flag 1" />
+                              <CheckBox fx:id="checkDead2" layoutX="190.0" layoutY="311.0" mnemonicParsing="false" text="Unknown Flag 2" />
+                              <Spinner fx:id="spinHiddenLevel" editable="true" layoutX="52.0" layoutY="300.0" prefHeight="26.0" prefWidth="70.0" />
+                              <Label layoutX="53.0" layoutY="279.0" text="Hidden Level" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="AI">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="350.0" prefWidth="480.0">
+                           <children>
+                              <AnchorPane layoutX="6.0" layoutY="5.0" prefHeight="302.0" prefWidth="114.0">
+                                 <children>
+                                    <Spinner fx:id="spinAction" layoutX="9.0" layoutY="22.0" prefHeight="26.0" prefWidth="55.0" />
+                                    <Spinner fx:id="spinAction1" editable="true" layoutX="7.0" layoutY="98.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="10.0" layoutY="1.0" text="Action AI" />
+                                    <Label layoutX="7.0" layoutY="80.0" text="Param 1" />
+                                    <Spinner fx:id="spinAction2" editable="true" layoutX="7.0" layoutY="150.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="132.0" text="Param 2" />
+                                    <Spinner fx:id="spinAction3" editable="true" layoutX="7.0" layoutY="206.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="188.0" text="Param 3" />
+                                    <Spinner fx:id="spinAction4" editable="true" layoutX="7.0" layoutY="259.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="241.0" text="Param 4" />
+                                    <Label fx:id="lblAction" layoutX="4.0" layoutY="51.0" text="Type" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="120.0" layoutY="7.0" prefHeight="298.0" prefWidth="114.0">
+                                 <children>
+                                    <Spinner fx:id="spinMission" layoutX="10.0" layoutY="22.0" prefHeight="26.0" prefWidth="55.0" />
+                                    <Spinner fx:id="spinMission1" editable="true" layoutX="7.0" layoutY="98.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="10.0" text="Mission AI" />
+                                    <Label layoutX="7.0" layoutY="80.0" text="Param 1" />
+                                    <Spinner fx:id="spinMission2" editable="true" layoutX="7.0" layoutY="150.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="132.0" text="Param 2" />
+                                    <Spinner fx:id="spinMission3" editable="true" layoutX="7.0" layoutY="206.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="188.0" text="Param 3" />
+                                    <Spinner fx:id="spinMission4" editable="true" layoutX="7.0" layoutY="259.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="241.0" text="Param 4" />
+                                    <Label fx:id="lblMission" layoutX="1.0" layoutY="61.0" text="Type" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="240.0" layoutY="8.0" prefHeight="292.0" prefWidth="114.0">
+                                 <children>
+                                    <Spinner fx:id="spinAttack" layoutX="9.0" layoutY="22.0" prefHeight="26.0" prefWidth="55.0" />
+                                    <Spinner fx:id="spinAttack1" editable="true" layoutX="7.0" layoutY="98.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="10.0" text="Attack AI" />
+                                    <Label layoutX="7.0" layoutY="80.0" text="Param 1" />
+                                    <Spinner fx:id="spinAttack2" editable="true" layoutX="7.0" layoutY="150.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="132.0" text="Param 2" />
+                                    <Spinner fx:id="spinAttack3" editable="true" layoutX="7.0" layoutY="206.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="188.0" text="Param 3" />
+                                    <Spinner fx:id="spinAttack4" editable="true" layoutX="7.0" layoutY="259.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="241.0" text="Param 4" />
+                                    <Label fx:id="lblAttack" layoutX="3.0" layoutY="51.0" text="Type" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="354.0" layoutY="7.0" prefHeight="298.0" prefWidth="105.0">
+                                 <children>
+                                    <Spinner fx:id="spinMove" layoutX="9.0" layoutY="22.0" prefHeight="26.0" prefWidth="55.0" />
+                                    <Spinner fx:id="spinMove1" editable="true" layoutX="7.0" layoutY="98.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="10.0" text="Move AI" />
+                                    <Label layoutX="7.0" layoutY="80.0" text="Param 1" />
+                                    <Spinner fx:id="spinMove2" editable="true" layoutX="7.0" layoutY="150.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="132.0" text="Param 2" />
+                                    <Spinner fx:id="spinMove3" editable="true" layoutX="7.0" layoutY="206.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="188.0" text="Param 3" />
+                                    <Spinner fx:id="spinMove4" editable="true" layoutX="7.0" layoutY="259.0" prefHeight="26.0" prefWidth="80.0" />
+                                    <Label layoutX="7.0" layoutY="241.0" text="Param 4" />
+                                    <Label fx:id="lblMove" layoutX="1.0" layoutY="61.0" text="Type" />
+                                 </children>
+                              </AnchorPane>
+                              <TextField fx:id="txtEndSection" disable="true" editable="false" layoutX="172.0" layoutY="310.0" prefHeight="26.0" prefWidth="124.0" />
+                              <Label layoutX="24.0" layoutY="315.0" text="End Section (Unknown)" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </VBox>

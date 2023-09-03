@@ -29,7 +29,7 @@ public class FireEditor extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        readTestFile("Chapter1");
+        readTestFile("Chapter0");
         FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewMain.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 750, 445);
         stage.setTitle("Fire Editor: Awakening");

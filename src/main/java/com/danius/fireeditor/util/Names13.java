@@ -218,7 +218,7 @@ public class Names13 {
             "Unknown 0-4", "Unknown 0-5", "Unknown 0-6", "Retired on Current Map",
             "Unknown 1-0", "Unknown 1-1", "Selected for Battle", "Unknown 1-3",
             "Unknown 1-4", "Unknown 1-5", "Unknown 1-6", "Unknown 1-7",
-            "Unknown 2-0", "Unknown 2-1", "Unknown 2-2", "Galeforce Used?",
+            "Unknown 2-0", "Unknown 2-1", "Unknown 2-2", "Unknown 2-3",
             "Unknown 2-4", "Unknown 2-5", "Married to Maiden", "Unknown 2-7",
             "Unknown 3-0", "Tiki Meditating", "Unknown 3-2", "Unknown 3-3",
             "Unknown 3-4", "Unknown 3-5", "Unknown 3-6", "Unknown 3-7"
