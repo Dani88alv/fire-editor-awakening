@@ -1,7 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 
 import java.io.IOException;
 
@@ -70,12 +70,12 @@ public class RawItem {
     }
 
     public String report() {
-        return Names13.itemName(itemId()) + " (" + uses() + ")";
+        return Names.itemName(itemId()) + " (" + uses() + ")";
     }
 
     @Override
     public String toString() {
-        return Names13.itemName(itemId());
+        return Names.itemName(itemId());
     }
 
     public int length() {

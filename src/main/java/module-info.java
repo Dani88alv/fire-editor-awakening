@@ -2,6 +2,8 @@ module com.example.fireeditor {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.logging;
+    requires org.jdom2;
+
 
     opens com.danius.fireeditor to javafx.fxml;
     exports com.danius.fireeditor;
@@ -23,5 +25,6 @@ module com.example.fireeditor {
     opens com.danius.fireeditor.savefile.other to javafx.fxml;
     exports com.danius.fireeditor.savefile.global;
     opens com.danius.fireeditor.savefile.global to javafx.fxml;
+    exports com.danius.fireeditor.model;
 
 }

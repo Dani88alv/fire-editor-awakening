@@ -2,14 +2,11 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants13;
-import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Stats;
-import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names13;
-import com.danius.fireeditor.util.Portrait13;
+import com.danius.fireeditor.util.Portrait;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -123,7 +120,7 @@ public class UnitController {
     }
 
     public void setImage() {
-        Image[] images = Portrait13.setImage(listViewUnit.getSelectionModel().getSelectedItem());
+        Image[] images = Portrait.setImage(listViewUnit.getSelectionModel().getSelectedItem());
         imgBuild.setImage(images[0]);
         if (images[1] != null) imgHairColor.setImage(images[1]);
         else imgHairColor.setImage(null);
@@ -283,7 +280,7 @@ public class UnitController {
         UI.setNumericTextField(txtGrowthRes, 255);
         UI.setNumericTextField(txtGrowthMove, 255);
         //Classes
-        ObservableList<String> classes = FXCollections.observableArrayList(Names13.classNames);
+        ObservableList<String> classes = FXCollections.observableArrayList(FireEditor.classDb.getNames());
         comboClass.setItems(classes);
         //IMPORTANT ORDER
         setupUnitList(listViewUnit);
@@ -550,8 +547,6 @@ public class UnitController {
                 //if (listViewUnit.getSelectionModel().getSelectedItem().rawSupport.supportCount() == 0) return;
                 //The unit ID is updated
                 listViewUnit.getSelectionModel().getSelectedItem().rawSupport.setUnitId(spinUnitId.getValue());
-                int supportId = listViewUnit.getSelectionModel().getSelectedItem().rawSupport.unitId;
-                int[] supportList = Supports.getSupportUnits(supportId);
                 //If it is an invalid unit, do NOT open the window
                 //if (supportList.length == 0) return;
                 //Check the support block size

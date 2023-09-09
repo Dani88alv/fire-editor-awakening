@@ -2,7 +2,7 @@ package com.danius.fireeditor.savefile.units.extrablock;
 
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Bitflag;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -313,14 +313,21 @@ public class LogBlock {
             if (logString.charAt(i) != '0') return false;
         }
         int logId = getLogIdLastByte();
-        /*
         //Checks the DLC IDs
-        for (int number : DLC_LOG_ID) {
-            if (number == logId) {
-                return true;
-            }
+        //for (int number : DLC_LOG_ID) if (number == logId) return true;
+        //Checks the regular Einherjar IDs
+        return logId <= 120;
+    }
+
+    public boolean hasEinherjarIdDlc(){
+        String logString = getLogId();
+        //Checks large ID numbers, from avatars
+        for (int i = 0; i < logString.length() - 2; i++) {
+            if (logString.charAt(i) != '0') return false;
         }
-         */
+        int logId = getLogIdLastByte();
+        //Checks the DLC IDs
+        for (int number : DLC_LOG_ID) if (number == logId) return true;
         //Checks the regular Einherjar IDs
         return logId <= 120;
     }
@@ -491,7 +498,7 @@ public class LogBlock {
         text += "Logbook ID: " + getLogId();
         text += isWest ? " (US/EU)" : " (JP)";
         //Build
-        text += "\n" + "Asset: " + Names13.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + Names13.modifNames.get(getAssetFlaw()[1]);
+        text += "\n" + "Asset: " + Names.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + Names.modifNames.get(getAssetFlaw()[1]);
         text += "\n" + "Build: " + Arrays.toString(getFullBuild()) + " Birthday: " + Arrays.toString(getBirthday());
         text += "\n" + "Logbook Hair: #" + getLogHairColor();
         return text;

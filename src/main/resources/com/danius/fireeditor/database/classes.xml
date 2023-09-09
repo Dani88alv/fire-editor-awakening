@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classes>
+    <class id="0" name="Lord (M)" skill1="18" skill2="36" promoted1="2" promoted2="" isDlc="false">
+        <base hp="18" str="6" mag="0" skl="5" spd="7" lck="0" def="7" res="0" mov="5"/>
+        <max hp="60" str="27" mag="20" skl="25" spd="26" lck="30" def="26" res="25" mov="255"/>
+        <flags/>
+    </class>
+    <class id="1" name="Lord (F)" skill1="18" skill2="36" promoted1="3" promoted2="" isDlc="false">
+        <base hp="16" str="5" mag="1" skl="6" spd="8" lck="0" def="6" res="1" mov="5"/>
+        <max hp="60" str="25" mag="20" skl="26" spd="28" lck="30" def="25" res="25" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="2" name="Great Lord (M)" skill1="72" skill2="20" promoted1="" promoted2="" isDlc="false">
+        <base hp="23" str="10" mag="0" skl="7" spd="9" lck="0" def="10" res="3" mov="6"/>
+        <max hp="80" str="43" mag="30" skl="40" spd="41" lck="45" def="42" res="40" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="3" name="Great Lord (F)" skill1="72" skill2="20" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="8" mag="1" skl="9" spd="11" lck="0" def="8" res="4" mov="6"/>
+        <max hp="80" str="40" mag="30" skl="42" spd="44" lck="45" def="40" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="4" name="Tactician (M)" skill1="13" skill2="37" promoted1="6" promoted2="" isDlc="false">
+        <base hp="16" str="4" mag="3" skl="5" spd="5" lck="0" def="5" res="3" mov="5"/>
+        <max hp="60" str="25" mag="25" skl="25" spd="25" lck="30" def="25" res="25" mov="255"/>
+        <flags/>
+    </class>
+    <class id="5" name="Tactician (F)" skill1="13" skill2="37" promoted1="7" promoted2="" isDlc="false">
+        <base hp="16" str="4" mag="3" skl="5" spd="5" lck="0" def="5" res="3" mov="5"/>
+        <max hp="60" str="25" mag="25" skl="25" spd="25" lck="30" def="25" res="25" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="6" name="Grandmaster (M)" skill1="76" skill2="63" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="7" mag="6" skl="7" spd="7" lck="0" def="7" res="5" mov="6"/>
+        <max hp="80" str="40" mag="40" skl="40" spd="40" lck="45" def="40" res="40" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="7" name="Grandmaster (F)" skill1="76" skill2="63" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="7" mag="6" skl="7" spd="7" lck="0" def="7" res="5" mov="6"/>
+        <max hp="80" str="40" mag="40" skl="40" spd="40" lck="45" def="40" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="8" name="Cavalier (M)" skill1="15" skill2="27" promoted1="12" promoted2="14" isDlc="false">
+        <base hp="18" str="6" mag="0" skl="5" spd="6" lck="0" def="7" res="0" mov="7"/>
+        <max hp="60" str="26" mag="20" skl="25" spd="25" lck="30" def="26" res="26" mov="255"/>
+        <flags/>
+    </class>
+    <class id="9" name="Cavalier (F)" skill1="15" skill2="27" promoted1="13" promoted2="15" isDlc="false">
+        <base hp="18" str="6" mag="0" skl="5" spd="6" lck="0" def="7" res="0" mov="7"/>
+        <max hp="60" str="26" mag="20" skl="25" spd="25" lck="30" def="26" res="26" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="10" name="Knight (M)" skill1="6" skill2="28" promoted1="16" promoted2="14" isDlc="false">
+        <base hp="18" str="8" mag="0" skl="4" spd="2" lck="0" def="11" res="0" mov="4"/>
+        <max hp="60" str="30" mag="20" skl="26" spd="23" lck="30" def="30" res="22" mov="255"/>
+        <flags/>
+    </class>
+    <class id="11" name="Knight (F)" skill1="6" skill2="28" promoted1="17" promoted2="15" isDlc="false">
+        <base hp="18" str="8" mag="0" skl="4" spd="2" lck="0" def="11" res="0" mov="4"/>
+        <max hp="60" str="30" mag="20" skl="26" spd="23" lck="30" def="30" res="22" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="12" name="Paladin (M)" skill1="45" skill2="80" promoted1="" promoted2="" isDlc="false">
+        <base hp="25" str="9" mag="1" skl="7" spd="8" lck="0" def="10" res="6" mov="8"/>
+        <max hp="80" str="42" mag="30" skl="40" spd="40" lck="45" def="42" res="42" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="13" name="Paladin (F)" skill1="45" skill2="80" promoted1="" promoted2="" isDlc="false">
+        <base hp="25" str="9" mag="1" skl="7" spd="8" lck="0" def="10" res="6" mov="8"/>
+        <max hp="80" str="42" mag="30" skl="40" spd="40" lck="45" def="42" res="42" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="14" name="Great Knight (M)" skill1="75" skill2="19" promoted1="" promoted2="" isDlc="false">
+        <base hp="26" str="11" mag="0" skl="6" spd="5" lck="0" def="14" res="1" mov="7"/>
+        <max hp="80" str="48" mag="20" skl="34" spd="37" lck="45" def="48" res="30" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="15" name="Great Knight (F)" skill1="75" skill2="19" promoted1="" promoted2="" isDlc="false">
+        <base hp="26" str="11" mag="0" skl="6" spd="5" lck="0" def="14" res="1" mov="7"/>
+        <max hp="80" str="48" mag="20" skl="34" spd="37" lck="45" def="48" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="16" name="General (M)" skill1="60" skill2="79" promoted1="" promoted2="" isDlc="false">
+        <base hp="28" str="12" mag="0" skl="7" spd="4" lck="0" def="15" res="3" mov="5"/>
+        <max hp="80" str="50" mag="30" skl="41" spd="35" lck="45" def="50" res="35" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="17" name="General (F)" skill1="60" skill2="79" promoted1="" promoted2="" isDlc="false">
+        <base hp="28" str="12" mag="0" skl="7" spd="4" lck="0" def="15" res="3" mov="5"/>
+        <max hp="80" str="50" mag="30" skl="41" spd="35" lck="45" def="50" res="35" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="18" name="Barbarian" skill1="83" skill2="26" promoted1="24" promoted2="25" isDlc="false">
+        <base hp="22" str="8" mag="0" skl="3" spd="8" lck="0" def="3" res="0" mov="5"/>
+        <max hp="60" str="30" mag="20" skl="23" spd="27" lck="30" def="22" res="20" mov="255"/>
+        <flags>
+            <flag>18</flag>
+        </flags>
+    </class>
+    <class id="19" name="Fighter" skill1="1" skill2="31" promoted1="26" promoted2="25" isDlc="false">
+        <base hp="20" str="8" mag="0" skl="5" spd="5" lck="0" def="4" res="0" mov="5"/>
+        <max hp="60" str="29" mag="20" skl="26" spd="25" lck="30" def="25" res="23" mov="255"/>
+        <flags/>
+    </class>
+    <class id="20" name="Mercenary (M)" skill1="16" skill2="34" promoted1="26" promoted2="28" isDlc="false">
+        <base hp="18" str="5" mag="0" skl="8" spd="7" lck="0" def="5" res="0" mov="5"/>
+        <max hp="60" str="26" mag="20" skl="28" spd="26" lck="30" def="25" res="23" mov="255"/>
+        <flags/>
+    </class>
+    <class id="21" name="Mercenary (F)" skill1="16" skill2="34" promoted1="27" promoted2="29" isDlc="false">
+        <base hp="18" str="5" mag="0" skl="8" spd="7" lck="0" def="5" res="0" mov="5"/>
+        <max hp="60" str="26" mag="20" skl="28" spd="26" lck="30" def="25" res="23" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="22" name="Archer (M)" skill1="4" skill2="33" promoted1="30" promoted2="28" isDlc="false">
+        <base hp="16" str="5" mag="0" skl="8" spd="6" lck="0" def="5" res="0" mov="5"/>
+        <max hp="60" str="26" mag="20" skl="29" spd="25" lck="30" def="25" res="21" mov="255"/>
+        <flags/>
+    </class>
+    <class id="23" name="Archer (F)" skill1="4" skill2="33" promoted1="31" promoted2="29" isDlc="false">
+        <base hp="16" str="5" mag="0" skl="8" spd="6" lck="0" def="5" res="0" mov="5"/>
+        <max hp="60" str="26" mag="20" skl="29" spd="25" lck="30" def="25" res="21" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="24" name="Berserker" skill1="32" skill2="50" promoted1="" promoted2="" isDlc="false">
+        <base hp="30" str="13" mag="0" skl="5" spd="11" lck="0" def="5" res="1" mov="6"/>
+        <max hp="80" str="50" mag="30" skl="35" spd="44" lck="45" def="34" res="30" mov="255"/>
+        <flags>
+            <flag>3</flag>
+            <flag>18</flag>
+        </flags>
+    </class>
+    <class id="25" name="Warrior" skill1="55" skill2="81" promoted1="" promoted2="" isDlc="false">
+        <base hp="28" str="12" mag="0" skl="8" spd="7" lck="0" def="7" res="3" mov="6"/>
+        <max hp="80" str="48" mag="30" skl="42" spd="40" lck="45" def="40" res="35" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="26" name="Hero (M)" skill1="74" skill2="66" promoted1="" promoted2="" isDlc="false">
+        <base hp="22" str="8" mag="1" skl="11" spd="10" lck="0" def="8" res="3" mov="6"/>
+        <max hp="80" str="42" mag="30" skl="46" spd="42" lck="45" def="40" res="36" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="27" name="Hero (F)" skill1="74" skill2="66" promoted1="" promoted2="" isDlc="false">
+        <base hp="22" str="8" mag="1" skl="11" spd="10" lck="0" def="8" res="3" mov="6"/>
+        <max hp="80" str="42" mag="30" skl="46" spd="42" lck="45" def="40" res="36" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="28" name="Bow Knight (M)" skill1="57" skill2="67" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="8" mag="0" skl="10" spd="10" lck="0" def="6" res="2" mov="8"/>
+        <max hp="80" str="40" mag="30" skl="43" spd="41" lck="45" def="35" res="30" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="29" name="Bow Knight (F)" skill1="57" skill2="67" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="8" mag="0" skl="10" spd="10" lck="0" def="6" res="2" mov="8"/>
+        <max hp="80" str="40" mag="30" skl="43" spd="41" lck="45" def="35" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="30" name="Sniper (M)" skill1="9" skill2="51" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="7" mag="1" skl="12" spd="9" lck="0" def="10" res="3" mov="6"/>
+        <max hp="80" str="41" mag="30" skl="48" spd="40" lck="45" def="40" res="31" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="31" name="Sniper (F)" skill1="9" skill2="51" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="7" mag="1" skl="12" spd="9" lck="0" def="10" res="3" mov="6"/>
+        <max hp="80" str="41" mag="30" skl="48" spd="40" lck="45" def="40" res="31" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="32" name="Myrmidon (M)" skill1="10" skill2="78" promoted1="36" promoted2="38" isDlc="false">
+        <base hp="16" str="4" mag="1" skl="9" spd="10" lck="0" def="4" res="1" mov="5"/>
+        <max hp="60" str="24" mag="22" skl="27" spd="28" lck="30" def="22" res="24" mov="255"/>
+        <flags/>
+    </class>
+    <class id="33" name="Myrmidon (F)" skill1="10" skill2="78" promoted1="37" promoted2="39" isDlc="false">
+        <base hp="16" str="4" mag="1" skl="9" spd="10" lck="0" def="4" res="1" mov="5"/>
+        <max hp="60" str="24" mag="22" skl="27" spd="28" lck="30" def="22" res="24" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="34" name="Thief (M)" skill1="12" skill2="11" promoted1="38" promoted2="40" isDlc="false">
+        <base hp="16" str="3" mag="0" skl="6" spd="8" lck="0" def="2" res="0" mov="5"/>
+        <max hp="60" str="22" mag="20" skl="30" spd="28" lck="30" def="21" res="20" mov="255"/>
+        <flags>
+            <flag>9</flag>
+            <flag>18</flag>
+        </flags>
+    </class>
+    <class id="35" name="Thief (F)" skill1="12" skill2="11" promoted1="39" promoted2="41" isDlc="false">
+        <base hp="16" str="3" mag="0" skl="6" spd="8" lck="0" def="2" res="0" mov="5"/>
+        <max hp="60" str="22" mag="20" skl="30" spd="28" lck="30" def="21" res="20" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>9</flag>
+            <flag>18</flag>
+        </flags>
+    </class>
+    <class id="36" name="Swordmaster (M)" skill1="73" skill2="48" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="7" mag="2" skl="11" spd="13" lck="0" def="6" res="4" mov="6"/>
+        <max hp="80" str="38" mag="34" skl="44" spd="46" lck="45" def="33" res="38" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="37" name="Swordmaster (F)" skill1="73" skill2="48" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="7" mag="2" skl="11" spd="13" lck="0" def="6" res="4" mov="6"/>
+        <max hp="80" str="38" mag="34" skl="44" spd="46" lck="45" def="33" res="38" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="38" name="Assassin (M)" skill1="71" skill2="47" promoted1="" promoted2="" isDlc="false">
+        <base hp="21" str="8" mag="0" skl="13" spd="12" lck="0" def="5" res="1" mov="6"/>
+        <max hp="80" str="40" mag="30" skl="48" spd="46" lck="45" def="31" res="30" mov="255"/>
+        <flags>
+            <flag>3</flag>
+            <flag>9</flag>
+        </flags>
+    </class>
+    <class id="39" name="Assassin (F)" skill1="71" skill2="47" promoted1="" promoted2="" isDlc="false">
+        <base hp="21" str="8" mag="0" skl="13" spd="12" lck="0" def="5" res="1" mov="6"/>
+        <max hp="80" str="40" mag="30" skl="48" spd="46" lck="45" def="31" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+            <flag>9</flag>
+        </flags>
+    </class>
+    <class id="40" name="Trickster (M)" skill1="25" skill2="46" promoted1="" promoted2="" isDlc="false">
+        <base hp="19" str="4" mag="4" skl="10" spd="11" lck="0" def="3" res="5" mov="6"/>
+        <max hp="80" str="35" mag="38" skl="45" spd="43" lck="45" def="30" res="40" mov="255"/>
+        <flags>
+            <flag>3</flag>
+            <flag>9</flag>
+        </flags>
+    </class>
+    <class id="41" name="Trickster (F)" skill1="25" skill2="46" promoted1="" promoted2="" isDlc="false">
+        <base hp="19" str="4" mag="4" skl="10" spd="11" lck="0" def="3" res="5" mov="6"/>
+        <max hp="80" str="35" mag="38" skl="45" spd="43" lck="45" def="30" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+            <flag>9</flag>
+        </flags>
+    </class>
+    <class id="42" name="Pegasus Knight" skill1="5" skill2="42" promoted1="43" promoted2="44" isDlc="false">
+        <base hp="16" str="4" mag="2" skl="7" spd="8" lck="0" def="4" res="6" mov="7"/>
+        <max hp="60" str="24" mag="23" skl="28" spd="27" lck="30" def="22" res="25" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="43" name="Falcon Knight" skill1="58" skill2="49" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="6" mag="3" skl="10" spd="11" lck="0" def="6" res="9" mov="8"/>
+        <max hp="80" str="38" mag="35" skl="45" spd="44" lck="45" def="33" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="44" name="Dark Flier" skill1="62" skill2="84" promoted1="" promoted2="" isDlc="false">
+        <base hp="19" str="5" mag="6" skl="8" spd="10" lck="0" def="5" res="9" mov="8"/>
+        <max hp="80" str="36" mag="42" skl="41" spd="42" lck="45" def="32" res="41" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="45" name="Wyvern Rider (M)" skill1="2" skill2="29" promoted1="47" promoted2="49" isDlc="false">
+        <base hp="19" str="7" mag="0" skl="6" spd="5" lck="0" def="8" res="0" mov="7"/>
+        <max hp="60" str="28" mag="20" skl="24" spd="24" lck="30" def="28" res="20" mov="255"/>
+        <flags/>
+    </class>
+    <class id="46" name="Wyvern Rider (F)" skill1="2" skill2="29" promoted1="48" promoted2="50" isDlc="false">
+        <base hp="19" str="7" mag="0" skl="6" spd="5" lck="0" def="8" res="0" mov="7"/>
+        <max hp="60" str="28" mag="20" skl="24" spd="24" lck="30" def="28" res="20" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="47" name="Wyvern Lord (M)" skill1="23" skill2="64" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="11" mag="0" skl="8" spd="7" lck="0" def="11" res="3" mov="8"/>
+        <max hp="80" str="46" mag="30" skl="38" spd="38" lck="45" def="46" res="30" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="48" name="Wyvern Lord (F)" skill1="23" skill2="64" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="11" mag="0" skl="8" spd="7" lck="0" def="11" res="3" mov="8"/>
+        <max hp="80" str="46" mag="30" skl="38" spd="38" lck="45" def="46" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="49" name="Griffon Rider (M)" skill1="44" skill2="65" promoted1="" promoted2="" isDlc="false">
+        <base hp="22" str="9" mag="0" skl="10" spd="9" lck="0" def="8" res="3" mov="8"/>
+        <max hp="80" str="40" mag="30" skl="43" spd="41" lck="45" def="40" res="30" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="50" name="Griffon Rider (F)" skill1="44" skill2="65" promoted1="" promoted2="" isDlc="false">
+        <base hp="22" str="9" mag="0" skl="10" spd="9" lck="0" def="8" res="3" mov="8"/>
+        <max hp="80" str="40" mag="30" skl="43" spd="41" lck="45" def="40" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="51" name="Troubadour" skill1="7" skill2="38" promoted1="58" promoted2="60" isDlc="false">
+        <base hp="16" str="0" mag="3" skl="2" spd="5" lck="0" def="1" res="5" mov="7"/>
+        <max hp="60" str="20" mag="26" skl="24" spd="26" lck="30" def="20" res="28" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>10</flag>
+            <flag>11</flag>
+        </flags>
+    </class>
+    <class id="52" name="Priest" skill1="82" skill2="41" promoted1="61" promoted2="59" isDlc="false">
+        <base hp="16" str="0" mag="3" skl="2" spd="4" lck="0" def="1" res="6" mov="5"/>
+        <max hp="60" str="22" mag="25" skl="24" spd="25" lck="30" def="22" res="27" mov="255"/>
+        <flags>
+            <flag>10</flag>
+            <flag>11</flag>
+        </flags>
+    </class>
+    <class id="53" name="Cleric" skill1="82" skill2="41" promoted1="63" promoted2="61" isDlc="false">
+        <base hp="16" str="0" mag="3" skl="2" spd="4" lck="0" def="1" res="6" mov="5"/>
+        <max hp="60" str="22" mag="25" skl="24" spd="25" lck="30" def="22" res="27" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>10</flag>
+            <flag>11</flag>
+        </flags>
+    </class>
+    <class id="54" name="Mage (M)" skill1="3" skill2="30" promoted1="61" promoted2="63" isDlc="false">
+        <base hp="16" str="0" mag="4" skl="3" spd="4" lck="0" def="2" res="3" mov="5"/>
+        <max hp="60" str="20" mag="28" skl="27" spd="26" lck="30" def="21" res="25" mov="255"/>
+        <flags/>
+    </class>
+    <class id="55" name="Mage (F)" skill1="3" skill2="30" promoted1="62" promoted2="64" isDlc="false">
+        <base hp="16" str="0" mag="4" skl="3" spd="4" lck="0" def="2" res="3" mov="5"/>
+        <max hp="60" str="20" mag="28" skl="27" spd="26" lck="30" def="21" res="25" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="56" name="Dark Mage (M)" skill1="39" skill2="40" promoted1="65" promoted2="63" isDlc="false">
+        <base hp="18" str="1" mag="3" skl="2" spd="3" lck="0" def="4" res="4" mov="5"/>
+        <max hp="60" str="20" mag="27" skl="25" spd="25" lck="30" def="25" res="27" mov="255"/>
+        <flags/>
+    </class>
+    <class id="57" name="Dark Mage (F)" skill1="39" skill2="40" promoted1="66" promoted2="64" isDlc="false">
+        <base hp="18" str="1" mag="3" skl="2" spd="3" lck="0" def="4" res="4" mov="5"/>
+        <max hp="60" str="20" mag="27" skl="25" spd="25" lck="30" def="25" res="27" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="58" name="Valkyrie" skill1="61" skill2="17" promoted1="" promoted2="" isDlc="false">
+        <base hp="19" str="0" mag="5" skl="4" spd="8" lck="0" def="3" res="8" mov="8"/>
+        <max hp="80" str="30" mag="42" skl="38" spd="43" lck="45" def="30" res="45" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="59" name="War Monk" skill1="59" skill2="43" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="5" mag="5" skl="4" spd="6" lck="0" def="6" res="6" mov="6"/>
+        <max hp="80" str="40" mag="40" skl="38" spd="41" lck="45" def="38" res="43" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="60" name="War Cleric" skill1="59" skill2="43" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="5" mag="5" skl="4" spd="6" lck="0" def="6" res="6" mov="6"/>
+        <max hp="80" str="40" mag="40" skl="38" spd="41" lck="45" def="38" res="43" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="61" name="Sage (M)" skill1="56" skill2="52" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="1" mag="7" skl="5" spd="7" lck="0" def="4" res="5" mov="6"/>
+        <max hp="80" str="30" mag="46" skl="43" spd="42" lck="45" def="31" res="40" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="62" name="Sage (F)" skill1="56" skill2="52" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="1" mag="7" skl="5" spd="7" lck="0" def="4" res="5" mov="6"/>
+        <max hp="80" str="30" mag="46" skl="43" spd="42" lck="45" def="31" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="63" name="Dark Knight (M)" skill1="24" skill2="85" promoted1="" promoted2="" isDlc="false">
+        <base hp="25" str="4" mag="5" skl="6" spd="5" lck="0" def="9" res="5" mov="8"/>
+        <max hp="80" str="38" mag="41" skl="40" spd="40" lck="45" def="42" res="38" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="64" name="Dark Knight (F)" skill1="24" skill2="85" promoted1="" promoted2="" isDlc="false">
+        <base hp="25" str="4" mag="5" skl="6" spd="5" lck="0" def="9" res="5" mov="8"/>
+        <max hp="80" str="38" mag="41" skl="40" spd="40" lck="45" def="42" res="38" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="65" name="Sorcerer (M)" skill1="77" skill2="68" promoted1="" promoted2="" isDlc="false">
+        <base hp="23" str="2" mag="6" skl="4" spd="4" lck="0" def="7" res="7" mov="6"/>
+        <max hp="80" str="30" mag="44" skl="38" spd="40" lck="45" def="41" res="44" mov="255"/>
+        <flags>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="66" name="Sorcerer (F)" skill1="77" skill2="68" promoted1="" promoted2="" isDlc="false">
+        <base hp="23" str="2" mag="6" skl="4" spd="4" lck="0" def="7" res="7" mov="6"/>
+        <max hp="80" str="30" mag="44" skl="38" spd="40" lck="45" def="41" res="44" mov="255"/>
+        <flags>
+            <flag>0</flag>
+            <flag>3</flag>
+        </flags>
+    </class>
+    <class id="67" name="Dancer" skill1="53" skill2="54" promoted1="" promoted2="" isDlc="false">
+        <base hp="16" str="1" mag="1" skl="5" spd="8" lck="0" def="3" res="1" mov="5"/>
+        <max hp="80" str="30" mag="30" skl="40" spd="40" lck="45" def="30" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="68" name="Manakete" skill1="21" skill2="69" promoted1="" promoted2="" isDlc="false">
+        <base hp="18" str="2" mag="0" skl="1" spd="1" lck="0" def="2" res="2" mov="6"/>
+        <max hp="80" str="40" mag="35" skl="35" spd="35" lck="45" def="40" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="69" name="Taguel (M)" skill1="22" skill2="70" promoted1="" promoted2="" isDlc="false">
+        <base hp="18" str="3" mag="0" skl="4" spd="4" lck="0" def="4" res="1" mov="6"/>
+        <max hp="80" str="35" mag="30" skl="40" spd="40" lck="45" def="35" res="30" mov="255"/>
+        <flags/>
+    </class>
+    <class id="70" name="Taguel (F)" skill1="22" skill2="70" promoted1="" promoted2="" isDlc="false">
+        <base hp="18" str="3" mag="0" skl="4" spd="4" lck="0" def="4" res="1" mov="6"/>
+        <max hp="80" str="35" mag="30" skl="40" spd="40" lck="45" def="35" res="30" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="71" name="Soldier" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="16" str="3" mag="0" skl="3" spd="3" lck="0" def="3" res="0" mov="5"/>
+        <max hp="80" str="30" mag="30" skl="30" spd="30" lck="45" def="30" res="30" mov="255"/>
+        <flags>
+            <flag>21</flag>
+        </flags>
+    </class>
+    <class id="72" name="Villager" skill1="14" skill2="35" promoted1="" promoted2="" isDlc="false">
+        <base hp="16" str="1" mag="0" skl="1" spd="1" lck="0" def="1" res="0" mov="5"/>
+        <max hp="60" str="20" mag="20" skl="20" spd="20" lck="30" def="20" res="20" mov="255"/>
+        <flags/>
+    </class>
+    <class id="73" name="Merchant" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="18" str="3" mag="0" skl="2" spd="2" lck="0" def="4" res="1" mov="5"/>
+        <max hp="60" str="20" mag="20" skl="20" spd="20" lck="30" def="20" res="20" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="74" name="Reverant" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="18" str="3" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="5"/>
+        <max hp="80" str="30" mag="20" skl="25" spd="25" lck="30" def="30" res="30" mov="255"/>
+        <flags>
+            <flag>21</flag>
+        </flags>
+    </class>
+    <class id="75" name="Entombed" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="20" str="3" mag="1" skl="2" spd="2" lck="0" def="2" res="1" mov="6"/>
+        <max hp="80" str="40" mag="30" skl="35" spd="35" lck="45" def="35" res="30" mov="255"/>
+        <flags>
+            <flag>21</flag>
+            <flag>25</flag>
+        </flags>
+    </class>
+    <class id="76" name="Conqueror" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="24" str="10" mag="2" skl="9" spd="8" lck="0" def="12" res="5" mov="8"/>
+        <max hp="80" str="45" mag="25" skl="40" spd="40" lck="45" def="45" res="35" mov="255"/>
+        <flags>
+            <flag>9</flag>
+        </flags>
+    </class>
+    <class id="77" name="Lodestar" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="21" str="9" mag="1" skl="10" spd="10" lck="0" def="8" res="4" mov="6"/>
+        <max hp="80" str="41" mag="30" skl="43" spd="43" lck="45" def="41" res="40" mov="255"/>
+        <flags/>
+    </class>
+    <class id="78" name="Grima" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="30" str="15" mag="15" skl="15" spd="15" lck="0" def="15" res="10" mov="0"/>
+        <max hp="99" str="50" mag="40" skl="50" spd="45" lck="45" def="50" res="50" mov="255"/>
+        <flags>
+            <flag>7</flag>
+            <flag>9</flag>
+            <flag>21</flag>
+        </flags>
+    </class>
+    <class id="79" name="Mirage" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="1" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
+        <max hp="60" str="20" mag="20" skl="20" spd="20" lck="30" def="20" res="20" mov="255"/>
+        <flags>
+            <flag>21</flag>
+        </flags>
+    </class>
+    <class id="80" name="Dread Fighter" skill1="99" skill2="100" promoted1="" promoted2="" isDlc="true">
+        <base hp="22" str="8" mag="4" skl="8" spd="9" lck="0" def="7" res="10" mov="6"/>
+        <max hp="80" str="42" mag="38" skl="40" spd="41" lck="45" def="39" res="43" mov="255"/>
+        <flags/>
+    </class>
+    <class id="81" name="Bride" skill1="101" skill2="102" promoted1="" promoted2="" isDlc="true">
+        <base hp="21" str="7" mag="6" skl="11" spd="10" lck="0" def="7" res="6" mov="6"/>
+        <max hp="80" str="40" mag="39" skl="42" spd="42" lck="45" def="41" res="40" mov="255"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </class>
+    <class id="82" name="Dummy" skill1="" skill2="" promoted1="" promoted2="" isDlc="false">
+        <base hp="16" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="5"/>
+        <max hp="60" str="20" mag="20" skl="20" spd="20" lck="30" def="20" res="20" mov="255"/>
+        <flags>
+            <flag>21</flag>
+        </flags>
+    </class>
+</classes>

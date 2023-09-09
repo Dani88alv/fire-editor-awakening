@@ -55,7 +55,8 @@ public class RawBlock1 {
 
     public void setGrowth(int value, int slot) {
         int point = 0xA;
-        blockBytes[point + slot] = (byte) (value & 0xFF);
+        if (slot == 0x8) setMovement(value);
+        else blockBytes[point + slot] = (byte) (value & 0xFF);
     }
 
     public void setMaxGrowth() {

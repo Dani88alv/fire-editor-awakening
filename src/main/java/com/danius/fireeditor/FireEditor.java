@@ -1,6 +1,7 @@
 package com.danius.fireeditor;
 
 import com.danius.fireeditor.controllers.*;
+import com.danius.fireeditor.model.*;
 import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.util.Hex;
@@ -27,8 +28,12 @@ public class FireEditor extends Application {
     public static int maxClasses = Constants13.MAX_CLASSES;
     public static int maxArmies = Constants13.MAX_ARMY;
 
+    public static Characters unitDb;
+    public static Classes classDb;
+
     @Override
     public void start(Stage stage) throws IOException {
+        loadResources();
         readTestFile("Chapter0");
         FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewMain.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 750, 445);
@@ -36,6 +41,12 @@ public class FireEditor extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void loadResources() {
+        unitDb = new Characters();
+        classDb = new Classes();
+    }
+
 
     public void readTestFile(String saveFile) {
         String filePath = "templates/path.txt";

@@ -1,10 +1,11 @@
 package com.danius.fireeditor.savefile.units;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.*;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -82,7 +83,7 @@ public class Unit {
             if (rawLog != null) outputStream.write(rawLog.getBytes());
             if (rawChild != null) outputStream.write(rawChild.bytes());
         } catch (Exception e) {
-            throw new RuntimeException("Unable to compile back unit: " + Names13.unitName(rawBlock1.unitId()));
+            throw new RuntimeException("Unable to compile back unit: " + Names.unitName(rawBlock1.unitId()));
         }
         return outputStream.toByteArray();
     }
@@ -131,7 +132,7 @@ public class Unit {
 
     public String unitName() {
         if (rawLog != null) return rawLog.getName();
-        return Names13.unitName(rawBlock1.unitId());
+        return Names.unitName(rawBlock1.unitId());
     }
 
     public int[] modifiers() {
@@ -193,7 +194,7 @@ public class Unit {
     }
 
     public String reportBasic() {
-        return unitName() + " (" + Names13.className(rawBlock1.unitClass()) + ") ";
+        return unitName() + " (" + FireEditor.classDb.getName(rawBlock1.unitClass()) + ") ";
     }
 
     //Max out the unit
@@ -205,7 +206,7 @@ public class Unit {
     public String report() {
         String text = "\n";
         //Unit Name and General Data
-        text += unitName() + ": " + Names13.className(rawBlock1.unitClass());
+        text += unitName() + ": " + FireEditor.classDb.getName(rawBlock1.unitClass());
         text += "\n" + "Modifiers: " + Arrays.toString(modifiers());
         //Stats
         text += "\n" + rawBlock1.report();

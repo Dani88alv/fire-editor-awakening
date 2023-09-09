@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class RawBlock2 {
         report += "Weapon EXP: " + Arrays.toString(getWeaponExp());
         report += "\n" + "Equipped Skills: ";
         for (int i = 0; i <= 4; i++) {
-            report += Names13.skillNames.get(getCurrentSkills()[i]) + ", ";
+            report += Names.skillNames.get(getCurrentSkills()[i]) + ", ";
         }
         report = report.substring(0, report.length() - 2);
         return report;

@@ -1,30 +1,25 @@
 package com.danius.fireeditor.util;
 
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.inventory.Refinement;
-import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.savefile.units.Supports;
+import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Names13 {
+public class Names {
 
     //TODO: usar este método a partir de ahora y hacer la lista private
     public static String unitName(int id) {
         if (id == 0xFFFF) return "None";
         if (id >= 4096) {
             id = id - 4096;
-            return "Map NPC " + (id + 1);
+            return "Map NPC #" + (id + 1);
         }
-        if (id >= unitNames.size()) return "Outrealm Unit #" + (id - unitNames.size() + 1);
-        return unitNames.get(id);
-    }
-
-    public static String className(int id) {
-        if (id > Constants13.MAX_CLASSES) return "Outrealm Class " + (Constants13.MAX_CLASSES - id + 2);
-        return classNames.get(id);
+        int size = FireEditor.unitDb.size();
+        if (id >= size) return "Outrealm Unit #" + (id - size + 1);
+        return FireEditor.unitDb.getName(id);
     }
 
     public static String itemName(int id) {
@@ -33,7 +28,7 @@ public class Names13 {
     }
 
     public static String itemName2(int id, int maxCount) {
-        int vanillaCount = Names13.itemNames.size();
+        int vanillaCount = Names.itemNames.size();
         if (id >= vanillaCount && id < maxCount) {
             int itemId = id - vanillaCount + 1;
             return "Modded Item #" + itemId;
@@ -44,7 +39,7 @@ public class Names13 {
     }
 
     public static String itemName2(int id, int maxCount, List<Refinement> refiList) {
-        int vanillaCount = Names13.itemNames.size();
+        int vanillaCount = Names.itemNames.size();
         if (id >= vanillaCount && id < maxCount) {
             int itemId = id - vanillaCount + 1;
             return "Modded Item #" + itemId;
@@ -59,11 +54,11 @@ public class Names13 {
 
     public static String supportLevel(int unitId, int value, int slot) {
         //Checks if it is a modded unit
-        int[] validSupports = Supports.getSupportUnits(unitId);
-        if (slot >= validSupports.length) return "Unknown";
+        int validSupports = FireEditor.unitDb.supportCount(unitId);
+        if (slot >= validSupports) return "Unknown";
         //Valid supports
-        int type = Supports.getSupportTypes(unitId)[slot];
-        int[] maxValues = Supports.supportValues().get(type);
+        int type = FireEditor.unitDb.getSupportTypes(unitId)[slot];
+        int[] maxValues = RawSupport.supportValues().get(type);
         if (value < maxValues[0]) return "D-Rank";
         else if (value == maxValues[0]) return "C-Pending";
         else if (value < maxValues[2]) return "C-Rank";
@@ -95,18 +90,6 @@ public class Names13 {
             "Dummy", "Not Displayed"
     );
 
-    public static final List<String> unitNames = Arrays.asList(
-            "Avatar (M)", "Avatar (F)", "Logbook Unit", "Chrom",
-            "Lissa", "Frederick", "Virion", "Sully", "Vaike", "Stahl", "Miriel",
-            "Kellam", "Sumia", "Lon'qu", "Ricken", "Maribelle", "Panne", "Gaius",
-            "Cordelia", "Gregor", "Nowi", "Libra", "Tharja", "Olivia", "Cherche",
-            "Henry", "Lucina", "Say'ri", "Basilio", "Flavia", "Donnel", "Anna",
-            "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome",
-            "Morgan (M)", "Morgan (F)", "Yarne", "Laurent", "Noire", "Nah",
-            "Tiki", "Gangrel", "Walhart", "Emmeryn", "Yen'fay", "Aversa", "Priam",
-            "Marth", "Dummy/Maiden", "Risen", "Risen (+)", "Merchant"
-    );
-
 
     public static final List<String> dlcNames = Arrays.asList(
             "Pr. Marth (DLC)", "Roy (DLC)", "Micaiah (DLC)",
@@ -115,53 +98,6 @@ public class Names13 {
             "Ephraim (DLC)", "Celica (DLC)", "Ike (DLC)",
             "Palla (DLC)", "Catria (DLC)", "Est (DLC)",
             "Katarina (DLC)"
-    );
-
-    public static final List<String> spotPassNames = Arrays.asList(
-            "Nyna", "Caeda", "Linde", "Merric", "Tiki",
-            "Minerva", "Ogma", "Navarre", "Gharnef", "Pr. Marth",
-            "Clair", "Boey", "Mycen", "Valbar", "Luthier",
-            "Clive", "Nomah", "Deen", "Celica", "Alm",
-            "Norne", "Catria", "Malice", "Athena", "Horace",
-            "Etzel", "Legion", "Katarina", "Hardin", "King Marth",
-            "Deirdre", "Arden", "Jamke", "Raquesis", "Ethlyn",
-            "Quan", "Ayra", "Lewyn", "Arvis", "Sigurd",
-            "Fee", "Arthur", "Ulster", "Larcei", "Altena",
-            "Ced", "Julia", "Ares", "Julius", "Seliph",
-            "Nanna", "Dagdar", "Salem", "Olwen", "Eyvel",
-            "Finn", "Saias", "Mareeta", "Raydrik", "Leif",
-            "Wolt", "Shanna", "Lugh", "Raigh", "Sophia",
-            "Cecilia", "Perceval", "Lilina", "Zephiel", "Roy",
-            "Florina", "Nino", "Serra", "Matthew", "Karel",
-            "Jaffar", "Lyn", "Hector", "Nergal", "Eliwood",
-            "Eirika", "Amelia", "Moulder", "Lute", "Marisa",
-            "Innes", "L'Arachel", "Seth", "Lyon", "Ephraim",
-            "Mist", "Soren", "Mia", "Zihark", "Titania",
-            "Elincia", "Geoffrey", "Lucia", "Ashnard", "Ike",
-            "Edward", "Leonardo", "Brom", "Nephenee", "Sanaki",
-            "Sigrun", "Sothe", "Black Knight", "Sephiran", "Micaiah",
-            "Camus", "Travant", "Ishtar", "Narcian", "Lloyd",
-            "Linus", "Ursula", "Selena", "Petrine", "Oliver",
-            "Eldigan"
-    );
-
-    public static final List<String> classNames = Arrays.asList(
-            "Lord M", "Lord F", "Great Lord M", "Great Lord F", "Tactician M",
-            "Tactician F", "Grandmaster M", "Grandmaster F", "Cavalier M",
-            "Cavalier F", "Knight M", "Knight F", "Paladin M", "Paladin F",
-            "Great Knight M", "Great Knight F", "General M", "General F",
-            "Barbarian", "Fighter", "Mercenary M", "Mercenary F", "Archer M",
-            "Archer F", "Berserker", "Warrior", "Hero M", "Hero F", "Bow Knight M",
-            "Bow Knight F", "Sniper M", "Sniper F", "Myrmidon M", "Myrmidon F", "Thief M",
-            "Thief F", "Swordmaster M", "Swordmaster F", "Assassin M", "Assassin F",
-            "Trickster M", "Trickster F", "Pegasus Knight", "Falcon Knight",
-            "Dark Flier", "Wyvern Rider M", "Wyvern Rider F", "Wyvern Lord M",
-            "Wyvern Lord F", "Griffon Rider M", "Griffon Rider F", "Troubadour", "Priest",
-            "Cleric", "Mage M", "Mage F", "Dark Mage M", "Dark Mage F", "Valkyrie", "War Monk",
-            "War Cleric", "Sage M", "Sage F", "Dark Knight M", "Dark Knight F", "Sorcerer M",
-            "Sorcerer F", "Dancer", "Manakete", "Taguel M", "Taguel F", "Soldier", "Villager",
-            "Merchant", "Reverant", "Entombed", "Conqueror", "Lodestar", "Grima", "Mirage",
-            "Dread Fighter", "Bride", "Dummy"
     );
 
     /*

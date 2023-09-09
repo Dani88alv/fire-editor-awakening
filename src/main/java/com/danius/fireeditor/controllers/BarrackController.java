@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.other.EvstBlock;
-import com.danius.fireeditor.util.Names13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ public class BarrackController {
         //Units
         ObservableList<String> units = FXCollections.observableArrayList();
         units.add("None");
-        units.addAll(Names13.unitNames);
+        units.addAll(FireEditor.unitDb.getNames());
         comboUnit1.setItems(units);
         comboUnit2.setItems(units);
         ObservableList<String> events = FXCollections.observableArrayList(

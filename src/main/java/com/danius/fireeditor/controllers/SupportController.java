@@ -1,9 +1,8 @@
 package com.danius.fireeditor.controllers;
 
-import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.units.Supports;
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,11 +38,11 @@ public class SupportController {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
+        checkMaiden.setSelected(unit.rawFlags.battleFlagString().charAt(22) == '1');
         if (unit.rawSupport.supportCount() > 0) {
             setFields();
             setupSpinners(spinValue);
             setLabelLevel();
-            checkMaiden.setSelected(unit.rawFlags.battleFlagString().charAt(22) == '1');
         } else disableElements();
     }
 
@@ -52,9 +51,9 @@ public class SupportController {
             //Unit Selection
             ObservableList<String> unitNames = FXCollections.observableArrayList();
             int totalCount = unit.rawSupport.supportCount();
-            int[] characters = Supports.getSupportUnits(unit.rawBlock1.unitId());
+            int[] characters = FireEditor.unitDb.getSupportUnits(unit.rawBlock1.unitId());
             for (int character : characters) {
-                unitNames.add(Names13.unitName(character - 1));
+                unitNames.add(FireEditor.unitDb.getName(character));
             }
             //If there are modded supports, they are added
             for (int i = characters.length; i < totalCount; i++) {
@@ -124,7 +123,7 @@ public class SupportController {
     private void setLabelLevel() {
         int value = spinValue.getValue();
         int slot = comboUnit.getSelectionModel().getSelectedIndex();
-        lblLevel.setText(Names13.supportLevel(unit.rawBlock1.unitId(), value, slot));
+        lblLevel.setText(Names.supportLevel(unit.rawBlock1.unitId(), value, slot));
     }
 
 }

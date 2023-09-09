@@ -1,14 +1,13 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names13;
-import com.danius.fireeditor.util.Portrait13;
+import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.util.Portrait;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -43,7 +42,7 @@ public class LogController {
         UI.setSpinnerNumeric(spinBuild, 2); //0-2
         UI.setSpinnerNumeric(spinFace, 4 + 16); //0-4 + DLC
         UI.setSpinnerNumeric(spinHair, 4); //0-4
-        UI.setSpinnerNumeric(spinVoice, 2); //0-2
+        UI.setSpinnerNumeric(spinVoice, 4); //0-4
         txtLogId.setText("0");
         UI.setHexTextField(txtLogId, 26);
         //Profile Card
@@ -58,18 +57,17 @@ public class LogController {
         comboDifficulty.setItems(difficulty);
         //Einherjar names
         ObservableList<String> cardUnits = FXCollections.observableArrayList();
-        cardUnits.addAll(Names13.spotPassNames);
-        cardUnits.addAll(Names13.dlcNames);
+        cardUnits.addAll(FireEditor.unitDb.getEinherjarNames());
         comboCard.setItems(cardUnits);
         comboCard.getSelectionModel().select(0);
         //Asset and flaw
         ObservableList<String> modifiers = FXCollections.observableArrayList();
-        modifiers.addAll(Names13.modifNames);
+        modifiers.addAll(Names.modifNames);
         comboAsset.setItems(modifiers);
         comboFlaw.setItems(modifiers);
         //Class
         ObservableList<String> classes = FXCollections.observableArrayList();
-        classes.addAll(Names13.classNames);
+        classes.addAll(FireEditor.classDb.getNames());
         comboClass.setItems(classes);
         int vanillaCount = Constants13.MAX_CLASSES;
         int modCount = FireEditor.maxClasses;
@@ -81,7 +79,7 @@ public class LogController {
         }
         //S-Pairings
         ObservableList<String> units = FXCollections.observableArrayList();
-        units.addAll(Names13.unitNames);
+        units.addAll(FireEditor.unitDb.getNames());
         units.set(0, "None/Avatar (M)");
         comboWife.setItems(units);
         comboHusband.setItems(units);
@@ -224,7 +222,7 @@ public class LogController {
     Gets the sprites from the resources to display the avatar portrait
      */
     public void displayImage() {
-        Image[] images = Portrait13.setImage(unit);
+        Image[] images = Portrait.setImage(unit);
         if (images[0] != null) imgBuild.setImage(images[0]);
         else imgBuild.setImage(null);
         if (images[1] != null) imgHairColor.setImage(images[1]);

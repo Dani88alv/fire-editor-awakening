@@ -1,10 +1,9 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.units.Supports;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
+import com.danius.fireeditor.util.Names;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -38,12 +37,12 @@ public class ChildController {
         ObservableList<String> unitNames = FXCollections.observableArrayList();
         unitNames.add("None");
         for (int i = 0; i <= 56; i++) {
-            unitNames.add(Names13.unitName(i));
+            unitNames.add(Names.unitName(i));
         }
         comboUnit.setItems(unitNames);
         //Assets and flaws
         ObservableList<String> modifiers = FXCollections.observableArrayList();
-        modifiers.addAll(Names13.modifNames);
+        modifiers.addAll(Names.modifNames);
         comboAsset.setItems(modifiers);
         comboFlaw.setItems(modifiers);
         //The fields are disabled
@@ -200,7 +199,7 @@ public class ChildController {
     }
 
     private String calcSupportLevel(int value) {
-        int[] maxValues = Supports.supportValues().get(4);
+        int[] maxValues = RawSupport.supportValues().get(4);
         if (value < maxValues[0]) return "D-Rank";
         else if (value == maxValues[0]) return "C-Pending";
         else if (value < maxValues[2]) return "C-Rank";

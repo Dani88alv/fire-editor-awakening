@@ -1,12 +1,8 @@
 package com.danius.fireeditor.controllers;
 
-import com.danius.fireeditor.controllers.UI;
-import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.inventory.Refinement;
-import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.savefile.units.mainblock.RawItem;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -49,7 +45,7 @@ public class ItemController {
         //Item comboboxes
         ObservableList<String> items = FXCollections.observableArrayList();
         for (int i = 0; i < count; i++) {
-            items.add(Names13.itemName2(i, regularItemCount, refiList));
+            items.add(Names.itemName2(i, regularItemCount, refiList));
         }
         comboItem1.setItems(items);
         comboItem2.setItems(items);

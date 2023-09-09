@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<units>
+    <unit logId="0" name="Nyna">
+        <build class="62" asset="8" flaw="2" build="2" face="0" hair="3" voice="4" gender="1"/>
+        <skills skill1="38" skill2="41" skill3="82" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="1" name="Caeda">
+        <build class="42" asset="5" flaw="2" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="5" skill2="10" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="2" name="Linde">
+        <build class="55" asset="5" flaw="1" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="34" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="3" name="Merric">
+        <build class="54" asset="3" flaw="7" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <skills skill1="3" skill2="29" skill3="30" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="4" name="Tiki">
+        <build class="68" asset="8" flaw="4" build="0" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="21" skill2="24" skill3="69" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+            <flag>16</flag>
+            <flag>27</flag>
+        </flags>
+    </unit>
+    <unit logId="5" name="Minerva">
+        <build class="48" asset="2" flaw="6" build="2" face="1" hair="0" voice="4" gender="1"/>
+        <skills skill1="2" skill2="23" skill3="29" skill4="36" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="6" name="Ogma">
+        <build class="26" asset="4" flaw="3" build="2" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="16" skill2="32" skill3="34" skill4="66" skill5="74"/>
+        <flags/>
+    </unit>
+    <unit logId="7" name="Navarre">
+        <build class="36" asset="5" flaw="7" build="1" face="1" hair="3" voice="4" gender="0"/>
+        <skills skill1="10" skill2="29" skill3="48" skill4="73" skill5="78"/>
+        <flags/>
+    </unit>
+    <unit logId="8" name="Gharnef">
+        <build class="65" asset="3" flaw="6" build="2" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="68" skill4="77" skill5="85"/>
+        <flags/>
+    </unit>
+    <unit logId="9" name="Pr. Marth">
+        <build class="77" asset="6" flaw="1" build="1" face="3" hair="0" voice="4" gender="0"/>
+        <skills skill1="17" skill2="18" skill3="19" skill4="36" skill5="53"/>
+        <flags/>
+    </unit>
+    <unit logId="10" name="Clair">
+        <build class="42" asset="6" flaw="7" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <skills skill1="5" skill2="24" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="11" name="Boey">
+        <build class="54" asset="7" flaw="5" build="1" face="3" hair="4" voice="4" gender="0"/>
+        <skills skill1="3" skill2="7" skill3="30" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="12" name="Mycen">
+        <build class="14" asset="1" flaw="6" build="2" face="1" hair="0" voice="4" gender="0"/>
+        <skills skill1="6" skill2="15" skill3="27" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="13" name="Valbar">
+        <build class="10" asset="7" flaw="8" build="2" face="2" hair="0" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="42" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="14" name="Luthier">
+        <build class="61" asset="6" flaw="2" build="1" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="3" skill2="30" skill3="40" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="15" name="Clive">
+        <build class="12" asset="2" flaw="8" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="74" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="16" name="Nomah">
+        <build class="61" asset="4" flaw="6" build="2" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="3" skill2="30" skill3="43" skill4="52" skill5="56"/>
+        <flags/>
+    </unit>
+    <unit logId="17" name="Deen">
+        <build class="36" asset="5" flaw="1" build="2" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="10" skill2="48" skill3="73" skill4="78" skill5="81"/>
+        <flags/>
+    </unit>
+    <unit logId="18" name="Celica">
+        <build class="62" asset="3" flaw="2" build="1" face="2" hair="0" voice="4" gender="1"/>
+        <skills skill1="3" skill2="17" skill3="30" skill4="52" skill5="56"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="19" name="Alm">
+        <build class="26" asset="2" flaw="5" build="1" face="3" hair="1" voice="4" gender="0"/>
+        <skills skill1="1" skill2="31" skill3="66" skill4="74" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="20" name="Norne">
+        <build class="23" asset="4" flaw="1" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="4" skill2="5" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="21" name="Catria">
+        <build class="42" asset="5" flaw="1" build="1" face="0" hair="1" voice="4" gender="1"/>
+        <skills skill1="5" skill2="30" skill3="42" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="22" name="Malice">
+        <build class="21" asset="2" flaw="1" build="2" face="1" hair="1" voice="4" gender="1"/>
+        <skills skill1="10" skill2="16" skill3="34" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="23" name="Athena">
+        <build class="37" asset="5" flaw="7" build="1" face="1" hair="1" voice="4" gender="1"/>
+        <skills skill1="10" skill2="47" skill3="78" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="24" name="Horace">
+        <build class="16" asset="7" flaw="3" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="61" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="25" name="Etzel">
+        <build class="65" asset="7" flaw="6" build="1" face="2" hair="3" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="75" skill4="77" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="26" name="Legion">
+        <build class="24" asset="2" flaw="4" build="2" face="2" hair="1" voice="4" gender="0"/>
+        <skills skill1="26" skill2="32" skill3="50" skill4="64" skill5="83"/>
+        <flags/>
+    </unit>
+    <unit logId="27" name="Katarina">
+        <build class="62" asset="3" flaw="6" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="68"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="28" name="Hardin">
+        <build class="16" asset="2" flaw="6" build="2" face="0" hair="2" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="77" skill5="79"/>
+        <flags/>
+    </unit>
+    <unit logId="29" name="King Marth">
+        <build class="77" asset="2" flaw="3" build="1" face="3" hair="0" voice="4" gender="0"/>
+        <skills skill1="20" skill2="73" skill3="74" skill4="75" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="30" name="Deirdre">
+        <build class="57" asset="1" flaw="4" build="1" face="2" hair="0" voice="4" gender="1"/>
+        <skills skill1="39" skill2="82" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="31" name="Arden">
+        <build class="10" asset="7" flaw="4" build="2" face="0" hair="0" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="78" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="32" name="Jamke">
+        <build class="22" asset="2" flaw="4" build="1" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="4" skill2="33" skill3="84" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="33" name="Raquesis">
+        <build class="51" asset="6" flaw="2" build="1" face="0" hair="0" voice="4" gender="1"/>
+        <skills skill1="7" skill2="36" skill3="38" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="34" name="Ethlyn">
+        <build class="58" asset="5" flaw="2" build="1" face="3" hair="2" voice="4" gender="1"/>
+        <skills skill1="7" skill2="30" skill3="38" skill4="61" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="35" name="Quan">
+        <build class="12" asset="1" flaw="5" build="1" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="74" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="36" name="Ayra">
+        <build class="37" asset="4" flaw="7" build="1" face="1" hair="0" voice="4" gender="1"/>
+        <skills skill1="10" skill2="11" skill3="73" skill4="78" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="37" name="Lewyn">
+        <build class="61" asset="3" flaw="2" build="1" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="3" skill2="26" skill3="30" skill4="52" skill5="56"/>
+        <flags/>
+    </unit>
+    <unit logId="38" name="Arvis">
+        <build class="65" asset="3" flaw="6" build="1" face="1" hair="3" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="68" skill4="77" skill5="79"/>
+        <flags/>
+    </unit>
+    <unit logId="39" name="Sigurd">
+        <build class="12" asset="7" flaw="3" build="1" face="0" hair="2" voice="4" gender="0"/>
+        <skills skill1="15" skill2="17" skill3="27" skill4="45" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="40" name="Fee">
+        <build class="42" asset="5" flaw="1" build="1" face="3" hair="3" voice="4" gender="1"/>
+        <skills skill1="5" skill2="29" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="41" name="Arthur">
+        <build class="54" asset="4" flaw="2" build="1" face="0" hair="3" voice="4" gender="0"/>
+        <skills skill1="3" skill2="32" skill3="0" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="42" name="Ulster">
+        <build class="32" asset="1" flaw="8" build="1" face="0" hair="4" voice="4" gender="0"/>
+        <skills skill1="10" skill2="34" skill3="78" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="43" name="Larcei">
+        <build class="37" asset="4" flaw="5" build="1" face="1" hair="4" voice="4" gender="1"/>
+        <skills skill1="10" skill2="23" skill3="73" skill4="78" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="44" name="Altena">
+        <build class="48" asset="2" flaw="3" build="2" face="1" hair="4" voice="4" gender="1"/>
+        <skills skill1="2" skill2="23" skill3="29" skill4="75" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="45" name="Ced">
+        <build class="61" asset="8" flaw="4" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <skills skill1="3" skill2="10" skill3="30" skill4="56" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="46" name="Julia">
+        <build class="62" asset="3" flaw="2" build="1" face="0" hair="0" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="62" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="47" name="Ares">
+        <build class="63" asset="1" flaw="3" build="1" face="0" hair="3" voice="4" gender="0"/>
+        <skills skill1="24" skill2="39" skill3="40" skill4="77" skill5="85"/>
+        <flags/>
+    </unit>
+    <unit logId="48" name="Julius">
+        <build class="65" asset="3" flaw="6" build="1" face="1" hair="3" voice="4" gender="0"/>
+        <skills skill1="32" skill2="39" skill3="40" skill4="68" skill5="77"/>
+        <flags/>
+    </unit>
+    <unit logId="49" name="Seliph">
+        <build class="36" asset="2" flaw="5" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <skills skill1="10" skill2="36" skill3="48" skill4="73" skill5="78"/>
+        <flags/>
+    </unit>
+    <unit logId="50" name="Nanna">
+        <build class="51" asset="6" flaw="2" build="1" face="0" hair="1" voice="4" gender="1"/>
+        <skills skill1="7" skill2="36" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="51" name="Dagdar">
+        <build class="25" asset="2" flaw="6" build="2" face="0" hair="0" voice="4" gender="0"/>
+        <skills skill1="26" skill2="31" skill3="83" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="52" name="Salem">
+        <build class="56" asset="4" flaw="6" build="1" face="2" hair="3" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="83" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="53" name="Olwen">
+        <build class="64" asset="2" flaw="7" build="1" face="1" hair="1" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="78" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="54" name="Eyvel">
+        <build class="37" asset="5" flaw="1" build="2" face="1" hair="4" voice="4" gender="1"/>
+        <skills skill1="10" skill2="73" skill3="78" skill4="82" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="55" name="Finn">
+        <build class="12" asset="5" flaw="3" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="82" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="56" name="Saias">
+        <build class="61" asset="3" flaw="6" build="1" face="0" hair="3" voice="4" gender="0"/>
+        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="63"/>
+        <flags/>
+    </unit>
+    <unit logId="57" name="Mareeta">
+        <build class="37" asset="5" flaw="2" build="1" face="3" hair="4" voice="4" gender="1"/>
+        <skills skill1="10" skill2="48" skill3="73" skill4="75" skill5="78"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="58" name="Raydrik">
+        <build class="16" asset="7" flaw="6" build="2" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="59" name="Leif">
+        <build class="40" asset="5" flaw="4" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <skills skill1="11" skill2="12" skill3="25" skill4="43" skill5="46"/>
+        <flags/>
+    </unit>
+    <unit logId="60" name="Wolt">
+        <build class="22" asset="4" flaw="7" build="1" face="0" hair="0" voice="4" gender="0"/>
+        <skills skill1="4" skill2="30" skill3="0" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="61" name="Shanna">
+        <build class="42" asset="5" flaw="2" build="1" face="0" hair="1" voice="4" gender="1"/>
+        <skills skill1="5" skill2="25" skill3="42" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="62" name="Lugh">
+        <build class="54" asset="4" flaw="7" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <skills skill1="3" skill2="11" skill3="30" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="63" name="Raigh">
+        <build class="56" asset="4" flaw="6" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="11" skill2="39" skill3="40" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="64" name="Sophia">
+        <build class="66" asset="3" flaw="7" build="1" face="2" hair="2" voice="4" gender="1"/>
+        <skills skill1="38" skill2="39" skill3="40" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="65" name="Cecilia">
+        <build class="58" asset="4" flaw="1" build="1" face="0" hair="0" voice="4" gender="1"/>
+        <skills skill1="7" skill2="38" skill3="52" skill4="61" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="66" name="Perceval">
+        <build class="12" asset="1" flaw="4" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="15" skill2="19" skill3="27" skill4="45" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="67" name="Lilina">
+        <build class="62" asset="3" flaw="4" build="1" face="3" hair="0" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="75"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="68" name="Zephiel">
+        <build class="16" asset="7" flaw="6" build="2" face="1" hair="0" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="86"/>
+        <flags/>
+    </unit>
+    <unit logId="69" name="Roy">
+        <build class="26" asset="4" flaw="2" build="1" face="0" hair="0" voice="4" gender="0"/>
+        <skills skill1="16" skill2="34" skill3="66" skill4="74" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="70" name="Florina">
+        <build class="42" asset="5" flaw="7" build="1" face="2" hair="2" voice="4" gender="1"/>
+        <skills skill1="5" skill2="44" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="71" name="Nino">
+        <build class="55" asset="5" flaw="1" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="33" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="72" name="Serra">
+        <build class="53" asset="6" flaw="1" build="1" face="3" hair="0" voice="4" gender="1"/>
+        <skills skill1="41" skill2="53" skill3="82" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="73" name="Matthew">
+        <build class="34" asset="5" flaw="2" build="1" face="0" hair="4" voice="4" gender="0"/>
+        <skills skill1="11" skill2="12" skill3="32" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="74" name="Karel">
+        <build class="36" asset="4" flaw="7" build="1" face="1" hair="3" voice="4" gender="0"/>
+        <skills skill1="10" skill2="73" skill3="75" skill4="78" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="75" name="Jaffar">
+        <build class="38" asset="4" flaw="6" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="11" skill2="12" skill3="47" skill4="71" skill5="84"/>
+        <flags/>
+    </unit>
+    <unit logId="76" name="Lyn">
+        <build class="37" asset="5" flaw="7" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="10" skill2="46" skill3="48" skill4="73" skill5="78"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="77" name="Hector">
+        <build class="16" asset="2" flaw="5" build="2" face="0" hair="2" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="50" skill4="60" skill5="79"/>
+        <flags/>
+    </unit>
+    <unit logId="78" name="Nergal">
+        <build class="65" asset="3" flaw="4" build="2" face="3" hair="4" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="68" skill4="77" skill5="85"/>
+        <flags/>
+    </unit>
+    <unit logId="79" name="Eliwood">
+        <build class="12" asset="4" flaw="6" build="1" face="0" hair="4" voice="4" gender="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="48" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="80" name="Eirika">
+        <build class="33" asset="5" flaw="7" build="1" face="3" hair="0" voice="4" gender="1"/>
+        <skills skill1="10" skill2="82" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="81" name="Amelia">
+        <build class="11" asset="6" flaw="8" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <skills skill1="6" skill2="53" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="82" name="Moulder">
+        <build class="52" asset="4" flaw="6" build="2" face="1" hair="0" voice="4" gender="0"/>
+        <skills skill1="1" skill2="41" skill3="82" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="83" name="Lute">
+        <build class="55" asset="3" flaw="1" build="1" face="3" hair="4" voice="4" gender="1"/>
+        <skills skill1="3" skill2="13" skill3="30" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="84" name="Marisa">
+        <build class="37" asset="5" flaw="2" build="1" face="3" hair="2" voice="4" gender="1"/>
+        <skills skill1="10" skill2="29" skill3="73" skill4="78" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="85" name="Innes">
+        <build class="30" asset="2" flaw="1" build="1" face="1" hair="0" voice="4" gender="0"/>
+        <skills skill1="4" skill2="9" skill3="19" skill4="33" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="86" name="L'Arachel">
+        <build class="60" asset="3" flaw="7" build="1" face="3" hair="2" voice="4" gender="1"/>
+        <skills skill1="7" skill2="38" skill3="43" skill4="59" skill5="61"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="87" name="Seth">
+        <build class="12" asset="1" flaw="6" build="2" face="3" hair="1" voice="4" gender="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="49" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="88" name="Lyon">
+        <build class="65" asset="3" flaw="6" build="1" face="2" hair="3" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="52" skill4="68" skill5="77"/>
+        <flags/>
+    </unit>
+    <unit logId="89" name="Ephraim">
+        <build class="14" asset="2" flaw="8" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="15" skill2="19" skill3="20" skill4="27" skill5="75"/>
+        <flags/>
+    </unit>
+    <unit logId="90" name="Mist">
+        <build class="53" asset="6" flaw="7" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <skills skill1="3" skill2="82" skill3="0" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="91" name="Soren">
+        <build class="54" asset="3" flaw="2" build="1" face="0" hair="3" voice="4" gender="0"/>
+        <skills skill1="3" skill2="13" skill3="30" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="92" name="Mia">
+        <build class="33" asset="5" flaw="2" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <skills skill1="10" skill2="33" skill3="78" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="93" name="Zihark">
+        <build class="32" asset="5" flaw="3" build="1" face="1" hair="3" voice="4" gender="0"/>
+        <skills skill1="10" skill2="29" skill3="78" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="94" name="Titania">
+        <build class="15" asset="4" flaw="3" build="2" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="15" skill2="27" skill3="75" skill4="81" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="95" name="Elincia">
+        <build class="43" asset="3" flaw="1" build="1" face="0" hair="0" voice="4" gender="1"/>
+        <skills skill1="5" skill2="42" skill3="43" skill4="58" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="96" name="Geoffrey">
+        <build class="12" asset="5" flaw="6" build="1" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="15" skill2="23" skill3="27" skill4="45" skill5="80"/>
+        <flags/>
+    </unit>
+    <unit logId="97" name="Lucia">
+        <build class="37" asset="4" flaw="7" build="1" face="1" hair="4" voice="4" gender="1"/>
+        <skills skill1="10" skill2="17" skill3="48" skill4="73" skill5="78"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="98" name="Ashnard">
+        <build class="47" asset="2" flaw="4" build="2" face="1" hair="2" voice="4" gender="0"/>
+        <skills skill1="2" skill2="23" skill3="29" skill4="43" skill5="64"/>
+        <flags/>
+    </unit>
+    <unit logId="99" name="Ike">
+        <build class="26" asset="2" flaw="6" build="1" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="16" skill2="34" skill3="66" skill4="72" skill5="74"/>
+        <flags/>
+    </unit>
+    <unit logId="100" name="Edward">
+        <build class="32" asset="1" flaw="3" build="1" face="3" hair="4" voice="4" gender="0"/>
+        <skills skill1="10" skill2="31" skill3="0" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="101" name="Leonardo">
+        <build class="22" asset="4" flaw="5" build="1" face="1" hair="0" voice="4" gender="0"/>
+        <skills skill1="4" skill2="15" skill3="0" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="102" name="Brom">
+        <build class="10" asset="6" flaw="5" build="2" face="3" hair="4" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="35" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="103" name="Nephenee">
+        <build class="11" asset="4" flaw="1" build="2" face="0" hair="3" voice="4" gender="1"/>
+        <skills skill1="6" skill2="28" skill3="32" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="104" name="Sanaki">
+        <build class="62" asset="3" flaw="7" build="0" face="1" hair="1" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="75" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="105" name="Sigrun">
+        <build class="43" asset="6" flaw="1" build="2" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="5" skill2="41" skill3="42" skill4="58" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="106" name="Sothe">
+        <build class="40" asset="4" flaw="1" build="1" face="3" hair="1" voice="4" gender="0"/>
+        <skills skill1="11" skill2="12" skill3="25" skill4="45" skill5="46"/>
+        <flags/>
+    </unit>
+    <unit logId="107" name="Black Knight">
+        <build class="16" asset="2" flaw="4" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="75" skill5="79"/>
+        <flags/>
+    </unit>
+    <unit logId="108" name="Sephiran">
+        <build class="61" asset="3" flaw="5" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="77"/>
+        <flags/>
+    </unit>
+    <unit logId="109" name="Micaiah">
+        <build class="62" asset="3" flaw="7" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="59"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="110" name="Camus">
+        <build class="12" asset="5" flaw="6" build="1" face="1" hair="0" voice="4" gender="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="84"/>
+        <flags/>
+    </unit>
+    <unit logId="111" name="Travant">
+        <build class="47" asset="7" flaw="8" build="2" face="0" hair="2" voice="4" gender="0"/>
+        <skills skill1="2" skill2="23" skill3="29" skill4="43" skill5="64"/>
+        <flags/>
+    </unit>
+    <unit logId="112" name="Ishtar">
+        <build class="62" asset="4" flaw="6" build="2" face="0" hair="2" voice="4" gender="1"/>
+        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="73"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="113" name="Narcian">
+        <build class="47" asset="2" flaw="6" build="1" face="2" hair="4" voice="4" gender="0"/>
+        <skills skill1="2" skill2="23" skill3="29" skill4="64" skill5="77"/>
+        <flags/>
+    </unit>
+    <unit logId="114" name="Lloyd">
+        <build class="36" asset="2" flaw="6" build="1" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="10" skill2="47" skill3="48" skill4="73" skill5="78"/>
+        <flags/>
+    </unit>
+    <unit logId="115" name="Linus">
+        <build class="26" asset="4" flaw="6" build="2" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="16" skill2="34" skill3="66" skill4="74" skill5="81"/>
+        <flags/>
+    </unit>
+    <unit logId="116" name="Ursula">
+        <build class="58" asset="3" flaw="7" build="2" face="0" hair="0" voice="4" gender="1"/>
+        <skills skill1="7" skill2="17" skill3="38" skill4="52" skill5="61"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="117" name="Selena">
+        <build class="64" asset="8" flaw="6" build="2" face="0" hair="4" voice="4" gender="1"/>
+        <skills skill1="3" skill2="24" skill3="30" skill4="61" skill5="85"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="118" name="Petrine">
+        <build class="13" asset="5" flaw="3" build="1" face="1" hair="4" voice="4" gender="1"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="49" skill5="80"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="119" name="Oliver">
+        <build class="65" asset="8" flaw="7" build="2" face="1" hair="4" voice="4" gender="0"/>
+        <skills skill1="39" skill2="40" skill3="68" skill4="75" skill5="77"/>
+        <flags/>
+    </unit>
+    <unit logId="120" name="Eldigan">
+        <build class="12" asset="4" flaw="6" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <skills skill1="27" skill2="36" skill3="45" skill4="48" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="201" name="Pr. Marth (DLC)">
+        <build class="77" asset="6" flaw="1" build="1" face="11" hair="0" voice="4" gender="0"/>
+        <skills skill1="14" skill2="36" skill3="88" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="202" name="Roy (DLC)">
+        <build class="20" asset="4" flaw="2" build="1" face="16" hair="0" voice="4" gender="0"/>
+        <skills skill1="18" skill2="80" skill3="88" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="203" name="Micaiah (DLC)">
+        <build class="57" asset="3" flaw="7" build="1" face="24" hair="2" voice="4" gender="1"/>
+        <skills skill1="59" skill2="87" skill3="88" skill4="0" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="207" name="Leif (DLC)">
+        <build class="40" asset="5" flaw="4" build="1" face="56" hair="1" voice="4" gender="0"/>
+        <skills skill1="12" skill2="35" skill3="43" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="208" name="Alm (DLC)">
+        <build class="80" asset="2" flaw="5" build="1" face="67" hair="1" voice="4" gender="0"/>
+        <skills skill1="61" skill2="99" skill3="100" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="209" name="Seliph (DLC)">
+        <build class="36" asset="2" flaw="5" build="1" face="72" hair="1" voice="4" gender="0"/>
+        <skills skill1="10" skill2="36" skill3="84" skill4="0" skill5="0"/>
+        <flags/>
+    </unit>
+    <unit logId="210" name="Elincia (DLC)">
+        <build class="43" asset="3" flaw="1" build="1" face="80" hair="0" voice="4" gender="1"/>
+        <skills skill1="17" skill2="36" skill3="43" skill4="58" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="211" name="Eirika (DLC)">
+        <build class="81" asset="5" flaw="7" build="1" face="91" hair="0" voice="4" gender="1"/>
+        <skills skill1="53" skill2="82" skill3="101" skill4="102" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="212" name="Lyn (DLC)">
+        <build class="37" asset="5" flaw="7" build="1" face="96" hair="2" voice="4" gender="1"/>
+        <skills skill1="10" skill2="31" skill3="46" skill4="73" skill5="0"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="213" name="Ephraim (DLC)">
+        <build class="14" asset="2" flaw="8" build="1" face="105" hair="1" voice="4" gender="0"/>
+        <skills skill1="27" skill2="44" skill3="45" skill4="75" skill5="86"/>
+        <flags/>
+    </unit>
+    <unit logId="214" name="Celica (DLC)">
+        <build class="62" asset="3" flaw="2" build="1" face="114" hair="0" voice="4" gender="1"/>
+        <skills skill1="17" skill2="20" skill3="52" skill4="80" skill5="82"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="215" name="Ike (DLC)">
+        <build class="26" asset="2" flaw="6" build="1" face="121" hair="4" voice="4" gender="0"/>
+        <skills skill1="34" skill2="66" skill3="72" skill4="74" skill5="75"/>
+        <flags/>
+    </unit>
+    <unit logId="216" name="Palla (DLC)">
+        <build class="43" asset="4" flaw="5" build="1" face="128" hair="0" voice="4" gender="1"/>
+        <skills skill1="55" skill2="58" skill3="74" skill4="81" skill5="84"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="217" name="Catria (DLC)">
+        <build class="44" asset="5" flaw="1" build="1" face="136" hair="1" voice="4" gender="1"/>
+        <skills skill1="18" skill2="49" skill3="52" skill4="73" skill5="84"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="218" name="Est (DLC)">
+        <build class="42" asset="2" flaw="3" build="0" face="144" hair="2" voice="4" gender="1"/>
+        <skills skill1="14" skill2="35" skill3="53" skill4="75" skill5="84"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    <unit logId="219" name="Katarina (DLC)">
+        <build class="7" asset="3" flaw="6" build="1" face="155" hair="1" voice="4" gender="1"/>
+        <skills skill1="55" skill2="56" skill3="58" skill4="63" skill5="87"/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+</units>

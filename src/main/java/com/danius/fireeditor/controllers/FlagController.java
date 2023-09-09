@@ -2,7 +2,7 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
@@ -92,7 +92,7 @@ public class FlagController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(Names13.buffTonics.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(Names.buffTonics.get(checkboxCount)); // Set checkbox text
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setTonicFlag(checkboxCount, checkBox.isSelected());
             FireEditor.unitController.setFieldsStats(unit);
@@ -124,7 +124,7 @@ public class FlagController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(Names13.buffSkills.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(Names.buffSkills.get(checkboxCount)); // Set checkbox text
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setSkillBuffFlag(checkboxCount, checkBox.isSelected());
             FireEditor.unitController.setFieldsStats(unit);
@@ -156,7 +156,7 @@ public class FlagController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(Names13.buffBarracks.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(Names.buffBarracks.get(checkboxCount)); // Set checkbox text
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setBarrackFlag(checkboxCount, checkBox.isSelected());
             FireEditor.unitController.setFieldsStats(unit);
@@ -208,7 +208,7 @@ public class FlagController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(Names13.battleFlags.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(Names.battleFlags.get(checkboxCount)); // Set checkbox text
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setBattleFlag(checkboxCount, checkBox.isSelected());
         });
@@ -223,7 +223,7 @@ public class FlagController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(Names13.traitFlags.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(checkboxCount + " " + Names.traitFlags.get(checkboxCount)); // Set checkbox text
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setTraitFlag(checkboxCount, checkBox.isSelected());
         });

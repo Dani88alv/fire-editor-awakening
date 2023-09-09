@@ -3,7 +3,7 @@ package com.danius.fireeditor.controllers;
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants13;
 import com.danius.fireeditor.savefile.other.*;
-import com.danius.fireeditor.util.Names13;
+import com.danius.fireeditor.util.Names;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -106,7 +106,7 @@ public class ChapterController {
         comboDifficulty.setItems(difficulty);
         //DLC Chapters
         ObservableList<String> dlcChapters = FXCollections.observableArrayList();
-        dlcChapters.addAll(Names13.chapterDlcNames);
+        dlcChapters.addAll(Names.chapterDlcNames);
         //comboChapterDlc.setItems(dlcChapters);
         //Gmap
         ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Unlocked");

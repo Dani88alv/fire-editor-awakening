@@ -1,11 +1,12 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.savefile.units.Supports;
+import com.danius.fireeditor.FireEditor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class RawSupport {
@@ -43,9 +44,9 @@ public class RawSupport {
      */
     public void setSupportLevel(int slot, int level) {
         //Gets the type of support of the parameter character
-        int type = Supports.getSupportTypes(unitId)[slot];
+        int type = FireEditor.unitDb.getSupportTypes(unitId)[slot];
         //Gets the max values of the type gotten
-        int[] maxValues = Supports.supportValues().get(type);
+        int[] maxValues = supportValues().get(type);
         if (level == 0) setSupportValue(slot, 0);
         else setSupportValue(slot, maxValues[level - 1]);
     }
@@ -54,7 +55,7 @@ public class RawSupport {
     Sets all the supports to a specific level
      */
     public void setAllSupportsTo(int level) {
-        int[] characters = Supports.getSupportUnits(unitId); //Ignores the modded supports
+        int[] characters = FireEditor.unitDb.getSupportUnits(unitId); //Ignores the modded supports
         for (int i = 0; i < characters.length; i++) {
             setSupportLevel(i, level);
         }
@@ -72,7 +73,7 @@ public class RawSupport {
      */
     public void expandBlock() {
         try {
-            int[] characters = Supports.getSupportUnits(unitId);
+            int[] characters = FireEditor.unitDb.getSupportUnits(unitId);
             //If there are missing bytes, add them
             if (characters.length > supportValues.size()) {
                 int extraBytes = characters.length - supportValues.size();
@@ -90,7 +91,7 @@ public class RawSupport {
      */
     public void removeExtraSupports() {
         try {
-            int[] characters = Supports.getSupportUnits(unitId);
+            int[] characters = FireEditor.unitDb.getSupportUnits(unitId);
             //If there are extra bytes, remove them
             if (supportValues.size() > characters.length) {
                 int extraBytes = supportValues.size() - characters.length;
@@ -128,5 +129,19 @@ public class RawSupport {
 
     public int length() {
         return supportValues.size() + 1;
+    }
+
+    /*
+   C-Pending, C-Rank, B-Pending, B-Rank
+   A-Pending, A-Rank S-Pending, S-Rank
+    */
+    public static HashMap<Integer, int[]> supportValues() {
+        HashMap<Integer, int[]> values = new HashMap<Integer, int[]>();
+        values.put(0, new int[]{0x3, 0x4, 0x9, 0x10, 0x11, 0x12, 0x12, 0x12}); //Non-Romantic
+        values.put(1, new int[]{0x4, 0x5, 0x9, 0x10, 0xF, 0x10, 0x15, 0x16}); //Slow
+        values.put(2, new int[]{0x3, 0x4, 0x8, 0x9, 0xD, 0xE, 0x13, 0x14}); //Medium
+        values.put(3, new int[]{0x2, 0x3, 0x7, 0x8, 0xC, 0xD, 0x11, 0x12}); //Fast
+        values.put(4, new int[]{0x0, 0x1, 0x5, 0x6, 0xF, 0x10, 0x10, 0x10}); //Family Support
+        return values;
     }
 }

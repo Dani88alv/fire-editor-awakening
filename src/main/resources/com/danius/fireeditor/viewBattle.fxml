@@ -105,7 +105,7 @@
                                     <Label fx:id="lblAction" layoutX="4.0" layoutY="51.0" text="Type" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="120.0" layoutY="7.0" prefHeight="298.0" prefWidth="114.0">
+                              <AnchorPane layoutX="120.0" layoutY="6.0" prefHeight="298.0" prefWidth="114.0">
                                  <children>
                                     <Spinner fx:id="spinMission" layoutX="10.0" layoutY="22.0" prefHeight="26.0" prefWidth="55.0" />
                                     <Spinner fx:id="spinMission1" editable="true" layoutX="7.0" layoutY="98.0" prefHeight="26.0" prefWidth="80.0" />
@@ -120,7 +120,7 @@
                                     <Label fx:id="lblMission" layoutX="1.0" layoutY="61.0" text="Type" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="240.0" layoutY="8.0" prefHeight="292.0" prefWidth="114.0">
+                              <AnchorPane layoutX="240.0" layoutY="7.0" prefHeight="292.0" prefWidth="114.0">
                                  <children>
                                     <Spinner fx:id="spinAttack" layoutX="9.0" layoutY="22.0" prefHeight="26.0" prefWidth="55.0" />
                                     <Spinner fx:id="spinAttack1" editable="true" layoutX="7.0" layoutY="98.0" prefHeight="26.0" prefWidth="80.0" />
