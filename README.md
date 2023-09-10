@@ -9,8 +9,6 @@ Save Editor for Fire Emblem Awakening, made in Java. Supports:
 
 Save files created through the use of mods are supported, with limited access.
 
-![Preview](src\main\resources\com\danius\fireeditor\preview.PNG)
-
 ## Instructions
 If you don't have Java 20 installed, download it from the official website (0x64 Installer): https://www.oracle.com/java/technologies/downloads/#jdk20-windows
 
