@@ -2,6 +2,7 @@ package com.danius.fireeditor;
 
 
 import com.danius.fireeditor.controllers.MainController;
+import com.danius.fireeditor.model.ClassModel;
 import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.util.Hex;
 
@@ -9,6 +10,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class Test {
@@ -35,10 +37,8 @@ public class Test {
 
         String content = lines.get(0);  // Assuming the first line contains the actual file path
         // Create a File object for the content (actual file path)
-        File file = new File(content + nameFile);
-        System.out.println("File exists: " + file.getAbsolutePath());
-        MainController.backupFile = file;
+        MainController.backupFile = new File(content + nameFile);
         MainController.path = content;
-        return new Chapter13(Hex.getFileBytes(content + "Chapter0"));
+        return new Chapter13(Hex.getFileBytes(content + nameFile));
     }
 }

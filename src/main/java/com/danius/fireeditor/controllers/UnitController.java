@@ -33,7 +33,7 @@ public class UnitController {
     @FXML
     private Label labelUnitName, lblUnitCount;
     @FXML
-    private Button btnMaxStats, btnMoveUnit, btnDuplicate, btnRemove,
+    private Button btnMaxStats, btnMoveUnit, btnDuplicate, btnRemove, btnUp, btnDown,
             btnOpenBattle, btnOpenSupport, btnOpenChild, btnOpenAvatar,
             btnOpenItem, btnOpenSkills, btnOpenFlags;
     @FXML
@@ -305,6 +305,8 @@ public class UnitController {
         txtGrowthMove.setDisable(disable);
         btnMaxStats.setDisable(disable);
         //Other
+        btnUp.setDisable(disable);
+        btnDown.setDisable(disable);
         btnMoveUnit.setDisable(disable);
         btnDuplicate.setDisable(disable);
         btnRemove.setDisable(disable);
@@ -451,17 +453,41 @@ public class UnitController {
     }
 
     public void maxGrowth() {
-        int growth = 99;
-        int move = 2;
-        txtGrowthHp.setText(String.valueOf(growth));
-        txtGrowthStr.setText(String.valueOf(growth));
-        txtGrowthMag.setText(String.valueOf(growth));
-        txtGrowthSkl.setText(String.valueOf(growth));
-        txtGrowthSpd.setText(String.valueOf(growth));
-        txtGrowthLck.setText(String.valueOf(growth));
-        txtGrowthDef.setText(String.valueOf(growth));
-        txtGrowthRes.setText(String.valueOf(growth));
-        txtGrowthMove.setText(String.valueOf(move));
+        listViewUnit.getSelectionModel().getSelectedItem().maxGrowth();
+        int[] growth = listViewUnit.getSelectionModel().getSelectedItem().rawBlock1.growth();
+        txtGrowthHp.setText(String.valueOf(growth[0]));
+        txtGrowthStr.setText(String.valueOf(growth[1]));
+        txtGrowthMag.setText(String.valueOf(growth[2]));
+        txtGrowthSkl.setText(String.valueOf(growth[3]));
+        txtGrowthSpd.setText(String.valueOf(growth[4]));
+        txtGrowthLck.setText(String.valueOf(growth[5]));
+        txtGrowthDef.setText(String.valueOf(growth[6]));
+        txtGrowthRes.setText(String.valueOf(growth[7]));
+        txtGrowthMove.setText(String.valueOf(2));
+    }
+
+    @FXML
+    public void orderUp() {
+        int selectedIndex = listViewUnit.getSelectionModel().getSelectedIndex();
+        if (selectedIndex > 0) {
+            Unit selectedItem = listViewUnit.getSelectionModel().getSelectedItem();
+            listViewUnit.getItems().remove(selectedIndex);
+            listViewUnit.getItems().add(selectedIndex - 1, selectedItem);
+            listViewUnit.getSelectionModel().select(selectedIndex - 1);
+        }
+    }
+
+    @FXML
+    public void orderDown() {
+        int selectedIndex = listViewUnit.getSelectionModel().getSelectedIndex();
+        int itemCount = listViewUnit.getItems().size();
+
+        if (selectedIndex >= 0 && selectedIndex < itemCount - 1) {
+            Unit selectedItem = listViewUnit.getSelectionModel().getSelectedItem();
+            listViewUnit.getItems().remove(selectedIndex);
+            listViewUnit.getItems().add(selectedIndex + 1, selectedItem);
+            listViewUnit.getSelectionModel().select(selectedIndex + 1);
+        }
     }
 
     public void displayUnitCount() {

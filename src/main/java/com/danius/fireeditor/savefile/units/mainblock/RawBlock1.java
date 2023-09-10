@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.util.Hex;
 
 import java.util.Arrays;
@@ -57,10 +58,6 @@ public class RawBlock1 {
         int point = 0xA;
         if (slot == 0x8) setMovement(value);
         else blockBytes[point + slot] = (byte) (value & 0xFF);
-    }
-
-    public void setMaxGrowth() {
-        for (int i = 0; i < 8; i++) setGrowth(99, i);
     }
 
     /*

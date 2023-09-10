@@ -203,6 +203,13 @@ public class Unit {
         Stats.setMaxStatsHigh(this);
     }
 
+    public void maxGrowth() {
+        int[] growth = Stats.calcMaxGrowth(this);
+        for (int i = 0; i < growth.length; i++) {
+            rawBlock1.setGrowth(growth[i], i);
+        }
+    }
+
     public String report() {
         String text = "\n";
         //Unit Name and General Data

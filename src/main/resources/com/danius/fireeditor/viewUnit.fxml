@@ -62,10 +62,10 @@
                         </AnchorPane>
                         <Label layoutX="173.0" layoutY="130.0" text="Stats" />
       
-                                                                              <Button fx:id="btnOpenSupport" layoutX="145.0" layoutY="275.0" mnemonicParsing="false" onAction="#openSupports" prefHeight="26.0" prefWidth="110.0" text="Supports" />
-                  <Button fx:id="btnRemove" layoutX="492.0" layoutY="354.0" mnemonicParsing="false" onAction="#unitDelete" prefHeight="26.0" prefWidth="92.0" text="Delete Unit" />
-               <Button fx:id="btnDuplicate" layoutX="492.0" layoutY="315.0" mnemonicParsing="false" onAction="#unitDuplicate" prefHeight="26.0" text="Duplicate Unit" />
-               <Button fx:id="btnOpenItem" layoutX="17.0" layoutY="275.0" mnemonicParsing="false" onAction="#openItem" prefHeight="26.0" prefWidth="110.0" text="Items" />
+                                                                              <Button fx:id="btnOpenSupport" layoutX="173.0" layoutY="274.0" mnemonicParsing="false" onAction="#openSupports" prefHeight="26.0" prefWidth="110.0" text="Supports" />
+                  <Button fx:id="btnRemove" layoutX="492.0" layoutY="353.0" mnemonicParsing="false" onAction="#unitDelete" prefHeight="26.0" prefWidth="92.0" text="Delete Unit" />
+               <Button fx:id="btnDuplicate" layoutX="492.0" layoutY="314.0" mnemonicParsing="false" onAction="#unitDuplicate" prefHeight="26.0" text="Duplicate Unit" />
+               <Button fx:id="btnOpenItem" layoutX="45.0" layoutY="274.0" mnemonicParsing="false" onAction="#openItem" prefHeight="26.0" prefWidth="110.0" text="Items" />
                <AnchorPane layoutX="207.0" layoutY="155.0" prefHeight="42.0" prefWidth="387.0">
                   <children>
                      <TextField fx:id="txtGrowthHp" layoutX="6.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
@@ -83,15 +83,15 @@
                <Label layoutX="213.0" layoutY="7.0" text="Unit ID" />
                <Button fx:id="btnMaxStats" layoutX="414.0" layoutY="199.0" mnemonicParsing="false" onAction="#maxGrowth" prefHeight="26.0" prefWidth="99.0" text="Max Growth" />
                <Spinner fx:id="spinUnitId" editable="true" layoutX="213.0" layoutY="29.0" prefHeight="26.0" prefWidth="80.0" />
-               <ComboBox fx:id="comboGroupMove" layoutX="357.0" layoutY="354.0" prefHeight="26.0" prefWidth="121.0" promptText="Move to" />
-               <Button fx:id="btnMoveUnit" layoutX="357.0" layoutY="316.0" mnemonicParsing="false" onAction="#moveUnitToGroup" text="Move Unit To" />
-               <Button fx:id="btnOpenBattle" layoutX="145.0" layoutY="315.0" mnemonicParsing="false" onAction="#openBattle" prefHeight="26.0" prefWidth="110.0" text="Other" />
-               <Button fx:id="btnOpenChild" layoutX="17.0" layoutY="354.0" mnemonicParsing="false" onAction="#openChild" prefHeight="26.0" prefWidth="110.0" text="Child Data" />
-               <Button fx:id="btnOpenAvatar" layoutX="145.0" layoutY="354.0" mnemonicParsing="false" onAction="#openLog" prefHeight="26.0" prefWidth="110.0" text="Avatar Data" />
+               <ComboBox fx:id="comboGroupMove" layoutX="357.0" layoutY="353.0" prefHeight="26.0" prefWidth="121.0" promptText="Move to" />
+               <Button fx:id="btnMoveUnit" layoutX="357.0" layoutY="315.0" mnemonicParsing="false" onAction="#moveUnitToGroup" text="Move Unit To" />
+               <Button fx:id="btnOpenBattle" layoutX="173.0" layoutY="314.0" mnemonicParsing="false" onAction="#openBattle" prefHeight="26.0" prefWidth="110.0" text="Other" />
+               <Button fx:id="btnOpenChild" layoutX="45.0" layoutY="353.0" mnemonicParsing="false" onAction="#openChild" prefHeight="26.0" prefWidth="110.0" text="Child Data" />
+               <Button fx:id="btnOpenAvatar" layoutX="173.0" layoutY="353.0" mnemonicParsing="false" onAction="#openLog" prefHeight="26.0" prefWidth="110.0" text="Avatar Data" />
                <ColorPicker fx:id="colorHair" layoutX="17.0" layoutY="195.0" />
                <Label layoutX="18.0" layoutY="176.0" text="Hair Color (Offspring)" />
-               <Button fx:id="btnOpenSkills" layoutX="17.0" layoutY="237.0" mnemonicParsing="false" onAction="#openSkills" prefHeight="26.0" prefWidth="110.0" text="Skills" />
-               <Button fx:id="btnOpenFlags" layoutX="17.0" layoutY="315.0" mnemonicParsing="false" onAction="#openFlags" prefHeight="26.0" prefWidth="110.0" text="Flags" />
+               <Button fx:id="btnOpenSkills" layoutX="45.0" layoutY="235.0" mnemonicParsing="false" onAction="#openSkills" prefHeight="26.0" prefWidth="110.0" text="Skills" />
+               <Button fx:id="btnOpenFlags" layoutX="45.0" layoutY="314.0" mnemonicParsing="false" onAction="#openFlags" prefHeight="26.0" prefWidth="110.0" text="Flags" />
                <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@avatar_m/build_01_00.png" />
@@ -127,6 +127,8 @@
                <Label layoutX="445.0" layoutY="9.0" text="Class" />
                <TextField fx:id="txtTotalStat" disable="true" layoutX="545.0" layoutY="198.0" prefHeight="26.0" prefWidth="34.0" text="0" />
                <Label layoutX="546.0" layoutY="229.0" text="Rating" />
+               <Button fx:id="btnUp" layoutX="2.0" layoutY="268.0" mnemonicParsing="false" onAction="#orderUp" text="↑" />
+               <Button fx:id="btnDown" layoutX="2.0" layoutY="300.0" mnemonicParsing="false" onAction="#orderDown" text="↓" />
                     </children>
                 </AnchorPane>
         </children>

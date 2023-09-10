@@ -117,12 +117,47 @@ public class Stats {
     }
 
     public static void setMaxStatsHigh(Unit unit) {
-        unit.rawBlock1.setMaxGrowth();
+        unit.maxGrowth();
         int[] maxStats = calcMaxStats(unit, hasLimitBreaker(unit));
         //if (unit.rawSkill.skillString.charAt())
         unit.rawBlock1.setCurrentHp(maxStats[0]); //Updates the current HP to match out
         unit.rawBlock1.setLevelMax(); //Updates the level and experience
         unit.rawBlock2.setMaxWeaponExp(); //Sets the max weapon exp
+    }
+
+    public static int[] calcMaxGrowth(Unit unit) {
+        //The higher max values classes can reach in vanilla
+        int[] maxClass = new int[]{99, 60, 66, 60, 56, 55, 60, 60};
+        //The modifiers are added to the higher values
+        int[] modif = calcModif(unit);
+        for (int i = 0; i < maxClass.length; i++) {
+            maxClass[i] += modif[i];
+        }
+        int[] growths = new int[8];
+        int[] unitAddition = FireEditor.unitDb.getAddition(unit.rawBlock1.unitId()); //Hardcoded
+        int[] classAddition = FireEditor.classDb.getBase(unit.rawBlock1.unitClass()); //Hardcoded
+        int[] currentStats = new int[8];
+        //If it has logbook data, +2 on their asset
+        if (unit.rawLog != null) {
+            int asset = unit.rawLog.getAssetFlaw()[0];
+            if (asset != 0) {
+                unitAddition[asset - 1] += 2; //-1 bc asset 0 is none, asset 1 is HP, but addition 0 is HP
+            }
+        }
+        //The current stats are calculated
+        for (int i = 0; i < currentStats.length; i++) {
+            currentStats[i] += unitAddition[i] + classAddition[i] + growths[i];
+            if (currentStats[i] > 255) currentStats[i] -= 256; //If higher than the actual limit size
+            else if (currentStats[i] > maxClass[i]) currentStats[i] = maxClass[i]; //If it is higher than the limit
+        }
+        //The growth is updated
+        for (int i = 0; i < currentStats.length; i++) {
+            if (maxClass[i] > currentStats[i]) {
+                int difference = maxClass[i] - currentStats[i];
+                growths[i] += difference;
+            }
+        }
+        return growths;
     }
 
     /*
@@ -137,9 +172,6 @@ public class Stats {
         if (unit.rawLog != null) {
             int asset = unit.rawLog.getAssetFlaw()[0];
             if (asset != 0) {
-                if (asset == 255) {
-                    System.out.println();
-                }
                 unitAddition[asset - 1] += 2; //-1 bc asset 0 is none, asset 1 is HP, but addition 0 is HP
             }
         }
