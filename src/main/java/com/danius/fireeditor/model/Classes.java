@@ -6,7 +6,9 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -125,10 +127,12 @@ public class Classes {
         String path = "/com/danius/fireeditor/database/";
         String xmlFilePath = path + "classes.xml";
         classList = new ArrayList<>();
-        try {
-            File file = new File(Objects.requireNonNull(Characters.class.getResource(xmlFilePath)).getFile());
+        try (InputStream is = Characters.class.getResourceAsStream(xmlFilePath)) {
+            if (is == null) {
+                throw new FileNotFoundException("Resource not found: " + xmlFilePath);
+            }
             SAXBuilder builder = new SAXBuilder();
-            Document document = builder.build(file);
+            Document document = builder.build(is);
             Element rootElement = document.getRootElement();
             String[] stats = new String[]{"hp", "str", "mag", "skl", "spd", "lck", "def", "res", "mov"};
             // Iterate through character elements in the XML
