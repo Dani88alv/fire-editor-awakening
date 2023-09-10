@@ -55,11 +55,11 @@
          <Spinner fx:id="spinRenown" editable="true" layoutX="183.0" layoutY="117.0" prefHeight="26.0" prefWidth="90.0" />
          <Label layoutX="184.0" layoutY="98.0" text="Renown" />
          <Button layoutX="153.0" layoutY="152.0" mnemonicParsing="false" onAction="#resetRenownFlags" prefHeight="26.0" prefWidth="150.0" text="Reset Renown Item Flags" />
-         <Button layoutX="21.0" layoutY="330.0" mnemonicParsing="false" onAction="#openCredits" prefHeight="47.0" prefWidth="130.0" text="Credit Records" />
-         <Label layoutX="22.0" layoutY="310.0" text="Story &amp; Credits Data" />
+         <Button layoutX="21.0" layoutY="330.0" mnemonicParsing="false" onAction="#openCredits" prefHeight="47.0" prefWidth="130.0" text="Story Progress" />
+         <Label layoutX="22.0" layoutY="308.0" text="Story Progress &amp; Records" />
          <CheckBox fx:id="checkCasual" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" text="Casual" />
          <Button layoutX="183.0" layoutY="330.0" mnemonicParsing="false" onAction="#openBarrack" prefHeight="47.0" prefWidth="130.0" text="Barrack Events" />
-         <Label layoutX="185.0" layoutY="309.0" text="Barrack Event Editor" />
+         <Label layoutX="184.0" layoutY="308.0" text="Barrack Event Editor" />
       </children>
     </AnchorPane>
 

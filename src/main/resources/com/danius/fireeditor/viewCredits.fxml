@@ -31,7 +31,7 @@
                </children>
             </AnchorPane>
             <ComboBox fx:id="comboCreditSlot" layoutX="20.0" layoutY="59.0" prefWidth="150.0" promptText="Slot" />
-            <Label layoutX="20.0" layoutY="7.0" text="Credits Records">
+            <Label layoutX="20.0" layoutY="7.0" text="Story Progress">
                <font>
                   <Font size="18.0" />
                </font>

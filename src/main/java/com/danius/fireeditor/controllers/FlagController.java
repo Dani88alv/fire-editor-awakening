@@ -223,7 +223,7 @@ public class FlagController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(checkboxCount + " " + Names.traitFlags.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(Names.traitFlags.get(checkboxCount)); // Set checkbox text
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setTraitFlag(checkboxCount, checkBox.isSelected());
         });

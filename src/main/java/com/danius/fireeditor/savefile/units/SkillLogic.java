@@ -13,73 +13,55 @@ public class SkillLogic {
         boolean isFemale = isFemaleUnit(unit);
         //Main skills
         List<Integer> availableClasses = hardcodedClasses(unitId, isFemale);
-        List<Integer> regularSkills = getSkillsFromClasses(availableClasses);
+        List<Integer> allSkills = getSkillsFromClasses(availableClasses);
         //Recruited Skills
         List<Integer> recruitSkills = FireEditor.unitDb.getSkills(unitId);
-        regularSkills.addAll(recruitSkills);
+        allSkills.addAll(recruitSkills);
         //Related Current Class Skills
         List<Integer> relatedClasses = FireEditor.classDb.getFamilyClass(unit.rawBlock1.unitClass());
         List<Integer> relatedSkills = getSkillsFromClasses(relatedClasses);
-        regularSkills.addAll(relatedSkills);
+        allSkills.addAll(relatedSkills);
+        //Additional skills
+        List<Integer> extraSkills = getExtraSkills(unit);
+        allSkills.addAll(extraSkills);
         //Clean up
-        cleanList(recruitSkills);
+        cleanList(allSkills);
 
         //Parent Skills (last skill slot inheritance)
-        //The parent slots list is initialized
-        List<List<Integer>> parentSkills = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            parentSkills.add(new ArrayList<>());
-        }
         //The skills of each parent slot are stored
         if (unit.rawChild != null) {
             for (int i = 0; i < 6; i++) {
-                //The skills of each parent slot are stored
-                List<Integer> skills = getParentSkills(unit, i);
-                parentSkills.set(i, skills);
+                int parent = unit.rawChild.parentId(i);
+                //The parent class skills are retrieved
+                List<Integer> skills = getSkillsFromClasses(hardcodedClasses(parent, FireEditor.unitDb.isFemale(parent)));
+                //The recruited skills from the parent are added
+                skills.addAll(FireEditor.unitDb.getSkills(parent));
+                allSkills.addAll(skills);
+                cleanList(allSkills);
             }
         }
-        //Additional skills
-        List<Integer> extraSkills = getExtraSkills(unit);
-        /*
-        The skills are set
-         */
-        for (int skill : regularSkills) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : parentSkills.get(0)) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : parentSkills.get(1)) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : parentSkills.get(2)) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : parentSkills.get(3)) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : parentSkills.get(4)) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : parentSkills.get(5)) unit.rawSkill.setLearnedSkill(true, skill);
-        for (int skill : extraSkills) unit.rawSkill.setLearnedSkill(true, skill);
+        removeSpecialSkills(allSkills, unit);
+        //The skills are set
+        for (int skill : allSkills) unit.rawSkill.setLearnedSkill(true, skill);
     }
 
-    //Retrieves the skills that can be inherited through the parent's last skill slot
-    private static List<Integer> getParentSkills(Unit unit, int parentSlot) {
-        List<Integer> skills;
+    public static void removeSpecialSkills(List<Integer> skills, Unit unit) {
+        if (unit.rawChild == null) return;
         int unitId = unit.rawBlock1.unitId();
-        int parent = unit.rawChild.parentId(parentSlot);
         boolean isFemale = isFemaleUnit(unit);
-
-        //The parent class skills are retrieved
-        skills = getSkillsFromClasses(hardcodedClasses(parent, FireEditor.unitDb.isFemale(parent)));
-        //The recruited skills from the parent are added
-        skills.addAll(FireEditor.unitDb.getSkills(parent));
-
         //Remove Special Dance is the character is not Olivia
         if (unitId != 0x17) skills.removeIf(number -> number.equals(0x36));
-        //Remove Lord and Great Lord Skills if the unit is not Chrom or Female Class Lucina
-        if (unitId != 0x3 && !(unitId == 0x1A && isFemale)) {
-            skills.removeIf(number -> number.equals(0x12));
-            skills.removeIf(number -> number.equals(0x24));
-            skills.removeIf(number -> number.equals(0x48));
-            skills.removeIf(number -> number.equals(0x14));
-        }
+        //Remove Exclusive Great Lord Skills
+        skills.removeIf(number -> number.equals(72));
+        skills.removeIf(number -> number.equals(20));
         //Add Aether of Rightful King according to the gender of the unit (Chrom's child)
-        if (parent == 0x3) {
-            if (isFemale) skills.add(0x48);
-            else skills.add(0x14);
+        for (int i = 0; i < 6; i++) {
+            int parent = unit.rawChild.parentId(i);
+            if (parent == 0x3) {
+                if (isFemale) skills.add(72);
+                else skills.add(20);
+            }
         }
-        return skills;
     }
 
     //Retrieves additional skills with specific requirements
@@ -160,6 +142,9 @@ public class SkillLogic {
         //If it has Hero/Guest flags hardcoded (not working with save editing)
         if (FireEditor.unitDb.hasFlag(unitId, 2) || FireEditor.unitDb.hasFlag(unitId, 23)) {
             classes.addAll(FireEditor.classDb.getGenderClasses(isFemale));
+            //Remove special classes
+            classes.removeIf(aClass -> aClass >= 0 && aClass <= 3); //Lord
+            classes.removeIf(aClass -> aClass >= 67); //Dancer +
         }
         //The promoted classes are added to the list
         for (int reclass : reclasses) {

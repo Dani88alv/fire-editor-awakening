@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class SkillController {
     private AnchorPane checkboxAnchorPane;
     @FXML
     private ComboBox<String> comboSkill1, comboSkill2, comboSkill3, comboSkill4, comboSkill5;
+    @FXML
+    private Label lblCount;
     private Unit unit;
     private static final int NUM_COLUMNS = 5;
     private static final int TOTAL_CHECKBOXES = 104;
@@ -135,7 +138,7 @@ public class SkillController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(checkboxCount + " " + Names.skillNames.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(Names.skillNames.get(checkboxCount)); // Set checkbox text
         addCheckboxListener(checkBox, checkboxCount);
         return checkBox;
     }
@@ -143,23 +146,14 @@ public class SkillController {
     // Method to add a listener to a checkbox
     public void addCheckboxListener(CheckBox checkbox, int slot) {
         checkbox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (unit != null) unit.rawSkill.setLearnedSkill(newValue, slot);
+            if (unit != null) {
+                unit.rawSkill.setLearnedSkill(newValue, slot);
+                setCount();
+            }
         });
     }
 
-    // Method to check or uncheck a checkbox based on its order
-    public void setCheckboxState(int checkboxOrder, boolean selected) {
-        if (checkboxOrder >= 0 && checkboxOrder < TOTAL_CHECKBOXES) {
-            CheckBox checkbox = checkboxes[checkboxOrder];
-            checkbox.setSelected(selected);
-        }
-    }
-
-    // Method to toggle the state of a checkbox based on its order
-    public void toggleCheckboxState(int checkboxOrder) {
-        if (checkboxOrder >= 0 && checkboxOrder < TOTAL_CHECKBOXES) {
-            CheckBox checkbox = checkboxes[checkboxOrder];
-            checkbox.setSelected(!checkbox.isSelected());
-        }
+    public void setCount(){
+        lblCount.setText("Learned Skills: " + unit.rawSkill.skillCount());
     }
 }

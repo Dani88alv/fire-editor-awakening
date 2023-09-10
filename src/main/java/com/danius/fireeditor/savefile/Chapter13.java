@@ -245,5 +245,51 @@ public class Chapter13 extends SaveFile {
     }
 
 
+    //Scans the whole save file to find additional modded classes
+    public int maxClasses() {
+        int maxClasses = Constants13.MAX_CLASSES;
+
+        //The modded classes are checked viewing all the stored units
+        for (int i = 0; i < blockUnit.unitList.size(); i++) {
+            for (int j = 0; j < blockUnit.unitList.get(i).size(); j++) {
+                int unitClass = blockUnit.unitList.get(i).get(j).rawBlock1.unitClass();
+                if (unitClass > Constants13.MAX_CLASSES) {
+                    if (unitClass > maxClasses) maxClasses = unitClass;
+                }
+                //The logbook class is checked
+                if (blockUnit.unitList.get(i).get(j).rawLog != null) {
+                    int logClass = blockUnit.unitList.get(i).get(j).rawLog.getProfileCard()[0];
+                    if (logClass > maxClasses) maxClasses = logClass;
+                }
+            }
+        }
+        //The credit records are checked
+        for (int i = 0; i < blockUser.progress.size(); i++) {
+            int classFirst = blockUser.progress.get(i).classFirst();
+            int classSecond = blockUser.progress.get(i).classSecond();
+            if (classFirst != 65535 && classFirst > maxClasses) {
+                maxClasses = classFirst;
+            }
+            if (classSecond != 65535 && classSecond > maxClasses) {
+                maxClasses = classSecond;
+            }
+        }
+
+        return maxClasses;
+    }
+
+    public int maxArmies() {
+        int maxArmies = Constants13.MAX_ARMY;
+        for (int i = 0; i <blockUnit.unitList.size(); i++) {
+            for (int j = 0; j < blockUnit.unitList.get(i).size(); j++) {
+                int army = blockUnit.unitList.get(i).get(j).rawFlags.army();
+                if (army > Constants13.MAX_ARMY) {
+                    if (army > maxArmies) maxArmies = army;
+                }
+            }
+        }
+        return maxArmies;
+    }
+
 }
 

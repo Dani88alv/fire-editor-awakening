@@ -208,6 +208,7 @@ public class Unit {
         for (int i = 0; i < growth.length; i++) {
             rawBlock1.setGrowth(growth[i], i);
         }
+        rawBlock1.setCurrentHp(Stats.calcMaxStats(this, false)[0] + Stats.temporalBuffs(this)[0]);
     }
 
     public String report() {

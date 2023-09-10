@@ -55,6 +55,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <Label fx:id="lblCount" layoutX="649.0" layoutY="448.0" text="Learned Skills:" />
          </children>
       </AnchorPane>
    </children>

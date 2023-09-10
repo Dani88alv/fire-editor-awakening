@@ -106,7 +106,7 @@ public class OtherController {
         //Combobox
         ObservableList<String> armies = FXCollections.observableArrayList(Names.armies);
         for (int i = Constants13.MAX_ARMY; i < FireEditor.maxArmies; i++) {
-            armies.add("Extra #" + (FireEditor.maxArmies() - Constants13.MAX_ARMY + 1));
+            armies.add("Extra #" + (FireEditor.chapterFile.maxArmies() - Constants13.MAX_ARMY + 1));
         }
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);

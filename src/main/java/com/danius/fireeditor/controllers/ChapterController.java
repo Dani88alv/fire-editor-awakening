@@ -186,7 +186,7 @@ public class ChapterController {
             // Create a new stage for the secondary view
             Stage secondaryStage = new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
-            secondaryStage.setTitle("Credits Records");
+            secondaryStage.setTitle("Story Progress");
             secondaryStage.setScene(new Scene(root));
             secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
 
