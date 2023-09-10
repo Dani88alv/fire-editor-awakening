@@ -351,7 +351,7 @@ public class UnitController {
         //If the hair color is updated, the portrait too (WHIP for children units)
         colorHair.valueProperty().addListener((observable, oldColor, newColor) -> {
             listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setHairColor(Hex.colorToHex(colorHair.getValue()));
-            //TODO Legal children units validation here
+            setImage();
         });
         //If the Unit ID is changed, the name, portrait and stats are updated too
         spinUnitId.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {

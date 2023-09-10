@@ -41,7 +41,7 @@ public class Portrait {
         if (unit.rawLog != null) {
             sprites = setImageLog(unit);
         }
-        //Valid non-playable* unit IDs
+        //Valid non-playable unit IDs
         else if (unitId >= 0x34 && unitId <= 0x38 && enemyPortrait(unit)) {
             int army = unit.rawFlags.army(); //9
             int unitClass = unit.rawBlock1.unitClass();
@@ -50,8 +50,23 @@ public class Portrait {
             path += ".png";
             sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
         } else if (unitId > 2 && unitId <= Constants13.MAX_PLAYABLE) {
-            String path = "/com/danius/fireeditor/characters/" + unitId + ".png";
-            sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+            //Children Units
+            if (unitId >= 32 && unitId <= 44) {
+                String path = "/com/danius/fireeditor/children/" + unitId;
+                String buildPath = path + ".png";
+                sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(buildPath)));
+                String hairPath = path + "_hair.png";
+                sprites[2] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(hairPath)));
+                String backPath = path + "_back.png";
+                Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
+                String hexColor = "#" + unit.rawBlockEnd.getHairColor();
+                sprites[1] = fillImageWithColor(backSprite, hexColor);
+            }
+            //Adult Units
+            else {
+                String path = "/com/danius/fireeditor/characters/" + unitId + ".png";
+                sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+            }
         } else {
             String path = "/com/danius/fireeditor/characters/" + "what" + ".png";
             sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
