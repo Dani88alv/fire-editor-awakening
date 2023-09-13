@@ -39,7 +39,7 @@ public class Characters {
 
     public String getName(int id) {
         int totalSize = size();
-        if (invalidUnit(id)) return "Outrealm Unit #" + (id - totalSize + 1);
+        if (invalidUnit(id)) return "Invalid Unit #" + (id - totalSize + 1);
         return getUnit(id).getName();
     }
 

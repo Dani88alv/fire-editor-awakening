@@ -12,19 +12,35 @@ public class UserBlock {
 
     public static final int SIZE_BLOCK = 0xEE; //+1 on JP
     public static final int SIZE_MAP = 0x10;
-
+    private boolean isWest = true;
     private final byte[] header;
     public byte[] rawPlaytime; //Playtime in frames
-    private final byte[] rawBlock1; //??
+    private byte[] rawBlock1; //??
     public List<RawProgress> progress; //Chapter List
     private final byte[] rawBlock2; //??
     public RawDifficulty rawDifficulty; //Difficulty and Penalty
     public byte[] rawMoney; //Money
     private final byte[] rawBlockEnd; //??
 
-    /*
+    public void changeRegion(boolean isWest) {
+        //If West to JP, add 1 byte
+        if (this.isWest && !isWest) {
+            // Add a new byte (0) at the end of the array
+            byte[] newArray = new byte[rawBlock1.length + 1];
+            System.arraycopy(rawBlock1, 0, newArray, 0, rawBlock1.length);
+            rawBlock1 = newArray;
+            rawBlock1[rawBlock1.length - 1] = 0;
+        }
+        //If JP to West, remove 1 byte
+        else if (!this.isWest & isWest) {
+            // Remove the last byte by creating a new array with one less element
+            byte[] newArray = new byte[rawBlock1.length - 1];
+            System.arraycopy(rawBlock1, 0, newArray, 0, newArray.length);
+            rawBlock1 = newArray;
+        }
+        this.isWest = isWest;
+    }
 
-     */
     public UserBlock(byte[] blockBytes) {
         //The total chapters are calculated using the block total size
         int chapters = (blockBytes.length - SIZE_BLOCK) / SIZE_MAP;
@@ -32,6 +48,7 @@ public class UserBlock {
         int extraByte = 0;
         if ((blockBytes[0x15] & 0xFF) != chapters && (blockBytes[0x16] & 0xFF) == chapters) {
             extraByte = 1;
+            this.isWest = false;
         }
         //The blocks are split
         header = Arrays.copyOfRange(blockBytes, 0x0, 0x5);

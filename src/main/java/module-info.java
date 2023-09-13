@@ -26,5 +26,7 @@ module com.example.fireeditor {
     exports com.danius.fireeditor.savefile.global;
     opens com.danius.fireeditor.savefile.global to javafx.fxml;
     exports com.danius.fireeditor.model;
+    exports com.danius.fireeditor.savefile.wireless;
+    opens com.danius.fireeditor.savefile.wireless to javafx.fxml;
 
 }

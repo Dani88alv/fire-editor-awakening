@@ -1,13 +1,17 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Bitflag;
 import com.danius.fireeditor.util.Names;
 import com.danius.fireeditor.util.Hex;
+import com.danius.fireeditor.util.Portrait;
+import javafx.scene.image.Image;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class LogBlock {
@@ -39,29 +43,15 @@ public class LogBlock {
         initialize(blockBytes);
     }
 
-    //TODO: what is this LMAO
-    public LogBlock() throws IOException {
-
-        byte[] nameBlock = Hex.toByte("52 00 6F 00 62 00 69 00 6E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
-        byte[] messages = Hex.toByte("4E 00 69 00 63 00 65 00 20 00 74 00 6F 00 20 00 6D 00 65 00 65 00 " +
-                "74 00 20 00 79 00 6F 00 75 00 2E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 48 00 65 00 6C 00 6C 00 6F 00 2E 00 00 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 59 00 6F 00 75 00 27 00 72 00 " +
-                "65 00 20 00 6F 00 6E 00 21 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 49 00 27 00 " +
-                "6C 00 6C 00 20 00 64 00 6F 00 20 00 6D 00 79 00 20 00 62 00 65 00 73 00 74 00 2E 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 " +
-                "00 00 00");
-        byte[] mainBlock = Hex.toByte("05 06 00 01 00 00 F6 F4 EF FF 00 01 01 8B BD 58 D8 D1 C8 87 93 95 " +
-                "28 70 FA AA 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 " +
-                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        outputStream.write(nameBlock);
-        outputStream.write(mainBlock);
-        outputStream.write(messages);
-        initialize(outputStream.toByteArray());
+    public LogBlock() {
+        String path = Constants.RES_BLOCK + "rawUnitLog";
+        byte[] bytes = new byte[0];
+        try {
+            bytes = Objects.requireNonNull(LogBlock.class.getResourceAsStream(path)).readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        initialize(bytes);
     }
 
     /*
@@ -173,28 +163,17 @@ public class LogBlock {
      */
     public void changeRegion(boolean isWest) {
         int nameSize = (isWest) ? 0x1A : 0xE;
-        nameBlock = changeRegionArray(nameBlock, nameSize);
+        nameBlock = Hex.changeSizeArray(nameBlock, nameSize);
         int textSize = (isWest) ? MESSAGE_US : MESSAGE_JP;
-        textStreet = changeRegionArray(textStreet, textSize);
-        textGreeting = changeRegionArray(textGreeting, textSize);
-        textChallenge = changeRegionArray(textChallenge, textSize);
-        textRecruit = changeRegionArray(textRecruit, textSize);
+        textStreet = Hex.changeSizeArray(textStreet, textSize);
+        textGreeting = Hex.changeSizeArray(textGreeting, textSize);
+        textChallenge = Hex.changeSizeArray(textChallenge, textSize);
+        textRecruit = Hex.changeSizeArray(textRecruit, textSize);
         this.isWest = isWest;
         this.NAME_CHARACTERS = (nameBlock.length / 2) - 1;
         this.MESSAGE_CHARACTERS = (textStreet.length / 2) - 1;
     }
 
-    /*
-    Changes a byte array to a new length
-     */
-    private byte[] changeRegionArray(byte[] bytes, int newSize) {
-        byte[] newBlock = new byte[newSize];
-        for (int i = 0; i < newBlock.length; i++) {
-            if (i >= bytes.length) newBlock[i] = 0x0; //If JP to US
-            else newBlock[i] = bytes[i]; //US to JP
-        }
-        return newBlock;
-    }
 
     //0x0-0x1
     public int[] getAssetFlaw() {
@@ -319,7 +298,7 @@ public class LogBlock {
         return logId <= 120;
     }
 
-    public boolean hasEinherjarIdDlc(){
+    public boolean hasEinherjarIdDlc() {
         String logString = getLogId();
         //Checks large ID numbers, from avatars
         for (int i = 0; i < logString.length() - 2; i++) {

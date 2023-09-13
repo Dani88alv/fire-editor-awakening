@@ -29,7 +29,7 @@ public class GmapBlock {
             outputStream.write(header);
             //All the maps are looped
             for (RawMap map : maps) {
-                outputStream.write(map.bytes);
+                outputStream.write(map.bytes());
             }
         } catch (IOException e) {
             e.printStackTrace();

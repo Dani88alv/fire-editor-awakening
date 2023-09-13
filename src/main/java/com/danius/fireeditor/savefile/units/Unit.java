@@ -4,6 +4,7 @@ import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.*;
+import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
 import com.danius.fireeditor.util.Names;
 
@@ -30,6 +31,18 @@ public class Unit {
     //Additional blocks
     public ChildBlock rawChild; //Parent Data
     public LogBlock rawLog; //Logbook data
+    private UnitDu unitDu; //Used for unit structure editing
+
+    public Unit() {
+        this.rawBlock1 = new RawBlock1();
+        this.rawInventory = new RawInventory();
+        this.rawBlock2 = new RawBlock2();
+        this.rawSupport = new RawSupport(new byte[0], 0x2);
+        this.rawUnknown = new byte[0];
+        this.rawFlags = new RawFlags();
+        this.rawSkill = new RawSkill();
+        this.rawBlockEnd = new RawBlockEnd();
+    }
 
     public Unit(byte[] unitBytes) {
         splitBlocks(unitBytes);
@@ -73,13 +86,13 @@ public class Unit {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
             outputStream.write(rawBlock1.bytes());
-            outputStream.write(rawInventory.getBlockBytes());
+            outputStream.write(rawInventory.bytes());
             outputStream.write(rawBlock2.bytes());
             if (rawSupport != null) outputStream.write(rawSupport.bytes());
             outputStream.write(rawUnknown);
             outputStream.write(rawFlags.bytes());
             outputStream.write(rawSkill.bytes());
-            outputStream.write(rawBlockEnd.getBlockBytes());
+            outputStream.write(rawBlockEnd.bytes());
             if (rawLog != null) outputStream.write(rawLog.getBytes());
             if (rawChild != null) outputStream.write(rawChild.bytes());
         } catch (Exception e) {
@@ -131,8 +144,12 @@ public class Unit {
     }
 
     public String unitName() {
+        int unitId = rawBlock1.unitId();
+        int max = FireEditor.unitDb.size();
+        if (unitId >= max) return "Invalid Unit #" + (unitId - max + 1);
+        if (rawFlags.battleFlagList().contains(27)) return "Outrealm";
         if (rawLog != null) return rawLog.getName();
-        return Names.unitName(rawBlock1.unitId());
+        return Names.unitName(unitId);
     }
 
     public int[] modifiers() {
@@ -163,7 +180,7 @@ public class Unit {
     }
 
     //Adds a logbook block
-    public void addBlockLog() throws IOException {
+    public void addBlockLog() {
         //If it does not have any block
         if (rawLog == null && rawChild == null) {
             rawBlockEnd.setTerminator(1, 6);
@@ -194,7 +211,7 @@ public class Unit {
     }
 
     public String reportBasic() {
-        return unitName() + " (" + FireEditor.classDb.getName(rawBlock1.unitClass()) + ") ";
+        return unitName() + " | " + FireEditor.classDb.getName(rawBlock1.unitClass());
     }
 
     //Max out the unit
@@ -209,6 +226,31 @@ public class Unit {
             rawBlock1.setGrowth(growth[i], i);
         }
         rawBlock1.setCurrentHp(Stats.calcMaxStats(this, false)[0] + Stats.temporalBuffs(this)[0]);
+    }
+
+    public boolean isDu() {
+        return this.unitDu != null;
+    }
+
+    public void updateUnitDu() {
+        if (!isDu()) return;
+        //General Data
+        unitDu.setUnitId(rawBlock1.unitId());
+        unitDu.setUnitClass(rawBlock1.unitClass());
+        unitDu.setLevel(rawBlock1.level());
+        unitDu.setHiddenLevel(rawFlags.hiddenLevel());
+        unitDu.setOffspringColor(rawBlockEnd.getHairColor());
+        for (int i = 0; i < 8; i++) unitDu.setGrowth(rawBlock1.growth()[i], i);
+        for (int i = 0; i < 5; i++) unitDu.setActiveSkills(rawBlock2.getCurrentSkills()[i], i);
+        for (int i = 0; i < 5; i++) unitDu.setWeaponExp(rawBlock2.getWeaponExp()[i], i);
+        unitDu.rawSkill = this.rawSkill;
+        //Child Data
+        if (rawChild != null) for (int i = 0; i < 6; i++) unitDu.setParent(rawChild.parentId(i), i);
+        else for (int i = 0; i < 6; i++) unitDu.setParent(0, i);
+        //Avatar Data
+        if (rawLog != null) unitDu.rawLog = this.rawLog;
+        else unitDu.rawLog = new LogBlock();
+
     }
 
     public String report() {

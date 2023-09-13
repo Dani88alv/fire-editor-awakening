@@ -1,10 +1,13 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Bitflag;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class RawFlags {
 
@@ -13,6 +16,15 @@ public class RawFlags {
      */
 
     public final byte[] bytes;
+
+    public RawFlags(){
+        String path = Constants.RES_BLOCK + "rawUnitFlags";
+        try {
+            this.bytes = Objects.requireNonNull(RawFlags.class.getResourceAsStream(path)).readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public RawFlags(byte[] bytes) {
         this.bytes = bytes;

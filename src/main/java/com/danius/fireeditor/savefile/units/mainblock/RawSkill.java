@@ -1,14 +1,27 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Names;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RawSkill {
 
     public static final int MAX_SKILL = 0x66;
     public String skillString;
+
+    public RawSkill(){
+        String path = Constants.RES_BLOCK + "rawUnitSkill";
+        try {
+            byte[] bytes = Objects.requireNonNull(RawSkill.class.getResourceAsStream(path)).readAllBytes();
+            this.skillString = byteArrayToBinaryString(bytes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public RawSkill(byte[] blockBytes) {
         this.skillString = byteArrayToBinaryString(blockBytes);

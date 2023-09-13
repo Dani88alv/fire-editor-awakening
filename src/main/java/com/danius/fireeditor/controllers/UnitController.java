@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
@@ -69,7 +69,7 @@ public class UnitController {
             //The modded classes are retrieved
             int maxClasses = FireEditor.maxClasses;
             int currentClasses = comboClass.getItems().size() - 1;
-            if (maxClasses > Constants13.MAX_CLASSES && maxClasses > currentClasses) {
+            if (maxClasses > Constants.MAX_CLASSES && maxClasses > currentClasses) {
                 for (int i = 0; i < maxClasses - currentClasses; i++) {
                     comboClass.getItems().add("Mod Class #" + (i + 1));
                 }
@@ -154,7 +154,7 @@ public class UnitController {
     public void unitDuplicate() {
         ObservableList<Unit> unitList = listViewUnit.getItems();
         Unit selectedUnit = listViewUnit.getSelectionModel().getSelectedItem();
-        if (selectedUnit != null && unitList.size() < 200) {
+        if (selectedUnit != null && unitList.size() < Constants.UNIT_LIMIT) {
             //Create a new instance of the selected unit
             updateUnitFromFields(selectedUnit);
             Unit duplicatedUnit = new Unit(selectedUnit.getUnitBytes());
@@ -191,7 +191,7 @@ public class UnitController {
         int groupTarget = comboGroupMove.getSelectionModel().getSelectedIndex();
         int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
         //If there is enough room
-        if (unitBlock.unitList.get(groupTarget).size() < 200) {
+        if (unitBlock.unitList.get(groupTarget).size() < Constants.UNIT_LIMIT) {
             //If it is being moved to dead units, set the dead flag
             if (groupTarget == 4 && currentGroup != 4) {
                 listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, true);
@@ -218,7 +218,7 @@ public class UnitController {
     }
 
     public void addUnit(Unit unit) {
-        if (listViewUnit.getItems().size() >= 200) return;
+        if (listViewUnit.getItems().size() >= Constants.UNIT_LIMIT) return;
         // Get the selected index
         int selectedIndex = comboUnitGroup.getSelectionModel().getSelectedIndex();
         // Update the listViewUnit with the corresponding data
@@ -261,7 +261,8 @@ public class UnitController {
     private void setupElements() {
         //Unit Group
         ObservableList<String> groups = FXCollections.observableArrayList(
-                "Blue Units", "Red Units", "Green Units", "Main Units", "Dead Units", "Other Units");
+                "Blue Units", "Red Units", "Green Units", "Main Units", "Dead Units", "Other Units",
+                "Wireless Team");
         comboUnitGroup.setItems(groups);
         comboGroupMove.setItems(groups);
         comboGroupMove.getSelectionModel().select(0x3);
@@ -491,7 +492,8 @@ public class UnitController {
     }
 
     public void displayUnitCount() {
-        lblUnitCount.setText("Units: " + listViewUnit.getItems().size() + "/200");
+        lblUnitCount.setText("Units: " + listViewUnit.getItems().size() +
+                "/" + Constants.UNIT_LIMIT);
     }
 
     public void openFlags(ActionEvent event) {

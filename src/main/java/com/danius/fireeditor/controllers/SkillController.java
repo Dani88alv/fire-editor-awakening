@@ -153,7 +153,7 @@ public class SkillController {
         });
     }
 
-    public void setCount(){
+    public void setCount() {
         lblCount.setText("Learned Skills: " + unit.rawSkill.skillCount());
     }
 }

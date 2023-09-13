@@ -4,6 +4,7 @@ import com.danius.fireeditor.savefile.other.*;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.units.UnitBlock;
+import com.danius.fireeditor.savefile.wireless.Du26Block;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -31,11 +32,20 @@ public class Chapter13 extends SaveFile {
     public Chapter13(byte[] fileBytes) {
         initialize(fileBytes);
         //The general data is printed
-        System.out.println(blockUnit.reportCount());
+        System.out.println("\n" + blockUnit.reportCount());
         //System.out.println(blockRefi.reportCount());
         System.out.println(blockUser.report());
         if (isChapter) System.out.println("Chapter File Loaded");
         else System.out.println("Map File Loaded");
+    }
+
+    public void changeRegion(boolean isWest) {
+        blockHeader.changeRegion(isWest);
+        //blockUser.changeRegion(isWest);
+        blockUnit.changeRegion(isWest);
+        blockRefi.changeRegion(isWest);
+        blockDu26.changeRegion(isWest);
+        region = (isWest) ? 0xC0 : 0x80;
     }
 
     /*
@@ -107,7 +117,7 @@ public class Chapter13 extends SaveFile {
         }
         //StreetPass & SpotPass
         blockDu26 = new Du26Block(Arrays.copyOfRange(fileBytes,
-                Hex.getByte4(blockIndex, offset), Hex.getByte4(blockIndex, offset + 4)));
+                Hex.getByte4(blockIndex, offset), Hex.getByte4(blockIndex, offset + 4)), isWest);
         offset += 4;
         //Barrack Data
         blockEvst = new EvstBlock(Arrays.copyOfRange(fileBytes,
@@ -151,7 +161,7 @@ public class Chapter13 extends SaveFile {
             this.blockTran = new TranBlock(Arrays.copyOfRange(bytes, tran, mapb));
             this.blockMapBattle = Arrays.copyOfRange(bytes, mapb, du26);
         }
-        this.blockDu26 = new Du26Block(Arrays.copyOfRange(bytes, du26, evst));
+        this.blockDu26 = new Du26Block(Arrays.copyOfRange(bytes, du26, evst), isWest);
         this.blockEvst = new EvstBlock(Arrays.copyOfRange(bytes, evst, bytes.length));
     }
 
@@ -247,13 +257,13 @@ public class Chapter13 extends SaveFile {
 
     //Scans the whole save file to find additional modded classes
     public int maxClasses() {
-        int maxClasses = Constants13.MAX_CLASSES;
+        int maxClasses = Constants.MAX_CLASSES;
 
         //The modded classes are checked viewing all the stored units
         for (int i = 0; i < blockUnit.unitList.size(); i++) {
             for (int j = 0; j < blockUnit.unitList.get(i).size(); j++) {
                 int unitClass = blockUnit.unitList.get(i).get(j).rawBlock1.unitClass();
-                if (unitClass > Constants13.MAX_CLASSES) {
+                if (unitClass > Constants.MAX_CLASSES) {
                     if (unitClass > maxClasses) maxClasses = unitClass;
                 }
                 //The logbook class is checked
@@ -279,11 +289,11 @@ public class Chapter13 extends SaveFile {
     }
 
     public int maxArmies() {
-        int maxArmies = Constants13.MAX_ARMY;
-        for (int i = 0; i <blockUnit.unitList.size(); i++) {
+        int maxArmies = Constants.MAX_ARMY;
+        for (int i = 0; i < blockUnit.unitList.size(); i++) {
             for (int j = 0; j < blockUnit.unitList.get(i).size(); j++) {
                 int army = blockUnit.unitList.get(i).get(j).rawFlags.army();
-                if (army > Constants13.MAX_ARMY) {
+                if (army > Constants.MAX_ARMY) {
                     if (army > maxArmies) maxArmies = army;
                 }
             }

@@ -1,8 +1,5 @@
 package com.danius.fireeditor.savefile.units;
 
-import com.danius.fireeditor.savefile.Chapter13;
-import com.danius.fireeditor.savefile.Constants13;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +14,7 @@ public class UnitBlock {
     private final byte[] blockHeader;
     private byte[] blockFooter;
     public List<List<Unit>> unitList; //Different unit groups
-    public final boolean isWest;
+    public boolean isWest;
 
     public UnitBlock(byte[] blockBytes, boolean isWest) {
         this.unitList = new ArrayList<>();
@@ -137,7 +134,7 @@ public class UnitBlock {
         try {
             //If it finds the looked unit group, parse the units
             if ((blockBytes[offset] & 0xFF) == prefix) {
-                System.out.println("GROUP " + prefix + ":");
+                System.out.println("\nGROUP " + prefix + ":");
                 offset++; //Prefix byte
                 int lBlockSize = (isWest) ? Unit.LBLOCK_SIZE_US : Unit.LBLOCK_SIZE_JP; //The Logbook block size is set
                 int unitCount = blockBytes[offset] & 0xFF;
@@ -180,7 +177,6 @@ public class UnitBlock {
                     System.out.println(i + " - " + unit.reportBasic());
                     listUnit.add(unit);
                 }
-                System.out.println();
                 return listUnit;
             }
             return new ArrayList<>();
@@ -188,6 +184,18 @@ public class UnitBlock {
             System.out.println("UNABLE TO PARSE UNIT GROUP " + prefix);
             throw new RuntimeException();
         }
+    }
+
+    public void changeRegion(boolean isWest) {
+        if (isWest == this.isWest) return;
+        for (List<Unit> units : unitList) {
+            for (Unit unit : units) {
+                if (unit.rawLog != null) {
+                    unit.rawLog.changeRegion(isWest);
+                }
+            }
+        }
+        this.isWest = isWest;
     }
 
 

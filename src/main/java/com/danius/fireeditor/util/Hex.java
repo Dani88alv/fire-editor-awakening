@@ -211,6 +211,18 @@ public class Hex {
         return sb.toString();
     }
 
+    /*
+    Changes a byte array to a new length
+     */
+    public static byte[] changeSizeArray(byte[] bytes, int newSize) {
+        byte[] newBlock = new byte[newSize];
+        for (int i = 0; i < newBlock.length; i++) {
+            if (i >= bytes.length) newBlock[i] = 0x0; //If JP to US
+            else newBlock[i] = bytes[i]; //US to JP
+        }
+        return newBlock;
+    }
+
 
     public static int indexOf(byte[] source, byte[] target, int initialOffset, int sequenceIndex) {
         int count = 0;

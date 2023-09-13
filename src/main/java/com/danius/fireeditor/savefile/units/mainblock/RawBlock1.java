@@ -1,13 +1,26 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Stats;
+import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class RawBlock1 {
 
     private byte[] blockBytes;
+
+    public RawBlock1() {
+        String path = Constants.RES_BLOCK + "rawUnitBlock1";
+        try {
+            this.blockBytes = Objects.requireNonNull(RawBlock1.class.getResourceAsStream(path)).readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public RawBlock1(byte[] blockBytes) {
         this.blockBytes = blockBytes;

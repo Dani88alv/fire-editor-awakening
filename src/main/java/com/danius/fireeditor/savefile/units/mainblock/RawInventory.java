@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.util.Names;
@@ -10,11 +10,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class RawInventory {
     public List<RawItem> items;
 
+    public RawInventory() {
+        String path = Constants.RES_BLOCK + "rawUnitInventory";
+        try {
+            byte[] bytes = Objects.requireNonNull(RawInventory.class.getResourceAsStream(path)).readAllBytes();
+            initialize(bytes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public RawInventory(byte[] blockBytes) {
+        initialize(blockBytes);
+    }
+
+    public void initialize(byte[] blockBytes) {
         items = new ArrayList<>();
         for (int i = 0; i <= 4; i++) {
             byte[] itemBytes = Arrays.copyOfRange(blockBytes, i * 5, i * 5 + 0x5);
@@ -26,7 +41,7 @@ public class RawInventory {
         for (RawItem item : items) {
             int itemId = item.itemId();
             //Only vanilla and non-forged items are modified
-            if (itemId <= Constants13.MAX_ITEM_COUNT) {
+            if (itemId <= Constants.MAX_ITEM_COUNT) {
                 item.setUses(TranBlock.itemAmounts.get(itemId));
             }
         }
@@ -68,7 +83,7 @@ public class RawInventory {
     /*
     Combines all the items
      */
-    public byte[] getBlockBytes() throws IOException {
+    public byte[] bytes() throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         for (RawItem item : items) outputStream.write(item.bytes());
         return outputStream.toByteArray();

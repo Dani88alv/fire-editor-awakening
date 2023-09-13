@@ -3,7 +3,7 @@ package com.danius.fireeditor;
 import com.danius.fireeditor.controllers.*;
 import com.danius.fireeditor.model.*;
 import com.danius.fireeditor.savefile.Chapter13;
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +25,8 @@ public class FireEditor extends Application {
     public static CheatController cheatController;
     public static MainController mainController;
 
-    public static int maxClasses = Constants13.MAX_CLASSES;
-    public static int maxArmies = Constants13.MAX_ARMY;
+    public static int maxClasses = Constants.MAX_CLASSES;
+    public static int maxArmies = Constants.MAX_ARMY;
 
     public static Characters unitDb;
     public static Classes classDb;

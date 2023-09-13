@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawBlock2;
 import com.danius.fireeditor.util.Names;
@@ -105,8 +105,8 @@ public class OtherController {
         UI.setSpinnerNumeric(spinHiddenLevel, 255);
         //Combobox
         ObservableList<String> armies = FXCollections.observableArrayList(Names.armies);
-        for (int i = Constants13.MAX_ARMY; i < FireEditor.maxArmies; i++) {
-            armies.add("Extra #" + (FireEditor.chapterFile.maxArmies() - Constants13.MAX_ARMY + 1));
+        for (int i = Constants.MAX_ARMY; i < FireEditor.maxArmies; i++) {
+            armies.add("Extra #" + (FireEditor.chapterFile.maxArmies() - Constants.MAX_ARMY + 1));
         }
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);

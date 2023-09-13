@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile;
 
-public class Constants13 {
+public class Constants {
 
     public static final int MAX_ITEM_COUNT = 201; //0 to 201
     public static final int MAX_FORGE_COUNT = 150;
@@ -10,4 +10,8 @@ public class Constants13 {
     public static final int MAX_MAPS = 0; //Over world Maps
     public static final int MAX_CHAPTERS = 51; //Credit Chapters
     public static final int MAX_PLAYABLE = 0x33;
+    public static final int UNIT_LIMIT = 200;
+
+    public static final String RES = "/com/danius/fireeditor/";
+    public static final String RES_BLOCK = RES + "templates/blocks/";
 }

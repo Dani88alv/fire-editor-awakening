@@ -2,6 +2,7 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Chapter13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
@@ -147,7 +148,7 @@ public class MainController {
                 byte[] data = Files.readAllBytes(file.toPath());
                 Unit unit = new Unit(data);
                 if (unit.rawLog != null) unit.rawLog.changeRegion(isWest); //Converts the unit to the current region
-                if (totalSize < 200) FireEditor.unitController.addUnit(unit);
+                if (totalSize < Constants.MAX_PLAYABLE) FireEditor.unitController.addUnit(unit);
                 totalSize++;
             } catch (Exception e) {
                 throw new RuntimeException("INVALID UNIT FILE!");

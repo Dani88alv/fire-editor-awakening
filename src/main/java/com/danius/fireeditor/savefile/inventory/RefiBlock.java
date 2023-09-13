@@ -22,34 +22,8 @@ public class RefiBlock {
         return "Forged Weapons: " + refiList.size();
     }
 
-    public void addRefi(Refinement refinement) {
-        if (refiList.size() < 150) {
-            refiList.add(refinement);
-        } else {
-            System.out.println("Max Forged Weapon Amount Reached!");
-        }
-    }
-
-    public List<String> refiNames() {
-        List<String> list = new ArrayList<>();
-        for (Refinement refi : refiList) {
-            list.add(refi.getName());
-        }
-        for (int i = list.size(); i < 150; i++) {
-            list.add("Forged Slot #" + (i + 1));
-        }
-        return list;
-    }
-
-    public List<Integer> refiIds() {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < refiList.size(); i++) {
-            list.add(refiList.get(i).weaponId());
-        }
-        for (int i = list.size(); i < 150; i++) {
-            list.add(0);
-        }
-        return list;
+    public void changeRegion(boolean isWest) {
+        for (Refinement refinement : refiList) refinement.changeRegion(isWest);
     }
 
     public byte[] getBlockBytes() {
@@ -74,13 +48,13 @@ public class RefiBlock {
         List<Refinement> refiList = new ArrayList<>();
         int refiSize = (isWest) ? Refinement.SIZE_US : Refinement.SIZE_JP;
         int start = blockHeader.length;
-        System.out.println("REFINEMENTS:");
+        System.out.println("\nREFINEMENTS:");
         for (int i = 0; i < amount; i++) {
             byte[] refiBytes = Arrays.copyOfRange(blockBytes,
                     (refiSize * i) + start, (refiSize * i) + start + refiSize);
             Refinement refi = new Refinement(refiBytes);
             refiList.add(refi);
-            System.out.println(i + " - " + refi.getName());
+            System.out.println(refi.position() + " - " + refi.getName());
         }
         this.refiList = refiList;
     }

@@ -1,16 +1,33 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Names;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class RawBlock2 {
     private byte[] skills; //Equipped Skills
     private byte[] weaponExp;
 
+    public RawBlock2() {
+        String path = Constants.RES_BLOCK + "rawUnitBlock2";
+        try {
+            byte[] bytes = Objects.requireNonNull(RawBlock2.class.getResourceAsStream(path)).readAllBytes();
+            initialize(bytes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public RawBlock2(byte[] blockBytes) {
+        initialize(blockBytes);
+    }
+
+    public void initialize(byte[] blockBytes) {
         for (int i = 0; i <= 4; i++) {
             this.skills = Arrays.copyOfRange(blockBytes, 0x0, 5 * 2);
         }

@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
@@ -85,7 +85,7 @@ public class ConvoyController {
             loadItemTable(tranBlock.inventoryMain);
             int regularItemCount = tranBlock.regularItemCount();
             for (int i = comboWeaponId.getItems().size(); i < regularItemCount; i++) {
-                comboWeaponId.getItems().add("Modded Item #" + (i - Constants13.MAX_ITEM_COUNT));
+                comboWeaponId.getItems().add("Modded Item #" + (i - Constants.MAX_ITEM_COUNT));
             }
             //The refinement listview is loaded
             loadRefiTable(refiBlock);

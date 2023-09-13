@@ -2,8 +2,10 @@ package com.danius.fireeditor;
 
 
 import com.danius.fireeditor.controllers.MainController;
-import com.danius.fireeditor.model.ClassModel;
 import com.danius.fireeditor.savefile.Chapter13;
+import com.danius.fireeditor.savefile.SaveFile;
+import com.danius.fireeditor.savefile.inventory.Refinement;
+import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.*;
@@ -17,7 +19,17 @@ public class Test {
 
     public static void main(String[] args) throws IOException {
         FireEditor.loadResources();
-        Chapter13 chapter13 = readTestFile("Chapter0");
+        //Chapter13 chapter13 = readTestFile("Chapter2");
+        //System.out.println(Hex.byteArrayToString(Hex.toByte("31 00 32 00 6F 30 6F 30 C1 30 AD 30 26 20 5E 79 DC 7A CF 65 6E 30 1F 75 4D 30 8B 6B 38 00 26 20 00 00")));
+        //Hex.writeFile(SaveFile.autoDecompress(Hex.getFileBytes(aa)), aa + "_dec");
+
+        Chapter13 chapter13 = readTestFile("Chapter2");
+        chapter13.changeRegion(false);
+        //Chapter13 aa = new Chapter13(chapter13.getBytes());
+        Hex.writeFile(chapter13.getBytes(), "Chapter1");
+
+
+        //Chapter13 ayuda = new Chapter13(Hex.getFileBytes("Chapter1"));
     }
 
     private static void printHexArray(byte[] array) {

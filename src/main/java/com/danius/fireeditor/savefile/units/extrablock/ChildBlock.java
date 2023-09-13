@@ -1,11 +1,13 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ChildBlock {
     /*
@@ -21,10 +23,14 @@ public class ChildBlock {
     }
 
     public ChildBlock() {
-        //Maiden!Lucina Child Block
-        byte[] block = Hex.toByte("01 01 00 FF FF 00 00 00 FF FF 00 00 00 FF FF " +
-                "00 00 00 01 00 FF FF 00 00 00 FF FF 00 00 00 FF FF 00 00 00 00 00");
-        splitBlocks(block);
+        try {
+            String path = Constants.RES_BLOCK + "rawUnitChild";
+            byte[] bytes = Objects.requireNonNull(ChildBlock.class.getResourceAsStream(path)).readAllBytes();
+            splitBlocks(bytes);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+
     }
 
     private void splitBlocks(byte[] bytes) {

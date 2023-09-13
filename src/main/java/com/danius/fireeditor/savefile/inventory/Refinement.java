@@ -12,7 +12,7 @@ public class Refinement {
     public static final int SIZE_JP = 0x1C;
 
     private final byte[] rawHeader;
-    private final byte[] rawName;
+    private byte[] rawName;
     private final byte[] rawStats;
 
     public Refinement(byte[] refiBytes) {
@@ -107,6 +107,11 @@ public class Refinement {
             throw new RuntimeException();
         }
         return outputStream.toByteArray();
+    }
+
+    public void changeRegion(boolean isWest) {
+        int nameSize = (isWest) ? CHAR_US : CHAR_JP;
+        rawName = Hex.changeSizeArray(rawName, nameSize * 2);
     }
 
     @Override

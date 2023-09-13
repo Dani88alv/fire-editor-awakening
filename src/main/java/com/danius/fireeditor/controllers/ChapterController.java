@@ -1,8 +1,9 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants13;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.other.*;
+import com.danius.fireeditor.savefile.wireless.Du26Block;
 import com.danius.fireeditor.util.Names;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -223,7 +224,7 @@ public class ChapterController {
             return "Paralogue " + chapter;
         } else if (id == 50) return "Outrealm Gate";
         else {
-            return "Mod Chapter #" + (Constants13.MAX_CHAPTERS - id + 1);
+            return "Mod Chapter #" + (Constants.MAX_CHAPTERS - id + 1);
         }
     }
 }

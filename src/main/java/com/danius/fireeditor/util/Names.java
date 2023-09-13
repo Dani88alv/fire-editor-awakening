@@ -18,7 +18,7 @@ public class Names {
             return "Map NPC #" + (id + 1);
         }
         int size = FireEditor.unitDb.size();
-        if (id >= size) return "Outrealm Unit #" + (id - size + 1);
+        if (id >= size) return "Invalid Unit #" + (id - size + 1);
         return FireEditor.unitDb.getName(id);
     }
 
@@ -149,6 +149,12 @@ public class Names {
             "Unknown 3-4", "Unknown 3-5", "Unknown 3-6", "Unknow 3-7"
     );
 
+    /*
+    Foreign Unit: Enemies/Units just recruited in a map/Foreign Avatars (Logbook Limit)
+    Tiki Meditating: Paralogue 17 Tiki Animation
+    Outrealm Unit: Changes portrait
+    Wireless Unit: Logbook Limit
+     */
     public static final List<String> battleFlags = Arrays.asList(
             "Moved in this turn", "Paired Up (Front)", "Paired Up (Back)", "Retired/Dead (Classic)",
             "Unknown 0-4", "Unknown 0-5", "Unknown 0-6", "Retired on Current Map",
@@ -156,8 +162,8 @@ public class Names {
             "Unknown 1-4", "Unknown 1-5", "Unknown 1-6", "Unknown 1-7",
             "Unknown 2-0", "Unknown 2-1", "Unknown 2-2", "Unknown 2-3",
             "Galeforce Used", "Unknown 2-5", "Married to Maiden", "Unknown 2-7",
-            "Unknown 3-0", "Tiki Meditating", "Unknown 3-2", "Unknown 3-3",
-            "Unknown 3-4", "Foreign Avatar", "Unknown 3-6", "Unknown 3-7"
+            "Unknown 3-0", "Tiki Meditating", "Unknown 3-2", "Outrealm Unit",
+            "Unknown 3-4", "Wireless Unit", "Unknown 3-6", "Unknown 3-7"
     );
 
     public static final List<String> buffSkills = Arrays.asList(

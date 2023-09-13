@@ -24,6 +24,9 @@ public class SkillLogic {
         //Additional skills
         List<Integer> extraSkills = getExtraSkills(unit);
         allSkills.addAll(extraSkills);
+        //Remove Aether or Rightful King
+        if (unitId != 0x3 && unitId != 0x1A) allSkills.removeIf(number -> number.equals(20));
+        if (unitId != 0x3 && unitId != 0x1A) allSkills.removeIf(number -> number.equals(72));
         //Clean up
         cleanList(allSkills);
 
@@ -33,14 +36,14 @@ public class SkillLogic {
             for (int i = 0; i < 6; i++) {
                 int parent = unit.rawChild.parentId(i);
                 //The parent class skills are retrieved
-                List<Integer> skills = getSkillsFromClasses(hardcodedClasses(parent, FireEditor.unitDb.isFemale(parent)));
+                List<Integer> skills = getSkillsFromClasses(hardcodedClasses(parent, isFemale));
+                removeSpecialSkills(skills, unit);
                 //The recruited skills from the parent are added
                 skills.addAll(FireEditor.unitDb.getSkills(parent));
                 allSkills.addAll(skills);
                 cleanList(allSkills);
             }
         }
-        removeSpecialSkills(allSkills, unit);
         //The skills are set
         for (int skill : allSkills) unit.rawSkill.setLearnedSkill(true, skill);
     }
@@ -51,16 +54,27 @@ public class SkillLogic {
         boolean isFemale = isFemaleUnit(unit);
         //Remove Special Dance is the character is not Olivia
         if (unitId != 0x17) skills.removeIf(number -> number.equals(0x36));
-        //Remove Exclusive Great Lord Skills
+        //Remove Exclusive Lord Skills
+        skills.removeIf(number -> number.equals(36));
+        skills.removeIf(number -> number.equals(18));
         skills.removeIf(number -> number.equals(72));
         skills.removeIf(number -> number.equals(20));
+
         //Add Aether of Rightful King according to the gender of the unit (Chrom's child)
         for (int i = 0; i < 6; i++) {
             int parent = unit.rawChild.parentId(i);
-            if (parent == 0x3) {
+            //If the parent is a Lord, add gender-exclusive Lord skills
+            if (parent == 0x3 || parent == 0x1A) {
                 if (isFemale) skills.add(72);
                 else skills.add(20);
             }
+        }
+        //Add Lord skills if they have Lord as base class
+        if (unitId == 0x3 || unitId == 0x1A) {
+            skills.add(36);
+            skills.add(18);
+            skills.add(72);
+            skills.add(20);
         }
     }
 
@@ -150,6 +164,11 @@ public class SkillLogic {
         for (int reclass : reclasses) {
             int[] unpromoted = FireEditor.classDb.getPromoted(reclass);
             for (int k : unpromoted) classes.add(k);
+        }
+        List<Integer> classCopy = new ArrayList<>(classes);
+        for (int i = 0; i < classCopy.size(); i++) {
+            List<Integer> relatedClasses = FireEditor.classDb.getFamilyClass(classes.get(i));
+            classes.addAll(relatedClasses);
         }
         return classes;
     }

@@ -212,6 +212,12 @@ public class FlagController {
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             unit.rawFlags.setBattleFlag(checkboxCount, checkBox.isSelected());
         });
+        if (checkboxCount == 27){
+            checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                FireEditor.unitController.refreshName(unit);
+                FireEditor.unitController.setImage();
+            });
+        }
         return checkBox;
     }
 
