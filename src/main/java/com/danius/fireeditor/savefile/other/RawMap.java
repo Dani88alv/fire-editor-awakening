@@ -79,8 +79,8 @@ public class RawMap {
 
     /*
     0x0: 0x0: Nothing 0x1: Reeking Box 0x2: Wireless 0x3: Merchant
-    0x1-0x2: 0x0: Nothing 0x1: Reeking Box 0x2: Merchant/Wireless
-    0x3 OverWorld Class
+    0x1: 0x0: Nothing 0x1: Reeking Box 0x2: Merchant/Wireless
+    0x2-0x3 OverWorld Class
     0x4-0x5 Spawn Pool Type?
     0x6 Time Out (if it reaches 0, the encounter vanishes after a map reload)
     0x7 ? Wireless Team ID (Always FF when not)
@@ -89,8 +89,13 @@ public class RawMap {
      */
 
     public int getUnitClass(int slot) {
-        int point = 0x3;
-        return spawnList.get(slot)[point] & 0xFF;
+        int point = 0x2;
+        return Hex.getByte2(spawnList.get(slot), point);
+    }
+
+    public void setUnitClass(int slot, int value) {
+        int point = 0x2;
+        Hex.setByte2(spawnList.get(slot), point, value);
     }
 
     public int getPool(int slot) {
@@ -98,9 +103,19 @@ public class RawMap {
         return Hex.getByte2(spawnList.get(slot), point);
     }
 
-    public int getTimeOut(int slot){
+    public void setPool(int slot, int value) {
+        int point = 0x4;
+        Hex.setByte2(spawnList.get(slot), point, value);
+    }
+
+    public int getTimeOut(int slot) {
         int point = 0x6;
         return spawnList.get(slot)[point] & 0xFF;
+    }
+
+    public void setTimeOut(int slot, int value) {
+        int point = 0x6;
+        spawnList.get(slot)[point] = (byte) (value & 0xFF);
     }
 
     public int getWirelessId(int slot) {
@@ -108,10 +123,27 @@ public class RawMap {
         return spawnList.get(slot)[point] & 0xFF;
     }
 
+    public void setWirelessId(int slot, int value) {
+        int point = 0x7;
+        spawnList.get(slot)[point] = (byte) (value & 0xFF);
+    }
+
     public String getSeed(int slot) {
         int point = 0x8;
         byte[] seed = Hex.getByte4Array(spawnList.get(slot), point);
         return Hex.byteArrayToHexString(seed);
+    }
+
+    public void setSeed(int slot, String value) {
+        int point = 0x8;
+        //Add remaining ceros to the left
+        StringBuilder sb = new StringBuilder(value);
+        while (sb.length() < (4 * 2)) {
+            sb.insert(0, '0');
+        }
+        //Convert it to a byte array
+        byte[] logId = Hex.hexStringToByteArray(String.valueOf(sb));
+        System.arraycopy(logId, 0, spawnList.get(slot), point, 4);
     }
 
     public byte[] bytes() {
@@ -124,6 +156,4 @@ public class RawMap {
         }
         return byteArrayOutputStream.toByteArray();
     }
-
-    //0x5 boss class, 0x3-0x4 need to be 0x1 in order to activate it
 }

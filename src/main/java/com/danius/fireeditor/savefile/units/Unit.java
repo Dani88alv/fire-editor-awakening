@@ -23,22 +23,21 @@ public class Unit {
     public RawInventory rawInventory; //Inventory
     public RawBlock2 rawBlock2; //Current Skills and Weapon EXP
     public RawSupport rawSupport; //Support conversations, size variable
-    //Sometimes it appears in Map save files, unknown use
-    public byte[] rawUnknown;
+    public byte[] rawUnknown; //Sometimes it appears in Map save files, unknown use
     public RawFlags rawFlags; //Battle Flags
     public RawSkill rawSkill; //Learned Skills
     public RawBlockEnd rawBlockEnd; //AI and Misc Stuff
     //Additional blocks
     public ChildBlock rawChild; //Parent Data
     public LogBlock rawLog; //Logbook data
-    private UnitDu unitDu; //Used for unit structure editing
+    public UnitDu unitDu; //Used for unit structure editing
 
     public Unit() {
         this.rawBlock1 = new RawBlock1();
         this.rawInventory = new RawInventory();
         this.rawBlock2 = new RawBlock2();
-        this.rawSupport = new RawSupport(new byte[0], 0x2);
-        this.rawUnknown = new byte[0];
+        this.rawSupport = new RawSupport();
+        this.rawUnknown = new byte[]{0};
         this.rawFlags = new RawFlags();
         this.rawSkill = new RawSkill();
         this.rawBlockEnd = new RawBlockEnd();
@@ -232,6 +231,11 @@ public class Unit {
         return this.unitDu != null;
     }
 
+    public void createDu(boolean isWest) {
+        this.unitDu = new UnitDu(isWest);
+        updateUnitDu();
+    }
+
     public void updateUnitDu() {
         if (!isDu()) return;
         //General Data
@@ -246,7 +250,7 @@ public class Unit {
         unitDu.rawSkill = this.rawSkill;
         //Child Data
         if (rawChild != null) for (int i = 0; i < 6; i++) unitDu.setParent(rawChild.parentId(i), i);
-        else for (int i = 0; i < 6; i++) unitDu.setParent(0, i);
+        else for (int i = 0; i < 6; i++) unitDu.setParent(255, i);
         //Avatar Data
         if (rawLog != null) unitDu.rawLog = this.rawLog;
         else unitDu.rawLog = new LogBlock();

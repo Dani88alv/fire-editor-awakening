@@ -165,7 +165,6 @@ public class CheatController {
     }
 
     public void unlockMaps() {
-        FireEditor.chapterController.comboChapterData.getSelectionModel().select(2);
         Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         for (int i = 0; i < chapterFile.blockGmap.maps.size(); i++) {
             chapterFile.blockGmap.maps.get(i).setLockState(2);

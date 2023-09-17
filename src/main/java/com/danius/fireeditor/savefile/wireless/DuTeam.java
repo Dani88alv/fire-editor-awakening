@@ -24,7 +24,7 @@ public class DuTeam {
     //110 + 26
     private byte[] slot;
     private final byte[] header;
-    private final List<UnitDu> unitList;
+    public List<UnitDu> unitList;
     private byte[] teamName;
     private byte[] extraData; //Profile Card & Messages (shared among units)
 
@@ -118,6 +118,15 @@ public class DuTeam {
         this.extraData = Arrays.copyOfRange(all, regularData, all.length - 1); //The terminator is excluded
     }
 
+    public byte[] getSlot() {
+        if (slot.length == 0) return null;
+        else return slot;
+    }
+
+    public void setSlot(int value) {
+        this.slot = new byte[]{(byte) (value & 0xFF)};
+    }
+
     public byte[] bytes() {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int unitCount = unitList.size();
@@ -173,4 +182,8 @@ public class DuTeam {
         return text;
     }
 
+    @Override
+    public String toString() {
+        return getTeamName();
+    }
 }

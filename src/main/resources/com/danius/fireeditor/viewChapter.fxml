@@ -39,14 +39,6 @@
          <Label layoutX="664.0" layoutY="322.0" text="Turns" />
          <Label layoutX="183.0" layoutY="44.0" text="Total Playtime" />
          <Label layoutX="291.0" layoutY="47.0" text="Money" />
-         <ComboBox fx:id="comboChapter" layoutX="459.0" layoutY="66.0" prefWidth="130.0" promptText="Chapter" />
-         <ComboBox fx:id="comboChapterData" layoutX="606.0" layoutY="66.0" prefHeight="26.0" prefWidth="117.0" promptText="State" />
-         <Label layoutX="460.0" layoutY="11.0" text="Map Data">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Label>
-         <Label layoutX="461.0" layoutY="46.0" text="Chapter" />
          <Label layoutX="544.0" layoutY="152.0" text="SpotPass">
             <font>
                <Font size="18.0" />
@@ -60,6 +52,8 @@
          <CheckBox fx:id="checkCasual" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" text="Casual" />
          <Button layoutX="183.0" layoutY="330.0" mnemonicParsing="false" onAction="#openBarrack" prefHeight="47.0" prefWidth="130.0" text="Barrack Events" />
          <Label layoutX="184.0" layoutY="308.0" text="Barrack Event Editor" />
+         <Button layoutX="322.0" layoutY="210.0" mnemonicParsing="false" onAction="#openMap" prefHeight="54.0" prefWidth="106.0" text="Map" />
+         <Button layoutX="123.0" layoutY="210.0" mnemonicParsing="false" onAction="#openWireless" prefHeight="54.0" prefWidth="118.0" text="Wireless" />
       </children>
     </AnchorPane>
 

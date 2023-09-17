@@ -26,8 +26,6 @@ public class ChapterController {
     @FXML
     private ComboBox<String> comboChapterDlc, comboDifficulty;
     @FXML
-    ComboBox<String> comboChapter, comboChapterData;
-    @FXML
     private CheckBox checkLunatic, checkCasual;
 
     public void initialize() {
@@ -35,7 +33,6 @@ public class ChapterController {
         setupElements();
         addUserListeners();
         //addDlcListeners();
-        addGmapListeners();
         loadBlocks();
     }
 
@@ -87,13 +84,6 @@ public class ChapterController {
             spinRenown.getValueFactory().setValue(userBlock.renown());
             //DLC
             //comboChapterDlc.getSelectionModel().select(0);
-            //Gmap Chapters
-            ObservableList<String> chaptersMap = FXCollections.observableArrayList();
-            for (int i = 0; i < gmapBlock.maps.size(); i++) {
-                chaptersMap.add(gChapterName(i));
-            }
-            comboChapter.setItems(chaptersMap);
-            comboChapter.getSelectionModel().select(0);
         }
     }
 
@@ -109,9 +99,6 @@ public class ChapterController {
         ObservableList<String> dlcChapters = FXCollections.observableArrayList();
         dlcChapters.addAll(Names.chapterDlcNames);
         //comboChapterDlc.setItems(dlcChapters);
-        //Gmap
-        ObservableList<String> chapterState = FXCollections.observableArrayList("Locked", "Beaten", "Unlocked");
-        comboChapterData.setItems(chapterState);
     }
 
     public void resetRenownFlags() {
@@ -153,33 +140,9 @@ public class ChapterController {
 
      */
 
-    public void addGmapListeners() {
-        comboChapter.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    if (gmapBlock != null && newValue != null && oldValue != null) {
-                        //The old selection is updated
-                        if ((Integer) oldValue >= 0) {
-                            gmapBlock.maps.get((Integer) oldValue).setLockState(
-                                    comboChapterData.getSelectionModel().getSelectedIndex());
-                        }
-                        if ((Integer) newValue != -1) {
-                            comboChapterData.getSelectionModel().select(gmapBlock.maps.get((Integer) newValue).lockState());
-                        }
-                    }
-                }
-        );
-        comboChapterData.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    if (gmapBlock != null && newValue != null && oldValue != null &&
-                            comboChapter.getSelectionModel().getSelectedItem() != null) {
-                        gmapBlock.maps.get(comboChapter.getSelectionModel().getSelectedIndex()).setLockState(
-                                comboChapterData.getSelectionModel().getSelectedIndex());
-                    }
-                }
-        );
-    }
-
     public void openCredits() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewCredits.fxml"));
+            FXMLLoader fxmlLoader = MainController.getWindow("viewCredits.fxml");
             Parent root = fxmlLoader.load();
             // Pass the selected value to the second view's controller
             CreditController creditController = fxmlLoader.getController();
@@ -196,9 +159,9 @@ public class ChapterController {
         }
     }
 
-    public void openBarrack(){
+    public void openBarrack() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewBarrack.fxml"));
+            FXMLLoader fxmlLoader = MainController.getWindow("viewBarrack.fxml");
             Parent root = fxmlLoader.load();
             // Pass the selected value to the second view's controller
             BarrackController barrackController = fxmlLoader.getController();
@@ -207,6 +170,44 @@ public class ChapterController {
             Stage secondaryStage = new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
             secondaryStage.setTitle("Barrack Events");
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openMap() {
+        try {
+            FXMLLoader fxmlLoader = MainController.getWindow("viewOverworld.fxml");
+            Parent root = fxmlLoader.load();
+            // Pass the selected value to the second view's controller
+            MapController mapController = fxmlLoader.getController();
+            mapController.setBlock(gmapBlock);
+            // Create a new stage for the secondary view
+            Stage secondaryStage = new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
+            secondaryStage.setTitle("Overworld Map");
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openWireless() {
+        try {
+            FXMLLoader fxmlLoader = MainController.getWindow("viewTeams.fxml");
+            Parent root = fxmlLoader.load();
+            // Pass the selected value to the second view's controller
+            TeamController teamController = fxmlLoader.getController();
+            teamController.setBlocks(du26Block, gmapBlock);
+            // Create a new stage for the secondary view
+            Stage secondaryStage = new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
+            secondaryStage.setTitle("Wireless Teams");
             secondaryStage.setScene(new Scene(root));
             secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
 

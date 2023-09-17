@@ -61,6 +61,7 @@ public class ChildBlock {
     }
 
     public void setParentId(int slot, int value) {
+        if (value >= 255) value = 65535;
         switch (slot) {
             case 0 -> father.setParentId(value, 0);
             case 1 -> mother.setParentId(value, 0);

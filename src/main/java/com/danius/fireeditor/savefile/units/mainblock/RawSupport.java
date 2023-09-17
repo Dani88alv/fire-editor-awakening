@@ -13,7 +13,15 @@ public class RawSupport {
     private final List<Integer> supportValues; //Stores the support points/actions of all the valid characters
     public int unitId;
 
+    public RawSupport() {
+        this.supportValues = new ArrayList<>();
+        this.unitId = 0x2;
+    }
+
     public RawSupport(byte[] blockBytes, int unitId) {
+        if (unitId == 0x2) {
+            int aa = 1;
+        }
         //Copies only the list, not the amount, the amount is fixed when the bytes are called
         byte[] byteArray = Arrays.copyOfRange(blockBytes, 0x1, blockBytes.length);
         supportValues = new ArrayList<>();

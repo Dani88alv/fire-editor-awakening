@@ -5,6 +5,7 @@ import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 import javafx.stage.FileChooser;
 
@@ -148,7 +149,9 @@ public class MainController {
                 byte[] data = Files.readAllBytes(file.toPath());
                 Unit unit = new Unit(data);
                 if (unit.rawLog != null) unit.rawLog.changeRegion(isWest); //Converts the unit to the current region
-                if (totalSize < Constants.MAX_PLAYABLE) FireEditor.unitController.addUnit(unit);
+                if (totalSize < Constants.UNIT_LIMIT) {
+                    FireEditor.unitController.addUnit(unit);
+                }
                 totalSize++;
             } catch (Exception e) {
                 throw new RuntimeException("INVALID UNIT FILE!");
@@ -193,5 +196,9 @@ public class MainController {
         if (decomp) data = FireEditor.chapterFile.getBytes();
         else data = FireEditor.chapterFile.getBytesComp();
         return data;
+    }
+
+    public static FXMLLoader getWindow(String name) {
+        return new FXMLLoader(FireEditor.class.getResource(Constants.RES_FXML + name));
     }
 }

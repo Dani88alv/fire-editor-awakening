@@ -5,6 +5,8 @@ import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
+import com.danius.fireeditor.savefile.wireless.DuTeam;
+import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
 import com.danius.fireeditor.util.Portrait;
 import javafx.collections.FXCollections;
@@ -74,7 +76,8 @@ public class UnitController {
                     comboClass.getItems().add("Mod Class #" + (i + 1));
                 }
             }
-
+            updateComboGroups();
+            comboGroupMove.getSelectionModel().select(0x3);
             //The unit group is selected, chosen between blue units or main units
             if (unitBlock.unitList.get(0x0).size() > 0) {
                 comboUnitGroup.getSelectionModel().select(0x0);
@@ -191,30 +194,52 @@ public class UnitController {
         int groupTarget = comboGroupMove.getSelectionModel().getSelectedIndex();
         int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
         //If there is enough room
-        if (unitBlock.unitList.get(groupTarget).size() < Constants.UNIT_LIMIT) {
-            //If it is being moved to dead units, set the dead flag
-            if (groupTarget == 4 && currentGroup != 4) {
-                listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, true);
-                listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(7, true);
-                listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag1(true);
-                listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag2(true);
-            }
-            //If it is being moved from dead units, unset the dead flag
-            else if (groupTarget != 4 && currentGroup == 4) {
-                listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, false);
-                listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag1(false);
-                listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag2(false);
-                listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setRetireChapter(0);
-            }
+        if (groupTarget <= 5) {
+            if (unitBlock.unitList.get(groupTarget).size() >= Constants.UNIT_LIMIT) return;
+        }
+        //If it is being moved to dead units, set the dead flag
+        if (groupTarget == 4 && currentGroup != 4) {
+            listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, true);
+            listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(7, true);
+            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag1(true);
+            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag2(true);
+        }
+        //If it is being moved from dead units, unset the dead flag
+        else if (groupTarget != 4 && currentGroup == 4) {
+            listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, false);
+            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag1(false);
+            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag2(false);
+            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setRetireChapter(0);
+        }
+        //Regular Unit Group
+        if (groupTarget <= 5) {
             //The unit is added
             unitBlock.unitList.get(groupTarget).add(listViewUnit.getItems().get(id));
-            //The unit is removed from the current group
-            listViewUnit.getItems().remove(id);
-            unitBlock.unitList.set(comboUnitGroup.getSelectionModel().getSelectedIndex(), listViewUnit.getItems());
-            displayUnitCount();
-            return;
         }
-        System.out.println("TARGET GROUP FULL!");
+        //Wireless Teams
+        else {
+            Unit unit = listViewUnit.getItems().get(id);
+            if (!unit.isDu()) {
+                listViewUnit.getItems().get(id).createDu(FireEditor.chapterFile.blockDu26.isWest);
+            }
+            UnitDu unitDu = unit.unitDu;
+            unitDu.unit = unit;
+            //Player's StreetPass Team
+            if (groupTarget == 6) {
+                if (FireEditor.chapterController.du26Block.playerTeam.unitList.size() >= 10) return;
+                FireEditor.chapterController.du26Block.playerTeam.unitList.add(listViewUnit.getItems().get(id).unitDu);
+            }
+            //External Team
+            else {
+                int slot = groupTarget - 6 - 1;
+                if (FireEditor.chapterController.du26Block.teamList.get(slot).unitList.size() >= 10) return;
+                FireEditor.chapterController.du26Block.teamList.get(slot).unitList.add(unitDu);
+            }
+        }
+        //The unit is removed from the current group
+        listViewUnit.getItems().remove(id);
+        unitBlock.unitList.set(comboUnitGroup.getSelectionModel().getSelectedIndex(), listViewUnit.getItems());
+        displayUnitCount();
     }
 
     public void addUnit(Unit unit) {
@@ -261,11 +286,8 @@ public class UnitController {
     private void setupElements() {
         //Unit Group
         ObservableList<String> groups = FXCollections.observableArrayList(
-                "Blue Units", "Red Units", "Green Units", "Main Units", "Dead Units", "Other Units",
-                "Wireless Team");
+                "Blue Units", "Red Units", "Green Units", "Main Units", "Dead Units", "Other Units");
         comboUnitGroup.setItems(groups);
-        comboGroupMove.setItems(groups);
-        comboGroupMove.getSelectionModel().select(0x3);
         //General
         UI.setSpinnerNumeric(spinUnitId, 65335);
         UI.setSpinnerNumeric(spinLevel, 30);
@@ -286,6 +308,16 @@ public class UnitController {
         //IMPORTANT ORDER
         setupUnitList(listViewUnit);
         setupComboGroup();
+    }
+
+    public void updateComboGroups() {
+        ObservableList<String> groups = FXCollections.observableArrayList(
+                "Blue Units", "Red Units", "Green Units", "Main Units", "Dead Units", "Other Units");
+        groups.add("StreetPass Team");
+        for (DuTeam team : FireEditor.chapterFile.blockDu26.teamList) {
+            groups.add(team.getTeamName());
+        }
+        comboGroupMove.setItems(groups);
     }
 
     public void disableElements(boolean disable) {
@@ -501,7 +533,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 //updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewFlags.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewFlags.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -525,7 +557,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 //updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewSkills.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewSkills.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -549,7 +581,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewBattle.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewBattle.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -580,7 +612,7 @@ public class UnitController {
                 //Check the support block size
                 listViewUnit.getSelectionModel().getSelectedItem().rawSupport.expandBlock();
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewSupports.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewSupports.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -604,7 +636,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewChild.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewChild.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -628,7 +660,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewLogbook.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewLogbook.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -654,7 +686,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewInventory.fxml"));
+                FXMLLoader fxmlLoader = MainController.getWindow("viewInventory.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class UnitDu {
+    public Unit unit;
     public boolean isWest;
     private byte[] rawBlock1;
     public List<DuItem> itemList;
@@ -57,10 +58,10 @@ public class UnitDu {
         this.rawChild = Arrays.copyOfRange(bytes, offset, offset + 0x8);
         offset += rawChild.length;
         //Learned Skills
-        this.rawSkill = new RawSkill(Arrays.copyOfRange(bytes, offset, offset + 0xC));
+        this.rawSkill = new RawSkill(Arrays.copyOfRange(bytes, offset, offset + 0xD));
         offset += rawSkill.length();
         //Unknown
-        this.rawUnknown = Arrays.copyOfRange(bytes, offset, offset + 0x4);
+        this.rawUnknown = Arrays.copyOfRange(bytes, offset, offset + 0x3);
         offset += rawUnknown.length;
         //Avatar Name
         int nameSize = (isWest) ? DuTeam.US_NAME_LOG : DuTeam.JP_NAME_LOG;
@@ -95,8 +96,8 @@ public class UnitDu {
         Hex.setByte2(rawBlock1, 0x1, value);
     }
 
-    public Unit toUnit() {
-        Unit unit = new Unit();
+    public void updateUnit() {
+        if (this.unit == null) this.unit = new Unit();
         unit.addBlockChild();
         unit.addBlockLog();
         //General Data
@@ -116,7 +117,7 @@ public class UnitDu {
         //Extra data
         for (int i = 0; i < 6; i++) unit.rawChild.setParentId(i, getParent(i));
         unit.rawLog = this.rawLog;
-        return unit;
+        this.rawLog.footer = new byte[]{1}; //Child Terminator
     }
 
     public String report() {
@@ -242,6 +243,7 @@ public class UnitDu {
     }
 
     public void setParent(int value, int slot) {
+        if (value >= 255) value = 255;
         rawChild[slot] = (byte) (value & 0xFF);
     }
 

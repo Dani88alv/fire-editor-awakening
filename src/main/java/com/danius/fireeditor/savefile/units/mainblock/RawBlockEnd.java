@@ -13,7 +13,7 @@ public class RawBlockEnd {
     private byte[] blockBytes;
 
     public RawBlockEnd(){
-        String path = Constants.RES_BLOCK + "rawUnitBlockEnd";
+        String path = Constants.RES_BLOCK + "rawUnitEnd";
         try {
             this.blockBytes = Objects.requireNonNull(RawBlockEnd.class.getResourceAsStream(path)).readAllBytes();
         } catch (IOException e) {

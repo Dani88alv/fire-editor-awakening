@@ -20,7 +20,7 @@
          <Button layoutX="23.0" layoutY="231.0" mnemonicParsing="false" onAction="#setMoveTwo" prefHeight="30.0" prefWidth="165.0" text="Set Extra Movement to 2" />
          <Button layoutX="200.0" layoutY="231.0" mnemonicParsing="false" onAction="#setMoveHundred" prefHeight="30.0" prefWidth="165.0" text="Set Extra Movement to 100" />
          <Button layoutX="200.0" layoutY="153.0" mnemonicParsing="false" onAction="#setMaxBattles" prefHeight="30.0" prefWidth="165.0" text="9999 Victories and Battles" />
-         <Button layoutX="458.0" layoutY="86.0" mnemonicParsing="false" onAction="#unlockMaps" prefHeight="30.0" prefWidth="165.0" text="Unlock All Chapters" />
+         <Button layoutX="458.0" layoutY="86.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Replay All Chapters" />
          <Button layoutX="200.0" layoutY="271.0" mnemonicParsing="false" onAction="#setBuffs" prefHeight="30.0" prefWidth="165.0" text="All Temporal Stat Buffs" />
          <ComboBox fx:id="comboSupport" layoutX="207.0" layoutY="116.0" prefWidth="150.0" promptText="Support Level" />
          <Label layoutX="24.0" layoutY="9.0" text="Unit Cheats">
@@ -36,6 +36,9 @@
          </Label>
          <ComboBox fx:id="comboUnitGroup" layoutX="23.0" layoutY="72.0" prefWidth="150.0" promptText="Unit Group" />
          <Button layoutX="106.0" layoutY="332.0" mnemonicParsing="false" onAction="#pickAGodAndPray" prefHeight="30.0" prefWidth="165.0" text="All Unit Cheats" />
+         <Button layoutX="458.0" layoutY="332.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Change Save File Region" />
+         <Button layoutX="458.0" layoutY="168.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Clear Overworld Encounters" />
+         <Button layoutX="458.0" layoutY="126.0" mnemonicParsing="false" onAction="#unlockMaps" prefHeight="30.0" prefWidth="165.0" text="Unlock All Chapters" />
       </children>
     </AnchorPane>
 

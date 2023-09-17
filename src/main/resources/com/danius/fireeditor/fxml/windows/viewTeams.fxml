@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.TeamController">
+   <children>
+      <AnchorPane prefHeight="456.0" prefWidth="524.0">
+         <children>
+            <ListView fx:id="teamList" layoutX="9.0" layoutY="23.0" prefHeight="318.0" prefWidth="194.0" />
+            <ListView fx:id="unitList" layoutX="225.0" layoutY="23.0" prefHeight="238.0" prefWidth="110.0" />
+            <Button layoutX="40.0" layoutY="355.0" mnemonicParsing="false" text="Import Team" />
+            <Button layoutX="41.0" layoutY="391.0" mnemonicParsing="false" text="Export Team" />
+            <TextField fx:id="txtTeamName" layoutX="227.0" layoutY="388.0" prefHeight="26.0" prefWidth="166.0" />
+            <Button layoutX="377.0" layoutY="170.0" mnemonicParsing="false" onAction="#moveUnit" text="Move to Unit Editor" />
+            <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="370.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../characters/3.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelUnitName" layoutX="370.0" layoutY="5.0" prefHeight="27.0" prefWidth="166.0" text="Units">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="229.0" layoutY="368.0" text="Team Name" />
+            <Spinner disable="true" layoutX="227.0" layoutY="287.0" prefHeight="26.0" prefWidth="55.0" />
+            <Label layoutX="228.0" layoutY="269.0" text="Team ID" />
+            <Spinner fx:id="spinUnitId" editable="true" layoutX="227.0" layoutY="337.0" prefHeight="26.0" prefWidth="80.0" />
+            <Label layoutX="228.0" layoutY="319.0" text="Renown" />
+            <Label layoutX="12.0" layoutY="3.0" text="Wireless Teams" />
+            <Label layoutX="228.0" layoutY="3.0" text="Units" />
+            <Label layoutX="405.0" layoutY="268.0" prefHeight="154.0" prefWidth="251.0" text="Note: All team units store avatar data&#10;and child data, so the portrait will look&#10;weird on the Unit Editor. You can remove&#10;the avatar data at any time. All team units&#10;share the same profile card and avatar&#10;messages, but only the data from the first&#10;unit will be used. Due to technical limitations,&#10;the items cannot be edited on the Unit Editor.&#10;Flags and supports are not stored on teams." />
+            <Button fx:id="btnUp" layoutX="339.0" layoutY="202.0" mnemonicParsing="false" text="↑" />
+            <Button fx:id="btnDown" layoutX="339.0" layoutY="234.0" mnemonicParsing="false" text="↓" />
+            <Button layoutX="382.0" layoutY="209.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Equipped Items" />
+            <AnchorPane layoutX="520.0" layoutY="23.0" prefHeight="128.0" prefWidth="128.0">
+               <children>
+                  <CheckBox layoutY="6.0" mnemonicParsing="false" text="Teammate" />
+                  <CheckBox layoutY="28.0" mnemonicParsing="false" text="Outrealm" />
+                  <CheckBox layoutY="50.0" mnemonicParsing="false" text="SpotPass Recruit" />
+                  <CheckBox layoutY="72.0" mnemonicParsing="false" text="StreetPass Recruit" />
+                  <CheckBox layoutY="94.0" mnemonicParsing="false" text="Team Leader" />
+               </children>
+            </AnchorPane>
+            <Spinner fx:id="spinUnitId1" editable="true" layoutX="519.0" layoutY="170.0" prefHeight="26.0" prefWidth="80.0" />
+            <Label layoutX="520.0" layoutY="8.0" text="Unit flags" />
+            <Label layoutX="520.0" layoutY="151.0" text="Overworld Sprite" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

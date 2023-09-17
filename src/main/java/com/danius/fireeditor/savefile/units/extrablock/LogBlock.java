@@ -26,7 +26,7 @@ public class LogBlock {
     public byte[] textGreeting;
     public byte[] textChallenge;
     public byte[] textRecruit;
-    private byte[] footer;
+    public byte[] footer;
 
 
     public static final int[] DLC_FACE_ID = new int[]{

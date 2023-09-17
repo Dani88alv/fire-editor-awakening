@@ -19,17 +19,12 @@ public class Test {
 
     public static void main(String[] args) throws IOException {
         FireEditor.loadResources();
-        //Chapter13 chapter13 = readTestFile("Chapter2");
+        Chapter13 chapter13 = readTestFile("Chapter1");
         //System.out.println(Hex.byteArrayToString(Hex.toByte("31 00 32 00 6F 30 6F 30 C1 30 AD 30 26 20 5E 79 DC 7A CF 65 6E 30 1F 75 4D 30 8B 6B 38 00 26 20 00 00")));
         //Hex.writeFile(SaveFile.autoDecompress(Hex.getFileBytes(aa)), aa + "_dec");
-
-        Chapter13 chapter13 = readTestFile("Chapter2");
-        chapter13.changeRegion(false);
-        //Chapter13 aa = new Chapter13(chapter13.getBytes());
-        Hex.writeFile(chapter13.getBytes(), "Chapter1");
-
-
-        //Chapter13 ayuda = new Chapter13(Hex.getFileBytes("Chapter1"));
+        String fatesEu = "C:\\Users\\user1\\AppData\\Roaming\\Citra\\sdmc\\Nintendo 3DS\\00000000000000000000000000000000\\00000000000000000000000000000000\\title\\00040000\\0017a800\\data\\00000001\\";
+        //Hex.writeFile(SaveFile.autoDecompress(Hex.getFileBytes(fatesEu + "Rating")), fatesEu + "Rating_dec");
+        //Hex.writeFile(readTestFile("Chapter1").blockDu26.playerTeam.unitList.get(0).toUnit().getUnitBytes(), "TY");
     }
 
     private static void printHexArray(byte[] array) {
