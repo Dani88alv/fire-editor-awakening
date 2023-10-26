@@ -1,16 +1,16 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.Test;
-import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.other.GmapBlock;
-import com.danius.fireeditor.savefile.other.RawMap;
-import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.savefile.map.GmapBlock;
+import com.danius.fireeditor.savefile.map.RawMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.File;
+
+import static com.danius.fireeditor.model.ClassDb.*;
 
 public class MapController {
 
@@ -47,7 +47,7 @@ public class MapController {
 
         ObservableList<String> classes = FXCollections.observableArrayList();
         classes.add("None");
-        classes.addAll(FireEditor.classDb.getNames());
+        classes.addAll(getClassNames(FireEditor.chapterFile.MAX_ID_CLASS));
         comboClass1.setItems(classes);
         comboClass2.setItems(classes);
         ObservableList<String> groups = FXCollections.observableArrayList(

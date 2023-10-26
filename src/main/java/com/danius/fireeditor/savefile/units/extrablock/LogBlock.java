@@ -3,7 +3,7 @@ package com.danius.fireeditor.savefile.units.extrablock;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Bitflag;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -482,7 +482,7 @@ public class LogBlock {
         text += "Logbook ID: " + getLogId();
         text += isWest ? " (US/EU)" : " (JP)";
         //Build
-        text += "\n" + "Asset: " + Names.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + Names.modifNames.get(getAssetFlaw()[1]);
+        text += "\n" + "Asset: " + MiscDb.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + MiscDb.modifNames.get(getAssetFlaw()[1]);
         text += "\n" + "Build: " + Arrays.toString(getFullBuild()) + " Birthday: " + Arrays.toString(getBirthday());
         text += "\n" + "Logbook Hair: #" + getLogHairColor();
         return text;

@@ -5,111 +5,134 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class Classes {
+public class ClassDb {
 
+    private static final ClassDb database = new ClassDb();
     private List<ClassModel> classList;
 
-    public Classes() {
+    public ClassDb() {
         readClasses();
     }
 
-    public ClassModel getClass(int id) {
-        for (ClassModel unitClass : classList) {
+    private static ClassModel getClass(int id) {
+        for (ClassModel unitClass : database.classList) {
             if (unitClass.getId() == id) return unitClass;
         }
         return new ClassModel();
     }
 
-    public String getName(int id) {
-        if (invalid(id)) return "Outrealm Class #" + (id - size() + 1);
+    public static String getClassName(int id) {
+        if (isInvalid(id)) return "Mod Class #" + (id - getClassMaxId());
         return getClass(id).getName();
     }
 
-    public int[] skills(int id) {
-        if (invalid(id)) return new int[0];
+    public static int[] getClassSkills(int id) {
+        if (isInvalid(id)) return new int[0];
         return getClass(id).getSkills();
     }
 
-    public int[] getBase(int id) {
+    public static int[] getClassBaseStats(int id) {
         int[] stats = new int[8];
-        if (invalid(id)) return stats;
+        if (isInvalid(id)) return stats;
         int[] all = getClass(id).getStatsBase();
         System.arraycopy(all, 0, stats, 0, stats.length);
         return stats;
     }
 
-    public int[] getMax(int id) {
+    public static int[] getClassMaxStats(int id) {
         int[] stats = new int[8];
-        if (invalid(id)) return stats;
+        if (isInvalid(id)) return stats;
         int[] all = getClass(id).getStatsMax();
         System.arraycopy(all, 0, stats, 0, stats.length);
         return stats;
     }
 
-    public int getMove(int id) {
-        if (invalid(id)) return 5;
+    public static int getClassMove(int id) {
+        if (isInvalid(id)) return 5;
         return getClass(id).getStatsBase()[8];
     }
 
-    public int[] getPromoted(int id) {
-        if (invalid(id)) return new int[0];
+    public static int[] getClassPromoted(int id) {
+        if (isInvalid(id)) return new int[0];
         return getClass(id).getPromoted();
     }
 
-    public List<Integer> getGenderClasses(boolean isFemale) {
+    public static List<Integer> getClassesByGender(boolean isFemale) {
         List<Integer> classes = new ArrayList<>();
-        for (int i = 0; i < classList.size(); i++) {
+        for (int i = 0; i < database.classList.size(); i++) {
             //If it is not Enemy Only
-            if (!hasFlag(i, 21)) {
-                if (isFemale && hasFlag(i, 0)) classes.add(i);
-                else if (!isFemale && !hasFlag(i, 0)) classes.add(i);
+            if (!hasClassFlag(i, 21)) {
+                if (isFemale && hasClassFlag(i, 0)) classes.add(i);
+                else if (!isFemale && !hasClassFlag(i, 0)) classes.add(i);
             }
         }
         return classes;
     }
 
-    public List<Integer> getFlags(int id) {
-        if (invalid(id)) return new ArrayList<>();
+    public static List<Integer> getClassFlags(int id) {
+        if (isInvalid(id)) return new ArrayList<>();
         return getClass(id).getFlags();
     }
 
-    public boolean hasFlag(int id, int flag) {
-        if (invalid(id)) return false;
-        return getFlags(id).contains(flag);
+    public static boolean hasClassFlag(int id, int flag) {
+        if (isInvalid(id)) return false;
+        return getClassFlags(id).contains(flag);
     }
 
-    public boolean isFemale(int id) {
-        if (invalid(id)) return false;
-        return hasFlag(id, 0);
+    public static boolean isClassFemale(int id) {
+        if (isInvalid(id)) return false;
+        return hasClassFlag(id, 0);
     }
 
-    public List<String> getNames() {
+    public static List<String> getClassNames() {
         List<String> names = new ArrayList<>();
-        for (ClassModel classModel : classList) names.add(classModel.getName());
+        for (ClassModel classModel : database.classList) names.add(classModel.getName());
         return names;
     }
 
-    public boolean invalid(int id) {
-        return id < 0 || id >= size();
+    public static List<String> getClassNames(int max) {
+        int vanillaMax = database.MAX_ID;
+        List<String> names = getClassNames();
+        for (int i = vanillaMax; i < max; i++) {
+            names.add(getClassName(i + 1));
+        }
+        return names;
     }
 
-    public int size() {
-        return classList.size();
+    private static boolean isInvalid(int id) {
+        return id < 0 || id > getClassMaxId();
+    }
+
+    public static int getClassCount() {
+        return database.classList.size();
+    }
+
+    public static int getClassMaxId() {
+        return database.MAX_ID;
+    }
+
+    private int MAX_ID  = 0;
+
+    private void setMaxId() {
+        int id = 0;
+        for (ClassModel classModel : classList) {
+            int thisId = classModel.getId();
+            if (thisId > id) id = thisId;
+        }
+        MAX_ID = id;
     }
 
     public void readClasses() {
         String path = "/com/danius/fireeditor/database/";
         String xmlFilePath = path + "classes.xml";
         classList = new ArrayList<>();
-        try (InputStream is = Characters.class.getResourceAsStream(xmlFilePath)) {
+        try (InputStream is = UnitDb.class.getResourceAsStream(xmlFilePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }
@@ -178,6 +201,8 @@ public class Classes {
                 unitClass.setTraitFlags(flags);
 
                 classList.add(unitClass);
+
+                setMaxId();
             }
         } catch (IOException | JDOMException ex) {
             throw new RuntimeException(ex);

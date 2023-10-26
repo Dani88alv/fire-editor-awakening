@@ -1,14 +1,17 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.other.UserBlock;
+import com.danius.fireeditor.savefile.user.UserBlock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
+
+import static com.danius.fireeditor.model.ClassDb.*;
 
 public class CreditController {
 
@@ -23,15 +26,6 @@ public class CreditController {
 
     public void initialize() {
         setupElements();
-        //The modded classes are checked
-        int modCount = FireEditor.maxClasses;
-        int vanillaCount = Constants.MAX_CLASSES;
-        if (modCount > vanillaCount) {
-            for (int i = vanillaCount; i < modCount; i++) {
-                String className = "Mod Class#" + (i + 1 - vanillaCount);
-                comboClass1.getItems().add(className);
-            }
-        }
     }
 
     public void removeRecord() {
@@ -69,18 +63,7 @@ public class CreditController {
         comboCreditSlot.setItems(progress);
         //Disable the fields if the chapter count is 0 (Premonition Map Save File)
         disableCredits(userBlock.progress.size() == 0);
-        //The modded map entries from the credits are checked
-        int totalChapters = comboCreditChapter.getItems().size();
-        //Modded Chapters are checked
-        for (int i = 0; i < userBlock.progress.size(); i++) {
-            if (userBlock.progress.get(i).chapterId() > totalChapters) {
-                totalChapters = userBlock.progress.get(i).chapterId();
-            }
-        }
-        int currentChapters = comboCreditChapter.getItems().size();
-        for (int i = currentChapters; i <= totalChapters; i++) {
-            comboCreditChapter.getItems().add("Mod Chapter #" + (i - currentChapters + 1));
-        }
+
         if (userBlock.progress.size() > 0) {
             comboCreditSlot.getSelectionModel().select(0);
         }
@@ -92,21 +75,17 @@ public class CreditController {
         //Units
         ObservableList<String> units = FXCollections.observableArrayList();
         units.add("None");
-        units.addAll(FireEditor.unitDb.getNames());
+        units.addAll(UnitDb.getUnitNames());
         comboUnit1.setItems(units);
         comboUnit2.setItems(units);
         //Classes
         ObservableList<String> classes = FXCollections.observableArrayList();
         classes.add("None");
-        classes.addAll(FireEditor.classDb.getNames());
+        classes.addAll(getClassNames(FireEditor.chapterFile.MAX_ID_CLASS));
         comboClass1.setItems(classes);
         comboClass2.setItems(classes);
         //Chapter Names
-        ObservableList<String> chapters = FXCollections.observableArrayList();
-        //The names are stored
-        for (int i = 0; i <= Constants.MAX_CHAPTERS; i++) {
-            chapters.add(chapterName(i));
-        }
+        ObservableList<String> chapters = FXCollections.observableArrayList(FireEditor.chapterFile.blockGmap.chapterNames());
         comboCreditChapter.setItems(chapters);
     }
 
@@ -205,18 +184,5 @@ public class CreditController {
         spinCreditTime.setDisable(disable);
         spinCreditTurns.setDisable(disable);
         btnRemoveRecord.setDisable(disable);
-    }
-
-    public String chapterName(int id) {
-        if (id == 0) return "Xenologue";
-        if (id == 1) return "Premonition";
-        if (id == 2) return "Prologue";
-        if (id > 2 && id <= 28) {
-            int chapter = id - 2;
-            return "Chapter " + chapter;
-        } else if (id > 28 && id <= 51) {
-            int chapter = id - 28;
-            return "Paralogue " + chapter;
-        } else return "Mod Chapter #" + (Constants.MAX_CHAPTERS - id + 1);
     }
 }

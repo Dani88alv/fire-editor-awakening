@@ -1,7 +1,6 @@
 package com.danius.fireeditor;
 
 import com.danius.fireeditor.controllers.*;
-import com.danius.fireeditor.model.*;
 import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
@@ -25,26 +24,14 @@ public class FireEditor extends Application {
     public static CheatController cheatController;
     public static MainController mainController;
 
-    public static int maxClasses = Constants.MAX_CLASSES;
-    public static int maxArmies = Constants.MAX_ARMY;
-
-    public static Characters unitDb;
-    public static Classes classDb;
-
     @Override
     public void start(Stage stage) throws IOException {
-        loadResources();
         readTestFile("Chapter1");
         FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewMain.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 750, 445);
         stage.setTitle("Fire Editor: Awakening");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void loadResources() {
-        unitDb = new Characters();
-        classDb = new Classes();
     }
 
 

@@ -1,11 +1,14 @@
 package com.danius.fireeditor.savefile.units;
 
-import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.model.UnitDb.getUnitAddition;
+import static com.danius.fireeditor.model.UnitDb.getUnitModifiers;
 
 public class Stats {
 
@@ -134,8 +137,8 @@ public class Stats {
             maxClass[i] += modif[i];
         }
         int[] growths = new int[8];
-        int[] unitAddition = FireEditor.unitDb.getAddition(unit.rawBlock1.unitId()); //Hardcoded
-        int[] classAddition = FireEditor.classDb.getBase(unit.rawBlock1.unitClass()); //Hardcoded
+        int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
+        int[] classAddition =getClassBaseStats(unit.rawBlock1.unitClass()); //Hardcoded
         int[] currentStats = new int[8];
         //If it has logbook data, +2 on their asset
         if (unit.rawLog != null) {
@@ -166,8 +169,8 @@ public class Stats {
     public static int[] calcCurrentStats(Unit unit, boolean limitBreak) {
         int[] maxStats = calcMaxStats(unit, limitBreak);
         int[] growths = unit.rawBlock1.growth();
-        int[] unitAddition = FireEditor.unitDb.getAddition(unit.rawBlock1.unitId()); //Hardcoded
-        int[] classAddition = FireEditor.classDb.getBase(unit.rawBlock1.unitClass()); //Hardcoded
+        int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
+        int[] classAddition = getClassBaseStats(unit.rawBlock1.unitClass()); //Hardcoded
         //If it has logbook data, +2 on their asset
         if (unit.rawLog != null) {
             int asset = unit.rawLog.getAssetFlaw()[0];
@@ -186,7 +189,7 @@ public class Stats {
 
     public static int[] calcMaxStats(Unit unit, boolean limitBreaker) {
         int[] modif = calcModif(unit);
-        int[] maxClass = FireEditor.classDb.getMax(unit.rawBlock1.unitClass());
+        int[] maxClass = getClassMaxStats(unit.rawBlock1.unitClass());
         for (int i = 0; i < maxClass.length; i++) {
             maxClass[i] += modif[i];
             if (limitBreaker && i != 0) maxClass[i] += 10;
@@ -211,7 +214,7 @@ public class Stats {
         //Legal units
         else if (unit.rawLog != null) return calcModifLog(unit); //MU & Logbook
         else if (unit.rawChild != null) return calcModifChild(unit); //Child units
-        else return FireEditor.unitDb.getModifiers(unit.rawBlock1.unitId());  //Regular units
+        else return getUnitModifiers(unit.rawBlock1.unitId());  //Regular units
     }
 
     /*
@@ -226,12 +229,12 @@ public class Stats {
         int mother = block.parentId(1);
         //Adds ALL the possible extra 18 modifiers
         for (int i = 0; i < mods.length; i++) {
-            mods[i] = FireEditor.unitDb.getModifiers(unit.rawBlock1.unitId())[i]; //Default modifiers
+            mods[i] = getUnitModifiers(unit.rawBlock1.unitId())[i]; //Default modifiers
             //If both parents are valid, check their base modifiers and assets/flaws
             //Then, check the grandparents IDs before getting their stats
             if (father >= 0 && father <= 0x38 && mother >= 0 && mother <= 0x38) {
-                mods[i] += FireEditor.unitDb.getModifiers(block.parentId(0))[i] //Father modifiers
-                        + FireEditor.unitDb.getModifiers(block.parentId(1))[i] //Mother modifiers
+                mods[i] += getUnitModifiers(block.parentId(0))[i] //Father modifiers
+                        + getUnitModifiers(block.parentId(1))[i] //Mother modifiers
                         + calcAssetFlaw(block.asset(0), block.flaw(0))[i] //Father assets
                         + calcAssetFlaw(block.asset(1), block.flaw(1))[i]; //Mother assets
                 //Check the unit IDs of the grandparents
@@ -240,14 +243,14 @@ public class Stats {
                 int motherGrandpa = block.parentId(4);
                 int motherGrandma = block.parentId(5);
                 if (fatherGrandpa >= 0 && fatherGrandpa <= 0x38 && fatherGrandma >= 0 && fatherGrandma <= 0x38) {
-                    mods[i] += FireEditor.unitDb.getModifiers(fatherGrandpa)[i] //Father's father modifiers
-                            + FireEditor.unitDb.getModifiers(fatherGrandma)[i] //Father's mother modifiers
+                    mods[i] += getUnitModifiers(fatherGrandpa)[i] //Father's father modifiers
+                            + getUnitModifiers(fatherGrandma)[i] //Father's mother modifiers
                             + calcAssetFlaw(block.asset(2), block.flaw(2))[i] //Father's father assets
                             + calcAssetFlaw(block.asset(3), block.flaw(4))[i]; //Father's mother assets
                 }
                 if (motherGrandpa >= 0 && motherGrandpa <= 0x38 && motherGrandma >= 0 && motherGrandma <= 0x38) {
-                    mods[i] += FireEditor.unitDb.getModifiers(motherGrandpa)[i] //Mother's father modifiers
-                            + FireEditor.unitDb.getModifiers(motherGrandpa)[i] //Mother's mother modifiers
+                    mods[i] += getUnitModifiers(motherGrandpa)[i] //Mother's father modifiers
+                            + getUnitModifiers(motherGrandpa)[i] //Mother's mother modifiers
                             + calcAssetFlaw(block.asset(4), block.flaw(3))[i] //Mother's father assets
                             + calcAssetFlaw(block.asset(5), block.flaw(5))[i]; //Mother's mother assets
                 }
@@ -261,7 +264,7 @@ public class Stats {
 
     private static int[] calcModifLog(Unit unit) {
         int[] mods = calcAssetFlaw(unit.rawLog.getAssetFlaw()[0], unit.rawLog.getAssetFlaw()[1]);
-        int[] baseModif = FireEditor.unitDb.getModifiers(unit.rawBlock1.unitId());
+        int[] baseModif = getUnitModifiers(unit.rawBlock1.unitId());
         //The base modifiers and the assets and flaws are added
         for (int i = 0; i < mods.length; i++) {
             mods[i] += baseModif[i];
@@ -291,7 +294,7 @@ public class Stats {
     }
 
     public static int getMoveTotal(Unit unit) {
-        int move = FireEditor.classDb.getMove(unit.rawBlock1.unitClass()) + getMoveBuff(unit) + unit.rawBlock1.movement();
+        int move = getClassMove(unit.rawBlock1.unitClass()) + getMoveBuff(unit) + unit.rawBlock1.movement();
         if (move > 255) move -= 256;
         return move;
     }

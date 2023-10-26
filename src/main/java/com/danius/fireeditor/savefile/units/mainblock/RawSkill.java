@@ -1,7 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class RawSkill {
         String report = "";
         report += "Learned Skills (" + skillCount() + "): ";
         for (Integer learnedSkill : getLearnedSkills()) {
-            report += Names.skillNames.get(learnedSkill) + ", ";
+            report += MiscDb.skillNames.get(learnedSkill) + ", ";
         }
         report = report.substring(0, report.length() - 2);
         return report;

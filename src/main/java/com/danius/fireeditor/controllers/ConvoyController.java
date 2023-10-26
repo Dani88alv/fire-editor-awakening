@@ -5,7 +5,7 @@ import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,7 +48,7 @@ public class ConvoyController {
     public void initialize() {
         FireEditor.convoyController = this;
         disableRefi(true);
-        ObservableList<String> items = FXCollections.observableArrayList(Names.itemNames);
+        ObservableList<String> items = FXCollections.observableArrayList(MiscDb.itemNames);
         comboWeaponId.setItems(items);
         UI.setSpinnerNumeric(spinRefiUse, 65535);
         UI.setSpinnerNumeric(spinMight, 255);
@@ -210,7 +210,7 @@ public class ConvoyController {
         try {
             //The tables are cleared up
             tableConvoy.getItems().clear();
-            List<String> itemNames = Names.getItemNames(tranBlock.regularItemCount());
+            List<String> itemNames = MiscDb.getItemNames(tranBlock.regularItemCount());
             //The values are loaded
             for (int i = 0; i < itemNames.size(); i++) {
                 tableConvoy.getItems().add(new DataItem(itemNames.get(i), inventoryMain.get(i), i));

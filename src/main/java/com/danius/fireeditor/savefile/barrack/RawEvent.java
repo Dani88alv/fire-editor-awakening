@@ -1,4 +1,4 @@
-package com.danius.fireeditor.savefile.other;
+package com.danius.fireeditor.savefile.barrack;
 
 import com.danius.fireeditor.util.Hex;
 

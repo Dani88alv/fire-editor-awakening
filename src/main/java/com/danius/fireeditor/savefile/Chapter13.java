@@ -1,6 +1,8 @@
 package com.danius.fireeditor.savefile;
 
-import com.danius.fireeditor.savefile.other.*;
+import com.danius.fireeditor.savefile.barrack.EvstBlock;
+import com.danius.fireeditor.savefile.map.GmapBlock;
+import com.danius.fireeditor.savefile.user.*;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.units.UnitBlock;
@@ -10,6 +12,8 @@ import com.danius.fireeditor.util.Hex;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+
+import static com.danius.fireeditor.model.ClassDb.*;
 
 public class Chapter13 extends SaveFile {
     public HeaderBlock blockHeader; //From 0x0 to 0xC0 (West) or 0x80 (JP)
@@ -26,6 +30,7 @@ public class Chapter13 extends SaveFile {
     private int region; //0xC0 = US/EU, 0x80 = JP
     public boolean isChapter = true; //Chapter or Map save file
 
+
     /*
     This class handles the Chapter save file blocks
      */
@@ -37,6 +42,20 @@ public class Chapter13 extends SaveFile {
         System.out.println(blockUser.report());
         if (isChapter) System.out.println("Chapter File Loaded");
         else System.out.println("Map File Loaded");
+        //Scans the save file to check modded counts
+        loadModdedCounts();
+        reportMod();
+    }
+
+    public void reportMod() {
+        int maxClass = MAX_ID_CLASS - Constants.MAX_CLASSES;
+        int maxArmy = MAX_ID_ARMY - Constants.MAX_ARMY;
+        int total = maxClass + maxArmy;
+        String text = "";
+        if (total > 0) text += "Modded: |";
+        if (maxClass > 0) text += " Class: #" + maxClass + " | ";
+        if (maxArmy > 0) text += " Army: #" + maxArmy + " | ";
+        if (!text.equals("")) System.out.println(text);
     }
 
     public void changeRegion(boolean isWest) {
@@ -254,51 +273,66 @@ public class Chapter13 extends SaveFile {
         return (lastBlockOffset == 0);
     }
 
+    public int MAX_ID_ARMY = 0;
+    public int MAX_ID_CLASS = 0;
 
-    //Scans the whole save file to find additional modded classes
-    public int maxClasses() {
+    //Scans the whole save file to find additional modded IDs
+    public void loadModdedCounts() {
         int maxClasses = Constants.MAX_CLASSES;
-
-        //The modded classes are checked viewing all the stored units
+        int maxArmies = Constants.MAX_ARMY;
+        //The units are checked
         for (int i = 0; i < blockUnit.unitList.size(); i++) {
-            for (int j = 0; j < blockUnit.unitList.get(i).size(); j++) {
-                int unitClass = blockUnit.unitList.get(i).get(j).rawBlock1.unitClass();
+            //For each unit of each group
+            for (int k = 0; k < blockUnit.unitList.get(i).size(); k++) {
+                //Unit Class
+                int unitClass = blockUnit.unitList.get(i).get(k).rawBlock1.unitClass();
                 if (unitClass > Constants.MAX_CLASSES) {
                     if (unitClass > maxClasses) maxClasses = unitClass;
                 }
-                //The logbook class is checked
-                if (blockUnit.unitList.get(i).get(j).rawLog != null) {
-                    int logClass = blockUnit.unitList.get(i).get(j).rawLog.getProfileCard()[0];
+                //Logbook Class
+                if (blockUnit.unitList.get(i).get(k).rawLog != null) {
+                    int logClass = blockUnit.unitList.get(i).get(k).rawLog.getProfileCard()[0];
                     if (logClass > maxClasses) maxClasses = logClass;
                 }
+                //Army
+                int army = blockUnit.unitList.get(i).get(k).rawFlags.army();
+                if (army > maxArmies) maxArmies = army;
             }
         }
         //The credit records are checked
         for (int i = 0; i < blockUser.progress.size(); i++) {
             int classFirst = blockUser.progress.get(i).classFirst();
             int classSecond = blockUser.progress.get(i).classSecond();
-            if (classFirst != 65535 && classFirst > maxClasses) {
+            if (classFirst != 0xFFFF && classFirst > maxClasses) {
                 maxClasses = classFirst;
             }
-            if (classSecond != 65535 && classSecond > maxClasses) {
+            if (classSecond != 0xFFFF && classSecond > maxClasses) {
                 maxClasses = classSecond;
             }
         }
-
-        return maxClasses;
-    }
-
-    public int maxArmies() {
-        int maxArmies = Constants.MAX_ARMY;
-        for (int i = 0; i < blockUnit.unitList.size(); i++) {
-            for (int j = 0; j < blockUnit.unitList.get(i).size(); j++) {
-                int army = blockUnit.unitList.get(i).get(j).rawFlags.army();
-                if (army > Constants.MAX_ARMY) {
-                    if (army > maxArmies) maxArmies = army;
-                }
+        //The map encounters are checked
+        for (int i = 0; i < blockGmap.maps.size(); i++) {
+            int mapClass1 = blockGmap.maps.get(i).getUnitClass(0);
+            int mapClass2 = blockGmap.maps.get(i).getUnitClass(1);
+            if (mapClass1 != 0xFFFF && mapClass1 > maxClasses) maxClasses = mapClass1;
+            if (mapClass2 != 0xFFFF && mapClass2 > maxClasses) maxClasses = mapClass2;
+        }
+        //The Wireless Teams are checked
+        for (int i = 0; i < blockDu26.teamList.size(); i++) {
+            //For each unit of each team
+            for (int k = 0; k < blockDu26.teamList.get(i).unitList.size(); k++) {
+                int unitClass = blockDu26.teamList.get(i).unitList.get(k).getUnitClass();
+                if (unitClass > maxClasses) maxClasses = unitClass;
             }
         }
-        return maxArmies;
+        //The player's team is checked
+        for (int i = 0; i < blockDu26.playerTeam.unitList.size(); i++) {
+            int unitClass = blockDu26.playerTeam.unitList.get(i).getUnitClass();
+            if (unitClass > maxClasses) maxClasses = unitClass;
+        }
+
+        MAX_ID_CLASS = maxClasses;
+        MAX_ID_ARMY = maxArmies;
     }
 
 }

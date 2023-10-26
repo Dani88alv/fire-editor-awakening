@@ -21,12 +21,17 @@ module com.example.fireeditor {
     opens com.danius.fireeditor.savefile.units.mainblock to javafx.fxml;
     exports com.danius.fireeditor.savefile.units.extrablock;
     opens com.danius.fireeditor.savefile.units.extrablock to javafx.fxml;
-    exports com.danius.fireeditor.savefile.other;
-    opens com.danius.fireeditor.savefile.other to javafx.fxml;
+    exports com.danius.fireeditor.savefile.user;
+    opens com.danius.fireeditor.savefile.user to javafx.fxml;
     exports com.danius.fireeditor.savefile.global;
     opens com.danius.fireeditor.savefile.global to javafx.fxml;
     exports com.danius.fireeditor.model;
     exports com.danius.fireeditor.savefile.wireless;
     opens com.danius.fireeditor.savefile.wireless to javafx.fxml;
+    exports com.danius.fireeditor.savefile.barrack;
+    opens com.danius.fireeditor.savefile.barrack to javafx.fxml;
+    exports com.danius.fireeditor.savefile.map;
+    opens com.danius.fireeditor.savefile.map to javafx.fxml;
+    opens com.danius.fireeditor.model to javafx.fxml;
 
 }

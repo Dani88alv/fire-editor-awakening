@@ -3,7 +3,7 @@ package com.danius.fireeditor.controllers;
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,12 +37,12 @@ public class ChildController {
         ObservableList<String> unitNames = FXCollections.observableArrayList();
         unitNames.add("None");
         for (int i = 0; i <= 56; i++) {
-            unitNames.add(Names.unitName(i));
+            unitNames.add(MiscDb.unitName(i));
         }
         comboUnit.setItems(unitNames);
         //Assets and flaws
         ObservableList<String> modifiers = FXCollections.observableArrayList();
-        modifiers.addAll(Names.modifNames);
+        modifiers.addAll(MiscDb.modifNames);
         comboAsset.setItems(modifiers);
         comboFlaw.setItems(modifiers);
         //The fields are disabled

@@ -63,8 +63,6 @@ public class MainController {
             tabCheats.setDisable(false);
             FireEditor.convoyController.loadBlocks();
             FireEditor.chapterController.loadBlocks();
-            FireEditor.maxClasses = FireEditor.chapterFile.maxClasses();
-            FireEditor.maxArmies = FireEditor.chapterFile.maxArmies();
         } catch (Exception e) {
             throw new RuntimeException();
         }

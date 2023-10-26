@@ -2,7 +2,7 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemController {
@@ -45,7 +46,7 @@ public class ItemController {
         //Item comboboxes
         ObservableList<String> items = FXCollections.observableArrayList();
         for (int i = 0; i < count; i++) {
-            items.add(Names.itemName2(i, regularItemCount, refiList));
+            items.add(MiscDb.itemName2(i, regularItemCount, refiList));
         }
         comboItem1.setItems(items);
         comboItem2.setItems(items);
@@ -70,49 +71,29 @@ public class ItemController {
     }
 
     public void setValues() {
-        comboItem1.getSelectionModel().select(unit.rawInventory.items.get(0).itemId());
-        comboItem2.getSelectionModel().select(unit.rawInventory.items.get(1).itemId());
-        comboItem3.getSelectionModel().select(unit.rawInventory.items.get(2).itemId());
-        comboItem4.getSelectionModel().select(unit.rawInventory.items.get(3).itemId());
-        comboItem5.getSelectionModel().select(unit.rawInventory.items.get(4).itemId());
-        spinItem1.getValueFactory().setValue(unit.rawInventory.items.get(0).uses());
-        spinItem2.getValueFactory().setValue(unit.rawInventory.items.get(1).uses());
-        spinItem3.getValueFactory().setValue(unit.rawInventory.items.get(2).uses());
-        spinItem4.getValueFactory().setValue(unit.rawInventory.items.get(3).uses());
-        spinItem5.getValueFactory().setValue(unit.rawInventory.items.get(4).uses());
-        checkItem1.setSelected(unit.rawInventory.items.get(0).equipped());
-        checkItem2.setSelected(unit.rawInventory.items.get(1).equipped());
-        checkItem3.setSelected(unit.rawInventory.items.get(2).equipped());
-        checkItem4.setSelected(unit.rawInventory.items.get(3).equipped());
-        checkItem5.setSelected(unit.rawInventory.items.get(4).equipped());
-        dropItem1.setSelected(unit.rawInventory.items.get(0).dropped());
-        dropItem2.setSelected(unit.rawInventory.items.get(1).dropped());
-        dropItem3.setSelected(unit.rawInventory.items.get(2).dropped());
-        dropItem4.setSelected(unit.rawInventory.items.get(3).dropped());
-        dropItem5.setSelected(unit.rawInventory.items.get(4).dropped());
+        List<ComboBox<String>> itemId = List.of(comboItem1, comboItem2, comboItem3, comboItem4, comboItem5);
+        List<Spinner<Integer>> itemUse = List.of(spinItem1, spinItem2, spinItem3, spinItem4, spinItem5);
+        List<CheckBox> equipped = List.of(checkItem1, checkItem2, checkItem3, checkItem4, checkItem5);
+        List<CheckBox> dropped = List.of(dropItem1, dropItem2, dropItem3, dropItem4, dropItem5);
+        for (int i = 0; i < 5; i++) {
+            itemId.get(i).getSelectionModel().select(unit.rawInventory.items.get(i).itemId());
+            itemUse.get(i).getValueFactory().setValue(unit.rawInventory.items.get(i).uses());
+            equipped.get(i).setSelected(unit.rawInventory.items.get(i).equipped());
+            dropped.get(i).setSelected(unit.rawInventory.items.get(i).dropped());
+        }
     }
 
     public void setListeners() {
-        setupCombobox(comboItem1, 0);
-        setupCombobox(comboItem2, 1);
-        setupCombobox(comboItem3, 2);
-        setupCombobox(comboItem4, 3);
-        setupCombobox(comboItem5, 4);
-        setupSpinner(spinItem1, 0);
-        setupSpinner(spinItem2, 1);
-        setupSpinner(spinItem3, 2);
-        setupSpinner(spinItem4, 3);
-        setupSpinner(spinItem5, 4);
-        setupEquip(checkItem1, 0);
-        setupEquip(checkItem2, 1);
-        setupEquip(checkItem3, 2);
-        setupEquip(checkItem4, 3);
-        setupEquip(checkItem5, 4);
-        setupDrop(dropItem1, 0);
-        setupDrop(dropItem2, 1);
-        setupDrop(dropItem3, 2);
-        setupDrop(dropItem4, 3);
-        setupDrop(dropItem5, 4);
+        List<ComboBox<String>> itemId = List.of(comboItem1, comboItem2, comboItem3, comboItem4, comboItem5);
+        List<Spinner<Integer>> itemUse = List.of(spinItem1, spinItem2, spinItem3, spinItem4, spinItem5);
+        List<CheckBox> equipped = List.of(checkItem1, checkItem2, checkItem3, checkItem4, checkItem5);
+        List<CheckBox> dropped = List.of(dropItem1, dropItem2, dropItem3, dropItem4, dropItem5);
+        for (int i = 0; i < 5; i++) {
+            setupCombobox(itemId.get(i), i);
+            setupSpinner(itemUse.get(i), i);
+            setupEquip(equipped.get(i), i);
+            setupDrop(dropped.get(i), i);
+        }
     }
 
     public void setupCombobox(ComboBox<String> combobox, int slot) {

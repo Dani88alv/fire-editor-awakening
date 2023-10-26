@@ -1,14 +1,15 @@
 package com.danius.fireeditor.controllers;
 
-import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import static com.danius.fireeditor.model.UnitDb.*;
 
 public class SupportController {
     private Unit unit;
@@ -51,9 +52,9 @@ public class SupportController {
             //Unit Selection
             ObservableList<String> unitNames = FXCollections.observableArrayList();
             int totalCount = unit.rawSupport.supportCount();
-            int[] characters = FireEditor.unitDb.getSupportUnits(unit.rawBlock1.unitId());
+            int[] characters = getUnitSupportUnits(unit.rawBlock1.unitId());
             for (int character : characters) {
-                unitNames.add(FireEditor.unitDb.getName(character));
+                unitNames.add(getUnitName(character));
             }
             //If there are modded supports, they are added
             for (int i = characters.length; i < totalCount; i++) {
@@ -102,7 +103,6 @@ public class SupportController {
         int slotsToRemove = currentSupports - unit.rawSupport.supportCount();
         for (int i = 0; i < slotsToRemove; i++) {
             if (comboUnit.getItems().size() != 0) {
-                int aa = comboUnit.getItems().size();
                 comboUnit.getSelectionModel().selectFirst();
             }
             comboUnit.getItems().remove(comboUnit.getItems().size() - 1);
@@ -123,7 +123,7 @@ public class SupportController {
     private void setLabelLevel() {
         int value = spinValue.getValue();
         int slot = comboUnit.getSelectionModel().getSelectedIndex();
-        lblLevel.setText(Names.supportLevel(unit.rawBlock1.unitId(), value, slot));
+        lblLevel.setText(MiscDb.supportLevel(unit.rawBlock1.unitId(), value, slot));
     }
 
 }

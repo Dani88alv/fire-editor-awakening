@@ -1,19 +1,14 @@
 package com.danius.fireeditor;
 
 
-import com.danius.fireeditor.controllers.MainController;
+import com.danius.fireeditor.model.ClassDb;
 import com.danius.fireeditor.savefile.Chapter13;
-import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.SaveFile;
-import com.danius.fireeditor.savefile.inventory.Refinement;
-import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 public class Test {
@@ -29,18 +24,36 @@ public class Test {
         System.out.println();
     }
 
-    public static byte[] readTestFile(String nameFile) throws IOException {
+    public static byte[] readTestFile(String saveFile) throws IOException {
         String filePath = "templates/path.txt";
-        // Create a File object for the file path containing the actual file path
-        File filePathFile = new File(filePath);
-        // Read the content of the file path file
-        Path path = Paths.get(filePathFile.getAbsolutePath());
-        List<String> lines = Files.readAllLines(path);
-
-        String content = lines.get(0);  // Assuming the first line contains the actual file path
-        // Create a File object for the content (actual file path)
-        MainController.backupFile = new File(content + nameFile);
-        MainController.path = content;
-        return Hex.getFileBytes(content + nameFile);
+        try {
+            // Create a File object for the file path containing the actual file path
+            File filePathFile = new File(filePath);
+            // Check if the file path file exists
+            if (!filePathFile.exists()) {
+                System.out.println("File path does not exist: " + filePathFile.getAbsolutePath());
+                return null;  // Exit the method if the file path doesn't exist
+            }
+            // Read the content of the file path file
+            Path path = Paths.get(filePathFile.getAbsolutePath());
+            List<String> lines = Files.readAllLines(path);
+            if (!lines.isEmpty()) {
+                String content = lines.get(0);  // Assuming the first line contains the actual file path
+                // Create a File object for the content (actual file path)
+                File file = new File(content + saveFile);
+                // Check if the file exists
+                if (file.exists()) {
+                    System.out.println("File exists: " + file.getAbsolutePath());
+                    return Hex.getFileBytes(content + saveFile);
+                } else {
+                    System.out.println("File does not exist: " + file.getAbsolutePath());
+                }
+            } else {
+                System.out.println("File path content is empty.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

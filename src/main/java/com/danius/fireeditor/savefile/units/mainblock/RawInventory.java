@@ -3,7 +3,7 @@ package com.danius.fireeditor.savefile.units.mainblock;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class RawInventory {
     }
 
     public void maxAmount(List<Refinement> refiList, int maxCount) {
-        int vanillaCount = Names.itemNames.size();
+        int vanillaCount = MiscDb.itemNames.size();
         for (RawItem item : items) {
             int itemId = item.itemId();
             //Modded Items

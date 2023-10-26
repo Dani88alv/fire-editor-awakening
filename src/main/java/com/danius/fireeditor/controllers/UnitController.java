@@ -3,7 +3,6 @@ package com.danius.fireeditor.controllers;
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
-import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
@@ -24,8 +23,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
+
+import static com.danius.fireeditor.model.ClassDb.*;
 
 public class UnitController {
     @FXML
@@ -72,13 +72,10 @@ public class UnitController {
             //The unit block is set
             this.unitBlock = FireEditor.chapterFile.blockUnit;
             //The modded classes are retrieved
-            int maxClasses = FireEditor.maxClasses;
-            int currentClasses = comboClass.getItems().size() - 1;
-            if (maxClasses > Constants.MAX_CLASSES && maxClasses > currentClasses) {
-                for (int i = 0; i < maxClasses - currentClasses; i++) {
-                    comboClass.getItems().add("Mod Class #" + (i + 1));
-                }
-            }
+            int maxClasses = FireEditor.chapterFile.MAX_ID_CLASS;
+            ObservableList<String> classes = FXCollections.observableArrayList(getClassNames(maxClasses));
+            comboClass.setItems(classes);
+
             updateComboGroups();
             comboGroupMove.getSelectionModel().select(0x3);
             //The unit group is selected, chosen between blue units or main units
@@ -320,7 +317,7 @@ public class UnitController {
         UI.setNumericTextField(txtGrowthRes, 255);
         UI.setNumericTextField(txtGrowthMove, 255);
         //Classes
-        ObservableList<String> classes = FXCollections.observableArrayList(FireEditor.classDb.getNames());
+        ObservableList<String> classes = FXCollections.observableArrayList(getClassNames());
         comboClass.setItems(classes);
         //IMPORTANT ORDER
         setupUnitList(listViewUnit);

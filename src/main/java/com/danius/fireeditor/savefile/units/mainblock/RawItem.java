@@ -1,7 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 
 import java.io.IOException;
 
@@ -70,12 +70,12 @@ public class RawItem {
     }
 
     public String report() {
-        return Names.itemName(itemId()) + " (" + uses() + ")";
+        return MiscDb.itemName(itemId()) + " (" + uses() + ")";
     }
 
     @Override
     public String toString() {
-        return Names.itemName(itemId());
+        return MiscDb.itemName(itemId());
     }
 
     public int length() {

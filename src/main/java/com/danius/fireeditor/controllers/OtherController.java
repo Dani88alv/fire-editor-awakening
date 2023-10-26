@@ -4,7 +4,7 @@ import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawBlock2;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -104,14 +104,12 @@ public class OtherController {
         UI.setSpinnerNumeric(spinStave, maxExp);
         UI.setSpinnerNumeric(spinHiddenLevel, 255);
         //Combobox
-        ObservableList<String> armies = FXCollections.observableArrayList(Names.armies);
-        for (int i = Constants.MAX_ARMY; i < FireEditor.maxArmies; i++) {
-            armies.add("Extra #" + (FireEditor.chapterFile.maxArmies() - Constants.MAX_ARMY + 1));
-        }
+        int maxArmy = FireEditor.chapterFile.MAX_ID_ARMY;
+        ObservableList<String> armies = FXCollections.observableArrayList(MiscDb.getItemNames(maxArmy));
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);
 
-        ObservableList<String> retireChapters = FXCollections.observableArrayList(Names.retireChapters);
+        ObservableList<String> retireChapters = FXCollections.observableArrayList(MiscDb.retireChapters);
         comboRetire.setItems(retireChapters);
         comboRetire.getSelectionModel().select(0);
         //Listeners

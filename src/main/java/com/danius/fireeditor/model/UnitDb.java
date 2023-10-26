@@ -5,45 +5,45 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class Characters {
+public class UnitDb {
+
+    private static final UnitDb database = new UnitDb();
     private static final int DEFAULT_UNIT = 0x35;
     private List<UnitModel> units;
     private List<EinherjarModel> einherjar;
 
-    public Characters() {
+    public UnitDb() {
         readUnits();
         readEinherjar();
     }
 
-    private UnitModel getUnit(int id) {
-        for (UnitModel unit : units) {
+    private static UnitModel getUnit(int id) {
+        for (UnitModel unit : database.units) {
             if (unit.getId() == id) return unit;
         }
         return new UnitModel();
     }
 
-    private EinherjarModel getEinherjar(int logId) {
-        for (EinherjarModel unit : einherjar) {
+    private static EinherjarModel getEinherjar(int logId) {
+        for (EinherjarModel unit : database.einherjar) {
             if (unit.getLogId() == logId) return unit;
         }
         return new EinherjarModel();
     }
 
-    public String getName(int id) {
-        int totalSize = size();
+    public static String getUnitName(int id) {
+        int totalSize = getUnitCount();
         if (invalidUnit(id)) return "Invalid Unit #" + (id - totalSize + 1);
         return getUnit(id).getName();
     }
 
-    public int[] getAddition(int id) {
+    public static int[] getUnitAddition(int id) {
         int[] addition = new int[8];
         if (invalidUnit(id)) id = DEFAULT_UNIT;
         int[] all = getUnit(id).getStatAdditions();
@@ -51,7 +51,7 @@ public class Characters {
         return addition;
     }
 
-    public int[] getModifiers(int id) {
+    public static int[] getUnitModifiers(int id) {
         int[] modifiers = new int[8];
         if (invalidUnit(id)) id = DEFAULT_UNIT;
         int[] all = getUnit(id).getStatModifiers();
@@ -59,85 +59,85 @@ public class Characters {
         return modifiers;
     }
 
-    public int[] getReclassM(int id) {
-        if (invalidUnit(id)) return units.get(DEFAULT_UNIT).getClassMale();
+    public static int[] getUnitMaleReclasses(int id) {
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getClassMale();
         return getUnit(id).getClassMale();
     }
 
-    public int[] getReclassF(int id) {
-        if (invalidUnit(id)) return units.get(DEFAULT_UNIT).getClassFemale();
+    public static int[] getUnitFemaleReclasses(int id) {
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getClassFemale();
         return getUnit(id).getClassFemale();
     }
 
-    public List<Integer> getSkills(int id) {
+    public static List<Integer> getUnitSkills(int id) {
         if (invalidUnit(id)) return new ArrayList<>();
         return getUnit(id).getSkills();
     }
 
-    public int supportCount(int id) {
+    public static int getUnitSupportCount(int id) {
         if (invalidUnit(id)) return 0;
-        return getSupportUnits(id).length;
+        return getUnitSupportUnits(id).length;
     }
 
-    public int[] getSupportUnits(int id) {
-        if (invalidUnit(id)) return units.get(DEFAULT_UNIT).getSupportUnits();
+    public static int[] getUnitSupportUnits(int id) {
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getSupportUnits();
         return getUnit(id).getSupportUnits();
     }
 
-    public int[] getSupportTypes(int id) {
-        if (invalidUnit(id)) return units.get(DEFAULT_UNIT).getSupportTypes();
+    public static int[] getUnitSupportTypes(int id) {
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getSupportTypes();
         return getUnit(id).getSupportTypes();
     }
 
-    public List<Integer> getFlags(int id) {
-        if (invalidUnit(id)) return units.get(DEFAULT_UNIT).getFlags();
+    public static List<Integer> getUnitFlags(int id) {
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getFlags();
         return getUnit(id).getFlags();
     }
 
-    public boolean hasFlag(int id, int flag) {
+    public static boolean unitHasFlag(int id, int flag) {
         if (invalidUnit(id)) return false;
-        return getFlags(id).contains(flag);
+        return getUnitFlags(id).contains(flag);
     }
 
-    public boolean isFemale(int id) {
+    public static boolean isUnitFemale(int id) {
         if (invalidUnit(id)) return false;
-        return hasFlag(id, 0);
+        return unitHasFlag(id, 0);
     }
 
-    public List<String> getNames() {
+    public static List<String> getUnitNames() {
         List<String> names = new ArrayList<>();
-        for (int i = 0; i < size(); i++) {
-            names.add(units.get(i).getName());
+        for (int i = 0; i < getUnitCount(); i++) {
+            names.add(database.units.get(i).getName());
         }
         return names;
     }
 
-    public List<Integer> getEinSkills(int logId) {
+    public static List<Integer> getEinSkills(int logId) {
         if (invalidEinherjar(logId)) return new ArrayList<>();
         return getEinherjar(logId).getSkills();
     }
 
-    public List<String> getEinherjarNames() {
+    public static List<String> getEinherjarNames() {
         List<String> names = new ArrayList<>();
-        for (EinherjarModel einherjarModel : einherjar) {
+        for (EinherjarModel einherjarModel : database.einherjar) {
             names.add(einherjarModel.getName());
         }
         return names;
     }
 
-    public boolean invalidUnit(int id) {
-        return id < 0 || id >= size();
+    private static boolean invalidUnit(int id) {
+        return id < 0 || id >= getUnitCount();
     }
 
-    public boolean invalidEinherjar(int logId) {
-        for (EinherjarModel einherjarModel : einherjar) {
+    private static boolean invalidEinherjar(int logId) {
+        for (EinherjarModel einherjarModel : database.einherjar) {
             if (einherjarModel.getLogId() == logId) return false;
         }
         return true;
     }
 
-    public int size() {
-        return units.size();
+    public static int getUnitCount() {
+        return database.units.size();
     }
 
     public void readUnits() {
@@ -145,7 +145,7 @@ public class Characters {
         String xmlFilePath = path + "units.xml";
         units = new ArrayList<>();
 
-        try (InputStream is = Characters.class.getResourceAsStream(xmlFilePath)) {
+        try (InputStream is = UnitDb.class.getResourceAsStream(xmlFilePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }
@@ -249,7 +249,7 @@ public class Characters {
         String path = "/com/danius/fireeditor/database/";
         String xmlFilePath = path + "einherjar.xml";
         einherjar = new ArrayList<>();
-        try (InputStream is = Characters.class.getResourceAsStream(xmlFilePath)) {
+        try (InputStream is = UnitDb.class.getResourceAsStream(xmlFilePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }

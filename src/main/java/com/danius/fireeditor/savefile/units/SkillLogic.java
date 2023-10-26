@@ -4,6 +4,9 @@ import com.danius.fireeditor.FireEditor;
 
 import java.util.*;
 
+import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.model.UnitDb.*;
+
 public class SkillLogic {
 
     //Sets all the legal skills a unit can have according to their current data (not only hardcoded skills)
@@ -28,7 +31,7 @@ public class SkillLogic {
                 defaultClasses.removeIf(aClass -> aClass == 76); //Conqueror
                 List<Integer> skills = getSkillsFromClasses(defaultClasses);
                 //Parent's personal skills
-                skills.addAll(FireEditor.unitDb.getSkills(parent));
+                skills.addAll(getUnitSkills(parent));
                 allSkills.addAll(skills);
                 //Parent logic only (no grandparents) for Lord skills
                 if (i == 0 || i == 1) {
@@ -55,12 +58,12 @@ public class SkillLogic {
         //Current class
         List<Integer> currentClasses = new ArrayList<>();
         currentClasses.add(unit.rawBlock1.unitClass());
-        int[] promoted = FireEditor.classDb.getPromoted(unit.rawBlock1.unitClass());
+        int[] promoted = getClassPromoted(unit.rawBlock1.unitClass());
         for (int j : promoted) currentClasses.add(j); //If the current class is promoted, ignore previous classes
         allSkills.addAll(getSkillsFromClasses(currentClasses));
         cleanList(allSkills);
         //Personal Skills
-        List<Integer> personalSkills = FireEditor.unitDb.getSkills(unitId);
+        List<Integer> personalSkills = getUnitSkills(unitId);
         allSkills.addAll(personalSkills);
         cleanList(allSkills);
         //Additional skills
@@ -140,7 +143,7 @@ public class SkillLogic {
         if (unit.rawLog != null) {
             if (unit.rawLog.hasEinherjarId()) {
                 int logId = unit.rawLog.getLogIdLastByte();
-                List<Integer> einherjarSkills = FireEditor.unitDb.getEinSkills(logId);
+                List<Integer> einherjarSkills = getEinSkills(logId);
                 extraSkills.addAll(einherjarSkills);
             }
         }
@@ -150,7 +153,7 @@ public class SkillLogic {
     public static List<Integer> getSkillsFromClasses(List<Integer> classes) {
         List<Integer> skillList = new ArrayList<>();
         for (Integer aClass : classes) {
-            int[] skills = FireEditor.classDb.skills(aClass);
+            int[] skills = getClassSkills(aClass);
             for (int skill : skills) skillList.add(skill);
         }
         return skillList;
@@ -158,7 +161,7 @@ public class SkillLogic {
 
     public static List<Integer> getSkillsFromClass(int unitClass) {
         List<Integer> skillList = new ArrayList<>();
-        int[] skills = FireEditor.classDb.skills(unitClass);
+        int[] skills = getClassSkills(unitClass);
         for (int skill : skills) skillList.add(skill);
         return skillList;
     }
@@ -168,16 +171,16 @@ public class SkillLogic {
         List<Integer> classes = new ArrayList<>();
         //Retrieves the male or female re-classes
         int[] reclasses;
-        if (isFemale) reclasses = FireEditor.unitDb.getReclassF(unitId);
-        else reclasses = FireEditor.unitDb.getReclassM(unitId);
+        if (isFemale) reclasses = getUnitFemaleReclasses(unitId);
+        else reclasses = getUnitMaleReclasses(unitId);
         for (int reclass : reclasses) classes.add(reclass);
         //If it has Hero/Guest flags hardcoded (not working with save editing)
-        if (FireEditor.unitDb.hasFlag(unitId, 2) || FireEditor.unitDb.hasFlag(unitId, 23)) {
-            classes.addAll(FireEditor.classDb.getGenderClasses(isFemale));
+        if (unitHasFlag(unitId, 2) || unitHasFlag(unitId, 23)) {
+            classes.addAll(getClassesByGender(isFemale));
         }
         //The promoted classes are added to the list
         for (int reclass : reclasses) {
-            int[] unpromoted = FireEditor.classDb.getPromoted(reclass);
+            int[] unpromoted = getClassPromoted(reclass);
             for (int k : unpromoted) classes.add(k);
         }
         return classes;
@@ -188,12 +191,12 @@ public class SkillLogic {
         int id = unit.rawBlock1.unitId();
         //Game hardcoded logic to determine gender re-classes
         //Class gender flag has priority over character gender
-        boolean femaleClass = FireEditor.classDb.isFemale(unit.rawBlock1.unitClass());
+        boolean femaleClass = isClassFemale(unit.rawBlock1.unitClass());
         if (femaleClass) return true;
         //If class is male, check own unit gender
         boolean femaleUnit; //Male by default
         //Check the hardcoded regular units
-        if (unit.rawLog == null) femaleUnit = FireEditor.unitDb.isFemale(id);
+        if (unit.rawLog == null) femaleUnit = isUnitFemale(id);
             //Check the avatar gender
         else femaleUnit = unit.rawLog.getFullBuild()[4] == 1;
         return femaleUnit;
@@ -203,7 +206,7 @@ public class SkillLogic {
         int unitId = unit.rawBlock1.unitId();
         int flag = 16;
         //Hardcoded Flag
-        if (FireEditor.unitDb.hasFlag(unitId, flag)) return true;
+        if (unitHasFlag(unitId, flag)) return true;
         //Save editing flag
         if (unit.rawFlags.traitFlagList().contains(flag)) return true;
         //Class
@@ -220,7 +223,7 @@ public class SkillLogic {
         int unitId = unit.rawBlock1.unitId();
         int flag = 17;
         //Hardcoded Flag
-        if (FireEditor.unitDb.hasFlag(unitId, flag)) return true;
+        if (unitHasFlag(unitId, flag)) return true;
         //Save editing flag
         if (unit.rawFlags.traitFlagList().contains(flag)) return true;
         //Class

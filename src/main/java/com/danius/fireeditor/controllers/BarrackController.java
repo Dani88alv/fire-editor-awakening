@@ -1,12 +1,15 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.other.EvstBlock;
+import com.danius.fireeditor.model.UnitDb;
+import com.danius.fireeditor.savefile.barrack.EvstBlock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
+
+import static com.danius.fireeditor.model.UnitDb.*;
 
 public class BarrackController {
 
@@ -25,7 +28,7 @@ public class BarrackController {
         //Units
         ObservableList<String> units = FXCollections.observableArrayList();
         units.add("None");
-        units.addAll(FireEditor.unitDb.getNames());
+        units.addAll(getUnitNames());
         comboUnit1.setItems(units);
         comboUnit2.setItems(units);
         ObservableList<String> events = FXCollections.observableArrayList(

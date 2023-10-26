@@ -1,6 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.UnitDb;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.danius.fireeditor.model.UnitDb.*;
 
 public class RawSupport {
     private final List<Integer> supportValues; //Stores the support points/actions of all the valid characters
@@ -19,9 +22,6 @@ public class RawSupport {
     }
 
     public RawSupport(byte[] blockBytes, int unitId) {
-        if (unitId == 0x2) {
-            int aa = 1;
-        }
         //Copies only the list, not the amount, the amount is fixed when the bytes are called
         byte[] byteArray = Arrays.copyOfRange(blockBytes, 0x1, blockBytes.length);
         supportValues = new ArrayList<>();
@@ -52,7 +52,7 @@ public class RawSupport {
      */
     public void setSupportLevel(int slot, int level) {
         //Gets the type of support of the parameter character
-        int type = FireEditor.unitDb.getSupportTypes(unitId)[slot];
+        int type = getUnitSupportTypes(unitId)[slot];
         //Gets the max values of the type gotten
         int[] maxValues = supportValues().get(type);
         if (level == 0) setSupportValue(slot, 0);
@@ -63,7 +63,7 @@ public class RawSupport {
     Sets all the supports to a specific level
      */
     public void setAllSupportsTo(int level) {
-        int[] characters = FireEditor.unitDb.getSupportUnits(unitId); //Ignores the modded supports
+        int[] characters = getUnitSupportUnits(unitId); //Ignores the modded supports
         for (int i = 0; i < characters.length; i++) {
             setSupportLevel(i, level);
         }
@@ -81,7 +81,7 @@ public class RawSupport {
      */
     public void expandBlock() {
         try {
-            int[] characters = FireEditor.unitDb.getSupportUnits(unitId);
+            int[] characters = getUnitSupportUnits(unitId);
             //If there are missing bytes, add them
             if (characters.length > supportValues.size()) {
                 int extraBytes = characters.length - supportValues.size();
@@ -99,7 +99,7 @@ public class RawSupport {
      */
     public void removeExtraSupports() {
         try {
-            int[] characters = FireEditor.unitDb.getSupportUnits(unitId);
+            int[] characters = getUnitSupportUnits(unitId);
             //If there are extra bytes, remove them
             if (supportValues.size() > characters.length) {
                 int extraBytes = supportValues.size() - characters.length;

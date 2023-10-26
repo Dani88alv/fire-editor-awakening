@@ -1,4 +1,4 @@
-package com.danius.fireeditor.savefile.other;
+package com.danius.fireeditor.savefile.map;
 
 import com.danius.fireeditor.savefile.Constants;
 

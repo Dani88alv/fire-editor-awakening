@@ -1,8 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.wireless.UnitDu;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -107,7 +106,7 @@ public class RawBlock2 {
         report += "Weapon EXP: " + Arrays.toString(getWeaponExp());
         report += "\n" + "Equipped Skills: ";
         for (int i = 0; i <= 4; i++) {
-            report += Names.skillNames.get(getCurrentSkills()[i]) + ", ";
+            report += MiscDb.skillNames.get(getCurrentSkills()[i]) + ", ";
         }
         report = report.substring(0, report.length() - 2);
         return report;

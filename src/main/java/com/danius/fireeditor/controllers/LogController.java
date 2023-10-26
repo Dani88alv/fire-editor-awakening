@@ -6,7 +6,7 @@ import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 import com.danius.fireeditor.util.Portrait;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +17,9 @@ import javafx.scene.control.*;
 import javafx.scene.image.*;
 
 import java.io.IOException;
+
+import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.model.UnitDb.*;
 
 public class LogController {
     private boolean listenersAdded = false;
@@ -57,29 +60,21 @@ public class LogController {
         comboDifficulty.setItems(difficulty);
         //Einherjar names
         ObservableList<String> cardUnits = FXCollections.observableArrayList();
-        cardUnits.addAll(FireEditor.unitDb.getEinherjarNames());
+        cardUnits.addAll(getEinherjarNames());
         comboCard.setItems(cardUnits);
         comboCard.getSelectionModel().select(0);
         //Asset and flaw
         ObservableList<String> modifiers = FXCollections.observableArrayList();
-        modifiers.addAll(Names.modifNames);
+        modifiers.addAll(MiscDb.modifNames);
         comboAsset.setItems(modifiers);
         comboFlaw.setItems(modifiers);
         //Class
         ObservableList<String> classes = FXCollections.observableArrayList();
-        classes.addAll(FireEditor.classDb.getNames());
+        classes.addAll(getClassNames(FireEditor.chapterFile.MAX_ID_CLASS));
         comboClass.setItems(classes);
-        int vanillaCount = Constants.MAX_CLASSES;
-        int modCount = FireEditor.maxClasses;
-        if (modCount > vanillaCount) {
-            for (int i = vanillaCount; i < modCount; i++) {
-                String className = "Mod Class#" + (i + 1 - vanillaCount);
-                comboClass.getItems().add(className);
-            }
-        }
         //S-Pairings
         ObservableList<String> units = FXCollections.observableArrayList();
-        units.addAll(FireEditor.unitDb.getNames());
+        units.addAll(getUnitNames());
         units.set(0, "None/Avatar (M)");
         comboWife.setItems(units);
         comboHusband.setItems(units);

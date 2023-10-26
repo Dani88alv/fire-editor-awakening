@@ -1,8 +1,8 @@
 package com.danius.fireeditor.savefile.wireless;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.RawSkill;
@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import static com.danius.fireeditor.model.UnitDb.*;
 
 public class UnitDu {
 
@@ -86,7 +88,7 @@ public class UnitDu {
         if (hasFlag(1)) return "Outrealm";
         String avatarName = rawLog.getName();
         if (!avatarName.equals("")) return avatarName;
-        return FireEditor.unitDb.getName(getUnitId());
+        return getUnitName(getUnitId());
     }
 
     public int getUnitId() {

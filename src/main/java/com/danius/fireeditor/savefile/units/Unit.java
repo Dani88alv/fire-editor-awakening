@@ -1,17 +1,19 @@
 package com.danius.fireeditor.savefile.units;
 
-import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.*;
 import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Names;
+import com.danius.fireeditor.model.MiscDb;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.model.UnitDb.*;
+
 
 public class Unit {
     public static int GBLOCK_SIZE = 0xBB;
@@ -95,7 +97,7 @@ public class Unit {
             if (rawLog != null) outputStream.write(rawLog.getBytes());
             if (rawChild != null) outputStream.write(rawChild.bytes());
         } catch (Exception e) {
-            throw new RuntimeException("Unable to compile back unit: " + Names.unitName(rawBlock1.unitId()));
+            throw new RuntimeException("Unable to compile back unit: " + MiscDb.unitName(rawBlock1.unitId()));
         }
         return outputStream.toByteArray();
     }
@@ -144,11 +146,11 @@ public class Unit {
 
     public String unitName() {
         int unitId = rawBlock1.unitId();
-        int max = FireEditor.unitDb.size();
+        int max = getUnitCount();
         if (unitId >= max) return "Invalid Unit #" + (unitId - max + 1);
         if (rawFlags.battleFlagList().contains(27)) return "Outrealm";
         if (rawLog != null) return rawLog.getName();
-        return Names.unitName(unitId);
+        return MiscDb.unitName(unitId);
     }
 
     public int[] modifiers() {
@@ -210,7 +212,7 @@ public class Unit {
     }
 
     public String reportBasic() {
-        return unitName() + " | " + FireEditor.classDb.getName(rawBlock1.unitClass());
+        return unitName() + " | " + getClassName(rawBlock1.unitClass());
     }
 
     //Max out the unit
@@ -266,7 +268,7 @@ public class Unit {
     public String report() {
         String text = "\n";
         //Unit Name and General Data
-        text += unitName() + ": " + FireEditor.classDb.getName(rawBlock1.unitClass());
+        text += unitName() + ": " + getClassName(rawBlock1.unitClass());
         text += "\n" + "Modifiers: " + Arrays.toString(modifiers());
         //Stats
         text += "\n" + rawBlock1.report();

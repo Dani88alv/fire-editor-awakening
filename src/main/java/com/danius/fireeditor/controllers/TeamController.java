@@ -4,7 +4,7 @@ import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.savefile.other.GmapBlock;
+import com.danius.fireeditor.savefile.map.GmapBlock;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.wireless.Du26Block;
 import com.danius.fireeditor.savefile.wireless.DuItem;

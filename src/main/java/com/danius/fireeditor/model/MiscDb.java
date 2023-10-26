@@ -1,6 +1,5 @@
-package com.danius.fireeditor.util;
+package com.danius.fireeditor.model;
 
-import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 
@@ -8,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Names {
+import static com.danius.fireeditor.model.UnitDb.*;
+
+public class MiscDb {
 
     //TODO: usar este método a partir de ahora y hacer la lista private
     public static String unitName(int id) {
@@ -17,9 +18,9 @@ public class Names {
             id = id - 4096;
             return "Map NPC #" + (id + 1);
         }
-        int size = FireEditor.unitDb.size();
+        int size = getUnitCount();
         if (id >= size) return "Invalid Unit #" + (id - size + 1);
-        return FireEditor.unitDb.getName(id);
+        return getUnitName(id);
     }
 
     public static String itemName(int id) {
@@ -28,7 +29,7 @@ public class Names {
     }
 
     public static String itemName2(int id, int maxCount, List<Refinement> refiList) {
-        int vanillaCount = Names.itemNames.size();
+        int vanillaCount = MiscDb.itemNames.size();
         if (id >= vanillaCount && id < maxCount) {
             int itemId = id - vanillaCount + 1;
             return "Modded Item #" + itemId;
@@ -43,10 +44,10 @@ public class Names {
 
     public static String supportLevel(int unitId, int value, int slot) {
         //Checks if it is a modded unit
-        int validSupports = FireEditor.unitDb.supportCount(unitId);
+        int validSupports = getUnitSupportCount(unitId);
         if (slot >= validSupports) return "Unknown";
         //Valid supports
-        int type = FireEditor.unitDb.getSupportTypes(unitId)[slot];
+        int type = getUnitSupportTypes(unitId)[slot];
         int[] maxValues = RawSupport.supportValues().get(type);
         if (value < maxValues[0]) return "D-Rank";
         else if (value == maxValues[0]) return "C-Pending";
@@ -121,7 +122,25 @@ public class Names {
             /*100*/ "Aggressor", "Rally Heart", "Bond", "Unused Skill Slot"
     );
 
-    public static final List<String> armies = Arrays.asList(
+    public static String getArmyName(int id) {
+        int maxId = armies.size() - 1;
+        if (id > maxId) return "Mod #" + (id - maxId);
+        else return armies.get(id);
+    }
+
+    public static List<String> getArmyNames() {
+        return armies;
+    }
+
+    public static List<String> getArmyNames(int max) {
+        List<String> names = new ArrayList<>();
+        for (int i = 0; i < max; i++) {
+            names.add(getArmyName(max));
+        }
+        return names;
+    }
+
+    private static final List<String> armies = Arrays.asList(
             "None", "Other", "Halidom of Ylisse", "Regna Ferox",
             "Plegia", "Empire of Valm", "Grimleal", "Rebels",
             "Unknown Foe", "Risen", "Ruffians", "Villagers"

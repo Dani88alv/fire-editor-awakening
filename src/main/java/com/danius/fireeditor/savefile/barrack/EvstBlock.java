@@ -1,4 +1,4 @@
-package com.danius.fireeditor.savefile.other;
+package com.danius.fireeditor.savefile.barrack;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
