@@ -98,9 +98,24 @@ public class DuTeam {
         System.out.println(report());
     }
 
+    public int getRenown() {
+        return Hex.getByte4(header, 0x5);
+    }
+
+    public void setRenown(int value) {
+        Hex.setByte4(header, 0x5, value);
+    }
+
     public String getTeamName() {
         byte[] nameArray = Arrays.copyOfRange(teamName, 0x0, (teamName.length));
         return Hex.byteArrayToString(nameArray);
+    }
+
+    public void setName(String name) {
+        int max = teamName.length;
+        if (name.length() > max) name = name.substring(0, max);
+        byte[] nameBytes = Hex.stringToByteArray(name, max);
+        System.arraycopy(nameBytes, 0, this.teamName, 0, nameBytes.length);
     }
 
     public UnitDu getUnit(int slot) {
@@ -119,7 +134,7 @@ public class DuTeam {
     }
 
     public byte[] getSlot() {
-        if (slot.length == 0) return null;
+        if (slot == null || slot.length == 0) return new byte[]{};
         else return slot;
     }
 
@@ -173,11 +188,10 @@ public class DuTeam {
         String text = "";
         int unitCount = unitList.size();
         if (slot != null) text += slot[0] + " - ";
-        text += getTeamName() + ": " + unitCount + "\n";
+        text += getTeamName() + ": " + unitCount + " | Renown: " + getRenown() + "\n";
         for (UnitDu unitDu : unitList) {
             text += unitDu.getName() + ", ";
         }
-        //text = text.substring(0, text.length() - 1);
         if (unitCount > 0) text = text.substring(0, text.length() - 2);
         return text;
     }

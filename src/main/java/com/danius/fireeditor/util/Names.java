@@ -27,17 +27,6 @@ public class Names {
         return "Forged Weapon " + (Integer.toHexString(id));
     }
 
-    public static String itemName2(int id, int maxCount) {
-        int vanillaCount = Names.itemNames.size();
-        if (id >= vanillaCount && id < maxCount) {
-            int itemId = id - vanillaCount + 1;
-            return "Modded Item #" + itemId;
-        } else if (id >= maxCount && id <= maxCount + 150) {
-            int itemId = id - maxCount + 1;
-            return "Forged Weapon #" + itemId;
-        } else return itemNames.get(id);
-    }
-
     public static String itemName2(int id, int maxCount, List<Refinement> refiList) {
         int vanillaCount = Names.itemNames.size();
         if (id >= vanillaCount && id < maxCount) {

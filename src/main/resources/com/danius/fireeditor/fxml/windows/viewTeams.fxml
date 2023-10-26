@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Spinner?>
@@ -12,49 +13,61 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.TeamController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.TeamController">
    <children>
       <AnchorPane prefHeight="456.0" prefWidth="524.0">
          <children>
-            <ListView fx:id="teamList" layoutX="9.0" layoutY="23.0" prefHeight="318.0" prefWidth="194.0" />
-            <ListView fx:id="unitList" layoutX="225.0" layoutY="23.0" prefHeight="238.0" prefWidth="110.0" />
-            <Button layoutX="40.0" layoutY="355.0" mnemonicParsing="false" text="Import Team" />
-            <Button layoutX="41.0" layoutY="391.0" mnemonicParsing="false" text="Export Team" />
-            <TextField fx:id="txtTeamName" layoutX="227.0" layoutY="388.0" prefHeight="26.0" prefWidth="166.0" />
-            <Button layoutX="377.0" layoutY="170.0" mnemonicParsing="false" onAction="#moveUnit" text="Move to Unit Editor" />
-            <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="370.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../characters/3.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="labelUnitName" layoutX="370.0" layoutY="5.0" prefHeight="27.0" prefWidth="166.0" text="Units">
+            <ListView fx:id="teamList" layoutX="9.0" layoutY="23.0" prefHeight="343.0" prefWidth="194.0" />
+            <ListView fx:id="unitListview" layoutX="225.0" layoutY="23.0" prefHeight="238.0" prefWidth="110.0" />
+            <Button layoutX="62.0" layoutY="375.0" mnemonicParsing="false" onAction="#importTeam" text="Import Team" />
+            <TextField fx:id="txtTeamName" layoutX="225.0" layoutY="338.0" prefHeight="26.0" prefWidth="166.0" />
+            <Button fx:id="btnMove" layoutX="391.0" layoutY="170.0" mnemonicParsing="false" onAction="#moveUnit" text="Move to Unit Editor" />
+            <Label fx:id="labelUnitName" layoutX="388.0" layoutY="5.0" prefHeight="27.0" prefWidth="166.0" text="Units">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="229.0" layoutY="368.0" text="Team Name" />
-            <Spinner disable="true" layoutX="227.0" layoutY="287.0" prefHeight="26.0" prefWidth="55.0" />
-            <Label layoutX="228.0" layoutY="269.0" text="Team ID" />
-            <Spinner fx:id="spinUnitId" editable="true" layoutX="227.0" layoutY="337.0" prefHeight="26.0" prefWidth="80.0" />
-            <Label layoutX="228.0" layoutY="319.0" text="Renown" />
-            <Label layoutX="12.0" layoutY="3.0" text="Wireless Teams" />
+            <Label layoutX="227.0" layoutY="318.0" text="Team Name" />
+            <Label layoutX="227.0" layoutY="269.0" text="Team Slot" />
+            <Spinner fx:id="spinRenown" editable="true" layoutX="290.0" layoutY="287.0" prefHeight="26.0" prefWidth="80.0" />
+            <Label layoutX="291.0" layoutY="269.0" text="Renown" />
+            <Label fx:id="lblTeamCount" layoutX="12.0" layoutY="3.0" text="Wireless Teams" />
             <Label layoutX="228.0" layoutY="3.0" text="Units" />
-            <Label layoutX="405.0" layoutY="268.0" prefHeight="154.0" prefWidth="251.0" text="Note: All team units store avatar data&#10;and child data, so the portrait will look&#10;weird on the Unit Editor. You can remove&#10;the avatar data at any time. All team units&#10;share the same profile card and avatar&#10;messages, but only the data from the first&#10;unit will be used. Due to technical limitations,&#10;the items cannot be edited on the Unit Editor.&#10;Flags and supports are not stored on teams." />
-            <Button fx:id="btnUp" layoutX="339.0" layoutY="202.0" mnemonicParsing="false" text="↑" />
-            <Button fx:id="btnDown" layoutX="339.0" layoutY="234.0" mnemonicParsing="false" text="↓" />
-            <Button layoutX="382.0" layoutY="209.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Equipped Items" />
-            <AnchorPane layoutX="520.0" layoutY="23.0" prefHeight="128.0" prefWidth="128.0">
+            <Label layoutX="403.0" layoutY="355.0" prefHeight="92.0" prefWidth="194.0" text="Note: Team units share the same &#10;profile card, but only the data &#10;from the first unit will be used. &#10;Flags, supports and miscellaneous &#10;data are not stored on teams." />
+            <Button fx:id="btnUp" layoutX="339.0" layoutY="202.0" mnemonicParsing="false" onAction="#orderUp" text="↑" />
+            <Button fx:id="btnDown" layoutX="339.0" layoutY="234.0" mnemonicParsing="false" onAction="#orderDown" text="↓" />
+            <AnchorPane layoutX="394.0" layoutY="217.0" prefHeight="78.0" prefWidth="215.0">
                <children>
-                  <CheckBox layoutY="6.0" mnemonicParsing="false" text="Teammate" />
-                  <CheckBox layoutY="28.0" mnemonicParsing="false" text="Outrealm" />
-                  <CheckBox layoutY="50.0" mnemonicParsing="false" text="SpotPass Recruit" />
-                  <CheckBox layoutY="72.0" mnemonicParsing="false" text="StreetPass Recruit" />
-                  <CheckBox layoutY="94.0" mnemonicParsing="false" text="Team Leader" />
+                  <CheckBox fx:id="check0" layoutY="6.0" mnemonicParsing="false" text="Enemy Unit" />
+                  <CheckBox fx:id="check1" layoutX="99.0" layoutY="5.0" mnemonicParsing="false" text="Outrealm" />
+                  <CheckBox fx:id="check2" layoutY="28.0" mnemonicParsing="false" text="SpotPass" />
+                  <CheckBox fx:id="check3" layoutX="99.0" layoutY="28.0" mnemonicParsing="false" text="StreetPass" />
+                  <CheckBox fx:id="check4" layoutY="50.0" mnemonicParsing="false" text="Team Leader" />
                </children>
             </AnchorPane>
-            <Spinner fx:id="spinUnitId1" editable="true" layoutX="519.0" layoutY="170.0" prefHeight="26.0" prefWidth="80.0" />
-            <Label layoutX="520.0" layoutY="8.0" text="Unit flags" />
-            <Label layoutX="520.0" layoutY="151.0" text="Overworld Sprite" />
+            <Spinner fx:id="spinSprite" editable="true" layoutX="420.0" layoutY="312.0" prefHeight="26.0" prefWidth="80.0" />
+            <Label layoutX="395.0" layoutY="203.0" text="Unit flags" />
+            <Label layoutX="416.0" layoutY="293.0" text="Overworld Sprite" />
+            <TextField fx:id="txtSlot" disable="true" editable="false" layoutX="228.0" layoutY="287.0" prefHeight="26.0" prefWidth="50.0" />
+            <ComboBox fx:id="comboMap" layoutX="225.0" layoutY="413.0" prefWidth="150.0" />
+            <Button fx:id="btnSetLocation" layoutX="225.0" layoutY="381.0" mnemonicParsing="false" onAction="#setLocation" text="Set Location To" />
+            <Button layoutX="18.0" layoutY="412.0" mnemonicParsing="false" onAction="#exportTeam" text="Export Team" />
+            <Button fx:id="btnDeleteTeam" layoutX="110.0" layoutY="412.0" mnemonicParsing="false" onAction="#deleteTeam" text="Delete Team" />
+            <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="385.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../avatar_m/build_01_00.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="384.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../avatar_m/back_01_00.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="384.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../avatar_m/hair_01_00.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

@@ -38,8 +38,12 @@ public class Portrait {
         int unitId = unit.rawBlock1.unitId();
         Image[] sprites = new Image[3];
         try {
+            //Outrealm Flag
+            if (unit.rawFlags.battleFlagList().contains(27)) {
+                sprites[0] = setImageMonster(unit);
+            }
             //Logbook portraits
-            if (unit.rawLog != null) {
+            else if (unit.rawLog != null) {
                 sprites = setImageLog(unit);
             }
             //Valid non-playable unit IDs
@@ -48,12 +52,8 @@ public class Portrait {
             }
             //Playable Characters
             else if (unitId > 2 && unitId <= Constants.MAX_PLAYABLE) {
-                //Outrealm Flag
-                if (unit.rawFlags.battleFlagList().contains(27)) {
-                    sprites[0] = setImageMonster(unit);
-                }
                 //Children Units
-                else if (unitId >= 32 && unitId <= 44) {
+                if (unitId >= 32 && unitId <= 44) {
                     String path = Constants.RES + "children/" + unitId;
                     String buildPath = path + ".png";
                     sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(buildPath)));
@@ -128,7 +128,7 @@ public class Portrait {
             imgHairColor = fillImageWithColor(backSprite, hexColor);
         }
         //SpotPass Units
-        else if (unit.rawLog.isEinherjar() && unit.rawLog.hasEinherjarId()) {
+        else if (unit.rawLog.isEinherjar() && unit.rawLog.hasSpotPassPortrait()) {
             int logId = unit.rawLog.getLogIdLastByte();
 
             String path = "/com/danius/fireeditor/spotpass/" + logId + ".png";

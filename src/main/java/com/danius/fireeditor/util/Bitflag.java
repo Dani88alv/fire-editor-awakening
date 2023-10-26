@@ -2,15 +2,19 @@ package com.danius.fireeditor.util;
 
 public class Bitflag {
 
-    public static void setByte1Flag(byte[] mainBytes, int offsetPoint, int slot, boolean set) {
-        //The flag is set
-        char[] flagsChar = byte1ToReversedBinaryString(mainBytes[offsetPoint]).toCharArray();
-        if (set) flagsChar[slot] = '1';
-        else flagsChar[slot] = '0';
-        //The string is converted back to byte array
-        String flagString = new String(flagsChar);
-        byte[] flagsArray = binaryStringToByteArray(flagString);
-        System.arraycopy(flagsArray, 0, mainBytes, offsetPoint, flagsArray.length);
+    public static boolean hasFlag1(byte value, int slot) {
+        return byte1ToReversedBinaryString(value).charAt(slot) == '1';
+    }
+
+    public static void setByte1Flag(byte[] mainBytes, int offset, int bit, boolean set) {
+        if (bit < 0 || bit >= mainBytes.length * 8) return;
+        int byteIndex = bit / 8;
+        int bitIndex = bit % 8;
+        byte targetByte = mainBytes[offset + byteIndex];
+
+        if (set) targetByte |= (1 << bitIndex);
+        else targetByte &= ~(1 << bitIndex);
+        mainBytes[offset + byteIndex] = targetByte;
     }
 
     //Converts a single byte to a reversed binary string

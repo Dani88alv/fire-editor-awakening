@@ -59,4 +59,43 @@ public class RefiBlock {
         this.refiList = refiList;
     }
 
+    public int newRefiId() {
+        List<Integer> usedIds = new ArrayList<>();
+        for (Refinement refinement : refiList) {
+            usedIds.add(refinement.position());
+        }
+        for (int i = 0; i < TranBlock.MAX_FORGED; i++) {
+            if (!usedIds.contains(i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean isDuplicated(Refinement refiToCheck) {
+        boolean isDuplicated = false;
+        for (Refinement refi : refiList) {
+            if (refi.getName().equals(refiToCheck.getName())
+                    && refi.might() == refiToCheck.might()
+                    && refi.hit() == refiToCheck.hit()
+                    && refi.crit() == refiToCheck.crit()) {
+                isDuplicated = true;
+                break;
+            }
+        }
+        return isDuplicated;
+    }
+
+    public int getPosition(Refinement refiToCheck) {
+        for (Refinement refi : refiList) {
+            if (refi.getName().equals(refiToCheck.getName())
+                    && refi.might() == refiToCheck.might()
+                    && refi.hit() == refiToCheck.hit()
+                    && refi.crit() == refiToCheck.crit()) {
+                return refi.position();
+            }
+        }
+        return newRefiId();
+    }
+
 }

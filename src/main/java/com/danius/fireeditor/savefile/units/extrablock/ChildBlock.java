@@ -22,6 +22,18 @@ public class ChildBlock {
         splitBlocks(blockBytes);
     }
 
+    public boolean isBlank() {
+        boolean isBlank = true;
+        for (int i = 0; i < 6; i++) {
+            int parent = parentId(i);
+            if (parent != 0 && parent != 65535) {
+                isBlank = false;
+                break;
+            }
+        }
+        return isBlank;
+    }
+
     public ChildBlock() {
         try {
             String path = Constants.RES_BLOCK + "rawUnitChild";

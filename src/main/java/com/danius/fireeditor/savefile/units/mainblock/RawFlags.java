@@ -68,7 +68,9 @@ public class RawFlags {
         bytes[point] = (byte) (slot & 0xFF);
     }
 
-    //0x4-0x7: ?
+    //0x4-0x5: ?
+    //0x6: Advanced Auto Battle Settings
+    //0x7: ?
 
     /*
     Group 1 (0x8)
@@ -119,25 +121,6 @@ public class RawFlags {
 
     //0xC-0xF: ?
 
-    /*
-    Battle Flags
-    Group 1 (0x10) Battle-Related
-    0x1: Moved in this turn
-    0x2: Paired Up (Front)
-    0x4: Paired Up (Back)
-
-    Group 2 (0x11) Battle-Related
-    0x40: Invisible on battle
-    0x80: Red sprite on battle
-
-    Group 3 (0x12)
-    0x8: Used Galeforce in this turn
-    0x40: Married to Maiden
-
-    Group 4 (0x13)
-    0x2: Tiki meditating
-    0x8: Portrait Change (?)
-     */
     public String battleFlagString() {
         int point = 0xF;
         byte[] array = Arrays.copyOfRange(bytes, point, point + 4);

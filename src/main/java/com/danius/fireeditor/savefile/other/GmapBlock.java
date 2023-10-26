@@ -1,5 +1,7 @@
 package com.danius.fireeditor.savefile.other;
 
+import com.danius.fireeditor.savefile.Constants;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,5 +41,43 @@ public class GmapBlock {
 
     public int length() {
         return bytes().length;
+    }
+
+    public int unlockedChapters() {
+        int maxTeams = 1;
+        for (RawMap map : maps) {
+            if (map.lockState() == 1) maxTeams++;
+        }
+        return maxTeams;
+    }
+
+    public int teamLocation(int teamSlot) {
+        for (int i = 0; i < maps.size(); i++) {
+            RawMap map = maps.get(i);
+            if ((map.isWireless(0) && map.getWirelessId(0) == teamSlot)
+                    || (map.isWireless(1) && map.getWirelessId(1) == teamSlot)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public List<String> chapterNames() {
+        List<String> mapList = new ArrayList<>();
+        for (int i = 0; i < maps.size(); i++) mapList.add(gChapterName(i));
+        return mapList;
+    }
+
+    private String gChapterName(int id) {
+        if (id == 0) return "Prologue";
+        if (id > 0 && id <= 26) {
+            return "Chapter " + id;
+        } else if (id > 26 && id <= 49) {
+            int chapter = id - 26;
+            return "Paralogue " + chapter;
+        } else if (id == 50) return "Outrealm Gate";
+        else {
+            return "Modded #" + (Constants.MAX_CHAPTERS - id + 1);
+        }
     }
 }

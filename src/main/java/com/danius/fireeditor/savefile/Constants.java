@@ -11,6 +11,7 @@ public class Constants {
     public static final int MAX_CHAPTERS = 51; //Credit Chapters
     public static final int MAX_PLAYABLE = 0x33;
     public static final int UNIT_LIMIT = 200;
+    public static final int TEAM_LIMIT = 10;
 
     public static final String RES = "/com/danius/fireeditor/";
     public static final String RES_BLOCK = RES + "templates/blocks/";

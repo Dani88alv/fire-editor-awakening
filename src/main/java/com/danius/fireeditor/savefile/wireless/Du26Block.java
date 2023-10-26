@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Du26Block {
     public boolean isWest;
-    private int teamSize;
+    private final int teamSize;
     private final byte[] header;
     public List<DuTeam> teamList;
     private List<byte[]> unknownList;

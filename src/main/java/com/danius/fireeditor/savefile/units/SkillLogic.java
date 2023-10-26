@@ -11,39 +11,63 @@ public class SkillLogic {
         int unitId = unit.rawBlock1.unitId();
         unit.rawSkill.setAll(false);
         boolean isFemale = isFemaleUnit(unit);
-        //Main skills
-        List<Integer> availableClasses = hardcodedClasses(unitId, isFemale);
-        List<Integer> allSkills = getSkillsFromClasses(availableClasses);
-        //Recruited Skills
-        List<Integer> recruitSkills = FireEditor.unitDb.getSkills(unitId);
-        allSkills.addAll(recruitSkills);
-        //Related Current Class Skills
-        List<Integer> relatedClasses = FireEditor.classDb.getFamilyClass(unit.rawBlock1.unitClass());
-        List<Integer> relatedSkills = getSkillsFromClasses(relatedClasses);
-        allSkills.addAll(relatedSkills);
-        //Additional skills
-        List<Integer> extraSkills = getExtraSkills(unit);
-        allSkills.addAll(extraSkills);
-        //Remove Aether or Rightful King
-        if (unitId != 0x3 && unitId != 0x1A) allSkills.removeIf(number -> number.equals(20));
-        if (unitId != 0x3 && unitId != 0x1A) allSkills.removeIf(number -> number.equals(72));
-        //Clean up
-        cleanList(allSkills);
+        List<Integer> allSkills = new ArrayList<>();
 
-        //Parent Skills (last skill slot inheritance)
-        //The skills of each parent slot are stored
+        //Parent Skills (last skill slot inheritance + inherited classes)
+        //All possible skills are added, even if only 1 can be chosen
         if (unit.rawChild != null) {
             for (int i = 0; i < 6; i++) {
                 int parent = unit.rawChild.parentId(i);
-                //The parent class skills are retrieved
-                List<Integer> skills = getSkillsFromClasses(hardcodedClasses(parent, isFemale));
-                removeSpecialSkills(skills, unit);
-                //The recruited skills from the parent are added
+                //The parent class skills are retrieved (both males + females)
+                List<Integer> defaultClasses = hardcodedClasses(parent, true);
+                defaultClasses.addAll(hardcodedClasses(parent, false));
+                cleanList(defaultClasses);
+                //Remove Lord, Dancer and Conqueror
+                defaultClasses.removeIf(aClass -> aClass >= 0 && aClass <= 3); //Lord
+                defaultClasses.removeIf(aClass -> aClass == 67); //Dancer
+                defaultClasses.removeIf(aClass -> aClass == 76); //Conqueror
+                List<Integer> skills = getSkillsFromClasses(defaultClasses);
+                //Parent's personal skills
                 skills.addAll(FireEditor.unitDb.getSkills(parent));
                 allSkills.addAll(skills);
+                //Parent logic only (no grandparents) for Lord skills
+                if (i == 0 || i == 1) {
+                    int slotGrandparent;
+                    if (i == 0) slotGrandparent = 2;
+                    else slotGrandparent = 4;
+                    int grandpa = unit.rawChild.parentId(slotGrandparent);
+                    int grandma = unit.rawChild.parentId(slotGrandparent + 1);
+                    //If Chrom's family, check gender and add Rightful King/Aether
+                    //Vanilla: Chrom, Lucina, Kjelle, Cynthia, Inigo, Brady
+                    if (grandpa == 3 || grandma == 3 || parent == 3) {
+                        if (isFemale) allSkills.add(72);
+                        else allSkills.add(20);
+                    }
+                }
                 cleanList(allSkills);
             }
         }
+
+        //Main skills
+        List<Integer> availableClasses = hardcodedClasses(unitId, isFemale);
+        allSkills.addAll(getSkillsFromClasses(availableClasses));
+        cleanList(allSkills);
+        //Current class
+        List<Integer> currentClasses = new ArrayList<>();
+        currentClasses.add(unit.rawBlock1.unitClass());
+        int[] promoted = FireEditor.classDb.getPromoted(unit.rawBlock1.unitClass());
+        for (int j : promoted) currentClasses.add(j); //If the current class is promoted, ignore previous classes
+        allSkills.addAll(getSkillsFromClasses(currentClasses));
+        cleanList(allSkills);
+        //Personal Skills
+        List<Integer> personalSkills = FireEditor.unitDb.getSkills(unitId);
+        allSkills.addAll(personalSkills);
+        cleanList(allSkills);
+        //Additional skills
+        List<Integer> extraSkills = getExtraSkills(unit);
+        allSkills.addAll(extraSkills);
+        cleanList(allSkills);
+
         //The skills are set
         for (int skill : allSkills) unit.rawSkill.setLearnedSkill(true, skill);
     }
@@ -55,10 +79,7 @@ public class SkillLogic {
         //Remove Special Dance is the character is not Olivia
         if (unitId != 0x17) skills.removeIf(number -> number.equals(0x36));
         //Remove Exclusive Lord Skills
-        skills.removeIf(number -> number.equals(36));
-        skills.removeIf(number -> number.equals(18));
-        skills.removeIf(number -> number.equals(72));
-        skills.removeIf(number -> number.equals(20));
+
 
         //Add Aether of Rightful King according to the gender of the unit (Chrom's child)
         for (int i = 0; i < 6; i++) {
@@ -103,8 +124,8 @@ public class SkillLogic {
         extraSkills.add(0x5B); //Limit Breaker
         int unitClass = unit.rawBlock1.unitClass();
         //Enemy Skills
-        if (id >= 0x35) {
-            extraSkills.add(0x8); //Hit Rate +10
+        if (id >= 0x35 || unitClass == 0x4E) {
+            extraSkills.add(0x8);  //Hit Rate +10
             extraSkills.add(0x60); //Vantage+
             extraSkills.add(0x5F); //Luna+
             extraSkills.add(0x5E); //Hawkeye
@@ -112,15 +133,12 @@ public class SkillLogic {
             extraSkills.add(0x62); //Aegis+
             extraSkills.add(0x5D); //Rightful God
             extraSkills.add(0x5C); //Dragonskin
-        }
-        //Grima Skills cuz why not
-        if (unitClass == 0x4E) {
             extraSkills.add(0x5D); //Rightful God
             extraSkills.add(0x5C); //Dragonskin
         }
         //Einherjar Exclusive Skills
         if (unit.rawLog != null) {
-            if (unit.rawLog.hasEinherjarIdDlc()) {
+            if (unit.rawLog.hasEinherjarId()) {
                 int logId = unit.rawLog.getLogIdLastByte();
                 List<Integer> einherjarSkills = FireEditor.unitDb.getEinSkills(logId);
                 extraSkills.addAll(einherjarSkills);
@@ -156,19 +174,11 @@ public class SkillLogic {
         //If it has Hero/Guest flags hardcoded (not working with save editing)
         if (FireEditor.unitDb.hasFlag(unitId, 2) || FireEditor.unitDb.hasFlag(unitId, 23)) {
             classes.addAll(FireEditor.classDb.getGenderClasses(isFemale));
-            //Remove special classes
-            classes.removeIf(aClass -> aClass >= 0 && aClass <= 3); //Lord
-            classes.removeIf(aClass -> aClass >= 67); //Dancer +
         }
         //The promoted classes are added to the list
         for (int reclass : reclasses) {
             int[] unpromoted = FireEditor.classDb.getPromoted(reclass);
             for (int k : unpromoted) classes.add(k);
-        }
-        List<Integer> classCopy = new ArrayList<>(classes);
-        for (int i = 0; i < classCopy.size(); i++) {
-            List<Integer> relatedClasses = FireEditor.classDb.getFamilyClass(classes.get(i));
-            classes.addAll(relatedClasses);
         }
         return classes;
     }
@@ -219,6 +229,7 @@ public class SkillLogic {
                 (unit.rawLog.getProfileCard()[0] == 69 || unit.rawLog.getProfileCard()[0] == 70);
     }
 
+    //Removes duplicated entries
     private static void cleanList(List<Integer> list) {
         HashSet<Integer> uniqueValues = new HashSet<>();
         int index = 0;

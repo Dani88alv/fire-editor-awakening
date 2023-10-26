@@ -57,15 +57,15 @@ public class ChapterController {
         });
     }
 
-    public void compileValues() {
+    public void setDifficulty() {
         //Updates the general settings in the user block and header block
-        userBlock.rawDifficulty.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
-        headerBlock.rawDifficulty.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
+        userBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
+        headerBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
         //Difficulty
-        userBlock.rawDifficulty.setLunaticPlus(checkLunatic.isSelected());
-        userBlock.rawDifficulty.setGameModeFlag(2, checkCasual.isSelected());
-        headerBlock.rawDifficulty.setLunaticPlus(checkLunatic.isSelected());
-        headerBlock.rawDifficulty.setGameModeFlag(2, checkCasual.isSelected());
+        userBlock.setLunaticPlus(checkLunatic.isSelected());
+        userBlock.setGameModeFlag(2, checkCasual.isSelected());
+        headerBlock.setLunaticPlus(checkLunatic.isSelected());
+        headerBlock.setGameModeFlag(2, checkCasual.isSelected());
     }
 
     public void loadBlocks() {
@@ -76,9 +76,9 @@ public class ChapterController {
             this.gmapBlock = FireEditor.chapterFile.blockGmap;
             this.evstBlock = FireEditor.chapterFile.blockEvst;
             //General Data
-            comboDifficulty.getSelectionModel().select(userBlock.rawDifficulty.difficulty());
-            checkLunatic.setSelected(userBlock.rawDifficulty.isLunaticPlus());
-            checkCasual.setSelected(userBlock.rawDifficulty.gameModeFlag(2));
+            comboDifficulty.getSelectionModel().select(userBlock.difficulty());
+            checkLunatic.setSelected(userBlock.isLunaticPlus());
+            checkCasual.setSelected(userBlock.gameModeFlag(2));
             spinMoney.getValueFactory().setValue(userBlock.money());
             spinTime.getValueFactory().setValue(userBlock.playtime() / 60);
             spinRenown.getValueFactory().setValue(userBlock.renown());
@@ -117,7 +117,10 @@ public class ChapterController {
             if (newValue != null && userBlock != null) userBlock.setMoney(Integer.parseInt(newValue));
         });
         spinRenown.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && userBlock != null) userBlock.setRenown(Integer.parseInt(newValue));
+            if (newValue != null && userBlock != null) {
+                userBlock.setRenown(Integer.parseInt(newValue));
+                du26Block.playerTeam.setRenown(Integer.parseInt(newValue));
+            }
         });
     }
     /*

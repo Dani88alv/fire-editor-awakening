@@ -58,23 +58,59 @@ public class RawMap {
     //0: Empty, 1: Risen, 2: Merchant, 3: Wireless
     public void setEncounter(int slot, int encounter) {
         switch (encounter) {
+            //Empty
             case 0 -> {
                 spawnList.get(slot)[0x0] = 0x0;
                 spawnList.get(slot)[0x1] = 0x0;
+                setUnitClass(slot, 0xFFFF);
+                setTimeOut(slot, 0);
+                setPool(slot, 0);
+                setWirelessId(slot, 255);
+                setSeed(slot, "00000000");
             }
+            //Risen
             case 1 -> {
                 spawnList.get(slot)[0x0] = 0x1;
                 spawnList.get(slot)[0x1] = 0x1;
+                setTimeOut(slot, 16);
+                setWirelessId(slot, 255);
             }
+            //Merchant
             case 2 -> {
                 spawnList.get(slot)[0x0] = 0x3;
                 spawnList.get(slot)[0x1] = 0x2;
+                setTimeOut(slot, 16);
+                setWirelessId(slot, 255);
+                setUnitClass(slot, 73);
             }
+            //Wireless
             case 3 -> {
                 spawnList.get(slot)[0x0] = 0x2;
                 spawnList.get(slot)[0x1] = 0x2;
+                setTimeOut(slot, 255);
+                setPool(slot, 0);
+                setUnitClass(slot, 4); //Tactician Default Class
             }
         }
+    }
+
+
+    /*
+    Sets a wireless team encounter with the given team id, without removing existing encounters
+    A team can be located in multiple maps at the same time
+     */
+    public void setWirelessEncounter(int teamSlot, int unitClass) {
+        int slotToUse = 0;
+        // If the first slot is being used
+        if (!isEmpty(0)) {
+            //If it is being used by another team, replace the second slot
+            if (isWireless(0)) {
+                slotToUse = 1;
+            }
+        }
+        setEncounter(slotToUse, 3);
+        setWirelessId(slotToUse, teamSlot);
+        setUnitClass(slotToUse, unitClass);
     }
 
     /*

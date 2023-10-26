@@ -24,7 +24,7 @@ public class ConvoyController {
     public TranBlock tranBlock;
     public RefiBlock refiBlock;
     @FXML
-    private ListView<Refinement> listViewRefi;
+    public ListView<Refinement> listViewRefi;
     @FXML
     private ComboBox<String> comboWeaponId;
     @FXML
@@ -89,7 +89,7 @@ public class ConvoyController {
             }
             //The refinement listview is loaded
             loadRefiTable(refiBlock);
-            if (refiBlock.refiList.size() == 0) lblRefiCount.setText("Forged Weapon Count: 0");
+            updateRefiCount();
         }
     }
 
@@ -165,7 +165,7 @@ public class ConvoyController {
                 return;
             }
             disableRefi(false);
-            lblRefiCount.setText("Forged Weapon Count: " + size);
+            updateRefiCount();
             listViewRefi.setItems(FXCollections.observableArrayList(refiBlock.refiList));
             listViewRefi.getSelectionModel().selectLast();
             listViewRefi.getSelectionModel().selectFirst();
@@ -349,6 +349,10 @@ public class ConvoyController {
         public SimpleStringProperty totalUsesProperty() {
             return totalUses;
         }
+    }
+
+    public void updateRefiCount() {
+        lblRefiCount.setText("Forged Weapon Count: " + listViewRefi.getItems().size());
     }
 
 

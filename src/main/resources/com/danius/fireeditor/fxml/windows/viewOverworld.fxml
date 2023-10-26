@@ -18,15 +18,15 @@
             <AnchorPane layoutX="132.0" layoutY="222.0" prefHeight="115.0" prefWidth="332.0">
                <children>
                   <ComboBox fx:id="comboClass2" layoutX="179.0" layoutY="20.0" prefHeight="26.0" prefWidth="133.0" promptText="Class" />
-                  <ComboBox fx:id="comboEncounter2" layoutX="16.0" layoutY="19.0" prefHeight="26.0" prefWidth="115.0" promptText="Encounter" />
+                  <ComboBox fx:id="comboEncounter2" layoutX="16.0" layoutY="19.0" prefHeight="26.0" prefWidth="134.0" promptText="Encounter" />
                   <Spinner fx:id="spinWireless2" editable="true" layoutX="164.0" layoutY="75.0" prefHeight="26.0" prefWidth="64.0" />
                   <Spinner fx:id="spinPool2" editable="true" layoutX="94.0" layoutY="75.0" prefHeight="26.0" prefWidth="55.0" />
                   <Spinner fx:id="spinTime2" editable="true" layoutX="16.0" layoutY="75.0" prefHeight="26.0" prefWidth="70.0" />
                   <TextField fx:id="txtSeed2" layoutX="241.0" layoutY="75.0" prefHeight="26.0" prefWidth="70.0" />
                   <Label layoutX="17.0" layoutY="-3.0" text="Encounter Type" />
                   <Label layoutX="181.0" layoutY="-2.0" text="NPC Class" />
-                  <Label layoutX="249.0" layoutY="56.0" text="RNG Seed" />
-                  <Label layoutX="157.0" layoutY="56.0" text="Wireless Team" />
+                  <Label layoutX="246.0" layoutY="56.0" text="RNG Seed?" />
+                  <Label layoutX="169.0" layoutY="56.0" text="Team Slot" />
                   <Label layoutX="94.0" layoutY="56.0" text="Unknown" />
                   <Label layoutX="16.0" layoutY="56.0" text="Timeout" />
                </children>
@@ -41,8 +41,8 @@
                   <TextField fx:id="txtSeed1" layoutX="240.0" layoutY="75.0" prefHeight="26.0" prefWidth="70.0" />
                   <Label layoutX="17.0" layoutY="-3.0" text="Encounter Type" />
                   <Label layoutX="180.0" layoutY="-2.0" text="NPC Class" />
-                  <Label layoutX="247.0" layoutY="56.0" text="RNG Seed" />
-                  <Label layoutX="157.0" layoutY="56.0" text="Wireless Team" />
+                  <Label layoutX="245.0" layoutY="56.0" text="RNG Seed?" />
+                  <Label layoutX="168.0" layoutY="56.0" text="Team Slot" />
                   <Label layoutX="95.0" layoutY="56.0" text="Unknown" />
                   <Label layoutX="16.0" layoutY="56.0" text="Timeout" />
                </children>

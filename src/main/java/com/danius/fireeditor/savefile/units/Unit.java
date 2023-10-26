@@ -11,6 +11,7 @@ import com.danius.fireeditor.util.Names;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class Unit {
     public static int GBLOCK_SIZE = 0xBB;
@@ -30,7 +31,6 @@ public class Unit {
     //Additional blocks
     public ChildBlock rawChild; //Parent Data
     public LogBlock rawLog; //Logbook data
-    public UnitDu unitDu; //Used for unit structure editing
 
     public Unit() {
         this.rawBlock1 = new RawBlock1();
@@ -227,17 +227,8 @@ public class Unit {
         rawBlock1.setCurrentHp(Stats.calcMaxStats(this, false)[0] + Stats.temporalBuffs(this)[0]);
     }
 
-    public boolean isDu() {
-        return this.unitDu != null;
-    }
-
-    public void createDu(boolean isWest) {
-        this.unitDu = new UnitDu(isWest);
-        updateUnitDu();
-    }
-
-    public void updateUnitDu() {
-        if (!isDu()) return;
+    public UnitDu toUnitDu(boolean isWest) {
+        UnitDu unitDu = new UnitDu(isWest);
         //General Data
         unitDu.setUnitId(rawBlock1.unitId());
         unitDu.setUnitClass(rawBlock1.unitClass());
@@ -247,6 +238,20 @@ public class Unit {
         for (int i = 0; i < 8; i++) unitDu.setGrowth(rawBlock1.growth()[i], i);
         for (int i = 0; i < 5; i++) unitDu.setActiveSkills(rawBlock2.getCurrentSkills()[i], i);
         for (int i = 0; i < 5; i++) unitDu.setWeaponExp(rawBlock2.getWeaponExp()[i], i);
+        //Flags
+        unitDu.setFlag(4, rawFlags.traitFlagList().contains(4)); //Leader Flag
+        List<Integer> battleFlags = rawFlags.battleFlagList();
+        if (battleFlags.contains(27)) {
+            unitDu.setFlag(1, true); //Outrealm Flag
+            unitDu.setFlag(0, true); //Enemy Generic Flag
+        }
+        if (battleFlags.contains(8) || battleFlags.contains(29)) {
+            if (rawLog != null) {
+                if (rawLog.hasEinherjarId()) unitDu.setFlag(2, true); //SpotPass Flag
+                else unitDu.setFlag(3, true); //StreetPass Flag
+            }
+        }
+        //Skills
         unitDu.rawSkill = this.rawSkill;
         //Child Data
         if (rawChild != null) for (int i = 0; i < 6; i++) unitDu.setParent(rawChild.parentId(i), i);
@@ -255,6 +260,7 @@ public class Unit {
         if (rawLog != null) unitDu.rawLog = this.rawLog;
         else unitDu.rawLog = new LogBlock();
 
+        return unitDu;
     }
 
     public String report() {

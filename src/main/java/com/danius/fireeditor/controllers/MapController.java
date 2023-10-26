@@ -65,11 +65,8 @@ public class MapController {
     public void setBlock(GmapBlock gmapBlock) {
         this.gmapBlock = gmapBlock;
         ObservableList<String> chaptersMap = FXCollections.observableArrayList();
-        for (int i = 0; i < gmapBlock.maps.size(); i++) {
-            chaptersMap.add(gChapterName(i));
-        }
-        chapterList.setItems(FXCollections.observableArrayList(
-                chaptersMap));
+        chaptersMap.setAll(gmapBlock.chapterNames());
+        chapterList.setItems(FXCollections.observableArrayList(chaptersMap));
         chapterList.getSelectionModel().select(0);
         setListeners();
     }
@@ -173,18 +170,21 @@ public class MapController {
                 gmapBlock.maps.get(slot).setLockState(2);
             }
         });
-    }
-
-    public String gChapterName(int id) {
-        if (id == 0) return "Prologue";
-        if (id > 0 && id <= 26) {
-            return "Chapter " + id;
-        } else if (id > 26 && id <= 49) {
-            int chapter = id - 26;
-            return "Paralogue " + chapter;
-        } else if (id == 50) return "Outrealm Gate";
-        else {
-            return "Modded #" + (Constants.MAX_CHAPTERS - id + 1);
-        }
+        comboEncounter1.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+                    int slot = chapterList.getSelectionModel().getSelectedIndex();
+                    if (slot == -1) return;
+                    int selection = comboEncounter1.getSelectionModel().getSelectedIndex();
+                    gmapBlock.maps.get(slot).setEncounter(0, selection);
+                    loadFields(gmapBlock.maps.get(slot));
+                }
+        );
+        comboEncounter2.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+                    int slot = chapterList.getSelectionModel().getSelectedIndex();
+                    if (slot == -1) return;
+                    int selection = comboEncounter2.getSelectionModel().getSelectedIndex();
+                    gmapBlock.maps.get(slot).setEncounter(1, selection);
+                    loadFields(gmapBlock.maps.get(slot));
+                }
+        );
     }
 }

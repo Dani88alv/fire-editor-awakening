@@ -5,8 +5,6 @@ import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Bitflag;
 import com.danius.fireeditor.util.Names;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.Portrait;
-import javafx.scene.image.Image;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -52,6 +50,12 @@ public class LogBlock {
             throw new RuntimeException(e);
         }
         initialize(bytes);
+    }
+
+    //Checks if the name and build are empty to know if it is a temporal logbook block
+    public boolean isBlank() {
+        int[] build = getFullBuild();
+        return getName().equals("") && build[0] == 0 && build[1] == 0 && build[2] == 0 && build[3] == 0;
     }
 
     /*
@@ -285,7 +289,7 @@ public class LogBlock {
     }
 
     //Checks if the logbook ID matches the Einherjar IDs, excludes DLC units
-    public boolean hasEinherjarId() {
+    public boolean hasSpotPassPortrait() {
         String logString = getLogId();
         //Checks large ID numbers, from avatars
         for (int i = 0; i < logString.length() - 2; i++) {
@@ -298,7 +302,8 @@ public class LogBlock {
         return logId <= 120;
     }
 
-    public boolean hasEinherjarIdDlc() {
+    //Checks if the logbook ID matches the Einherjar IDs, including DLC units
+    public boolean hasEinherjarId() {
         String logString = getLogId();
         //Checks large ID numbers, from avatars
         for (int i = 0; i < logString.length() - 2; i++) {

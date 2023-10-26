@@ -97,24 +97,6 @@ public class Classes {
         return names;
     }
 
-    public List<Integer> getFamilyClass(int id) {
-        List<Integer> list = new ArrayList<>();
-        list.add(id);
-        //The promoted classes are added
-        int[] promoted = getPromoted(id);
-        for (int k : promoted) list.add(k);
-        //The lower classes are added
-        for (int i = 0; i < classList.size(); i++) {
-            int[] classToPromote = classList.get(i).getPromoted();
-            for (int k : classToPromote) {
-                if (k == id) {
-                    list.add(i);
-                }
-            }
-        }
-        return list;
-    }
-
     public boolean invalid(int id) {
         return id < 0 || id >= size();
     }

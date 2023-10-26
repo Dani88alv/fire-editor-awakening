@@ -2,6 +2,7 @@ package com.danius.fireeditor.savefile.wireless;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.RawSkill;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class UnitDu {
-    public Unit unit;
+
     public boolean isWest;
     private byte[] rawBlock1;
     public List<DuItem> itemList;
@@ -96,8 +97,8 @@ public class UnitDu {
         Hex.setByte2(rawBlock1, 0x1, value);
     }
 
-    public void updateUnit() {
-        if (this.unit == null) this.unit = new Unit();
+    public Unit toUnit() {
+        Unit unit = new Unit();
         unit.addBlockChild();
         unit.addBlockLog();
         //General Data
@@ -107,6 +108,15 @@ public class UnitDu {
         unit.rawBlock1.setExp(0);
         unit.rawFlags.setHiddenLevel(getHiddenLevel());
         unit.rawBlockEnd.setHairColor(getOffspringColor());
+        //Flags
+        unit.rawFlags.setBattleFlag(27, hasFlag(1)); //Outrealm
+        unit.rawFlags.setTraitFlag(4, hasFlag(4)); //Leader
+        if (hasFlag(2) || hasFlag(3)) {
+            unit.rawFlags.setBattleFlag(8, true); //Foreign / Enemy
+            unit.rawFlags.setBattleFlag(29, true); //Wireless
+        }
+        //Skills
+        unit.rawSkill = this.rawSkill;
         //Stats
         int[] growths = getGrowth();
         int[] weaponExp = getWeaponExp();
@@ -118,6 +128,14 @@ public class UnitDu {
         for (int i = 0; i < 6; i++) unit.rawChild.setParentId(i, getParent(i));
         unit.rawLog = this.rawLog;
         this.rawLog.footer = new byte[]{1}; //Child Terminator
+        //Remove extra data if empty
+        if (unit.rawLog.isBlank()) {
+            unit.removeBlockExtra(true);
+        }
+        if (unit.rawChild.isBlank()) {
+            unit.removeBlockExtra(false);
+        }
+        return unit;
     }
 
     public String report() {

@@ -2,6 +2,8 @@ package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.inventory.Refinement;
+import com.danius.fireeditor.savefile.inventory.TranBlock;
 import com.danius.fireeditor.savefile.units.Stats;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
@@ -22,6 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class UnitController {
@@ -190,7 +193,7 @@ public class UnitController {
 
     @FXML
     private void moveUnitToGroup() {
-        int id = listViewUnit.getSelectionModel().getSelectedIndex();
+        int selectedUnitIndex = listViewUnit.getSelectionModel().getSelectedIndex();
         int groupTarget = comboGroupMove.getSelectionModel().getSelectedIndex();
         int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
         //If there is enough room
@@ -214,20 +217,34 @@ public class UnitController {
         //Regular Unit Group
         if (groupTarget <= 5) {
             //The unit is added
-            unitBlock.unitList.get(groupTarget).add(listViewUnit.getItems().get(id));
+            unitBlock.unitList.get(groupTarget).add(listViewUnit.getItems().get(selectedUnitIndex));
         }
         //Wireless Teams
         else {
-            Unit unit = listViewUnit.getItems().get(id);
-            if (!unit.isDu()) {
-                listViewUnit.getItems().get(id).createDu(FireEditor.chapterFile.blockDu26.isWest);
+            boolean isWest = FireEditor.chapterFile.blockDu26.isWest;
+            Unit unit = listViewUnit.getItems().get(selectedUnitIndex);
+            UnitDu unitDu = unit.toUnitDu(isWest);
+            //The items are updated
+            int maxCount = FireEditor.chapterFile.blockTran.regularItemCount();
+            for (int i = 0; i < unitDu.itemList.size(); i++) {
+                int itemId = unit.rawInventory.items.get(i).itemId();
+                //Forged item
+                if (itemId > maxCount) {
+                    itemId -= maxCount;
+                    Refinement refinement = FireEditor.chapterFile.blockRefi.refiList.get(itemId);
+                    itemId = refinement.weaponId();
+                    unitDu.itemList.get(i).setName(refinement.getName());
+                    unitDu.itemList.get(i).setMight(refinement.might());
+                    unitDu.itemList.get(i).setHit(refinement.hit());
+                    unitDu.itemList.get(i).setCrit(refinement.crit());
+                }
+                unitDu.itemList.get(i).setItemId(itemId);
             }
-            UnitDu unitDu = unit.unitDu;
-            unitDu.unit = unit;
+
             //Player's StreetPass Team
             if (groupTarget == 6) {
                 if (FireEditor.chapterController.du26Block.playerTeam.unitList.size() >= 10) return;
-                FireEditor.chapterController.du26Block.playerTeam.unitList.add(listViewUnit.getItems().get(id).unitDu);
+                FireEditor.chapterController.du26Block.playerTeam.unitList.add(unitDu);
             }
             //External Team
             else {
@@ -237,7 +254,7 @@ public class UnitController {
             }
         }
         //The unit is removed from the current group
-        listViewUnit.getItems().remove(id);
+        listViewUnit.getItems().remove(selectedUnitIndex);
         unitBlock.unitList.set(comboUnitGroup.getSelectionModel().getSelectedIndex(), listViewUnit.getItems());
         displayUnitCount();
     }

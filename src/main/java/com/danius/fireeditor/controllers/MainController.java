@@ -190,7 +190,7 @@ public class MainController {
         //FireEditor.chapterFile.blockTran.setItemAmountFromList(FireEditor.convoyController.getItemUses());
         FireEditor.convoyController.loseSpinnerFocus();
         //The difficulty settings are updated
-        FireEditor.chapterController.compileValues();
+        FireEditor.chapterController.setDifficulty();
         //The data is compiled
         byte[] data;
         if (decomp) data = FireEditor.chapterFile.getBytes();
