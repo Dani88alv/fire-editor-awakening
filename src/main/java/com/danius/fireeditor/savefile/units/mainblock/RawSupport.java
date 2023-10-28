@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static com.danius.fireeditor.model.UnitDb.*;
 
@@ -72,14 +73,41 @@ public class RawSupport {
     public void setAllSupportsTo(int level, List<Integer> units) {
         int[] characters = getUnitSupportUnits(unitId); //Ignores the modded supports
         for (int i = 0; i < characters.length; i++) {
+            //Only recruited units are modified
             if (units.contains(characters[i]) || level == 0) {
                 setSupportLevel(i, level);
             }
+            //The support is reset if not recruited
+            else setSupportValue(i, 0);
         }
     }
 
     public void setSupportValue(int slot, int value) {
         supportValues.set(slot, value);
+    }
+
+    //If this unit has the parameter unit as a valid support, edit the raw value
+    public void setSupportValueByUnit(int unitId, int value) {
+        //The valid supports from this unit are retrieved
+        int[] validUnitsEdit = getUnitSupportUnits(this.unitId);
+        //The position of the parameter unit is retrieved
+        int position = IntStream.range(0, validUnitsEdit.length).filter
+                (i -> validUnitsEdit[i] == unitId).findFirst().orElse(-1);
+        if (position != -1) {
+            setSupportValue(position, value);
+        }
+    }
+
+    //If this unit has the parameter unit as a valid support, edit the level
+    public void setSupportLevelByUnit(int unitId, int value) {
+        //The valid supports from this unit are retrieved
+        int[] validUnitsEdit = getUnitSupportUnits(this.unitId);
+        //The position of the parameter unit is retrieved
+        int position = IntStream.range(0, validUnitsEdit.length).filter
+                (i -> validUnitsEdit[i] == unitId).findFirst().orElse(-1);
+        if (position != -1) {
+            setSupportLevel(position, value);
+        }
     }
 
     /*

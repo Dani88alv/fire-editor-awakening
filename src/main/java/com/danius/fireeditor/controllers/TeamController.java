@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
@@ -271,7 +272,7 @@ public class TeamController {
                             FireEditor.chapterFile.blockTran.setForgedUses(refinement.position(), 0);
                         }
                         //If the position is valid, replace the item id with the inventory forged id
-                        itemId = FireEditor.chapterFile.blockTran.regularItemCount() + position;
+                        itemId = ItemDb.MOD_MAX_ID + position + 1;
                     }
                 }
                 //The item is replaced

@@ -1,6 +1,7 @@
 package com.danius.fireeditor.savefile.inventory;
 
 import com.danius.fireeditor.model.ItemDb;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -13,12 +14,11 @@ import static com.danius.fireeditor.model.ItemDb.*;
 
 public class TranBlock {
     /*
-    Regular item count is different with and without DLC?
+    Stores both vanilla and modded items (size varies with mods)
      */
-    public static final int MAX_FORGED = 150;
-    private final int itemCount;
+    public static final int MAX_FORGED = Constants.MAX_FORGE_COUNT;
     /*
-    Stores only the amount of items and forged weapons
+    Stores only the amount of items and forged weapons (Always 150 entries)
      */
     private final byte[] blockHeader;
     public List<Integer> inventoryMain; //List of uses of each regular item
@@ -26,19 +26,13 @@ public class TranBlock {
 
     public TranBlock(byte[] blockBytes) {
         blockHeader = Arrays.copyOfRange(blockBytes, 0x0, 0x7); //5 header + 2 item count
-        itemCount = Hex.getByte2(blockBytes, 0x5);
-        int regularCount = regularItemCount();
+        int itemCount = Hex.getByte2(blockBytes, 0x5);
+        int regularCount = itemCount - MAX_FORGED;
 
         inventoryMain = getItemList(blockBytes, 0x0, regularCount);
         inventoryRefi = getItemList(blockBytes, regularCount * 2, MAX_FORGED);
         //The modded count is updated
         ItemDb.MOD_MAX_ID = itemCount - MAX_FORGED - 1;
-    }
-
-    //TODO REMOVE THIS
-    //Retrieves the total count of regular items, since there can be modded items
-    public int regularItemCount() {
-        return itemCount - MAX_FORGED;
     }
 
     public void setItemUses(int id, int uses) {
@@ -47,25 +41,6 @@ public class TranBlock {
 
     public void setForgedUses(int id, int uses) {
         this.inventoryRefi.set(id, uses);
-    }
-
-    //Combines both inventories together
-    public byte[] getBlockBytes() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        try {
-            outputStream.write(blockHeader);
-            // Regular Items Amount
-            for (int amount : inventoryMain) {
-                outputStream.write(Hex.int2ToByteArray(amount));
-            }
-            // Forged Weapons Amount
-            for (int amount : inventoryRefi) {
-                outputStream.write(Hex.int2ToByteArray(amount));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return outputStream.toByteArray();
     }
 
     //The size of the main inventory can change with mods
@@ -88,32 +63,50 @@ public class TranBlock {
     //Sets the amount (not uses) of a regular item
     public void setItemAmount(int id, int amount) {
         int uses = getItemUses(id) * amount;
-        if (uses == 0) uses = amount; //Special Weapons
+        if (uses == 0) uses = amount; //Infinite use weapons
         setItemUses(id, uses);
     }
 
     //Sets the amount (not uses) of a forged weapon
     public void setForgedAmount(int slot, int amount, int weaponId) {
-        int uses = getItemUses(inventoryRefi.get(weaponId)) * amount;
-        if (uses == 0) uses = amount; //Special Weapons
+        int uses = getItemUses(weaponId) * amount;
+        if (uses == 0) uses = amount; //Infinite use weapons
         setForgedUses(slot, uses);
     }
 
     //Maxes the full main inventory
-    public void maxItemAmount(int weaponAmount, int consumeAmount) {
+    public void maxItemAmount(int amount) {
         for (int i = 1; i < getItemCountVanilla(); i++) {
-            if (i < 0x9C) setItemAmount(i, weaponAmount);
-            else setItemAmount(i, consumeAmount);
+            setItemAmount(i, amount);
         }
     }
 
     //Maxes the full refinement inventory
-    public void maxForgedAmounts(List<Refinement> refiList) {
+    public void maxForgedAmount(int amount, List<Refinement> refiList) {
         for (Refinement refinement : refiList) {
-            int maxUses = getItemUses(refinement.weaponId());
+            int maxUses = getItemUses(refinement.weaponId()) * amount;
             int currentUses = inventoryRefi.get(refinement.position());
             if (currentUses > maxUses) while (maxUses <= currentUses) maxUses *= 2;
             setForgedUses(refinement.position(), maxUses);
         }
+    }
+
+    //Combines both inventories together
+    public byte[] getBlockBytes() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try {
+            outputStream.write(blockHeader);
+            // Regular Items Amount
+            for (int amount : inventoryMain) {
+                outputStream.write(Hex.int2ToByteArray(amount));
+            }
+            // Forged Weapons Amount
+            for (int amount : inventoryRefi) {
+                outputStream.write(Hex.int2ToByteArray(amount));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return outputStream.toByteArray();
     }
 }

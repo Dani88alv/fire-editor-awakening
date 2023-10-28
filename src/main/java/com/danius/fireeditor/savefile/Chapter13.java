@@ -28,6 +28,7 @@ public class Chapter13 extends SaveFile {
     public Du26Block blockDu26; //StreetPass & SpotPass Data
     public EvstBlock blockEvst; //Barrack
     private int region; //0xC0 = US/EU, 0x80 = JP
+    public boolean isWest = true;
     public boolean isChapter = true; //Chapter or Map save file
 
 
@@ -115,8 +116,7 @@ public class Chapter13 extends SaveFile {
         blockGmap = new GmapBlock(Arrays.copyOfRange(fileBytes,
                 Hex.getByte4(blockIndex, offset), Hex.getByte4(blockIndex, offset + 4)));
         offset += 4;
-        //Units (IMPORTANT)
-        boolean isWest = (region == 0xC0);
+        //Units
         blockUnit = new UnitBlock(Arrays.copyOfRange(fileBytes, Hex.getByte4(blockIndex, offset),
                 Hex.getByte4(blockIndex, offset + 4)), isWest);
         offset += 4;
@@ -160,7 +160,6 @@ public class Chapter13 extends SaveFile {
         int du26 = Hex.indexOf(bytes, Hex.toByte("36 32 55 44"), 0x0, 0) - 4;
         int evst = Hex.indexOf(bytes, Hex.toByte("54 53 56 45"), 0x0, 0) - 4;
         //The blocks are initialized
-        boolean isWest = (region == 0xC0);
         this.blockHeader = new HeaderBlock(Arrays.copyOfRange(bytes, 0x0, region));
         //Chapter Exclusive Block 1
         if (isChapter) {
@@ -255,8 +254,14 @@ public class Chapter13 extends SaveFile {
         byte[] pmoc = Hex.toByte("50 4D 4F 43"); //PMOC
         byte[] us = Hex.getByte4Array(fileBytes, 0xC0);
         byte[] jp = Hex.getByte4Array(fileBytes, 0x80);
-        if (Arrays.equals(us, edni) || Arrays.equals(us, pmoc)) this.region = 0xC0;
-        if (Arrays.equals(jp, edni) || Arrays.equals(jp, pmoc)) this.region = 0x80;
+        if (Arrays.equals(us, edni) || Arrays.equals(us, pmoc)) {
+            this.region = 0xC0;
+            isWest = true;
+        }
+        if (Arrays.equals(jp, edni) || Arrays.equals(jp, pmoc)) {
+            this.region = 0x80;
+            isWest = false;
+        }
         String regionName = (region == 0xC0) ? "US/EU" : "JP";
         System.out.print("REGION LOADED: " + regionName + "\n");
         return Arrays.equals(us, edni) || Arrays.equals(jp, edni);

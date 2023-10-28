@@ -85,10 +85,6 @@ public class ConvoyController {
             //The regular item table is loaded
             cleanInventory();
             loadItemTable(tranBlock.inventoryMain);
-            int regularItemCount = tranBlock.regularItemCount();
-            for (int i = comboWeaponId.getItems().size(); i < regularItemCount; i++) {
-                comboWeaponId.getItems().add("Modded Item #" + (i - Constants.MAX_ITEM_COUNT));
-            }
             //The refinement listview is loaded
             loadRefiTable(refiBlock);
             updateRefiCount();

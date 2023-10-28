@@ -252,6 +252,20 @@ public class Unit {
         rawBlock1.setCurrentHp(Stats.calcMaxStats(this, false)[0] + Stats.temporalBuffs(this)[0]);
     }
 
+    public void kill() {
+        rawFlags.setBattleFlag(3, true);
+        rawFlags.setBattleFlag(7, true);
+        rawBlockEnd.setDeadFlag1(true);
+    }
+
+    public void revive() {
+        rawFlags.setBattleFlag(3, false);
+        rawFlags.setBattleFlag(7, false);
+        rawBlockEnd.setDeadFlag1(false);
+        rawBlockEnd.setDeadFlag2(false);
+        rawBlockEnd.setRetireChapter(0);
+    }
+
     public UnitDu toUnitDu(boolean isWest) {
         UnitDu unitDu = new UnitDu(isWest);
         //General Data
@@ -313,9 +327,4 @@ public class Unit {
     public String toString() {
         return unitName();
     }
-
-    /*
-    Hair Colors
-    Morgan: 5B 58 55
-     */
 }

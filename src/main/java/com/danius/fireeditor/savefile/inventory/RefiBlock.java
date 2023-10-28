@@ -18,6 +18,15 @@ public class RefiBlock {
         readRefinements(blockBytes);
     }
 
+    public Refinement getRefinement(int position) {
+        for (Refinement refinement : refiList) {
+            if (refinement.position() == position) return refinement;
+        }
+        Refinement refinement = new Refinement(isWest);
+        refinement.setPosition(newRefiId());
+        return refinement;
+    }
+
     public String reportCount() {
         return "Forged Weapons: " + refiList.size();
     }

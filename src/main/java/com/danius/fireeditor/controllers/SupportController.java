@@ -9,13 +9,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static com.danius.fireeditor.model.UnitDb.*;
 
 public class SupportController {
     private Unit unit;
-    private List<Integer> unitList;
+    private List<Integer> unitIdList;
+    private List<Unit> unitList;
     @FXML
     ComboBox<String> comboUnit, comboLevel;
     @FXML
@@ -25,7 +29,7 @@ public class SupportController {
     @FXML
     Button btnRemoveSupport, btnSetAll;
     @FXML
-    CheckBox checkMaiden;
+    CheckBox checkMaiden, checkSync;
 
     public void initialize() {
         UI.setSpinnerNumeric(spinValue, 0x16);
@@ -40,15 +44,21 @@ public class SupportController {
         });
     }
 
-    public void setUnit(Unit unit, List<Integer> unitList) {
+    public void setUnit(Unit unit, List<Unit> unitList) {
         this.unit = unit;
         this.unitList = unitList;
+        List<Integer> unitIds = new ArrayList<>();
+        for (Unit value : unitList) {
+            unitIds.add(value.getUnitId());
+        }
+        this.unitIdList = unitIds;
         checkMaiden.setSelected(unit.rawFlags.hasBattleFlag(22));
         if (unit.rawSupport.supportCount() > 0) {
             setFields();
             setupSpinners(spinValue);
             setLabelLevel();
         } else disableElements();
+        checkSync.setSelected(true);
     }
 
     public void setFields() {
@@ -85,18 +95,56 @@ public class SupportController {
             public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
                 int value = spinValue.getValue();
                 int slot = comboUnit.getSelectionModel().getSelectedIndex();
-                unit.rawSupport.setSupportValue(slot, value);
+                setSupportValue(slot, value);
                 setLabelLevel();
             }
         });
     }
 
+    private void setSupportValue(int slot, int value) {
+        //The main unit is edited
+        unit.rawSupport.setSupportValue(slot, value);
+        //The other supported units are edited
+        if (checkSync.isSelected()) {
+            int unitId = unit.getUnitId();
+            int currentSlot = comboUnit.getSelectionModel().getSelectedIndex();
+            int[] validUnits = getUnitSupportUnits(unitId);
+            //Modded units are ignored
+            if (currentSlot < validUnits.length) {
+                int idToCheck = validUnits[currentSlot];
+                for (Unit unitToEdit : unitList) {
+                    //If matched, set the same support value
+                    if (unitToEdit.getUnitId() == idToCheck) {
+                        unitToEdit.rawSupport.setSupportValueByUnit(unitId, value);
+                    }
+                }
+            }
+        }
+
+    }
+
     @FXML
     private void setUnitsToLevel() {
         int level = comboLevel.getSelectionModel().getSelectedIndex();
-        unit.rawSupport.setAllSupportsTo(level, unitList);
+        unit.rawSupport.setAllSupportsTo(level, unitIdList);
         int selectedUnit = comboUnit.getSelectionModel().getSelectedIndex();
         spinValue.getValueFactory().setValue(unit.rawSupport.supportValue(selectedUnit));
+
+        //The other units are also edited
+        if (checkSync.isSelected()) {
+            int unitId = unit.getUnitId();
+            int[] validSupports = getUnitSupportUnits(unitId);
+            for (int idToCheck : validSupports) {
+                //All the units are checked
+                for (Unit unitToEdit : unitList) {
+                    //If matched, set the same support value
+                    if (unitToEdit.getUnitId() == idToCheck) {
+                        unitToEdit.rawSupport.setSupportLevelByUnit(unitId, level);
+                    }
+                }
+            }
+        }
+
         setLabelLevel();
     }
 
@@ -117,6 +165,7 @@ public class SupportController {
     }
 
     private void disableElements() {
+        checkSync.setDisable(true);
         comboUnit.setDisable(true);
         spinValue.setDisable(true);
         btnRemoveSupport.setDisable(true);

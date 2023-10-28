@@ -11,17 +11,28 @@ public class Refinement {
     public static final int SIZE_US = 0x2C;
     public static final int SIZE_JP = 0x1C;
 
-    private final byte[] rawHeader;
+    private byte[] rawHeader;
     private byte[] rawName;
-    private final byte[] rawStats;
+    private byte[] rawStats;
 
     public Refinement(byte[] refiBytes) {
+       initialize(refiBytes);
+    }
+
+    public Refinement(boolean isWest) {
+        byte[] byteArray = new byte[0x2C];
+        initialize(byteArray);
+        changeRegion(isWest);
+    }
+
+    private void initialize(byte[] refiBytes) {
         boolean isWest = (refiBytes.length == SIZE_US);
         int nameSize = (isWest) ? CHAR_US : CHAR_JP;
         this.rawHeader = Arrays.copyOfRange(refiBytes, 0, 0x2);
         this.rawName = Arrays.copyOfRange(refiBytes, 0x2, 0x2 + (nameSize * 2));
         this.rawStats = Arrays.copyOfRange(refiBytes, 0x2 + rawName.length, refiBytes.length);
     }
+
 
     /*
     Not always starts at 0, must be synced in the UI with the forged weapon inventory

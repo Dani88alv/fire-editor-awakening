@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Stats;
@@ -189,6 +190,7 @@ public class UnitController {
 
     @FXML
     private void moveUnitToGroup() {
+        Unit unit = listViewUnit.getSelectionModel().getSelectedItem();
         int selectedUnitIndex = listViewUnit.getSelectionModel().getSelectedIndex();
         int groupTarget = comboGroupMove.getSelectionModel().getSelectedIndex();
         int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
@@ -198,36 +200,29 @@ public class UnitController {
         }
         //If it is being moved to dead units, set the dead flag
         if (groupTarget == 4 && currentGroup != 4) {
-            listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, true);
-            listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(7, true);
-            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag1(true);
-            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag2(true);
+            unit.kill();
         }
         //If it is being moved from dead units, unset the dead flag
         else if (groupTarget != 4 && currentGroup == 4) {
-            listViewUnit.getSelectionModel().getSelectedItem().rawFlags.setBattleFlag(3, false);
-            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag1(false);
-            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setDeadFlag2(false);
-            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setRetireChapter(0);
+            unit.revive();
         }
         //Regular Unit Group
         if (groupTarget <= 5) {
             //The unit is added
-            unitBlock.unitList.get(groupTarget).add(listViewUnit.getItems().get(selectedUnitIndex));
+            unitBlock.unitList.get(groupTarget).add(unit);
         }
         //Wireless Teams
         else {
-            boolean isWest = FireEditor.chapterFile.blockDu26.isWest;
-            Unit unit = listViewUnit.getItems().get(selectedUnitIndex);
+            boolean isWest = FireEditor.chapterFile.isWest;
             UnitDu unitDu = unit.toUnitDu(isWest);
             //The items are updated
-            int maxCount = FireEditor.chapterFile.blockTran.regularItemCount();
+            int maxCount = ItemDb.MOD_MAX_ID;
             for (int i = 0; i < unitDu.itemList.size(); i++) {
                 int itemId = unit.rawInventory.items.get(i).itemId();
                 //Forged item
                 if (itemId > maxCount) {
-                    itemId -= maxCount;
-                    Refinement refinement = FireEditor.chapterFile.blockRefi.refiList.get(itemId);
+                    itemId -= maxCount + 1; //Position on the refinement block
+                    Refinement refinement = FireEditor.chapterFile.blockRefi.getRefinement(itemId);
                     itemId = refinement.weaponId();
                     unitDu.itemList.get(i).setName(refinement.getName());
                     unitDu.itemList.get(i).setMight(refinement.might());
@@ -251,7 +246,7 @@ public class UnitController {
         }
         //The unit is removed from the current group
         listViewUnit.getItems().remove(selectedUnitIndex);
-        unitBlock.unitList.set(comboUnitGroup.getSelectionModel().getSelectedIndex(), listViewUnit.getItems());
+        unitBlock.unitList.set(currentGroup, listViewUnit.getItems());
         displayUnitCount();
     }
 
@@ -632,7 +627,7 @@ public class UnitController {
                 // Pass the selected value to the second view's controller
                 SupportController supportController = fxmlLoader.getController();
                 int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
-                supportController.setUnit(selectedValue, unitBlock.unitIdsInGroup(currentGroup));
+                supportController.setUnit(selectedValue, unitBlock.unitList.get(currentGroup));
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();
                 secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
@@ -707,7 +702,6 @@ public class UnitController {
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
                 ItemController itemController = fxmlLoader.getController();
-                int itemCount = FireEditor.chapterFile.blockTran.regularItemCount();
                 itemController.setUnit(selectedValue, FireEditor.convoyController.refiBlock.refiList);
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();

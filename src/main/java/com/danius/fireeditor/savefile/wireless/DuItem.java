@@ -107,4 +107,9 @@ public class DuItem {
         }
         return byteArrayOutputStream.toByteArray();
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
