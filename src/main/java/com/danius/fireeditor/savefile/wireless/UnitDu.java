@@ -1,12 +1,9 @@
 package com.danius.fireeditor.savefile.wireless;
 
-import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.RawSkill;
-import com.danius.fireeditor.util.Bitflag;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -17,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.util.Hex.*;
 
 public class UnitDu {
 
@@ -85,7 +83,7 @@ public class UnitDu {
     }
 
     public String getName() {
-        if (hasFlag(1)) return "Outrealm";
+        if (hasDuFlag(1)) return "Outrealm";
         String avatarName = rawLog.getName();
         if (!avatarName.equals("")) return avatarName;
         return getUnitName(getUnitId());
@@ -111,9 +109,9 @@ public class UnitDu {
         unit.rawFlags.setHiddenLevel(getHiddenLevel());
         unit.rawBlockEnd.setHairColor(getOffspringColor());
         //Flags
-        unit.rawFlags.setBattleFlag(27, hasFlag(1)); //Outrealm
-        unit.rawFlags.setTraitFlag(4, hasFlag(4)); //Leader
-        if (hasFlag(2) || hasFlag(3)) {
+        unit.rawFlags.setBattleFlag(27, hasDuFlag(1)); //Outrealm
+        unit.rawFlags.setTraitFlag(4, hasDuFlag(4)); //Leader
+        if (hasDuFlag(2) || hasDuFlag(3)) {
             unit.rawFlags.setBattleFlag(8, true); //Foreign / Enemy
             unit.rawFlags.setBattleFlag(29, true); //Wireless
         }
@@ -165,12 +163,13 @@ public class UnitDu {
     0x40
     0x80
      */
-    public boolean hasFlag(int slot) {
-        return Bitflag.byte1ToReversedBinaryString(rawBlock1[0x4]).charAt(slot) == '1';
+    public boolean hasDuFlag(int slot) {
+        int point = 0x4;
+        return hasBitFlag(rawBlock1[point], slot);
     }
 
-    public void setFlag(int slot, boolean set) {
-        Bitflag.setByte1Flag(rawBlock1, 0x4, slot, set);
+    public void setDuFlag(int slot, boolean set) {
+        setBitFlag(rawBlock1, 0x4, slot, set);
     }
 
     public int getLevel() {

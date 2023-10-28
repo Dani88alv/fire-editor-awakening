@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import static com.danius.fireeditor.model.ItemDb.*;
 
 public class RawInventory {
     public List<RawItem> items;
@@ -40,42 +43,41 @@ public class RawInventory {
     public void maxAmount() {
         for (RawItem item : items) {
             int itemId = item.itemId();
-            //Only vanilla and non-forged items are modified
-            if (itemId <= Constants.MAX_ITEM_COUNT) {
-                item.setUses(TranBlock.itemAmounts.get(itemId));
+            //Only regular items are modified
+            if (itemId < getItemCountVanilla()) {
+                item.setUses(getItemUses(itemId));
             }
         }
     }
 
-    public void maxAmount(List<Refinement> refiList, int maxCount) {
-        int vanillaCount = MiscDb.itemNames.size();
+    //Sets the max amount of an item, using the refinement list
+    public void maxAmount(List<Refinement> refiList) {
+        int maxVanillaId = getMaxItemId();
+        int maxModId = MOD_MAX_ID;
         for (RawItem item : items) {
             int itemId = item.itemId();
             //Modded Items
-            if (itemId >= vanillaCount && itemId < maxCount) {
+            if (itemId > maxVanillaId && itemId <= maxModId) {
             }
             //Forged Weapons
-            else if (itemId >= maxCount && itemId <= maxCount + 150) {
-                int position = itemId - maxCount;
+            else if (itemId > maxModId && itemId <= maxModId + Constants.MAX_FORGE_COUNT) {
+                int position = itemId - maxModId - 1;
                 boolean found = false;
                 for (Refinement refinement : refiList) {
                     if (refinement.position() == position) {
                         int weaponId = refinement.weaponId();
-                        item.setUses(TranBlock.itemAmounts.get(weaponId));
+                        item.setUses(getItemUses(weaponId));
                         found = true;
                     }
                 }
                 //If no valid weapon was found, it's removed to avoid problems
                 if (!found) {
-                    item.setUses(0);
-                    item.setItemId(0);
-                    item.setEquipped(false);
-                    item.setDropped(false);
+                    item.removeItem();
                 }
             }
             //Regular items
             else {
-                item.setUses(TranBlock.itemAmounts.get(itemId));
+                item.setUses(getItemUses(itemId));
             }
         }
     }

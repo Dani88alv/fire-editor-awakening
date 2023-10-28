@@ -6,9 +6,11 @@ import javafx.scene.control.Label;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Du26Block {
     public boolean isWest;
@@ -98,9 +100,14 @@ public class Du26Block {
      */
 
     public void addSpotpass() {
-        String relativePath = Constants.RES_BLOCK + "rawSpotpassShort";
-        File file = new File("src/main/resources/" + relativePath);
-        byte[] blockSpot = Hex.getFileBytes(String.valueOf(file));
+        String path = Constants.RES_BLOCK + "rawSpotpassShort";
+        byte[] blockSpot;
+        try {
+            blockSpot = Objects.requireNonNull(UnitDu.class.getResourceAsStream(path)).readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         byte[] header = Hex.toByte("AD 55 0A 19 01");
         int offset = Hex.indexOf(rawSpotPass, header, 0x0, 3);
         if (offset <= 0) return;

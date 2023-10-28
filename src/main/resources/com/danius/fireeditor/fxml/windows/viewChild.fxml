@@ -33,6 +33,7 @@
             <Label layoutX="19.0" layoutY="81.0" text="Unit" />
             <Label layoutX="167.0" layoutY="81.0" text="Asset" />
             <Label layoutX="266.0" layoutY="81.0" text="Flaw" />
+            <Label fx:id="lblSiblingName" layoutX="370.0" layoutY="174.0" text="Sibling:" />
          </children>
       </AnchorPane>
    </children>

@@ -38,6 +38,7 @@ public class UnitDb {
     }
 
     public static String getUnitName(int id) {
+        if (id == 0xFFFF || id == -1) return "None";
         int totalSize = getUnitCount();
         if (invalidUnit(id)) return "Invalid Unit #" + (id - totalSize + 1);
         return getUnit(id).getName();
@@ -57,6 +58,13 @@ public class UnitDb {
         int[] all = getUnit(id).getStatModifiers();
         System.arraycopy(all, 0, modifiers, 0, modifiers.length);
         return modifiers;
+    }
+
+    public static int getStartingClass(int id) {
+        if (invalidUnit(id)) return 0;
+        boolean isFemale = isUnitFemale(id);
+        if (!isFemale) return getUnitMaleReclasses(id)[0];
+        else return getUnitFemaleReclasses(id)[0];
     }
 
     public static int[] getUnitMaleReclasses(int id) {

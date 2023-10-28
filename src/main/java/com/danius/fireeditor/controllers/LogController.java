@@ -1,7 +1,6 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
@@ -163,7 +162,7 @@ public class LogController {
 
     private void updateBuild() {
         unit.rawLog.setHairColor(Hex.colorToHex(colorPickerHair.getValue()));
-        unit.rawLog.setToCard(checkCard.isSelected());
+        unit.rawLog.setEinherjar(checkCard.isSelected());
         unit.rawLog.setLogId(txtLogId.getText());
         unit.rawLog.setVoice(spinVoice.getValue());
         unit.rawLog.setBuild(0, spinBuild.getValue());

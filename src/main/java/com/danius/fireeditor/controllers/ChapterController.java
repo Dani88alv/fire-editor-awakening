@@ -1,12 +1,12 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.model.MiscDb;
 import com.danius.fireeditor.savefile.barrack.EvstBlock;
 import com.danius.fireeditor.savefile.map.GmapBlock;
-import com.danius.fireeditor.savefile.user.*;
+import com.danius.fireeditor.savefile.user.HeaderBlock;
+import com.danius.fireeditor.savefile.user.UserBlock;
 import com.danius.fireeditor.savefile.wireless.Du26Block;
-import com.danius.fireeditor.model.MiscDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -57,17 +57,6 @@ public class ChapterController {
                 return;
             }
         });
-    }
-
-    public void setDifficulty() {
-        //Updates the general settings in the user block and header block
-        userBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
-        headerBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
-        //Difficulty
-        userBlock.setLunaticPlus(checkLunatic.isSelected());
-        userBlock.setGameModeFlag(2, checkCasual.isSelected());
-        headerBlock.setLunaticPlus(checkLunatic.isSelected());
-        headerBlock.setGameModeFlag(2, checkCasual.isSelected());
     }
 
     public void loadBlocks() {
@@ -124,7 +113,26 @@ public class ChapterController {
                 du26Block.playerTeam.setRenown(Integer.parseInt(newValue));
             }
         });
+        checkCasual.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setGameModeFlag(2, newValue);
+            headerBlock.setGameModeFlag(2, newValue);
+        });
+        checkLunatic.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setLunaticPlus(newValue);
+            headerBlock.setLunaticPlus(newValue);
+        });
+        comboDifficulty.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setDifficulty((Integer) newValue);
+            headerBlock.setDifficulty((Integer) newValue);
+        });
+        comboDifficulty.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                userBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
+                headerBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
+            }
+        });
     }
+
     /*
     public void addDlcListeners() {
         comboChapterDlc.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {

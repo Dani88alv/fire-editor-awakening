@@ -1,5 +1,6 @@
 package com.danius.fireeditor.controllers;
 
+import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.model.MiscDb;
@@ -15,6 +16,8 @@ import javafx.scene.control.Spinner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.danius.fireeditor.model.ItemDb.*;
 
 public class ItemController {
 
@@ -38,16 +41,12 @@ public class ItemController {
         UI.setSpinnerNumeric(spinItem5, 99);
     }
 
-    public void setUnit(Unit unit, int regularItemCount, List<Refinement> refiList) {
+    public void setUnit(Unit unit, List<Refinement> refiList) {
         this.unit = unit;
         this.refiList = refiList;
-        this.maxCount = regularItemCount;
-        int count = regularItemCount + 150;
         //Item comboboxes
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (int i = 0; i < count; i++) {
-            items.add(MiscDb.itemName2(i, regularItemCount, refiList));
-        }
+        items.addAll(getItemNamesAll(refiList));
         comboItem1.setItems(items);
         comboItem2.setItems(items);
         comboItem3.setItems(items);
@@ -58,16 +57,8 @@ public class ItemController {
     }
 
     public void setMaxAmount() {
-        List<Integer> maxValues = new ArrayList<>();
-        unit.rawInventory.maxAmount(refiList, maxCount);
-        for (int i = 0; i < unit.rawInventory.items.size(); i++) {
-            maxValues.add(unit.rawInventory.items.get(i).uses());
-        }
-        spinItem1.getValueFactory().setValue(maxValues.get(0));
-        spinItem2.getValueFactory().setValue(maxValues.get(1));
-        spinItem3.getValueFactory().setValue(maxValues.get(2));
-        spinItem4.getValueFactory().setValue(maxValues.get(3));
-        spinItem5.getValueFactory().setValue(maxValues.get(4));
+        unit.rawInventory.maxAmount(refiList);
+        setValues();
     }
 
     public void setValues() {

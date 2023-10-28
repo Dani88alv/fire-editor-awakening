@@ -45,10 +45,33 @@ public class Unit {
         this.rawBlockEnd = new RawBlockEnd();
     }
 
+    public Unit(int id) {
+        this();
+        setUnitId(id);
+        rawSupport.setUnitId(id);
+        rawBlock1.setUnitClass(getStartingClass(id));
+        //TODO Stats, weapon exp, level
+        //Skills
+        List<Integer> skills = getUnitSkills(id);
+        for (int i = 0; i < skills.size(); i++) {
+            rawBlock2.setCurrentSkill(skills.get(i), i);
+            rawSkill.setLearnedSkill(true, skills.get(i));
+        }
+        //TODO extra block
+    }
+
     public Unit(byte[] unitBytes) {
         splitBlocks(unitBytes);
         checkExtraBlock(unitBytes);
         //System.out.println(rawFlags.report());
+    }
+
+    public int getUnitId() {
+        return rawBlock1.unitId();
+    }
+
+    public void setUnitId(int value) {
+        rawBlock1.setUnitId(value);
     }
 
     /*
@@ -148,7 +171,7 @@ public class Unit {
         int unitId = rawBlock1.unitId();
         int max = getUnitCount();
         if (unitId >= max) return "Invalid Unit #" + (unitId - max + 1);
-        if (rawFlags.battleFlagList().contains(27)) return "Outrealm";
+        if (rawFlags.hasBattleFlag(27)) return "Outrealm";
         if (rawLog != null) return rawLog.getName();
         return MiscDb.unitName(unitId);
     }
@@ -241,16 +264,15 @@ public class Unit {
         for (int i = 0; i < 5; i++) unitDu.setActiveSkills(rawBlock2.getCurrentSkills()[i], i);
         for (int i = 0; i < 5; i++) unitDu.setWeaponExp(rawBlock2.getWeaponExp()[i], i);
         //Flags
-        unitDu.setFlag(4, rawFlags.traitFlagList().contains(4)); //Leader Flag
-        List<Integer> battleFlags = rawFlags.battleFlagList();
-        if (battleFlags.contains(27)) {
-            unitDu.setFlag(1, true); //Outrealm Flag
-            unitDu.setFlag(0, true); //Enemy Generic Flag
+        unitDu.setDuFlag(4, rawFlags.hasTraitFlag(4)); //Leader Flag
+        if (rawFlags.hasBattleFlag(27)) {
+            unitDu.setDuFlag(1, true); //Outrealm Flag
+            unitDu.setDuFlag(0, true); //Enemy Generic Flag
         }
-        if (battleFlags.contains(8) || battleFlags.contains(29)) {
+        if (rawFlags.hasBattleFlag(8) || rawFlags.hasBattleFlag(29)) {
             if (rawLog != null) {
-                if (rawLog.hasEinherjarId()) unitDu.setFlag(2, true); //SpotPass Flag
-                else unitDu.setFlag(3, true); //StreetPass Flag
+                if (rawLog.hasEinherjarId()) unitDu.setDuFlag(2, true); //SpotPass Flag
+                else unitDu.setDuFlag(3, true); //StreetPass Flag
             }
         }
         //Skills

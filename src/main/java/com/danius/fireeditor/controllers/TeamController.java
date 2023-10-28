@@ -92,7 +92,7 @@ public class TeamController {
             int finalI = i;
             checkList[i].selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (unitListview.getSelectionModel().getSelectedItem() != null) {
-                    unitListview.getSelectionModel().getSelectedItem().setFlag(finalI, checkList[finalI].isSelected());
+                    unitListview.getSelectionModel().getSelectedItem().setDuFlag(finalI, checkList[finalI].isSelected());
                     //Outrealm Flag Portrait Change
                     if (finalI == 1) {
                         setPortrait();
@@ -200,11 +200,11 @@ public class TeamController {
 
     public void loadUnitValues() {
         UnitDu unitDu = unitListview.getSelectionModel().getSelectedItem();
-        check0.setSelected(unitDu.hasFlag(0));
-        check1.setSelected(unitDu.hasFlag(1));
-        check2.setSelected(unitDu.hasFlag(2));
-        check3.setSelected(unitDu.hasFlag(3));
-        check4.setSelected(unitDu.hasFlag(4));
+        check0.setSelected(unitDu.hasDuFlag(0));
+        check1.setSelected(unitDu.hasDuFlag(1));
+        check2.setSelected(unitDu.hasDuFlag(2));
+        check3.setSelected(unitDu.hasDuFlag(3));
+        check4.setSelected(unitDu.hasDuFlag(4));
         spinSprite.getValueFactory().setValue(unitDu.getSprite());
     }
 

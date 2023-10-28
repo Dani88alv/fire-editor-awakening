@@ -3,6 +3,7 @@ package com.danius.fireeditor.savefile.units.mainblock;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,7 +13,7 @@ public class RawBlockEnd {
 
     private byte[] blockBytes;
 
-    public RawBlockEnd(){
+    public RawBlockEnd() {
         String path = Constants.RES_BLOCK + "rawUnitEnd";
         try {
             this.blockBytes = Objects.requireNonNull(RawBlockEnd.class.getResourceAsStream(path)).readAllBytes();
@@ -133,7 +134,7 @@ public class RawBlockEnd {
     0x17 AI_MV_X017Enemy (Tiki Paralogue) || Param Unit ID
      */
 
-    public String endSectionString(){
+    public String endSectionString() {
         int point = 0x4;
         int pontEnd = 0xB;
         byte[] array = Arrays.copyOfRange(blockBytes, point, pontEnd);
@@ -206,6 +207,16 @@ public class RawBlockEnd {
         int hairColor = ((hairColorBytes[0] & 0xFF) << 16) | ((hairColorBytes[1] & 0xFF) << 8) | (hairColorBytes[2] & 0xFF);
         // Convert the integer to a hexadecimal string with leading zeros
         return String.format("%06X", hairColor);
+    }
+
+    public Color getHairColorFx() {
+        int pointer = 0x39;
+        return Hex.getColor(blockBytes, pointer);
+    }
+
+    public void setColorFx(Color color) {
+        int pointer = 0x39;
+        Hex.setColor(blockBytes, pointer, color);
     }
 
 

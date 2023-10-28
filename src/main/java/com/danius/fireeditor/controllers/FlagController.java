@@ -28,24 +28,20 @@ public class FlagController {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
-        String traitFlagString = unit.rawFlags.traitFlagString();
         for (int i = 0; i < traitChecks.length; i++) {
-            traitChecks[i].setSelected(traitFlagString.charAt(i) == '1');
+            traitChecks[i].setSelected(unit.rawFlags.hasTraitFlag(i));
         }
-        String battleFlagString = unit.rawFlags.battleFlagString();
         for (int i = 0; i < battleChecks.length; i++) {
-            battleChecks[i].setSelected(battleFlagString.charAt(i) == '1');
+            battleChecks[i].setSelected(unit.rawFlags.hasBattleFlag(i));
         }
-        String tonicString = unit.rawFlags.tonicFlagString();
         for (int i = 0; i < tonicChecks.length; i++) {
-            tonicChecks[i].setSelected(tonicString.charAt(i) == '1');
+            tonicChecks[i].setSelected(unit.rawFlags.hasTonicFlag(i));
         }
-        String barrackFlagString = unit.rawFlags.barrackFlagString();
         for (int i = 0; i < barrackChecks.length; i++) {
-            barrackChecks[i].setSelected(barrackFlagString.charAt(i) == '1');
+            barrackChecks[i].setSelected(unit.rawFlags.hasBarrackFlag(i));
         }
         for (int i = 0; i < 11; i++) {
-            skillChecks[i].setSelected(unit.rawFlags.skillBuffFlag(i));
+            skillChecks[i].setSelected(unit.rawFlags.hasSkillFlag(i));
         }
     }
 

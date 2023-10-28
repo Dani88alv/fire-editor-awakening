@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.UnitDb;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 import com.danius.fireeditor.model.MiscDb;
@@ -23,7 +24,7 @@ public class ChildController {
     @FXML
     TextField txtModif;
     @FXML
-    Label lblFather, lblMother, lblSibling;
+    Label lblFather, lblMother, lblSibling, lblSiblingName;
 
     public void initialize() {
         UI.setSpinnerNumeric(spinFather, 0x10);
@@ -49,8 +50,9 @@ public class ChildController {
         disableFields(true);
     }
 
-    public void setUnit(Unit unit) {
+    public void setUnit(Unit unit, int sibling) {
         this.unit = unit;
+        lblSiblingName.setText("Sibling: " + UnitDb.getUnitName(sibling));
         displayModifiers();
         if (this.unit.rawChild != null) {
             disableFields(false);

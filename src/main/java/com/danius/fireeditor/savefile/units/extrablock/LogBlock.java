@@ -2,7 +2,6 @@ package com.danius.fireeditor.savefile.units.extrablock;
 
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.util.Bitflag;
 import com.danius.fireeditor.model.MiscDb;
 import com.danius.fireeditor.util.Hex;
 
@@ -11,6 +10,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
+
+import static com.danius.fireeditor.util.Hex.*;
 
 public class LogBlock {
     public static final int MESSAGE_US = 0x42;
@@ -365,16 +366,14 @@ public class LogBlock {
     0x1D
      */
     public boolean isEinherjar() {
-        return (mainBlock[0x1D] == 0x2);
+        return hasBitFlag(mainBlock[0x1D], 1);
     }
 
     /*
     Sets to Einherjar or MU a unit
      */
-    public void setToCard(boolean isCard) {
-        int point = 0x1D;
-        if (isCard) mainBlock[point] = (byte) (0x2) & 0xFF;
-        else mainBlock[point] = (byte) (0x0) & 0xFF;
+    public void setEinherjar(boolean set) {
+        setBitFlag(mainBlock, 0x1D, 1, set);
     }
 
 
@@ -451,12 +450,12 @@ public class LogBlock {
      */
     public boolean gameModeFlag(int slot) {
         int point = 0x61;
-        return Bitflag.byte1ToReversedBinaryString(mainBlock[point]).charAt(slot) == '1';
+        return hasBitFlag(mainBlock[point], slot);
     }
 
     public void setGameModeFlag(int slot, boolean set) {
         int point = 0x61;
-        Bitflag.setByte1Flag(mainBlock, point, slot, set);
+        setBitFlag(mainBlock, point, slot, set);
     }
 
     /*

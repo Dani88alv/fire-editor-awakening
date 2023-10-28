@@ -1,10 +1,11 @@
 package com.danius.fireeditor.savefile.units;
 
+import com.danius.fireeditor.model.UnitDb;
+import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class UnitBlock {
     /*
@@ -196,6 +197,72 @@ public class UnitBlock {
             }
         }
         this.isWest = isWest;
+    }
+
+    public List<Integer> unitIdsInGroup(int groupSlot) {
+        List<Integer> usedIds = new ArrayList<>();
+        for (int i = 0; i < unitList.get(groupSlot).size(); i++) {
+            usedIds.add(unitList.get(groupSlot).get(i).rawBlock1.unitId());
+        }
+        Set<Integer> set = new LinkedHashSet<>(usedIds);
+        return new ArrayList<>(set);
+    }
+
+    public List<Unit> unitsInGroup(int groupSlot) {
+        return new ArrayList<>(unitList.get(groupSlot));
+    }
+
+    public List<Integer> allUnitsIds() {
+        List<Integer> usedIds = new ArrayList<>();
+        int[] groupToCheck = new int[]{0, 3, 4}; //Deployed, Main, Dead
+        for (int group : groupToCheck) {
+            List<Integer> units = unitIdsInGroup(group);
+            usedIds.addAll(units);
+        }
+        Set<Integer> set = new LinkedHashSet<>(usedIds);
+        return new ArrayList<>(set);
+    }
+
+    public List<Unit> allUnits() {
+        List<Unit> units = new ArrayList<>();
+        int[] groupToCheck = new int[]{0, 3, 4}; //Deployed, Main, Dead
+        for (int group : groupToCheck) {
+            List<Unit> unitsGroup = unitsInGroup(group);
+            units.addAll(unitsGroup);
+        }
+        return units;
+    }
+
+    public int findSibling(Unit unit) {
+        if (unit.rawChild == null) return -1;
+        List<Unit> allUnits = allUnits();
+        // Only the units with child data are checked
+        List<Unit> children = new ArrayList<>();
+        for (Unit unitToCheck : allUnits) {
+            if (unitToCheck.rawChild != null) children.add(unitToCheck);
+        }
+        // Checks all the units to compare to the given unit
+        for (Unit unitToCheck : children) {
+            //Clone units are excluded
+            if (isClone(unit, unitToCheck)) continue;
+            // Checks all parents, including grandparents
+            for (int i = 0; i < 6; i++) {
+                int parent1 = unit.rawChild.parentId(i);
+                int parent2 = unitToCheck.rawChild.parentId(i);
+                // If they are the same, add it and break out of the second and third loops
+                if (parent1 == parent2 && parent1 != 0xFFFF) {
+                    return unitToCheck.rawBlock1.unitId();
+                }
+            }
+        }
+        return -1;
+    }
+
+    //Checks if a unit has a support clone
+    public boolean isClone(Unit unit1, Unit unit2) {
+        byte[] support1 = unit1.rawSupport.bytes();
+        byte[] support2 = unit2.rawSupport.bytes();
+        return unit1.getUnitId() == unit2.getUnitId() && Arrays.equals(support1, support2);
     }
 
 

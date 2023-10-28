@@ -1,13 +1,11 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.util.Bitflag;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
+
+import static com.danius.fireeditor.util.Hex.*;
 
 public class RawFlags {
 
@@ -17,7 +15,7 @@ public class RawFlags {
 
     public final byte[] bytes;
 
-    public RawFlags(){
+    public RawFlags() {
         String path = Constants.RES_BLOCK + "rawUnitFlags";
         try {
             this.bytes = Objects.requireNonNull(RawFlags.class.getResourceAsStream(path)).readAllBytes();
@@ -32,12 +30,12 @@ public class RawFlags {
 
     //0x0: Internal level?
 
-    public int hiddenLevel(){
+    public int hiddenLevel() {
         int point = 0x0;
         return bytes[point] & 0xFF;
     }
 
-    public void setHiddenLevel(int value){
+    public void setHiddenLevel(int value) {
         int point = 0x0;
         bytes[point] = (byte) (value & 0xFF);
     }
@@ -113,47 +111,30 @@ public class RawFlags {
     0x40: ?
     0x80: ?
      */
-    public String traitFlagString() {
+
+    public boolean hasTraitFlag(int slot) {
         int point = 0x7;
-        byte[] array = Arrays.copyOfRange(bytes, point, point + 4);
-        return Bitflag.bytesToReversedBinaryString(array);
+        return hasBitFlag(bytes, point, slot);
+    }
+
+    public void setTraitFlag(int bit, boolean set) {
+        int point = 0x7;
+        setBitFlag(bytes, point, bit, set);
     }
 
     //0xC-0xF: ?
 
-    public String battleFlagString() {
+    //They are like trait flags, but they seem to be used in scripts instead of the ROMfs
+    public boolean hasBattleFlag(int slot) {
         int point = 0xF;
-        byte[] array = Arrays.copyOfRange(bytes, point, point + 4);
-        return Bitflag.bytesToReversedBinaryString(array);
+        return hasBitFlag(bytes, point, slot);
     }
 
-    public void setTraitFlag(int flag, boolean set) {
-        int point = 0x7;
-        //The flag is set
-        char[] flagsChar = traitFlagString().toCharArray();
-        if (set) flagsChar[flag] = '1';
-        else flagsChar[flag] = '0';
-        //The string is converted back to byte array
-        String flagString = new String(flagsChar);
-        byte[] flagsArray = Bitflag.binaryStringToByteArray(flagString);
-        for (int i = 0; i < flagsArray.length; i++) {
-            bytes[point + i] = flagsArray[i];
-        }
+    public void setBattleFlag(int bit, boolean set) {
+        int point = 0xF; // Offset for battle flags
+        setBitFlag(bytes, point, bit, set);
     }
 
-    public void setBattleFlag(int flag, boolean set) {
-        int point = 0xF;
-        //The flag is set
-        char[] flagsChar = battleFlagString().toCharArray();
-        if (set) flagsChar[flag] = '1';
-        else flagsChar[flag] = '0';
-        //The string is converted back to byte array
-        String flagString = new String(flagsChar);
-        byte[] flagsArray = Bitflag.binaryStringToByteArray(flagString);
-        for (int i = 0; i < flagsArray.length; i++) {
-            bytes[point + i] = flagsArray[i];
-        }
-    }
 
     /*
     0x13-0x18: ??
@@ -185,50 +166,50 @@ public class RawFlags {
         bytes[0x1A] = (byte) (value);
     }
 
-    //Stat boolean flags, excluding the tonics (slots 0-10)
-    public boolean skillBuffFlag(int slot) {
+    //Skills buffs flags
+    public boolean hasSkillFlag(int slot) {
         int point = 0x1C;
         int value = bytes[point + slot] & 0xFF;
         return value > 0;
     }
 
-    public void setSkillBuffFlag(int slot, boolean isTrue) {
+    public void setSkillBuffFlag(int slot, boolean set) {
         int point = 0x1C;
-        if (isTrue) bytes[point + slot] = 0x1;
-        else bytes[point + slot] = 0x0;
+        bytes[point + slot] = (byte) (set ? 0x1 : 0x0);
     }
 
     //Tonic Bitflags
-    public String tonicFlagString() {
+    public boolean hasTonicFlag(int slot) {
         int point = 0x27;
-        return Bitflag.byte1ToReversedBinaryString(bytes[point]);
+        return hasBitFlag(bytes[point], slot);
     }
 
     public void setTonicFlag(int flag, boolean set) {
         int point = 0x27;
-        Bitflag.setByte1Flag(bytes, point, flag, set);
+        setBitFlag(bytes, point, flag, set);
     }
 
     //Barrack Buffs Bitflags
-    public String barrackFlagString() {
+    public boolean hasBarrackFlag(int slot) {
         int point = 0x28;
-        return Bitflag.byte1ToReversedBinaryString(bytes[point]);
+        return hasBitFlag(bytes[point], slot);
     }
 
     public void setBarrackFlag(int flag, boolean set) {
         int point = 0x28;
-        Bitflag.setByte1Flag(bytes, point, flag, set);
+        setBitFlag(bytes, point, flag, set);
     }
 
-    //Easier methods
-    public void setAllTonicFlags() {
-        int point = 0x27;
-        bytes[point] = (byte) (0xFF);
+    //Batch
+    public void setAllTonicFlags(boolean set) {
+        for (int i = 0; i < 8; i++) setTonicFlag(i, set);
     }
 
-    public void setAllOtherBuffs() {
-        //Barrack Bitflags
-        bytes[0x28] = (byte) (0xFF);
+    public void setAllBarrackFlags(boolean set) {
+        for (int i = 1; i < 8; i++) setBarrackFlag(i, set);
+    }
+
+    public void setAllOtherBuffs(boolean set) {
         //Skill Flags
         for (int i = 0x1C; i <= 0x26; i++) {
             bytes[i] = (byte) (0x1);
@@ -237,31 +218,8 @@ public class RawFlags {
         setResBuff(5);
     }
 
-    public List<Integer> traitFlagList() {
-        List<Integer> flags = new ArrayList<>();
-        String flagString = traitFlagString();
-        for (int i = 0; i < flagString.length(); i++) {
-            if (flagString.charAt(i) == '1') flags.add(i);
-        }
-        return flags;
-    }
-
-    public List<Integer> battleFlagList() {
-        List<Integer> flags = new ArrayList<>();
-        String flagString = battleFlagString();
-        for (int i = 0; i < flagString.length(); i++) {
-            if (flagString.charAt(i) == '1') flags.add(i);
-        }
-        return flags;
-    }
-
-
     public String report() {
-        String report = "";
-        report += "Flags1: " + traitFlagString() + "\n";
-        report += "Flags2: " + battleFlagString();
-        //report += "Army: " + army();
-        return report;
+        return "";
     }
 
     public byte[] bytes() {

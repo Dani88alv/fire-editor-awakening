@@ -9,10 +9,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.List;
+
 import static com.danius.fireeditor.model.UnitDb.*;
 
 public class SupportController {
     private Unit unit;
+    private List<Integer> unitList;
     @FXML
     ComboBox<String> comboUnit, comboLevel;
     @FXML
@@ -37,9 +40,10 @@ public class SupportController {
         });
     }
 
-    public void setUnit(Unit unit) {
+    public void setUnit(Unit unit, List<Integer> unitList) {
         this.unit = unit;
-        checkMaiden.setSelected(unit.rawFlags.battleFlagString().charAt(22) == '1');
+        this.unitList = unitList;
+        checkMaiden.setSelected(unit.rawFlags.hasBattleFlag(22));
         if (unit.rawSupport.supportCount() > 0) {
             setFields();
             setupSpinners(spinValue);
@@ -90,7 +94,7 @@ public class SupportController {
     @FXML
     private void setUnitsToLevel() {
         int level = comboLevel.getSelectionModel().getSelectedIndex();
-        unit.rawSupport.setAllSupportsTo(level);
+        unit.rawSupport.setAllSupportsTo(level, unitList);
         int selectedUnit = comboUnit.getSelectionModel().getSelectedIndex();
         spinValue.getValueFactory().setValue(unit.rawSupport.supportValue(selectedUnit));
         setLabelLevel();

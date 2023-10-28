@@ -1,11 +1,12 @@
 package com.danius.fireeditor.savefile.user;
 
-import com.danius.fireeditor.util.Bitflag;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+
+import static com.danius.fireeditor.util.Hex.*;
 
 public class HeaderBlock {
     /*
@@ -35,22 +36,22 @@ public class HeaderBlock {
 
     public boolean gameModeFlag(int slot) {
         int point = 0x8;
-        return Bitflag.hasFlag1(rawBlock1[point], slot);
+        return hasBitFlag(rawBlock1[point], slot);
     }
 
     public void setGameModeFlag(int slot, boolean set) {
         int point = 0x8;
-        Bitflag.setByte1Flag(rawBlock1, point, slot, set);
+        setBitFlag(rawBlock1, point, slot, set);
     }
 
     public boolean isLunaticPlus() {
         int point = 0x9;
-        return Bitflag.hasFlag1(rawBlock1[point], 0);
+        return hasBitFlag(rawBlock1[point], 0);
     }
 
     public void setLunaticPlus(boolean set) {
         int point = 0x9;
-        Bitflag.setByte1Flag(rawBlock1, point, 0, set);
+        setBitFlag(rawBlock1, point, 0, set);
     }
 
     public int difficulty() {

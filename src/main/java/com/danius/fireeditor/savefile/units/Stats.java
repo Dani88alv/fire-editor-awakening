@@ -105,16 +105,16 @@ public class Stats {
             for (int i = 1; i < buffs.length; i++) buffs[i] += 2;
         }
         //Tonic flags
-        String tonics = unit.rawFlags.tonicFlagString();
-        for (int i = 0; i < tonics.length(); i++) {
-            if (tonics.charAt(i) == '1') {
+        for (int i = 0; i < 8; i++) {
+            if (unit.rawFlags.hasTonicFlag(i)) {
                 if (i == 0) buffs[i] += 5;
                 else buffs[i] += 2;
             }
         }
-        //Unused Tonic flags
-        String extraFlags = unit.rawFlags.barrackFlagString();
-        for (int i = 1; i < extraFlags.length(); i++) if (extraFlags.charAt(i) == '1') buffs[i] += 4;
+        //Barrack flags
+        for (int i = 1; i < 8; i++) {
+            if (unit.rawFlags.hasBarrackFlag(i)) buffs[i] += 4;
+        }
 
         return buffs;
     }

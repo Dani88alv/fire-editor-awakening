@@ -39,7 +39,7 @@ public class Portrait {
         Image[] sprites = new Image[3];
         try {
             //Outrealm Flag
-            if (unit.rawFlags.battleFlagList().contains(27)) {
+            if (unit.rawFlags.hasBattleFlag(27)) {
                 sprites[0] = setImageMonster(unit);
             }
             //Logbook portraits

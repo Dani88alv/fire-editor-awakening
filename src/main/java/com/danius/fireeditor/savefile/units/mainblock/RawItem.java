@@ -1,9 +1,11 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.model.MiscDb;
 
 import java.io.IOException;
+
+import static com.danius.fireeditor.model.ItemDb.*;
+import static com.danius.fireeditor.util.Hex.*;
 
 public class RawItem {
 
@@ -34,35 +36,36 @@ public class RawItem {
     }
 
     public boolean equipped() {
-        String binaryString = String.format("%8s", Integer.toBinaryString(bytes[0x4] & 0xFF)).replace(' ', '0');
-        return (binaryString.charAt(3)) == '1';
+        return hasItemFlag(4);
     }
 
     public boolean dropped() {
-        String binaryString = String.format("%8s", Integer.toBinaryString(bytes[0x4] & 0xFF)).replace(' ', '0');
-        return (binaryString.charAt(2)) == '1';
+        return hasItemFlag(5);
     }
 
     //Flag 0x10 (fourth) is equipped
-    public void setEquipped(boolean equip) {
-        char value = (equip) ? '1' : '0';
-        String binaryString = String.format("%8s", Integer.toBinaryString(bytes[0x4] & 0xFF)).replace(' ', '0');
-        char[] charArray = binaryString.toCharArray();
-        charArray[0x3] = value;
-        String modifiedString = new String(charArray);
-        byte convertedByte = (byte) Integer.parseInt(modifiedString, 2);
-        bytes[0x4] = convertedByte;
+    public void setEquipped(boolean set) {
+        setItemFlag(4, set);
     }
 
     //Flag 0x20 (fifth) is equipped
-    public void setDropped(boolean dropped) {
-        char value = (dropped) ? '1' : '0';
-        String binaryString = String.format("%8s", Integer.toBinaryString(bytes[0x4] & 0xFF)).replace(' ', '0');
-        char[] charArray = binaryString.toCharArray();
-        charArray[0x2] = value;
-        String modifiedString = new String(charArray);
-        byte convertedByte = (byte) Integer.parseInt(modifiedString, 2);
-        bytes[0x4] = convertedByte;
+    public void setDropped(boolean set) {
+        setItemFlag(5, set);
+    }
+
+    public boolean hasItemFlag(int slot) {
+        return hasBitFlag(bytes[0x4], slot);
+    }
+
+    public void setItemFlag(int slot, boolean set) {
+        setBitFlag(bytes, 0x4, slot, set);
+    }
+
+    public void removeItem() {
+        setItemId(0);
+        setUses(0);
+        setEquipped(false);
+        setDropped(false);
     }
 
     public byte[] bytes() throws IOException {
@@ -70,12 +73,12 @@ public class RawItem {
     }
 
     public String report() {
-        return MiscDb.itemName(itemId()) + " (" + uses() + ")";
+        return getItemName(itemId()) + " (" + uses() + ")";
     }
 
     @Override
     public String toString() {
-        return MiscDb.itemName(itemId());
+        return getItemName(itemId());
     }
 
     public int length() {

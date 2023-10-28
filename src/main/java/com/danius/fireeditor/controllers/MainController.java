@@ -100,7 +100,7 @@ public class MainController {
     public void exportDecomp() throws IOException {
         if (FireEditor.chapterFile == null) return;
         //The data is compiled
-        byte[] data = compileBlocks(true);
+        byte[] data = chapterBytes(true);
         //File chooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(path));
@@ -117,7 +117,7 @@ public class MainController {
     public void exportComp() throws IOException {
         if (FireEditor.chapterFile == null) return;
         //The data is compiled
-        byte[] data = compileBlocks(false);
+        byte[] data = chapterBytes(false);
         //File chooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(path));
@@ -183,12 +183,7 @@ public class MainController {
         }
     }
 
-    public byte[] compileBlocks(boolean decomp) {
-        //The refinement uses are updated
-        //FireEditor.chapterFile.blockTran.setItemAmountFromList(FireEditor.convoyController.getItemUses());
-        FireEditor.convoyController.loseSpinnerFocus();
-        //The difficulty settings are updated
-        FireEditor.chapterController.setDifficulty();
+    public byte[] chapterBytes(boolean decomp) {
         //The data is compiled
         byte[] data;
         if (decomp) data = FireEditor.chapterFile.getBytes();

@@ -207,13 +207,14 @@ public class SkillLogic {
         int flag = 16;
         //Hardcoded Flag
         if (unitHasFlag(unitId, flag)) return true;
-        //Save editing flag
-        if (unit.rawFlags.traitFlagList().contains(flag)) return true;
+        //Trait flag
+        if (unit.rawFlags.hasTraitFlag(flag)) return true;
         //Class
         if (unit.rawBlock1.unitClass() == 68) return true;
         //Logbook Data
         if (unit.rawLog != null) {
-            return unit.rawLog.getProfileCard()[0] == 68;
+            int logClass = unit.rawLog.getProfileCard()[0];
+            return logClass == 68;
             //if (unit.rawLog.hasEinherjarId() && unit.rawLog.getLogIdLastByte() == 4) return true;
         }
         return false;
@@ -224,8 +225,8 @@ public class SkillLogic {
         int flag = 17;
         //Hardcoded Flag
         if (unitHasFlag(unitId, flag)) return true;
-        //Save editing flag
-        if (unit.rawFlags.traitFlagList().contains(flag)) return true;
+        //Trait flag
+        if (unit.rawFlags.hasTraitFlag(flag)) return true;
         //Class
         if (unit.rawBlock1.unitClass() == 69 || unit.rawBlock1.unitClass() == 70) return true;
         else return unit.rawLog != null &&

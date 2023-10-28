@@ -53,7 +53,7 @@ public class OtherController {
         spinVictory.getValueFactory().setValue(unit.rawBlockEnd.victoryCount());
         spinResBuff.getValueFactory().setValue(unit.rawFlags.resBuff());
         spinHiddenLevel.getValueFactory().setValue(unit.rawFlags.hiddenLevel());
-        checkRetire.setSelected(unit.rawFlags.battleFlagString().charAt(3) == '1');
+        checkRetire.setSelected(unit.rawFlags.hasBattleFlag(3));
         checkDead1.setSelected(unit.rawBlockEnd.deadFlag1());
         checkDead2.setSelected(unit.rawBlockEnd.deadFlag2());
         RawBlock2 rawBlock2 = unit.rawBlock2;
@@ -105,7 +105,7 @@ public class OtherController {
         UI.setSpinnerNumeric(spinHiddenLevel, 255);
         //Combobox
         int maxArmy = FireEditor.chapterFile.MAX_ID_ARMY;
-        ObservableList<String> armies = FXCollections.observableArrayList(MiscDb.getItemNames(maxArmy));
+        ObservableList<String> armies = FXCollections.observableArrayList(MiscDb.getArmyNames(maxArmy));
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);
 

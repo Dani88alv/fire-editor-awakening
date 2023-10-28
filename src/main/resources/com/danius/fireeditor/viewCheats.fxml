@@ -17,8 +17,7 @@
          <Button layoutX="23.0" layoutY="153.0" mnemonicParsing="false" onAction="#setSkillsLegal" prefHeight="30.0" prefWidth="165.0" text="Learn All Legal Skills" />
          <Button layoutX="23.0" layoutY="271.0" mnemonicParsing="false" onAction="#setMaxStats" prefHeight="30.0" prefWidth="165.0" text="Max Unit Stats" />
          <Button layoutX="458.0" layoutY="47.0" mnemonicParsing="false" onAction="#maxConvoy" prefHeight="30.0" prefWidth="165.0" text="Full Convoy" />
-         <Button layoutX="23.0" layoutY="231.0" mnemonicParsing="false" onAction="#setMoveTwo" prefHeight="30.0" prefWidth="165.0" text="Set Extra Movement to 2" />
-         <Button layoutX="200.0" layoutY="231.0" mnemonicParsing="false" onAction="#setMoveHundred" prefHeight="30.0" prefWidth="165.0" text="Set Extra Movement to 100" />
+         <Button layoutX="23.0" layoutY="231.0" mnemonicParsing="false" onAction="#setMoveTwo" prefHeight="30.0" prefWidth="165.0" text="Give Boots" />
          <Button layoutX="200.0" layoutY="153.0" mnemonicParsing="false" onAction="#setMaxBattles" prefHeight="30.0" prefWidth="165.0" text="9999 Victories and Battles" />
          <Button layoutX="458.0" layoutY="86.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Replay All Chapters" />
          <Button layoutX="200.0" layoutY="271.0" mnemonicParsing="false" onAction="#setBuffs" prefHeight="30.0" prefWidth="165.0" text="All Temporal Stat Buffs" />

@@ -13,47 +13,22 @@ import java.util.ArrayList;
 
 
 public class Hex {
-    //Updates fileBytes with the giving value
 
-    public static byte[] getFileBytes(String testPath) {
-        byte[] fileBytes = new byte[0];
-        try {
-            fileBytes = Files.readAllBytes(Paths.get(testPath));
-        } catch (IOException e) {
-            System.out.println("An error occurred while reading the file: " + e.getMessage());
-        }
-        return fileBytes;
+    public static int getByte2(byte[] byteArray, int offset) {
+        // Retrieve the two bytes starting at the offset position
+        byte b1 = byteArray[offset];
+        byte b2 = byteArray[offset + 1];
+        // Combine the two bytes into an int value in little-endian order
+        return ((b2 & 0xFF) << 8) | (b1 & 0xFF);
     }
 
-
-    public static void setByte1(byte[] fileBytes, int offset, int value) {
-        if (value > 255) {
-            value = 255;
-        } else if (value < 0) {
-            value = 0;
-        }
-        fileBytes[offset] = (byte) value;
-    }
-
-    public static void setByte4(byte[] fileBytes, int offset, int value) {
-        ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN);
-        buffer.putInt(value);
-        byte[] valueBytes = buffer.array();
-        System.arraycopy(valueBytes, 0, fileBytes, offset, valueBytes.length);
-    }
-
-
-    //Updates fileBytes with the giving 4-bytes value
-    public static void setByte4Reverse(byte[] fileBytes, int offset, int value) {
-        byte[] valueBytes = ByteBuffer.allocate(4).putInt(value).array();
-        for (int i = 0; i < valueBytes.length / 2; i++) {
-            byte temp = valueBytes[i];
-            valueBytes[i] = valueBytes[valueBytes.length - i - 1];
-            valueBytes[valueBytes.length - i - 1] = temp;
-        }
-        for (int i = 0; i < valueBytes.length; i++) {
-            fileBytes[offset + i] = valueBytes[i];
-        }
+    public static void setByte2(byte[] byteArray, int offset, int value) {
+        // Convert the int value to two bytes in little-endian order
+        byte b1 = (byte) (value & 0xFF);
+        byte b2 = (byte) ((value >> 8) & 0xFF);
+        // Set the two bytes starting at the offset position
+        byteArray[offset] = b1;
+        byteArray[offset + 1] = b2;
     }
 
     public static int getByte4(byte[] byteArray, int offset) {
@@ -67,6 +42,12 @@ public class Hex {
         return value;
     }
 
+    public static void setByte4(byte[] fileBytes, int offset, int value) {
+        ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN);
+        buffer.putInt(value);
+        byte[] valueBytes = buffer.array();
+        System.arraycopy(valueBytes, 0, fileBytes, offset, valueBytes.length);
+    }
 
     public static byte[] getByte4Array(byte[] source, int offset) {
         byte[] result = new byte[4];
@@ -74,24 +55,61 @@ public class Hex {
         return result;
     }
 
-    public static int getByte2(byte[] byteArray, int offset) {
-        // Retrieve the two bytes starting at the offset position
-        byte b1 = byteArray[offset];
-        byte b2 = byteArray[offset + 1];
+    public static void setColor(byte[] byteArray, int offset, Color color) {
+        if (byteArray == null || offset < 0 || offset + 4 > byteArray.length) {
+            throw new IllegalArgumentException("Invalid arguments for setColor method.");
+        }
 
-        // Combine the two bytes into an int value in little-endian order
+        int red = (int) (color.getRed() * 255);
+        int green = (int) (color.getGreen() * 255);
+        int blue = (int) (color.getBlue() * 255);
+        int opacity = (int) (color.getOpacity() * 255);
 
-        return ((b2 & 0xFF) << 8) | (b1 & 0xFF);
+        byteArray[offset] = (byte) red;
+        byteArray[offset + 1] = (byte) green;
+        byteArray[offset + 2] = (byte) blue;
+        byteArray[offset + 3] = (byte) opacity;
     }
 
-    public static void setByte2(byte[] byteArray, int offset, int value) {
-        // Convert the int value to two bytes in little-endian order
-        byte b1 = (byte) (value & 0xFF);
-        byte b2 = (byte) ((value >> 8) & 0xFF);
 
-        // Set the two bytes starting at the offset position
-        byteArray[offset] = b1;
-        byteArray[offset + 1] = b2;
+    public static Color getColor(byte[] byteArray, int offset) {
+        double red = (byteArray[offset] & 0xFF) / 255.0;
+        double blue = (byteArray[offset + 1] & 0xFF) / 255.0;
+        double green = (byteArray[offset + 2] & 0xFF) / 255.0;
+        double opacity = (byteArray[offset + 3] & 0xFF) / 255.0;
+        return new Color(red, green, blue, opacity);
+    }
+
+
+    //Checks the bitflag of a single byte
+    public static boolean hasBitFlag(byte value, int slot) {
+        return ((value >> slot) & 1) != 0;
+    }
+
+    //Checks the bitflags of a string of bytes
+    public static boolean hasBitFlag(byte[] byteArray, int offset, int bit) {
+        if (bit < 0 || bit >= byteArray.length * 8) {
+            return false; // Bit index is out of range.
+        }
+
+        int byteIndex = (bit / 8) + offset;
+        int bitIndex = bit % 8;
+        byte targetByte = byteArray[byteIndex];
+
+        return ((targetByte >> bitIndex) & 1) == 1;
+    }
+
+    //Sets the bitflag in a byte array
+    public static void setBitFlag(byte[] byteArray, int offset, int bit, boolean set) {
+        if (bit < 0 || bit >= byteArray.length * 8) {
+            return; // Bit index is out of range.
+        }
+
+        int byteIndex = (bit / 8) + offset;
+        int bitIndex = bit % 8;
+
+        if (set) byteArray[byteIndex] |= (1 << bitIndex);
+        else byteArray[byteIndex] &= ~(1 << bitIndex);
     }
 
 
@@ -123,13 +141,6 @@ public class Hex {
         bytes[0] = (byte) number;
         bytes[1] = (byte) (number >> 8);
         return bytes;
-    }
-
-    public static void copyBytes(byte[] bytes, int initialOffset1, int finalOffset1, int initialOffset2) {
-        int length = finalOffset1 - initialOffset1 + 1;
-        for (int i = 0; i < length; i++) {
-            bytes[initialOffset2 + i] = bytes[initialOffset1 + i];
-        }
     }
 
     public static String byteArrayToHexString(byte[] bytes) {
@@ -189,7 +200,18 @@ public class Hex {
         byteArray[offset + 2] = replacementBytes[2];
     }
 
+    //Returns a byte array of a file using an absolute path
+    public static byte[] getFileBytes(String testPath) {
+        byte[] fileBytes = new byte[0];
+        try {
+            fileBytes = Files.readAllBytes(Paths.get(testPath));
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+        return fileBytes;
+    }
 
+    //Used for testing only
     public static void writeFile(byte[] fileBytes, String path) {
         try {
             FileOutputStream fos = new FileOutputStream(path);
@@ -198,17 +220,6 @@ public class Hex {
         } catch (IOException e) {
             System.out.println("An error occurred while writing the file: " + e.getMessage());
         }
-    }
-
-    public static String byteToHexWithLineBreak(byte[] bytes) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < bytes.length; i++) {
-            sb.append(String.format("%02X", bytes[i]));
-            if ((i + 1) % 16 == 0) {
-                sb.append("\n");
-            }
-        }
-        return sb.toString();
     }
 
     /*
@@ -242,67 +253,6 @@ public class Hex {
             }
         }
         return -1;
-    }
-
-    public static int reverseSearch(byte[] source, byte[] target, int offset) {
-        if (source == null || target == null || offset < 0 || offset >= source.length || target.length > source.length) {
-            return -1; // Invalid input
-        }
-        for (int i = offset; i >= 0; i--) {
-            boolean found = true;
-            for (int j = 0; j < target.length; j++) {
-                if (source[i + j] != target[j]) {
-                    found = false;
-                    break;
-                }
-            }
-            if (found) {
-                return i; // Match found
-            }
-        }
-        return -1; // No match found
-    }
-
-
-    public static ArrayList<Integer> findNonMatchingOffsets(byte[] sourceArray, int initialOffset, byte[] targetArray) {
-        int targetLength = targetArray.length;
-        int firstNonMatchingOffset = -1;
-        int finalNonMatchingOffset = -1;
-
-        // Search forward from initialOffset
-        for (int i = initialOffset; i < sourceArray.length; i++) {
-            boolean match = true;
-            for (int j = 0; j < targetLength; j++) {
-                if (i + j >= sourceArray.length || sourceArray[i + j] != targetArray[j]) {
-                    match = false;
-                    break;
-                }
-            }
-            if (!match) {
-                finalNonMatchingOffset = i;
-                break;
-            }
-        }
-        // Search backward from initialOffset
-        for (int i = initialOffset; i >= 0; i--) {
-            boolean match = true;
-            for (int j = 0; j < targetLength; j++) {
-                if (i + j < 0 || sourceArray[i + j] != targetArray[j]) {
-                    match = false;
-                    break;
-                }
-            }
-            if (!match) {
-                firstNonMatchingOffset = i;
-                break;
-            }
-        }
-
-        ArrayList<Integer> nonMatchingOffsets = new ArrayList<>();
-        nonMatchingOffsets.add(firstNonMatchingOffset + 1);
-        nonMatchingOffsets.add(finalNonMatchingOffset);
-
-        return nonMatchingOffsets;
     }
 
     public static byte[] toByte(String s) {

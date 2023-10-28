@@ -1,12 +1,15 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.model.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
-import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class ChildBlock {
@@ -148,21 +151,37 @@ public class ChildBlock {
         footer[0x1] = (byte) (points & 0xFF);
     }
 
+    //Sets all supports to a specific rank
     public void setAllSupportsToLevel(int level) {
         //Gets the type of support of the parameter character
         int type = 4;
         //Gets the max values of the type gotten
         int[] maxValues = RawSupport.supportValues().get(type);
-        if (level == 0) {
-            setSupportParent(true, maxValues[0]);
-            setSupportParent(false, maxValues[0]);
-            setSupportSibling(0);
-        } else {
-            setSupportParent(true, maxValues[level - 1]);
-            setSupportParent(false, maxValues[level - 1]);
-            setSupportSibling(maxValues[level - 1]);
-        }
+        //D-Rank does not exist
+        int value = (level == 0) ? maxValues[0] : maxValues[level - 1];
+        setSupportParent(true, value);
+        setSupportParent(false, value);
+        setSupportSibling(value);
     }
+
+    //Sets all VALID supports to a specific rank
+    public void setAllSupportsToLevel(int level, int sibling) {
+        //Gets the type of support of the parameter character
+        int type = 4;
+        //Gets the max values of the type gotten
+        int[] maxValues = RawSupport.supportValues().get(type);
+        int value = (level == 0) ? maxValues[0] : maxValues[level - 1];
+
+        int father = parentId(0);
+        int mother = parentId(1);
+
+        setSupportParent(true, (father == 0xFFFF || father == -1) ? value : maxValues[0]);
+        setSupportParent(false, (mother == 0xFFFF || mother == -1) ? value : maxValues[0]);
+        setSupportSibling((sibling == 0xFFFF || sibling == -1) ? value : maxValues[0]);
+    }
+
+
+
 
     /*
     Support state of both of the parent conversations

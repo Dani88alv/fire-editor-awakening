@@ -69,6 +69,15 @@ public class RawSupport {
         }
     }
 
+    public void setAllSupportsTo(int level, List<Integer> units) {
+        int[] characters = getUnitSupportUnits(unitId); //Ignores the modded supports
+        for (int i = 0; i < characters.length; i++) {
+            if (units.contains(characters[i]) || level == 0) {
+                setSupportLevel(i, level);
+            }
+        }
+    }
+
     public void setSupportValue(int slot, int value) {
         supportValues.set(slot, value);
     }
@@ -112,7 +121,7 @@ public class RawSupport {
         }
     }
 
-    public byte[] bytes() throws IOException {
+    public byte[] bytes() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         outputStream.write(supportValues.size());
         for (Integer supportValue : supportValues) {

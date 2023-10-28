@@ -1,11 +1,14 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.savefile.Batch;
 import com.danius.fireeditor.savefile.Chapter13;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+
+import java.util.List;
 
 public class CheatController {
 
@@ -29,143 +32,70 @@ public class CheatController {
         comboSupport.getSelectionModel().select(7);
     }
 
+    public void reload() {
+        FireEditor.mainController.reloadTabs(FireEditor.chapterFile.getBytes());
+    }
+
     public void setSupports() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
         int level = comboSupport.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSupport.expandBlock();
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSupport.setAllSupportsTo(level);
-            if (chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawChild != null) {
-                chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawChild.setAllSupportsToLevel(level);
-            }
-            if (level == 0) chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSupport.removeExtraSupports();
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setSupports(FireEditor.chapterFile, unitSlot, level);
+        reload();
     }
 
     public void setSkillsAll() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSkill.setAll(true);
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setSkillsAll(FireEditor.chapterFile, unitSlot, true);
+        reload();
     }
 
     public void setSkillsLegal() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).setLegalSkills();
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setSkillsLegal(FireEditor.chapterFile, unitSlot);
+        reload();
     }
 
     public void setSkillsReset() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSkill.setAll(false);
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlock2.resetCurrentSkills();
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setSkillsAll(FireEditor.chapterFile, unitSlot, false);
+        reload();
     }
 
     public void setMaxBattles() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlockEnd.setBattles(9999);
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlockEnd.setVictories(9999);
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setBattlesVictories(FireEditor.chapterFile, unitSlot, 9999);
+        reload();
     }
 
     public void setMoveTwo() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlock1.setMovement(2);
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
-    }
-
-    public void setMoveHundred() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
-        int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlock1.setMovement(100);
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setMovement(FireEditor.chapterFile, unitSlot, 2);
+        reload();
     }
 
     public void setMaxStats() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).maxStats();
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setMaxStats(FireEditor.chapterFile, unitSlot);
+        reload();
     }
 
     public void setBuffs() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
         int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllTonicFlags();
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllOtherBuffs();
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+        Batch.setTemporalBuffs(FireEditor.chapterFile, unitSlot, true);
+        reload();
     }
 
     //Not even Grima could predict this
     public void pickAGodAndPray() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
-        int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        int level = comboSupport.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            //Alright, let's do this
-            //SUPPORTS
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSupport.expandBlock();
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSupport.setAllSupportsTo(level);
-            if (chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawChild != null) {
-                chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawChild.setAllSupportsToLevel(level);
-            }
-            if (level == 0) chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSupport.removeExtraSupports();
-            //ALL SKILLS
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawSkill.setAll(true);
-            //Zzzz
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlockEnd.setBattles(9999);
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlockEnd.setVictories(9999);
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawBlock1.setMovement(2);
-            //STATS
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).maxStats();
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllTonicFlags();
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawFlags.setAllOtherBuffs();
-            //ITEMS
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawInventory.maxAmount(
-                    FireEditor.chapterFile.blockRefi.refiList, FireEditor.chapterFile.blockTran.regularItemCount());
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+
     }
 
     public void maxConvoy() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
-        //Convoy
-        chapterFile.blockTran.maxItemAmount(900, 900);
-        chapterFile.blockTran.maxForgedAmounts(FireEditor.chapterFile.blockRefi.refiList);
-        //Equipped Items
-        int unitSlot = comboUnitGroup.getSelectionModel().getSelectedIndex();
-        for (int i = 0; i < chapterFile.blockUnit.unitList.get(unitSlot).size(); i++) {
-            chapterFile.blockUnit.unitList.get(unitSlot).get(i).rawInventory.maxAmount(
-                    FireEditor.chapterFile.blockRefi.refiList, FireEditor.chapterFile.blockTran.regularItemCount());
-        }
-        FireEditor.mainController.reloadTabs(chapterFile.getBytes());
+
     }
 
     public void unlockMaps() {
-        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.compileBlocks(true));
+        Chapter13 chapterFile = new Chapter13(FireEditor.mainController.chapterBytes(true));
         for (int i = 0; i < chapterFile.blockGmap.maps.size(); i++) {
             chapterFile.blockGmap.maps.get(i).setLockState(2);
         }

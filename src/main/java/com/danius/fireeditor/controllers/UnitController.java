@@ -395,7 +395,7 @@ public class UnitController {
         checkLimit.setOnAction(event -> {
             setFieldsStats(listViewUnit.getSelectionModel().getSelectedItem());
         });
-        //If the hair color is updated, the portrait too (WHIP for children units)
+        //If the hair color is updated, the portrait too
         colorHair.valueProperty().addListener((observable, oldColor, newColor) -> {
             listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setHairColor(Hex.colorToHex(colorHair.getValue()));
             setImage();
@@ -632,7 +632,8 @@ public class UnitController {
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
                 // Pass the selected value to the second view's controller
                 SupportController supportController = fxmlLoader.getController();
-                supportController.setUnit(selectedValue);
+                int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
+                supportController.setUnit(selectedValue, unitBlock.unitIdsInGroup(currentGroup));
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();
                 secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
@@ -654,9 +655,11 @@ public class UnitController {
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
+                //Calculate the sibling
+                int sibling = unitBlock.findSibling(selectedValue);
                 // Pass the selected value to the second view's controller
                 ChildController childController = fxmlLoader.getController();
-                childController.setUnit(selectedValue);
+                childController.setUnit(selectedValue, sibling);
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();
                 secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
@@ -706,7 +709,7 @@ public class UnitController {
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
                 ItemController itemController = fxmlLoader.getController();
                 int itemCount = FireEditor.chapterFile.blockTran.regularItemCount();
-                itemController.setUnit(selectedValue, itemCount, FireEditor.convoyController.refiBlock.refiList);
+                itemController.setUnit(selectedValue, FireEditor.convoyController.refiBlock.refiList);
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();
                 secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows

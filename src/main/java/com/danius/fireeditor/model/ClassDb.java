@@ -18,6 +18,7 @@ public class ClassDb {
 
     public ClassDb() {
         readClasses();
+        setMaxId();
     }
 
     private static ClassModel getClass(int id) {
@@ -201,8 +202,6 @@ public class ClassDb {
                 unitClass.setTraitFlags(flags);
 
                 classList.add(unitClass);
-
-                setMaxId();
             }
         } catch (IOException | JDOMException ex) {
             throw new RuntimeException(ex);

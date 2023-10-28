@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.inventory.Refinement;
@@ -17,7 +18,7 @@ import javafx.util.Callback;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.danius.fireeditor.savefile.inventory.TranBlock.amountString;
+import static com.danius.fireeditor.model.ItemDb.*;
 
 public class ConvoyController {
     private boolean addedListeners = false;
@@ -48,7 +49,8 @@ public class ConvoyController {
     public void initialize() {
         FireEditor.convoyController = this;
         disableRefi(true);
-        ObservableList<String> items = FXCollections.observableArrayList(MiscDb.itemNames);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        items.addAll(getItemNamesRegular());
         comboWeaponId.setItems(items);
         UI.setSpinnerNumeric(spinRefiUse, 65535);
         UI.setSpinnerNumeric(spinMight, 255);
@@ -100,7 +102,7 @@ public class ConvoyController {
         comboWeaponId.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             if (listViewRefi.getSelectionModel().getSelectedItem() != null) {
                 listViewRefi.getSelectionModel().getSelectedItem().setWeaponId(newValue.intValue());
-                lblRefiAmount.setText(amountString(newValue.intValue(),
+                lblRefiAmount.setText(getAmountString(newValue.intValue(),
                         tranBlock.inventoryRefi.get(listViewRefi.getSelectionModel().getSelectedItem().position())));
             }
         });
@@ -114,7 +116,7 @@ public class ConvoyController {
                 spinRefiUse.increment(0);
                 tranBlock.setForgedUses(listViewRefi.getSelectionModel().getSelectedItem().position(),
                         spinRefiUse.getValue());
-                lblRefiAmount.setText(amountString(listViewRefi.getSelectionModel().getSelectedItem().weaponId(),
+                lblRefiAmount.setText(getAmountString(listViewRefi.getSelectionModel().getSelectedItem().weaponId(),
                         spinRefiUse.getValue()));
             }
         });
@@ -138,17 +140,10 @@ public class ConvoyController {
         });
     }
 
-    public void loseSpinnerFocus() {
-        spinMight.increment(0);
-        spinRefiUse.increment(0);
-        spinHit.increment(0);
-        spinCrit.increment(0);
-    }
-
     public void setRefiFields(Refinement refi) {
         comboWeaponId.getSelectionModel().select(refi.weaponId());
         spinRefiUse.getValueFactory().setValue(tranBlock.inventoryRefi.get(refi.position()));
-        lblRefiAmount.setText(amountString(refi.weaponId(), tranBlock.inventoryRefi.get(refi.position())));
+        lblRefiAmount.setText(getAmountString(refi.weaponId(), tranBlock.inventoryRefi.get(refi.position())));
         txtRefiName.setText(refi.getName());
         spinMight.getValueFactory().setValue(refi.might());
         spinCrit.getValueFactory().setValue(refi.crit());
@@ -210,7 +205,7 @@ public class ConvoyController {
         try {
             //The tables are cleared up
             tableConvoy.getItems().clear();
-            List<String> itemNames = MiscDb.getItemNames(tranBlock.regularItemCount());
+            List<String> itemNames = getItemNamesRegular();
             //The values are loaded
             for (int i = 0; i < itemNames.size(); i++) {
                 tableConvoy.getItems().add(new DataItem(itemNames.get(i), inventoryMain.get(i), i));
@@ -255,7 +250,7 @@ public class ConvoyController {
                     if (dataItem != null) {
                         int rowIndex = getTableRow().getIndex();
                         dataItem.setNumberData(newValue);
-                        dataItem.setTotalUses(amountString(rowIndex, newValue));
+                        dataItem.setTotalUses(getAmountString(rowIndex, newValue));
                         tranBlock.inventoryMain.set(rowIndex, newValue);
                     }
                 });
@@ -267,7 +262,7 @@ public class ConvoyController {
                     if (dataItem != null) {
                         int rowIndex = getTableRow().getIndex();
                         dataItem.setNumberData(Integer.parseInt(newValue));
-                        dataItem.setTotalUses(amountString(rowIndex, Integer.parseInt(newValue)));
+                        dataItem.setTotalUses(getAmountString(rowIndex, Integer.parseInt(newValue)));
                         tranBlock.inventoryMain.set(rowIndex, Integer.valueOf(newValue));
                     }
                 });
@@ -322,7 +317,7 @@ public class ConvoyController {
         public DataItem(String stringData, int numberData, int id) {
             this.stringData = stringData;
             this.numberData = numberData;
-            this.totalUses = new SimpleStringProperty(amountString(id, numberData));
+            this.totalUses = new SimpleStringProperty(getAmountString(id, numberData));
             this.id = id;
         }
 

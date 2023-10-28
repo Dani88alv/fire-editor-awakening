@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <item id="0" type1="" type2="0" price="" name="None">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="1" type1="" type2="0" price="" name="Bronze Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="50" might="3" hit="100" crit="0"/>
+    </item>
+    <item id="2" type1="" type2="0" price="" name="Iron Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="40" might="5" hit="95" crit="0"/>
+    </item>
+    <item id="3" type1="" type2="0" price="" name="Steel Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="8" hit="90" crit="0"/>
+    </item>
+    <item id="4" type1="" type2="0" price="" name="Silver Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="11" hit="85" crit="0"/>
+    </item>
+    <item id="5" type1="" type2="0" price="" name="Brave Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="9" hit="80" crit="0"/>
+    </item>
+    <item id="6" type1="" type2="0" price="" name="Armorslayer">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="80" crit="0"/>
+    </item>
+    <item id="7" type1="" type2="0" price="" name="Wyrmslayer">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="80" crit="0"/>
+    </item>
+    <item id="8" type1="" type2="0" price="" name="Killing Edge">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="9" hit="90" crit="30"/>
+    </item>
+    <item id="9" type1="" type2="0" price="" name="Levin Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="10" hit="80" crit="0"/>
+    </item>
+    <item id="10" type1="" type2="0" price="" name="Rapier">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="5" hit="90" crit="10"/>
+    </item>
+    <item id="11" type1="" type2="0" price="" name="Noble Rapier">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="85" crit="10"/>
+    </item>
+    <item id="12" type1="" type2="0" price="" name="Missiletainn">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="8" hit="85" crit="10"/>
+    </item>
+    <item id="13" type1="" type2="0" price="" name="Sol">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="12" hit="85" crit="5"/>
+    </item>
+    <item id="14" type1="" type2="0" price="" name="Amatsu">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="12" hit="60" crit="5"/>
+    </item>
+    <item id="15" type1="" type2="0" price="" name="Falchion">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="5" hit="80" crit="0"/>
+    </item>
+    <item id="16" type1="" type2="0" price="" name="Exalted Falchion">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="15" hit="80" crit="10"/>
+    </item>
+    <item id="17" type1="" type2="0" price="" name="Parallel Falchion">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="12" hit="80" crit="5"/>
+    </item>
+    <item id="18" type1="" type2="0" price="" name="Mercurius">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="17" hit="95" crit="5"/>
+    </item>
+    <item id="19" type1="" type2="0" price="" name="Tyrfing">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="15" hit="85" crit="10"/>
+    </item>
+    <item id="20" type1="" type2="0" price="" name="Mystletainn">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="14" hit="85" crit="15"/>
+    </item>
+    <item id="21" type1="" type2="0" price="" name="Balmung">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="13" hit="90" crit="10"/>
+    </item>
+    <item id="22" type1="" type2="0" price="" name="Sol Katti">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="100" crit="50"/>
+    </item>
+    <item id="23" type1="" type2="0" price="" name="Ragnell">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="15" hit="70" crit="0"/>
+    </item>
+    <item id="24" type1="" type2="0" price="" name="Ragnell (Inf. Uses)">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="15" hit="70" crit="0"/>
+    </item>
+    <item id="25" type1="" type2="0" price="" name="Tree Branch">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="1" hit="100" crit="0"/>
+    </item>
+    <item id="26" type1="" type2="0" price="" name="Soothing Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="8" hit="85" crit="0"/>
+    </item>
+    <item id="27" type1="" type2="0" price="" name="Glass Sword">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="11" hit="85" crit="0"/>
+    </item>
+    <item id="28" type1="" type2="0" price="" name="Superior Edge">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="11" hit="80" crit="0"/>
+    </item>
+    <item id="29" type1="" type2="0" price="" name="Eliwood's Blade">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="10" hit="85" crit="5"/>
+    </item>
+    <item id="30" type1="" type2="0" price="" name="Roy's Blade">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="95" crit="5"/>
+    </item>
+    <item id="31" type1="" type2="0" price="" name="Alm's Blade">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="15" hit="75" crit="10"/>
+    </item>
+    <item id="32" type1="" type2="0" price="" name="Leif's Blade">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="4" hit="95" crit="30"/>
+    </item>
+    <item id="33" type1="" type2="0" price="" name="Eirika's Blade">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="6" hit="95" crit="10"/>
+    </item>
+    <item id="34" type1="" type2="0" price="" name="Seliph's Blade">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="12" hit="90" crit="15"/>
+    </item>
+    <item id="35" type1="" type2="0" price="" name="Bronze Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="50" might="3" hit="90" crit="0"/>
+    </item>
+    <item id="36" type1="" type2="0" price="" name="Iron Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="40" might="6" hit="85" crit="0"/>
+    </item>
+    <item id="37" type1="" type2="0" price="" name="Steel Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="9" hit="80" crit="0"/>
+    </item>
+    <item id="38" type1="" type2="0" price="" name="Silver Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="13" hit="75" crit="0"/>
+    </item>
+    <item id="39" type1="" type2="0" price="" name="Brave Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="10" hit="70" crit="0"/>
+    </item>
+    <item id="40" type1="" type2="0" price="" name="Javelin">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="2" hit="80" crit="0"/>
+    </item>
+    <item id="41" type1="" type2="0" price="" name="Short Spear">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="5" hit="75" crit="0"/>
+    </item>
+    <item id="42" type1="" type2="0" price="" name="Spear">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="70" crit="0"/>
+    </item>
+    <item id="43" type1="" type2="0" price="" name="Beast Killer">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="9" hit="70" crit="0"/>
+    </item>
+    <item id="44" type1="" type2="0" price="" name="Blessed Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="11" hit="70" crit="0"/>
+    </item>
+    <item id="45" type1="" type2="0" price="" name="Killer Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="10" hit="80" crit="30"/>
+    </item>
+    <item id="46" type1="" type2="0" price="" name="Luna">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="14" hit="80" crit="5"/>
+    </item>
+    <item id="47" type1="" type2="0" price="" name="Gradivus">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="19" hit="85" crit="5"/>
+    </item>
+    <item id="48" type1="" type2="0" price="" name="Gungnir">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="16" hit="70" crit="10"/>
+    </item>
+    <item id="49" type1="" type2="0" price="" name="Gae Bolg">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="15" hit="75" crit="10"/>
+    </item>
+    <item id="50" type1="" type2="0" price="" name="Log">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="1" hit="90" crit="0"/>
+    </item>
+    <item id="51" type1="" type2="0" price="" name="Miniature Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="1" hit="55" crit="35"/>
+    </item>
+    <item id="52" type1="" type2="0" price="" name="Shockstick">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="11" hit="85" crit="10"/>
+    </item>
+    <item id="53" type1="" type2="0" price="" name="Glass Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="13" hit="75" crit="0"/>
+    </item>
+    <item id="54" type1="" type2="0" price="" name="Superior Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="13" hit="70" crit="0"/>
+    </item>
+    <item id="55" type1="" type2="0" price="" name="Sigurd's Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="14" hit="85" crit="15"/>
+    </item>
+    <item id="56" type1="" type2="0" price="" name="Ephraim's Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="11" hit="80" crit="10"/>
+    </item>
+    <item id="57" type1="" type2="0" price="" name="Finn's Lance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="8" hit="85" crit="10"/>
+    </item>
+    <item id="58" type1="" type2="0" price="" name="Bronze Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="50" might="4" hit="80" crit="0"/>
+    </item>
+    <item id="59" type1="" type2="0" price="" name="Iron Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="40" might="7" hit="75" crit="0"/>
+    </item>
+    <item id="60" type1="" type2="0" price="" name="Steel Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="11" hit="70" crit="0"/>
+    </item>
+    <item id="61" type1="" type2="0" price="" name="Silver Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="15" hit="65" crit="0"/>
+    </item>
+    <item id="62" type1="" type2="0" price="" name="Brave Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="12" hit="60" crit="0"/>
+    </item>
+    <item id="63" type1="" type2="0" price="" name="Hand Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="3" hit="70" crit="0"/>
+    </item>
+    <item id="64" type1="" type2="0" price="" name="Short Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="7" hit="65" crit="0"/>
+    </item>
+    <item id="65" type1="" type2="0" price="" name="Tomahawk">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="10" hit="60" crit="0"/>
+    </item>
+    <item id="66" type1="" type2="0" price="" name="Hammer">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="10" hit="60" crit="0"/>
+    </item>
+    <item id="67" type1="" type2="0" price="" name="Bolt Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="14" hit="70" crit="5"/>
+    </item>
+    <item id="68" type1="" type2="0" price="" name="Killer Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="12" hit="70" crit="30"/>
+    </item>
+    <item id="69" type1="" type2="0" price="" name="Vengeance">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="16" hit="75" crit="5"/>
+    </item>
+    <item id="70" type1="" type2="0" price="" name="Wolf Berg">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="18" hit="75" crit="5"/>
+    </item>
+    <item id="71" type1="" type2="0" price="" name="Hauteclere">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="21" hit="70" crit="5"/>
+    </item>
+    <item id="72" type1="" type2="0" price="" name="Helswath">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="18" hit="70" crit="10"/>
+    </item>
+    <item id="73" type1="" type2="0" price="" name="Armads">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="17" hit="80" crit="10"/>
+    </item>
+    <item id="74" type1="" type2="0" price="" name="Ladle">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="1" hit="80" crit="0"/>
+    </item>
+    <item id="75" type1="" type2="0" price="" name="Imposing Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="14" hit="35" crit="10"/>
+    </item>
+    <item id="76" type1="" type2="0" price="" name="Volant Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="8" hit="55" crit="0"/>
+    </item>
+    <item id="77" type1="" type2="0" price="" name="Glass Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="15" hit="65" crit="0"/>
+    </item>
+    <item id="78" type1="" type2="0" price="" name="Superior Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="15" hit="60" crit="0"/>
+    </item>
+    <item id="79" type1="" type2="0" price="" name="Titania's Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="12" hit="80" crit="10"/>
+    </item>
+    <item id="80" type1="" type2="0" price="" name="Orsin's Hatchet">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="4" hit="85" crit="5"/>
+    </item>
+    <item id="81" type1="" type2="0" price="" name="Hector's Axe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="15" hit="75" crit="15"/>
+    </item>
+    <item id="82" type1="" type2="0" price="" name="Bronze Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="50" might="3" hit="90" crit="0"/>
+    </item>
+    <item id="83" type1="" type2="0" price="" name="Iron Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="40" might="6" hit="85" crit="0"/>
+    </item>
+    <item id="84" type1="" type2="0" price="" name="Steel Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="9" hit="80" crit="0"/>
+    </item>
+    <item id="85" type1="" type2="0" price="" name="Silver Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="13" hit="75" crit="0"/>
+    </item>
+    <item id="86" type1="" type2="0" price="" name="Brave Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="10" hit="70" crit="0"/>
+    </item>
+    <item id="87" type1="" type2="0" price="" name="Blessed Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="11" hit="70" crit="0"/>
+    </item>
+    <item id="88" type1="" type2="0" price="" name="Killer Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="10" hit="80" crit="30"/>
+    </item>
+    <item id="89" type1="" type2="0" price="" name="Long Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="9" hit="70" crit="0"/>
+    </item>
+    <item id="90" type1="" type2="0" price="" name="Astra">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="14" hit="75" crit="5"/>
+    </item>
+    <item id="91" type1="" type2="0" price="" name="Parthia">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="19" hit="95" crit="5"/>
+    </item>
+    <item id="92" type1="" type2="0" price="" name="Yewfelle">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="15" hit="85" crit="10"/>
+    </item>
+    <item id="93" type1="" type2="0" price="" name="Nidhogg">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="16" hit="75" crit="10"/>
+    </item>
+    <item id="94" type1="" type2="0" price="" name="Double Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="13" hit="70" crit="10"/>
+    </item>
+    <item id="95" type1="" type2="0" price="" name="Slack Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="1" hit="90" crit="0"/>
+    </item>
+    <item id="96" type1="" type2="0" price="" name="Towering Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="3" hit="80" crit="0"/>
+    </item>
+    <item id="97" type1="" type2="0" price="" name="Underdog Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="9" hit="75" crit="5"/>
+    </item>
+    <item id="98" type1="" type2="0" price="" name="Glass Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="13" hit="75" crit="0"/>
+    </item>
+    <item id="99" type1="" type2="0" price="" name="Superior Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="13" hit="70" crit="0"/>
+    </item>
+    <item id="100" type1="" type2="0" price="" name="Wolt's Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="10" hit="85" crit="5"/>
+    </item>
+    <item id="101" type1="" type2="0" price="" name="Innes' Bow">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="13" hit="115" crit="10"/>
+    </item>
+    <item id="102" type1="" type2="0" price="" name="Fire">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="45" might="2" hit="90" crit="0"/>
+    </item>
+    <item id="103" type1="" type2="0" price="" name="Elfire">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="5" hit="85" crit="0"/>
+    </item>
+    <item id="104" type1="" type2="0" price="" name="Arcfire">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="8" hit="80" crit="0"/>
+    </item>
+    <item id="105" type1="" type2="0" price="" name="Bolganone">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="12" hit="75" crit="0"/>
+    </item>
+    <item id="106" type1="" type2="0" price="" name="Valflame">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="16" hit="80" crit="10"/>
+    </item>
+    <item id="107" type1="" type2="0" price="" name="Thunder">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="45" might="3" hit="80" crit="5"/>
+    </item>
+    <item id="108" type1="" type2="0" price="" name="Elthunder">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="6" hit="75" crit="5"/>
+    </item>
+    <item id="109" type1="" type2="0" price="" name="Arcthunder">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="10" hit="70" crit="10"/>
+    </item>
+    <item id="110" type1="" type2="0" price="" name="Thoron">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="14" hit="65" crit="10"/>
+    </item>
+    <item id="111" type1="" type2="0" price="" name="Mjollnir">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="18" hit="70" crit="20"/>
+    </item>
+    <item id="112" type1="" type2="0" price="" name="Wind">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="45" might="1" hit="100" crit="0"/>
+    </item>
+    <item id="113" type1="" type2="0" price="" name="Elwind">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="4" hit="95" crit="0"/>
+    </item>
+    <item id="114" type1="" type2="0" price="" name="Arcwind">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="6" hit="90" crit="0"/>
+    </item>
+    <item id="115" type1="" type2="0" price="" name="Rexcalibur">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="10" hit="85" crit="0"/>
+    </item>
+    <item id="116" type1="" type2="0" price="" name="Forseti">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="14" hit="90" crit="10"/>
+    </item>
+    <item id="117" type1="" type2="0" price="" name="Excalibur">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="13" hit="100" crit="30"/>
+    </item>
+    <item id="118" type1="" type2="0" price="" name="Book of Naga">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="15" hit="80" crit="15"/>
+    </item>
+    <item id="119" type1="" type2="0" price="" name="Flux">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="45" might="5" hit="70" crit="0"/>
+    </item>
+    <item id="120" type1="" type2="0" price="" name="Nosferatu">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="7" hit="65" crit="0"/>
+    </item>
+    <item id="121" type1="" type2="0" price="" name="Ruin">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="4" hit="60" crit="50"/>
+    </item>
+    <item id="122" type1="" type2="0" price="" name="Waste">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="10" hit="45" crit="0"/>
+    </item>
+    <item id="123" type1="" type2="0" price="" name="Goetia">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="25" might="19" hit="75" crit="10"/>
+    </item>
+    <item id="124" type1="" type2="0" price="" name="Grima's Truth">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="12" hit="80" crit="0"/>
+    </item>
+    <item id="125" type1="" type2="0" price="" name="Mire">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="10" hit="65" crit="0"/>
+    </item>
+    <item id="126" type1="" type2="0" price="" name="Dying Blaze">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="10" hit="75" crit="0"/>
+    </item>
+    <item id="127" type1="" type2="0" price="" name="Micaiah's Pyre">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="13" hit="85" crit="5"/>
+    </item>
+    <item id="128" type1="" type2="0" price="" name="Superior Jolt">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="14" hit="60" crit="15"/>
+    </item>
+    <item id="129" type1="" type2="0" price="" name="Katarina's Bolt">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="11" hit="75" crit="30"/>
+    </item>
+    <item id="130" type1="" type2="0" price="" name="Wilderwind">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="2" hit="70" crit="35"/>
+    </item>
+    <item id="131" type1="" type2="0" price="" name="Celica's Gale">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="4" hit="80" crit="5"/>
+    </item>
+    <item id="132" type1="" type2="0" price="" name="Aversa's Night">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="15" hit="75" crit="0"/>
+    </item>
+    <item id="133" type1="" type2="0" price="" name="Heal">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="30" might="8" hit="0" crit="0"/>
+    </item>
+    <item id="134" type1="" type2="0" price="" name="Mend">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="15" hit="0" crit="0"/>
+    </item>
+    <item id="135" type1="" type2="0" price="" name="Physic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="10" might="8" hit="0" crit="0"/>
+    </item>
+    <item id="136" type1="" type2="0" price="" name="Recover">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="99" hit="0" crit="0"/>
+    </item>
+    <item id="137" type1="" type2="0" price="" name="Fortify">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="8" hit="0" crit="0"/>
+    </item>
+    <item id="138" type1="" type2="0" price="" name="Goddess Staff">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="99" hit="0" crit="0"/>
+    </item>
+    <item id="139" type1="" type2="0" price="" name="Rescue">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="140" type1="" type2="0" price="" name="Ward">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="141" type1="" type2="0" price="" name="Hammerne">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="142" type1="" type2="0" price="" name="Kneader">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="20" might="1" hit="0" crit="0"/>
+    </item>
+    <item id="143" type1="" type2="0" price="" name="Balmwood Staff">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="15" might="15" hit="0" crit="0"/>
+    </item>
+    <item id="144" type1="" type2="0" price="" name="Catharsis">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="15" hit="0" crit="0"/>
+    </item>
+    <item id="145" type1="" type2="0" price="" name="Dragonstone">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="50" might="8" hit="80" crit="0"/>
+    </item>
+    <item id="146" type1="" type2="0" price="" name="Dragonstone+">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="12" hit="70" crit="0"/>
+    </item>
+    <item id="147" type1="" type2="0" price="" name="Beaststone">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="50" might="6" hit="80" crit="0"/>
+    </item>
+    <item id="148" type1="" type2="0" price="" name="Beaststone+">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="35" might="10" hit="70" crit="0"/>
+    </item>
+    <item id="149" type1="" type2="0" price="" name="Blighted Claws">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="12" hit="75" crit="0"/>
+    </item>
+    <item id="150" type1="" type2="0" price="" name="Blighted Talons">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="16" hit="75" crit="0"/>
+    </item>
+    <item id="151" type1="" type2="0" price="" name="Expiration">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="20" hit="80" crit="0"/>
+    </item>
+    <item id="152" type1="" type2="0" price="" name="Vulnerary">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="153" type1="" type2="0" price="" name="Concoction">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="154" type1="" type2="0" price="" name="Elixer">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="155" type1="" type2="0" price="" name="Pure Water">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="156" type1="" type2="0" price="" name="HP Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="157" type1="" type2="0" price="" name="Strength Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="158" type1="" type2="0" price="" name="Magic Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="159" type1="" type2="0" price="" name="Skill Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="160" type1="" type2="0" price="" name="Speed Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="161" type1="" type2="0" price="" name="Luck Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="162" type1="" type2="0" price="" name="Defense Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="163" type1="" type2="0" price="" name="Resistance Tonic">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="164" type1="" type2="0" price="" name="Door Key">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="165" type1="" type2="0" price="" name="Chest Key">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="166" type1="" type2="0" price="" name="Master Key">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="167" type1="" type2="0" price="" name="Seraph Robe">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="168" type1="" type2="0" price="" name="Energy Drop">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="169" type1="" type2="0" price="" name="Spirit Dust">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="170" type1="" type2="0" price="" name="Secret Book">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="171" type1="" type2="0" price="" name="Speedwing">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="172" type1="" type2="0" price="" name="Goddess Icon">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="173" type1="" type2="0" price="" name="Dracoshield">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="174" type1="" type2="0" price="" name="Talisman">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="175" type1="" type2="0" price="" name="Naga's Tear">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="176" type1="" type2="0" price="" name="Boots">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="177" type1="" type2="0" price="" name="Arms Scroll">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="178" type1="" type2="0" price="" name="Master Seal">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="179" type1="" type2="0" price="" name="Second Seal">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="180" type1="" type2="0" price="" name="Bullion (S)">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="181" type1="" type2="0" price="" name="Bullion (M)">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="182" type1="" type2="0" price="" name="Bullion (L)">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="183" type1="" type2="0" price="" name="Sweet Tincture">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="3" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="184" type1="" type2="0" price="" name="Gaius' Confect">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="185" type1="" type2="0" price="" name="Kris' Confect">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="5" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="186" type1="" type2="0" price="" name="Tiki's Tear">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="187" type1="" type2="0" price="" name="Seed of Trust">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="188" type1="" type2="0" price="" name="Reeking Box">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="189" type1="" type2="0" price="" name="Rift Door">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="190" type1="" type2="0" price="" name="Supreme Emblem">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="191" type1="" type2="0" price="" name="All Stats +2">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="192" type1="" type2="0" price="" name="Paragon">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="193" type1="" type2="0" price="" name="Iote's Shield">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="194" type1="" type2="0" price="" name="Limit Breaker">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="195" type1="" type2="0" price="" name="Silver Card">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="196" type1="" type2="0" price="" name="Dread Scroll">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="197" type1="" type2="0" price="" name="Wedding Bouquet">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="1" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="198" type1="" type2="0" price="" name="1,000 Gold">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="199" type1="" type2="0" price="" name="3,000 Gold">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="200" type1="" type2="0" price="" name="5,000 Gold">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+    <item id="201" type1="" type2="0" price="" name="7,000 Gold">
+        <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <stats uses="0" might="0" hit="0" crit="0"/>
+    </item>
+</items>

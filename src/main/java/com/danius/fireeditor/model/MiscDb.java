@@ -23,25 +23,6 @@ public class MiscDb {
         return getUnitName(id);
     }
 
-    public static String itemName(int id) {
-        if (id <= itemNames.size()) return itemNames.get(id);
-        return "Forged Weapon " + (Integer.toHexString(id));
-    }
-
-    public static String itemName2(int id, int maxCount, List<Refinement> refiList) {
-        int vanillaCount = MiscDb.itemNames.size();
-        if (id >= vanillaCount && id < maxCount) {
-            int itemId = id - vanillaCount + 1;
-            return "Modded Item #" + itemId;
-        } else if (id >= maxCount && id <= maxCount + 150) {
-            int position = id - maxCount;
-            for (Refinement refinement : refiList) {
-                if (refinement.position() == position) return refinement.getName();
-            }
-            return "Forged Weapon #" + (id - maxCount + 1);
-        } else return itemNames.get(id);
-    }
-
     public static String supportLevel(int unitId, int value, int slot) {
         //Checks if it is a modded unit
         int validSupports = getUnitSupportCount(unitId);
@@ -135,7 +116,7 @@ public class MiscDb {
     public static List<String> getArmyNames(int max) {
         List<String> names = new ArrayList<>();
         for (int i = 0; i < max; i++) {
-            names.add(getArmyName(max));
+            names.add(getArmyName(i));
         }
         return names;
     }
@@ -210,81 +191,6 @@ public class MiscDb {
             "Divine Dragon Grounds", "Sea-King's Throne", "Conqueror's Whetstone", "Mountain Village",
             "Warrior's Tomb", "Wellspring of Truth", "Garden of Giants",
             "Outrealm Gate", "Unknown", "Plegia Castle"
-    );
-
-    public static List<String> getItemNames(int totalCount) {
-        List<String> names = new ArrayList<>();
-        int vanillaCount = itemNames.size();
-        for (int i = 0; i < totalCount; i++) {
-            if (i >= vanillaCount) names.add("Modded Item #" + (i - vanillaCount + 1));
-            else names.add(itemNames.get(i));
-        }
-        return names;
-    }
-
-    /*
-    None: 0x0
-    Swords: 0x1-0x22
-    Spears: 0x23-0x39
-    Axes: 0x3A-0x51
-    Bows: 0x52-0x65
-    Spells: 0x66-0x84
-    Staves: 0x85-0x90
-    Other Weapons: 0x91-0x97
-    Consumables: 0x98-0xC9
-     */
-    public static final List<String> itemNames = Arrays.asList(
-            "None", "Bronze Sword", "Iron Sword", "Steel Sword",
-            "Silver Sword", "Brave Sword", "Armorslayer", "Wyrmslayer",
-            "Killing Edge", "Levin Sword", "Rapier", "Noble Rapier",
-            "Missletainn", "Sol", "Amatsu", "Falchion",
-            "Exalted Falchion", "Parallel Falchion", "Mercurius", "Tyrfing",
-            "Mystletainn", "Balmung", "Sol Katti", "Ragnell",
-            "Ragnell (Inf. Uses)", "Tree Branch", "Soothing Sword", "Glass Sword",
-            "Superior Edge", "Eliwood's Blade", "Roy's Blade", "Alm's Blade",
-            "Leif's Blade", "Eirika's Blade", "Seliph's Blade", "Bronze Lance",
-            "Iron Lance", "Steel Lance", "Silver Lance", "Brave Lance",
-            "Javelin", "Short Spear", "Spear", "Beast Killer",
-            "Blessed Lance", "Killer Lance", "Luna", "Gradivus",
-            "Gungnir", "Gae Bolg", "Log", "Miniature Lance",
-            "Shockstick", "Glass Lance", "Superior Lance", "Sigurd's Lance",
-            "Ephraim's Lance", "Finn's Lance", "Bronze Axe", "Iron Axe",
-            "Steel Axe", "Silver Axe", "Brave Axe", "Hand Axe",
-            "Short Axe", "Tomahawk", "Hammer", "Bolt Axe",
-            "Killer Axe", "Vengeance", "Wolf Berg", "Hauteclere",
-            "Helswath", "Armads", "Ladle", "Imposing Axe",
-            "Volant Axe", "Glass Axe", "Superior Axe", "Titania's Axe",
-            "Orsin's Hatchet", "Hector's Axe", "Bronze Bow", "Iron Bow",
-            "Steel Bow", "Silver Bow", "Brave Bow", "Blessed Bow",
-            "Killer Bow", "Long Bow", "Astra", "Parthia",
-            "Yewfelle", "Nidhogg", "Double Bow", "Slack Bow",
-            "Towering Bow", "Underdog Bow", "Glass Bow", "Superior Bow",
-            "Wolt's Bow", "Innes' Bow", "Fire", "Elfire",
-            "Arcfire", "Bolganone", "Valflame", "Thunder",
-            "Elthunder", "Arcthunder", "Thoron", "Mjollnir",
-            "Wind", "Elwind", "Arcwind", "Rexcalibur",
-            "Forseti", "Excalibur", "Book of Naga", "Flux",
-            "Nosferatu", "Ruin", "Waste", "Goetia",
-            "Grima's Truth", "Mire", "Dying Blaze", "Micaiah's Pyre",
-            "Superior Jolt", "Katarina's Bolt", "Wilderwind", "Celica's Gale",
-            "Aversa's Night", "Heal", "Mend", "Physic",
-            "Recover", "Fortify", "Goddess Staff", "Rescue",
-            "Ward", "Hammerne", "Kneader", "Balmwood Staff",
-            "Catharsis", "Dragonstone", "Dragonstone +", "Beaststone",
-            "Beaststone +", "Blighted Claws", "Blighted Talons", "Expiration",
-            "Vulnerary", "Concoction", "Elixer", "Pure Water",
-            "HP Tonic", "Strength Tonic", "Magic Tonic", "Skill Tonic",
-            "Speed Tonic", "Luck Tonic", "Defense Tonic", "Resistance Tonic",
-            "Door Key", "Chest Key", "Master Key", "Seraph Robe",
-            "Energy Drop", "Spirit Dust", "Secret Book", "Speedwing",
-            "Goddess Icon", "Dracoshield", "Talisman", "Naga's Tear",
-            "Boots", "Arms Scroll", "Master Seal", "Second Seal",
-            "Bullion (S)", "Bullion (M)", "Bullion (L)", "Sweet Tincture",
-            "Gaius' Confect", "Kris' Confect", "Tiki's Tear", "Seed of Trust",
-            "Reeking Box", "Rift Door", "Supreme Emblem", "All Stats +2",
-            "Paragon", "Iote's Shield", "Limit Breaker", "Silver Card",
-            "Dread Scroll", "Wedding Bouquet", "1,000 Gold", "3,000 Gold",
-            "5,000 Gold", "7,000 Gold"
     );
 
     public static final List<String> chapterDlcNames = Arrays.asList(
