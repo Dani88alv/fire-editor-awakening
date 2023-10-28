@@ -55,6 +55,14 @@ public class Hex {
         return result;
     }
 
+    public static Color getColor(byte[] byteArray, int offset) {
+        double red = (byteArray[offset] & 0xFF) / 255.0;
+        double green = (byteArray[offset + 1] & 0xFF) / 255.0;
+        double blue = (byteArray[offset + 2] & 0xFF) / 255.0;
+        double opacity = (byteArray[offset + 3] & 0xFF) / 255.0;
+        return new Color(red, green, blue, opacity);
+    }
+
     public static void setColor(byte[] byteArray, int offset, Color color) {
         if (byteArray == null || offset < 0 || offset + 4 > byteArray.length) {
             throw new IllegalArgumentException("Invalid arguments for setColor method.");
@@ -69,15 +77,6 @@ public class Hex {
         byteArray[offset + 1] = (byte) green;
         byteArray[offset + 2] = (byte) blue;
         byteArray[offset + 3] = (byte) opacity;
-    }
-
-
-    public static Color getColor(byte[] byteArray, int offset) {
-        double red = (byteArray[offset] & 0xFF) / 255.0;
-        double blue = (byteArray[offset + 1] & 0xFF) / 255.0;
-        double green = (byteArray[offset + 2] & 0xFF) / 255.0;
-        double opacity = (byteArray[offset + 3] & 0xFF) / 255.0;
-        return new Color(red, green, blue, opacity);
     }
 
 

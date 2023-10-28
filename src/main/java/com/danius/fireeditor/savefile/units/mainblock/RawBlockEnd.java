@@ -1,7 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
 import javafx.scene.paint.Color;
 
@@ -197,32 +196,14 @@ public class RawBlockEnd {
         blockBytes[point] = (byte) (value & 0xFF);
     }
 
-    public String getHairColor() {
-        int pointer = 0x39;
-        byte[] hairColorBytes = new byte[3];
-        hairColorBytes[0] = blockBytes[pointer];
-        hairColorBytes[1] = blockBytes[pointer + 1];
-        hairColorBytes[2] = blockBytes[pointer + 2];
-        // Combine the three bytes into a single integer value using bitwise operators
-        int hairColor = ((hairColorBytes[0] & 0xFF) << 16) | ((hairColorBytes[1] & 0xFF) << 8) | (hairColorBytes[2] & 0xFF);
-        // Convert the integer to a hexadecimal string with leading zeros
-        return String.format("%06X", hairColor);
-    }
-
     public Color getHairColorFx() {
         int pointer = 0x39;
         return Hex.getColor(blockBytes, pointer);
     }
 
-    public void setColorFx(Color color) {
+    public void setHairColorFx(Color color) {
         int pointer = 0x39;
         Hex.setColor(blockBytes, pointer, color);
-    }
-
-
-    public void setHairColor(String hexString) {
-        int pointer = 0x39;
-        Hex.setColorToByteArray(blockBytes, pointer, hexString);
     }
 
     /*
@@ -233,14 +214,14 @@ public class RawBlockEnd {
         return Hex.getByte2(blockBytes, point);
     }
 
-    public int victoryCount() {
-        int point = 0x33;
-        return Hex.getByte2(blockBytes, point);
-    }
-
     public void setBattles(int battleCount) {
         int point = 0x31;
         Hex.setByte2(blockBytes, point, battleCount); //Battles
+    }
+
+    public int victoryCount() {
+        int point = 0x33;
+        return Hex.getByte2(blockBytes, point);
     }
 
     public void setVictories(int victoryCount) {
@@ -268,7 +249,7 @@ public class RawBlockEnd {
                 " Victories: " + victoryCount();
 
         //Hair color (regular units also store it, though it only changes the color of their children)
-        text += "\n" + "Hair: #" + getHairColor();
+        text += "\n" + "Hair: #" + getHairColorFx();
         return text;
     }
 

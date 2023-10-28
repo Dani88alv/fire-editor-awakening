@@ -8,7 +8,6 @@ import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.UnitBlock;
 import com.danius.fireeditor.savefile.wireless.DuTeam;
 import com.danius.fireeditor.savefile.wireless.UnitDu;
-import com.danius.fireeditor.util.Hex;
 import com.danius.fireeditor.util.Portrait;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -101,7 +100,7 @@ public class UnitController {
         labelUnitName.setText(unit.unitName());
         spinUnitId.increment(0);
         spinUnitId.getValueFactory().setValue(unit.rawBlock1.unitId());
-        colorHair.setValue(Hex.hexToColor(unit.rawBlockEnd.getHairColor()));
+        colorHair.setValue(unit.rawBlockEnd.getHairColorFx());
         spinLevel.getValueFactory().setValue(unit.rawBlock1.level());
         spinExp.getValueFactory().setValue(unit.rawBlock1.exp());
         txtGrowthMove.setText(String.valueOf(unit.rawBlock1.movement()));
@@ -146,7 +145,7 @@ public class UnitController {
             unit.rawBlock1.setUnitClass(comboClass.getSelectionModel().getSelectedIndex());
             unit.rawBlock1.setLevel(spinLevel.getValue());
             unit.rawBlock1.setExp(spinExp.getValue());
-            unit.rawBlockEnd.setHairColor(Hex.colorToHex(colorHair.getValue()));
+            unit.rawBlockEnd.setHairColorFx(colorHair.getValue());
             //Updates the current list
             int unitGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
             unitBlock.unitList.set(unitGroup, listViewUnit.getItems());
@@ -397,7 +396,7 @@ public class UnitController {
         });
         //If the hair color is updated, the portrait too
         colorHair.valueProperty().addListener((observable, oldColor, newColor) -> {
-            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setHairColor(Hex.colorToHex(colorHair.getValue()));
+            listViewUnit.getSelectionModel().getSelectedItem().rawBlockEnd.setHairColorFx(colorHair.getValue());
             setImage();
         });
         //If the Unit ID is changed, the name, portrait and stats are updated too

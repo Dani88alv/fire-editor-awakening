@@ -5,6 +5,7 @@ import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.RawSkill;
 import com.danius.fireeditor.util.Hex;
+import javafx.scene.paint.Color;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -107,7 +108,7 @@ public class UnitDu {
         unit.rawBlock1.setLevel(getLevel());
         unit.rawBlock1.setExp(0);
         unit.rawFlags.setHiddenLevel(getHiddenLevel());
-        unit.rawBlockEnd.setHairColor(getOffspringColor());
+        unit.rawBlockEnd.setHairColorFx(getHairColorFx());
         //Flags
         unit.rawFlags.setBattleFlag(27, hasDuFlag(1)); //Outrealm
         unit.rawFlags.setTraitFlag(4, hasDuFlag(4)); //Leader
@@ -198,20 +199,15 @@ public class UnitDu {
         Hex.setByte2(rawBlock1, 0x8, value);
     }
 
-    public String getOffspringColor() {
+
+    public Color getHairColorFx() {
         int pointer = 0xA;
-        byte[] hairColorBytes = new byte[3];
-        hairColorBytes[0] = rawBlock1[pointer];
-        hairColorBytes[1] = rawBlock1[pointer + 1];
-        hairColorBytes[2] = rawBlock1[pointer + 2];
-        // Combine the three bytes into a single integer value using bitwise operators
-        int hairColor = ((hairColorBytes[0] & 0xFF) << 16) | ((hairColorBytes[1] & 0xFF) << 8) | (hairColorBytes[2] & 0xFF);
-        // Convert the integer to a hexadecimal string with leading zeros
-        return String.format("%06X", hairColor);
+        return Hex.getColor(rawBlock1, pointer);
     }
 
-    public void setOffspringColor(String hexString) {
-        Hex.setColorToByteArray(rawBlock1, 0xA, hexString);
+    public void setHairColorFx(Color color) {
+        int pointer = 0xA;
+        Hex.setColor(rawBlock1, pointer, color);
     }
 
     public int[] getGrowth() {

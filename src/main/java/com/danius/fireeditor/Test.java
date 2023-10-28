@@ -1,25 +1,16 @@
 package com.danius.fireeditor;
 
 
-import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.Chapter13;
-import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.savefile.units.mainblock.RawInventory;
-import com.danius.fireeditor.savefile.units.mainblock.RawItem;
+import com.danius.fireeditor.savefile.units.mainblock.RawBlockEnd;
 import com.danius.fireeditor.util.Hex;
 import javafx.scene.paint.Color;
-import org.jdom2.Attribute;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Scanner;
 
 public class Test {
 

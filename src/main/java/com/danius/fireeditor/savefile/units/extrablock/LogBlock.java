@@ -4,6 +4,7 @@ import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.model.MiscDb;
 import com.danius.fireeditor.util.Hex;
+import javafx.scene.paint.Color;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -231,24 +232,17 @@ public class LogBlock {
         else mainBlock[point] = (byte) (0);
     }
 
-    public String getLogHairColor() {
+    public Color getHairColorFx() {
         int pointer = 0x6;
-        byte[] hairColorBytes = new byte[3];
-        hairColorBytes[0] = mainBlock[pointer];
-        hairColorBytes[1] = mainBlock[pointer + 1];
-        hairColorBytes[2] = mainBlock[pointer + 2];
-        // Combine the three bytes into a single integer value using bitwise operators
-        int hairColor = ((hairColorBytes[0] & 0xFF) << 16) | ((hairColorBytes[1] & 0xFF) << 8) | (hairColorBytes[2] & 0xFF);
-        // Convert the integer to a hexadecimal string with leading zeros
-        return String.format("%06X", hairColor);
+        return Hex.getColor(mainBlock, pointer);
     }
 
-    public void setHairColor(String hexString) {
+    public void setHairColorFx(Color color) {
         int pointer = 0x6;
-        Hex.setColorToByteArray(mainBlock, pointer, hexString);
+        Hex.setColor(mainBlock, pointer, color);
     }
 
-    //0x9: Hair Color Terminator?
+
     //0xA: Voice
 
     /*
@@ -483,7 +477,7 @@ public class LogBlock {
         //Build
         text += "\n" + "Asset: " + MiscDb.modifNames.get(getAssetFlaw()[0]) + " Flaw: " + MiscDb.modifNames.get(getAssetFlaw()[1]);
         text += "\n" + "Build: " + Arrays.toString(getFullBuild()) + " Birthday: " + Arrays.toString(getBirthday());
-        text += "\n" + "Logbook Hair: #" + getLogHairColor();
+        text += "\n" + "Logbook Hair: #" + getHairColorFx();
         return text;
     }
 

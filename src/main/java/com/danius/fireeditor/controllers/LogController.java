@@ -99,7 +99,7 @@ public class LogController {
         }
     }
 
-    public void addLogData() throws IOException {
+    public void addLogData() {
         if (unit.rawLog == null) {
             String unitName = unit.unitName();
             this.unit.addBlockLog();
@@ -107,7 +107,7 @@ public class LogController {
             unit.rawLog.setName(unitName);
             unit.rawLog.setAsset(0);
             unit.rawLog.setFlaw(0);
-            unit.rawLog.setHairColor(unit.rawBlockEnd.getHairColor());
+            unit.rawLog.setHairColorFx(unit.rawBlockEnd.getHairColorFx());
             unit.rawLog.setGender(SkillLogic.isFemaleUnit(this.unit));
             unit.rawLog.setLogIdRandom();
 
@@ -131,7 +131,7 @@ public class LogController {
         //Other
         comboAsset.getSelectionModel().select(unit.rawLog.getAssetFlaw()[0]);
         comboFlaw.getSelectionModel().select(unit.rawLog.getAssetFlaw()[1]);
-        colorPickerHair.setValue(Hex.hexToColor(unit.rawLog.getLogHairColor()));
+        colorPickerHair.setValue(unit.rawLog.getHairColorFx());
         txtLogId.setText(unit.rawLog.getLogId());
         txtName.setText(unit.rawLog.getName());
         checkCard.setSelected(unit.rawLog.isEinherjar());
@@ -161,7 +161,7 @@ public class LogController {
     }
 
     private void updateBuild() {
-        unit.rawLog.setHairColor(Hex.colorToHex(colorPickerHair.getValue()));
+        unit.rawLog.setHairColorFx(colorPickerHair.getValue());
         unit.rawLog.setEinherjar(checkCard.isSelected());
         unit.rawLog.setLogId(txtLogId.getText());
         unit.rawLog.setVoice(spinVoice.getValue());

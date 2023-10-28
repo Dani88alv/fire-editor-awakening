@@ -61,8 +61,7 @@ public class Portrait {
                     sprites[2] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(hairPath)));
                     String backPath = path + "_back.png";
                     Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
-                    String hexColor = "#" + unit.rawBlockEnd.getHairColor();
-                    sprites[1] = fillImageWithColor(backSprite, hexColor);
+                    sprites[1] = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
                 }
                 //Adult Units
                 else {
@@ -124,8 +123,7 @@ public class Portrait {
             //Hair color
             String backPath = path + "back_0" + build + "_0" + hair + ".png";
             Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
-            String hexColor = "#" + unit.rawLog.getLogHairColor();
-            imgHairColor = fillImageWithColor(backSprite, hexColor);
+            imgHairColor = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
         }
         //SpotPass Units
         else if (unit.rawLog.isEinherjar() && unit.rawLog.hasSpotPassPortrait()) {
@@ -145,59 +143,33 @@ public class Portrait {
     /*
    Changes the color of the hair color sprite
     */
-    public static Image fillImageWithColor(Image image, String hexColor) {
-        // Convert hex color to JavaFX Color
-        Color fillColor = Color.web(hexColor);
+    public static Image fillImageWithColor(Image image, Color fillColor) {
         int width = (int) image.getWidth();
         int height = (int) image.getHeight();
-        // Create a writable image with the same dimensions as the original image
         WritableImage filledImage = new WritableImage(width, height);
-        // Get the pixel reader for the original image
         PixelReader pixelReader = image.getPixelReader();
-        // Get the pixel writer for the filled image
         PixelWriter pixelWriter = filledImage.getPixelWriter();
-        // Fill the image with the specified color
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Color pixelColor = pixelReader.getColor(x, y);
+                Color newColor = new Color(
+                        fillColor.getRed(),
+                        fillColor.getGreen(),
+                        fillColor.getBlue(),
+                        fillColor.getOpacity()
+                );
+
                 if (pixelColor.isOpaque()) {
-                    // Use the fill color for opaque pixels
-                    pixelWriter.setColor(x, y, fillColor);
+                    // Use the new color for opaque pixels
+                    pixelWriter.setColor(x, y, newColor);
                 } else {
                     // Preserve transparency for transparent pixels
                     pixelWriter.setColor(x, y, pixelColor);
                 }
             }
         }
+
         return filledImage;
-    }
-
-    public static Image overlayImages(Image... images) {
-        int maxWidth = 0;
-        int maxHeight = 0;
-
-        // Calculate the maximum width and height
-        for (Image image : images) {
-            maxWidth = Math.max(maxWidth, (int) image.getWidth());
-            maxHeight = Math.max(maxHeight, (int) image.getHeight());
-        }
-
-        WritableImage combinedImage = new WritableImage(maxWidth, maxHeight);
-        PixelWriter pixelWriter = combinedImage.getPixelWriter();
-
-        for (Image image : images) {
-            int width = (int) image.getWidth();
-            int height = (int) image.getHeight();
-            PixelReader pixelReader = image.getPixelReader();
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    int argb = pixelReader.getArgb(x, y);
-                    pixelWriter.setArgb(x, y, argb);
-                }
-            }
-        }
-
-        return combinedImage;
     }
 }
