@@ -68,25 +68,34 @@ public class TranBlock {
     }
 
     //Sets the amount (not uses) of a forged weapon
-    public void setForgedAmount(int slot, int amount, int weaponId) {
+    public void setForgedAmount(int position, int amount, int weaponId) {
         int uses = getItemUses(weaponId) * amount;
         if (uses == 0) uses = amount; //Infinite use weapons
-        setForgedUses(slot, uses);
+        setForgedUses(position, uses);
     }
 
     //Maxes the full main inventory
-    public void maxItemAmount(int amount) {
+    public void setAllItemUsesTo(int uses) {
+        for (int i = 1; i < getItemCountVanilla(); i++) {
+            setItemUses(i, uses);
+        }
+    }
+    public void setAllItemAmountTo(int amount) {
         for (int i = 1; i < getItemCountVanilla(); i++) {
             setItemAmount(i, amount);
         }
     }
 
     //Maxes the full refinement inventory
-    public void maxForgedAmount(int amount, List<Refinement> refiList) {
+    public void setAllForgedUsesTo(int uses, List<Refinement> refiList) {
+        for (Refinement refinement : refiList) {
+            setForgedUses(refinement.position(), uses);
+        }
+    }
+
+    public void setAllForgedAmountTo(int amount, List<Refinement> refiList) {
         for (Refinement refinement : refiList) {
             int maxUses = getItemUses(refinement.weaponId()) * amount;
-            int currentUses = inventoryRefi.get(refinement.position());
-            if (currentUses > maxUses) while (maxUses <= currentUses) maxUses *= 2;
             setForgedUses(refinement.position(), maxUses);
         }
     }

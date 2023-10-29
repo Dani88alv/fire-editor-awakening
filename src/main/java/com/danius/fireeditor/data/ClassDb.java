@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ClassDb {
 
@@ -119,7 +120,7 @@ public class ClassDb {
         return database.MAX_ID;
     }
 
-    private int MAX_ID  = 0;
+    private int MAX_ID = 0;
 
     private void setMaxId() {
         int id = 0;
@@ -129,6 +130,27 @@ public class ClassDb {
         }
         MAX_ID = id;
     }
+
+    public static boolean hasEnemyClass(int id) {
+        for (int aClass : enemyClasses) {
+            if (id == aClass - 1) return true;
+        }
+        return false;
+    }
+
+    public static int getRandomEnemyClass() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(enemyClasses.length); // Generate a random index within the array's length
+        return enemyClasses[randomIndex] - 1;
+    }
+
+    /* Valid Enemy Classes */
+    private static final int[] enemyClasses = new int[]{
+            9, 11, 13, 15, 17, 19, 20, 21, 23, 25, 26,
+            27, 29, 31, 33, 35, 37, 38, 39, 41, 43, 44,
+            45, 46, 48, 50, 53, 55, 57, 59, 60, 61, 62,
+            64, 65, 66, 72, 73, 74, 75, 76
+    };
 
     public void readClasses() {
         String path = "/com/danius/fireeditor/database/";

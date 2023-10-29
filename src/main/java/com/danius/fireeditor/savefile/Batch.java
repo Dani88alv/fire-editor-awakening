@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile;
 
+import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
 
 import java.util.List;
@@ -69,5 +70,23 @@ public class Batch {
             chapterFile.blockUnit.unitList.get(groupSlot).get(i).rawFlags.setAllBarrackFlags(set);
             chapterFile.blockUnit.unitList.get(groupSlot).get(i).rawFlags.setAllOtherBuffs(set);
         }
+    }
+
+    /* Sets the same use value to all the convoy items */
+    public static void setConvoyUsesTo(Chapter13 chapter13, int uses) {
+        //Regular Items
+        chapter13.blockTran.setAllItemUsesTo(uses);
+        //Forged Weapons
+        List<Refinement> refinementList = chapter13.blockRefi.refiList;
+        chapter13.blockTran.setAllForgedUsesTo(uses, refinementList);
+    }
+
+    /* Sets the same amount (different uses) to all the convoy items */
+    public static void setConvoyAmountTo(Chapter13 chapter13, int uses) {
+        //Regular Items
+        chapter13.blockTran.setAllItemAmountTo(uses);
+        //Forged Weapons
+        List<Refinement> refinementList = chapter13.blockRefi.refiList;
+        chapter13.blockTran.setAllForgedAmountTo(uses, refinementList);
     }
 }

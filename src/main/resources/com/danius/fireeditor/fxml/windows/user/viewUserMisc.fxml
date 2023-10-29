@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.user.UserMiscController">
+   <children>
+      <AnchorPane prefHeight="394.0" prefWidth="485.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="89.0" prefWidth="290.0">
+               <children>
+                  <Spinner fx:id="spinDlcTurns" editable="true" layoutX="191.0" layoutY="50.0" prefHeight="26.0" prefWidth="60.0" />
+                  <ComboBox fx:id="comboChapterDlc" layoutX="3.0" layoutY="50.0" prefHeight="26.0" prefWidth="172.0" promptText="Chapter" />
+                  <Label layoutX="4.0" layoutY="-1.0" text="DLC Chapters">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="4.0" layoutY="30.0" text="Chapter Slot" />
+                  <Label layoutX="191.0" layoutY="30.0" text="Turns" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -20,6 +20,7 @@ public class Du26Block {
     private List<byte[]> unknownList;
     public DuTeam playerTeam;
     private byte[] rawSpotPass;
+    private byte[] rawExtra;
 
     public Du26Block(byte[] bytes, boolean isWest) {
         int offset = 0;
@@ -47,8 +48,12 @@ public class Du26Block {
         playerTeam = new DuTeam
                 (Arrays.copyOfRange(bytes, offset, offset + teamSize + DuTeam.HEADER_SIZE));
         offset += playerTeam.length();
-        //SpotPass & DLC Data
-        this.rawSpotPass = Arrays.copyOfRange(bytes, offset, bytes.length);
+        //SpotPass
+        this.rawSpotPass = Arrays.copyOfRange(bytes, offset, offset + 0x1E6);
+        offset += rawSpotPass.length;
+        //Extra Data
+        this.rawExtra = Arrays.copyOfRange(bytes, offset, bytes.length);
+
         //this.rawMain = Arrays.copyOfRange(bytes, 0x0, bytes.length - 0x98);
         //this.rawEnd = Arrays.copyOfRange(bytes, bytes.length - 0x98, bytes.length);
     }
@@ -88,16 +93,16 @@ public class Du26Block {
     }
 
 
-    /*
     public int dlcTurn(int slot) {
-        return rawEnd[slot] & 0xFF;
+        int point = 0x32;
+        return rawExtra[point + slot] & 0xFF;
     }
 
     public void setDlcTurn(int slot, int value) {
-        rawEnd[slot] = (byte) (value & 0xFF);
+        int point = 0x32;
+        rawExtra[point + slot] = (byte) (value & 0xFF);
     }
 
-     */
 
     public void addSpotpass() {
         String path = Constants.RES_BLOCK + "rawSpotpassShort";
@@ -130,6 +135,8 @@ public class Du26Block {
             outputStream.write(playerTeam.bytes());
             //SpotPass
             outputStream.write(rawSpotPass);
+            //Extra
+            outputStream.write(rawExtra);
         } catch (Exception e) {
             return null;
         }

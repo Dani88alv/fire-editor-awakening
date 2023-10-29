@@ -12,14 +12,14 @@
 
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="787.0">
       <children>
-         <Button layoutX="23.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Set All Supports To" />
-         <Button layoutX="23.0" layoutY="192.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Reset All Skills" />
-         <Button layoutX="199.0" layoutY="153.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Learn ALL Skills" />
-         <Button layoutX="23.0" layoutY="153.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Learn All Legal Skills" />
-         <Button layoutX="23.0" layoutY="231.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Max Unit Stats" />
-         <Button layoutX="449.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="174.0" text="Set Convoy Items Amount To" />
-         <Button layoutX="199.0" layoutY="192.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Give Boots" />
-         <Button layoutX="199.0" layoutY="232.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="All Temporal Stat Buffs" />
+         <Button layoutX="23.0" layoutY="114.0" mnemonicParsing="false" onAction="#setSupports" prefHeight="30.0" prefWidth="165.0" text="Set All Supports To" />
+         <Button layoutX="23.0" layoutY="192.0" mnemonicParsing="false" onAction="#setSkillsReset" prefHeight="30.0" prefWidth="165.0" text="Reset All Skills" />
+         <Button layoutX="199.0" layoutY="153.0" mnemonicParsing="false" onAction="#setSkillsAll" prefHeight="30.0" prefWidth="165.0" text="Learn ALL Skills" />
+         <Button layoutX="23.0" layoutY="153.0" mnemonicParsing="false" onAction="#setSkillsLegal" prefHeight="30.0" prefWidth="165.0" text="Learn All Legal Skills" />
+         <Button layoutX="23.0" layoutY="231.0" mnemonicParsing="false" onAction="#setMaxStats" prefHeight="30.0" prefWidth="165.0" text="Max Unit Stats" />
+         <Button layoutX="449.0" layoutY="92.0" mnemonicParsing="false" onAction="#setConvoyAmount" prefHeight="30.0" prefWidth="174.0" text="Set Convoy Items Amount To" />
+         <Button layoutX="199.0" layoutY="192.0" mnemonicParsing="false" onAction="#setMoveTwo" prefHeight="30.0" prefWidth="165.0" text="Give Boots" />
+         <Button layoutX="199.0" layoutY="232.0" mnemonicParsing="false" onAction="#setBuffs" prefHeight="30.0" prefWidth="165.0" text="All Temporal Stat Buffs" />
          <ComboBox fx:id="comboSupport" layoutX="207.0" layoutY="116.0" prefWidth="150.0" promptText="Support Level" />
          <Label layoutX="24.0" layoutY="9.0" text="Unit Cheats">
             <font>
@@ -27,18 +27,30 @@
             </font>
          </Label>
          <Label layoutX="24.0" layoutY="45.0" text="Select the unit group that will be modified" />
-         <Label layoutX="449.0" layoutY="31.0" text="Item Cheats">
+         <Label layoutX="449.0" layoutY="18.0" text="Convoy">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
          <ComboBox fx:id="comboUnitGroup" layoutX="23.0" layoutY="72.0" prefWidth="150.0" promptText="Unit Group" />
-         <Button layoutX="106.0" layoutY="332.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="All Unit Cheats" />
-         <Button layoutX="547.0" layoutY="341.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Change Save File Region" />
-         <Button layoutX="547.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Unlock SpotPass Data" />
-         <Spinner fx:id="spinItemAmount" layoutX="639.0" layoutY="115.0" prefHeight="26.0" prefWidth="78.0" />
-         <Button layoutX="449.0" layoutY="72.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="174.0" text="Set Convoy Items Uses To" />
-         <Spinner fx:id="spinItemUses" layoutX="639.0" layoutY="74.0" prefHeight="26.0" prefWidth="78.0" />
+         <Button layoutX="106.0" layoutY="332.0" mnemonicParsing="false" onAction="#pickGodAndPray" prefHeight="30.0" prefWidth="165.0" text="All Unit Cheats" />
+         <Button layoutX="547.0" layoutY="341.0" mnemonicParsing="false" onAction="#changeRegion" prefHeight="30.0" prefWidth="165.0" text="Change Save File Region" />
+         <Button layoutX="547.0" layoutY="295.0" mnemonicParsing="false" onAction="#addSpotPass" prefHeight="30.0" prefWidth="165.0" text="Unlock SpotPass Data" />
+         <Spinner fx:id="spinItemAmount" editable="true" layoutX="639.0" layoutY="94.0" prefHeight="26.0" prefWidth="78.0" />
+         <Button layoutX="449.0" layoutY="51.0" mnemonicParsing="false" onAction="#setConvoyUses" prefHeight="30.0" prefWidth="174.0" text="Set Convoy Items Uses To" />
+         <Spinner fx:id="spinItemUses" editable="true" layoutX="639.0" layoutY="53.0" prefHeight="26.0" prefWidth="78.0" />
+         <Label layoutX="548.0" layoutY="256.0" text="Other">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Button layoutX="449.0" layoutY="168.0" mnemonicParsing="false" onAction="#setEncounters" prefHeight="30.0" prefWidth="165.0" text="Set All Map Encounters To" />
+         <ComboBox fx:id="comboMap" layoutX="625.0" layoutY="170.0" prefHeight="26.0" prefWidth="105.0" promptText="Encounter" />
+         <Label layoutX="450.0" layoutY="138.0" text="Overworld">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
       </children>
     </AnchorPane>
 

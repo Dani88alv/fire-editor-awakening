@@ -40,29 +40,7 @@ public class UserController {
         FireEditor.userController = this;
         setupElements();
         addUserListeners();
-        //addDlcListeners();
         loadBlocks();
-    }
-
-    public void addSpotpass() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("SpotPass Data");
-        alert.setHeaderText("This will reset all the SpotPass content. Proceed? \n" +
-                "WARNING: This feature has not been fully tested!");
-        alert.setContentText("If you already have SpotPass content downloaded, nothing will be modified.");
-        // Add Confirm and Cancel buttons
-        ButtonType confirmButton = new ButtonType("Confirm");
-        ButtonType cancelButton = new ButtonType("Cancel");
-        alert.getButtonTypes().setAll(confirmButton, cancelButton);
-
-        // Show the dialog and wait for a response
-        alert.showAndWait().ifPresent(response -> {
-            if (response == confirmButton) {
-                du26Block.addSpotpass();
-            } else if (response == cancelButton) {
-                return;
-            }
-        });
     }
 
     public void loadBlocks() {
@@ -79,8 +57,6 @@ public class UserController {
             spinMoney.getValueFactory().setValue(userBlock.money());
             spinTime.getValueFactory().setValue(userBlock.playtime() / 60);
             spinRenown.getValueFactory().setValue(userBlock.renown());
-            //DLC
-            //comboChapterDlc.getSelectionModel().select(0);
             //Global flags
             checkGlobal0.setSelected(userBlock.hasGlobalFlag(0));
             checkGlobal1.setSelected(userBlock.hasGlobalFlag(1));
@@ -90,17 +66,13 @@ public class UserController {
     }
 
     public void setupElements() {
-        UI.setSpinnerNumeric(spinDlcTurns, 255);
         //General data
         UI.setSpinnerTimer(spinTime, 216000000);
         UI.setSpinnerNumeric(spinMoney, 999999);
         UI.setSpinnerNumeric(spinRenown, 99999);
-        ObservableList<String> difficulty = FXCollections.observableArrayList("Normal", "Hard", "Lunatic");
+        ObservableList<String> difficulty = FXCollections.observableArrayList
+                ("Normal", "Hard", "Lunatic");
         comboDifficulty.setItems(difficulty);
-        //DLC Chapters
-        ObservableList<String> dlcChapters = FXCollections.observableArrayList();
-        dlcChapters.addAll(MiscDb.chapterDlcNames);
-        //comboChapterDlc.setItems(dlcChapters);
     }
 
     public void resetRenownFlags() {
@@ -157,26 +129,6 @@ public class UserController {
 
 
     }
-
-    /*
-    public void addDlcListeners() {
-        comboChapterDlc.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-                    if (du26Block != null && newValue != null && oldValue != null) {
-                        //The old selection is updated
-                        if ((Integer) oldValue >= 0) du26Block.setDlcTurn((Integer) oldValue, spinDlcTurns.getValue());
-                        spinDlcTurns.getValueFactory().setValue(du26Block.dlcTurn((Integer) newValue));
-                    }
-                }
-        );
-        spinDlcTurns.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && du26Block != null) {
-                spinDlcTurns.increment(0);
-                du26Block.setDlcTurn(comboChapterDlc.getSelectionModel().getSelectedIndex(), spinDlcTurns.getValue());
-            }
-        });
-    }
-
-     */
 
     public void openCredits() {
         try {
@@ -246,6 +198,25 @@ public class UserController {
             Stage secondaryStage = new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
             secondaryStage.setTitle("Wireless Teams");
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openMisc() {
+        try {
+            FXMLLoader fxmlLoader = MainController.getWindowUser("viewUserMisc.fxml");
+            Parent root = fxmlLoader.load();
+            // Pass the selected value to the second view's controller
+            UserMiscController controller = fxmlLoader.getController();
+            controller.setBlocks(userBlock, du26Block);
+            // Create a new stage for the secondary view
+            Stage secondaryStage = new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
+            secondaryStage.setTitle("Miscellaneous Data");
             secondaryStage.setScene(new Scene(root));
             secondaryStage.showAndWait(); // Show the secondary view and wait until it's closed
 

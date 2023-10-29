@@ -1,5 +1,6 @@
 package com.danius.fireeditor.util;
 
+import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.scene.image.Image;
@@ -11,23 +12,6 @@ import javafx.scene.paint.Color;
 import java.util.Objects;
 
 public class Portrait {
-
-    private static final int[] enemyClasses = new int[]{
-            9, 11, 13, 15, 17, 19, 20, 21, 23, 25, 26,
-            27, 29, 31, 33, 35, 37, 38, 39, 41, 43, 44,
-            45, 46, 48, 50, 53, 55, 57, 59, 60, 61, 62,
-            64, 65, 66, 72, 73, 74, 75, 76
-    };
-
-    public static boolean enemyPortrait(Unit unit) {
-        int unitClass = unit.rawBlock1.unitClass();
-        for (int value : enemyClasses) {
-            if (value - 1 == unitClass) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public static boolean isChildColor(Unit unit) {
         int unitId = unit.rawBlock1.unitId();
@@ -47,7 +31,7 @@ public class Portrait {
                 sprites = setImageLog(unit);
             }
             //Valid non-playable unit IDs
-            else if (unitId >= 0x34 && unitId <= 0x38 && enemyPortrait(unit)) {
+            else if (unitId >= 0x34 && unitId <= 0x38 && ClassDb.hasEnemyClass(unit.rawBlock1.unitClass())) {
                 sprites[0] = setImageMonster(unit);
             }
             //Playable Characters

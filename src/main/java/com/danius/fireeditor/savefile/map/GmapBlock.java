@@ -1,13 +1,13 @@
 package com.danius.fireeditor.savefile.map;
 
 import com.danius.fireeditor.data.ChapterDb;
-import com.danius.fireeditor.savefile.Constants;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class GmapBlock {
 
@@ -64,24 +64,36 @@ public class GmapBlock {
         return -1;
     }
 
-    public List<String> chapterNames() {
-        List<String> mapList = new ArrayList<>();
-        for (int i = 0; i < maps.size(); i++) mapList.add(gChapterName(i));
-        return mapList;
-    }
+    // 0: Empty | 1: Risen | 2: Merchant | 3: Random!
+    public void randomizeMaps(int type) {
+        for (RawMap map : maps) {
+            Random random = new Random();
+            //Only unlocked chapters are modified
+            if (map.lockState() == 1) {
+                //The map encounters are cleared out
+                map.setEncounter(0, 0);
+                map.setEncounter(1, 0);
 
-    private String gChapterName(int id) {
-        if (id == 0) return "";
-        if (id == 1) return "Premonition";
-        if (id == 2) return "Prologue";
-        if (id > 2 && id <= 26) {
-            return "Chapter " + (id - 2);
-        } else if (id > 26 && id <= 49) {
-            int chapter = id - 26;
-            return "Paralogue " + chapter;
-        } else if (id == 50) return "Outrealm Gate";
-        else {
-            return "Modded #" + (Constants.MAX_CHAPTERS - id + 1);
+                //The map is randomized
+                int firstOption = type;
+                if (type == 3) {
+                    firstOption = random.nextInt(2) + 1;
+                }
+                map.setRandomEncounter(0, firstOption);
+
+                //A 1/3 of modifying both slots
+                boolean modifyBothEncounters = random.nextDouble() < 1.0 / 3.0;
+
+                //If the option is merchant only, do not modify the second slot
+                if (modifyBothEncounters) {
+                    //The type is reset to Risen or Merchant only if it is random
+                    int secondOption = type;
+                    if (type == 3) {
+                        secondOption = random.nextInt(2) + 1;
+                    }
+                    map.setRandomEncounter(1, secondOption);
+                }
+            }
         }
     }
 }

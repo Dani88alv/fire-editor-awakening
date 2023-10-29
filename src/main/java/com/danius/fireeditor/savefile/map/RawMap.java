@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.map;
 
+import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class RawMap {
     private final byte[] header;
@@ -180,6 +182,50 @@ public class RawMap {
         //Convert it to a byte array
         byte[] logId = Hex.hexStringToByteArray(String.valueOf(sb));
         System.arraycopy(logId, 0, spawnList.get(slot), point, 4);
+    }
+
+    private String randomSeed() {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(8);
+        for (int i = 0; i < 8; i++) {
+            int randomDigit = random.nextInt(16); // Generate a random digit from 0 to 15 (0x0 to 0xF)
+            sb.append(Integer.toHexString(randomDigit));
+        }
+        return sb.toString();
+    }
+
+
+    // Randomizes a encounter
+    public void setRandomEncounter(int slot, int type) {
+        Random random = new Random();
+        int class1 = ClassDb.getRandomEnemyClass();
+        int pool1 = random.nextInt(36);
+        String seed1 = randomSeed();
+
+        switch (type) {
+            //Empty
+            case 0 -> {
+                setEncounter(slot, 0);
+            }
+            //Risen
+            case 1 -> {
+                setEncounter(slot, 1);
+                setUnitClass(slot, class1);
+                setPool(slot, pool1);
+                setSeed(slot, seed1);
+            }
+            //Merchant
+            case 2 -> {
+                int otherSlot = (slot == 0) ? 1 : 0;
+                boolean otherSlotIsMerchant = isMerchant(otherSlot);
+                //Prevent 2 merchants from spawning together
+                if (!otherSlotIsMerchant) {
+                    setEncounter(slot, 2);
+                    setPool(slot, pool1);
+                    setSeed(slot, seed1);
+                }
+            }
+        }
     }
 
     public byte[] bytes() {
