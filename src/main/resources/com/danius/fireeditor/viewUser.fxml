@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.user.UserController">
+
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="787.0">
+      <children>
+         <Label layoutX="21.0" layoutY="10.0" text="User Data">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <ComboBox fx:id="comboDifficulty" layoutX="21.0" layoutY="64.0" prefHeight="26.0" prefWidth="130.0" promptText="Difficulty" />
+         <CheckBox fx:id="checkLunatic" layoutX="23.0" layoutY="136.0" mnemonicParsing="false" text="Lunatic+" />
+         <Spinner fx:id="spinTime" editable="true" layoutX="183.0" layoutY="64.0" prefHeight="26.0" prefWidth="90.0" />
+         <Button layoutX="33.0" layoutY="230.0" mnemonicParsing="false" onAction="#addSpotpass" prefHeight="47.0" prefWidth="178.0" text="Unlock SpotPass Content">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Button>
+         <Spinner fx:id="spinMoney" editable="true" layoutX="290.0" layoutY="65.0" prefHeight="26.0" prefWidth="90.0" />
+         <Spinner fx:id="spinDlcTurns" disable="true" editable="true" layoutX="576.0" layoutY="249.0" prefHeight="26.0" prefWidth="60.0" />
+         <ComboBox fx:id="comboChapterDlc" disable="true" layoutX="388.0" layoutY="249.0" prefHeight="26.0" prefWidth="172.0" promptText="Chapter" />
+         <Label layoutX="22.0" layoutY="44.0" text="Difficulty" />
+         <Label layoutX="389.0" layoutY="198.0" text="DLC Chapters">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="389.0" layoutY="229.0" text="Chapter Slot" />
+         <Label layoutX="576.0" layoutY="229.0" text="Turns" />
+         <Label layoutX="183.0" layoutY="44.0" text="Total Playtime" />
+         <Label layoutX="291.0" layoutY="47.0" text="Money" />
+         <Label layoutX="34.0" layoutY="196.0" text="SpotPass">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Spinner fx:id="spinRenown" editable="true" layoutX="183.0" layoutY="117.0" prefHeight="26.0" prefWidth="90.0" />
+         <Label layoutX="184.0" layoutY="98.0" text="Renown" />
+         <Button layoutX="153.0" layoutY="152.0" mnemonicParsing="false" onAction="#resetRenownFlags" prefHeight="26.0" prefWidth="150.0" text="Reset Renown Shop" />
+         <Button layoutX="564.0" layoutY="148.0" mnemonicParsing="false" onAction="#openCredits" prefHeight="47.0" prefWidth="130.0" text="Story Progress" />
+         <CheckBox fx:id="checkCasual" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" text="Casual" />
+         <Button layoutX="183.0" layoutY="330.0" mnemonicParsing="false" onAction="#openBarrack" prefHeight="47.0" prefWidth="130.0" text="Barrack Events" />
+         <Label layoutX="184.0" layoutY="308.0" text="Barrack Event Editor" />
+         <Button layoutX="365.0" layoutY="125.0" mnemonicParsing="false" onAction="#openMap" prefHeight="54.0" prefWidth="106.0" text="Map" />
+         <Button layoutX="231.0" layoutY="210.0" mnemonicParsing="false" onAction="#openWireless" prefHeight="54.0" prefWidth="118.0" text="Wireless" />
+         <AnchorPane layoutX="528.0" layoutY="30.0" prefHeight="136.0" prefWidth="202.0">
+            <children>
+               <CheckBox fx:id="checkGlobal0" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cleared Paralogue 2" />
+               <CheckBox fx:id="checkGlobal1" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" text="Cleared Paralogue 4" />
+               <CheckBox fx:id="checkGlobal3" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" text="Chrom has the Fire Emblem" />
+               <CheckBox fx:id="checkGlobal4" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" text="Anything can change! Quote" />
+            </children>
+         </AnchorPane>
+         <Label layoutX="542.0" layoutY="13.0" text="Global Flags">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="533.0" layoutY="261.0" text="Misc.">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Button layoutX="569.0" layoutY="290.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" text="DLC Turns" />
+         <Button layoutX="569.0" layoutY="336.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" text="Double Duel" />
+      </children>
+    </AnchorPane>
+
+
+</VBox>

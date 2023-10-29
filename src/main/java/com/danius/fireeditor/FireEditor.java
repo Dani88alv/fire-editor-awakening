@@ -1,8 +1,10 @@
 package com.danius.fireeditor;
 
 import com.danius.fireeditor.controllers.*;
+import com.danius.fireeditor.controllers.convoy.ConvoyController;
+import com.danius.fireeditor.controllers.unit.UnitController;
+import com.danius.fireeditor.controllers.user.UserController;
 import com.danius.fireeditor.savefile.Chapter13;
-import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,13 +22,13 @@ public class FireEditor extends Application {
     public static Chapter13 chapterFile;
     public static UnitController unitController;
     public static ConvoyController convoyController;
-    public static ChapterController chapterController;
+    public static UserController userController;
     public static CheatController cheatController;
     public static MainController mainController;
 
     @Override
     public void start(Stage stage) throws IOException {
-        readTestFile("Chapter1");
+        readTestFile("Chapter0");
         FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewMain.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 750, 445);
         stage.setTitle("Fire Editor: Awakening");

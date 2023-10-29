@@ -17,7 +17,7 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(ChapterDb.getOverWorldName(1));
+
     }
 
     private static void printHexArray(byte[] array) {

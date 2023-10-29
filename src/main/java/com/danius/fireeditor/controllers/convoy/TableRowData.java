@@ -1,4 +1,4 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.convoy;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

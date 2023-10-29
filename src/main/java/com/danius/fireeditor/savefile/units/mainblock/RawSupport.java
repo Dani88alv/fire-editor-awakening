@@ -51,7 +51,7 @@ public class RawSupport {
         //Gets the type of support of the parameter character
         int type = getUnitSupportTypes(unitId)[slot];
         //Gets the max values of the type gotten
-        int[] maxValues = supportValues().get(type);
+        int[] maxValues = getSupportValues(type);
         if (level == 0) setSupportValue(slot, 0);
         else setSupportValue(slot, maxValues[level - 1]);
     }
@@ -170,19 +170,5 @@ public class RawSupport {
 
     public int length() {
         return supportValues.size() + 1;
-    }
-
-    /*
-   C-Pending, C-Rank, B-Pending, B-Rank
-   A-Pending, A-Rank S-Pending, S-Rank
-    */
-    public static HashMap<Integer, int[]> supportValues() {
-        HashMap<Integer, int[]> values = new HashMap<Integer, int[]>();
-        values.put(0, new int[]{0x3, 0x4, 0x9, 0x10, 0x11, 0x12, 0x12, 0x12}); //Non-Romantic
-        values.put(1, new int[]{0x4, 0x5, 0x9, 0x10, 0xF, 0x10, 0x15, 0x16}); //Slow
-        values.put(2, new int[]{0x3, 0x4, 0x8, 0x9, 0xD, 0xE, 0x13, 0x14}); //Medium
-        values.put(3, new int[]{0x2, 0x3, 0x7, 0x8, 0xC, 0xD, 0x11, 0x12}); //Fast
-        values.put(4, new int[]{0x0, 0x1, 0x5, 0x6, 0xF, 0x10, 0x10, 0x10}); //Family Support
-        return values;
     }
 }

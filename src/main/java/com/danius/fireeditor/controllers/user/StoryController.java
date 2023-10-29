@@ -1,6 +1,7 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.user;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.ChapterDb;
 import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.user.UserBlock;
@@ -14,7 +15,7 @@ import javafx.scene.control.Spinner;
 
 import static com.danius.fireeditor.data.ClassDb.*;
 
-public class CreditController {
+public class StoryController {
 
     private UserBlock userBlock;
     @FXML
@@ -179,6 +180,15 @@ public class CreditController {
             int slot = validateSlot();
             if (slot == -1) return;
             userBlock.progress.get(slot).setTurns(spinCreditTurns.getValue());
+        });
+        spinTotal.valueProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setCountTotalChapter(spinTotal.getValue());
+        });
+        spinLast.valueProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setCountLastChapter(spinLast.getValue());
+        });
+        spinCurrent.valueProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setCurrentChapter(spinCurrent.getValue());
         });
     }
 

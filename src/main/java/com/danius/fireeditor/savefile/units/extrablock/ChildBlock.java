@@ -1,7 +1,7 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -152,7 +152,7 @@ public class ChildBlock {
         //Gets the type of support of the parameter character
         int type = 4;
         //Gets the max values of the type gotten
-        int[] maxValues = RawSupport.supportValues().get(type);
+        int[] maxValues = UnitDb.getSupportValues(type);
         //D-Rank does not exist
         int value = (level == 0) ? maxValues[0] : maxValues[level - 1];
         setSupportParent(true, value);
@@ -160,12 +160,12 @@ public class ChildBlock {
         setSupportSibling(value);
     }
 
-    //Sets all VALID supports to a specific rank
-    public void setAllSupportsToLevel(int level, int sibling) {
+    //Sets all valid supports to a specific rank
+    public void setValidSupportsToLevel(int level, int sibling) {
         //Gets the type of support of the parameter character
         int type = 4;
         //Gets the max values of the type gotten
-        int[] maxValues = RawSupport.supportValues().get(type);
+        int[] maxValues = UnitDb.getSupportValues(type);
         int value = (level == 0) ? maxValues[0] : maxValues[level - 1];
 
         int father = parentId(0);

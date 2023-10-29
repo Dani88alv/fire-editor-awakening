@@ -1,7 +1,9 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.ChapterDb;
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawBlock2;
 import com.danius.fireeditor.data.MiscDb;
@@ -26,7 +28,7 @@ public class OtherController {
     @FXML
     private CheckBox checkRetire, checkDead1, checkDead2;
     @FXML
-    private Label lblSword, lblBow, lblLance, lblAxe, lblTome, lblStave;
+    private Label lblSword, lblBow, lblLance, lblAxe, lblTome, lblStave, lblRetired;
     private Label[] weaponLevels = new Label[]{};
 
     public void initialize() {
@@ -41,6 +43,9 @@ public class OtherController {
 
 
     public void setFields() {
+        boolean canRetire = UnitDb.canUnitRetire(unit.getUnitId());
+        String state = (canRetire) ? "Retired On:" : "Died On:";
+        lblRetired.setText(state);
         comboArmy.getSelectionModel().select(unit.rawFlags.army());
         comboRetire.getSelectionModel().select(unit.rawBlockEnd.retireChapter());
         spinX1.getValueFactory().setValue(unit.rawBlock1.coordinates1()[0]);

@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.util.Hex;
 import com.danius.fireeditor.data.MiscDb;
 
@@ -59,15 +60,15 @@ public class RawParent {
 
     public String report() {
         String report = "";
-        report += "Parent: " + MiscDb.unitName(parentId(0)) +
+        report += "Parent: " + UnitDb.getUnitName(parentId(0)) +
                 " (" + MiscDb.modifNames.get(asset(0)) + "-" +
                 MiscDb.modifNames.get(flaw(0)) + ")";
         report += "\n";
-        report += "Grandpa: " + MiscDb.unitName(parentId(1)) +
+        report += "Grandpa: " + UnitDb.getUnitName(parentId(1)) +
                 " (" + MiscDb.modifNames.get(asset(1)) + "-" +
                 MiscDb.modifNames.get(flaw(1)) + ")";
         report += "\n";
-        report += "Grandma: " + MiscDb.unitName(parentId(2)) +
+        report += "Grandma: " + UnitDb.getUnitName(parentId(2)) +
                 " (" + MiscDb.modifNames.get(asset(2)) + "-" +
                 MiscDb.modifNames.get(flaw(2)) + ")";
         return report;

@@ -2,6 +2,7 @@ package com.danius.fireeditor.data;
 
 import com.danius.fireeditor.data.model.EinherjarModel;
 import com.danius.fireeditor.data.model.UnitModel;
+import com.danius.fireeditor.savefile.units.Unit;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class UnitDb {
@@ -42,8 +44,22 @@ public class UnitDb {
     public static String getUnitName(int id) {
         if (id == 0xFFFF || id == -1) return "None";
         int totalSize = getUnitCount();
-        if (invalidUnit(id)) return "Invalid Unit #" + (id - totalSize + 1);
+        if (invalidUnit(id)) {
+            if (id >= 4096) {
+                id = id - 4096;
+                return "Map NPC #" + (id + 1);
+            }
+            return "Invalid Unit #" + (id - totalSize + 1);
+        }
         return getUnit(id).getName();
+    }
+
+    public static List<String> getUnitNames() {
+        List<String> names = new ArrayList<>();
+        for (int i = 0; i < getUnitCount(); i++) {
+            names.add(database.units.get(i).getName());
+        }
+        return names;
     }
 
     public static int[] getUnitAddition(int id) {
@@ -99,6 +115,41 @@ public class UnitDb {
         return getUnit(id).getSupportTypes();
     }
 
+    public static int[] getSupportValues(int type) {
+        return supportValues().get(type);
+    }
+
+    public static String getUnitSupportLevelName(int unitId, int value, int slot) {
+        //Checks if it is a modded unit
+        int validSupports = getUnitSupportCount(unitId);
+        if (slot >= validSupports) return "Unknown";
+        //Valid supports
+        int type = getUnitSupportTypes(unitId)[slot];
+        int[] maxValues = getSupportValues(type);
+        if (value < maxValues[0]) return "D-Rank";
+        else if (value == maxValues[0]) return "C-Pending";
+        else if (value < maxValues[2]) return "C-Rank";
+        else if (value == maxValues[2]) return "B-Pending";
+        else if (value < maxValues[4]) return "B-Rank";
+        else if (value == maxValues[4]) return "A-Pending";
+        else if (value < maxValues[6] || type == 0) return "A-Rank";
+        else if (value == maxValues[6]) return "S-Pending";
+        else if (value >= maxValues[7]) return "S-Rank";
+        return "?";
+    }
+
+    public static String getChildSupportLevelName(int value) {
+        int[] maxValues = getSupportValues(4);
+        if (value < maxValues[0]) return "D-Rank";
+        else if (value == maxValues[0]) return "C-Pending";
+        else if (value < maxValues[2]) return "C-Rank";
+        else if (value == maxValues[2]) return "B-Pending";
+        else if (value < maxValues[4]) return "B-Rank";
+        else if (value == maxValues[4]) return "A-Pending";
+        else if (value == maxValues[5]) return "A-Rank";
+        return "?";
+    }
+
     public static List<Integer> getUnitFlags(int id) {
         if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getFlags();
         return getUnit(id).getFlags();
@@ -114,12 +165,24 @@ public class UnitDb {
         return unitHasFlag(id, 0);
     }
 
-    public static List<String> getUnitNames() {
-        List<String> names = new ArrayList<>();
-        for (int i = 0; i < getUnitCount(); i++) {
-            names.add(database.units.get(i).getName());
+    public static boolean canUnitRetire(int id) {
+        //Frederick ad Virion too
+        return canBeParent(id) || id == 5 || id == 6;
+    }
+
+    private static boolean canBeParent(int id) {
+        for (UnitModel unitModel : database.units) {
+            if (unitModel.getParent() == id) return true;
         }
-        return names;
+        return false;
+    }
+
+    public static int getUnitParent(int id) {
+        return getUnit(id).getParent();
+    }
+
+    public static boolean isParentFemale(int id) {
+        return isUnitFemale(getUnitParent(id));
     }
 
     public static List<Integer> getEinSkills(int logId) {
@@ -150,6 +213,20 @@ public class UnitDb {
         return database.units.size();
     }
 
+    /*
+    C-Pending, C-Rank, B-Pending, B-Rank
+    A-Pending, A-Rank S-Pending, S-Rank
+    */
+    public static HashMap<Integer, int[]> supportValues() {
+        HashMap<Integer, int[]> values = new HashMap<Integer, int[]>();
+        values.put(0, new int[]{0x3, 0x4, 0x9, 0x10, 0x11, 0x12, 0x12, 0x12}); //Non-Romantic
+        values.put(1, new int[]{0x4, 0x5, 0x9, 0x10, 0xF, 0x10, 0x15, 0x16}); //Slow
+        values.put(2, new int[]{0x3, 0x4, 0x8, 0x9, 0xD, 0xE, 0x13, 0x14}); //Medium
+        values.put(3, new int[]{0x2, 0x3, 0x7, 0x8, 0xC, 0xD, 0x11, 0x12}); //Fast
+        values.put(4, new int[]{0x0, 0x1, 0x5, 0x6, 0xF, 0x10, 0x10, 0x10}); //Parent/Sibling
+        return values;
+    }
+
     public void readUnits() {
         String path = "/com/danius/fireeditor/database/";
         String xmlFilePath = path + "units.xml";
@@ -172,6 +249,9 @@ public class UnitDb {
                 // Parse attributes from the XML
                 unit.setId(Integer.parseInt(characterElement.getAttributeValue("id")));
                 unit.setName(characterElement.getAttributeValue("name"));
+
+                String parentName = characterElement.getAttributeValue("parent");
+                unit.setParent(parentName.equals("") ? -1 : Integer.parseInt(parentName));
 
                 //Additions
                 Element elemAdditions = characterElement.getChild("additions");

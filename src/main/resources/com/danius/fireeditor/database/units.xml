@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <units>
-    <unit id="0" name="Avatar (M)" pid="">
+    <unit id="0" name="Avatar (M)" pid="" parent="">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="4" class2="-1" class3="-1"/>
@@ -60,7 +60,7 @@
             <flag>5</flag>
         </flags>
     </unit>
-    <unit id="1" name="Avatar (F)" pid="">
+    <unit id="1" name="Avatar (F)" pid="" parent="">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="4" class2="-1" class3="-1"/>
@@ -121,7 +121,7 @@
             <flag>5</flag>
         </flags>
     </unit>
-    <unit id="2" name="Logbook Unit" pid="">
+    <unit id="2" name="Logbook Unit" pid="" parent="">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="4" class2="-1" class3="-1"/>
@@ -132,7 +132,7 @@
             <flag>23</flag>
         </flags>
     </unit>
-    <unit id="3" name="Chrom" pid="">
+    <unit id="3" name="Chrom" pid="" parent="">
         <additions hp="2" str="1" mag="1" skl="3" spd="1" lck="5" def="0" res="1" mov="0"/>
         <modifiers hp="0" str="1" mag="0" skl="1" spd="1" lck="1" def="-1" res="-1" mov="0"/>
         <mClasses class1="0" class2="8" class3="22"/>
@@ -155,7 +155,7 @@
             <flag>5</flag>
         </flags>
     </unit>
-    <unit id="4" name="Lissa" pid="">
+    <unit id="4" name="Lissa" pid="" parent="">
         <additions hp="1" str="1" mag="2" skl="2" spd="0" lck="8" def="2" res="-2" mov="0"/>
         <modifiers hp="0" str="-2" mag="2" skl="-1" spd="0" lck="2" def="-1" res="1" mov="0"/>
         <mClasses class1="52" class2="32" class3="18"/>
@@ -183,7 +183,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="5" name="Frederick" pid="">
+    <unit id="5" name="Frederick" pid="" parent="">
         <additions hp="2" str="2" mag="2" skl="6" spd="5" lck="6" def="0" res="2" mov="0"/>
         <modifiers hp="0" str="2" mag="-2" skl="2" spd="-2" lck="0" def="2" res="0" mov="0"/>
         <mClasses class1="8" class2="10" class3="45"/>
@@ -209,7 +209,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="6" name="Virion" pid="">
+    <unit id="6" name="Virion" pid="" parent="">
         <additions hp="3" str="1" mag="0" skl="1" spd="-1" lck="7" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="2" spd="2" lck="-1" def="-2" res="0" mov="0"/>
         <mClasses class1="22" class2="45" class3="54"/>
@@ -233,7 +233,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="7" name="Sully" pid="">
+    <unit id="7" name="Sully" pid="" parent="">
         <additions hp="2" str="1" mag="1" skl="3" spd="2" lck="6" def="0" res="2" mov="0"/>
         <modifiers hp="0" str="-1" mag="-1" skl="2" spd="2" lck="0" def="-1" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -262,7 +262,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="8" name="Vaike" pid="">
+    <unit id="8" name="Vaike" pid="" parent="">
         <additions hp="4" str="1" mag="0" skl="3" spd="1" lck="4" def="1" res="0" mov="0"/>
         <modifiers hp="0" str="3" mag="-2" skl="1" spd="1" lck="-1" def="0" res="-2" mov="0"/>
         <mClasses class1="19" class2="18" class3="34"/>
@@ -286,7 +286,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="9" name="Stahl" pid="">
+    <unit id="9" name="Stahl" pid="" parent="">
         <additions hp="4" str="2" mag="0" skl="2" spd="0" lck="5" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="2" mag="-1" skl="1" spd="0" lck="-2" def="2" res="-1" mov="0"/>
         <mClasses class1="8" class2="32" class3="22"/>
@@ -310,7 +310,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="10" name="Miriel" pid="">
+    <unit id="10" name="Miriel" pid="" parent="">
         <additions hp="2" str="0" mag="2" skl="2" spd="3" lck="6" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="-2" mag="3" skl="1" spd="1" lck="0" def="-2" res="0" mov="0"/>
         <mClasses class1="54" class2="18" class3="56"/>
@@ -338,7 +338,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="11" name="Kellam" pid="">
+    <unit id="11" name="Kellam" pid="" parent="">
         <additions hp="3" str="2" mag="0" skl="3" spd="3" lck="3" def="1" res="2" mov="0"/>
         <modifiers hp="0" str="1" mag="0" skl="1" spd="-2" lck="-2" def="3" res="0" mov="0"/>
         <mClasses class1="10" class2="34" class3="52"/>
@@ -362,7 +362,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="12" name="Sumia" pid="">
+    <unit id="12" name="Sumia" pid="" parent="">
         <additions hp="2" str="2" mag="1" skl="4" spd="3" lck="8" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="-2" mag="0" skl="2" spd="3" lck="0" def="-2" res="1" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -382,7 +382,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="13" name="Lon'qu" pid="">
+    <unit id="13" name="Lon'qu" pid="" parent="">
         <additions hp="4" str="2" mag="0" skl="3" spd="3" lck="7" def="3" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="3" spd="3" lck="0" def="-2" res="-2" mov="0"/>
         <mClasses class1="32" class2="34" class3="45"/>
@@ -406,7 +406,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="14" name="Ricken" pid="">
+    <unit id="14" name="Ricken" pid="" parent="">
         <additions hp="4" str="3" mag="4" skl="3" spd="1" lck="10" def="4" res="0" mov="0"/>
         <modifiers hp="0" str="-1" mag="2" skl="0" spd="0" lck="1" def="-1" res="0" mov="0"/>
         <mClasses class1="54" class2="8" class3="22"/>
@@ -430,7 +430,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="15" name="Maribelle" pid="">
+    <unit id="15" name="Maribelle" pid="" parent="">
         <additions hp="2" str="0" mag="2" skl="2" spd="1" lck="5" def="2" res="1" mov="0"/>
         <modifiers hp="0" str="-3" mag="2" skl="1" spd="0" lck="3" def="-3" res="2" mov="0"/>
         <mClasses class1="52" class2="8" class3="54"/>
@@ -459,7 +459,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="16" name="Panne" pid="">
+    <unit id="16" name="Panne" pid="" parent="">
         <additions hp="10" str="6" mag="1" skl="5" spd="5" lck="8" def="4" res="1" mov="0"/>
         <modifiers hp="0" str="2" mag="-1" skl="2" spd="3" lck="-1" def="1" res="-1" mov="0"/>
         <mClasses class1="69" class2="18" class3="34"/>
@@ -488,7 +488,7 @@
             <flag>17</flag>
         </flags>
     </unit>
-    <unit id="17" name="Gaius" pid="">
+    <unit id="17" name="Gaius" pid="" parent="">
         <additions hp="6" str="4" mag="0" skl="7" spd="7" lck="6" def="3" res="2" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="2" spd="2" lck="-2" def="-1" res="0" mov="0"/>
         <mClasses class1="34" class2="32" class3="19"/>
@@ -513,7 +513,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="18" name="Cordelia" pid="">
+    <unit id="18" name="Cordelia" pid="" parent="">
         <additions hp="9" str="5" mag="1" skl="6" spd="4" lck="9" def="4" res="2" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="2" spd="2" lck="-1" def="0" res="-1" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -541,7 +541,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="19" name="Gregor" pid="">
+    <unit id="19" name="Gregor" pid="" parent="">
         <additions hp="12" str="7" mag="0" skl="5" spd="4" lck="8" def="5" res="2" mov="0"/>
         <modifiers hp="0" str="2" mag="-1" skl="2" spd="0" lck="-1" def="1" res="-2" mov="0"/>
         <mClasses class1="20" class2="18" class3="32"/>
@@ -565,7 +565,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="20" name="Nowi" pid="">
+    <unit id="20" name="Nowi" pid="" parent="">
         <additions hp="0" str="2" mag="0" skl="1" spd="2" lck="8" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="1" mag="1" skl="-1" spd="-2" lck="1" def="3" res="2" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -594,7 +594,7 @@
             <flag>16</flag>
         </flags>
     </unit>
-    <unit id="21" name="Libra" pid="">
+    <unit id="21" name="Libra" pid="" parent="">
         <additions hp="14" str="9" mag="10" skl="8" spd="7" lck="10" def="5" res="10" mov="0"/>
         <modifiers hp="0" str="0" mag="1" skl="1" spd="0" lck="-1" def="0" res="1" mov="0"/>
         <mClasses class1="52" class2="54" class3="56"/>
@@ -618,7 +618,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="22" name="Tharja" pid="">
+    <unit id="22" name="Tharja" pid="" parent="">
         <additions hp="7" str="3" mag="8" skl="3" spd="9" lck="3" def="6" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="3" skl="-1" spd="1" lck="-3" def="1" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -645,7 +645,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="23" name="Olivia" pid="">
+    <unit id="23" name="Olivia" pid="" parent="">
         <additions hp="2" str="2" mag="0" skl="3" spd="1" lck="5" def="0" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="1" spd="1" lck="0" def="-1" res="-1" mov="0"/>
         <mClasses class1="20" class2="18" class3="32"/>
@@ -674,7 +674,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="24" name="Cherche" pid="">
+    <unit id="24" name="Cherche" pid="" parent="">
         <additions hp="11" str="7" mag="1" skl="6" spd="6" lck="8" def="7" res="2" mov="0"/>
         <modifiers hp="0" str="3" mag="0" skl="-1" spd="-1" lck="0" def="2" res="-2" mov="0"/>
         <mClasses class1="45" class2="19" class3="52"/>
@@ -702,7 +702,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="25" name="Henry" pid="">
+    <unit id="25" name="Henry" pid="" parent="">
         <additions hp="10" str="5" mag="10" skl="12" spd="5" lck="10" def="8" res="1" mov="0"/>
         <modifiers hp="0" str="1" mag="1" skl="2" spd="0" lck="-2" def="1" res="-1" mov="0"/>
         <mClasses class1="56" class2="18" class3="34"/>
@@ -727,7 +727,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="26" name="Lucina" pid="">
+    <unit id="26" name="Lucina" pid="" parent="3">
         <additions hp="12" str="5" mag="1" skl="8" spd="4" lck="13" def="3" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -752,7 +752,7 @@
             <flag>12</flag>
         </flags>
     </unit>
-    <unit id="27" name="Say'ri" pid="">
+    <unit id="27" name="Say'ri" pid="" parent="">
         <additions hp="19" str="10" mag="5" skl="12" spd="13" lck="20" def="6" res="6" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="1" spd="1" lck="-1" def="0" res="1" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -767,7 +767,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="28" name="Basilio" pid="">
+    <unit id="28" name="Basilio" pid="" parent="">
         <additions hp="28" str="18" mag="3" skl="17" spd="14" lck="18" def="13" res="5" mov="0"/>
         <modifiers hp="0" str="3" mag="-2" skl="1" spd="1" lck="-1" def="1" res="-1" mov="0"/>
         <mClasses class1="19" class2="10" class3="18"/>
@@ -780,7 +780,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="29" name="Flavia" pid="">
+    <unit id="29" name="Flavia" pid="" parent="">
         <additions hp="26" str="17" mag="4" skl="17" spd="16" lck="21" def="15" res="8" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="2" spd="1" lck="0" def="-1" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -795,7 +795,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="30" name="Donnel" pid="">
+    <unit id="30" name="Donnel" pid="" parent="">
         <additions hp="0" str="3" mag="0" skl="1" spd="2" lck="11" def="2" res="0" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="-1" spd="-1" lck="3" def="1" res="-1" mov="0"/>
         <mClasses class1="72" class2="19" class3="20"/>
@@ -819,7 +819,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="31" name="Anna" pid="">
+    <unit id="31" name="Anna" pid="" parent="">
         <additions hp="16" str="8" mag="13" skl="12" spd="10" lck="25" def="5" res="5" mov="0"/>
         <modifiers hp="0" str="-1" mag="0" skl="1" spd="0" lck="3" def="-1" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -834,7 +834,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="32" name="Owain" pid="">
+    <unit id="32" name="Owain" pid="" parent="">
         <additions hp="10" str="4" mag="4" skl="5" spd="6" lck="9" def="6" res="5" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="32" class2="-1" class3="-1"/>
@@ -858,7 +858,7 @@
             <flag>15</flag>
         </flags>
     </unit>
-    <unit id="33" name="Inigo" pid="">
+    <unit id="33" name="Inigo" pid="" parent="">
         <additions hp="11" str="5" mag="2" skl="4" spd="9" lck="12" def="4" res="4" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="20" class2="-1" class3="-1"/>
@@ -880,7 +880,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="34" name="Brady" pid="">
+    <unit id="34" name="Brady" pid="" parent="">
         <additions hp="9" str="6" mag="5" skl="3" spd="2" lck="10" def="7" res="4" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="52" class2="-1" class3="-1"/>
@@ -902,7 +902,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="35" name="Kjelle" pid="">
+    <unit id="35" name="Kjelle" pid="" parent="">
         <additions hp="10" str="6" mag="2" skl="6" spd="5" lck="11" def="3" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -925,7 +925,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="36" name="Cynthia" pid="">
+    <unit id="36" name="Cynthia" pid="" parent="">
         <additions hp="7" str="5" mag="2" skl="4" spd="10" lck="17" def="6" res="6" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -949,7 +949,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="37" name="Severa" pid="">
+    <unit id="37" name="Severa" pid="" parent="">
         <additions hp="8" str="6" mag="1" skl="7" spd="6" lck="6" def="6" res="5" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -973,7 +973,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="38" name="Gerome" pid="">
+    <unit id="38" name="Gerome" pid="" parent="">
         <additions hp="13" str="8" mag="0" skl="4" spd="8" lck="5" def="5" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="45" class2="-1" class3="-1"/>
@@ -994,7 +994,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="39" name="Morgan (M)" pid="">
+    <unit id="39" name="Morgan (M)" pid="" parent="0">
         <additions hp="9" str="6" mag="8" skl="7" spd="6" lck="7" def="3" res="7" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1012,7 +1012,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="40" name="Morgan (F)" pid="">
+    <unit id="40" name="Morgan (F)" pid="" parent="1">
         <additions hp="9" str="6" mag="8" skl="7" spd="6" lck="7" def="3" res="7" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1032,7 +1032,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="41" name="Yarne" pid="">
+    <unit id="41" name="Yarne" pid="" parent="">
         <additions hp="16" str="9" mag="1" skl="4" spd="4" lck="13" def="6" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="69" class2="-1" class3="-1"/>
@@ -1056,7 +1056,7 @@
             <flag>17</flag>
         </flags>
     </unit>
-    <unit id="42" name="Laurent" pid="">
+    <unit id="42" name="Laurent" pid="" parent="">
         <additions hp="10" str="3" mag="7" skl="7" spd="4" lck="11" def="4" res="5" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="54" class2="-1" class3="-1"/>
@@ -1077,7 +1077,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="43" name="Noire" pid="">
+    <unit id="43" name="Noire" pid="" parent="">
         <additions hp="8" str="5" mag="3" skl="4" spd="7" lck="10" def="4" res="6" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1100,7 +1100,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="44" name="Nah" pid="">
+    <unit id="44" name="Nah" pid="" parent="">
         <additions hp="5" str="3" mag="3" skl="5" spd="6" lck="8" def="3" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1125,7 +1125,7 @@
             <flag>16</flag>
         </flags>
     </unit>
-    <unit id="45" name="Tiki" pid="">
+    <unit id="45" name="Tiki" pid="" parent="">
         <additions hp="21" str="16" mag="10" skl="13" spd="15" lck="18" def="13" res="10" mov="0"/>
         <modifiers hp="0" str="0" mag="-1" skl="0" spd="1" lck="2" def="1" res="2" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1145,7 +1145,7 @@
             <flag>27</flag>
         </flags>
     </unit>
-    <unit id="46" name="Gangrel" pid="">
+    <unit id="46" name="Gangrel" pid="" parent="">
         <additions hp="30" str="17" mag="16" skl="19" spd="22" lck="15" def="15" res="12" mov="0"/>
         <modifiers hp="0" str="-2" mag="0" skl="3" spd="3" lck="-1" def="-1" res="0" mov="0"/>
         <mClasses class1="34" class2="18" class3="56"/>
@@ -1157,7 +1157,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="47" name="Walhart" pid="">
+    <unit id="47" name="Walhart" pid="" parent="">
         <additions hp="47" str="29" mag="13" skl="24" spd="24" lck="30" def="23" res="14" mov="0"/>
         <modifiers hp="0" str="4" mag="-2" skl="0" spd="-1" lck="-1" def="4" res="-2" mov="0"/>
         <mClasses class1="76" class2="10" class3="45"/>
@@ -1171,7 +1171,7 @@
             <flag>13</flag>
         </flags>
     </unit>
-    <unit id="48" name="Emmeryn" pid="">
+    <unit id="48" name="Emmeryn" pid="" parent="">
         <additions hp="22" str="4" mag="19" skl="18" spd="18" lck="13" def="8" res="15" mov="0"/>
         <modifiers hp="0" str="-2" mag="4" skl="0" spd="1" lck="0" def="-2" res="1" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1185,7 +1185,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="49" name="Yen'fay" pid="">
+    <unit id="49" name="Yen'fay" pid="" parent="">
         <additions hp="40" str="23" mag="3" skl="28" spd="27" lck="28" def="15" res="14" mov="0"/>
         <modifiers hp="0" str="1" mag="-2" skl="2" spd="4" lck="0" def="-1" res="-2" mov="0"/>
         <mClasses class1="32" class2="45" class3="22"/>
@@ -1197,7 +1197,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="50" name="Aversa" pid="">
+    <unit id="50" name="Aversa" pid="" parent="">
         <additions hp="36" str="19" mag="25" skl="21" spd="22" lck="26" def="16" res="19" mov="0"/>
         <modifiers hp="0" str="-1" mag="3" skl="1" spd="1" lck="-2" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1212,7 +1212,7 @@
             <flag>14</flag>
         </flags>
     </unit>
-    <unit id="51" name="Priam" pid="">
+    <unit id="51" name="Priam" pid="" parent="">
         <additions hp="52" str="32" mag="2" skl="33" spd="28" lck="35" def="31" res="22" mov="0"/>
         <modifiers hp="0" str="3" mag="-2" skl="1" spd="0" lck="0" def="2" res="-2" mov="0"/>
         <mClasses class1="20" class2="19" class3="32"/>
@@ -1224,7 +1224,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="52" name="Marth" pid="">
+    <unit id="52" name="Marth" pid="" parent="">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="77" class2="4" class3="-1"/>
@@ -1236,7 +1236,7 @@
             <flag>24</flag>
         </flags>
     </unit>
-    <unit id="53" name="Dummy/Maiden" pid="">
+    <unit id="53" name="Dummy/Maiden" pid="" parent="">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1245,7 +1245,7 @@
         <supports/>
         <flags/>
     </unit>
-    <unit id="54" name="Risen" pid="">
+    <unit id="54" name="Risen" pid="" parent="">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="-2" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1254,7 +1254,7 @@
         <supports/>
         <flags/>
     </unit>
-    <unit id="55" name="Risen (+)" pid="">
+    <unit id="55" name="Risen (+)" pid="" parent="">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="-1" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>
@@ -1263,7 +1263,7 @@
         <supports/>
         <flags/>
     </unit>
-    <unit id="56" name="Merchant" pid="">
+    <unit id="56" name="Merchant" pid="" parent="">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="2" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="-1" class2="-1" class3="-1"/>

@@ -35,5 +35,11 @@ module com.example.fireeditor {
     opens com.danius.fireeditor.data to javafx.fxml;
     exports com.danius.fireeditor.data.model;
     opens com.danius.fireeditor.data.model to javafx.fxml;
+    exports com.danius.fireeditor.controllers.unit;
+    opens com.danius.fireeditor.controllers.unit to javafx.fxml;
+    exports com.danius.fireeditor.controllers.user;
+    opens com.danius.fireeditor.controllers.user to javafx.fxml;
+    exports com.danius.fireeditor.controllers.convoy;
+    opens com.danius.fireeditor.controllers.convoy to javafx.fxml;
 
 }

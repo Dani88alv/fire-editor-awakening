@@ -62,7 +62,7 @@ public class MainController {
             tabChapter.setDisable(false);
             tabCheats.setDisable(false);
             FireEditor.convoyController.loadBlocks();
-            FireEditor.chapterController.loadBlocks();
+            FireEditor.userController.loadBlocks();
         } catch (Exception e) {
             throw new RuntimeException();
         }
@@ -191,7 +191,11 @@ public class MainController {
         return data;
     }
 
-    public static FXMLLoader getWindow(String name) {
-        return new FXMLLoader(FireEditor.class.getResource(Constants.RES_FXML + name));
+    public static FXMLLoader getWindowUnit(String name) {
+        return new FXMLLoader(FireEditor.class.getResource(Constants.RES_FXML + "unit/" + name));
+    }
+
+    public static FXMLLoader getWindowUser(String name) {
+        return new FXMLLoader(FireEditor.class.getResource(Constants.RES_FXML + "user/" + name));
     }
 }

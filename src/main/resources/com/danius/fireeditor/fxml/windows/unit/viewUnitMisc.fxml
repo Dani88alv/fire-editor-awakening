@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.OtherController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.unit.OtherController">
    <children>
       <TabPane prefHeight="373.0" prefWidth="480.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="40.0">
         <tabs>
@@ -72,7 +72,7 @@
                               <Button layoutX="51.0" layoutY="229.0" mnemonicParsing="false" onAction="#setMaxExp" prefHeight="26.0" prefWidth="82.0" text="Max EXP" />
                               <Label layoutX="374.0" layoutY="236.0" text="Pure Water Boost" />
                               <ComboBox fx:id="comboRetire" layoutX="189.0" layoutY="231.0" prefWidth="157.0" promptText="Retired/Died On" />
-                              <Label layoutX="190.0" layoutY="208.0" text="Retired/Died on" />
+                              <Label fx:id="lblRetired" layoutX="190.0" layoutY="208.0" text="Retired/Died on" />
                               <CheckBox fx:id="checkRetire" layoutX="190.0" layoutY="265.0" mnemonicParsing="false" text="Retired (Classic Mode)" />
                               <CheckBox fx:id="checkDead1" layoutX="190.0" layoutY="288.0" mnemonicParsing="false" text="Unknown Flag 1" />
                               <CheckBox fx:id="checkDead2" layoutX="190.0" layoutY="311.0" mnemonicParsing="false" text="Unknown Flag 2" />

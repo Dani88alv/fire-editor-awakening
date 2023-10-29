@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.TeamController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.user.TeamController">
    <children>
       <AnchorPane prefHeight="456.0" prefWidth="524.0">
          <children>
@@ -55,17 +55,17 @@
             <Button fx:id="btnDeleteTeam" layoutX="110.0" layoutY="412.0" mnemonicParsing="false" onAction="#deleteTeam" text="Delete Team" />
             <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="385.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../avatar_m/build_01_00.png" />
+                  <Image url="@../../../avatar_m/build_01_00.png" />
                </image>
             </ImageView>
             <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="384.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../avatar_m/back_01_00.png" />
+                  <Image url="@../../../avatar_m/back_01_00.png" />
                </image>
             </ImageView>
             <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="384.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../avatar_m/hair_01_00.png" />
+                  <Image url="@../../../avatar_m/hair_01_00.png" />
                </image>
             </ImageView>
          </children>

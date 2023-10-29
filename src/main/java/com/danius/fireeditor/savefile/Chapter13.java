@@ -44,10 +44,6 @@ public class Chapter13 extends SaveFile {
         //Scans the save file to check modded counts
         loadModdedCounts();
         reportMod();
-
-        System.out.println("Total: " + blockUser.getCountTotalChapters());
-        System.out.println("Last: " + blockUser.getCountLastChapter());
-        System.out.println("Current: " + blockUser.getCurrentChapter());
     }
 
     public void reportMod() {

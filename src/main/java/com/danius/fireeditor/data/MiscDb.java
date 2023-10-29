@@ -10,58 +10,12 @@ import static com.danius.fireeditor.data.UnitDb.*;
 
 public class MiscDb {
 
-    //TODO: usar este método a partir de ahora y hacer la lista private
-    public static String unitName(int id) {
-        if (id == 0xFFFF) return "None";
-        if (id >= 4096) {
-            id = id - 4096;
-            return "Map NPC #" + (id + 1);
-        }
-        int size = getUnitCount();
-        if (id >= size) return "Invalid Unit #" + (id - size + 1);
-        return getUnitName(id);
-    }
-
-    public static String supportLevel(int unitId, int value, int slot) {
-        //Checks if it is a modded unit
-        int validSupports = getUnitSupportCount(unitId);
-        if (slot >= validSupports) return "Unknown";
-        //Valid supports
-        int type = getUnitSupportTypes(unitId)[slot];
-        int[] maxValues = RawSupport.supportValues().get(type);
-        if (value < maxValues[0]) return "D-Rank";
-        else if (value == maxValues[0]) return "C-Pending";
-        else if (value < maxValues[2]) return "C-Rank";
-        else if (value == maxValues[2]) return "B-Pending";
-        else if (value < maxValues[4]) return "B-Rank";
-        else if (value == maxValues[4]) return "A-Pending";
-        else if (value < maxValues[6] || type == 0) return "A-Rank";
-        else if (value == maxValues[6]) return "S-Pending";
-        else if (value >= maxValues[7]) return "S-Rank";
-        return "";
-    }
-
-    public static String cardPenalty(int id) {
-        if (id >= cardPenaltyNames.size()) return "Unknown";
-        return cardPenaltyNames.get(id);
-    }
-
     public static final List<String> modifNames = Arrays.asList(
             "None", "HP", "Str", "Mag", "Skill", "Spd", "Lck", "Def", "Res"
     );
 
-    public static final List<String> cardDifficulty = Arrays.asList(
-            "Normal", "Hard", "Lunatic"
-    );
 
-    private static final List<String> cardPenaltyNames = Arrays.asList(
-            "Classic", "Casual", "Lunatic+ Classic", "Lunatic+ Casual",
-            "Classic Beaten", "Casual Beaten", "Lunatic+ Classic Beaten", "Lunatic+ Casual Beaten",
-            "Dummy", "Not Displayed"
-    );
-
-
-    public static final List<String> dlcNames = Arrays.asList(
+    public static final List<String> dlcChapters = Arrays.asList(
             "Pr. Marth (DLC)", "Roy (DLC)", "Micaiah (DLC)",
             "Leif (DLC)", "Alm (DLC)", "Seliph (DLC)",
             "Elincia (DLC)", "Eirika (DLC)", "Lyn (DLC)",

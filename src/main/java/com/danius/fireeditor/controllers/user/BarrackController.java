@@ -1,5 +1,6 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.user;
 
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.barrack.EvstBlock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

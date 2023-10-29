@@ -46,21 +46,6 @@ public class UserBlock {
         this.remainingFrames = playtime() % 60;
     }
 
-   /*
-   0x4-0x7 ?
-   0x8 Chapters beaten (o tal vez mapas del overworld)
-   0x9 Last story chapter beaten
-   0xA Current chapter
-    */
-
-    /*
-    Recién creado: 1 1 1
-    Mapa premonition: 1 1 1
-    Premonition hecho: 1 1 2
-    Mapa prologo: 2 2 2
-    Prologo hecho: 2 2 3
-     */
-
 
     public int playtime() {
         return Hex.getByte4(rawBlock1, 0x0);
@@ -70,23 +55,71 @@ public class UserBlock {
         Hex.setByte4(rawBlock1, 0x0, frames + remainingFrames);
     }
 
+    /*
+    0x4-0x7 ?
+    0x8 Chapters beaten (or maybe maps unlocked?)
+    0x9 Last story chapter beaten?
+    0xA Current chapter
+    */
     public int getCountTotalChapters() {
         return rawBlock1[0x8] & 0xFF;
+    }
+
+    public void setCountTotalChapter(int value) {
+        rawBlock1[0x8] = (byte) (value & 0xFF);
     }
 
     public int getCountLastChapter() {
         return rawBlock1[0x9] & 0xFF;
     }
 
+    public void setCountLastChapter(int value) {
+        rawBlock1[0x9] = (byte) (value & 0xFF);
+    }
+
     public int getCurrentChapter() {
         return rawBlock1[0xA] & 0xFF;
     }
 
+    public void setCurrentChapter(int value) {
+        rawBlock1[0xA] = (byte) (value & 0xFF);
+    }
 
+    /*
+    Modded Global Flags will change the position of the vanilla flags, Thabes uses 7 additional flags
+    Global flags are ordered alphabetically? from the ROMfs
+    Instead of using continuous bytes, they will use the previous byte
+    Similarly, instead of populating the bits starting from 0, they will start using the last bit of the byte
+    Vanilla flags are stored on 0x13, but with Thabes, bytes 0x12-0x13 are used
 
-    //Raw block 2:
-    //0x12-013 Global flags
+    0x13 0x80 Flag 0 G_X002クリア (Paralogue 2 Cleared)
+    0x13 0x40 Flag 1 G_X004クリア (Paralogue 4 Cleared)
+    0x13 0x20 Flag 2 G_プレイヤー死亡エンディング (Good Ending)
+    0x13 0x10 Flag 3 G_ファイアーエムブレム所持 (Emblem on Chrom's arm)
+    0x13 0x8  Flag 4 G_クロムボイス変化 (Anything can change!)
+    (Reserved Flags)
+
+     */
+    public boolean hasGlobalFlag(int slot) {
+        int point = 0x13;
+        return hasBitFlagReverse(rawBlock2, point, slot);
+    }
+
+    public void setGlobalFlag(int slot, boolean set) {
+        int point = 0x13;
+        setBitFlagReverse(rawBlock2, point, slot, set);
+    }
+
+    public List<Integer> globalFlagList() {
+        List<Integer> flags = new ArrayList<>();
+        for (int i = 0; i < 8 * 2; i++) {
+            if (hasGlobalFlag(i)) flags.add(i);
+        }
+        return flags;
+    }
+
     //0x5F - 0x62 Guide Entries Flags
+
 
     /*
     General flags (4 bytes)
@@ -246,9 +279,12 @@ public class UserBlock {
         frames %= (frameRate * 60);
         int seconds = frames / frameRate;
         int remainingFrames = frames % frameRate;
-        report += "\n" + "Playtime: " + hours + ":" + minutes + ":" + seconds;
+        //report += "\n" + "Playtime: " + hours + ":" + minutes + ":" + seconds;
         //Story Progress
         report += "\n" + "Chapters Beaten: " + progress.size();
+        report += "\n" + "Chapter Count: " + getCountTotalChapters() + " " +
+                getCountLastChapter() + " " + getCurrentChapter();
+        report += "\n" + "Global Flags: " + globalFlagList();
         return report;
     }
 

@@ -1,6 +1,8 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.user;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.MainController;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.MiscDb;
 import com.danius.fireeditor.savefile.barrack.EvstBlock;
 import com.danius.fireeditor.savefile.map.GmapBlock;
@@ -17,7 +19,10 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ChapterController {
+import java.util.HashMap;
+import java.util.Map;
+
+public class UserController {
     public UserBlock userBlock;
     public HeaderBlock headerBlock;
     public Du26Block du26Block;
@@ -28,10 +33,11 @@ public class ChapterController {
     @FXML
     private ComboBox<String> comboDifficulty;
     @FXML
-    private CheckBox checkLunatic, checkCasual;
+    private CheckBox checkLunatic, checkCasual,
+            checkGlobal0, checkGlobal1, checkGlobal3, checkGlobal4;
 
     public void initialize() {
-        FireEditor.chapterController = this;
+        FireEditor.userController = this;
         setupElements();
         addUserListeners();
         //addDlcListeners();
@@ -75,6 +81,11 @@ public class ChapterController {
             spinRenown.getValueFactory().setValue(userBlock.renown());
             //DLC
             //comboChapterDlc.getSelectionModel().select(0);
+            //Global flags
+            checkGlobal0.setSelected(userBlock.hasGlobalFlag(0));
+            checkGlobal1.setSelected(userBlock.hasGlobalFlag(1));
+            checkGlobal3.setSelected(userBlock.hasGlobalFlag(3));
+            checkGlobal4.setSelected(userBlock.hasGlobalFlag(4));
         }
     }
 
@@ -131,6 +142,20 @@ public class ChapterController {
                 headerBlock.setDifficulty(comboDifficulty.getSelectionModel().getSelectedIndex());
             }
         });
+        //Global Flags
+        Map<CheckBox, Integer> checkboxToNumber = new HashMap<>();
+        checkboxToNumber.put(checkGlobal0, 0);
+        checkboxToNumber.put(checkGlobal1, 1);
+        checkboxToNumber.put(checkGlobal3, 3);
+        checkboxToNumber.put(checkGlobal4, 4);
+        for (CheckBox checkBox : checkboxToNumber.keySet()) {
+            int number = checkboxToNumber.get(checkBox);
+            checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                userBlock.setGlobalFlag(number, newValue);
+            });
+        }
+
+
     }
 
     /*
@@ -155,11 +180,11 @@ public class ChapterController {
 
     public void openCredits() {
         try {
-            FXMLLoader fxmlLoader = MainController.getWindow("viewCredits.fxml");
+            FXMLLoader fxmlLoader = MainController.getWindowUser("viewCredits.fxml");
             Parent root = fxmlLoader.load();
             // Pass the selected value to the second view's controller
-            CreditController creditController = fxmlLoader.getController();
-            creditController.setBlock(userBlock);
+            StoryController storyController = fxmlLoader.getController();
+            storyController.setBlock(userBlock);
             // Create a new stage for the secondary view
             Stage secondaryStage = new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL); // Prevent interaction with other windows
@@ -174,7 +199,7 @@ public class ChapterController {
 
     public void openBarrack() {
         try {
-            FXMLLoader fxmlLoader = MainController.getWindow("viewBarrack.fxml");
+            FXMLLoader fxmlLoader = MainController.getWindowUser("viewBarrack.fxml");
             Parent root = fxmlLoader.load();
             // Pass the selected value to the second view's controller
             BarrackController barrackController = fxmlLoader.getController();
@@ -193,7 +218,7 @@ public class ChapterController {
 
     public void openMap() {
         try {
-            FXMLLoader fxmlLoader = MainController.getWindow("viewOverworld.fxml");
+            FXMLLoader fxmlLoader = MainController.getWindowUser("viewOverworld.fxml");
             Parent root = fxmlLoader.load();
             // Pass the selected value to the second view's controller
             MapController mapController = fxmlLoader.getController();
@@ -212,7 +237,7 @@ public class ChapterController {
 
     public void openWireless() {
         try {
-            FXMLLoader fxmlLoader = MainController.getWindow("viewTeams.fxml");
+            FXMLLoader fxmlLoader = MainController.getWindowUser("viewTeams.fxml");
             Parent root = fxmlLoader.load();
             // Pass the selected value to the second view's controller
             TeamController teamController = fxmlLoader.getController();

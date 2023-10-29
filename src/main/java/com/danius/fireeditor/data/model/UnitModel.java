@@ -14,6 +14,7 @@ public class UnitModel {
     private int[] supportUnits;
     private int[] supportTypes;
     private List<Integer> flags;
+    private int parent;
 
     public UnitModel() {
 
@@ -99,4 +100,11 @@ public class UnitModel {
         this.flags = flags;
     }
 
+    public int getParent() {
+        return parent;
+    }
+
+    public void setParent(int parent) {
+        this.parent = parent;
+    }
 }

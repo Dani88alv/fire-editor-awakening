@@ -18,10 +18,10 @@
                             <fx:include fx:id="unitTab" source="viewUnit.fxml" />
                         </Tab>
                         <Tab fx:id="tabConvoy" text="Convoy Editor">
-                            <fx:include fx:id="convoyTab" source="viewItems.fxml" />
+                            <fx:include fx:id="convoyTab" source="viewConvoy.fxml" />
                         </Tab>
                         <Tab fx:id="tabChapter" text="Chapter Data">
-                            <fx:include fx:id="chapterTab" source="viewChapter.fxml" />
+                            <fx:include fx:id="chapterTab" source="viewUser.fxml" />
                         </Tab>
                         <Tab fx:id="tabCheats" text="Cheats">
                             <fx:include fx:id="cheatTab" source="viewCheats.fxml" />

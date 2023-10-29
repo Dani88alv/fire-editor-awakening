@@ -1,6 +1,7 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
@@ -37,9 +38,7 @@ public class ChildController {
         //Unit names
         ObservableList<String> unitNames = FXCollections.observableArrayList();
         unitNames.add("None");
-        for (int i = 0; i <= 56; i++) {
-            unitNames.add(MiscDb.unitName(i));
-        }
+        unitNames.addAll(UnitDb.getUnitNames());
         comboUnit.setItems(unitNames);
         //Assets and flaws
         ObservableList<String> modifiers = FXCollections.observableArrayList();
@@ -195,21 +194,9 @@ public class ChildController {
     }
 
     private void setSupportLabels() {
-        lblFather.setText(calcSupportLevel(spinFather.getValue()));
-        lblMother.setText(calcSupportLevel(spinMother.getValue()));
-        lblSibling.setText(calcSupportLevel(spinSibling.getValue()));
-    }
-
-    private String calcSupportLevel(int value) {
-        int[] maxValues = RawSupport.supportValues().get(4);
-        if (value < maxValues[0]) return "D-Rank";
-        else if (value == maxValues[0]) return "C-Pending";
-        else if (value < maxValues[2]) return "C-Rank";
-        else if (value == maxValues[2]) return "B-Pending";
-        else if (value < maxValues[4]) return "B-Rank";
-        else if (value == maxValues[4]) return "A-Pending";
-        else if (value == maxValues[5]) return "A-Rank";
-        return "?";
+        lblFather.setText(UnitDb.getChildSupportLevelName(spinFather.getValue()));
+        lblMother.setText(UnitDb.getChildSupportLevelName(spinMother.getValue()));
+        lblSibling.setText(UnitDb.getChildSupportLevelName(spinSibling.getValue()));
     }
 
     private void displayModifiers() {

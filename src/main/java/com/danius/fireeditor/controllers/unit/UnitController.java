@@ -1,6 +1,8 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.MainController;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
@@ -234,14 +236,14 @@ public class UnitController {
 
             //Player's StreetPass Team
             if (groupTarget == 6) {
-                if (FireEditor.chapterController.du26Block.playerTeam.unitList.size() >= 10) return;
-                FireEditor.chapterController.du26Block.playerTeam.unitList.add(unitDu);
+                if (FireEditor.userController.du26Block.playerTeam.unitList.size() >= 10) return;
+                FireEditor.userController.du26Block.playerTeam.unitList.add(unitDu);
             }
             //External Team
             else {
                 int slot = groupTarget - 6 - 1;
-                if (FireEditor.chapterController.du26Block.teamList.get(slot).unitList.size() >= 10) return;
-                FireEditor.chapterController.du26Block.teamList.get(slot).unitList.add(unitDu);
+                if (FireEditor.userController.du26Block.teamList.get(slot).unitList.size() >= 10) return;
+                FireEditor.userController.du26Block.teamList.get(slot).unitList.add(unitDu);
             }
         }
         //The unit is removed from the current group
@@ -541,7 +543,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 //updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewFlags.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewFlags.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -565,7 +567,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 //updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewSkills.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewSkills.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -589,7 +591,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewBattle.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewUnitMisc.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -620,7 +622,7 @@ public class UnitController {
                 //Check the support block size
                 listViewUnit.getSelectionModel().getSelectedItem().rawSupport.expandBlock();
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewSupports.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewSupports.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -645,7 +647,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewChild.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewChild.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -671,7 +673,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewLogbook.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewLogbook.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();
@@ -697,7 +699,7 @@ public class UnitController {
             if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
                 //The current fields are updated
                 updateUnitFromFields(listViewUnit.getSelectionModel().getSelectedItem());
-                FXMLLoader fxmlLoader = MainController.getWindow("viewInventory.fxml");
+                FXMLLoader fxmlLoader = MainController.getWindowUnit("viewInventory.fxml");
                 Parent root = fxmlLoader.load();
                 // Get the selected value from the main view's controller
                 Unit selectedValue = listViewUnit.getSelectionModel().getSelectedItem();

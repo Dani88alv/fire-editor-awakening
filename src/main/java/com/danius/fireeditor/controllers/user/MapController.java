@@ -1,6 +1,7 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.user;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.ChapterDb;
 import com.danius.fireeditor.savefile.map.GmapBlock;
 import com.danius.fireeditor.savefile.map.RawMap;

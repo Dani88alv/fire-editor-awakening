@@ -19,7 +19,7 @@ public class Batch {
             unit.rawSupport.setAllSupportsTo(level, unitIds);
             if (unit.rawChild != null) {
                 int sibling = chapterFile.blockUnit.findSibling(unit);
-                unit.rawChild.setAllSupportsToLevel(level, sibling);
+                unit.rawChild.setValidSupportsToLevel(level, sibling);
             }
             if (level == 0) unit.rawSupport.removeExtraSupports();
         }

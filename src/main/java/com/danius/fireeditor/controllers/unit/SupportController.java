@@ -1,5 +1,6 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.data.MiscDb;
 import javafx.beans.value.ChangeListener;
@@ -174,7 +175,7 @@ public class SupportController {
     private void setLabelLevel() {
         int value = spinValue.getValue();
         int slot = comboUnit.getSelectionModel().getSelectedIndex();
-        lblLevel.setText(MiscDb.supportLevel(unit.rawBlock1.unitId(), value, slot));
+        lblLevel.setText(getUnitSupportLevelName(unit.getUnitId(), value, slot));
     }
 
 }

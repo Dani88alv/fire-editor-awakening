@@ -1,4 +1,4 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.Unit;

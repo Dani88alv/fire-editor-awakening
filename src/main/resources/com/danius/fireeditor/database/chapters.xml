@@ -10,49 +10,49 @@
     <chapter chapterId="7" mapId="5" chapterName="Chapter 5" description="Border Pass"/>
     <chapter chapterId="8" mapId="6" chapterName="Chapter 6" description="Ylisstol"/>
     <chapter chapterId="9" mapId="7" chapterName="Chapter 7" description="Breakneck Pass"/>
-	<chapter chapterId="10" mapId="8" chapterName="Chapter 8" description="Border Sands"/>
-	<chapter chapterId="11" mapId="9" chapterName="Chapter 9" description="Plegia Castle Courtyard"/>
-	<chapter chapterId="12" mapId="10" chapterName="Chapter 10" description="The Midmire"/>
-	<chapter chapterId="13" mapId="11" chapterName="Chapter 11" description="Border Wastes"/>
-	<chapter chapterId="14" mapId="12" chapterName="Chapter 12" description="Port Ferox"/>
-	<chapter chapterId="15" mapId="13" chapterName="Chapter 13" description="Carrion Isle"/>
-	<chapter chapterId="16" mapId="14" chapterName="Chapter 14" description="The Searoad"/>
-	<chapter chapterId="17" mapId="15" chapterName="Chapter 15" description="Valm Harbor"/>
-	<chapter chapterId="18" mapId="16" chapterName="Chapter 16" description="The Mila Tree"/>
-	<chapter chapterId="19" mapId="17" chapterName="Chapter 17" description="Fort Steiger"/>
-	<chapter chapterId="20" mapId="18" chapterName="Chapter 18" description="The Demon's Ingle"/>
-	<chapter chapterId="21" mapId="19" chapterName="Chapter 19" description="Valm Castle Approach"/>
-	<chapter chapterId="22" mapId="20" chapterName="Chapter 20" description="Valm Castle"/>
-	<chapter chapterId="23" mapId="21" chapterName="Chapter 21" description="Plegia Castle"/>
-	<chapter chapterId="24" mapId="22" chapterName="Chapter 22" description="Table Approach"/>
-	<chapter chapterId="25" mapId="23" chapterName="Chapter 23" description="The Dragon's Table"/>
-	<chapter chapterId="26" mapId="24" chapterName="Chapter 24" description="Mount Prism"/>
-	<chapter chapterId="27" mapId="25" chapterName="Chapter 25" description="Origin Peak"/>
-	<chapter chapterId="28" mapId="26" chapterName="Chapter 26" description="Grima"/>
-	<chapter chapterId="29" mapId="27" chapterName="Paralogue 1" description="The Farfort"/>
-	<chapter chapterId="30" mapId="28" chapterName="Paralogue 2" description="The Twins' Turf"/>
-	<chapter chapterId="31" mapId="29" chapterName="Paralogue 3" description="Peaceful Village"/>
-	<chapter chapterId="32" mapId="30" chapterName="Paralogue 4" description="The Twins' Hideout"/>
-	<chapter chapterId="33" mapId="31" chapterName="Paralogue 5" description="Sage's Hamlet"/>
-	<chapter chapterId="34" mapId="32" chapterName="Paralogue 6" description="Great Gate"/>
-	<chapter chapterId="35" mapId="33" chapterName="Paralogue 7" description="Mila Shrine Ruins"/>
-	<chapter chapterId="36" mapId="34" chapterName="Paralogue 8" description="Dueling Grounds"/>
-	<chapter chapterId="37" mapId="35" chapterName="Paralogue 9" description="Verdant Forest"/>
-	<chapter chapterId="38" mapId="36" chapterName="Paralogue 10" description="Mercenary Fortress"/>
-	<chapter chapterId="39" mapId="37" chapterName="Paralogue 11" description="Wyvern Valley"/>
-	<chapter chapterId="40" mapId="38" chapterName="Paralogue 12" description="The Ruins of Time"/>
-	<chapter chapterId="41" mapId="39" chapterName="Paralogue 13" description="Law's End"/>
-	<chapter chapterId="42" mapId="40" chapterName="Paralogue 14" description="Desert Oasis"/>
-	<chapter chapterId="43" mapId="41" chapterName="Paralogue 15" description="Kidnapper's Keep"/>
-	<chapter chapterId="44" mapId="42" chapterName="Paralogue 16" description="Manor of Lost Souls"/>
-	<chapter chapterId="45" mapId="43" chapterName="Paralogue 17" description="Divine Dragon Grounds"/>
-	<chapter chapterId="46" mapId="44" chapterName="Paralogue 18" description="Sea-King's Throne"/>
-	<chapter chapterId="47" mapId="45" chapterName="Paralogue 19" description="Conqueror's Whetstone"/>
-	<chapter chapterId="48" mapId="46" chapterName="Paralogue 20" description="Mountain Village"/>
-	<chapter chapterId="49" mapId="47" chapterName="Paralogue 21" description="Warriors' Tomb"/>
-	<chapter chapterId="50" mapId="48" chapterName="Paralogue 22" description="Wellspring of Truth"/>
-	<chapter chapterId="51" mapId="49" chapterName="Paralogue 23" description="Garden of Giants"/>
-	<chapter chapterId="52" mapId="50" chapterName="Outrealm Gate" description="Outrealm Gate"/>
-	<chapter chapterId="53" mapId="" chapterName="Ending Map" description=""/>
-	<chapter chapterId="54" mapId="" chapterName="Test Map #2" description="Plegia Castle"/>
+    <chapter chapterId="10" mapId="8" chapterName="Chapter 8" description="Border Sands"/>
+    <chapter chapterId="11" mapId="9" chapterName="Chapter 9" description="Plegia Castle Courtyard"/>
+    <chapter chapterId="12" mapId="10" chapterName="Chapter 10" description="The Midmire"/>
+    <chapter chapterId="13" mapId="11" chapterName="Chapter 11" description="Border Wastes"/>
+    <chapter chapterId="14" mapId="12" chapterName="Chapter 12" description="Port Ferox"/>
+    <chapter chapterId="15" mapId="13" chapterName="Chapter 13" description="Carrion Isle"/>
+    <chapter chapterId="16" mapId="14" chapterName="Chapter 14" description="The Searoad"/>
+    <chapter chapterId="17" mapId="15" chapterName="Chapter 15" description="Valm Harbor"/>
+    <chapter chapterId="18" mapId="16" chapterName="Chapter 16" description="The Mila Tree"/>
+    <chapter chapterId="19" mapId="17" chapterName="Chapter 17" description="Fort Steiger"/>
+    <chapter chapterId="20" mapId="18" chapterName="Chapter 18" description="The Demon's Ingle"/>
+    <chapter chapterId="21" mapId="19" chapterName="Chapter 19" description="Valm Castle Approach"/>
+    <chapter chapterId="22" mapId="20" chapterName="Chapter 20" description="Valm Castle"/>
+    <chapter chapterId="23" mapId="21" chapterName="Chapter 21" description="Plegia Castle"/>
+    <chapter chapterId="24" mapId="22" chapterName="Chapter 22" description="Table Approach"/>
+    <chapter chapterId="25" mapId="23" chapterName="Chapter 23" description="The Dragon's Table"/>
+    <chapter chapterId="26" mapId="24" chapterName="Chapter 24" description="Mount Prism"/>
+    <chapter chapterId="27" mapId="25" chapterName="Chapter 25" description="Origin Peak"/>
+    <chapter chapterId="28" mapId="26" chapterName="Chapter 26" description="Grima"/>
+    <chapter chapterId="29" mapId="27" chapterName="Paralogue 1" description="The Farfort"/>
+    <chapter chapterId="30" mapId="28" chapterName="Paralogue 2" description="The Twins' Turf"/>
+    <chapter chapterId="31" mapId="29" chapterName="Paralogue 3" description="Peaceful Village"/>
+    <chapter chapterId="32" mapId="30" chapterName="Paralogue 4" description="The Twins' Hideout"/>
+    <chapter chapterId="33" mapId="31" chapterName="Paralogue 5" description="Sage's Hamlet"/>
+    <chapter chapterId="34" mapId="32" chapterName="Paralogue 6" description="Great Gate"/>
+    <chapter chapterId="35" mapId="33" chapterName="Paralogue 7" description="Mila Shrine Ruins"/>
+    <chapter chapterId="36" mapId="34" chapterName="Paralogue 8" description="Dueling Grounds"/>
+    <chapter chapterId="37" mapId="35" chapterName="Paralogue 9" description="Verdant Forest"/>
+    <chapter chapterId="38" mapId="36" chapterName="Paralogue 10" description="Mercenary Fortress"/>
+    <chapter chapterId="39" mapId="37" chapterName="Paralogue 11" description="Wyvern Valley"/>
+    <chapter chapterId="40" mapId="38" chapterName="Paralogue 12" description="The Ruins of Time"/>
+    <chapter chapterId="41" mapId="39" chapterName="Paralogue 13" description="Law's End"/>
+    <chapter chapterId="42" mapId="40" chapterName="Paralogue 14" description="Desert Oasis"/>
+    <chapter chapterId="43" mapId="41" chapterName="Paralogue 15" description="Kidnapper's Keep"/>
+    <chapter chapterId="44" mapId="42" chapterName="Paralogue 16" description="Manor of Lost Souls"/>
+    <chapter chapterId="45" mapId="43" chapterName="Paralogue 17" description="Divine Dragon Grounds"/>
+    <chapter chapterId="46" mapId="44" chapterName="Paralogue 18" description="Sea-King's Throne"/>
+    <chapter chapterId="47" mapId="45" chapterName="Paralogue 19" description="Conqueror's Whetstone"/>
+    <chapter chapterId="48" mapId="46" chapterName="Paralogue 20" description="Mountain Village"/>
+    <chapter chapterId="49" mapId="47" chapterName="Paralogue 21" description="Warriors' Tomb"/>
+    <chapter chapterId="50" mapId="48" chapterName="Paralogue 22" description="Wellspring of Truth"/>
+    <chapter chapterId="51" mapId="49" chapterName="Paralogue 23" description="Garden of Giants"/>
+    <chapter chapterId="52" mapId="50" chapterName="Xenologue" description="Outrealm Gate"/>
+    <chapter chapterId="53" mapId="" chapterName="Ending Map" description=""/>
+    <chapter chapterId="54" mapId="" chapterName="Test Map #2" description="Plegia Castle"/>
 </chapters>

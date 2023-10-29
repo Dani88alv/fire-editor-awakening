@@ -120,7 +120,7 @@ public class Unit {
             if (rawLog != null) outputStream.write(rawLog.getBytes());
             if (rawChild != null) outputStream.write(rawChild.bytes());
         } catch (Exception e) {
-            throw new RuntimeException("Unable to compile back unit: " + MiscDb.unitName(rawBlock1.unitId()));
+            throw new RuntimeException("Unable to compile back unit: " + getUnitName(getUnitId()));
         }
         return outputStream.toByteArray();
     }
@@ -168,12 +168,9 @@ public class Unit {
     }
 
     public String unitName() {
-        int unitId = rawBlock1.unitId();
-        int max = getUnitCount();
-        if (unitId >= max) return "Invalid Unit #" + (unitId - max + 1);
         if (rawFlags.hasBattleFlag(27)) return "Outrealm";
         if (rawLog != null) return rawLog.getName();
-        return MiscDb.unitName(unitId);
+        return getUnitName(getUnitId());
     }
 
     public int[] modifiers() {

@@ -1,6 +1,7 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;

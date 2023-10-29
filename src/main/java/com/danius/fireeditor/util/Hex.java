@@ -111,6 +111,44 @@ public class Hex {
         else byteArray[byteIndex] &= ~(1 << bitIndex);
     }
 
+    public static boolean hasBitFlagReverse(byte[] byteArray, int offset, int bit) {
+        if (bit < 0 || bit >= byteArray.length * 8) {
+            return false; // Bit index is out of range.
+        }
+        int byteIndex;
+        int bitIndex;
+        if (bit < 8) {
+            // If the bit is in the same byte as the offset, start from the last bit
+            byteIndex = offset;
+            bitIndex = 7 - bit;
+        } else {
+            // If the bit is in a previous byte, reverse the calculation
+            byteIndex = (bit / 8) + offset;
+            bitIndex = 7 - (bit % 8);
+        }
+        byte targetByte = byteArray[byteIndex];
+        return ((targetByte >> bitIndex) & 1) == 1;
+    }
+
+    public static void setBitFlagReverse(byte[] byteArray, int offset, int bit, boolean set) {
+        if (bit < 0 || bit >= byteArray.length * 8) {
+            return; // Bit index is out of range.
+        }
+        int byteIndex;
+        int bitIndex;
+        if (bit < 8) {
+            // If the bit is in the same byte as the offset, start from the last bit
+            byteIndex = offset;
+            bitIndex = 7 - bit;
+        } else {
+            // If the bit is in a previous byte, reverse the calculation
+            byteIndex = (bit / 8) + offset;
+            bitIndex = 7 - (bit % 8);
+        }
+        if (set) byteArray[byteIndex] |= (1 << bitIndex);
+        else byteArray[byteIndex] &= ~(1 << bitIndex);
+    }
+
 
     public static String byteArrayToString(byte[] bytes) {
         String name = new String(bytes, StandardCharsets.UTF_16LE);

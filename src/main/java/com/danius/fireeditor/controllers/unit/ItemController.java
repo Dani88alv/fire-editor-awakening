@@ -1,5 +1,6 @@
-package com.danius.fireeditor.controllers;
+package com.danius.fireeditor.controllers.unit;
 
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.beans.value.ChangeListener;
