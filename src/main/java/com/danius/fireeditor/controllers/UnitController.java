@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.ItemDb;
+import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Stats;
@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
 
 public class UnitController {
     @FXML

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.danius.fireeditor.model.ClassDb.*;
-import static com.danius.fireeditor.model.UnitDb.getUnitAddition;
-import static com.danius.fireeditor.model.UnitDb.getUnitModifiers;
+import static com.danius.fireeditor.data.ClassDb.*;
+import static com.danius.fireeditor.data.UnitDb.getUnitAddition;
+import static com.danius.fireeditor.data.UnitDb.getUnitModifiers;
 
 public class Stats {
 

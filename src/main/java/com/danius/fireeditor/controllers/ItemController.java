@@ -1,9 +1,7 @@
 package com.danius.fireeditor.controllers;
 
-import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,11 +11,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.danius.fireeditor.model.ItemDb.*;
+import static com.danius.fireeditor.data.ItemDb.*;
 
 public class ItemController {
 

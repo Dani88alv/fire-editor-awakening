@@ -1,7 +1,7 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 
 public class RawParent {
 

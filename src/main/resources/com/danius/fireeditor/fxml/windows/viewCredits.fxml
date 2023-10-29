@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.CreditController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.CreditController">
    <children>
       <AnchorPane prefHeight="394.0" prefWidth="485.0">
          <children>
-            <AnchorPane layoutX="7.0" layoutY="105.0" prefHeight="102.0" prefWidth="500.0">
+            <AnchorPane layoutX="7.0" layoutY="138.0" prefHeight="102.0" prefWidth="500.0">
                <children>
                   <ComboBox fx:id="comboUnit1" layoutX="14.0" layoutY="14.0" prefWidth="130.0" promptText="Unit 1" />
                   <ComboBox fx:id="comboClass1" layoutX="14.0" layoutY="65.0" prefWidth="130.0" promptText="Class 1" />
@@ -30,14 +30,22 @@
                   <Spinner fx:id="spinCreditTime" editable="true" layoutX="308.0" layoutY="64.0" prefHeight="26.0" prefWidth="90.0" />
                </children>
             </AnchorPane>
-            <ComboBox fx:id="comboCreditSlot" layoutX="20.0" layoutY="59.0" prefWidth="150.0" promptText="Slot" />
-            <Label layoutX="20.0" layoutY="7.0" text="Story Progress">
+            <ComboBox fx:id="comboCreditSlot" layoutX="20.0" layoutY="92.0" prefWidth="150.0" promptText="Slot" />
+            <Label layoutX="20.0" layoutY="40.0" text="Story Progress">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="39.0" text="Chapter Slot" />
-            <Button fx:id="btnRemoveRecord" layoutX="316.0" layoutY="26.0" mnemonicParsing="false" onAction="#removeRecord" text="Remove Current Entry" />
+            <Label layoutX="21.0" layoutY="72.0" text="Chapter Slot" />
+            <Button fx:id="btnRemoveRecord" layoutX="180.0" layoutY="92.0" mnemonicParsing="false" onAction="#removeRecord" text="Remove Current Entry" />
+            <Spinner fx:id="spinTotal" editable="true" layoutX="212.0" layoutY="34.0" prefHeight="26.0" prefWidth="55.0" />
+            <Label layoutX="189.0" layoutY="11.0" text="Unlocked Chapters?" />
+            <Spinner fx:id="spinLast" editable="true" layoutX="309.0" layoutY="34.0" prefHeight="26.0" prefWidth="55.0" />
+            <Label layoutX="307.0" layoutY="11.0" text="Story State?" />
+            <Spinner fx:id="spinCurrent" editable="true" layoutX="407.0" layoutY="34.0" prefHeight="26.0" prefWidth="55.0" />
+            <Label layoutX="396.0" layoutY="11.0" text="Current Chapter" />
+            <Label fx:id="lblTotal" layoutX="102.0" layoutY="72.0" text="Total" />
+            <Label layoutX="340.0" layoutY="71.0" prefHeight="54.0" prefWidth="164.0" text="Going back in time requires&#10;more research. Make sure to&#10;backup your save file! " />
          </children>
       </AnchorPane>
    </children>

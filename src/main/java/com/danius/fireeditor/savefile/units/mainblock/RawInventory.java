@@ -1,10 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.model.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
-import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.model.MiscDb;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static com.danius.fireeditor.model.ItemDb.*;
+import static com.danius.fireeditor.data.ItemDb.*;
 
 public class RawInventory {
     public List<RawItem> items;

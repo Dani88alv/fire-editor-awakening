@@ -1,6 +1,8 @@
 package com.danius.fireeditor;
 
 
+import com.danius.fireeditor.data.ChapterDb;
+import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.units.mainblock.RawBlockEnd;
 import com.danius.fireeditor.util.Hex;
@@ -15,7 +17,7 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-
+        System.out.println(ChapterDb.getOverWorldName(1));
     }
 
     private static void printHexArray(byte[] array) {

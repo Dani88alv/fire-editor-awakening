@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,11 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 
 public class SupportController {
     private Unit unit;

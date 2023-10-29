@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.map;
 
+import com.danius.fireeditor.data.ChapterDb;
 import com.danius.fireeditor.savefile.Constants;
 
 import java.io.ByteArrayOutputStream;
@@ -23,6 +24,7 @@ public class GmapBlock {
             RawMap map = new RawMap(mapBytes);
             maps.add(map);
         }
+        ChapterDb.MAX_OVERWORLD_COUNT = maps.size();
     }
 
     public byte[] bytes() {
@@ -69,9 +71,11 @@ public class GmapBlock {
     }
 
     private String gChapterName(int id) {
-        if (id == 0) return "Prologue";
-        if (id > 0 && id <= 26) {
-            return "Chapter " + id;
+        if (id == 0) return "";
+        if (id == 1) return "Premonition";
+        if (id == 2) return "Prologue";
+        if (id > 2 && id <= 26) {
+            return "Chapter " + (id - 2);
         } else if (id > 26 && id <= 49) {
             int chapter = id - 26;
             return "Paralogue " + chapter;

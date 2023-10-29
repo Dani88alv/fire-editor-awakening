@@ -1,4 +1,4 @@
-package com.danius.fireeditor.model;
+package com.danius.fireeditor.data.model;
 
 public class ItemModel {
     private int id;

@@ -1,11 +1,9 @@
 package com.danius.fireeditor.savefile.units;
 
-import com.danius.fireeditor.FireEditor;
-
 import java.util.*;
 
-import static com.danius.fireeditor.model.ClassDb.*;
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 
 public class SkillLogic {
 

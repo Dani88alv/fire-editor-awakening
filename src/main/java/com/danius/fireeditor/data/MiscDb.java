@@ -1,13 +1,12 @@
-package com.danius.fireeditor.model;
+package com.danius.fireeditor.data;
 
-import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 
 public class MiscDb {
 
@@ -171,26 +170,6 @@ public class MiscDb {
     public static final List<String> buffBarracks = Arrays.asList(
             "Unknown", "STR +4", "MAG +4", "SKL +4",
             "SPD +4", "LCK +4", "DEF +4", "RES +4"
-    );
-
-    public static final List<String> retireChapters = Arrays.asList(
-            "None", "Premonition", "Southtown",
-
-            "West of Ylisstol", "The Northroad", "The Longfort", "Arena Ferox",
-            "Border Pass", "Ylisstol", "Breakneck Pass", "Border Sands",
-            "Plegia Castle Courtyard", "The Midmire", "Border Wastes", "Port Ferox",
-            "Carrion Isle", "The Searoad", "Valm Harbour", "The Mila Tree",
-            "Fort Steiger", "The Demon's Ingle", "Valm Castle Approach", "Valm Castle",
-            "Plegia Castle", "Table Approach", "The Dragon's Table", "Mount Prism",
-            "Origin Peak", "Grima",
-
-            "The Farfort", "The Twin's Turf", "Peaceful Village", "The Twin's Hideout",
-            "Sage's Hamlet", "Great Gate", "Mila Shrine Ruins", "Duelling Grounds",
-            "Verdant Forest", "Mercenary Fortress", "Wyvern Valley", "The Ruins of Time",
-            "Law's End", "Desert Oasis", "Kidnapper's Keep", "Manor of Lost Souls",
-            "Divine Dragon Grounds", "Sea-King's Throne", "Conqueror's Whetstone", "Mountain Village",
-            "Warrior's Tomb", "Wellspring of Truth", "Garden of Giants",
-            "Outrealm Gate", "Unknown", "Plegia Castle"
     );
 
     public static final List<String> chapterDlcNames = Arrays.asList(

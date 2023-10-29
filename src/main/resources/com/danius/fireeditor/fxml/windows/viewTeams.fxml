@@ -36,7 +36,7 @@
             <Label layoutX="403.0" layoutY="355.0" prefHeight="92.0" prefWidth="194.0" text="Note: Team units share the same &#10;profile card, but only the data &#10;from the first unit will be used. &#10;Flags, supports and miscellaneous &#10;data are not stored on teams." />
             <Button fx:id="btnUp" layoutX="339.0" layoutY="202.0" mnemonicParsing="false" onAction="#orderUp" text="↑" />
             <Button fx:id="btnDown" layoutX="339.0" layoutY="234.0" mnemonicParsing="false" onAction="#orderDown" text="↓" />
-            <AnchorPane layoutX="394.0" layoutY="217.0" prefHeight="78.0" prefWidth="215.0">
+            <AnchorPane layoutX="394.0" layoutY="217.0" prefHeight="78.0" prefWidth="202.0">
                <children>
                   <CheckBox fx:id="check0" layoutY="6.0" mnemonicParsing="false" text="Enemy Unit" />
                   <CheckBox fx:id="check1" layoutX="99.0" layoutY="5.0" mnemonicParsing="false" text="Outrealm" />

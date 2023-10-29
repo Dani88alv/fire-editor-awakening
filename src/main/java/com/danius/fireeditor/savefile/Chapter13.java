@@ -13,8 +13,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
-import static com.danius.fireeditor.model.ClassDb.*;
-
 public class Chapter13 extends SaveFile {
     public HeaderBlock blockHeader; //From 0x0 to 0xC0 (West) or 0x80 (JP)
     private byte[] blockIndex; //Stores the block addresses
@@ -46,6 +44,10 @@ public class Chapter13 extends SaveFile {
         //Scans the save file to check modded counts
         loadModdedCounts();
         reportMod();
+
+        System.out.println("Total: " + blockUser.getCountTotalChapters());
+        System.out.println("Last: " + blockUser.getCountLastChapter());
+        System.out.println("Current: " + blockUser.getCurrentChapter());
     }
 
     public void reportMod() {

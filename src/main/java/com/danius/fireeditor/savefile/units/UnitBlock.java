@@ -1,8 +1,5 @@
 package com.danius.fireeditor.savefile.units;
 
-import com.danius.fireeditor.model.UnitDb;
-import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;

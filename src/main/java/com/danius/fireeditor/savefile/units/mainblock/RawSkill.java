@@ -1,7 +1,7 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
 import com.danius.fireeditor.savefile.Constants;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 
 import java.io.IOException;
 import java.util.ArrayList;

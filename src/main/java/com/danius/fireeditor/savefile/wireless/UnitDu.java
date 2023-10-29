@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 import static com.danius.fireeditor.util.Hex.*;
 
 public class UnitDu {

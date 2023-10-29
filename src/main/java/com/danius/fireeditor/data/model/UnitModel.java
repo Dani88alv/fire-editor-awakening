@@ -1,6 +1,4 @@
-package com.danius.fireeditor.model;
-
-import com.danius.fireeditor.savefile.units.Unit;
+package com.danius.fireeditor.data.model;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.UnitDb;
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

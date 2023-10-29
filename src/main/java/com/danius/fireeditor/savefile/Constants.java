@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile;
 
-import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
 
 public class Constants {
 

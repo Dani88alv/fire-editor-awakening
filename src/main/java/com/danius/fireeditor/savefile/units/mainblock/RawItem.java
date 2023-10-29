@@ -4,7 +4,7 @@ import com.danius.fireeditor.util.Hex;
 
 import java.io.IOException;
 
-import static com.danius.fireeditor.model.ItemDb.*;
+import static com.danius.fireeditor.data.ItemDb.*;
 import static com.danius.fireeditor.util.Hex.*;
 
 public class RawItem {

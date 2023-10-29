@@ -1,23 +1,26 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.UnitDb;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.data.ChapterDb;
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.user.UserBlock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
 
 public class CreditController {
 
     private UserBlock userBlock;
     @FXML
-    private Spinner<Integer> spinCreditTime, spinCreditTurns;
+    private Label lblTotal;
+    @FXML
+    private Spinner<Integer> spinCreditTime, spinCreditTurns, spinTotal, spinLast, spinCurrent;
     @FXML
     private ComboBox<String> comboCreditChapter,
             comboUnit1, comboUnit2, comboClass1, comboClass2, comboCreditSlot;
@@ -26,6 +29,10 @@ public class CreditController {
 
     public void initialize() {
         setupElements();
+    }
+
+    private void updateLabelCount() {
+        lblTotal.setText("Total: " + userBlock.progress.size());
     }
 
     public void removeRecord() {
@@ -67,6 +74,10 @@ public class CreditController {
         if (userBlock.progress.size() > 0) {
             comboCreditSlot.getSelectionModel().select(0);
         }
+
+        spinTotal.getValueFactory().setValue(userBlock.getCountTotalChapters());
+        spinLast.getValueFactory().setValue(userBlock.getCountLastChapter());
+        spinCurrent.getValueFactory().setValue(userBlock.getCurrentChapter());
     }
 
     public void setupElements() {
@@ -85,8 +96,12 @@ public class CreditController {
         comboClass1.setItems(classes);
         comboClass2.setItems(classes);
         //Chapter Names
-        ObservableList<String> chapters = FXCollections.observableArrayList(FireEditor.chapterFile.blockGmap.chapterNames());
+        ObservableList<String> chapters = FXCollections.observableArrayList(ChapterDb.getAllChapterNames());
         comboCreditChapter.setItems(chapters);
+        //Chapter count
+        UI.setSpinnerNumeric(spinTotal, 255);
+        UI.setSpinnerNumeric(spinLast, 255);
+        UI.setSpinnerNumeric(spinCurrent, 255);
     }
 
     public void addListeners() {
@@ -114,6 +129,7 @@ public class CreditController {
                     spinCreditTurns.getValueFactory().setValue(userBlock.progress.get(slot).turns());
                     int playtime = userBlock.progress.get(slot).playTime() / 60;
                     spinCreditTime.getValueFactory().setValue(playtime);
+                    updateLabelCount();
                 }
         );
         comboUnit1.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {

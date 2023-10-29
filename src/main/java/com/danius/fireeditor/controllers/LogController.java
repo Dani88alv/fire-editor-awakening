@@ -4,8 +4,7 @@ import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
-import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 import com.danius.fireeditor.util.Portrait;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,10 +14,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 
-import java.io.IOException;
-
-import static com.danius.fireeditor.model.ClassDb.*;
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 
 public class LogController {
     private boolean listenersAdded = false;

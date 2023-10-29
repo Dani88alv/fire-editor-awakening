@@ -1,5 +1,7 @@
-package com.danius.fireeditor.model;
+package com.danius.fireeditor.data;
 
+import com.danius.fireeditor.data.model.EinherjarModel;
+import com.danius.fireeditor.data.model.UnitModel;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;

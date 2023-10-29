@@ -48,12 +48,19 @@ public class UserBlock {
 
    /*
    0x4-0x7 ?
-   0x8 Story chapters beaten
-   0x9 Last chapter beaten?
+   0x8 Chapters beaten (o tal vez mapas del overworld)
+   0x9 Last story chapter beaten
    0xA Current chapter
     */
 
-    //0x65 barracas y cosas
+    /*
+    Recién creado: 1 1 1
+    Mapa premonition: 1 1 1
+    Premonition hecho: 1 1 2
+    Mapa prologo: 2 2 2
+    Prologo hecho: 2 2 3
+     */
+
 
     public int playtime() {
         return Hex.getByte4(rawBlock1, 0x0);
@@ -63,6 +70,21 @@ public class UserBlock {
         Hex.setByte4(rawBlock1, 0x0, frames + remainingFrames);
     }
 
+    public int getCountTotalChapters() {
+        return rawBlock1[0x8] & 0xFF;
+    }
+
+    public int getCountLastChapter() {
+        return rawBlock1[0x9] & 0xFF;
+    }
+
+    public int getCurrentChapter() {
+        return rawBlock1[0xA] & 0xFF;
+    }
+
+
+
+    //Raw block 2:
     //0x12-013 Global flags
     //0x5F - 0x62 Guide Entries Flags
 

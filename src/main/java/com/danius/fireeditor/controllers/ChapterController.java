@@ -1,7 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 import com.danius.fireeditor.savefile.barrack.EvstBlock;
 import com.danius.fireeditor.savefile.map.GmapBlock;
 import com.danius.fireeditor.savefile.user.HeaderBlock;
@@ -26,7 +26,7 @@ public class ChapterController {
     @FXML
     private Spinner<Integer> spinTime, spinMoney, spinDlcTurns, spinRenown;
     @FXML
-    private ComboBox<String> comboChapterDlc, comboDifficulty;
+    private ComboBox<String> comboDifficulty;
     @FXML
     private CheckBox checkLunatic, checkCasual;
 

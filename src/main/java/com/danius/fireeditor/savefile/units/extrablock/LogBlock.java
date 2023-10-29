@@ -2,7 +2,7 @@ package com.danius.fireeditor.savefile.units.extrablock;
 
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 import com.danius.fireeditor.util.Hex;
 import javafx.scene.paint.Color;
 

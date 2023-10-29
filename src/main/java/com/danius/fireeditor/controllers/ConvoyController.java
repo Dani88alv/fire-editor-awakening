@@ -1,12 +1,9 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.ItemDb;
-import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.RefiBlock;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
-import com.danius.fireeditor.model.MiscDb;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +15,7 @@ import javafx.util.Callback;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.danius.fireeditor.model.ItemDb.*;
+import static com.danius.fireeditor.data.ItemDb.*;
 
 public class ConvoyController {
     private boolean addedListeners = false;

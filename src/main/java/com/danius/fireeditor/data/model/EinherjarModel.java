@@ -1,4 +1,4 @@
-package com.danius.fireeditor.model;
+package com.danius.fireeditor.data.model;
 
 import java.util.List;
 

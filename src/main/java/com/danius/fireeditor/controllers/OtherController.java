@@ -1,10 +1,10 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.data.ChapterDb;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.mainblock.RawBlock2;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -109,7 +109,7 @@ public class OtherController {
         comboArmy.setItems(armies);
         comboArmy.getSelectionModel().select(0);
 
-        ObservableList<String> retireChapters = FXCollections.observableArrayList(MiscDb.retireChapters);
+        ObservableList<String> retireChapters = FXCollections.observableArrayList(ChapterDb.getDescriptions());
         comboRetire.setItems(retireChapters);
         comboRetire.getSelectionModel().select(0);
         //Listeners

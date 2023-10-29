@@ -5,14 +5,14 @@ import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.*;
 import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.model.MiscDb;
+import com.danius.fireeditor.data.MiscDb;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.danius.fireeditor.model.ClassDb.*;
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 
 
 public class Unit {

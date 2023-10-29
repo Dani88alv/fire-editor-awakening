@@ -1,6 +1,6 @@
 package com.danius.fireeditor.savefile.inventory;
 
-import com.danius.fireeditor.model.ItemDb;
+import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.danius.fireeditor.model.ItemDb.*;
+import static com.danius.fireeditor.data.ItemDb.*;
 
 public class TranBlock {
     /*

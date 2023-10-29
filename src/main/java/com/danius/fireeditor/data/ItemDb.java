@@ -1,5 +1,6 @@
-package com.danius.fireeditor.model;
+package com.danius.fireeditor.data;
 
+import com.danius.fireeditor.data.model.ItemModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import org.jdom2.Document;

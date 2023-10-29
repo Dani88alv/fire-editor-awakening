@@ -1,6 +1,7 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.data.ChapterDb;
 import com.danius.fireeditor.savefile.map.GmapBlock;
 import com.danius.fireeditor.savefile.map.RawMap;
 import javafx.collections.FXCollections;
@@ -8,9 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.File;
-
-import static com.danius.fireeditor.model.ClassDb.*;
+import static com.danius.fireeditor.data.ClassDb.*;
 
 public class MapController {
 
@@ -65,7 +64,7 @@ public class MapController {
     public void setBlock(GmapBlock gmapBlock) {
         this.gmapBlock = gmapBlock;
         ObservableList<String> chaptersMap = FXCollections.observableArrayList();
-        chaptersMap.setAll(gmapBlock.chapterNames());
+        chaptersMap.setAll(ChapterDb.getOverWorldNames());
         chapterList.setItems(FXCollections.observableArrayList(chaptersMap));
         chapterList.getSelectionModel().select(0);
         setListeners();

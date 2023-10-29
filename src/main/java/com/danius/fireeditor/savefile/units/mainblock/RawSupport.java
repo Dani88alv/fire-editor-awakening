@@ -1,17 +1,13 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
-import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.UnitDb;
-
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static com.danius.fireeditor.model.UnitDb.*;
+import static com.danius.fireeditor.data.UnitDb.*;
 
 public class RawSupport {
     private final List<Integer> supportValues; //Stores the support points/actions of all the valid characters

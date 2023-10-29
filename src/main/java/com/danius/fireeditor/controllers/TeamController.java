@@ -1,7 +1,8 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.model.ItemDb;
+import com.danius.fireeditor.data.ChapterDb;
+import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.inventory.TranBlock;
@@ -64,7 +65,7 @@ public class TeamController {
         teamList.setItems(observableTeamList);
 
         ObservableList<String> chaptersMap = FXCollections.observableArrayList();
-        chaptersMap.setAll(gmapBlock.chapterNames());
+        chaptersMap.setAll(ChapterDb.getOverWorldNames());
         comboMap.setItems(FXCollections.observableArrayList(chaptersMap));
         comboMap.getSelectionModel().select(0);
 
@@ -191,6 +192,7 @@ public class TeamController {
     @FXML
     private void setLocation() {
         int mapToWrite = comboMap.getSelectionModel().getSelectedIndex();
+        if (mapToWrite == -1) return;
         int slot = teamList.getSelectionModel().getSelectedItem().getSlot()[0] & 0xFF;
         int unitClass = 4;
         if (teamList.getSelectionModel().getSelectedItem().unitList.size() > 0) {
