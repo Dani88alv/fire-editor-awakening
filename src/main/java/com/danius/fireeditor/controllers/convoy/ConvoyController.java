@@ -33,7 +33,7 @@ public class ConvoyController {
     @FXML
     private TextField txtRefiName;
     @FXML
-    private Label lblRefiAmount, lblRefiCount;
+    private Label lblRefiAmount, lblRefiCount, lblMight, lblHit, lblCrit;
     @FXML
     private TableView<DataItem> tableConvoy;
     @FXML
@@ -98,6 +98,7 @@ public class ConvoyController {
                 listViewRefi.getSelectionModel().getSelectedItem().setWeaponId(newValue.intValue());
                 lblRefiAmount.setText(getAmountString(newValue.intValue(),
                         tranBlock.inventoryRefi.get(listViewRefi.getSelectionModel().getSelectedItem().position())));
+                updateStatLabels(listViewRefi.getSelectionModel().getSelectedItem());
             }
         });
         txtRefiName.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -118,18 +119,21 @@ public class ConvoyController {
             if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
                 spinMight.increment(0);
                 listViewRefi.getSelectionModel().getSelectedItem().setMight(spinMight.getValue());
+                updateStatLabels(listViewRefi.getSelectionModel().getSelectedItem());
             }
         });
         spinHit.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
             if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
                 spinHit.increment(0);
                 listViewRefi.getSelectionModel().getSelectedItem().setHit(spinHit.getValue());
+                updateStatLabels(listViewRefi.getSelectionModel().getSelectedItem());
             }
         });
         spinCrit.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
             spinCrit.increment(0);
             if (listViewRefi.getSelectionModel().getSelectedItem() != null && newValue != null) {
                 listViewRefi.getSelectionModel().getSelectedItem().setCrit(spinCrit.getValue());
+                updateStatLabels(listViewRefi.getSelectionModel().getSelectedItem());
             }
         });
     }
@@ -144,6 +148,13 @@ public class ConvoyController {
         spinHit.getValueFactory().setValue(refi.hit());
         spinPos.getValueFactory().setValue(refi.position());
         checkRefiFlag.setSelected(refi.isEnemy());
+        updateStatLabels(refi);
+    }
+
+    public void updateStatLabels(Refinement refi) {
+        lblMight.setText("Might: " + refi.totalMight());
+        lblHit.setText("Hit: " + refi.totalHit());
+        lblCrit.setText("Crit: " + refi.totalCrit());
     }
 
     public void loadRefiTable(RefiBlock refiBlock) {

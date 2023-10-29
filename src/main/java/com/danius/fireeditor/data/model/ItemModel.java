@@ -2,6 +2,7 @@ package com.danius.fireeditor.data.model;
 
 public class ItemModel {
     private int id;
+    private int type1;
     private String name;
     private int uses;
     private int might;
@@ -63,5 +64,13 @@ public class ItemModel {
 
     public void setBuffs(int[] buffs) {
         this.buffs = buffs;
+    }
+
+    public int getType1() {
+        return type1;
+    }
+
+    public void setType1(int type1) {
+        this.type1 = type1;
     }
 }

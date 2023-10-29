@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units;
 
+import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 
 import java.util.ArrayList;
@@ -47,6 +48,8 @@ public class Stats {
         //0 HP - 1 STR - 2 MAG - 3 SKL - 4 - SPD - 5 LCK - 6 DEF - 7 RES
         int[] buffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
         int[] activeSkills = unit.rawBlock2.getCurrentSkills();
+
+        //Regular stat modifier skills
         List<Integer> repeatedSkills = new ArrayList<>();
         for (int activeSkill : activeSkills) {
             if (!repeatedSkills.contains(activeSkill)) {
@@ -63,19 +66,29 @@ public class Stats {
             }
             repeatedSkills.add(activeSkill);
         }
+
+        //Faire skills
+        int[] faireBuffs = ItemDb.getFaireBuffs(unit);
+        for (int i = 0; i < buffs.length; i++) {
+            buffs[i] += faireBuffs[i];
+        }
+
         return buffs;
     }
 
+    //Refinements are ignored
     public static int[] itemBuff(Unit unit) {
-        int[] buffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        int[] totalBuffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < unit.rawInventory.items.size(); i++) {
             if (unit.rawInventory.items.get(i).equipped()) {
                 int id = unit.rawInventory.items.get(i).itemId();
-                if (itemBuffList().containsKey(id)) buffs = itemBuffList().get(id);
-                break;
+                int[] buffs = ItemDb.getItemBuffs(id);
+                for (int k = 0; k < 8; k++) {
+                    totalBuffs[k] += buffs[k];
+                }
             }
         }
-        return buffs;
+        return totalBuffs;
     }
 
     public static int[] temporalBuffs(Unit unit) {
@@ -138,7 +151,7 @@ public class Stats {
         }
         int[] growths = new int[8];
         int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
-        int[] classAddition =getClassBaseStats(unit.rawBlock1.unitClass()); //Hardcoded
+        int[] classAddition = getClassBaseStats(unit.rawBlock1.unitClass()); //Hardcoded
         int[] currentStats = new int[8];
         //If it has logbook data, +2 on their asset
         if (unit.rawLog != null) {

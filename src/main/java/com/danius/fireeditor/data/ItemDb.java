@@ -1,8 +1,12 @@
 package com.danius.fireeditor.data;
 
+import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.model.ItemModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
+import com.danius.fireeditor.savefile.units.Unit;
+import com.danius.fireeditor.savefile.units.mainblock.RawInventory;
+import com.danius.fireeditor.savefile.units.mainblock.RawItem;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -12,7 +16,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ItemDb {
     private static final int MAX_FORGED = Constants.MAX_FORGE_COUNT;
@@ -70,8 +76,7 @@ public class ItemDb {
         for (int i = 0; i < MAX_FORGED; i++) {
             if (positions.contains(i)) {
                 names.add(getRefinement(i, refiList).getName());
-            }
-            else {
+            } else {
                 names.add(getItemName(i + MOD_MAX_ID + 1));
             }
         }
@@ -93,6 +98,94 @@ public class ItemDb {
     public static int getItemUses(Refinement refinement) {
         int id = refinement.weaponId();
         return getItemUses(id);
+    }
+
+    public static int getItemType(int id) {
+        if (isInvalid(id)) return 10;
+        return getItem(id).getType1();
+    }
+
+    public static int[] getItemBuffs(int id) {
+        if (isInvalid(id)) return new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        else return getItem(id).getBuffs();
+    }
+
+    private static List<Integer> faireTypes(Unit unit) {
+        List<Integer> types = new ArrayList<>();
+        int[] skills = unit.rawBlock2.getCurrentSkills();
+        for (int skill : skills) {
+            if (skill == 48) types.add(0); //Sword
+            else if (skill == 49) types.add(1); //Lance
+            else if (skill == 50) types.add(2); //Axe
+            else if (skill == 51) types.add(3); //Bow
+            else if (skill == 52) types.add(4); //Tome
+        }
+        //The duplicated types are removed
+        Set<Integer> uniqueTypes = new HashSet<>(types);
+        return new ArrayList<>(uniqueTypes);
+    }
+
+    public static int[] getFaireBuffs(Unit unit) {
+        int[] totalBuffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        List<Integer> faireTypes = faireTypes(unit);
+        //Loops through all the equipped faire skills
+        for (int i = 0; i < faireTypes.size(); i++) {
+            RawItem item = unit.rawInventory.items.get(i);
+            if (item.equipped()) {
+                int type = faireTypes.get(i);
+                int itemId = item.itemId();
+                int[] buffs = getFaireBuff(itemId, type);
+                for (int k = 0; k < totalBuffs.length; k++) {
+                    totalBuffs[k] += buffs[k];
+                }
+            }
+        }
+        return totalBuffs;
+    }
+
+    private static int[] getFaireBuff(int id, int faireType) {
+        int[] totalBuffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        int type = getItemType(id);
+        //Sword
+        if (type == 0 && type == faireType) {
+            if (id == 9) totalBuffs[2] += 5; //Levin Sword
+            else totalBuffs[1] += 5;
+        }
+        //Lance
+        else if (type == 1 && type == faireType) {
+            if (id == 52) totalBuffs[2] += 5; //Shockstick
+            else totalBuffs[1] += 5;
+        }
+        //Axe
+        else if (type == 2 && type == faireType) {
+            if (id == 67) totalBuffs[2] += 5; //Bolt Axe
+            else totalBuffs[1] += 5;
+        }
+        //Bows
+        else if (type == 3 && type == faireType) {
+            totalBuffs[1] += 5;
+        }
+        //Tomes
+        else if (type == 4 && type == faireType) {
+            totalBuffs[2] += 5;
+        }
+
+        return totalBuffs;
+    }
+
+    public static int getItemMight(int id) {
+        if (isInvalid(id)) return 0;
+        return getItem(id).getMight();
+    }
+
+    public static int getItemHit(int id) {
+        if (isInvalid(id)) return 0;
+        return getItem(id).getHit();
+    }
+
+    public static int getItemCrit(int id) {
+        if (isInvalid(id)) return 0;
+        return getItem(id).getCrit();
     }
 
     public static String getAmountString(int id, int amount) {
@@ -142,6 +235,7 @@ public class ItemDb {
                 // Parse attributes from the XML
                 itemModel.setId(Integer.parseInt(itemElement.getAttributeValue("id")));
                 itemModel.setName(itemElement.getAttributeValue("name"));
+                itemModel.setType1(Integer.parseInt(itemElement.getAttributeValue("type1")));
 
                 //Buffs
                 Element elemBuff = itemElement.getChild("buffs");
@@ -152,7 +246,7 @@ public class ItemDb {
                 }
                 itemModel.setBuffs(base);
 
-                //Buffs
+                //Refinement Stats
                 Element elemStats = itemElement.getChild("stats");
                 int uses = Integer.parseInt(elemStats.getAttributeValue("uses"));
                 int might = Integer.parseInt(elemStats.getAttributeValue("might"));

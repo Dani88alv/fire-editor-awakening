@@ -45,9 +45,9 @@
          <Spinner fx:id="spinMight" editable="true" layoutX="543.0" layoutY="254.0" prefHeight="26.0" prefWidth="62.0" />
          <Spinner fx:id="spinHit" editable="true" layoutX="636.0" layoutY="254.0" prefHeight="26.0" prefWidth="62.0" />
          <Spinner fx:id="spinCrit" editable="true" layoutX="543.0" layoutY="307.0" prefHeight="26.0" prefWidth="62.0" />
-         <Label layoutX="545.0" layoutY="233.0" text="Might" />
-         <Label layoutX="639.0" layoutY="233.0" text="Hit" />
-         <Label layoutX="545.0" layoutY="286.0" text="Crit" />
+         <Label fx:id="lblMight" layoutX="545.0" layoutY="233.0" text="Might" />
+         <Label fx:id="lblHit" layoutX="639.0" layoutY="233.0" text="Hit" />
+         <Label fx:id="lblCrit" layoutX="545.0" layoutY="286.0" text="Crit" />
          <Spinner fx:id="spinPos" disable="true" layoutX="636.0" layoutY="307.0" prefHeight="26.0" prefWidth="62.0" />
          <Label layoutX="638.0" layoutY="287.0" text="Weapon Slot" />
          <CheckBox fx:id="checkRefiFlag" layoutX="544.0" layoutY="354.0" mnemonicParsing="false" text="Enemy Weapon" />

@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.inventory;
 
+import com.danius.fireeditor.data.ItemDb;
 import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -16,7 +17,7 @@ public class Refinement {
     private byte[] rawStats;
 
     public Refinement(byte[] refiBytes) {
-       initialize(refiBytes);
+        initialize(refiBytes);
     }
 
     public Refinement(boolean isWest) {
@@ -118,6 +119,24 @@ public class Refinement {
             throw new RuntimeException();
         }
         return outputStream.toByteArray();
+    }
+
+    public int totalMight() {
+        int value = ItemDb.getItemMight(weaponId()) + might();
+        while (value > 0xFF) value -= 0x100;
+        return value;
+    }
+
+    public int totalHit() {
+        int value = ItemDb.getItemHit(weaponId()) + hit();
+        while (value > 0xFF) value -= 0x100;
+        return value;
+    }
+
+    public int totalCrit() {
+        int value = ItemDb.getItemCrit(weaponId()) + crit();
+        while (value > 0xFF) value -= 0x100;
+        return value;
     }
 
     public void changeRegion(boolean isWest) {

@@ -1,8 +1,10 @@
 package com.danius.fireeditor.controllers.unit;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Unit;
+import com.danius.fireeditor.savefile.units.mainblock.RawItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -88,6 +90,9 @@ public class ItemController {
         combobox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         unit.rawInventory.items.get(slot).setItemId((Integer) newValue);
+                        if (unit.rawInventory.items.get(slot).equipped()) {
+                            FireEditor.unitController.setFieldsStats(unit);
+                        }
                     }
                 }
         );
@@ -107,6 +112,7 @@ public class ItemController {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 unit.rawInventory.items.get(slot).setEquipped(newValue);
+                FireEditor.unitController.setFieldsStats(unit);
             }
         });
     }
