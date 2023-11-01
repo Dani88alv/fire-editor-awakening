@@ -1,17 +1,24 @@
 package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
+import com.danius.fireeditor.data.ClassDb;
+import com.danius.fireeditor.data.UnitDb;
+import com.danius.fireeditor.data.model.ClassModel;
+import com.danius.fireeditor.data.model.SkillModel;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.data.MiscDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
+
+import static com.danius.fireeditor.data.SkillDb.*;
 
 public class SkillController {
 
@@ -155,5 +162,85 @@ public class SkillController {
 
     public void setCount() {
         lblCount.setText("Learned Skills: " + unit.rawSkill.skillCount());
+    }
+
+    @FXML
+    private void skillReport() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().setPrefWidth(650);
+        int itemsPerRow = 8;
+        alert.setTitle("Legal Skills");
+        alert.setHeaderText("Available skills for " + unit.unitName() + ":");
+
+        List<SkillModel> baseSkills = getSkillsFromBaseClasses(unit);
+        StringBuilder contentText = new StringBuilder("Base Skills:\n");
+        for (int i = 0; i < baseSkills.size(); i++) {
+            contentText.append(baseSkills.get(i).getName());
+            if (i % itemsPerRow == (itemsPerRow - 1) || i == baseSkills.size() - 1) contentText.append("\n");
+            else contentText.append(", ");
+        }
+        contentText.append("\n");
+
+        List<SkillModel> personalSkills = getPersonalSkills(unit);
+        contentText.append("Personal Skills:\n");
+        for (int i = 0; i < personalSkills.size(); i++) {
+            contentText.append(personalSkills.get(i).getName());
+            if (i % itemsPerRow == (itemsPerRow - 1) || i == personalSkills.size() - 1) contentText.append("\n");
+            else contentText.append(", ");
+        }
+        contentText.append("\n");
+
+        List<SkillModel> itemSkills = getItemSkills();
+        contentText.append("Item Skills:\n");
+        for (int i = 0; i < itemSkills.size(); i++) {
+            contentText.append(itemSkills.get(i).getName());
+            if (i % itemsPerRow == (itemsPerRow - 1) || i == itemSkills.size() - 1) contentText.append("\n");
+            else contentText.append(", ");
+        }
+        contentText.append("\n");
+
+        if (unit.rawChild != null) {
+
+            List<SkillModel> inheritClassSkills = getExclusiveInheritClassSkills(unit);
+            contentText.append("Exclusive skills from Inherited Classes:\n");
+            for (int i = 0; i < inheritClassSkills.size(); i++) {
+                contentText.append(inheritClassSkills.get(i).getName());
+                if (i % itemsPerRow == (itemsPerRow - 1) || i == inheritClassSkills.size() - 1)
+                    contentText.append("\n");
+                else contentText.append(", ");
+            }
+            contentText.append("\n");
+
+            int father = unit.rawChild.parentId(0);
+            if (father != 0xFFFF) {
+                List<SkillModel> inheritExclusiveFather = getExclusiveInheritSlotSkills(unit, 0);
+                contentText.append("Exclusive skills from ")
+                        .append(UnitDb.getUnitName(father)).append(":\n");
+                for (int i = 0; i < inheritExclusiveFather.size(); i++) {
+                    contentText.append(inheritExclusiveFather.get(i).getName());
+                    if (i % itemsPerRow == (itemsPerRow - 1) || i == inheritExclusiveFather.size() - 1)
+                        contentText.append("\n");
+                    else contentText.append(", ");
+                }
+                contentText.append("\n");
+            }
+
+            int mother = unit.rawChild.parentId(1);
+            if (mother != 0xFFFF) {
+                List<SkillModel> inheritExclusiveMother = getExclusiveInheritSlotSkills(unit, 1);
+                contentText.append("Exclusive skills from ")
+                        .append(UnitDb.getUnitName(mother)).append(":\n");
+                for (int i = 0; i < inheritExclusiveMother.size(); i++) {
+                    contentText.append(inheritExclusiveMother.get(i).getName());
+                    if (i % itemsPerRow == (itemsPerRow - 1) || i == inheritExclusiveMother.size() - 1)
+                        contentText.append("\n");
+                    else contentText.append(", ");
+                }
+            }
+
+        }
+
+        alert.setContentText(contentText.toString());
+        alert.showAndWait();
     }
 }

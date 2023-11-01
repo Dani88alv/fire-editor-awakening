@@ -3,6 +3,7 @@ package com.danius.fireeditor.data;
 import com.danius.fireeditor.data.model.ClassModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
+import com.danius.fireeditor.savefile.units.extrablock.RawParent;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -99,6 +100,20 @@ public class ClassDb {
             parentClasses.removeIf(model -> !model.canBeInherited()); //Remove un-inheritable classes
             allClasses.addAll(parentClasses);
         }
+        return removeDuplicates(allClasses);
+    }
+
+    public static List<ClassModel> getInheritClasses(Unit unit, int parentSlot) {
+        List<ClassModel> allClasses = new ArrayList<>();
+        if (unit.rawChild == null) return allClasses;
+        boolean isFemale = unit.isFemale();
+
+        int parent = unit.rawChild.parentId(parentSlot);
+        if (parent == 0xFFFF) return allClasses;
+        List<ClassModel> parentClasses = getUnitBaseClasses(parent, isFemale);
+        parentClasses.removeIf(model -> !model.canBeInherited()); //Remove un-inheritable classes
+        allClasses.addAll(parentClasses);
+
         return removeDuplicates(allClasses);
     }
 

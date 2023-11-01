@@ -441,6 +441,14 @@ public class UnitDb {
                 //Build
                 Element elemBuild = characterElement.getChild("build");
                 unit.setAvatarClass(Integer.parseInt(elemBuild.getAttributeValue("class")));
+                unit.setAsset(Integer.parseInt(elemBuild.getAttributeValue("asset")));
+                unit.setFlaw(Integer.parseInt(elemBuild.getAttributeValue("flaw")));
+                unit.setBuild(Integer.parseInt(elemBuild.getAttributeValue("build")));
+                unit.setFace(Integer.parseInt(elemBuild.getAttributeValue("face")));
+                unit.setHair(Integer.parseInt(elemBuild.getAttributeValue("hair")));
+                unit.setVoice(Integer.parseInt(elemBuild.getAttributeValue("voice")));
+                unit.setFemale(elemBuild.getAttributeValue("gender").equals("1"));
+                //Hair Color Hex Value is missing
 
                 //Flags
                 Element elemFlags = characterElement.getChild("flags");

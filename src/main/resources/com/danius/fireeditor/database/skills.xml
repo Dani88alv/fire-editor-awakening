@@ -117,10 +117,10 @@
     <skill id="96" name="Vantage+"/>
     <skill id="97" name="Pavise+"/>
     <skill id="98" name="Aegis+"/>
-    <skill id="99" name="Resistance +10"/>
-    <skill id="100" name="Aggressor"/>
-    <skill id="101" name="Rally Heart"/>
-    <skill id="102" name="Bond"/>
+    <skill id="99" name="Resistance +10" inherit="false"/>
+    <skill id="100" name="Aggressor" inherit="false"/>
+    <skill id="101" name="Rally Heart" inherit="false"/>
+    <skill id="102" name="Bond" inherit="false"/>
     <skill id="103" name="Unused Skill Slot" inherit="false"/>
 
     <!--

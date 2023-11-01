@@ -58,27 +58,13 @@ public class SkillDb {
         List<SkillModel> inheritExclusiveFather = getExclusiveInheritSlotSkills(unit, 0);
         List<SkillModel> inheritExclusiveMother = getExclusiveInheritSlotSkills(unit, 1);
 
-        //The forced skills are set, the other are ignored
-        List<SkillModel> lastSlotForcedSkills = new ArrayList<>();
-        for (SkillModel skill : inheritExclusiveFather) {
-            if (skill.isForceToUnit()) {
-                lastSlotForcedSkills.add(skill);
-                break;
-            }
-        }
-        for (SkillModel skill : inheritExclusiveMother) {
-            if (skill.isForceToUnit()) {
-                lastSlotForcedSkills.add(skill);
-                break;
-            }
-        }
-
         //All the skills are set
         allSkills.addAll(classSkills);
         allSkills.addAll(personalSkills);
         allSkills.addAll(itemSkills);
         allSkills.addAll(inheritClassSkills);
-        allSkills.addAll(lastSlotForcedSkills);
+        allSkills.addAll(inheritExclusiveFather);
+        allSkills.addAll(inheritExclusiveMother);
 
 
         return removeDuplicates(allSkills);
@@ -178,7 +164,7 @@ public class SkillDb {
         return removeDuplicates(exclusiveSkills);
     }
 
-    private static List<SkillModel> getExclusiveInheritClassSkills(Unit unit) {
+    public static List<SkillModel> getExclusiveInheritClassSkills(Unit unit) {
         List<SkillModel> baseSkills = getSkillsFromBaseClasses(unit);
         // Create a third list for exclusive items
         List<SkillModel> allClassSkills = getSkillsFromInheritClasses(unit);

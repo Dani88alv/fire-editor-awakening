@@ -3,7 +3,10 @@ package com.danius.fireeditor.controllers.unit;
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.MainController;
 import com.danius.fireeditor.controllers.UI;
+import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.data.ItemDb;
+import com.danius.fireeditor.data.UnitDb;
+import com.danius.fireeditor.data.model.ClassModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.inventory.Refinement;
 import com.danius.fireeditor.savefile.units.Stats;
@@ -25,6 +28,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import static com.danius.fireeditor.data.ClassDb.*;
@@ -187,6 +191,60 @@ public class UnitController {
                 listViewUnit.getSelectionModel().clearSelection();
             }
         }
+    }
+
+    @FXML
+    private void classReport() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().setPrefWidth(500);
+        int itemsPerRow = 5;
+        Unit unit = listViewUnit.getSelectionModel().getSelectedItem();
+        alert.setTitle("Class Sets");
+        alert.setHeaderText("Available classes for " + unit.unitName() + ":");
+
+        List<ClassModel> baseClasses = ClassDb.getUnitBaseClasses(unit.getUnitId(), unit.isFemale());
+
+        // Create a formatted content text with rows of three elements and commas
+        StringBuilder contentText = new StringBuilder("Base Classes:\n");
+        for (int i = 0; i < baseClasses.size(); i++) {
+            contentText.append(baseClasses.get(i).getName());
+            if (i % itemsPerRow == (itemsPerRow - 1) || i == baseClasses.size() - 1) contentText.append("\n");
+            else contentText.append(", ");
+        }
+
+        if (unit.rawChild != null) {
+            for (int i = 0; i < 6; i++) {
+                int parent = unit.rawChild.parentId(i);
+                if (parent == 0xFFFF) continue;
+
+                contentText.append("\n");
+                contentText.append("Inherited from ").append(UnitDb.getUnitName(parent)).append(":\n");
+                List<ClassModel> parentClasses = ClassDb.getInheritClasses(unit, i);
+                boolean isTactician = false;
+
+                //Checks if it is a Tactician Tree (the message is too big
+                for (ClassModel classModel : parentClasses) {
+                    if (classModel.isTactician()) {
+                        isTactician = true;
+                        break;
+                    }
+                }
+
+                if (isTactician) contentText.append("(Tactician Class Tree)\n");
+                for (int k = 0; k < parentClasses.size(); k++) {
+                    if (!isTactician || !parentClasses.get(k).isTacticianTree()) {
+                        contentText.append(parentClasses.get(k).getName());
+                        if (k % itemsPerRow == (itemsPerRow - 1) || k == parentClasses.size() - 1)
+                            contentText.append("\n");
+                        else contentText.append(", ");
+                    }
+                }
+
+            }
+        }
+
+        alert.setContentText(contentText.toString());
+        alert.showAndWait();
     }
 
 

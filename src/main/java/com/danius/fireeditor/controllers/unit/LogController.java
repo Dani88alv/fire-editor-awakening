@@ -3,7 +3,6 @@ package com.danius.fireeditor.controllers.unit;
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.UnitDb;
-import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.data.MiscDb;

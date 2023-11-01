@@ -13,7 +13,7 @@ public class EinherjarModel {
     private int flaw;
     private int build;
     private int face;
-    private int color;
+    private int hair;
     private int voice;
     private boolean isFemale;
     private String hairColor;
@@ -94,12 +94,12 @@ public class EinherjarModel {
         this.face = face;
     }
 
-    public int getColor() {
-        return color;
+    public int getHair() {
+        return hair;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setHair(int hair) {
+        this.hair = hair;
     }
 
     public int getVoice() {

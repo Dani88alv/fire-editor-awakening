@@ -107,7 +107,7 @@
                      <Image url="@avatar_m/hair_01_00.png" />
                   </image>
                </ImageView>
-               <TextField fx:id="txtModif" disable="true" editable="false" layoutX="422.0" layoutY="264.0" />
+               <TextField fx:id="txtModif" disable="true" editable="false" layoutX="434.0" layoutY="264.0" />
                <AnchorPane layoutX="207.0" layoutY="119.0" prefHeight="42.0" prefWidth="387.0">
                   <children>
                      <TextField fx:id="txtStatHp" disable="true" layoutX="6.0" layoutY="6.0" prefHeight="26.0" prefWidth="34.0" text="0" />
@@ -123,12 +123,13 @@
                </AnchorPane>
                <Label layoutX="173.0" layoutY="95.0" text="Buffs" />
                <CheckBox fx:id="checkLimit" layoutX="214.0" layoutY="202.0" mnemonicParsing="false" text="Calculate with Limit Breaker" />
-               <Label layoutX="423.0" layoutY="242.0" text="Modifiers" />
+               <Label layoutX="435.0" layoutY="242.0" text="Modifiers" />
                <Label layoutX="445.0" layoutY="9.0" text="Class" />
                <TextField fx:id="txtTotalStat" disable="true" layoutX="545.0" layoutY="198.0" prefHeight="26.0" prefWidth="34.0" text="0" />
                <Label layoutX="546.0" layoutY="229.0" text="Rating" />
                <Button fx:id="btnUp" layoutX="2.0" layoutY="268.0" mnemonicParsing="false" onAction="#orderUp" text="↑" />
                <Button fx:id="btnDown" layoutX="2.0" layoutY="300.0" mnemonicParsing="false" onAction="#orderDown" text="↓" />
+               <Button layoutX="358.0" layoutY="264.0" mnemonicParsing="false" onAction="#classReport" text="Class Set" />
                     </children>
                 </AnchorPane>
         </children>
