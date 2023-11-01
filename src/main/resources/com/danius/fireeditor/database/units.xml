@@ -997,7 +997,7 @@
     <unit id="39" name="Morgan (M)" color="#f99eaf" customColor="true" parent="1">
         <additions hp="9" str="6" mag="8" skl="7" spd="6" lck="7" def="3" res="7" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="" class2="" class3=""/>
+        <mClasses class1="4" class2="" class3=""/>
         <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -1016,7 +1016,7 @@
         <additions hp="9" str="6" mag="8" skl="7" spd="6" lck="7" def="3" res="7" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="" class2="" class3=""/>
-        <fClasses class1="" class2="" class3=""/>
+        <fClasses class1="5" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="43" type="0"/>

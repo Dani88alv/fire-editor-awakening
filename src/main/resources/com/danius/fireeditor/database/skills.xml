@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skills>
-    <skill id="0" name="No Active Skill"/>
+    <skill id="0" name="No Active Skill" inherit="false"/>
     <skill id="1" name="HP +5"/>
     <skill id="2" name="Strength +2"/>
     <skill id="3" name="Magic +2"/>
@@ -18,9 +18,14 @@
     <skill id="15" name="Discipline"/>
     <skill id="16" name="Armsthrift"/>
     <skill id="17" name="Dual Support+"/>
-    <skill id="18" name="Dual Strike+" inherit="false"/>
+    <skill id="18" name="Dual Strike+"/>
     <skill id="19" name="Dual Guard+"/>
-    <skill id="20" name="Rightful King" inherit="false"/>
+    <skill id="20" name="Rightful King" forceGender="M">
+        <forceFlag>
+            <flag>5</flag>
+            <flag>12</flag>
+        </forceFlag>
+    </skill>
     <skill id="21" name="Odd Rhythm"/>
     <skill id="22" name="Even Rhythm"/>
     <skill id="23" name="Quick Burn"/>
@@ -36,7 +41,7 @@
     <skill id="33" name="Prescience"/>
     <skill id="34" name="Patience"/>
     <skill id="35" name="Underdog"/>
-    <skill id="36" name="Charm" inherit="false"/>
+    <skill id="36" name="Charm"/>
     <skill id="37" name="Solidarity"/>
     <skill id="38" name="Demoiselle"/>
     <skill id="39" name="Hex"/>
@@ -72,7 +77,12 @@
     <skill id="69" name="Wyrmsbane"/>
     <skill id="70" name="Beastbane"/>
     <skill id="71" name="Lethality"/>
-    <skill id="72" name="Aether" inherit="false"/>
+    <skill id="72" name="Aether" forceGender="F">
+        <forceFlag>
+            <flag>5</flag>
+            <flag>12</flag>
+        </forceFlag>
+    </skill>
     <skill id="73" name="Astra"/>
     <skill id="74" name="Sol"/>
     <skill id="75" name="Luna"/>
@@ -86,8 +96,16 @@
     <skill id="83" name="Despoil"/>
     <skill id="84" name="Galeforce"/>
     <skill id="85" name="Lifetaker"/>
-    <skill id="86" name="Conquest"/>
-    <skill id="87" name="Shadowgift"/>
+    <skill id="86" name="Conquest">
+        <forceFlag>
+            <flag>13</flag>
+        </forceFlag>
+    </skill>
+    <skill id="87" name="Shadowgift">
+        <forceFlag>
+            <flag>14</flag>
+        </forceFlag>
+    </skill>
     <skill id="88" name="All Stats +2" dlcItem="true"/>
     <skill id="89" name="Paragon" dlcItem="true"/>
     <skill id="90" name="Iote's Shield" dlcItem="true"/>
@@ -103,13 +121,17 @@
     <skill id="100" name="Aggressor"/>
     <skill id="101" name="Rally Heart"/>
     <skill id="102" name="Bond"/>
-    <skill id="103" name="Unused Skill Slot"/>
+    <skill id="103" name="Unused Skill Slot" inherit="false"/>
 
     <!--
     Template
     Attributes that can be added (a default value will be used if they do not exist)
     inherit="true"      | The skill can be inherited
     dlcItem="false"     | Every single unit can learn this skill by using an item
+    forceFlag="false"   | Takes priority over skill slot inheritance if the parent has the trait flag
+    forceGender="false" | Takes priority over skill slot inheritance if the parent matches the gender of the attribute
+
+    (inherit takes priority over forceFlag and forceGender)
 
     <skill id="0" name="Skill"/>
     -->

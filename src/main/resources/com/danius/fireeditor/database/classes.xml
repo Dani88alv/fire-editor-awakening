@@ -568,12 +568,12 @@
             <flag>21</flag>
         </flags>
     </class>
-    <class id="80" name="Dread Fighter" skill1="99" skill2="100" promoted1="" promoted2="" exclusive="true" dlc="true">
+    <class id="80" name="Dread Fighter" skill1="99" skill2="100" promoted1="" promoted2="" exclusive="true" inherit="false" dlc="true">
         <base hp="22" str="8" mag="4" skl="8" spd="9" lck="0" def="7" res="10" mov="6"/>
         <max hp="80" str="42" mag="38" skl="40" spd="41" lck="45" def="39" res="43" mov="255"/>
         <flags/>
     </class>
-    <class id="81" name="Bride" skill1="101" skill2="102" promoted1="" promoted2="" exclusive="true" dlc="true">
+    <class id="81" name="Bride" skill1="101" skill2="102" promoted1="" promoted2="" exclusive="true" inherit="false" dlc="true">
         <base hp="21" str="7" mag="6" skl="11" spd="10" lck="0" def="7" res="6" mov="6"/>
         <max hp="80" str="40" mag="39" skl="42" spd="42" lck="45" def="41" res="40" mov="255"/>
         <flags>

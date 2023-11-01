@@ -282,6 +282,7 @@ public class TeamController {
                 //The item is replaced
                 unit.rawInventory.items.get(i).setItemId(itemId);
             }
+            unit.rawInventory.maxAmount(FireEditor.chapterFile.blockRefi.refiList);
 
             FireEditor.unitController.addUnit(unit);
             list.remove(index);

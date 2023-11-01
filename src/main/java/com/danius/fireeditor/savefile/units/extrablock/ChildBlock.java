@@ -6,6 +6,7 @@ import com.danius.fireeditor.savefile.Constants;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class ChildBlock {
@@ -31,6 +32,11 @@ public class ChildBlock {
             }
         }
         return isBlank;
+    }
+
+    public RawParent getRawParent(int slot) {
+        if (slot == 0) return father;
+        else return mother;
     }
 
     public ChildBlock() {
@@ -69,6 +75,22 @@ public class ChildBlock {
             case 5 -> mother.parentId(2);
             default -> 65335;
         };
+    }
+
+    /* Retrieves the grandparents from father's side or mother's side */
+    public int[] grandParents(int slot) {
+        int[] grandParents = new int[2];
+        switch (slot) {
+            case 0 -> {
+                grandParents[0] = parentId(2);
+                grandParents[1] = parentId(3);
+            }
+            case 1 -> {
+                grandParents[0] = parentId(4);
+                grandParents[1] = parentId(5);
+            }
+        }
+        return grandParents;
     }
 
     public void setParentId(int slot, int value) {

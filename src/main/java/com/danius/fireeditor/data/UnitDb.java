@@ -243,6 +243,11 @@ public class UnitDb {
         return getEinherjar(logId).getSkills();
     }
 
+    public static int getEinClass(int logId) {
+        if (invalidEinherjar(logId)) return -1;
+        return getEinherjar(logId).getAvatarClass();
+    }
+
     public static List<String> getEinherjarNames() {
         List<String> names = new ArrayList<>();
         for (EinherjarModel einherjarModel : database.einherjar) {
@@ -432,6 +437,10 @@ public class UnitDb {
                     if (value > 0) skills.add(value);
                 }
                 unit.setSkills(skills);
+
+                //Build
+                Element elemBuild = characterElement.getChild("build");
+                unit.setAvatarClass(Integer.parseInt(elemBuild.getAttributeValue("class")));
 
                 //Flags
                 Element elemFlags = characterElement.getChild("flags");
