@@ -8,13 +8,17 @@ public class UnitModel {
     private String name;
     private int[] statAdditions;
     private int[] statModifiers;
-    private int[] classMale;
-    private int[] classFemale;
+    private List<Integer> classMale;
+    private List<Integer> classFemale;
     private List<Integer> skills;
     private int[] supportUnits;
     private int[] supportTypes;
     private List<Integer> flags;
     private int parent;
+    private boolean isAvatar;
+    private boolean hasCustomHair;
+    private String hairColor;
+    private boolean isPlayable;
 
     public UnitModel() {
 
@@ -52,19 +56,19 @@ public class UnitModel {
         this.statModifiers = statModifiers;
     }
 
-    public int[] getClassMale() {
+    public List<Integer> getClassMale() {
         return classMale;
     }
 
-    public void setClassMale(int[] classMale) {
+    public void setClassMale(List<Integer> classMale) {
         this.classMale = classMale;
     }
 
-    public int[] getClassFemale() {
+    public List<Integer> getClassFemale() {
         return classFemale;
     }
 
-    public void setClassFemale(int[] classFemale) {
+    public void setClassFemale(List<Integer> classFemale) {
         this.classFemale = classFemale;
     }
 
@@ -106,5 +110,42 @@ public class UnitModel {
 
     public void setParent(int parent) {
         this.parent = parent;
+    }
+
+    public boolean isAvatar() {
+        return isAvatar;
+    }
+
+    public void setIsAvatar(boolean avatar) {
+        isAvatar = avatar;
+    }
+
+    public boolean hasCustomHair() {
+        return hasCustomHair;
+    }
+
+    public void setHasCustomHair(boolean hasCustomHair) {
+        this.hasCustomHair = hasCustomHair;
+    }
+
+    public String getHairColor() {
+        return hairColor;
+    }
+
+    public void setHairColor(String hairColor) {
+        this.hairColor = hairColor;
+    }
+
+    public boolean isPlayable() {
+        return isPlayable;
+    }
+
+    public void setPlayable(boolean playable) {
+        isPlayable = playable;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

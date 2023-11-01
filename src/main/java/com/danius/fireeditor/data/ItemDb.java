@@ -219,9 +219,9 @@ public class ItemDb {
 
     public void readItems() {
         itemList = new ArrayList<>();
-        String path = "/com/danius/fireeditor/database/";
+        String path = Constants.RES_XML;
         String xmlFilePath = path + "items.xml";
-        try (InputStream is = UnitDb.class.getResourceAsStream(xmlFilePath)) {
+        try (InputStream is = ItemDb.class.getResourceAsStream(xmlFilePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }
@@ -230,15 +230,15 @@ public class ItemDb {
             Element rootElement = document.getRootElement();
             String[] buffs = new String[]{"hp", "str", "mag", "skl", "spd", "lck", "def", "res"};
             // Iterate through character elements in the XML
-            for (Element itemElement : rootElement.getChildren("item")) {
+            for (Element element : rootElement.getChildren("item")) {
                 ItemModel itemModel = new ItemModel();
                 // Parse attributes from the XML
-                itemModel.setId(Integer.parseInt(itemElement.getAttributeValue("id")));
-                itemModel.setName(itemElement.getAttributeValue("name"));
-                itemModel.setType1(Integer.parseInt(itemElement.getAttributeValue("type1")));
+                itemModel.setId(Integer.parseInt(element.getAttributeValue("id")));
+                itemModel.setName(element.getAttributeValue("name"));
+                itemModel.setType1(Integer.parseInt(element.getAttributeValue("type1")));
 
                 //Buffs
-                Element elemBuff = itemElement.getChild("buffs");
+                Element elemBuff = element.getChild("buffs");
                 int[] base = new int[buffs.length];
                 for (int i = 0; i < base.length; i++) {
                     String value = elemBuff.getAttributeValue(buffs[i]);
@@ -247,7 +247,7 @@ public class ItemDb {
                 itemModel.setBuffs(base);
 
                 //Refinement Stats
-                Element elemStats = itemElement.getChild("stats");
+                Element elemStats = element.getChild("stats");
                 int uses = Integer.parseInt(elemStats.getAttributeValue("uses"));
                 int might = Integer.parseInt(elemStats.getAttributeValue("might"));
                 int hit = Integer.parseInt(elemStats.getAttributeValue("hit"));

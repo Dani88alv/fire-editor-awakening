@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <units>
-    <unit id="0" name="Avatar (M)" pid="" parent="">
+    <unit id="0" name="Avatar (M)" color="#2e2e2e" avatar="true">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="4" class2="-1" class3="-1"/>
-        <fClasses class1="5" class2="-1" class3="-1"/>
+        <mClasses class1="4" class2="" class3=""/>
+        <fClasses class1="5" class2="" class3=""/>
         <skills skill1="13" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="3" type="0"/>
@@ -60,11 +60,11 @@
             <flag>5</flag>
         </flags>
     </unit>
-    <unit id="1" name="Avatar (F)" pid="" parent="">
+    <unit id="1" name="Avatar (F)" color="#2e2e2e" avatar="true">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="4" class2="-1" class3="-1"/>
-        <fClasses class1="5" class2="-1" class3="-1"/>
+        <mClasses class1="4" class2="" class3=""/>
+        <fClasses class1="5" class2="" class3=""/>
         <skills skill1="23" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="4" type="0"/>
@@ -121,18 +121,18 @@
             <flag>5</flag>
         </flags>
     </unit>
-    <unit id="2" name="Logbook Unit" pid="" parent="">
+    <unit id="2" name="Logbook Unit" color="#ffffff" avatar="true" enemy="true">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="4" class2="-1" class3="-1"/>
-        <fClasses class1="5" class2="-1" class3="-1"/>
+        <mClasses class1="4" class2="" class3=""/>
+        <fClasses class1="5" class2="" class3=""/>
         <skills skill1="23" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags>
             <flag>23</flag>
         </flags>
     </unit>
-    <unit id="3" name="Chrom" pid="" parent="">
+    <unit id="3" name="Chrom" color="#505c81">
         <additions hp="2" str="1" mag="1" skl="3" spd="1" lck="5" def="0" res="1" mov="0"/>
         <modifiers hp="0" str="1" mag="0" skl="1" spd="1" lck="1" def="-1" res="-1" mov="0"/>
         <mClasses class1="0" class2="8" class3="22"/>
@@ -155,7 +155,7 @@
             <flag>5</flag>
         </flags>
     </unit>
-    <unit id="4" name="Lissa" pid="" parent="">
+    <unit id="4" name="Lissa" color="#dad3bd">
         <additions hp="1" str="1" mag="2" skl="2" spd="0" lck="8" def="2" res="-2" mov="0"/>
         <modifiers hp="0" str="-2" mag="2" skl="-1" spd="0" lck="2" def="-1" res="1" mov="0"/>
         <mClasses class1="52" class2="32" class3="18"/>
@@ -183,7 +183,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="5" name="Frederick" pid="" parent="">
+    <unit id="5" name="Frederick" color="#574c46">
         <additions hp="2" str="2" mag="2" skl="6" spd="5" lck="6" def="0" res="2" mov="0"/>
         <modifiers hp="0" str="2" mag="-2" skl="2" spd="-2" lck="0" def="2" res="0" mov="0"/>
         <mClasses class1="8" class2="10" class3="45"/>
@@ -209,7 +209,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="6" name="Virion" pid="" parent="">
+    <unit id="6" name="Virion" color="#7a93a4">
         <additions hp="3" str="1" mag="0" skl="1" spd="-1" lck="7" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="2" spd="2" lck="-1" def="-2" res="0" mov="0"/>
         <mClasses class1="22" class2="45" class3="54"/>
@@ -233,10 +233,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="7" name="Sully" pid="" parent="">
+    <unit id="7" name="Sully" color="#aa6463">
         <additions hp="2" str="1" mag="1" skl="3" spd="2" lck="6" def="0" res="2" mov="0"/>
         <modifiers hp="0" str="-1" mag="-1" skl="2" spd="2" lck="0" def="-1" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="9" class2="33" class3="46"/>
         <skills skill1="15" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -262,7 +262,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="8" name="Vaike" pid="" parent="">
+    <unit id="8" name="Vaike" color="#ded2b0">
         <additions hp="4" str="1" mag="0" skl="3" spd="1" lck="4" def="1" res="0" mov="0"/>
         <modifiers hp="0" str="3" mag="-2" skl="1" spd="1" lck="-1" def="0" res="-2" mov="0"/>
         <mClasses class1="19" class2="18" class3="34"/>
@@ -286,7 +286,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="9" name="Stahl" pid="" parent="">
+    <unit id="9" name="Stahl" color="#717266">
         <additions hp="4" str="2" mag="0" skl="2" spd="0" lck="5" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="2" mag="-1" skl="1" spd="0" lck="-2" def="2" res="-1" mov="0"/>
         <mClasses class1="8" class2="32" class3="22"/>
@@ -310,7 +310,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="10" name="Miriel" pid="" parent="">
+    <unit id="10" name="Miriel" color="#532426">
         <additions hp="2" str="0" mag="2" skl="2" spd="3" lck="6" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="-2" mag="3" skl="1" spd="1" lck="0" def="-2" res="0" mov="0"/>
         <mClasses class1="54" class2="18" class3="56"/>
@@ -338,7 +338,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="11" name="Kellam" pid="" parent="">
+    <unit id="11" name="Kellam" color="#595655">
         <additions hp="3" str="2" mag="0" skl="3" spd="3" lck="3" def="1" res="2" mov="0"/>
         <modifiers hp="0" str="1" mag="0" skl="1" spd="-2" lck="-2" def="3" res="0" mov="0"/>
         <mClasses class1="10" class2="34" class3="52"/>
@@ -362,10 +362,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="12" name="Sumia" pid="" parent="">
+    <unit id="12" name="Sumia" color="#a19791">
         <additions hp="2" str="2" mag="1" skl="4" spd="3" lck="8" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="-2" mag="0" skl="2" spd="3" lck="0" def="-2" res="1" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="42" class2="11" class3="53"/>
         <skills skill1="5" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -382,7 +382,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="13" name="Lon'qu" pid="" parent="">
+    <unit id="13" name="Lon'qu" color="#4c4c4c">
         <additions hp="4" str="2" mag="0" skl="3" spd="3" lck="7" def="3" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="3" spd="3" lck="0" def="-2" res="-2" mov="0"/>
         <mClasses class1="32" class2="34" class3="45"/>
@@ -406,7 +406,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="14" name="Ricken" pid="" parent="">
+    <unit id="14" name="Ricken" color="#a57773">
         <additions hp="4" str="3" mag="4" skl="3" spd="1" lck="10" def="4" res="0" mov="0"/>
         <modifiers hp="0" str="-1" mag="2" skl="0" spd="0" lck="1" def="-1" res="0" mov="0"/>
         <mClasses class1="54" class2="8" class3="22"/>
@@ -430,7 +430,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="15" name="Maribelle" pid="" parent="">
+    <unit id="15" name="Maribelle" color="#f2e7c4">
         <additions hp="2" str="0" mag="2" skl="2" spd="1" lck="5" def="2" res="1" mov="0"/>
         <modifiers hp="0" str="-3" mag="2" skl="1" spd="0" lck="3" def="-3" res="2" mov="0"/>
         <mClasses class1="52" class2="8" class3="54"/>
@@ -459,7 +459,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="16" name="Panne" pid="" parent="">
+    <unit id="16" name="Panne" color="#463e36">
         <additions hp="10" str="6" mag="1" skl="5" spd="5" lck="8" def="4" res="1" mov="0"/>
         <modifiers hp="0" str="2" mag="-1" skl="2" spd="3" lck="-1" def="1" res="-1" mov="0"/>
         <mClasses class1="69" class2="18" class3="34"/>
@@ -488,7 +488,7 @@
             <flag>17</flag>
         </flags>
     </unit>
-    <unit id="17" name="Gaius" pid="" parent="">
+    <unit id="17" name="Gaius" color="#d28869">
         <additions hp="6" str="4" mag="0" skl="7" spd="7" lck="6" def="3" res="2" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="2" spd="2" lck="-2" def="-1" res="0" mov="0"/>
         <mClasses class1="34" class2="32" class3="19"/>
@@ -513,10 +513,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="18" name="Cordelia" pid="" parent="">
+    <unit id="18" name="Cordelia" color="#af5454">
         <additions hp="9" str="5" mag="1" skl="6" spd="4" lck="9" def="4" res="2" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="2" spd="2" lck="-1" def="0" res="-1" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="42" class2="21" class3="57"/>
         <skills skill1="5" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -541,7 +541,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="19" name="Gregor" pid="" parent="">
+    <unit id="19" name="Gregor" color="#a3726b">
         <additions hp="12" str="7" mag="0" skl="5" spd="4" lck="8" def="5" res="2" mov="0"/>
         <modifiers hp="0" str="2" mag="-1" skl="2" spd="0" lck="-1" def="1" res="-2" mov="0"/>
         <mClasses class1="20" class2="18" class3="32"/>
@@ -565,10 +565,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="20" name="Nowi" pid="" parent="">
+    <unit id="20" name="Nowi" color="#c2d6ae">
         <additions hp="0" str="2" mag="0" skl="1" spd="2" lck="8" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="1" mag="1" skl="-1" spd="-2" lck="1" def="3" res="2" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="68" class2="46" class3="55"/>
         <skills skill1="21" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -594,7 +594,7 @@
             <flag>16</flag>
         </flags>
     </unit>
-    <unit id="21" name="Libra" pid="" parent="">
+    <unit id="21" name="Libra" color="#cbc2a8">
         <additions hp="14" str="9" mag="10" skl="8" spd="7" lck="10" def="5" res="10" mov="0"/>
         <modifiers hp="0" str="0" mag="1" skl="1" spd="0" lck="-1" def="0" res="1" mov="0"/>
         <mClasses class1="52" class2="54" class3="56"/>
@@ -618,10 +618,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="22" name="Tharja" pid="" parent="">
+    <unit id="22" name="Tharja" color="#484848">
         <additions hp="7" str="3" mag="8" skl="3" spd="9" lck="3" def="6" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="3" skl="-1" spd="1" lck="-3" def="1" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="57" class2="23" class3="11"/>
         <skills skill1="39" skill2="40" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -645,7 +645,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="23" name="Olivia" pid="" parent="">
+    <unit id="23" name="Olivia" color="#ebcdd6">
         <additions hp="2" str="2" mag="0" skl="3" spd="1" lck="5" def="0" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="1" spd="1" lck="0" def="-1" res="-1" mov="0"/>
         <mClasses class1="20" class2="18" class3="32"/>
@@ -674,7 +674,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="24" name="Cherche" pid="" parent="">
+    <unit id="24" name="Cherche" color="#d48085">
         <additions hp="11" str="7" mag="1" skl="6" spd="6" lck="8" def="7" res="2" mov="0"/>
         <modifiers hp="0" str="3" mag="0" skl="-1" spd="-1" lck="0" def="2" res="-2" mov="0"/>
         <mClasses class1="45" class2="19" class3="52"/>
@@ -702,7 +702,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="25" name="Henry" pid="" parent="">
+    <unit id="25" name="Henry" color="#ecebea">
         <additions hp="10" str="5" mag="10" skl="12" spd="5" lck="10" def="8" res="1" mov="0"/>
         <modifiers hp="0" str="1" mag="1" skl="2" spd="0" lck="-2" def="1" res="-1" mov="0"/>
         <mClasses class1="56" class2="18" class3="34"/>
@@ -727,11 +727,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="26" name="Lucina" pid="" parent="3">
+    <unit id="26" name="Lucina" color="#505c81" parent="3">
         <additions hp="12" str="5" mag="1" skl="8" spd="4" lck="13" def="3" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="1" class2="" class3=""/>
         <skills skill1="18" skill2="36" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="1" type="0"/>
@@ -752,10 +752,10 @@
             <flag>12</flag>
         </flags>
     </unit>
-    <unit id="27" name="Say'ri" pid="" parent="">
+    <unit id="27" name="Say'ri" color="#434343">
         <additions hp="19" str="10" mag="5" skl="12" spd="13" lck="20" def="6" res="6" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="1" spd="1" lck="-1" def="0" res="1" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="33" class2="46" class3="42"/>
         <skills skill1="10" skill2="78" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -767,11 +767,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="28" name="Basilio" pid="" parent="">
+    <unit id="28" name="Basilio" color="#211d1a">
         <additions hp="28" str="18" mag="3" skl="17" spd="14" lck="18" def="13" res="5" mov="0"/>
         <modifiers hp="0" str="3" mag="-2" skl="1" spd="1" lck="-1" def="1" res="-1" mov="0"/>
         <mClasses class1="19" class2="10" class3="18"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="1" skill2="31" skill3="55" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -780,10 +780,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="29" name="Flavia" pid="" parent="">
+    <unit id="29" name="Flavia" color="#dccfad">
         <additions hp="26" str="17" mag="4" skl="17" spd="16" lck="21" def="15" res="8" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="2" spd="1" lck="0" def="-1" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="21" class2="35" class3="11"/>
         <skills skill1="16" skill2="34" skill3="74" skill4="0" skill5="0"/>
         <supports>
@@ -795,7 +795,7 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="30" name="Donnel" pid="" parent="">
+    <unit id="30" name="Donnel" color="#6e6376">
         <additions hp="0" str="3" mag="0" skl="1" spd="2" lck="11" def="2" res="0" mov="0"/>
         <modifiers hp="0" str="1" mag="-1" skl="-1" spd="-1" lck="3" def="1" res="-1" mov="0"/>
         <mClasses class1="72" class2="19" class3="20"/>
@@ -819,10 +819,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="31" name="Anna" pid="" parent="">
+    <unit id="31" name="Anna" color="#9a585d">
         <additions hp="16" str="8" mag="13" skl="12" spd="10" lck="25" def="5" res="5" mov="0"/>
         <modifiers hp="0" str="-1" mag="0" skl="1" spd="0" lck="3" def="-1" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="35" class2="23" class3="55"/>
         <skills skill1="12" skill2="11" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -834,11 +834,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="32" name="Owain" pid="" parent="">
+    <unit id="32" name="Owain" color="#dad3bd" customColor="true" parent="4">
         <additions hp="10" str="4" mag="4" skl="5" spd="6" lck="9" def="6" res="5" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="32" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="32" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="10" skill2="78" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -858,11 +858,11 @@
             <flag>15</flag>
         </flags>
     </unit>
-    <unit id="33" name="Inigo" pid="" parent="">
+    <unit id="33" name="Inigo" color="#999191" customColor="true" parent="23">
         <additions hp="11" str="5" mag="2" skl="4" spd="9" lck="12" def="4" res="4" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="20" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="20" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="16" skill2="34" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -880,11 +880,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="34" name="Brady" pid="" parent="">
+    <unit id="34" name="Brady" color="#f2e7c4" customColor="true" parent="15">
         <additions hp="9" str="6" mag="5" skl="3" spd="2" lck="10" def="7" res="4" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="52" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="52" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="82" skill2="41" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -902,11 +902,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="35" name="Kjelle" pid="" parent="">
+    <unit id="35" name="Kjelle" color="#464646" customColor="true" parent="7">
         <additions hp="10" str="6" mag="2" skl="6" spd="5" lck="11" def="3" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="11" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="11" class2="" class3=""/>
         <skills skill1="6" skill2="28" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="1" type="0"/>
@@ -925,11 +925,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="36" name="Cynthia" pid="" parent="">
+    <unit id="36" name="Cynthia" color="#a19791" customColor="true" parent="13">
         <additions hp="7" str="5" mag="2" skl="4" spd="10" lck="17" def="6" res="6" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="42" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="42" class2="" class3=""/>
         <skills skill1="5" skill2="42" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="1" type="0"/>
@@ -949,11 +949,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="37" name="Severa" pid="" parent="">
+    <unit id="37" name="Severa" color="#af5454" customColor="true" parent="18">
         <additions hp="8" str="6" mag="1" skl="7" spd="6" lck="6" def="6" res="5" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="21" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="21" class2="" class3=""/>
         <skills skill1="16" skill2="34" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="1" type="0"/>
@@ -973,11 +973,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="38" name="Gerome" pid="" parent="">
+    <unit id="38" name="Gerome" color="#d27f84" customColor="true" parent="24">
         <additions hp="13" str="8" mag="0" skl="4" spd="8" lck="5" def="5" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="45" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="45" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="2" skill2="29" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -994,11 +994,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="39" name="Morgan (M)" pid="" parent="0">
+    <unit id="39" name="Morgan (M)" color="#f99eaf" customColor="true" parent="1">
         <additions hp="9" str="6" mag="8" skl="7" spd="6" lck="7" def="3" res="7" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="32" type="0"/>
@@ -1012,11 +1012,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="40" name="Morgan (F)" pid="" parent="1">
+    <unit id="40" name="Morgan (F)" color="#f99eaf" customColor="true" parent="0">
         <additions hp="9" str="6" mag="8" skl="7" spd="6" lck="7" def="3" res="7" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="43" type="0"/>
@@ -1032,11 +1032,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="41" name="Yarne" pid="" parent="">
+    <unit id="41" name="Yarne" color="#f99eaf" customColor="true" parent="16">
         <additions hp="16" str="9" mag="1" skl="4" spd="4" lck="13" def="6" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="69" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="69" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="22" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -1056,11 +1056,11 @@
             <flag>17</flag>
         </flags>
     </unit>
-    <unit id="42" name="Laurent" pid="" parent="">
+    <unit id="42" name="Laurent" color="#804646" customColor="true" parent="10">
         <additions hp="10" str="3" mag="7" skl="7" spd="4" lck="11" def="4" res="5" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="54" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="54" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="3" skill2="30" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -1077,11 +1077,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="43" name="Noire" pid="" parent="">
+    <unit id="43" name="Noire" color="#454545" customColor="true" parent="22">
         <additions hp="8" str="5" mag="3" skl="4" spd="7" lck="10" def="4" res="6" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="23" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="23" class2="" class3=""/>
         <skills skill1="4" skill2="33" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="1" type="0"/>
@@ -1100,11 +1100,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="44" name="Nah" pid="" parent="">
+    <unit id="44" name="Nah" color="#c1d5ad" customColor="true" parent="20">
         <additions hp="5" str="3" mag="3" skl="5" spd="6" lck="8" def="3" res="3" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="68" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="68" class2="" class3=""/>
         <skills skill1="21" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="1" type="0"/>
@@ -1125,10 +1125,10 @@
             <flag>16</flag>
         </flags>
     </unit>
-    <unit id="45" name="Tiki" pid="" parent="">
+    <unit id="45" name="Tiki" color="#afc19d">
         <additions hp="21" str="16" mag="10" skl="13" spd="15" lck="18" def="13" res="10" mov="0"/>
         <modifiers hp="0" str="0" mag="-1" skl="0" spd="1" lck="2" def="1" res="2" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="68" class2="46" class3="55"/>
         <skills skill1="21" skill2="69" skill3="0" skill4="0" skill5="0"/>
         <supports>
@@ -1145,11 +1145,11 @@
             <flag>27</flag>
         </flags>
     </unit>
-    <unit id="46" name="Gangrel" pid="" parent="">
+    <unit id="46" name="Gangrel" color="#7c4554">
         <additions hp="30" str="17" mag="16" skl="19" spd="22" lck="15" def="15" res="12" mov="0"/>
         <modifiers hp="0" str="-2" mag="0" skl="3" spd="3" lck="-1" def="-1" res="0" mov="0"/>
         <mClasses class1="34" class2="18" class3="56"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="12" skill2="11" skill3="25" skill4="46" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -1157,11 +1157,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="47" name="Walhart" pid="" parent="">
+    <unit id="47" name="Walhart" color="#ebebeb">
         <additions hp="47" str="29" mag="13" skl="24" spd="24" lck="30" def="23" res="14" mov="0"/>
         <modifiers hp="0" str="4" mag="-2" skl="0" spd="-1" lck="-1" def="4" res="-2" mov="0"/>
         <mClasses class1="76" class2="10" class3="45"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="86" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -1171,10 +1171,10 @@
             <flag>13</flag>
         </flags>
     </unit>
-    <unit id="48" name="Emmeryn" pid="" parent="">
+    <unit id="48" name="Emmeryn" color="#dad3bd">
         <additions hp="22" str="4" mag="19" skl="18" spd="18" lck="13" def="8" res="15" mov="0"/>
         <modifiers hp="0" str="-2" mag="4" skl="0" spd="1" lck="0" def="-2" res="1" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="53" class2="51" class3="42"/>
         <skills skill1="3" skill2="30" skill3="56" skill4="0" skill5="0"/>
         <supports>
@@ -1185,11 +1185,11 @@
             <flag>0</flag>
         </flags>
     </unit>
-    <unit id="49" name="Yen'fay" pid="" parent="">
+    <unit id="49" name="Yen'fay" color="#dbd6db">
         <additions hp="40" str="23" mag="3" skl="28" spd="27" lck="28" def="15" res="14" mov="0"/>
         <modifiers hp="0" str="1" mag="-2" skl="2" spd="4" lck="0" def="-1" res="-2" mov="0"/>
         <mClasses class1="32" class2="45" class3="22"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="0"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -1197,10 +1197,10 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="50" name="Aversa" pid="" parent="">
+    <unit id="50" name="Aversa" color="#ede9e3">
         <additions hp="36" str="19" mag="25" skl="21" spd="22" lck="26" def="16" res="19" mov="0"/>
         <modifiers hp="0" str="-1" mag="3" skl="1" spd="1" lck="-2" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
         <fClasses class1="42" class2="46" class3="57"/>
         <skills skill1="87" skill2="5" skill3="42" skill4="62" skill5="84"/>
         <supports>
@@ -1212,11 +1212,11 @@
             <flag>14</flag>
         </flags>
     </unit>
-    <unit id="51" name="Priam" pid="" parent="">
+    <unit id="51" name="Priam" color="#56576e">
         <additions hp="52" str="32" mag="2" skl="33" spd="28" lck="35" def="31" res="22" mov="0"/>
         <modifiers hp="0" str="3" mag="-2" skl="1" spd="0" lck="0" def="2" res="-2" mov="0"/>
         <mClasses class1="20" class2="19" class3="32"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="64" skill2="65" skill3="66" skill4="74" skill5="75"/>
         <supports>
             <support id="0" unit="0" type="0"/>
@@ -1224,11 +1224,11 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="52" name="Marth" pid="" parent="">
+    <unit id="52" name="Marth" enemy="true" avatar="true">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="77" class2="4" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="77" class2="4" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags>
@@ -1236,42 +1236,64 @@
             <flag>24</flag>
         </flags>
     </unit>
-    <unit id="53" name="Dummy/Maiden" pid="" parent="">
+    <unit id="53" name="Dummy/Maiden" enemy="true">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags/>
     </unit>
-    <unit id="54" name="Risen" pid="" parent="">
+    <unit id="54" name="Risen" enemy="true">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="-2" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags/>
     </unit>
-    <unit id="55" name="Risen (+)" pid="" parent="">
+    <unit id="55" name="Risen (+)" enemy="true">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="-1" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags/>
     </unit>
-    <unit id="56" name="Merchant" pid="" parent="">
+    <unit id="56" name="Merchant" enemy="true">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="2" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
-        <mClasses class1="-1" class2="-1" class3="-1"/>
-        <fClasses class1="-1" class2="-1" class3="-1"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
         <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
+    <!--
+    Template
+    Attributes that can be added (a default value will be used if they do not exist)
+    color="#ffffff"         | Default Hair Color
+    customColor="false"     | The unit has a custom hair color portrait (unrelated to avatar portraits)
+    avatar="false"          | The unit has an avatar portrait by default
+    enemy="false"           | The unit cannot be recruited AND uses enemy class portraits
+    parent="-1"             | The unit's parent
+
+    <unit id="0" name="Template">
+        <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="2" def="0" res="0" mov="0"/>
+        <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
+        <mClasses class1="" class2="" class3=""/>
+        <fClasses class1="" class2="" class3=""/>
+        <skills skill1="0" skill2="0" skill3="0" skill4="0" skill5="0"/>
+        <supports/>
+        <flags>
+            <flag>0</flag>
+        </flags>
+    </unit>
+    -->
+
 </units>

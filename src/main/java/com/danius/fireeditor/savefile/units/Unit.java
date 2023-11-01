@@ -1,11 +1,12 @@
 package com.danius.fireeditor.savefile.units;
 
+import com.danius.fireeditor.data.SkillDb;
+import com.danius.fireeditor.data.model.SkillModel;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.savefile.units.mainblock.*;
 import com.danius.fireeditor.savefile.wireless.UnitDu;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.data.MiscDb;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
@@ -182,7 +183,21 @@ public class Unit {
     }
 
     public void setLegalSkills() {
-        SkillLogic.setLegalSkills(this);
+        List<SkillModel> legalSkills = SkillDb.getLegalSkills(this);
+        rawSkill.setSkillsFromList(legalSkills);
+    }
+
+    public boolean isFemale() {
+        int id = getUnitId();
+        //Game hardcoded logic to determine gender re-classes
+        //Class gender flag has priority over character gender
+        boolean femaleClass = isClassFemale(rawBlock1.unitClass());
+        if (femaleClass) return true;
+        //If class is male, check own unit gender
+        boolean femaleUnit = isUnitFemale(id);
+        if (femaleUnit) return true;
+        //If unit is still male, check trait flag
+        return rawFlags.hasTraitFlag(0);
     }
 
     //Adds a child block

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skills>
+    <skill id="0" name="No Active Skill"/>
+    <skill id="1" name="HP +5"/>
+    <skill id="2" name="Strength +2"/>
+    <skill id="3" name="Magic +2"/>
+    <skill id="4" name="Skill +2"/>
+    <skill id="5" name="Speed +2"/>
+    <skill id="6" name="Defense +2"/>
+    <skill id="7" name="Resistance +2"/>
+    <skill id="8" name="Hit rate +10"/>
+    <skill id="9" name="Hit rate +20"/>
+    <skill id="10" name="Avoid +10"/>
+    <skill id="11" name="Movement +1"/>
+    <skill id="12" name="Locktouch"/>
+    <skill id="13" name="Veteran"/>
+    <skill id="14" name="Aptitude"/>
+    <skill id="15" name="Discipline"/>
+    <skill id="16" name="Armsthrift"/>
+    <skill id="17" name="Dual Support+"/>
+    <skill id="18" name="Dual Strike+" inherit="false"/>
+    <skill id="19" name="Dual Guard+"/>
+    <skill id="20" name="Rightful King" inherit="false"/>
+    <skill id="21" name="Odd Rhythm"/>
+    <skill id="22" name="Even Rhythm"/>
+    <skill id="23" name="Quick Burn"/>
+    <skill id="24" name="Slow Burn"/>
+    <skill id="25" name="Lucky Seven"/>
+    <skill id="26" name="Gamble"/>
+    <skill id="27" name="Outdoor Fighter"/>
+    <skill id="28" name="Indoor Fighter"/>
+    <skill id="29" name="Tantivy"/>
+    <skill id="30" name="Focus"/>
+    <skill id="31" name="Zeal"/>
+    <skill id="32" name="Wrath"/>
+    <skill id="33" name="Prescience"/>
+    <skill id="34" name="Patience"/>
+    <skill id="35" name="Underdog"/>
+    <skill id="36" name="Charm" inherit="false"/>
+    <skill id="37" name="Solidarity"/>
+    <skill id="38" name="Demoiselle"/>
+    <skill id="39" name="Hex"/>
+    <skill id="40" name="Anathema"/>
+    <skill id="41" name="Healtouch"/>
+    <skill id="42" name="Relief"/>
+    <skill id="43" name="Renewal"/>
+    <skill id="44" name="Deliverer"/>
+    <skill id="45" name="Defender"/>
+    <skill id="46" name="Acrobat"/>
+    <skill id="47" name="Pass"/>
+    <skill id="48" name="Swordfaire"/>
+    <skill id="49" name="Lancefaire"/>
+    <skill id="50" name="Axefaire"/>
+    <skill id="51" name="Bowfaire"/>
+    <skill id="52" name="Tomefaire"/>
+    <skill id="53" name="Luck +4"/>
+    <skill id="54" name="Special Dance" inherit="false"/>
+    <skill id="55" name="Rally Strength"/>
+    <skill id="56" name="Rally Magic"/>
+    <skill id="57" name="Rally Skill"/>
+    <skill id="58" name="Rally Speed"/>
+    <skill id="59" name="Rally Luck"/>
+    <skill id="60" name="Rally Defense"/>
+    <skill id="61" name="Rally Resistance"/>
+    <skill id="62" name="Rally Movement"/>
+    <skill id="63" name="Rally Spectrum"/>
+    <skill id="64" name="Swordbreaker"/>
+    <skill id="65" name="Lancebreaker"/>
+    <skill id="66" name="Axebreaker"/>
+    <skill id="67" name="Bowbreaker"/>
+    <skill id="68" name="Tomebreaker"/>
+    <skill id="69" name="Wyrmsbane"/>
+    <skill id="70" name="Beastbane"/>
+    <skill id="71" name="Lethality"/>
+    <skill id="72" name="Aether" inherit="false"/>
+    <skill id="73" name="Astra"/>
+    <skill id="74" name="Sol"/>
+    <skill id="75" name="Luna"/>
+    <skill id="76" name="Ignis"/>
+    <skill id="77" name="Vengeance"/>
+    <skill id="78" name="Vantage"/>
+    <skill id="79" name="Pavise"/>
+    <skill id="80" name="Aegis"/>
+    <skill id="81" name="Counter"/>
+    <skill id="82" name="Miracle"/>
+    <skill id="83" name="Despoil"/>
+    <skill id="84" name="Galeforce"/>
+    <skill id="85" name="Lifetaker"/>
+    <skill id="86" name="Conquest"/>
+    <skill id="87" name="Shadowgift"/>
+    <skill id="88" name="All Stats +2" dlcItem="true"/>
+    <skill id="89" name="Paragon" dlcItem="true"/>
+    <skill id="90" name="Iote's Shield" dlcItem="true"/>
+    <skill id="91" name="Limit Breaker" dlcItem="true"/>
+    <skill id="92" name="Dragonskin"/>
+    <skill id="93" name="Rightful God"/>
+    <skill id="94" name="Hawkeye"/>
+    <skill id="95" name="Luna+"/>
+    <skill id="96" name="Vantage+"/>
+    <skill id="97" name="Pavise+"/>
+    <skill id="98" name="Aegis+"/>
+    <skill id="99" name="Resistance +10"/>
+    <skill id="100" name="Aggressor"/>
+    <skill id="101" name="Rally Heart"/>
+    <skill id="102" name="Bond"/>
+    <skill id="103" name="Unused Skill Slot"/>
+
+    <!--
+    Template
+    Attributes that can be added (a default value will be used if they do not exist)
+    inherit="true"      | The skill can be inherited
+    dlcItem="false"     | Every single unit can learn this skill by using an item
+
+    <skill id="0" name="Skill"/>
+    -->
+</skills>

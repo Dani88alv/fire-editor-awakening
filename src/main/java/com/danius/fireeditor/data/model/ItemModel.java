@@ -73,4 +73,9 @@ public class ItemModel {
     public void setType1(int type1) {
         this.type1 = type1;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

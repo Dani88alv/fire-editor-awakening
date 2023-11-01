@@ -17,5 +17,6 @@ public class Constants {
 
     public static final String RES = "/com/danius/fireeditor/";
     public static final String RES_BLOCK = RES + "templates/blocks/";
+    public static final String RES_XML = RES + "database/";
     public static final String RES_FXML = RES + "fxml/windows/";
 }

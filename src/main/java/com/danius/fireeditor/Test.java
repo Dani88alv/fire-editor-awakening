@@ -1,19 +1,16 @@
 package com.danius.fireeditor;
 
 
-import com.danius.fireeditor.data.ChapterDb;
-import com.danius.fireeditor.data.ItemDb;
+import com.danius.fireeditor.data.*;
 import com.danius.fireeditor.savefile.Chapter13;
-import com.danius.fireeditor.savefile.units.mainblock.RawBlockEnd;
+import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.util.Hex;
-import javafx.scene.paint.Color;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Random;
 
 public class Test {
 

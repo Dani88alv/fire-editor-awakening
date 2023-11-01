@@ -45,4 +45,8 @@ public class EinherjarModel {
         this.skills = list;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

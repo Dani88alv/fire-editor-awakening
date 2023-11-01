@@ -2,6 +2,7 @@ package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.units.SkillLogic;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
@@ -106,7 +107,7 @@ public class LogController {
             unit.rawLog.setAsset(0);
             unit.rawLog.setFlaw(0);
             unit.rawLog.setHairColorFx(unit.rawBlockEnd.getHairColorFx());
-            unit.rawLog.setGender(SkillLogic.isFemaleUnit(this.unit));
+            unit.rawLog.setGender(unit.isFemale());
             unit.rawLog.setLogIdRandom();
 
             disableFields(false);

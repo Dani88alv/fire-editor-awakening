@@ -2,6 +2,7 @@ package com.danius.fireeditor.data;
 
 import com.danius.fireeditor.data.model.EinherjarModel;
 import com.danius.fireeditor.data.model.UnitModel;
+import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -81,16 +82,48 @@ public class UnitDb {
     public static int getStartingClass(int id) {
         if (invalidUnit(id)) return 0;
         boolean isFemale = isUnitFemale(id);
-        if (!isFemale) return getUnitMaleReclasses(id)[0];
-        else return getUnitFemaleReclasses(id)[0];
+
+        List<Integer> classes;
+        if (!isFemale) classes = getUnitMaleReclasses(id);
+        else classes = getUnitFemaleReclasses(id);
+
+        if (classes.size() > 0) return classes.get(0);
+        else return 4;
     }
 
-    public static int[] getUnitMaleReclasses(int id) {
+    public static int getStartingClass(Unit unit) {
+        int id = unit.getUnitId();
+        if (invalidUnit(id)) return 0;
+        boolean isFemale = unit.isFemale();
+
+        List<Integer> classes;
+        if (!isFemale) classes = getUnitMaleReclasses(id);
+        else classes = getUnitFemaleReclasses(id);
+
+        if (classes.size() > 0) return classes.get(0);
+        else return 4;
+    }
+
+    public static List<Integer> getUnitOwnReclasses(Unit unit) {
+        int id = unit.getUnitId();
+        boolean isFemale = unit.isFemale();
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getClassMale();
+        else if (isFemale) return getUnitFemaleReclasses(id);
+        else return getUnitMaleReclasses(id);
+    }
+
+    public static List<Integer> getUnitOwnReclasses(int id) {
+        if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getClassMale();
+        else if (isUnitFemale(id)) return getUnitFemaleReclasses(id);
+        else return getUnitMaleReclasses(id);
+    }
+
+    public static List<Integer> getUnitMaleReclasses(int id) {
         if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getClassMale();
         return getUnit(id).getClassMale();
     }
 
-    public static int[] getUnitFemaleReclasses(int id) {
+    public static List<Integer> getUnitFemaleReclasses(int id) {
         if (invalidUnit(id)) return database.units.get(DEFAULT_UNIT).getClassFemale();
         return getUnit(id).getClassFemale();
     }
@@ -165,6 +198,26 @@ public class UnitDb {
         return unitHasFlag(id, 0);
     }
 
+    public static boolean isUnitAvatar(int id) {
+        if (invalidUnit(id)) return false;
+        return getUnit(id).isAvatar();
+    }
+
+    public static boolean hasUnitCustomHairColor(int id) {
+        if (invalidUnit(id)) return false;
+        return getUnit(id).hasCustomHair();
+    }
+
+    public static String getUnitHairColor(int id) {
+        if (invalidUnit(id)) return "ffffffff";
+        return getUnit(id).getHairColor();
+    }
+
+    public static boolean isUnitPlayable(int id) {
+        if (invalidUnit(id)) return false;
+        return getUnit(id).isPlayable();
+    }
+
     public static boolean canUnitRetire(int id) {
         //Frederick ad Virion too
         return canBeParent(id) || id == 5 || id == 6;
@@ -228,7 +281,7 @@ public class UnitDb {
     }
 
     public void readUnits() {
-        String path = "/com/danius/fireeditor/database/";
+        String path = Constants.RES_XML;
         String xmlFilePath = path + "units.xml";
         units = new ArrayList<>();
 
@@ -243,18 +296,31 @@ public class UnitDb {
 
             String[] stats = new String[]{"hp", "str", "mag", "skl", "spd", "lck", "def", "res", "mov"};
             // Iterate through character elements in the XML
-            for (Element characterElement : rootElement.getChildren("unit")) {
+            for (Element element : rootElement.getChildren("unit")) {
                 UnitModel unit = new UnitModel();
 
                 // Parse attributes from the XML
-                unit.setId(Integer.parseInt(characterElement.getAttributeValue("id")));
-                unit.setName(characterElement.getAttributeValue("name"));
+                unit.setId(Integer.parseInt(element.getAttributeValue("id")));
+                unit.setName(element.getAttributeValue("name"));
 
-                String parentName = characterElement.getAttributeValue("parent");
-                unit.setParent(parentName.equals("") ? -1 : Integer.parseInt(parentName));
+                //Attributes that can be removed from the XML for a default value
+                String parent = element.getAttributeValue("parent", "");
+                int parentValue = parent.isEmpty() ? -1 : Integer.parseInt(parent);
+                unit.setParent(parentValue);
+
+                boolean customColor = "true".equals(element.getAttributeValue("customColor"));
+                unit.setHasCustomHair(customColor);
+                boolean isAvatar = "true".equals(element.getAttributeValue("avatar"));
+                unit.setIsAvatar(isAvatar);
+                boolean enemy = "true".equals(element.getAttributeValue("enemy"));
+                unit.setPlayable(!enemy);
+
+                String hairColor = element.getAttributeValue("color", "#ffffff");
+                hairColor = hairColor.startsWith("#") ? hairColor.substring(1) + "ff" : hairColor;
+                unit.setHairColor(hairColor);
 
                 //Additions
-                Element elemAdditions = characterElement.getChild("additions");
+                Element elemAdditions = element.getChild("additions");
                 int[] addition = new int[9];
                 for (int i = 0; i < addition.length; i++) {
                     String value = elemAdditions.getAttributeValue(stats[i]);
@@ -263,7 +329,7 @@ public class UnitDb {
                 unit.setStatAdditions(addition);
 
                 //Modifiers
-                Element elemModif = characterElement.getChild("modifiers");
+                Element elemModif = element.getChild("modifiers");
                 int[] modif = new int[9];
                 for (int i = 0; i < modif.length; i++) {
                     modif[i] = Integer.parseInt(elemModif.getAttributeValue(stats[i]));
@@ -271,27 +337,31 @@ public class UnitDb {
                 unit.setStatModifiers(modif);
 
                 //Male Reclasses
-                Element elemClassMale = characterElement.getChild("mClasses");
+                Element elemClassMale = element.getChild("mClasses");
                 List<Integer> mClasses = new ArrayList<>();
                 for (int i = 0; i < 3; i++) {
-                    int value = Integer.parseInt(elemClassMale.getAttributeValue("class" + (i + 1)));
-                    if (value >= 0) mClasses.add(value);
+                    String mClass = elemClassMale.getAttributeValue("class" + (i + 1));
+                    if (mClass != null && !mClass.isEmpty()) {
+                        int value = Integer.parseInt(mClass);
+                        if (value >= 0) mClasses.add(value);
+                    }
                 }
-                int[] mClassesArray = mClasses.stream().mapToInt(Integer::intValue).toArray();
-                unit.setClassMale(mClassesArray);
+                unit.setClassMale(mClasses);
 
                 //Female Reclasses
-                Element elemClassFemale = characterElement.getChild("fClasses");
+                Element elemClassFemale = element.getChild("fClasses");
                 List<Integer> fClasses = new ArrayList<>();
                 for (int i = 0; i < 3; i++) {
-                    int value = Integer.parseInt(elemClassFemale.getAttributeValue("class" + (i + 1)));
-                    if (value >= 0) fClasses.add(value);
+                    String fClass = elemClassFemale.getAttributeValue("class" + (i + 1));
+                    if (fClass != null && !fClass.isEmpty()) {
+                        int value = Integer.parseInt(fClass);
+                        if (value >= 0) fClasses.add(value);
+                    }
                 }
-                int[] fClassesArray = fClasses.stream().mapToInt(Integer::intValue).toArray();
-                unit.setClassFemale(fClassesArray);
+                unit.setClassFemale(fClasses);
 
                 //Recruited Skills
-                Element elemSkill = characterElement.getChild("skills");
+                Element elemSkill = element.getChild("skills");
                 List<Integer> skills = new ArrayList<>();
                 for (int i = 0; i < 5; i++) {
                     int value = Integer.parseInt(elemSkill.getAttributeValue("skill" + (i + 1)));
@@ -300,7 +370,7 @@ public class UnitDb {
                 unit.setSkills(skills);
 
                 //Supports
-                Element elemSupports = characterElement.getChild("supports");
+                Element elemSupports = element.getChild("supports");
                 int[] supportUnits;
                 int[] supportTypes;
                 List<Element> supportElements = elemSupports.getChildren("support");
@@ -318,7 +388,7 @@ public class UnitDb {
                 unit.setSupportTypes(supportTypes);
 
                 //Flags
-                Element elemFlags = characterElement.getChild("flags");
+                Element elemFlags = element.getChild("flags");
                 List<Element> flagsElements = elemFlags.getChildren("flag");
                 List<Integer> flags = new ArrayList<>();
                 for (Element flagElement : flagsElements) {

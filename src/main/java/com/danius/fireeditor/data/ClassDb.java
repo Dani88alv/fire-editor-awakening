@@ -1,6 +1,8 @@
 package com.danius.fireeditor.data;
 
 import com.danius.fireeditor.data.model.ClassModel;
+import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.units.Unit;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -9,9 +11,7 @@ import org.jdom2.input.SAXBuilder;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ClassDb {
 
@@ -23,6 +23,115 @@ public class ClassDb {
         setMaxId();
     }
 
+    public static List<ClassModel> getClassesFromUnit(Unit unit) {
+        List<ClassModel> allClasses = new ArrayList<>();
+        //The base clases are retrieved
+        List<ClassModel> baseClasses = getUnitBaseClasses(unit.getUnitId(), unit.isFemale());
+        //If it is a child unit, the inherited classes are retrieved too
+        List<ClassModel> inheritClasses = new ArrayList<>();
+        if (unit.rawChild != null) inheritClasses = getInheritClasses(unit);
+        allClasses.addAll(baseClasses);
+        allClasses.addAll(inheritClasses);
+        allClasses = removeDuplicates(allClasses);
+
+        //The classes are conveniently sorted by ID
+        Comparator<ClassModel> idComparator = Comparator.comparingInt(ClassModel::getId);
+        allClasses.sort(idComparator);
+        return allClasses;
+    }
+
+    public static List<ClassModel> getUnitBaseClasses(int unitId, boolean isFemale) {
+        List<ClassModel> allClasses = new ArrayList<>();
+        List<ClassModel> promotedClasses = new ArrayList<>();
+        //Base classes
+        List<Integer> classesId = (isFemale) ? UnitDb.getUnitFemaleReclasses(unitId) : UnitDb.getUnitMaleReclasses(unitId);
+        for (Integer integer : classesId) {
+            ClassModel classModel = getClass(integer);
+            allClasses.add(classModel);
+        }
+
+        //Promoted Classes
+        for (ClassModel classModel : allClasses) {
+            List<ClassModel> promoted = getClassesPromoted(classModel.getId());
+            promotedClasses.addAll(promoted);
+        }
+        allClasses.addAll(promotedClasses);
+
+        //Tactician Tree
+        List<ClassModel> tacticianTree = new ArrayList<>();
+        for (ClassModel classModel : allClasses) {
+            //Let's go for a big ride
+            if (classModel.isTactician()) {
+                List<ClassModel> tacticianClasses = getTacticianTree(isFemale);
+                tacticianTree.addAll(tacticianClasses);
+                break;
+            }
+        }
+        allClasses.addAll(tacticianTree);
+
+        //Item/DLC Classes
+        List<ClassModel> itemClasses = getItemClasses(isFemale);
+        allClasses.addAll(itemClasses);
+
+        return removeDuplicates(allClasses);
+    }
+
+    public static List<ClassModel> getItemClasses(boolean isFemale) {
+        List<ClassModel> allClasses = new ArrayList<>();
+        List<ClassModel> database = getAllClasses();
+        for (ClassModel classModel : database) {
+            //If it is a DLC class and matches the gender flag
+            if (classModel.isDlc()) {
+                if (isClassFemale(classModel.getId()) == isFemale) allClasses.add(classModel);
+            }
+        }
+        return allClasses;
+    }
+
+    public static List<ClassModel> getInheritClasses(Unit unit) {
+        List<ClassModel> allClasses = new ArrayList<>();
+        if (unit.rawChild == null) return allClasses;
+        boolean isFemale = unit.isFemale();
+        for (int i = 0; i < 6; i++) {
+            int parent = unit.rawChild.parentId(i);
+            if (parent == 0xFFFF) continue;
+            List<ClassModel> parentClasses = getUnitBaseClasses(parent, isFemale);
+            parentClasses.removeIf(model -> !model.canBeInherited()); //Remove un-inheritable classes
+            allClasses.addAll(parentClasses);
+        }
+        return removeDuplicates(allClasses);
+    }
+
+    private static List<ClassModel> getTacticianTree(boolean isFemale) {
+        List<ClassModel> allClasses = new ArrayList<>();
+        List<ClassModel> database = getAllClasses();
+        for (ClassModel classModel : database) {
+            //If it is a valid tactician tree class
+            if (classModel.isTacticianTree()) {
+                boolean classModelFemale = isClassFemale(classModel.getId());
+                //If both gender match, add it
+                if (classModelFemale == isFemale) {
+                    allClasses.add(classModel);
+                }
+            }
+        }
+        return allClasses;
+    }
+
+    private static List<ClassModel> removeDuplicates(List<ClassModel> classList) {
+        Set<Integer> seenIds = new HashSet<>();
+        List<ClassModel> uniqueList = new ArrayList<>();
+
+        for (ClassModel classModel : classList) {
+            int id = classModel.getId();
+            if (!seenIds.contains(id)) {
+                seenIds.add(id);
+                uniqueList.add(classModel);
+            }
+        }
+        return uniqueList;
+    }
+
     private static ClassModel getClass(int id) {
         for (ClassModel unitClass : database.classList) {
             if (unitClass.getId() == id) return unitClass;
@@ -30,14 +139,28 @@ public class ClassDb {
         return new ClassModel();
     }
 
+    public static List<ClassModel> getAllClasses() {
+        return database.classList;
+    }
+
     public static String getClassName(int id) {
         if (isInvalid(id)) return "Mod Class #" + (id - getClassMaxId());
         return getClass(id).getName();
     }
 
-    public static int[] getClassSkills(int id) {
-        if (isInvalid(id)) return new int[0];
-        return getClass(id).getSkills();
+    public static List<String> getClassNames() {
+        List<String> names = new ArrayList<>();
+        for (ClassModel classModel : database.classList) names.add(classModel.getName());
+        return names;
+    }
+
+    public static List<String> getClassNames(int max) {
+        int vanillaMax = database.MAX_ID;
+        List<String> names = getClassNames();
+        for (int i = vanillaMax; i < max; i++) {
+            names.add(getClassName(i + 1));
+        }
+        return names;
     }
 
     public static int[] getClassBaseStats(int id) {
@@ -61,21 +184,19 @@ public class ClassDb {
         return getClass(id).getStatsBase()[8];
     }
 
-    public static int[] getClassPromoted(int id) {
-        if (isInvalid(id)) return new int[0];
-        return getClass(id).getPromoted();
-    }
-
-    public static List<Integer> getClassesByGender(boolean isFemale) {
-        List<Integer> classes = new ArrayList<>();
-        for (int i = 0; i < database.classList.size(); i++) {
-            //If it is not Enemy Only
-            if (!hasClassFlag(i, 21)) {
-                if (isFemale && hasClassFlag(i, 0)) classes.add(i);
-                else if (!isFemale && !hasClassFlag(i, 0)) classes.add(i);
-            }
+    private static List<ClassModel> getClassesPromoted(int id) {
+        if (isInvalid(id)) return new ArrayList<>();
+        List<Integer> classesId = getClass(id).getPromotedClasses();
+        List<ClassModel> classes = new ArrayList<>();
+        for (Integer integer : classesId) {
+            classes.add(getClass(integer));
         }
         return classes;
+    }
+
+    public static List<Integer> getSkills(int id) {
+        if (isInvalid(id)) return new ArrayList<>();
+        return getClass(id).getSkillList();
     }
 
     public static List<Integer> getClassFlags(int id) {
@@ -93,21 +214,6 @@ public class ClassDb {
         return hasClassFlag(id, 0);
     }
 
-    public static List<String> getClassNames() {
-        List<String> names = new ArrayList<>();
-        for (ClassModel classModel : database.classList) names.add(classModel.getName());
-        return names;
-    }
-
-    public static List<String> getClassNames(int max) {
-        int vanillaMax = database.MAX_ID;
-        List<String> names = getClassNames();
-        for (int i = vanillaMax; i < max; i++) {
-            names.add(getClassName(i + 1));
-        }
-        return names;
-    }
-
     private static boolean isInvalid(int id) {
         return id < 0 || id > getClassMaxId();
     }
@@ -118,6 +224,26 @@ public class ClassDb {
 
     public static int getClassMaxId() {
         return database.MAX_ID;
+    }
+
+    public static boolean hasEnemyPortrait(int id) {
+        if (isInvalid(id)) return false;
+        return getClass(id).isEnemyPortrait();
+    }
+
+    public static boolean hasRisenPortrait(int id) {
+        if (isInvalid(id)) return false;
+        return getClass(id).isRisenPortrait();
+    }
+
+    public static int getRandomEnemyClass() {
+        List<ClassModel> classes = new ArrayList<>();
+        for (int i = 0; i < getClassCount(); i++) {
+            classes.add(getClass(i));
+        }
+        Random random = new Random();
+        int randomIndex = random.nextInt(classes.size()); // Generate a random index within the array's length
+        return classes.get(randomIndex).getId();
     }
 
     private int MAX_ID = 0;
@@ -131,32 +257,11 @@ public class ClassDb {
         MAX_ID = id;
     }
 
-    public static boolean hasEnemyClass(int id) {
-        for (int aClass : enemyClasses) {
-            if (id == aClass - 1) return true;
-        }
-        return false;
-    }
-
-    public static int getRandomEnemyClass() {
-        Random random = new Random();
-        int randomIndex = random.nextInt(enemyClasses.length); // Generate a random index within the array's length
-        return enemyClasses[randomIndex] - 1;
-    }
-
-    /* Valid Enemy Classes */
-    private static final int[] enemyClasses = new int[]{
-            9, 11, 13, 15, 17, 19, 20, 21, 23, 25, 26,
-            27, 29, 31, 33, 35, 37, 38, 39, 41, 43, 44,
-            45, 46, 48, 50, 53, 55, 57, 59, 60, 61, 62,
-            64, 65, 66, 72, 73, 74, 75, 76
-    };
-
     public void readClasses() {
-        String path = "/com/danius/fireeditor/database/";
+        String path = Constants.RES_XML;
         String xmlFilePath = path + "classes.xml";
         classList = new ArrayList<>();
-        try (InputStream is = UnitDb.class.getResourceAsStream(xmlFilePath)) {
+        try (InputStream is = ClassDb.class.getResourceAsStream(xmlFilePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }
@@ -165,39 +270,54 @@ public class ClassDb {
             Element rootElement = document.getRootElement();
             String[] stats = new String[]{"hp", "str", "mag", "skl", "spd", "lck", "def", "res", "mov"};
             // Iterate through character elements in the XML
-            for (Element characterElement : rootElement.getChildren("class")) {
+            for (Element element : rootElement.getChildren("class")) {
                 ClassModel unitClass = new ClassModel();
                 // Parse attributes from the XML
-                unitClass.setId(Integer.parseInt(characterElement.getAttributeValue("id")));
-                unitClass.setName(characterElement.getAttributeValue("name"));
-                //Skills
-                String skill1 = characterElement.getAttributeValue("skill1");
-                String skill2 = characterElement.getAttributeValue("skill2");
-                if (skill1.equals("")) skill1 = "0";
-                if (skill2.equals("")) skill2 = "0";
-                int skillSize = 0;
-                if (Integer.parseInt(skill1) > 0) skillSize++;
-                if (Integer.parseInt(skill2) > 0) skillSize++;
-                int[] skillArray = new int[skillSize];
-                if (skillArray.length > 0) skillArray[0] = Integer.parseInt(skill1);
-                if (skillArray.length > 1) skillArray[1] = Integer.parseInt(skill2);
-                unitClass.setSkills(skillArray);
+                unitClass.setId(Integer.parseInt(element.getAttributeValue("id")));
+                unitClass.setName(element.getAttributeValue("name"));
 
-                //Promoted
-                String promoted1 = characterElement.getAttributeValue("promoted1");
-                String promoted2 = characterElement.getAttributeValue("promoted2");
-                if (promoted1.equals("")) promoted1 = "0";
-                if (promoted2.equals("")) promoted2 = "0";
-                int promotedSize = 0;
-                if (Integer.parseInt(promoted1) > 0) promotedSize++;
-                if (Integer.parseInt(promoted2) > 0) promotedSize++;
-                int[] promotedArray = new int[promotedSize];
-                if (promotedArray.length > 0) promotedArray[0] = Integer.parseInt(promoted1);
-                if (promotedArray.length > 1) promotedArray[1] = Integer.parseInt(promoted2);
-                unitClass.setPromoted(promotedArray);
+                boolean inherit = !"false".equals(element.getAttributeValue("inherit"));
+                unitClass.setInherit(inherit);
+                boolean enemyPortrait = "true".equals(element.getAttributeValue("portrait"));
+                unitClass.setEnemyPortrait(enemyPortrait);
+                boolean risenPortrait = "true".equals(element.getAttributeValue("risen"));
+                unitClass.setRisenPortrait(risenPortrait);
+                boolean tacticianTree = !"true".equals(element.getAttributeValue("exclusive"));
+                unitClass.setTacticianTree(tacticianTree);
+                boolean isTactician = "true".equals(element.getAttributeValue("tactician"));
+                unitClass.setTactician(isTactician);
+                boolean isDlc = "true".equals(element.getAttributeValue("dlc"));
+                unitClass.setDlc(isDlc);
+
+                //Skills
+                String skill1 = element.getAttributeValue("skill1", "-1");
+                String skill2 = element.getAttributeValue("skill2", "-1");
+                if (skill1.isEmpty()) skill1 = "-1";
+                if (skill2.isEmpty()) skill2 = "-1";
+
+                List<Integer> skillList = new ArrayList<>();
+                int skill1Value = Integer.parseInt(skill1);
+                int skill2Value = Integer.parseInt(skill2);
+                if (skill1Value >= 0) skillList.add(skill1Value);
+                if (skill2Value >= 0) skillList.add(skill2Value);
+                unitClass.setSkillList(skillList);
+
+                //Promoted Classes
+                String promoted1 = element.getAttributeValue("promoted1", "-1");
+                String promoted2 = element.getAttributeValue("promoted2", "-1");
+                if (promoted1.isEmpty()) promoted1 = "-1";
+                if (promoted2.isEmpty()) promoted2 = "-1";
+
+                List<Integer> promotedList = new ArrayList<>();
+                int promoted1Value = Integer.parseInt(promoted1);
+                int promoted2Value = Integer.parseInt(promoted2);
+                if (promoted1Value >= 0) promotedList.add(promoted1Value);
+                if (promoted2Value >= 0) promotedList.add(promoted2Value);
+                unitClass.setPromotedClasses(promotedList);
+
 
                 //Base Stats
-                Element elemBase = characterElement.getChild("base");
+                Element elemBase = element.getChild("base");
                 int[] base = new int[9];
                 for (int i = 0; i < base.length; i++) {
                     String value = elemBase.getAttributeValue(stats[i]);
@@ -206,7 +326,7 @@ public class ClassDb {
                 unitClass.setStatsBase(base);
 
                 //Max Stats
-                Element elemMax = characterElement.getChild("max");
+                Element elemMax = element.getChild("max");
                 int[] max = new int[9];
                 for (int i = 0; i < max.length; i++) {
                     max[i] = Integer.parseInt(elemMax.getAttributeValue(stats[i]));
@@ -214,7 +334,7 @@ public class ClassDb {
                 unitClass.setStatsMax(max);
 
                 //Flags
-                Element elemFlags = characterElement.getChild("flags");
+                Element elemFlags = element.getChild("flags");
                 List<Element> flagsElements = elemFlags.getChildren("flag");
                 List<Integer> flags = new ArrayList<>();
                 for (Element flagElement : flagsElements) {

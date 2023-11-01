@@ -1,6 +1,7 @@
 package com.danius.fireeditor.data;
 
 import com.danius.fireeditor.data.model.ChapterModel;
+import com.danius.fireeditor.savefile.Constants;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -113,9 +114,9 @@ public class ChapterDb {
 
     public void readChapters() {
         chapterList = new ArrayList<>();
-        String path = "/com/danius/fireeditor/database/";
+        String path = Constants.RES_XML;
         String xmlFilePath = path + "chapters.xml";
-        try (InputStream is = UnitDb.class.getResourceAsStream(xmlFilePath)) {
+        try (InputStream is = ChapterDb.class.getResourceAsStream(xmlFilePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }

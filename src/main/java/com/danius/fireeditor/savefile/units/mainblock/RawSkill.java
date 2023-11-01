@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.data.model.SkillModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.data.MiscDb;
 
@@ -41,6 +42,13 @@ public class RawSkill {
 
     public boolean isSkillSet(int slot){
         return skillString.charAt(slot) == '1';
+    }
+
+    public void setSkillsFromList(List<SkillModel> skillList) {
+        setAll(false);
+        for (SkillModel skillModel : skillList) {
+            setLearnedSkill(true, skillModel.getId());
+        }
     }
 
     /*

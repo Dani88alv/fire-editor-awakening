@@ -1,6 +1,7 @@
 package com.danius.fireeditor.util;
 
 import com.danius.fireeditor.data.ClassDb;
+import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.scene.image.Image;
@@ -13,39 +14,28 @@ import java.util.Objects;
 
 public class Portrait {
 
-    public static boolean isChildColor(Unit unit) {
-        int unitId = unit.rawBlock1.unitId();
-        return unitId >= 0x20 && unitId <= 0x2C;
-    }
-
     public static Image[] setImage(Unit unit) {
-        int unitId = unit.rawBlock1.unitId();
+        int unitId = unit.getUnitId();
         Image[] sprites = new Image[3];
         try {
+            boolean isPlayable = UnitDb.isUnitPlayable(unitId);
             //Outrealm Flag
             if (unit.rawFlags.hasBattleFlag(27)) {
-                sprites[0] = setImageMonster(unit);
+                sprites[0] = setImageEnemy(unit);
             }
             //Logbook portraits
             else if (unit.rawLog != null) {
                 sprites = setImageLog(unit);
             }
             //Valid non-playable unit IDs
-            else if (unitId >= 0x34 && unitId <= 0x38 && ClassDb.hasEnemyClass(unit.rawBlock1.unitClass())) {
-                sprites[0] = setImageMonster(unit);
+            else if (!isPlayable && ClassDb.hasEnemyPortrait(unit.rawBlock1.unitClass())) {
+                sprites[0] = setImageEnemy(unit);
             }
             //Playable Characters
-            else if (unitId > 2 && unitId <= Constants.MAX_PLAYABLE) {
+            else if (isPlayable) {
                 //Children Units
-                if (unitId >= 32 && unitId <= 44) {
-                    String path = Constants.RES + "children/" + unitId;
-                    String buildPath = path + ".png";
-                    sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(buildPath)));
-                    String hairPath = path + "_hair.png";
-                    sprites[2] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(hairPath)));
-                    String backPath = path + "_back.png";
-                    Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
-                    sprites[1] = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
+                if (UnitDb.hasUnitCustomHairColor(unitId)) {
+                    sprites = setImageChildren(unit);
                 }
                 //Adult Units
                 else {
@@ -55,26 +45,42 @@ public class Portrait {
             }
             //Invalid
             else {
-                String path = Constants.RES + "characters/" + "what" + ".png";
-                sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+                sprites[0] = setInvalid();
             }
             return sprites;
         } catch (Exception e) {
-            sprites = new Image[3];
-            String path = Constants.RES + "characters/" + "what" + ".png";
-            sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+            sprites[0] = setInvalid();
             return sprites;
         }
 
     }
 
-    private static Image setImageMonster(Unit unit) {
+    private static Image setInvalid() {
+        String path = Constants.RES + "characters/" + "what" + ".png";
+        return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+    }
+
+    private static Image setImageEnemy(Unit unit) {
         int army = unit.rawFlags.army(); //9
         int unitClass = unit.rawBlock1.unitClass();
         String path = Constants.RES + "monster/" + (unitClass + 1);
-        if (army == 9 && unitClass < 73) path += "_r";
+        //If Risen Army and valid risen portrait
+        if (army == 9 && ClassDb.hasRisenPortrait(unitClass)) path += "_r";
         path += ".png";
         return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+    }
+
+    private static Image[] setImageChildren(Unit unit) {
+        Image[] sprites = new Image[3];
+        String path = Constants.RES + "children/" + unit.getUnitId();
+        String buildPath = path + ".png";
+        sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(buildPath)));
+        String hairPath = path + "_hair.png";
+        sprites[2] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(hairPath)));
+        String backPath = path + "_back.png";
+        Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
+        sprites[1] = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
+        return sprites;
     }
 
     private static Image[] setImageLog(Unit unit) {

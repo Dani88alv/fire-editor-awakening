@@ -6,6 +6,7 @@ import static com.danius.fireeditor.data.ClassDb.*;
 import static com.danius.fireeditor.data.UnitDb.*;
 
 public class SkillLogic {
+    /*
 
     //Sets all the legal skills a unit can have according to their current data (not only hardcoded skills)
     public static void setLegalSkills(Unit unit) {
@@ -245,5 +246,7 @@ public class SkillLogic {
         }
     }
 
+
+     */
 
 }

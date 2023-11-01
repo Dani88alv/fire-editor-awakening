@@ -52,7 +52,7 @@
     <chapter chapterId="49" mapId="47" chapterName="Paralogue 21" description="Warriors' Tomb"/>
     <chapter chapterId="50" mapId="48" chapterName="Paralogue 22" description="Wellspring of Truth"/>
     <chapter chapterId="51" mapId="49" chapterName="Paralogue 23" description="Garden of Giants"/>
-    <chapter chapterId="52" mapId="50" chapterName="Xenologue" description="Outrealm Gate"/>
+    <chapter chapterId="52" mapId="50" chapterName="Outrealm Gate" description="Outrealm Gate"/>
     <chapter chapterId="53" mapId="" chapterName="Ending Map" description=""/>
     <chapter chapterId="54" mapId="" chapterName="Test Map #2" description="Plegia Castle"/>
 </chapters>
