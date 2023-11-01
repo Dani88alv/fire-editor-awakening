@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.data.SkillDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.data.MiscDb;
 
@@ -102,14 +103,14 @@ public class RawBlock2 {
     }
 
     public String report() {
-        String report = "";
-        report += "Weapon EXP: " + Arrays.toString(getWeaponExp());
-        report += "\n" + "Equipped Skills: ";
+        StringBuilder report = new StringBuilder();
+        report.append("Weapon EXP: ").append(Arrays.toString(getWeaponExp()));
+        report.append("\n" + "Equipped Skills: ");
         for (int i = 0; i <= 4; i++) {
-            report += MiscDb.skillNames.get(getCurrentSkills()[i]) + ", ";
+            report.append(SkillDb.getSkillNames().get(getCurrentSkills()[i])).append(", ");
         }
-        report = report.substring(0, report.length() - 2);
-        return report;
+        report = new StringBuilder(report.substring(0, report.length() - 2));
+        return report.toString();
     }
 
     public int length() {

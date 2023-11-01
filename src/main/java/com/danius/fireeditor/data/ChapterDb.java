@@ -1,5 +1,6 @@
 package com.danius.fireeditor.data;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.data.model.ChapterModel;
 import com.danius.fireeditor.savefile.Constants;
 import org.jdom2.Document;
@@ -7,9 +8,7 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,12 +112,17 @@ public class ChapterDb {
 
 
     public void readChapters() {
+        File file = FireEditor.readResource(Constants.ADDON_XML + "chapters.xml");
+        String xmlFilePath = Constants.RES_XML + "chapters.xml";
         chapterList = new ArrayList<>();
-        String path = Constants.RES_XML;
-        String xmlFilePath = path + "chapters.xml";
-        try (InputStream is = ChapterDb.class.getResourceAsStream(xmlFilePath)) {
-            if (is == null) {
-                throw new FileNotFoundException("Resource not found: " + xmlFilePath);
+
+        try {
+            InputStream is;
+            // Check if the file exists
+            if (file != null && file.exists()) is = new FileInputStream(file);
+            else {
+                is = UnitDb.class.getResourceAsStream(xmlFilePath);
+                if (is == null) throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }
             SAXBuilder builder = new SAXBuilder();
             Document document = builder.build(is);

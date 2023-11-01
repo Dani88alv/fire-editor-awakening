@@ -4,7 +4,6 @@ import com.danius.fireeditor.compression.DataView;
 import com.danius.fireeditor.compression.Huffman;
 import com.danius.fireeditor.compression.Uint8Array;
 import com.danius.fireeditor.util.Hex;
-import com.danius.fireeditor.util.HexConverts;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -19,22 +18,29 @@ public abstract class SaveFile {
         byte[] edni = Hex.toByte("45 44 4E 49"); //EDNI
         byte[] pmoc = Hex.toByte("50 4D 4F 43"); //PMOC
 
-        int region = 0x0;
-        boolean isDecomp = false;
+        int sizeHeader = 0x0;
+        boolean isCompressed = false;
         byte[] global = Hex.getByte4Array(fileBytes, 0x0);
         byte[] us = Hex.getByte4Array(fileBytes, 0xC0);
         byte[] jp = Hex.getByte4Array(fileBytes, 0x80);
 
-        if (Arrays.equals(global, edni) || Arrays.equals(global, pmoc)) {
-            isDecomp = true;
-        } else if (Arrays.equals(us, edni) || Arrays.equals(us, pmoc)) {
-            region = 0xC0;
-            isDecomp = true;
-        } else if (Arrays.equals(jp, edni) || Arrays.equals(jp, pmoc)) {
-            region = 0x80;
-            isDecomp = true;
+        //Checks compression
+        if (Arrays.equals(global, pmoc) || Arrays.equals(us, pmoc) || Arrays.equals(jp, pmoc)) {
+            isCompressed = true;
         }
-        if (isDecomp) return decompressBytes(fileBytes, region);
+        //Checks header size
+        //US/EU
+        if (Arrays.equals(us, edni) || Arrays.equals(us, pmoc)) {
+            sizeHeader = 0xC0;
+        }
+        //JP
+        else if (Arrays.equals(jp, edni) || Arrays.equals(jp, pmoc)) {
+            sizeHeader = 0x80;
+        }
+        //If it is compressed, decompress it
+        if (isCompressed) {
+            return decompressBytes(fileBytes, sizeHeader);
+        }
         return fileBytes;
     }
 
@@ -98,7 +104,7 @@ public abstract class SaveFile {
     private byte[] getHeader(byte[] decmp, int length) {
         byte[] header = new byte[0x10];
         String PMOC = "504D4F43";
-        System.arraycopy(HexConverts.hexStringToByteArray(PMOC), 0, header, 0, 0x4);
+        System.arraycopy(hexStringToByteArray(PMOC), 0, header, 0, 0x4);
 
         System.arraycopy(DataView.getBytes(2), 0, header, 0x4, 0x4);
         System.arraycopy(DataView.getBytes(length), 0, header, 0x8, 0x4);
@@ -109,6 +115,16 @@ public abstract class SaveFile {
         //}
         // CRC32 of Decompressed Data.
         return header;
+    }
+
+    private byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i + 1), 16));
+        }
+        return data;
     }
 
 

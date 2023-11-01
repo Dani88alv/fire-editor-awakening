@@ -14,48 +14,6 @@ public class MiscDb {
             "None", "HP", "Str", "Mag", "Skill", "Spd", "Lck", "Def", "Res"
     );
 
-
-    public static final List<String> dlcChapters = Arrays.asList(
-            "Pr. Marth (DLC)", "Roy (DLC)", "Micaiah (DLC)",
-            "Leif (DLC)", "Alm (DLC)", "Seliph (DLC)",
-            "Elincia (DLC)", "Eirika (DLC)", "Lyn (DLC)",
-            "Ephraim (DLC)", "Celica (DLC)", "Ike (DLC)",
-            "Palla (DLC)", "Catria (DLC)", "Est (DLC)",
-            "Katarina (DLC)"
-    );
-
-    /*
-    Ordered in groups of 4
-     */
-    public static final List<String> skillNames = Arrays.asList(
-            /*00*/ "No Active Skill", "HP +5", "Strength +2", "Magic +2",
-            /*04*/ "Skill +2", "Speed +2", "Defense +2", "Resistance +2",
-            /*08*/ "Hit rate +10", "Hit rate +20", "Avoid +10", "Movement +1",
-            /*12*/ "Locktouch", "Veteran", "Aptitude", "Discipline",
-            /*16*/ "Armsthrift", "Dual Support+", "Dual Strike+", "Dual Guard+",
-            /*20*/ "Rightful King", "Odd Rhythm", "Even Rhythm", "Quick Burn",
-            /*24*/ "Slow Burn", "Lucky Seven", "Gamble", "Outdoor Fighter",
-            /*28*/ "Indoor Fighter", "Tantivy", "Focus", "Zeal",
-            /*32*/ "Wrath", "Prescience", "Patience", "Underdog",
-            /*36*/ "Charm", "Solidarity", "Demoiselle", "Hex",
-            /*40*/ "Anathema", "Healtouch", "Relief", "Renewal",
-            /*44*/ "Deliverer", "Defender", "Acrobat", "Pass",
-            /*48*/ "Swordfaire", "Lancefaire", "Axefaire", "Bowfaire",
-            /*52*/ "Tomefaire", "Luck +4", "Special Dance", "Rally Strength",
-            /*56*/ "Rally Magic", "Rally Skill", "Rally Speed", "Rally Luck",
-            /*60*/ "Rally Defense", "Rally Resistance", "Rally Movement", "Rally Spectrum",
-            /*64*/ "Swordbreaker", "Lancebreaker", "Axebreaker", "Bowbreaker",
-            /*68*/ "Tomebreaker", "Wyrmsbane", "Beastbane", "Lethality",
-            /*72*/ "Aether", "Astra", "Sol", "Luna",
-            /*76*/ "Ignis", "Vengeance", "Vantage", "Pavise",
-            /*80*/ "Aegis", "Counter", "Miracle", "Despoil",
-            /*84*/ "Galeforce", "Lifetaker", "Conquest", "Shadowgift",
-            /*88*/ "All Stats +2", "Paragon", "Iote's Shield", "Limit Breaker",
-            /*92*/ "Dragonskin", "Rightful God", "Hawkeye", "Luna+",
-            /*96*/ "Vantage+", "Pavise+", "Aegis+", "Resistance +10",
-            /*100*/ "Aggressor", "Rally Heart", "Bond", "Unused Skill Slot"
-    );
-
     public static String getArmyName(int id) {
         int maxId = armies.size() - 1;
         if (id > maxId) return "Mod #" + (id - maxId);

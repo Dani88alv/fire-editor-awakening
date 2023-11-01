@@ -3,6 +3,7 @@ package com.danius.fireeditor.controllers.unit;
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.controllers.UI;
 import com.danius.fireeditor.data.UnitDb;
+import com.danius.fireeditor.data.model.EinherjarModel;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import com.danius.fireeditor.data.MiscDb;
@@ -23,7 +24,9 @@ public class LogController {
     private Unit unit;
     private boolean isWest;
     @FXML
-    private ComboBox<String> comboCard, comboAsset, comboFlaw, comboDifficulty;
+    private ComboBox<String> comboAsset, comboFlaw, comboDifficulty;
+    @FXML
+    private ComboBox<EinherjarModel> comboCard;
     @FXML
     private Button btnSetLogId, btnRandomId;
     @FXML
@@ -56,9 +59,9 @@ public class LogController {
         ObservableList<String> difficulty = FXCollections.observableArrayList("Normal", "Hard", "Lunatic");
         comboDifficulty.setItems(difficulty);
         //Einherjar names
-        ObservableList<String> cardUnits = FXCollections.observableArrayList();
-        cardUnits.addAll(getEinherjarNames());
-        comboCard.setItems(cardUnits);
+        ObservableList<EinherjarModel> einherjarList = FXCollections.observableArrayList();
+        einherjarList.addAll(getEinherjarList());
+        comboCard.setItems(einherjarList);
         comboCard.getSelectionModel().select(0);
         //Asset and flaw
         ObservableList<String> modifiers = FXCollections.observableArrayList();
@@ -202,11 +205,7 @@ public class LogController {
     Sets an Einherjar ID from the combobox
      */
     public void setLogIdToCard() {
-        int selected = comboCard.getSelectionModel().getSelectedIndex();
-        if (selected > 120) {
-            selected -= 121;
-            selected = LogBlock.DLC_LOG_ID[selected];
-        }
+        int selected = comboCard.getSelectionModel().getSelectedItem().getLogId();
         txtLogId.setText(Integer.toHexString(selected));
     }
 

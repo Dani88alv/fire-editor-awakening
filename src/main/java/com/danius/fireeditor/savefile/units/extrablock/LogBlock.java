@@ -28,15 +28,9 @@ public class LogBlock {
     public byte[] textRecruit;
     public byte[] footer;
 
-
     public static final int[] DLC_FACE_ID = new int[]{
             11, 16, 24, 56, 67, 72, 80, 91,
             96, 105, 114, 121, 128, 136, 144, 155
-    };
-
-    public static final int[] DLC_LOG_ID = new int[]{
-            0xC9, 0xCA, 0xCB, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3,
-            0xD4, 0xD5, 0xD6, 0xD7, 0xD8, 0xD9, 0xDA, 0xDB
     };
 
     public LogBlock(byte[] blockBytes) {
@@ -304,11 +298,7 @@ public class LogBlock {
         for (int i = 0; i < logString.length() - 2; i++) {
             if (logString.charAt(i) != '0') return false;
         }
-        int logId = getLogIdLastByte();
-        //Checks the DLC IDs
-        for (int number : DLC_LOG_ID) if (number == logId) return true;
-        //Checks the regular Einherjar IDs
-        return logId <= 120;
+        return true;
     }
 
     public int getLogIdLastByte() {
@@ -373,10 +363,7 @@ public class LogBlock {
 
     public boolean hasFaceDlc() {
         int face = getFullBuild()[1];
-        for (int i = 0; i < DLC_FACE_ID.length; i++) {
-            if (face == DLC_FACE_ID[i]) return true;
-        }
-        return false;
+        return face > 4;
     }
 
     //0x1E: Card offset second digit?

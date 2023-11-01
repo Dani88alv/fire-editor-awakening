@@ -75,5 +75,19 @@ public class FireEditor extends Application {
         launch();
     }
 
+    public static File readResource(String fileName) {
+        String filePath = "templates/" + fileName;
+        // Create a File object for the file path containing the actual file path
+        File filePathFile = new File(filePath);
+
+        // Check if the file path file exists and is not null
+        if (filePathFile.exists()) {
+            return filePathFile;  // Return the file if it exists
+        } else {
+            //System.out.println("File path does not exist: " + filePathFile.getAbsolutePath());
+            return null;  // Return null if the file path doesn't exist or is null
+        }
+    }
+
 
 }

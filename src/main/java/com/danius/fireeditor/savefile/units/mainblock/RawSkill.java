@@ -1,5 +1,6 @@
 package com.danius.fireeditor.savefile.units.mainblock;
 
+import com.danius.fireeditor.data.SkillDb;
 import com.danius.fireeditor.data.model.SkillModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.data.MiscDb;
@@ -73,13 +74,13 @@ public class RawSkill {
     }
 
     public String report() {
-        String report = "";
-        report += "Learned Skills (" + skillCount() + "): ";
+        StringBuilder report = new StringBuilder();
+        report.append("Learned Skills (").append(skillCount()).append("): ");
         for (Integer learnedSkill : getLearnedSkills()) {
-            report += MiscDb.skillNames.get(learnedSkill) + ", ";
+            report.append(SkillDb.getSkillNames().get(learnedSkill)).append(", ");
         }
-        report = report.substring(0, report.length() - 2);
-        return report;
+        report = new StringBuilder(report.substring(0, report.length() - 2));
+        return report.toString();
     }
 
 

@@ -1,17 +1,15 @@
 package com.danius.fireeditor.data;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.data.model.ClassModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
-import com.danius.fireeditor.savefile.units.extrablock.RawParent;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 public class ClassDb {
@@ -273,12 +271,17 @@ public class ClassDb {
     }
 
     public void readClasses() {
-        String path = Constants.RES_XML;
-        String xmlFilePath = path + "classes.xml";
+        File file = FireEditor.readResource(Constants.ADDON_XML + "classes.xml");
+        String xmlFilePath = Constants.RES_XML + "classes.xml";
         classList = new ArrayList<>();
-        try (InputStream is = ClassDb.class.getResourceAsStream(xmlFilePath)) {
-            if (is == null) {
-                throw new FileNotFoundException("Resource not found: " + xmlFilePath);
+
+        try {
+            InputStream is;
+            // Check if the file exists
+            if (file != null && file.exists()) is = new FileInputStream(file);
+            else {
+                is = UnitDb.class.getResourceAsStream(xmlFilePath);
+                if (is == null) throw new FileNotFoundException("Resource not found: " + xmlFilePath);
             }
             SAXBuilder builder = new SAXBuilder();
             Document document = builder.build(is);

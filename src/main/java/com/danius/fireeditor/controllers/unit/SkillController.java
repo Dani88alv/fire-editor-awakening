@@ -2,6 +2,7 @@ package com.danius.fireeditor.controllers.unit;
 
 import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.data.ClassDb;
+import com.danius.fireeditor.data.SkillDb;
 import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.data.model.ClassModel;
 import com.danius.fireeditor.data.model.SkillModel;
@@ -91,7 +92,7 @@ public class SkillController {
     }
 
     private void generateComboboxes() {
-        ObservableList<String> skills = FXCollections.observableArrayList(MiscDb.skillNames);
+        ObservableList<String> skills = FXCollections.observableArrayList(SkillDb.getSkillNames());
         comboSkill1.setItems(skills);
         comboSkill2.setItems(skills);
         comboSkill3.setItems(skills);
@@ -145,7 +146,7 @@ public class SkillController {
         CheckBox checkBox = new CheckBox();
         checkBox.setLayoutX(x);
         checkBox.setLayoutY(y);
-        checkBox.setText(MiscDb.skillNames.get(checkboxCount)); // Set checkbox text
+        checkBox.setText(SkillDb.getSkillNames().get(checkboxCount)); // Set checkbox text
         addCheckboxListener(checkBox, checkboxCount);
         return checkBox;
     }

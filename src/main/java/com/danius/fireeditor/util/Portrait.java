@@ -1,5 +1,6 @@
 package com.danius.fireeditor.util;
 
+import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
@@ -10,6 +11,7 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.util.Objects;
 
 public class Portrait {
@@ -39,46 +41,48 @@ public class Portrait {
                 }
                 //Adult Units
                 else {
-                    String path = Constants.RES + "characters/" + unitId + ".png";
-                    sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+                    String path = "characters/" + unitId + ".png";
+                    sprites[0] = readImage(path);
                 }
             }
             //Invalid
             else {
-                sprites[0] = setInvalid();
+                sprites[0] = getInvalid();
             }
             return sprites;
         } catch (Exception e) {
-            sprites[0] = setInvalid();
+            sprites[0] = getInvalid();
             return sprites;
         }
 
     }
 
-    private static Image setInvalid() {
+    private static Image getInvalid() {
         String path = Constants.RES + "characters/" + "what" + ".png";
         return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
     }
 
     private static Image setImageEnemy(Unit unit) {
+        String folderName = "monster/";
         int army = unit.rawFlags.army(); //9
         int unitClass = unit.rawBlock1.unitClass();
-        String path = Constants.RES + "monster/" + (unitClass + 1);
+        String fileName = String.valueOf((unitClass + 1));
         //If Risen Army and valid risen portrait
-        if (army == 9 && ClassDb.hasRisenPortrait(unitClass)) path += "_r";
-        path += ".png";
-        return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+        if (army == 9 && ClassDb.hasRisenPortrait(unitClass)) fileName += "_r";
+        fileName += ".png";
+
+        return readImage(folderName + fileName);
     }
 
     private static Image[] setImageChildren(Unit unit) {
         Image[] sprites = new Image[3];
-        String path = Constants.RES + "children/" + unit.getUnitId();
+        String path = "children/" + unit.getUnitId();
         String buildPath = path + ".png";
-        sprites[0] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(buildPath)));
+        sprites[0] = readImage(buildPath);
         String hairPath = path + "_hair.png";
-        sprites[2] = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(hairPath)));
+        sprites[2] = readImage(hairPath);
         String backPath = path + "_back.png";
-        Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
+        Image backSprite = readImage(backPath);
         sprites[1] = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
         return sprites;
     }
@@ -95,32 +99,32 @@ public class Portrait {
         //PRIORITY ORDER
         //DLC Units (Eldigan will be considered SpotPass)
         if (unit.rawLog.hasFaceDlc()) {
-            String path = "/com/danius/fireeditor/dlc/dlc_" + face + ".png";
-            imgBuild = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+            String path = "dlc/dlc_" + face + ".png";
+            imgBuild = readImage(path);
         }
         //Regular Avatar
         else if (!unit.rawLog.isEinherjar() && face <= 0x4) {
             //Path
-            String path = "/com/danius/fireeditor/avatar_";
+            String path = "avatar_";
             if (female) path += "f/";
             else path += "m/";
             //Build sprite
             String buildPath = path + "build_0" + build + "_0" + face + ".png";
-            imgBuild = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(buildPath)));
+            imgBuild = readImage(buildPath);
             //Hair sprite
             String hairPath = path + "hair_0" + build + "_0" + hair + ".png";
-            imgHair = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(hairPath)));
+            imgHair = readImage(hairPath);
             //Hair color
             String backPath = path + "back_0" + build + "_0" + hair + ".png";
-            Image backSprite = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(backPath)));
+            Image backSprite = readImage(backPath);
             imgHairColor = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
         }
         //SpotPass Units
         else if (unit.rawLog.isEinherjar() && unit.rawLog.hasSpotPassPortrait()) {
             int logId = unit.rawLog.getLogIdLastByte();
 
-            String path = "/com/danius/fireeditor/spotpass/" + logId + ".png";
-            imgBuild = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+            String path = "spotpass/" + logId + ".png";
+            imgBuild = readImage(path);
         }
         //Invalid
         else {
@@ -161,5 +165,21 @@ public class Portrait {
         }
 
         return filledImage;
+    }
+
+    private static Image readImage(String filePath) {
+        File imageFile = FireEditor.readResource(filePath);
+        try {
+            if (imageFile != null && imageFile.exists()) {
+                // Load the image from the file
+                return new Image(imageFile.toURI().toString());
+            } else {
+                // Load the image from project resources if the file doesn't exist
+                return new Image(Objects.requireNonNull(
+                        Portrait.class.getResourceAsStream(Constants.RES + filePath)));
+            }
+        } catch (Exception e) {
+            return getInvalid();
+        }
     }
 }
