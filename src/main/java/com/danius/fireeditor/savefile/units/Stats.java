@@ -1,6 +1,8 @@
 package com.danius.fireeditor.savefile.units;
 
+import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.data.ItemDb;
+import com.danius.fireeditor.data.model.ClassModel;
 import com.danius.fireeditor.data.model.ItemModel;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 
@@ -157,38 +159,38 @@ public class Stats {
         unit.rawBlock2.setMaxWeaponExp(); //Sets the max weapon exp
     }
 
+    //Calculates the highest growth from a unit based on their class set
     public static int[] calcMaxGrowth(Unit unit) {
-        //The higher max values classes can reach in vanilla
-        int[] maxClass = new int[]{99, 60, 66, 60, 56, 55, 60, 60};
-        //The modifiers are added to the higher values
-        int[] modif = calcModif(unit);
-        for (int i = 0; i < maxClass.length; i++) {
-            maxClass[i] += modif[i];
-        }
-        int[] growths = new int[8];
+        //Main variables
+        List<ClassModel> availableClasses = getClassesFromUnit(unit);
+        int[] modifiers = calcModif(unit);
         int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
-        int[] classAddition = getClassBaseStats(unit.rawBlock1.unitClass()); //Hardcoded
-        int[] currentStats = new int[8];
-        //If it has logbook data, +2 on their asset
+        //If it has logbook data, +2 on their asset, -2 flaw
         if (unit.rawLog != null) {
             int asset = unit.rawLog.getAssetFlaw()[0];
-            if (asset != 0) {
-                unitAddition[asset - 1] += 2; //-1 bc asset 0 is none, asset 1 is HP, but addition 0 is HP
+            int flaw = unit.rawLog.getAssetFlaw()[1];
+            //Asset/Flaw 0 is None, HP is 1
+            if (asset != 0) unitAddition[asset - 1] += 2;
+            if (flaw != 0) unitAddition[flaw - 1] -= 2;
+        }
+
+        //The growth is calculated
+        int[] growths = new int[8];
+        for (ClassModel classModel : availableClasses) {
+            int[] classBase = classModel.getStatsBase().clone();
+            int[] classMax = classModel.getStatsMax().clone();
+            for (int i = 0; i < growths.length; i++) if (i != 0) classMax[i] += 10; //Limit breaker
+            //The stats are checked
+            for (int i = 0; i < growths.length; i++) {
+                int statMax = classMax[i] + modifiers[i];
+                int statMin = unitAddition[i] + classBase[i];
+                int requiredGrowth = statMax - statMin;
+                if (requiredGrowth > growths[i]) {
+                    growths[i] = requiredGrowth;
+                }
             }
         }
-        //The current stats are calculated
-        for (int i = 0; i < currentStats.length; i++) {
-            currentStats[i] += unitAddition[i] + classAddition[i] + growths[i];
-            if (currentStats[i] > 255) currentStats[i] -= 256; //If higher than the actual limit size
-            else if (currentStats[i] > maxClass[i]) currentStats[i] = maxClass[i]; //If it is higher than the limit
-        }
-        //The growth is updated
-        for (int i = 0; i < currentStats.length; i++) {
-            if (maxClass[i] > currentStats[i]) {
-                int difference = maxClass[i] - currentStats[i];
-                growths[i] += difference;
-            }
-        }
+
         return growths;
     }
 
@@ -200,12 +202,13 @@ public class Stats {
         int[] growths = unit.rawBlock1.growth();
         int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
         int[] classAddition = getClassBaseStats(unit.rawBlock1.unitClass()); //Hardcoded
-        //If it has logbook data, +2 on their asset
+        //If it has logbook data, +2 on their asset, -2 flaw
         if (unit.rawLog != null) {
             int asset = unit.rawLog.getAssetFlaw()[0];
-            if (asset != 0) {
-                unitAddition[asset - 1] += 2; //-1 bc asset 0 is none, asset 1 is HP, but addition 0 is HP
-            }
+            int flaw = unit.rawLog.getAssetFlaw()[1];
+            //Asset/Flaw 0 is None, HP is 1
+            if (asset != 0) unitAddition[asset - 1] += 2;
+            if (flaw != 0) unitAddition[flaw - 1] -= 2;
         }
 
         for (int i = 0; i < growths.length; i++) {

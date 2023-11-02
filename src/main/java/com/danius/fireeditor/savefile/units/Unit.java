@@ -261,7 +261,8 @@ public class Unit {
         for (int i = 0; i < growth.length; i++) {
             rawBlock1.setGrowth(growth[i], i);
         }
-        rawBlock1.setCurrentHp(Stats.calcMaxStats(this, false)[0] + Stats.temporalBuffs(this)[0]);
+        int maxHp = Stats.calcMaxStats(this, rawSkill.isSkillSet(91))[0] + Stats.temporalBuffs(this)[0];
+        rawBlock1.setCurrentHp(maxHp);
     }
 
     public void kill() {
