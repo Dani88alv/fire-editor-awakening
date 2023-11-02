@@ -7,6 +7,7 @@ import com.danius.fireeditor.data.MiscDb;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class RawBlock2 {
@@ -100,6 +101,23 @@ public class RawBlock2 {
     public void setMaxWeaponExp() {
         int exp = 90;
         for (int i = 0; i <= 5; i++) setWeaponExp(exp, i);
+    }
+
+    public boolean hasSkillEquipped(int skillId) {
+        for (int i = 0; i < 5; i++) {
+            if (getCurrentSkills()[i] == skillId) return true;
+        }
+        return false;
+    }
+
+    public boolean hasSkillsEquipped(List<Integer> skillIds) {
+        int[] currentSkills = getCurrentSkills();
+        for (int skill : currentSkills) {
+            if (skillIds.contains(skill)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String report() {

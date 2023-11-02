@@ -36,7 +36,7 @@
         <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
         <stats uses="30" might="9" hit="90" crit="30"/>
     </item>
-    <item id="9" type1="0" type2="0" price="" name="Levin Sword">
+    <item id="9" type1="0" type2="0" price="" name="Levin Sword" isMagic="true">
         <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
         <stats uses="25" might="10" hit="80" crit="0"/>
     </item>
@@ -208,7 +208,7 @@
         <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
         <stats uses="10" might="1" hit="55" crit="35"/>
     </item>
-    <item id="52" type1="1" type2="0" price="" name="Shockstick">
+    <item id="52" type1="1" type2="0" price="" name="Shockstick" isMagic="true">
         <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
         <stats uses="20" might="11" hit="85" crit="10"/>
     </item>
@@ -268,7 +268,7 @@
         <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
         <stats uses="25" might="10" hit="60" crit="0"/>
     </item>
-    <item id="67" type1="2" type2="0" price="" name="Bolt Axe">
+    <item id="67" type1="2" type2="0" price="" name="Bolt Axe" isMagic="true">
         <buffs hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
         <stats uses="30" might="14" hit="70" crit="5"/>
     </item>

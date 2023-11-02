@@ -1,6 +1,7 @@
 package com.danius.fireeditor.savefile.units;
 
 import com.danius.fireeditor.data.ItemDb;
+import com.danius.fireeditor.data.model.ItemModel;
 import com.danius.fireeditor.savefile.units.extrablock.ChildBlock;
 
 import java.util.ArrayList;
@@ -67,27 +68,42 @@ public class Stats {
             repeatedSkills.add(activeSkill);
         }
 
-        //Faire skills
-        int[] faireBuffs = ItemDb.getFaireBuffs(unit);
-        for (int i = 0; i < buffs.length; i++) {
-            buffs[i] += faireBuffs[i];
-        }
-
         return buffs;
     }
 
     //Refinements are ignored
     public static int[] itemBuff(Unit unit) {
+        //Check if the unit has a faire skill equipped
+        List<Integer> faireSkills = List.of(48, 49, 50, 51, 52);
+
+        //Check if it has a faire skill
+        List<Integer> faireTypes = new ArrayList<>();
+        boolean hasFaire = false;
+        if (unit.rawBlock2.hasSkillsEquipped(faireSkills)) {
+            hasFaire = true;
+            faireTypes = ItemDb.faireTypes(unit);
+        }
+
         int[] totalBuffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < unit.rawInventory.items.size(); i++) {
             if (unit.rawInventory.items.get(i).equipped()) {
+
                 int id = unit.rawInventory.items.get(i).itemId();
-                int[] buffs = ItemDb.getItemBuffs(id);
-                for (int k = 0; k < 8; k++) {
-                    totalBuffs[k] += buffs[k];
+                ItemModel itemModel = ItemDb.getItem(id);
+                int weaponType = ItemDb.getItemType(id);
+
+                //If the faire type and weapon type match, retrieve faire buffs
+                if (hasFaire && (weaponType == itemModel.getType1() && faireTypes.contains(weaponType))) {
+                    totalBuffs = ItemDb.getFaireBuff(id, weaponType);
                 }
+
+                //If not, retrieve regular equipped buffs
+                else totalBuffs = ItemDb.getItemBuffs(id);
+                //Break after finding the first equipped item
+                break;
             }
         }
+
         return totalBuffs;
     }
 
@@ -352,39 +368,6 @@ public class Stats {
         chars.put(0x6, new int[]{0, 1, 1, 0, 0, 3, 0, 0}); //Luck
         chars.put(0x7, new int[]{0, 0, 0, 0, 0, 1, 3, 1}); //Def
         chars.put(0x8, new int[]{0, 0, 1, 0, 1, 0, 0, 3}); //Res
-        return chars;
-    }
-
-    private static HashMap<Integer, int[]> itemBuffList() {
-        //0 HP - 1 STR - 2 MAG - 3 SKL - 4 SPD - 5 LCK - 6 DEF - 7 RES
-        HashMap<Integer, int[]> chars = new HashMap<Integer, int[]>();
-        chars.put(12, new int[]{0, 0, 0, 3, 0, 0, 0, 0}); //Missletainn
-        chars.put(19, new int[]{0, 0, 0, 0, 0, 0, 0, 5}); //Tyrfing
-        chars.put(20, new int[]{0, 0, 0, 0, 5, 0, 0, 0}); //Mystletainn
-        chars.put(21, new int[]{0, 0, 0, 5, 0, 0, 0, 0}); //Balmung
-        chars.put(22, new int[]{0, 0, 0, 0, 0, 0, 0, 5}); //Sol Katti
-        chars.put(23, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Ragnell
-        chars.put(24, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Ragnell (Priam)
-        chars.put(34, new int[]{0, 0, 0, 0, 2, 0, 0, 2}); //Seliph's Blade
-        chars.put(49, new int[]{0, 5, 0, 0, 0, 0, 0, 0}); //Gae Bolg
-        chars.put(48, new int[]{0, 0, 5, 0, 0, 0, 0, 0}); //Gungnir
-        chars.put(56, new int[]{0, 2, 0, 0, 2, 0, 0, 0}); //Ephraim's Lance
-        chars.put(57, new int[]{0, 0, 0, 0, 0, 2, 2, 0}); //Finn's Lance
-        chars.put(72, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Helswath
-        chars.put(73, new int[]{0, 0, 0, 0, 0, 0, 5, 0}); //Armads
-        chars.put(81, new int[]{0, 2, 0, 0, 0, 0, 2, 0}); //Hector's Axe
-        chars.put(92, new int[]{0, 0, 0, 0, 5, 0, 0, 0}); //Yewfelle
-        chars.put(93, new int[]{0, 0, 0, 0, 0, 10, 0, 0}); //Nidhogg
-        chars.put(94, new int[]{0, 5, 0, 0, 0, 0, 0, 0}); //Double Bow
-        chars.put(106, new int[]{0, 0, 5, 0, 0, 0, 0, 0}); //Valflame
-        chars.put(111, new int[]{0, 0, 0, 5, 0, 0, 0, 0}); //Mjnolnir
-        chars.put(116, new int[]{0, 0, 0, 0, 5, 0, 0, 0}); //Forseti
-        chars.put(118, new int[]{0, 0, 0, 0, 0, 0, 5, 5}); //Book of Naga
-        chars.put(127, new int[]{0, 0, 0, 0, 0, 0, 2, 2}); //Micaiah's Pyre
-        chars.put(145, new int[]{0, 8, 5, 3, 2, 0, 10, 7}); //Dragonstone
-        chars.put(146, new int[]{0, 11, 6, 5, 4, 0, 13, 9}); //Dragonstone +
-        chars.put(147, new int[]{0, 3, 0, 5, 5, 4, 1, 0}); //Beaststone
-        chars.put(148, new int[]{0, 5, 0, 8, 8, 6, 4, 2}); //Beaststone +
         return chars;
     }
 }

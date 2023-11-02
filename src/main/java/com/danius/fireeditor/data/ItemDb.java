@@ -28,7 +28,7 @@ public class ItemDb {
         readItems();
     }
 
-    private static ItemModel getItem(int id) {
+    public static ItemModel getItem(int id) {
         for (ItemModel item : database.itemList) {
             if (item.getId() == id) return item;
         }
@@ -107,7 +107,7 @@ public class ItemDb {
         else return getItem(id).getBuffs();
     }
 
-    private static List<Integer> faireTypes(Unit unit) {
+    public static List<Integer> faireTypes(Unit unit) {
         List<Integer> types = new ArrayList<>();
         int[] skills = unit.rawBlock2.getCurrentSkills();
         for (int skill : skills) {
@@ -140,27 +140,29 @@ public class ItemDb {
         return totalBuffs;
     }
 
-    private static int[] getFaireBuff(int id, int faireType) {
+    public static int[] getFaireBuff(int id, int faireType) {
         int[] totalBuffs = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
         int type = getItemType(id);
+        ItemModel item = getItem(id);
         //Sword
         if (type == 0 && type == faireType) {
-            if (id == 9) totalBuffs[2] += 5; //Levin Sword
+            if (item.isMagic()) totalBuffs[2] += 5;
             else totalBuffs[1] += 5;
         }
         //Lance
         else if (type == 1 && type == faireType) {
-            if (id == 52) totalBuffs[2] += 5; //Shockstick
+            if (item.isMagic()) totalBuffs[2] += 5;
             else totalBuffs[1] += 5;
         }
         //Axe
         else if (type == 2 && type == faireType) {
-            if (id == 67) totalBuffs[2] += 5; //Bolt Axe
+            if (item.isMagic()) totalBuffs[2] += 5;
             else totalBuffs[1] += 5;
         }
         //Bows
         else if (type == 3 && type == faireType) {
-            totalBuffs[1] += 5;
+            if (item.isMagic()) totalBuffs[2] += 5;
+            else totalBuffs[1] += 5;
         }
         //Tomes
         else if (type == 4 && type == faireType) {
@@ -247,6 +249,9 @@ public class ItemDb {
                     base[i] = Integer.parseInt(value);
                 }
                 itemModel.setBuffs(base);
+
+                boolean isMagicFaire = "true".equals(element.getAttributeValue("isMagic"));
+                itemModel.setMagic(isMagicFaire);
 
                 //Refinement Stats
                 Element elemStats = element.getChild("stats");

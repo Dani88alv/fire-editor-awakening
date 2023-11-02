@@ -9,6 +9,7 @@ public class ItemModel {
     private int hit;
     private int crit;
     private int[] buffs;
+    private boolean isMagic; //Used for faire buffs only
 
     public int getId() {
         return id;
@@ -72,6 +73,14 @@ public class ItemModel {
 
     public void setType1(int type1) {
         this.type1 = type1;
+    }
+
+    public boolean isMagic() {
+        return isMagic;
+    }
+
+    public void setMagic(boolean magic) {
+        isMagic = magic;
     }
 
     @Override
