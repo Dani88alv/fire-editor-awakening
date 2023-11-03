@@ -10,7 +10,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.MainController">
     <children>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="846.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" prefHeight="518.0" prefWidth="846.0">
             <children>
                 <TabPane layoutY="24.0" prefHeight="424.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="10700.0" tabMinWidth="70.0">
                     <tabs>

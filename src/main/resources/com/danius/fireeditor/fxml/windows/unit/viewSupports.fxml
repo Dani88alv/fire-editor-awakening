@@ -18,11 +18,11 @@
             <Button fx:id="btnSetAll" layoutX="279.0" layoutY="25.0" mnemonicParsing="false" onAction="#setUnitsToLevel" text="Set All Supports To" />
             <ComboBox fx:id="comboLevel" layoutX="278.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" promptText="Level" />
             <Label fx:id="lblLevel" layoutX="178.0" layoutY="67.0" text="Level" />
-            <Button fx:id="btnRemoveSupport" layoutX="23.0" layoutY="160.0" mnemonicParsing="false" onAction="#removeExtraSupports" text="Clear Modded Supports" />
+            <Button fx:id="btnRemoveSupport" layoutX="23.0" layoutY="160.0" mnemonicParsing="false" onAction="#removeExtraSupports" prefHeight="26.0" prefWidth="133.0" text="Clear Extra Supports" />
             <CheckBox fx:id="checkMaiden" layoutX="277.0" layoutY="103.0" mnemonicParsing="false" text="Married to Maiden" />
-            <Label layoutX="231.0" layoutY="146.0" prefHeight="42.0" prefWidth="186.0" text="Parent and sibling supports data&#10;are only stored on child units." />
+            <Label layoutX="231.0" layoutY="151.0" prefHeight="42.0" prefWidth="186.0" text="Parent and sibling support data&#10;are only stored on child units." />
             <CheckBox fx:id="checkSync" layoutX="23.0" layoutY="90.0" mnemonicParsing="false" text="Edit supported units too" />
-            <Label layoutX="24.0" layoutY="110.0" prefHeight="34.0" prefWidth="139.0" text="(Modded supports will&#10;be ignored if enabled)" />
+            <Label layoutX="24.0" layoutY="111.0" prefHeight="34.0" prefWidth="139.0" text="(Extra supports will&#10;be ignored if enabled)" />
          </children>
       </AnchorPane>
    </children>

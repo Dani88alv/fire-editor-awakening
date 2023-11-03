@@ -8,6 +8,8 @@ import com.danius.fireeditor.savefile.units.Unit;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -36,21 +38,39 @@ public class MainController {
         }
     }
 
-    public void openFile() throws IOException {
+    public void openFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(path));
 
         File file = fileChooser.showOpenDialog(null);
         if (file == null) return;
-        path = file.getParent();
-        backupFile = file;
-        //The blocks are initialized
+
+        loadFile(file);
+    }
+
+    @FXML
+    private void handleDragDropped(DragEvent event) {
+        if (event.getDragboard().hasFiles()) {
+            for (java.io.File file : event.getDragboard().getFiles()) {
+                loadFile(file);
+            }
+            event.setDropCompleted(true);
+        } else {
+            event.setDropCompleted(false);
+        }
+        event.consume();
+    }
+
+    private void loadFile(File file) {
         try {
+            path = file.getParent(); // Update the path
+            backupFile = file;      // Update the backupFile
             reloadTabs(Files.readAllBytes(file.toPath()));
         } catch (Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException("Error loading file");
         }
     }
+
 
     public void reloadTabs(byte[] fileBytes) {
         try {
@@ -196,5 +216,13 @@ public class MainController {
 
     public static FXMLLoader getWindowUser(String name) {
         return new FXMLLoader(FireEditor.class.getResource(Constants.RES_FXML + "user/" + name));
+    }
+
+    @FXML
+    private void handleDragOver(DragEvent event) {
+        if (event.getGestureSource() != this && event.getDragboard().hasFiles()) {
+            event.acceptTransferModes(TransferMode.COPY);
+        }
+        event.consume();
     }
 }
