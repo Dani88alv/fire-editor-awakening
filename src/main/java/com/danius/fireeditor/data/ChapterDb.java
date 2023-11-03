@@ -59,7 +59,7 @@ public class ChapterDb {
             ChapterModel chapter = getChapterByMapId(i);
             if (chapter.getMapId() == mapId) return chapter.getChapterName();
         }
-        return "Modded Map #" + (mapId - MAX_CHAPTER_COUNT);
+        return "Modded Map #" + (MAX_OVERWORLD_COUNT - mapId);
     }
 
     public static String getDescription(int chapterId) {

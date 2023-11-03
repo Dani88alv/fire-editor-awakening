@@ -129,7 +129,7 @@
                <Label layoutX="546.0" layoutY="229.0" text="Rating" />
                <Button fx:id="btnUp" layoutX="2.0" layoutY="268.0" mnemonicParsing="false" onAction="#orderUp" text="↑" />
                <Button fx:id="btnDown" layoutX="2.0" layoutY="300.0" mnemonicParsing="false" onAction="#orderDown" text="↓" />
-               <Button layoutX="358.0" layoutY="264.0" mnemonicParsing="false" onAction="#classReport" text="Class Set" />
+               <Button fx:id="btnClass" layoutX="358.0" layoutY="264.0" mnemonicParsing="false" onAction="#classReport" text="Class Set" />
                     </children>
                 </AnchorPane>
         </children>

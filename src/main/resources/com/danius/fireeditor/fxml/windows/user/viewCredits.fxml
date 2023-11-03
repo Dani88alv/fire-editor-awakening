@@ -38,14 +38,14 @@
             </Label>
             <Label layoutX="21.0" layoutY="72.0" text="Chapter Slot" />
             <Button fx:id="btnRemoveRecord" layoutX="180.0" layoutY="92.0" mnemonicParsing="false" onAction="#removeRecord" text="Remove Current Entry" />
-            <Spinner fx:id="spinTotal" editable="true" layoutX="212.0" layoutY="34.0" prefHeight="26.0" prefWidth="55.0" />
-            <Label layoutX="189.0" layoutY="11.0" text="Unlocked Chapters?" />
-            <Spinner fx:id="spinLast" editable="true" layoutX="309.0" layoutY="34.0" prefHeight="26.0" prefWidth="55.0" />
-            <Label layoutX="307.0" layoutY="11.0" text="Story State?" />
-            <Spinner fx:id="spinCurrent" editable="true" layoutX="407.0" layoutY="34.0" prefHeight="26.0" prefWidth="55.0" />
-            <Label layoutX="396.0" layoutY="11.0" text="Current Chapter" />
+            <Spinner fx:id="spinTotal" editable="true" layoutX="203.0" layoutY="32.0" prefHeight="26.0" prefWidth="55.0" />
+            <Label layoutX="180.0" layoutY="9.0" text="Unlocked Chapters?" />
+            <Spinner fx:id="spinLast" editable="true" layoutX="300.0" layoutY="32.0" prefHeight="26.0" prefWidth="55.0" />
+            <Label layoutX="294.0" layoutY="9.0" text="Last Chapter?" />
+            <Label layoutX="400.0" layoutY="11.0" text="Current Chapter" />
             <Label fx:id="lblTotal" layoutX="102.0" layoutY="72.0" text="Total" />
             <Label layoutX="340.0" layoutY="71.0" prefHeight="54.0" prefWidth="164.0" text="Going back in time requires&#10;more research. Make sure to&#10;backup your save file! " />
+            <ComboBox fx:id="comboCurrentChapter" layoutX="378.0" layoutY="33.0" prefWidth="130.0" promptText="Chapter" />
          </children>
       </AnchorPane>
    </children>

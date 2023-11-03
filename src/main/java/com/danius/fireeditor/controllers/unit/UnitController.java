@@ -46,7 +46,7 @@ public class UnitController {
     @FXML
     private Button btnMaxStats, btnMoveUnit, btnDuplicate, btnRemove, btnUp, btnDown,
             btnOpenBattle, btnOpenSupport, btnOpenChild, btnOpenAvatar,
-            btnOpenItem, btnOpenSkills, btnOpenFlags;
+            btnOpenItem, btnOpenSkills, btnOpenFlags, btnClass;
     @FXML
     private TextField txtModif, txtTotalStat, txtGrowthMove,
             txtStatHp, txtStatStr, txtStatMag, txtStatSkl, txtStatSpd, txtStatLck, txtStatDef, txtStatRes, txtStatMove,
@@ -419,6 +419,7 @@ public class UnitController {
         btnOpenItem.setDisable(disable);
         btnOpenSkills.setDisable(disable);
         btnOpenFlags.setDisable(disable);
+        btnClass.setDisable(disable);
         checkLimit.setDisable(disable);
         if (disable) {
             imgBuild.setImage(null);
@@ -426,6 +427,7 @@ public class UnitController {
             imgHairColor.setImage(null);
             labelUnitName.setText("");
         }
+
     }
 
     private void setupComboGroup() {
@@ -687,6 +689,9 @@ public class UnitController {
                 // Pass the selected value to the second view's controller
                 SupportController supportController = fxmlLoader.getController();
                 int currentGroup = comboUnitGroup.getSelectionModel().getSelectedIndex();
+                for (Unit unit : unitBlock.unitList.get(currentGroup)) {
+                    unit.rawSupport.expandBlock();
+                }
                 supportController.setUnit(selectedValue, unitBlock.unitList.get(currentGroup));
                 // Create a new stage for the secondary view
                 Stage secondaryStage = new Stage();

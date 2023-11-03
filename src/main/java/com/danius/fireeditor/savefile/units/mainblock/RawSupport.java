@@ -52,7 +52,9 @@ public class RawSupport {
         int type = getUnitSupportTypes(unitId)[slot];
         //Gets the max values of the type gotten
         int[] maxValues = getSupportValues(type);
-        if (level == 0) setSupportValue(slot, 0);
+        if (level == 0) {
+            setSupportValue(slot, 0);
+        }
         else setSupportValue(slot, maxValues[level - 1]);
     }
 

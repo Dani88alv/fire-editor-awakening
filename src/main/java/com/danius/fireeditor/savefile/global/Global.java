@@ -7,13 +7,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class GlobalFile extends SaveFile {
+public class Global extends SaveFile {
     public byte[] fileBytes;
     private byte[] blockIndex;
     private byte[] blockUser; //Support conversations, hair colors, difficulties, avatar default data
     private byte[] blockDg18; //Logbook units
 
-    public GlobalFile(byte[] fileBytes) {
+    public Global(byte[] fileBytes) {
         //The save file is decompressed
         if (!isDecompressed(fileBytes)) {
             fileBytes = decompressBytes(fileBytes, 0x0);

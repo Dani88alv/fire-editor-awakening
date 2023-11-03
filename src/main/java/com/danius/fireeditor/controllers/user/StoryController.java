@@ -21,9 +21,9 @@ public class StoryController {
     @FXML
     private Label lblTotal;
     @FXML
-    private Spinner<Integer> spinCreditTime, spinCreditTurns, spinTotal, spinLast, spinCurrent;
+    private Spinner<Integer> spinCreditTime, spinCreditTurns, spinTotal, spinLast;
     @FXML
-    private ComboBox<String> comboCreditChapter,
+    private ComboBox<String> comboCreditChapter, comboCurrentChapter,
             comboUnit1, comboUnit2, comboClass1, comboClass2, comboCreditSlot;
     @FXML
     private Button btnRemoveRecord;
@@ -78,7 +78,7 @@ public class StoryController {
 
         spinTotal.getValueFactory().setValue(userBlock.getCountTotalChapters());
         spinLast.getValueFactory().setValue(userBlock.getCountLastChapter());
-        spinCurrent.getValueFactory().setValue(userBlock.getCurrentChapter());
+        comboCurrentChapter.getSelectionModel().select(userBlock.getCurrentChapter());
     }
 
     public void setupElements() {
@@ -99,10 +99,10 @@ public class StoryController {
         //Chapter Names
         ObservableList<String> chapters = FXCollections.observableArrayList(ChapterDb.getAllChapterNames());
         comboCreditChapter.setItems(chapters);
+        comboCurrentChapter.setItems(chapters);
         //Chapter count
         UI.setSpinnerNumeric(spinTotal, 255);
         UI.setSpinnerNumeric(spinLast, 255);
-        UI.setSpinnerNumeric(spinCurrent, 255);
     }
 
     public void addListeners() {
@@ -187,8 +187,8 @@ public class StoryController {
         spinLast.valueProperty().addListener((observable, oldValue, newValue) -> {
             userBlock.setCountLastChapter(spinLast.getValue());
         });
-        spinCurrent.valueProperty().addListener((observable, oldValue, newValue) -> {
-            userBlock.setCurrentChapter(spinCurrent.getValue());
+        comboCurrentChapter.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            userBlock.setCurrentChapter(comboCurrentChapter.getSelectionModel().getSelectedIndex());
         });
     }
 
