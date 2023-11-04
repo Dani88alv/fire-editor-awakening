@@ -173,6 +173,7 @@ public class DuTeam {
         for (UnitDu unit : unitList) unit.changeRegion(isWest);
         int teamNameSize = (isWest) ? US_NAME_TEAM : JP_NAME_TEAM;
         teamName = Hex.changeSizeArray(teamName, teamNameSize);
+        Hex.setByte2(teamName, teamName.length - 2, 0);
         this.isWest = isWest;
     }
 

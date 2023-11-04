@@ -16,8 +16,8 @@ public class GlUserBlock {
     private final byte[] supportLog; //Support Log Flags
     private final byte[] hairColorFlags; //Better not mess with this
     private final byte[] unknownFlags; //???
-    private final LogBlock avatarMale; //Support Log portrait
-    private final LogBlock avatarFemale; //Support Log portrait
+    public final LogBlock avatarMale; //Support Log portrait
+    public final LogBlock avatarFemale; //Support Log portrait
     private final byte[] hairColors; //Hex values (same number as hair color flags)
 
     public GlUserBlock(byte[] blockBytes) {
@@ -114,6 +114,11 @@ public class GlUserBlock {
     public void setRenown(int value) {
         int point = 0x7;
         Hex.setByte4(rawBlock1, point, value);
+    }
+
+    public void changeRegion(boolean isWest) {
+        avatarMale.changeRegion(isWest);
+        avatarFemale.changeRegion(isWest);
     }
 
     public void setUnitGalleryFlag(int bit, boolean set) {

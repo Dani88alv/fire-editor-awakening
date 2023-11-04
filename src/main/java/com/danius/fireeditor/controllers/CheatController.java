@@ -44,7 +44,7 @@ public class CheatController {
     }
 
     public void reload() {
-        FireEditor.mainController.reloadTabs(FireEditor.chapterFile.getBytes());
+        FireEditor.mainController.reloadChapter(FireEditor.chapterFile.getBytes());
     }
 
     public void setSupports() {

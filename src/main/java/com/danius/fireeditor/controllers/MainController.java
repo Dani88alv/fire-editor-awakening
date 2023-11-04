@@ -1,19 +1,20 @@
 package com.danius.fireeditor.controllers;
 
 import com.danius.fireeditor.FireEditor;
-import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.Constants;
+import com.danius.fireeditor.savefile.SaveFile;
+import com.danius.fireeditor.savefile.global.Global;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,16 +26,30 @@ public class MainController {
     public static File backupFile;
 
     @FXML
-    private Tab tabConvoy, tabChapter, tabUnit, tabCheats;
+    private Tab tabConvoy, tabChapter, tabUnit, tabCheats, tabGlobal;
+    @FXML
+    private TabPane tabPane;
 
     public void initialize() {
         FireEditor.mainController = this;
-        if (FireEditor.chapterFile == null) {
-            FireEditor.unitController.disableElements(true);
-            FireEditor.unitController.comboUnitGroup.setDisable(true);
-            tabConvoy.setDisable(true);
-            tabChapter.setDisable(true);
-            tabCheats.setDisable(true);
+        FireEditor.unitController.disableElements(true);
+        FireEditor.unitController.comboUnitGroup.setDisable(true);
+        tabConvoy.setDisable(true);
+        tabChapter.setDisable(true);
+        tabCheats.setDisable(true);
+        tabGlobal.setDisable(true);
+
+        if (FireEditor.chapterFile != null) {
+            FireEditor.unitController.disableElements(false);
+            FireEditor.unitController.comboUnitGroup.setDisable(false);
+
+            tabConvoy.setDisable(false);
+            tabChapter.setDisable(false);
+            tabCheats.setDisable(false);
+        } else if (FireEditor.global != null) {
+            tabGlobal.setDisable(false);
+            tabPane.getSelectionModel().select(tabGlobal);
+            tabUnit.setDisable(true);
         }
     }
 
@@ -65,23 +80,54 @@ public class MainController {
         try {
             path = file.getParent(); // Update the path
             backupFile = file;      // Update the backupFile
-            reloadTabs(Files.readAllBytes(file.toPath()));
+
+            byte[] fileBytes = Files.readAllBytes(file.toPath());
+            boolean isChapter = SaveFile.isChapter(fileBytes);
+            //Chapter Save File
+            if (isChapter) {
+                reloadChapter(fileBytes);
+            }
+            //Global Save File
+            else {
+                reloadGlobal(fileBytes);
+            }
+
         } catch (Exception e) {
             throw new RuntimeException("Error loading file");
         }
     }
 
 
-    public void reloadTabs(byte[] fileBytes) {
+    public void reloadChapter(byte[] fileBytes) {
         try {
             FireEditor.chapterFile = new Chapter13(fileBytes);
             FireEditor.unitController.loadUnitBlock();
             FireEditor.unitController.comboUnitGroup.setDisable(false);
+            tabUnit.setDisable(false);
             tabConvoy.setDisable(false);
             tabChapter.setDisable(false);
             tabCheats.setDisable(false);
+            tabGlobal.setDisable(true);
             FireEditor.convoyController.loadBlocks();
             FireEditor.userController.loadBlocks();
+            tabPane.getSelectionModel().select(tabUnit);
+            FireEditor.global = null;
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public void reloadGlobal(byte[] fileBytes) {
+        try {
+            tabGlobal.setDisable(false);
+            FireEditor.global = new Global(fileBytes);
+            tabPane.getSelectionModel().select(tabGlobal);
+            FireEditor.unitController.comboUnitGroup.setDisable(true);
+            tabConvoy.setDisable(true);
+            tabChapter.setDisable(true);
+            tabCheats.setDisable(true);
+            tabUnit.setDisable(true);
+            FireEditor.chapterFile = null;
         } catch (Exception e) {
             throw new RuntimeException();
         }
@@ -117,7 +163,7 @@ public class MainController {
     }
 
     public void exportDecomp() throws IOException {
-        if (FireEditor.chapterFile == null) return;
+        if (FireEditor.chapterFile == null && FireEditor.global == null) return;
         //The data is compiled
         byte[] data = chapterBytes(true);
         //File chooser
@@ -204,9 +250,16 @@ public class MainController {
 
     public byte[] chapterBytes(boolean decomp) {
         //The data is compiled
-        byte[] data;
-        if (decomp) data = FireEditor.chapterFile.getBytes();
-        else data = FireEditor.chapterFile.getBytesComp();
+        byte[] data = new byte[0];
+        if (FireEditor.chapterFile != null) {
+            if (decomp) data = FireEditor.chapterFile.getBytes();
+            else data = FireEditor.chapterFile.getBytesComp();
+        }
+        else if (FireEditor.global != null) {
+            if (decomp) data = FireEditor.global.getBytes();
+            else data = FireEditor.global.getBytesComp();
+        }
+
         return data;
     }
 

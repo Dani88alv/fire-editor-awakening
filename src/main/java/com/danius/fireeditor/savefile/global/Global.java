@@ -29,6 +29,15 @@ public class Global extends SaveFile {
         glUnitBlock = new GlUnitBlock(blockDg18);
     }
 
+    public boolean region() {
+        return glUserBlock.avatarMale.isWest;
+    }
+
+    public void changeRegion(boolean isWest) {
+        glUserBlock.changeRegion(isWest);
+        glUnitBlock.changeRegion(isWest);
+    }
+
     /*
     The blocks are combined
      */
@@ -44,6 +53,10 @@ public class Global extends SaveFile {
             e.printStackTrace();
         }
         return outputStream.toByteArray();
+    }
+
+    public byte[] getBytesComp() {
+        return compressBytes(getBytes(), 0x0);
     }
 
     private boolean isDecompressed(byte[] fileBytes) {

@@ -14,11 +14,13 @@ import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
 public abstract class SaveFile {
+    private static int sizeHeader = 0x0;
+
     public static byte[] autoDecompress(byte[] fileBytes) {
         byte[] edni = Hex.toByte("45 44 4E 49"); //EDNI
         byte[] pmoc = Hex.toByte("50 4D 4F 43"); //PMOC
 
-        int sizeHeader = 0x0;
+        sizeHeader = 0x0;
         boolean isCompressed = false;
         byte[] global = Hex.getByte4Array(fileBytes, 0x0);
         byte[] us = Hex.getByte4Array(fileBytes, 0xC0);
@@ -42,6 +44,11 @@ public abstract class SaveFile {
             return decompressBytes(fileBytes, sizeHeader);
         }
         return fileBytes;
+    }
+
+    public static boolean isChapter(byte[] fileBytes) {
+        byte[] decrypt = autoDecompress(fileBytes.clone());
+        return sizeHeader != 0x0;
     }
 
     public static byte[] decompressBytes(byte[] all, int start) {

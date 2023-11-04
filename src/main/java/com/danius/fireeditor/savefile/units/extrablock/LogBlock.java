@@ -172,6 +172,12 @@ public class LogBlock {
         this.isWest = isWest;
         this.NAME_CHARACTERS = (nameBlock.length / 2) - 1;
         this.MESSAGE_CHARACTERS = (textStreet.length / 2) - 1;
+
+        Hex.setByte2(nameBlock, nameBlock.length - 2, 0);
+        Hex.setByte2(textStreet, textStreet.length - 2, 0);
+        Hex.setByte2(textGreeting, textGreeting.length - 2, 0);
+        Hex.setByte2(textChallenge, textChallenge.length - 2, 0);
+        Hex.setByte2(textRecruit, textRecruit.length - 2, 0);
     }
 
 

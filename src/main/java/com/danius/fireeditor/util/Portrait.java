@@ -5,6 +5,7 @@ import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
+import com.danius.fireeditor.savefile.units.extrablock.LogBlock;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
@@ -27,7 +28,7 @@ public class Portrait {
             }
             //Logbook portraits
             else if (unit.rawLog != null) {
-                sprites = setImageLog(unit);
+                sprites = setImageLog(unit.rawLog, unit.rawBlockEnd.getHairColorFx());
             }
             //Valid non-playable unit IDs
             else if (!isPlayable && ClassDb.hasEnemyPortrait(unit.rawBlock1.unitClass())) {
@@ -87,23 +88,23 @@ public class Portrait {
         return sprites;
     }
 
-    private static Image[] setImageLog(Unit unit) {
+    private static Image[] setImageLog(LogBlock unit, Color color) {
         Image imgHair = null;
         Image imgBuild = null;
         Image imgHairColor = null;
         //The values are gotten
-        int build = unit.rawLog.getFullBuild()[0];
-        int face = unit.rawLog.getFullBuild()[1];
-        int hair = unit.rawLog.getFullBuild()[2];
-        boolean female = (unit.rawLog.getFullBuild()[4] > 0);
+        int build = unit.getFullBuild()[0];
+        int face = unit.getFullBuild()[1];
+        int hair = unit.getFullBuild()[2];
+        boolean female = (unit.getFullBuild()[4] > 0);
         //PRIORITY ORDER
         //DLC Units (Eldigan will be considered SpotPass)
-        if (unit.rawLog.hasFaceDlc()) {
+        if (unit.hasFaceDlc()) {
             String path = "dlc/dlc_" + face + ".png";
             imgBuild = readImage(path);
         }
         //Regular Avatar
-        else if (!unit.rawLog.isEinherjar() && face <= 0x4) {
+        else if (!unit.isEinherjar() && face <= 0x4) {
             //Path
             String path = "avatar_";
             if (female) path += "f/";
@@ -117,11 +118,11 @@ public class Portrait {
             //Hair color
             String backPath = path + "back_0" + build + "_0" + hair + ".png";
             Image backSprite = readImage(backPath);
-            imgHairColor = fillImageWithColor(backSprite, unit.rawBlockEnd.getHairColorFx());
+            imgHairColor = fillImageWithColor(backSprite, color);
         }
         //SpotPass Units
-        else if (unit.rawLog.isEinherjar() && unit.rawLog.hasSpotPassPortrait()) {
-            int logId = unit.rawLog.getLogIdLastByte();
+        else if (unit.isEinherjar() && unit.hasSpotPassPortrait()) {
+            int logId = unit.getLogIdLastByte();
 
             String path = "spotpass/" + logId + ".png";
             imgBuild = readImage(path);

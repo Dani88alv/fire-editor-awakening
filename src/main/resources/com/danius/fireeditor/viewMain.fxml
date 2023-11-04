@@ -12,7 +12,7 @@
     <children>
         <AnchorPane minHeight="0.0" minWidth="0.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" prefHeight="518.0" prefWidth="846.0">
             <children>
-                <TabPane layoutY="24.0" prefHeight="424.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="10700.0" tabMinWidth="70.0">
+                <TabPane fx:id="tabPane" layoutY="24.0" prefHeight="424.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="10700.0" tabMinWidth="70.0">
                     <tabs>
                         <Tab fx:id="tabUnit" text="Unit Editor">
                             <fx:include fx:id="unitTab" source="viewUnit.fxml" />
@@ -25,6 +25,9 @@
                         </Tab>
                         <Tab fx:id="tabCheats" text="Cheats">
                             <fx:include fx:id="cheatTab" source="viewCheats.fxml" />
+                        </Tab>
+                        <Tab fx:id="tabGlobal" text="Global">
+                            <fx:include fx:id="globalTab" source="viewGlobal.fxml" />
                         </Tab>
                     </tabs>
                 </TabPane>

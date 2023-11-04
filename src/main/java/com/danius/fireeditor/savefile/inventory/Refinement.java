@@ -142,6 +142,7 @@ public class Refinement {
     public void changeRegion(boolean isWest) {
         int nameSize = (isWest) ? CHAR_US : CHAR_JP;
         rawName = Hex.changeSizeArray(rawName, nameSize * 2);
+        Hex.setByte2(rawName, rawName.length - 2, 0);
     }
 
     @Override

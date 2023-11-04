@@ -20,6 +20,7 @@ import static com.danius.fireeditor.util.Hex.*;
 public class UnitDu {
 
     public boolean isWest;
+    private byte[] header;
     private byte[] rawBlock1;
     public List<DuItem> itemList;
     private byte[] rawChild;
@@ -32,7 +33,7 @@ public class UnitDu {
         String path = Constants.RES_BLOCK + "rawUnitDu";
         try {
             byte[] bytes = Objects.requireNonNull(UnitDu.class.getResourceAsStream(path)).readAllBytes();
-            initialize(bytes, null);
+            initialize(bytes, new byte[0]);
             changeRegion(isWest);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -44,7 +45,7 @@ public class UnitDu {
     }
 
     public void initialize(byte[] bytes, byte[] extraData) {
-        isWest = bytes.length == 0x12F;
+        isWest = bytes.length == 0x12F || bytes.length == 0x27E; //Wireless Size / Logbook Size
         itemList = new ArrayList<>();
         //Main Information
         this.rawBlock1 = Arrays.copyOfRange(bytes, 0x0, 0x21);
@@ -65,22 +66,41 @@ public class UnitDu {
         //Unknown
         this.rawUnknown = Arrays.copyOfRange(bytes, offset, offset + 0x3);
         offset += rawUnknown.length;
-        //Avatar Name
-        int nameSize = (isWest) ? DuTeam.US_NAME_LOG : DuTeam.JP_NAME_LOG;
-        byte[] rawName = Arrays.copyOfRange(bytes, offset, offset + nameSize);
-        offset += rawName.length;
-        //Profile Card
-        byte[] rawAvatar = Arrays.copyOfRange(bytes, offset, bytes.length);
-        //All the logbook data is combined
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            byteArrayOutputStream.write(rawName);
-            byteArrayOutputStream.write(rawAvatar);
-            byteArrayOutputStream.write(Objects.requireNonNullElseGet(extraData, () -> new byte[336]));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        //Avatar Data (Wireless Team)
+        if (extraData != null) {
+            //Avatar Name
+            int nameSize = (isWest) ? DuTeam.US_NAME_LOG : DuTeam.JP_NAME_LOG;
+            byte[] rawName = Arrays.copyOfRange(bytes, offset, offset + nameSize);
+            offset += rawName.length;
+            //All the logbook data is combined
+            byte[] rawAvatar = Arrays.copyOfRange(bytes, offset, bytes.length);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            try {
+                byteArrayOutputStream.write(rawName);
+                byteArrayOutputStream.write(rawAvatar);
+                if (extraData.length == 0) {
+                    byteArrayOutputStream.write(new byte[336]);
+                } else {
+                    byteArrayOutputStream.write(extraData);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            this.rawLog = new LogBlock(byteArrayOutputStream.toByteArray());
         }
-        this.rawLog = new LogBlock(byteArrayOutputStream.toByteArray());
+        //Avatar Data
+        else {
+            byte[] logBytes = Arrays.copyOfRange(bytes, offset, bytes.length);
+            byte[] newLogBytes = Arrays.copyOf(logBytes, logBytes.length + 1);
+            newLogBytes[logBytes.length] = 0;
+            logBytes = newLogBytes;
+            this.rawLog = new LogBlock(logBytes);
+            rawLog.removeFooter();
+        }
+    }
+
+    public void setHeader(byte[] header) {
+        this.header = header;
     }
 
     public String getName() {
@@ -285,6 +305,22 @@ public class UnitDu {
             //The profile card and messages are excluded
             int nameSize = (isWest) ? DuTeam.US_NAME_LOG : DuTeam.JP_NAME_LOG;
             byteArrayOutputStream.write(Arrays.copyOfRange(rawLog.getBytes(), 0x0, nameSize + 0x1E));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    public byte[] bytesFull() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            if (header != null) byteArrayOutputStream.write(header);
+            byteArrayOutputStream.write(rawBlock1);
+            for (DuItem item : itemList) byteArrayOutputStream.write(item.bytes());
+            byteArrayOutputStream.write(rawChild);
+            byteArrayOutputStream.write(rawSkill.bytes());
+            byteArrayOutputStream.write(rawUnknown);
+            byteArrayOutputStream.write(rawLog.getBytes());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

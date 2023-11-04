@@ -6,6 +6,8 @@ import com.danius.fireeditor.controllers.convoy.ConvoyController;
 import com.danius.fireeditor.controllers.unit.UnitController;
 import com.danius.fireeditor.controllers.user.UserController;
 import com.danius.fireeditor.savefile.Chapter13;
+import com.danius.fireeditor.savefile.SaveFile;
+import com.danius.fireeditor.savefile.global.Global;
 import com.danius.fireeditor.util.Hex;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,7 @@ import java.util.List;
 
 public class FireEditor extends Application {
     public static Chapter13 chapterFile;
+    public static Global global;
     public static UnitController unitController;
     public static ConvoyController convoyController;
     public static UserController userController;
@@ -60,7 +63,14 @@ public class FireEditor extends Application {
                     System.out.println("File exists: " + file.getAbsolutePath());
                     MainController.backupFile = file;
                     MainController.path = content;
-                    chapterFile = new Chapter13(Hex.getFileBytes(content + saveFile));
+
+                    byte[] fileBytes = Hex.getFileBytes(content + saveFile);
+                    boolean isChapter = SaveFile.isChapter(fileBytes);
+                    if (isChapter) {
+                        chapterFile = new Chapter13(fileBytes);
+                    } else {
+                        global = new Global(fileBytes);
+                    }
                 } else {
                     System.out.println("File does not exist: " + file.getAbsolutePath());
                 }

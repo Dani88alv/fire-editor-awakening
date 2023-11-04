@@ -18,7 +18,7 @@ public class DuItem {
         this.rawName = Arrays.copyOfRange(bytes, 0x4, bytes.length);
     }
 
-    public Refinement toRefinement(){
+    public Refinement toRefinement() {
         int byteSize = (isWest()) ? Refinement.SIZE_US : Refinement.SIZE_JP;
         byte[] refiBytes = new byte[byteSize];
         Refinement refinement = new Refinement(refiBytes);
@@ -91,6 +91,7 @@ public class DuItem {
     public void changeRegion(boolean isWest) {
         int nameSize = (isWest) ? DuTeam.US_WEAPON : DuTeam.JP_WEAPON;
         rawName = Hex.changeSizeArray(rawName, nameSize);
+        Hex.setByte2(rawName, rawName.length - 2, 0);
     }
 
     public int length() {
