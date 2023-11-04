@@ -9,7 +9,6 @@ import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 
 public class Hex {
@@ -54,6 +53,16 @@ public class Hex {
         System.arraycopy(source, offset, result, 0, 4);
         return result;
     }
+
+    public static byte[] intToByteArray4(int number) {
+        byte[] byteArray = new byte[4];
+        byteArray[0] = (byte) (number & 0xFF);
+        byteArray[1] = (byte) ((number >> 8) & 0xFF);
+        byteArray[2] = (byte) ((number >> 16) & 0xFF);
+        byteArray[3] = (byte) ((number >> 24) & 0xFF);
+        return byteArray;
+    }
+
 
     public static Color getColor(byte[] byteArray, int offset) {
         double red = (byteArray[offset] & 0xFF) / 255.0;

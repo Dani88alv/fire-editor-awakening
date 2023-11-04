@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<units>
+<units gallery="53" supportLog="1830">
     <unit id="0" name="Avatar (M)" color="#2e2e2e" avatar="true">
         <additions hp="3" str="2" mag="2" skl="0" spd="1" lck="4" def="1" res="1" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
@@ -1224,7 +1224,7 @@
         </supports>
         <flags/>
     </unit>
-    <unit id="52" name="Marth" enemy="true" avatar="true">
+    <unit id="52" name="Marth" color="#325ab4" enemy="true" avatar="true">
         <additions hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="77" class2="4" class3=""/>

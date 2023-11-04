@@ -16,7 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UnitDb {
-
+    private int ENTRIES_GALLERY;
+    private int ENTRIES_SUPPORT_LOG;
     private static final UnitDb database = new UnitDb();
     private static final int DEFAULT_UNIT = 0x35;
     private List<UnitModel> units;
@@ -25,6 +26,14 @@ public class UnitDb {
     public UnitDb() {
         readUnits();
         readEinherjar();
+    }
+
+    public static int entriesUnitGallery() {
+        return database.ENTRIES_GALLERY;
+    }
+
+    public static int entriesSupportLog() {
+        return database.ENTRIES_SUPPORT_LOG;
     }
 
     private static UnitModel getUnit(int id) {
@@ -305,6 +314,14 @@ public class UnitDb {
             SAXBuilder builder = new SAXBuilder();
             Document document = builder.build(is);
             Element rootElement = document.getRootElement();
+
+            String galleryValueStr = rootElement.getAttributeValue("gallery");
+            int galleryValue = galleryValueStr != null ? Integer.parseInt(galleryValueStr) : 53;
+            String supportLogValueStr = rootElement.getAttributeValue("supportLog");
+            int supportLogValue = supportLogValueStr != null ? Integer.parseInt(supportLogValueStr) : 1830;
+            ENTRIES_GALLERY = galleryValue;
+            ENTRIES_SUPPORT_LOG = supportLogValue;
+
 
             String[] stats = new String[]{"hp", "str", "mag", "skl", "spd", "lck", "def", "res", "mov"};
             // Iterate through character elements in the XML

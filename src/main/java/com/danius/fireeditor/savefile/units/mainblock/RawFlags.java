@@ -226,4 +226,8 @@ public class RawFlags {
         return bytes;
     }
 
+    public int length() {
+        return bytes.length;
+    }
+
 }

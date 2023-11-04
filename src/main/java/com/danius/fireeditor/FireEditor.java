@@ -1,6 +1,7 @@
 package com.danius.fireeditor;
 
-import com.danius.fireeditor.controllers.*;
+import com.danius.fireeditor.controllers.CheatController;
+import com.danius.fireeditor.controllers.MainController;
 import com.danius.fireeditor.controllers.convoy.ConvoyController;
 import com.danius.fireeditor.controllers.unit.UnitController;
 import com.danius.fireeditor.controllers.user.UserController;

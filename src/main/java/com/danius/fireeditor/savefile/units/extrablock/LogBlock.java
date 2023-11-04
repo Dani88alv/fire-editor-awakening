@@ -453,7 +453,14 @@ public class LogBlock {
         mainBlock[point] = (byte) (value & 0xFF);
     }
 
-    //0x63-0x64: ?
+    public void removeFooter() {
+        this.footer = new byte[]{};
+    }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 
     public String report() {
         String text = "";

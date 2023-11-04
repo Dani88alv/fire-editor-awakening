@@ -8,23 +8,25 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Global extends SaveFile {
-    public byte[] fileBytes;
-    private byte[] blockIndex;
-    private byte[] blockUser; //Support conversations, hair colors, difficulties, avatar default data
-    private byte[] blockDg18; //Logbook units
+    private final byte[] blockIndex;
+    public GlUserBlock glUserBlock; //Global Unlocks
+    public GlUnitBlock glUnitBlock; //Logbook Units
 
     public Global(byte[] fileBytes) {
         //The save file is decompressed
         if (!isDecompressed(fileBytes)) {
             fileBytes = decompressBytes(fileBytes, 0x0);
         }
-        this.fileBytes = fileBytes;
-        //The blocks are split
+        //Addresses
         this.blockIndex = Arrays.copyOfRange(fileBytes, 0x0, 0x44);
-        this.blockUser = Arrays.copyOfRange(fileBytes,
+        //User Data
+        byte[] userArray = Arrays.copyOfRange(fileBytes,
                 Hex.getByte2(blockIndex, 0x4), Hex.getByte2(blockIndex, 0x8));
-        this.blockDg18 = Arrays.copyOfRange(fileBytes,
+        this.glUserBlock = new GlUserBlock(userArray);
+        //Logbook Units
+        byte[] blockDg18 = Arrays.copyOfRange(fileBytes,
                 Hex.getByte2(blockIndex, 0x8), fileBytes.length);
+        glUnitBlock = new GlUnitBlock(blockDg18);
     }
 
     /*
@@ -32,12 +34,12 @@ public class Global extends SaveFile {
      */
     public byte[] getBytes() {
         Hex.setByte2(blockIndex, 0x4, blockIndex.length); //User offset
-        Hex.setByte2(blockIndex, 0x8, blockIndex.length + blockUser.length); //Dg18 offset
+        Hex.setByte2(blockIndex, 0x8, blockIndex.length + glUserBlock.length()); //Dg18 offset
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
             outputStream.write(blockIndex);
-            outputStream.write(blockUser);
-            outputStream.write(blockDg18);
+            outputStream.write(glUserBlock.getBytes());
+            outputStream.write(glUnitBlock.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
