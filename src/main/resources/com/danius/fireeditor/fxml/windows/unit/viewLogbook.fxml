@@ -35,17 +35,17 @@
                               <Spinner fx:id="spinHair" layoutX="532.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" />
                               <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="450.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../avatar_m/build_01_00.png" />
+                                    <Image url="@../../../portrait/avatar_m/build_01_00.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="451.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../avatar_m/back_01_00.png" />
+                                    <Image url="@../../../portrait/avatar_m/back_01_00.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="451.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../avatar_m/hair_01_00.png" />
+                                    <Image url="@../../../portrait/avatar_m/hair_01_00.png" />
                                  </image>
                               </ImageView>
                               <CheckBox fx:id="checkGender" layoutX="533.0" layoutY="236.0" mnemonicParsing="false" text="Female" />

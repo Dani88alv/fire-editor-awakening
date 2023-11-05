@@ -94,17 +94,17 @@
                <Button fx:id="btnOpenFlags" layoutX="45.0" layoutY="314.0" mnemonicParsing="false" onAction="#openFlags" prefHeight="26.0" prefWidth="110.0" text="Flags" />
                <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@avatar_m/build_01_00.png" />
+                     <Image url="@portrait/avatar_m/build_01_00.png" />
                   </image>
                </ImageView>
                <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@avatar_m/back_01_00.png" />
+                     <Image url="@portrait/avatar_m/back_01_00.png" />
                   </image>
                </ImageView>
                <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@avatar_m/hair_01_00.png" />
+                     <Image url="@portrait/avatar_m/hair_01_00.png" />
                   </image>
                </ImageView>
                <TextField fx:id="txtModif" disable="true" editable="false" layoutX="434.0" layoutY="264.0" />

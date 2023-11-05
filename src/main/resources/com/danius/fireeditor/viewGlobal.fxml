@@ -23,17 +23,17 @@
          <Button layoutX="545.0" layoutY="259.0" mnemonicParsing="false" onAction="#unlockSupports" prefHeight="49.0" prefWidth="174.0" text="Unlock Full Support Log" />
          <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="168.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@avatar_m/build_01_00.png" />
+               <Image url="@portrait/avatar_m/build_01_00.png" />
             </image>
          </ImageView>
          <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="168.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@avatar_m/back_01_00.png" />
+               <Image url="@portrait/avatar_m/back_01_00.png" />
             </image>
          </ImageView>
          <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="168.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@avatar_m/hair_01_00.png" />
+               <Image url="@portrait/avatar_m/hair_01_00.png" />
             </image>
          </ImageView>
          <Label fx:id="labelUnitName" layoutX="168.0" layoutY="12.0" prefHeight="27.0" prefWidth="201.0" text="Units">

@@ -254,19 +254,16 @@ public class SkillDb {
                     //The skill is being forced, no matter the gender
                     if (!skillModel.isForcingGender()) {
                         skillForced = skillModel;
-                        skillForced.setForceToUnit(true);
                         break;
                     }
                     //Skill is being forced by gender and both the skill and the unit are female
                     else if (skillModel.isForcingGender() && skillModel.isForcingFemale() && isUnitFemale) {
                         skillForced = skillModel;
-                        skillForced.setForceToUnit(true);
                         break;
                     }
                     //Skill is being forced by gender and both the skill and the unit are male
                     else if (skillModel.isForcingGender() && skillModel.isForcingMale() && !isUnitFemale) {
                         skillForced = skillModel;
-                        skillForced.setForceToUnit(true);
                         break;
                     }
                 }
@@ -291,7 +288,7 @@ public class SkillDb {
 
         for (SkillModel skillModel : classList) {
             int id = skillModel.getId();
-            if (!uniqueSkillsMap.containsKey(id) || skillModel.isForceToUnit()) {
+            if (!uniqueSkillsMap.containsKey(id)) {
                 uniqueSkillsMap.put(id, skillModel);
             }
         }

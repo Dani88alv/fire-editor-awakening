@@ -17,6 +17,8 @@ import java.util.Objects;
 
 public class Portrait {
 
+    private static final String PORTRAIT_PATH = "portrait/";
+
     public static Image[] setImage(Unit unit) {
         Image[] sprites = new Image[3];
         if (unit == null) return sprites;
@@ -43,7 +45,7 @@ public class Portrait {
                 }
                 //Adult Units
                 else {
-                    String path = "characters/" + unitId + ".png";
+                    String path = PORTRAIT_PATH + "characters/" + unitId + ".png";
                     sprites[0] = readImage(path);
                 }
             }
@@ -60,12 +62,12 @@ public class Portrait {
     }
 
     private static Image getInvalid() {
-        String path = Constants.RES + "characters/" + "what" + ".png";
+        String path = Constants.RES + PORTRAIT_PATH + "characters/" + "what" + ".png";
         return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
     }
 
     private static Image setImageEnemy(Unit unit) {
-        String folderName = "monster/";
+        String folderName = PORTRAIT_PATH + "monster/";
         int army = unit.rawFlags.army(); //9
         int unitClass = unit.rawBlock1.unitClass();
         String fileName = String.valueOf((unitClass + 1));
@@ -78,7 +80,7 @@ public class Portrait {
 
     private static Image[] setImageChildren(Unit unit) {
         Image[] sprites = new Image[3];
-        String path = "children/" + unit.getUnitId();
+        String path = PORTRAIT_PATH + "children/" + unit.getUnitId();
         String buildPath = path + ".png";
         sprites[0] = readImage(buildPath);
         String hairPath = path + "_hair.png";
@@ -101,13 +103,13 @@ public class Portrait {
         //PRIORITY ORDER
         //DLC Units (Eldigan will be considered SpotPass)
         if (unit.hasFaceDlc()) {
-            String path = "dlc/dlc_" + face + ".png";
+            String path = PORTRAIT_PATH + "dlc/dlc_" + face + ".png";
             imgBuild = readImage(path);
         }
         //Regular Avatar
         else if (!unit.isEinherjar() && face <= 0x4) {
             //Path
-            String path = "avatar_";
+            String path = PORTRAIT_PATH + "avatar_";
             if (female) path += "f/";
             else path += "m/";
             //Build sprite
@@ -128,7 +130,7 @@ public class Portrait {
             String path;
             //US/EU check the Einherjar ID
             if (isWest) {
-                path = "spotpass/" + logId + ".png";
+                path = PORTRAIT_PATH + "spotpass/" + logId + ".png";
                 imgBuild = readImage(path);
             }
             //JP checks the name
@@ -136,7 +138,7 @@ public class Portrait {
                 String currentName = unit.getName();
                 String jpName = UnitDb.getEinJpName(logId);
                 if (currentName.equals(jpName)) {
-                    path = "spotpass/" + logId + ".png";
+                    path = PORTRAIT_PATH + "spotpass/" + logId + ".png";
                     imgBuild = readImage(path);
                 } else {
                     imgBuild = einherjarPlaceholder();
@@ -184,23 +186,26 @@ public class Portrait {
     }
 
     private static Image readImage(String filePath) {
-        File imageFile = FireEditor.readResource(filePath);
+        //File imageFile = FireEditor.readResource(filePath);
         try {
+            /*
             if (imageFile != null && imageFile.exists()) {
                 // Load the image from the file
                 return new Image(imageFile.toURI().toString());
             } else {
+
+             */
                 // Load the image from project resources if the file doesn't exist
                 return new Image(Objects.requireNonNull(
                         Portrait.class.getResourceAsStream(Constants.RES + filePath)));
-            }
+            //}
         } catch (Exception e) {
             return getInvalid();
         }
     }
 
     private static Image einherjarPlaceholder() {
-        String path = "/com/danius/fireeditor/spotpass/placeholder.png";
+        String path = "/com/danius/fireeditor/portrait/spotpass/placeholder.png";
         return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
     }
 }

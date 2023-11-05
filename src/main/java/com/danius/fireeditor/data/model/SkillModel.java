@@ -10,9 +10,6 @@ public class SkillModel {
     private boolean item;
     private List<Integer> forceFlags;
     private String forceGender;
-    //Unrelated to the database:
-    private boolean forceToUnit = false; //This skill is not optional
-    private boolean isOptionalInherit = true; //This skill is an optional last skill slot inherit
 
     public SkillModel() {
 
@@ -72,22 +69,6 @@ public class SkillModel {
 
     public void setForceGender(String forceGender) {
         this.forceGender = forceGender;
-    }
-
-    public boolean isForceToUnit() {
-        return forceToUnit;
-    }
-
-    public void setForceToUnit(boolean forceToUnit) {
-        this.forceToUnit = forceToUnit;
-    }
-
-    public boolean isOptionalInherit() {
-        return isOptionalInherit;
-    }
-
-    public void setOptionalInherit(boolean optionalInherit) {
-        isOptionalInherit = optionalInherit;
     }
 
     @Override
