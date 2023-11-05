@@ -251,6 +251,13 @@ public class LogController {
         UI.setTextField(txtChallenge, unit.rawLog.MESSAGE_CHARACTERS);
         UI.setTextField(txtGreeting, unit.rawLog.MESSAGE_CHARACTERS);
         UI.setTextField(txtRecruit, unit.rawLog.MESSAGE_CHARACTERS);
+        //JP Einherjar Portrait
+        txtName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (unit != null && !unit.rawLog.isWest) {
+                displayImage();
+            }
+        });
+
         //Profile options
         setupCombobox(comboDifficulty);
         setupCheckboxFlag(checkGameCasual, 0);

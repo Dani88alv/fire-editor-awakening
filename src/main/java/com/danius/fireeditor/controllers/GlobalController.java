@@ -133,12 +133,37 @@ public class GlobalController {
     }
 
     public void changeRegion() {
-        boolean current = global.glUserBlock.avatarMale.isWest;
+        boolean isCurrentWest = global.glUserBlock.avatarMale.isWest;
+        String originalRegion = (isCurrentWest) ? "US/Europe" : "Japan";
+        String targetRegion = (isCurrentWest) ? "Japan" : "US/Europe";
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Change Region");
+        alert.setHeaderText("Current region: " + originalRegion + "\n" +
+                "The save file will be changed to " + targetRegion);
+        alert.setContentText("Note: The name of the Einherjar Units from the Avatar Logbook will change.");
+        // Add Confirm and Cancel buttons
+        ButtonType confirmButton = new ButtonType("Confirm");
+        ButtonType cancelButton = new ButtonType("Cancel");
+        alert.getButtonTypes().setAll(confirmButton, cancelButton);
+
+        // Show the dialog and wait for a response
+        alert.showAndWait().ifPresent(response -> {
+            if (response == confirmButton) {
+                FireEditor.global.changeRegion(!isCurrentWest);
+                FireEditor.mainController.reloadGlobal(FireEditor.global.getBytes());
+            } else if (response == cancelButton) {
+                return;
+            }
+        });
     }
 
     public void unlockSupports() {
         global.glUserBlock.fullSupportLog();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("All the Support Log and Unit Gallery entries have been unlocked!");
+        alert.showAndWait();
     }
 
 }

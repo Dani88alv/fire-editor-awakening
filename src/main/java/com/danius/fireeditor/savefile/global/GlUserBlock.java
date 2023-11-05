@@ -136,17 +136,26 @@ public class GlUserBlock {
         Hex.setBitFlag(unitGallery, 0x0, bit, set);
     }
 
+    public void setColorFlag(int bit, boolean set) {
+        Hex.setBitFlag(hairColorFlags, 0x0, bit, set);
+    }
+
     public void setSupportFlag(int bit, boolean set) {
         Hex.setBitFlag(supportLog, 0x0, bit, set);
     }
 
     public void fullSupportLog() {
         int unitGallery = UnitDb.entriesUnitGallery();
+        int colors = unitGallery - 1;
         int supportCount = UnitDb.entriesSupportLog();
 
         //The unit gallery is maxed (if not, units will be greyed out on the support log)
         for (int i = 0; i < unitGallery; i++) {
             setUnitGalleryFlag(i, true);
+        }
+        //If the hair color flags are not updated, the units won't show up in the Unit Gallery
+        for (int i = 0; i < colors; i++) {
+            setColorFlag(i, true);
         }
         //The support log is maxed
         for (int i = 0; i < supportCount; i++) {

@@ -124,14 +124,28 @@ public class Portrait {
         //SpotPass Units
         else if (unit.isEinherjar() && unit.hasSpotPassPortrait()) {
             int logId = unit.getLogIdLastByte();
-
-            String path = "spotpass/" + logId + ".png";
-            imgBuild = readImage(path);
+            boolean isWest = unit.isWest;
+            String path;
+            //US/EU check the Einherjar ID
+            if (isWest) {
+                path = "spotpass/" + logId + ".png";
+                imgBuild = readImage(path);
+            }
+            //JP checks the name
+            else {
+                String currentName = unit.getName();
+                String jpName = UnitDb.getEinJpName(logId);
+                if (currentName.equals(jpName)) {
+                    path = "spotpass/" + logId + ".png";
+                    imgBuild = readImage(path);
+                } else {
+                    imgBuild = einherjarPlaceholder();
+                }
+            }
         }
         //Invalid
         else {
-            String path = "/com/danius/fireeditor/spotpass/placeholder.png";
-            imgBuild = new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+            imgBuild = einherjarPlaceholder();
         }
         return new Image[]{imgBuild, imgHairColor, imgHair};
     }
@@ -183,5 +197,10 @@ public class Portrait {
         } catch (Exception e) {
             return getInvalid();
         }
+    }
+
+    private static Image einherjarPlaceholder() {
+        String path = "/com/danius/fireeditor/spotpass/placeholder.png";
+        return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
     }
 }

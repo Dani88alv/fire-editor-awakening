@@ -1,13 +1,20 @@
 package com.danius.fireeditor.data.model;
 
+import javafx.scene.paint.Color;
+
 import java.util.List;
 
 public class EinherjarModel {
 
     private int logId;
+    private int unitId;
     private String name;
+    private int sprite;
     private List<Integer> skills;
     private List<Integer> flags;
+    private List<Integer> items;
+    private List<Integer> growth;
+    private List<Integer> weaponExp;
     private int avatarClass;
     private int asset;
     private int flaw;
@@ -16,7 +23,9 @@ public class EinherjarModel {
     private int hair;
     private int voice;
     private boolean isFemale;
-    private String hairColor;
+    private Color hairColor;
+    private List<String> textEn;
+    private List<String> textJp;
 
     public EinherjarModel() {
 
@@ -118,12 +127,80 @@ public class EinherjarModel {
         isFemale = female;
     }
 
-    public String getHairColor() {
+    public int getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(int sprite) {
+        this.sprite = sprite;
+    }
+
+    public List<Integer> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Integer> items) {
+        this.items = items;
+    }
+
+    public List<Integer> getGrowth() {
+        return growth;
+    }
+
+    public void setGrowth(List<Integer> growth) {
+        this.growth = growth;
+    }
+
+    public List<Integer> getWeaponExp() {
+        return weaponExp;
+    }
+
+    public void setWeaponExp(List<Integer> weaponExp) {
+        this.weaponExp = weaponExp;
+    }
+
+    public String getLanguageName(boolean isWest) {
+        if (isWest) return textEn.get(0);
+        else return textJp.get(0);
+    }
+
+    public String getLanguageGreeting(boolean isWest) {
+        if (isWest) return textEn.get(1);
+        else return textJp.get(1);
+    }
+
+    public String getLanguageChallenge(boolean isWest) {
+        if (isWest) return textEn.get(2);
+        else return textJp.get(2);
+    }
+
+    public String getLanguageRecruit(boolean isWest) {
+        if (isWest) return textEn.get(3);
+        else return textJp.get(3);
+    }
+
+    public void setTextEn(List<String> textEn) {
+        this.textEn = textEn;
+    }
+
+    public void setTextJp(List<String> textJp) {
+        this.textJp = textJp;
+    }
+
+    public Color getHairColor() {
         return hairColor;
     }
 
-    public void setHairColor(String hairColor) {
+    public void setHairColor(Color hairColor) {
         this.hairColor = hairColor;
+    }
+
+    public int getUnitId() {
+        return unitId;
+    }
+
+    public void setUnitId(int unitId) {
+        this.unitId = unitId;
     }
 
     @Override

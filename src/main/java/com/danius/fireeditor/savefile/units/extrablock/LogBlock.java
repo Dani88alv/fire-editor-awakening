@@ -1,5 +1,7 @@
 package com.danius.fireeditor.savefile.units.extrablock;
 
+import com.danius.fireeditor.data.UnitDb;
+import com.danius.fireeditor.data.model.EinherjarModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
 import com.danius.fireeditor.data.MiscDb;
@@ -178,6 +180,20 @@ public class LogBlock {
         Hex.setByte2(textGreeting, textGreeting.length - 2, 0);
         Hex.setByte2(textChallenge, textChallenge.length - 2, 0);
         Hex.setByte2(textRecruit, textRecruit.length - 2, 0);
+
+        updateEinherjarRegion(isWest);
+    }
+
+    private void updateEinherjarRegion(boolean isWest) {
+        if (!isEinherjar() && !hasEinherjarId()) {
+            return;
+        }
+        //The text strings are updated to match the new region
+        EinherjarModel model = UnitDb.getEinherjar(getLogIdLastByte());
+        setName(model.getLanguageName(isWest));
+        setTextGreeting(model.getLanguageGreeting(isWest));
+        setTextChallenge(model.getLanguageChallenge(isWest));
+        setTextRecruit(model.getLanguageRecruit(isWest));
     }
 
 

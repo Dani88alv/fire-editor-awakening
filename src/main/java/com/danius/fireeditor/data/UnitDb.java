@@ -5,6 +5,7 @@ import com.danius.fireeditor.data.model.EinherjarModel;
 import com.danius.fireeditor.data.model.UnitModel;
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.savefile.units.Unit;
+import com.danius.fireeditor.util.Hex;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -43,7 +44,7 @@ public class UnitDb {
         return new UnitModel();
     }
 
-    private static EinherjarModel getEinherjar(int logId) {
+    public static EinherjarModel getEinherjar(int logId) {
         for (EinherjarModel unit : database.einherjar) {
             if (unit.getLogId() == logId) return unit;
         }
@@ -256,6 +257,11 @@ public class UnitDb {
         return getEinherjar(logId).getAvatarClass();
     }
 
+    public static String getEinJpName(int logId) {
+        if (invalidEinherjar(logId)) return "";
+        return getEinherjar(logId).getLanguageName(false);
+    }
+
     public static List<String> getEinherjarNames() {
         List<String> names = new ArrayList<>();
         for (EinherjarModel einherjarModel : database.einherjar) {
@@ -458,6 +464,11 @@ public class UnitDb {
                 // Parse attributes from the XML
                 unit.setLogId(Integer.parseInt(characterElement.getAttributeValue("logId")));
                 unit.setName(characterElement.getAttributeValue("name"));
+                unit.setUnitId(Integer.parseInt(characterElement.getAttributeValue("unit")));
+                unit.setSprite(Integer.parseInt(characterElement.getAttributeValue("sprite")));
+                String color = characterElement.getAttributeValue("color");
+                color = color.startsWith("#") ? color.substring(1) : color;
+                unit.setHairColor(Hex.hexToColor(color));
 
                 //Recruited Skills
                 Element elemSkill = characterElement.getChild("skills");
@@ -467,6 +478,50 @@ public class UnitDb {
                     if (value > 0) skills.add(value);
                 }
                 unit.setSkills(skills);
+
+                //Items
+                Element elemItem = characterElement.getChild("items");
+                List<Integer> items = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    int value = Integer.parseInt(elemItem.getAttributeValue("item" + (i + 1)));
+                    items.add(value);
+                }
+                unit.setItems(items);
+
+                //Growth
+                Element elemGrowth = characterElement.getChild("growth");
+                String[] stats = new String[]{"hp", "str", "mag", "skl", "spd", "lck", "def", "res"};
+                List<Integer> growth = new ArrayList<>();
+                for (String stat : stats) {
+                    int value = Integer.parseInt(elemGrowth.getAttributeValue(stat));
+                    growth.add(value);
+                }
+                unit.setGrowth(growth);
+
+                //Weapon experience
+                Element elemWeapon = characterElement.getChild("weapon");
+                String[] weapons = new String[]{"sword", "lance", "axe", "bow", "tome", "staff"};
+                List<Integer> exp = new ArrayList<>();
+                for (String stat : weapons) {
+                    int value = Integer.parseInt(elemWeapon.getAttributeValue(stat));
+                    exp.add(value);
+                }
+                unit.setWeaponExp(exp);
+
+                //Text
+                Element elemText = characterElement.getChild("text");
+                String jpName = elemText.getChild("name").getAttributeValue("jp");
+                String enName = elemText.getChild("name").getAttributeValue("en");
+                String jpGreeting = elemText.getChild("greeting").getAttributeValue("jp");
+                String enGreeting = elemText.getChild("greeting").getAttributeValue("en");
+                String jpChallenge = elemText.getChild("challenge").getAttributeValue("jp");
+                String enChallenge = elemText.getChild("challenge").getAttributeValue("en");
+                String jpRecruit = elemText.getChild("recruit").getAttributeValue("jp");
+                String enRecruit = elemText.getChild("recruit").getAttributeValue("en");
+                List<String> textEn = List.of(enName, enGreeting, enChallenge, enRecruit);
+                List<String> textJp = List.of(jpName, jpGreeting, jpChallenge, jpRecruit);
+                unit.setTextEn(textEn);
+                unit.setTextJp(textJp);
 
                 //Build
                 Element elemBuild = characterElement.getChild("build");
@@ -478,7 +533,6 @@ public class UnitDb {
                 unit.setHair(Integer.parseInt(elemBuild.getAttributeValue("hair")));
                 unit.setVoice(Integer.parseInt(elemBuild.getAttributeValue("voice")));
                 unit.setFemale(elemBuild.getAttributeValue("gender").equals("1"));
-                //Hair Color Hex Value is missing
 
                 //Flags
                 Element elemFlags = characterElement.getChild("flags");
