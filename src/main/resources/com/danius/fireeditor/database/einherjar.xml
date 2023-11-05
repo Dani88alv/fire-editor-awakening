@@ -1,806 +1,2053 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <units>
-    <unit logId="0" name="Nyna">
+    <unit logId="0" name="Nyna" unit="2" level="1" sprite="556">
         <build class="62" asset="8" flaw="2" build="2" face="0" hair="3" voice="4" gender="1"/>
-        <skills skill1="38" skill2="41" skill3="82" skill4="0" skill5="0"/>
+        <items item1="108" item2="134" item3="0" item4="0" item5="0"/>
+        <growth hp="2" str="255" mag="4" skl="6" spd="7" lck="14" def="1" res="6"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="15" staff="35"/>
+        <skills skill1="82" skill2="41" skill3="38" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ニーナ" en="Nyna"/>
+            <greeting jp="私はアカネイアの王女ニーナです。" en="MID_BOSS_挨拶会話_ニーナ"/>
+            <challenge jp="どうしても戦わねばなりませんか…" en="MID_BOSS_戦闘会話_ニーナ"/>
+            <recruit jp="これも、運命なのでしょう。" en="MID_BOSS_仲間会話_ニーナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="1" name="Caeda">
+    <unit logId="1" name="Caeda" unit="2" level="10" sprite="238">
         <build class="42" asset="5" flaw="2" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <items item1="45" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="5" str="5" mag="255" skl="5" spd="7" lck="13" def="4" res="7"/>
+        <weapon sword="0" lance="35" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="5" skill2="10" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="シーダ" en="Caeda"/>
+            <greeting jp="あなたは愛を信じますか？" en="MID_BOSS_挨拶会話_シーダ"/>
+            <challenge jp="戦うというならその剣でわたしを…" en="MID_BOSS_戦闘会話_シーダ"/>
+            <recruit jp="あなたは私が思ってたとおりの人…" en="MID_BOSS_仲間会話_シーダ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="2" name="Linde">
+    <unit logId="2" name="Linde" unit="2" level="14" sprite="528">
         <build class="55" asset="5" flaw="1" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <items item1="109" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="10" str="254" mag="8" skl="12" spd="10" lck="13" def="2" res="4"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="0"/>
         <skills skill1="3" skill2="30" skill3="34" skill4="0" skill5="0"/>
+        <text>
+            <name jp="リンダ" en="Linde"/>
+            <greeting jp="私はリンダ。ミロア大司祭の娘よ。" en="MID_BOSS_挨拶会話_リンダ"/>
+            <challenge jp="さあ、勝負よ！" en="MID_BOSS_戦闘会話_リンダ"/>
+            <recruit jp="私も共に戦います。" en="MID_BOSS_仲間会話_リンダ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="3" name="Merric">
+    <unit logId="3" name="Merric" unit="2" level="19" sprite="527">
         <build class="54" asset="3" flaw="7" build="1" face="0" hair="1" voice="4" gender="0"/>
-        <skills skill1="3" skill2="29" skill3="30" skill4="0" skill5="0"/>
+        <items item1="117" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="15" str="3" mag="10" skl="11" spd="14" lck="11" def="10" res="4"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="3" skill2="30" skill3="29" skill4="0" skill5="0"/>
+        <text>
+            <name jp="マリク" en="Merric"/>
+            <greeting jp="ぼくはマリク。魔道士だ。" en="MID_BOSS_挨拶会話_マリク"/>
+            <challenge jp="待て！　なぜ、戦わねばならない！" en="MID_BOSS_戦闘会話_マリク"/>
+            <recruit jp="必殺魔法をお見せしましょう！" en="MID_BOSS_仲間会話_マリク"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="4" name="Tiki">
+    <unit logId="4" name="Tiki" unit="2" level="25" sprite="614">
         <build class="68" asset="8" flaw="4" build="0" face="0" hair="2" voice="4" gender="1"/>
-        <skills skill1="21" skill2="24" skill3="69" skill4="0" skill5="0"/>
+        <items item1="146" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="25" str="18" mag="10" skl="15" spd="17" lck="19" def="15" res="14"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="21" skill2="69" skill3="24" skill4="0" skill5="0"/>
+        <text>
+            <name jp="チキ" en="Tiki"/>
+            <greeting jp="わたしはチキ…神竜族の生き残り…" en="MID_BOSS_挨拶会話_チキ"/>
+            <challenge jp="だめ…わたしに…近よらないで…" en="MID_BOSS_戦闘会話_チキ"/>
+            <recruit jp="もう一人ぼっちはイヤだからね…" en="MID_BOSS_仲間会話_チキ"/>
+        </text>
         <flags>
             <flag>0</flag>
             <flag>16</flag>
             <flag>27</flag>
         </flags>
     </unit>
-    <unit logId="5" name="Minerva">
+    <unit logId="5" name="Minerva" unit="2" level="9" sprite="326">
         <build class="48" asset="2" flaw="6" build="2" face="1" hair="0" voice="4" gender="1"/>
-        <skills skill1="2" skill2="23" skill3="29" skill4="36" skill5="0"/>
+        <items item1="71" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="22" str="11" mag="3" skl="13" spd="17" lck="13" def="16" res="6"/>
+        <weapon sword="0" lance="35" axe="90" bow="0" tome="0" staff="0"/>
+        <skills skill1="2" skill2="29" skill3="23" skill4="36" skill5="0"/>
+        <text>
+            <name jp="ミネルバ" en="Minerva"/>
+            <greeting jp="私はマケドニアのミネルバだ。" en="MID_BOSS_挨拶会話_ミネルバ"/>
+            <challenge jp="やむを得ぬ。参る！" en="MID_BOSS_戦闘会話_ミネルバ"/>
+            <recruit jp="すまない。よろしく頼む。" en="MID_BOSS_仲間会話_ミネルバ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="6" name="Ogma">
+    <unit logId="6" name="Ogma" unit="2" level="15" sprite="34">
         <build class="26" asset="4" flaw="3" build="2" face="1" hair="2" voice="4" gender="0"/>
-        <skills skill1="16" skill2="32" skill3="34" skill4="66" skill5="74"/>
+        <items item1="4" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="33" str="19" mag="254" skl="21" spd="22" lck="24" def="15" res="7"/>
+        <weapon sword="60" lance="0" axe="35" bow="0" tome="0" staff="0"/>
+        <skills skill1="16" skill2="34" skill3="74" skill4="66" skill5="32"/>
+        <text>
+            <name jp="オグマ" en="Ogma"/>
+            <greeting jp="俺はタリスの傭兵、オグマだ。" en="MID_BOSS_挨拶会話_オグマ"/>
+            <challenge jp="ケリをつけねばと思っていた。" en="MID_BOSS_戦闘会話_オグマ"/>
+            <recruit jp="俺は俺のできることで力になろう。" en="MID_BOSS_仲間会話_オグマ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="7" name="Navarre">
+    <unit logId="7" name="Navarre" unit="2" level="20" sprite="97">
         <build class="36" asset="5" flaw="7" build="1" face="1" hair="3" voice="4" gender="0"/>
-        <skills skill1="10" skill2="29" skill3="48" skill4="73" skill5="78"/>
+        <items item1="8" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="32" str="18" mag="3" skl="31" spd="27" lck="31" def="14" res="12"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="29"/>
+        <text>
+            <name jp="ナバール" en="Navarre"/>
+            <greeting jp="俺はナバール。傭兵だ…" en="MID_BOSS_挨拶会話_ナバール"/>
+            <challenge jp="かわいそうだが死んでもらう。" en="MID_BOSS_戦闘会話_ナバール"/>
+            <recruit jp="仕方がない、力を貸してやろう。" en="MID_BOSS_仲間会話_ナバール"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="8" name="Gharnef">
+    <unit logId="8" name="Gharnef" unit="2" level="20" sprite="576">
         <build class="65" asset="3" flaw="6" build="2" face="1" hair="4" voice="4" gender="0"/>
-        <skills skill1="39" skill2="40" skill3="68" skill4="77" skill5="85"/>
+        <items item1="123" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="34" str="14" mag="25" skl="30" spd="26" lck="12" def="21" res="25"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="68" skill5="85"/>
+        <text>
+            <name jp="ガーネフ" en="Gharnef"/>
+            <greeting jp="わしこそは魔王ガーネフだ。" en="MID_BOSS_挨拶会話_ガーネフ"/>
+            <challenge jp="お前の思い通りにさせるものか。" en="MID_BOSS_戦闘会話_ガーネフ"/>
+            <recruit jp="面白い。わが力、貸してやろう。" en="MID_BOSS_仲間会話_ガーネフ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="9" name="Pr. Marth">
+    <unit logId="9" name="Pr. Marth" unit="2" level="25" sprite="731">
         <build class="77" asset="6" flaw="1" build="1" face="3" hair="0" voice="4" gender="0"/>
-        <skills skill1="17" skill2="18" skill3="19" skill4="36" skill5="53"/>
+        <items item1="11" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="50" str="22" mag="11" skl="25" spd="24" lck="35" def="16" res="11"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="36" skill2="53" skill3="18" skill4="19" skill5="17"/>
+        <text>
+            <name jp="マルス王子" en="Pr. Marth"/>
+            <greeting jp="ぼくはアリティア王子、マルスだ。" en="MID_BOSS_挨拶会話_マルス王子"/>
+            <challenge jp="ぼくは絶対にあきらめない！" en="MID_BOSS_戦闘会話_マルス王子"/>
+            <recruit jp="これからは共に戦おう！" en="MID_BOSS_仲間会話_マルス王子"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="10" name="Clair">
+    <unit logId="10" name="Clair" unit="2" level="6" sprite="238">
         <build class="42" asset="6" flaw="7" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <items item1="36" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="3" str="2" mag="254" skl="6" spd="5" lck="7" def="0" res="0"/>
+        <weapon sword="0" lance="15" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="5" skill2="24" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="クレア" en="Clair"/>
+            <greeting jp="私はソフィアの騎士クレア。" en="MID_BOSS_挨拶会話_クレア"/>
+            <challenge jp="捕まるなんて失敗は二度としないわ" en="MID_BOSS_戦闘会話_クレア"/>
+            <recruit jp="私も一緒に行きましょう。" en="MID_BOSS_仲間会話_クレア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="11" name="Boey">
+    <unit logId="11" name="Boey" unit="2" level="11" sprite="527">
         <build class="54" asset="7" flaw="5" build="1" face="3" hair="4" voice="4" gender="0"/>
-        <skills skill1="3" skill2="7" skill3="30" skill4="0" skill5="0"/>
+        <items item1="103" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="6" str="0" mag="6" skl="1" spd="2" lck="9" def="0" res="5"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="0"/>
+        <skills skill1="3" skill2="30" skill3="7" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ボーイ" en="Boey"/>
+            <greeting jp="ぼくはボーイ。魔道士だよ。" en="MID_BOSS_挨拶会話_ボーイ"/>
+            <challenge jp="ぼくは子供なんかじゃないよ！" en="MID_BOSS_戦闘会話_ボーイ"/>
+            <recruit jp="一緒に行きますから安心して。" en="MID_BOSS_仲間会話_ボーイ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="12" name="Mycen">
+    <unit logId="12" name="Mycen" unit="2" level="1" sprite="212">
         <build class="14" asset="1" flaw="6" build="2" face="1" hair="0" voice="4" gender="0"/>
-        <skills skill1="6" skill2="15" skill3="27" skill4="0" skill5="0"/>
+        <items item1="61" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="1" str="4" mag="255" skl="10" spd="8" lck="1" def="5" res="6"/>
+        <weapon sword="15" lance="15" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="6" skill4="0" skill5="0"/>
+        <text>
+            <name jp="マイセン" en="Mycen"/>
+            <greeting jp="わしは城を出、世を捨てたものだ。" en="MID_BOSS_挨拶会話_マイセン"/>
+            <challenge jp="悲しい思いをするだけだと言うに。" en="MID_BOSS_戦闘会話_マイセン"/>
+            <recruit jp="さだめは変えられぬ…" en="MID_BOSS_仲間会話_マイセン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="13" name="Valbar">
+    <unit logId="13" name="Valbar" unit="2" level="20" sprite="167">
         <build class="10" asset="7" flaw="8" build="2" face="2" hair="0" voice="4" gender="0"/>
+        <items item1="38" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="20" str="11" mag="254" skl="10" spd="7" lck="1" def="9" res="0"/>
+        <weapon sword="0" lance="60" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="42" skill4="0" skill5="0"/>
+        <text>
+            <name jp="バルボ" en="Valbar"/>
+            <greeting jp="おれはバルボ。アーマーだ。" en="MID_BOSS_挨拶会話_バルボ"/>
+            <challenge jp="それ！　やっちまえ！" en="MID_BOSS_戦闘会話_バルボ"/>
+            <recruit jp="どこでも一緒に行ってやるよ。" en="MID_BOSS_仲間会話_バルボ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="14" name="Luthier">
+    <unit logId="14" name="Luthier" unit="2" level="4" sprite="542">
         <build class="61" asset="6" flaw="2" build="1" face="1" hair="2" voice="4" gender="0"/>
+        <items item1="115" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="17" str="2" mag="17" skl="14" spd="10" lck="0" def="8" res="9"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="0"/>
         <skills skill1="3" skill2="30" skill3="40" skill4="0" skill5="0"/>
+        <text>
+            <name jp="リュート" en="Luthier"/>
+            <greeting jp="妹を助けに行かねば…" en="MID_BOSS_挨拶会話_リュート"/>
+            <challenge jp="わが魔力を試すのか！" en="MID_BOSS_戦闘会話_リュート"/>
+            <recruit jp="ああ、一緒に行こう。" en="MID_BOSS_仲間会話_リュート"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="15" name="Clive">
+    <unit logId="15" name="Clive" unit="2" level="9" sprite="193">
         <build class="12" asset="2" flaw="8" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <items item1="38" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="25" str="18" mag="0" skl="18" spd="15" lck="23" def="17" res="5"/>
+        <weapon sword="35" lance="60" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="15" skill2="27" skill3="45" skill4="74" skill5="0"/>
+        <text>
+            <name jp="クレーベ" en="Clive"/>
+            <greeting jp="ぼくはソフィアの騎士クレーベだ。" en="MID_BOSS_挨拶会話_クレーベ"/>
+            <challenge jp="志半ばで倒れるわけにはいかない！" en="MID_BOSS_戦闘会話_クレーベ"/>
+            <recruit jp="ぼくたちのリーダーになってくれ。" en="MID_BOSS_仲間会話_クレーベ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="16" name="Nomah">
+    <unit logId="16" name="Nomah" unit="2" level="15" sprite="542">
         <build class="61" asset="4" flaw="6" build="2" face="1" hair="2" voice="4" gender="0"/>
-        <skills skill1="3" skill2="30" skill3="43" skill4="52" skill5="56"/>
+        <items item1="105" item2="136" item3="0" item4="0" item5="0"/>
+        <growth hp="29" str="4" mag="20" skl="28" spd="16" lck="5" def="14" res="25"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="60"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="43"/>
+        <text>
+            <name jp="ノーマ" en="Nomah"/>
+            <greeting jp="わしの名はノーマ。ミラの司祭だ。" en="MID_BOSS_挨拶会話_ノーマ"/>
+            <challenge jp="ミラのご加護のあらんことを…" en="MID_BOSS_戦闘会話_ノーマ"/>
+            <recruit jp="わしも一緒に行ってやろう。" en="MID_BOSS_仲間会話_ノーマ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="17" name="Deen">
+    <unit logId="17" name="Deen" unit="2" level="20" sprite="97">
         <build class="36" asset="5" flaw="1" build="2" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="10" skill2="48" skill3="73" skill4="78" skill5="81"/>
+        <items item1="5" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="41" str="22" mag="254" skl="28" spd="23" lck="14" def="17" res="16"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="81"/>
+        <text>
+            <name jp="ディーン" en="Deen"/>
+            <greeting jp="貴様たちに、恨みはないのだが…" en="MID_BOSS_挨拶会話_ディーン"/>
+            <challenge jp="わが剣、とくと味わうがいい。" en="MID_BOSS_戦闘会話_ディーン"/>
+            <recruit jp="よかろう、力を貸してやろう。" en="MID_BOSS_仲間会話_ディーン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="18" name="Celica">
+    <unit logId="18" name="Celica" unit="2" level="20" sprite="556">
         <build class="62" asset="3" flaw="2" build="1" face="2" hair="0" voice="4" gender="1"/>
-        <skills skill1="3" skill2="17" skill3="30" skill4="52" skill5="56"/>
+        <items item1="131" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="30" str="4" mag="24" skl="26" spd="23" lck="30" def="16" res="19"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="60"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="17"/>
+        <text>
+            <name jp="セリカ" en="Celica"/>
+            <greeting jp="どうしたのですか？　私になにか…" en="MID_BOSS_挨拶会話_セリカ"/>
+            <challenge jp="話し合えば、きっと分かるのに…" en="MID_BOSS_戦闘会話_セリカ"/>
+            <recruit jp="なんとかあなたを助けてあげたい…" en="MID_BOSS_仲間会話_セリカ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="19" name="Alm">
+    <unit logId="19" name="Alm" unit="2" level="20" sprite="34">
         <build class="26" asset="2" flaw="5" build="1" face="3" hair="1" voice="4" gender="0"/>
-        <skills skill1="1" skill2="31" skill3="66" skill4="74" skill5="80"/>
+        <items item1="31" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="43" str="29" mag="0" skl="27" spd="23" lck="23" def="25" res="8"/>
+        <weapon sword="90" lance="0" axe="35" bow="0" tome="0" staff="0"/>
+        <skills skill1="1" skill2="31" skill3="74" skill4="66" skill5="80"/>
+        <text>
+            <name jp="アルム" en="Alm"/>
+            <greeting jp="ソフィアの人々を守らないと！" en="MID_BOSS_挨拶会話_アルム"/>
+            <challenge jp="ぼくらは、戦うしかないんだ。" en="MID_BOSS_戦闘会話_アルム"/>
+            <recruit jp="われわれに力を貸してください。" en="MID_BOSS_仲間会話_アルム"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="20" name="Norne">
+    <unit logId="20" name="Norne" unit="2" level="7" sprite="380">
         <build class="23" asset="4" flaw="1" build="1" face="0" hair="2" voice="4" gender="1"/>
+        <items item1="83" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="8" str="2" mag="0" skl="254" spd="5" lck="5" def="2" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="15" tome="0" staff="0"/>
         <skills skill1="4" skill2="5" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ノルン" en="Norne"/>
+            <greeting jp="はじめまして！　ノルンです。" en="MID_BOSS_挨拶会話_ノルン"/>
+            <challenge jp="任務はちゃんと果たします！" en="MID_BOSS_戦闘会話_ノルン"/>
+            <recruit jp="私もちょっとは役に立てるかな？" en="MID_BOSS_仲間会話_ノルン"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="21" name="Catria">
+    <unit logId="21" name="Catria" unit="2" level="11" sprite="238">
         <build class="42" asset="5" flaw="1" build="1" face="0" hair="1" voice="4" gender="1"/>
-        <skills skill1="5" skill2="30" skill3="42" skill4="0" skill5="0"/>
+        <items item1="37" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="12" str="4" mag="255" skl="6" spd="5" lck="8" def="4" res="1"/>
+        <weapon sword="0" lance="35" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="5" skill2="42" skill3="30" skill4="0" skill5="0"/>
+        <text>
+            <name jp="カチュア" en="Catria"/>
+            <greeting jp="白騎士団のカチュアと申します。" en="MID_BOSS_挨拶会話_カチュア"/>
+            <challenge jp="行きます！　覚悟！！" en="MID_BOSS_戦闘会話_カチュア"/>
+            <recruit jp="私も共に戦わせてください。" en="MID_BOSS_仲間会話_カチュア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="22" name="Malice">
+    <unit logId="22" name="Malice" unit="2" level="16" sprite="24">
         <build class="21" asset="2" flaw="1" build="2" face="1" hair="1" voice="4" gender="1"/>
-        <skills skill1="10" skill2="16" skill3="34" skill4="0" skill5="0"/>
+        <items item1="6" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="14" str="8" mag="3" skl="7" spd="9" lck="9" def="8" res="6"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="16" skill2="34" skill3="10" skill4="0" skill5="0"/>
+        <text>
+            <name jp="マリス" en="Malice"/>
+            <greeting jp="俺はマリス。安くない傭兵さ。" en="MID_BOSS_挨拶会話_マリス"/>
+            <challenge jp="早くかかってきな！" en="MID_BOSS_戦闘会話_マリス"/>
+            <recruit jp="俺もお前の仲間になってやる。" en="MID_BOSS_仲間会話_マリス"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="23" name="Athena">
+    <unit logId="23" name="Athena" unit="2" level="2" sprite="107">
         <build class="37" asset="5" flaw="7" build="1" face="1" hair="1" voice="4" gender="1"/>
-        <skills skill1="10" skill2="47" skill3="78" skill4="0" skill5="0"/>
+        <items item1="4" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="15" str="8" mag="1" skl="13" spd="11" lck="14" def="6" res="2"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="47" skill4="0" skill5="0"/>
+        <text>
+            <name jp="アテナ" en="Athena"/>
+            <greeting jp="アテナ、子供と違う。剣士！" en="MID_BOSS_挨拶会話_アテナ"/>
+            <challenge jp="おまえ、アテナと戦うか？" en="MID_BOSS_戦闘会話_アテナ"/>
+            <recruit jp="アテナ、おまえの戦いに力を貸す！" en="MID_BOSS_仲間会話_アテナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="24" name="Horace">
+    <unit logId="24" name="Horace" unit="2" level="8" sprite="170">
         <build class="16" asset="7" flaw="3" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <items item1="38" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="17" mag="0" skl="17" spd="8" lck="11" def="15" res="6"/>
+        <weapon sword="0" lance="60" axe="60" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="60" skill4="61" skill5="0"/>
+        <text>
+            <name jp="ホルス" en="Horace"/>
+            <greeting jp="私は、かつて騎士だった男だ…" en="MID_BOSS_挨拶会話_ホルス"/>
+            <challenge jp="では、武器を構えてくれ。" en="MID_BOSS_戦闘会話_ホルス"/>
+            <recruit jp="なんと…私に…共に戦えと…" en="MID_BOSS_仲間会話_ホルス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="25" name="Etzel">
+    <unit logId="25" name="Etzel" unit="2" level="11" sprite="576">
         <build class="65" asset="7" flaw="6" build="1" face="2" hair="3" voice="4" gender="0"/>
-        <skills skill1="39" skill2="40" skill3="75" skill4="77" skill5="0"/>
+        <items item1="122" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="27" str="3" mag="19" skl="18" spd="14" lck="16" def="15" res="11"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="75" skill5="0"/>
+        <text>
+            <name jp="エッツェル" en="Etzel"/>
+            <greeting jp="おれはエッツェル。魔道使いさ。" en="MID_BOSS_挨拶会話_エッツェル"/>
+            <challenge jp="面倒なことになったな…" en="MID_BOSS_戦闘会話_エッツェル"/>
+            <recruit jp="あんたを信じて共に行こう。" en="MID_BOSS_仲間会話_エッツェル"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="26" name="Legion">
+    <unit logId="26" name="Legion" unit="2" level="15" sprite="296">
         <build class="24" asset="2" flaw="4" build="2" face="2" hair="1" voice="4" gender="0"/>
-        <skills skill1="26" skill2="32" skill3="50" skill4="64" skill5="83"/>
+        <items item1="68" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="39" str="16" mag="255" skl="18" spd="16" lck="7" def="15" res="3"/>
+        <weapon sword="0" lance="0" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="83" skill2="26" skill3="32" skill4="50" skill5="64"/>
+        <text>
+            <name jp="ローロー" en="Legion"/>
+            <greeting jp="ウキキ。オレたちに何か用か？" en="MID_BOSS_挨拶会話_ローロー"/>
+            <challenge jp="ウキキ。お前、オレとやろう。" en="MID_BOSS_戦闘会話_ローロー"/>
+            <recruit jp="あいあい。オレ、あんたの仲間。" en="MID_BOSS_仲間会話_ローロー"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="27" name="Katarina">
+    <unit logId="27" name="Katarina" unit="2" level="18" sprite="556">
         <build class="62" asset="3" flaw="6" build="1" face="3" hair="1" voice="4" gender="1"/>
-        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="68"/>
+        <items item1="129" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="2" mag="20" skl="29" spd="25" lck="13" def="13" res="7"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="35"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="68"/>
+        <text>
+            <name jp="カタリナ" en="Katarina"/>
+            <greeting jp="私はカタリナと申します。" en="MID_BOSS_挨拶会話_カタリナ"/>
+            <challenge jp="私とあなたは敵同士…" en="MID_BOSS_戦闘会話_カタリナ"/>
+            <recruit jp="は、はい。よろしくお願いします。" en="MID_BOSS_仲間会話_カタリナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="28" name="Hardin">
+    <unit logId="28" name="Hardin" unit="2" level="20" sprite="170">
         <build class="16" asset="2" flaw="6" build="2" face="0" hair="2" voice="4" gender="0"/>
-        <skills skill1="6" skill2="28" skill3="60" skill4="77" skill5="79"/>
+        <items item1="47" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="49" str="29" mag="8" skl="31" spd="25" lck="3" def="29" res="14"/>
+        <weapon sword="0" lance="90" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="77"/>
+        <text>
+            <name jp="ハーディン" en="Hardin"/>
+            <greeting jp="この世界はつまらぬ人間ばかりだ…" en="MID_BOSS_挨拶会話_ハーディン"/>
+            <challenge jp="雑兵ども、わざわざ死にに来たか！" en="MID_BOSS_戦闘会話_ハーディン"/>
+            <recruit jp="…しばし座興に付き合ってやろう。" en="MID_BOSS_仲間会話_ハーディン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="29" name="King Marth">
+    <unit logId="29" name="King Marth" unit="2" level="30" sprite="731">
         <build class="77" asset="2" flaw="3" build="1" face="3" hair="0" voice="4" gender="0"/>
-        <skills skill1="20" skill2="73" skill3="74" skill4="75" skill5="80"/>
+        <items item1="16" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="56" str="27" mag="12" skl="30" spd="31" lck="40" def="23" res="16"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="74" skill2="75" skill3="73" skill4="80" skill5="20"/>
+        <text>
+            <name jp="マルス王" en="King Marth"/>
+            <greeting jp="ぼくはアリティア国王、マルスだ。" en="MID_BOSS_挨拶会話_マルス王"/>
+            <challenge jp="ぼくは、最後まであきらめないぞ！" en="MID_BOSS_戦闘会話_マルス王"/>
+            <recruit jp="これからは共に戦おう！" en="MID_BOSS_仲間会話_マルス王"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="30" name="Deirdre">
+    <unit logId="30" name="Deirdre" unit="2" level="7" sprite="572">
         <build class="57" asset="1" flaw="4" build="1" face="2" hair="0" voice="4" gender="1"/>
+        <items item1="120" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="253" mag="7" skl="6" spd="5" lck="1" def="254" res="8"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="15" staff="0"/>
         <skills skill1="39" skill2="82" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ディアドラ" en="Deirdre"/>
+            <greeting jp="お会いできてうれしいです…" en="MID_BOSS_挨拶会話_ディアドラ"/>
+            <challenge jp="ああ…もう…どうしていいか…" en="MID_BOSS_戦闘会話_ディアドラ"/>
+            <recruit jp="はい…ありがとうございます。" en="MID_BOSS_仲間会話_ディアドラ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="31" name="Arden">
+    <unit logId="31" name="Arden" unit="2" level="12" sprite="167">
         <build class="10" asset="7" flaw="4" build="2" face="0" hair="0" voice="4" gender="0"/>
+        <items item1="37" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="10" str="6" mag="254" skl="4" spd="2" lck="0" def="4" res="0"/>
+        <weapon sword="0" lance="35" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="78" skill4="0" skill5="0"/>
+        <text>
+            <name jp="アーダン" en="Arden"/>
+            <greeting jp="俺はこんなに固くて強いのに…" en="MID_BOSS_挨拶会話_アーダン"/>
+            <challenge jp="俺が遅いってのは気に入らねえな！" en="MID_BOSS_戦闘会話_アーダン"/>
+            <recruit jp="はぁ…男はつらいぜ。" en="MID_BOSS_仲間会話_アーダン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="32" name="Jamke">
+    <unit logId="32" name="Jamke" unit="2" level="15" sprite="379">
         <build class="22" asset="2" flaw="4" build="1" face="1" hair="2" voice="4" gender="0"/>
+        <items item1="88" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="14" str="5" mag="1" skl="12" spd="11" lck="4" def="6" res="3"/>
+        <weapon sword="0" lance="0" axe="0" bow="35" tome="0" staff="0"/>
         <skills skill1="4" skill2="33" skill3="84" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ジャムカ" en="Jamke"/>
+            <greeting jp="落ち着け。俺は戦うつもりはない。" en="MID_BOSS_挨拶会話_ジャムカ"/>
+            <challenge jp="退け、お前達を殺したくない。" en="MID_BOSS_戦闘会話_ジャムカ"/>
+            <recruit jp="わかった…そこまで言うのなら。" en="MID_BOSS_仲間会話_ジャムカ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="33" name="Raquesis">
+    <unit logId="33" name="Raquesis" unit="2" level="17" sprite="493">
         <build class="51" asset="6" flaw="2" build="1" face="0" hair="0" voice="4" gender="1"/>
-        <skills skill1="7" skill2="36" skill3="38" skill4="0" skill5="0"/>
+        <items item1="136" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="10" str="1" mag="9" skl="9" spd="12" lck="2" def="7" res="11"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="60"/>
+        <skills skill1="7" skill2="38" skill3="36" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ラケシス" en="Raquesis"/>
+            <greeting jp="それで、わたしに何かご用なの？" en="MID_BOSS_挨拶会話_ラケシス"/>
+            <challenge jp="よらないで！　汚らわしい！" en="MID_BOSS_戦闘会話_ラケシス"/>
+            <recruit jp="一緒に兄様を探してくださるの？" en="MID_BOSS_仲間会話_ラケシス"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="34" name="Ethlyn">
+    <unit logId="34" name="Ethlyn" unit="2" level="5" sprite="505">
         <build class="58" asset="5" flaw="2" build="1" face="3" hair="2" voice="4" gender="1"/>
-        <skills skill1="7" skill2="30" skill3="38" skill4="61" skill5="0"/>
+        <items item1="109" item2="135" item3="0" item4="0" item5="0"/>
+        <growth hp="17" str="3" mag="12" skl="19" spd="13" lck="14" def="7" res="7"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="60"/>
+        <skills skill1="7" skill2="38" skill3="61" skill4="30" skill5="0"/>
+        <text>
+            <name jp="エスリン" en="Ethlyn"/>
+            <greeting jp="私はエスリン。キュアンの妻です。" en="MID_BOSS_挨拶会話_エスリン"/>
+            <challenge jp="やはり戦わねばならないのですね…" en="MID_BOSS_戦闘会話_エスリン"/>
+            <recruit jp="私の杖で助けてあげたい…" en="MID_BOSS_仲間会話_エスリン"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="35" name="Quan">
+    <unit logId="35" name="Quan" unit="2" level="12" sprite="193">
         <build class="12" asset="1" flaw="5" build="1" face="1" hair="4" voice="4" gender="0"/>
+        <items item1="49" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="26" str="22" mag="0" skl="15" spd="15" lck="1" def="17" res="3"/>
+        <weapon sword="35" lance="90" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="15" skill2="27" skill3="45" skill4="74" skill5="0"/>
+        <text>
+            <name jp="キュアン" en="Quan"/>
+            <greeting jp="私はレンスターのキュアンだ。" en="MID_BOSS_挨拶会話_キュアン"/>
+            <challenge jp="戦い方を教えてやる。武器をとれ！" en="MID_BOSS_戦闘会話_キュアン"/>
+            <recruit jp="私も協力させてもらいたい。" en="MID_BOSS_仲間会話_キュアン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="36" name="Ayra">
+    <unit logId="36" name="Ayra" unit="2" level="14" sprite="107">
         <build class="37" asset="4" flaw="7" build="1" face="1" hair="0" voice="4" gender="1"/>
-        <skills skill1="10" skill2="11" skill3="73" skill4="78" skill5="0"/>
+        <items item1="5" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="25" str="14" mag="4" skl="24" spd="25" lck="13" def="9" res="6"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="11" skill5="0"/>
+        <text>
+            <name jp="アイラ" en="Ayra"/>
+            <greeting jp="私はアイラ。イザークの剣士だ。" en="MID_BOSS_挨拶会話_アイラ"/>
+            <challenge jp="私に近づく者はあわれだな…" en="MID_BOSS_戦闘会話_アイラ"/>
+            <recruit jp="では、あなたにこの剣を捧げよう。" en="MID_BOSS_仲間会話_アイラ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="37" name="Lewyn">
+    <unit logId="37" name="Lewyn" unit="2" level="19" sprite="542">
         <build class="61" asset="3" flaw="2" build="1" face="1" hair="2" voice="4" gender="0"/>
-        <skills skill1="3" skill2="26" skill3="30" skill4="52" skill5="56"/>
+        <items item1="116" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="31" str="8" mag="19" skl="23" spd="27" lck="17" def="12" res="17"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="15"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="26"/>
+        <text>
+            <name jp="レヴィン" en="Lewyn"/>
+            <greeting jp="俺はただの旅人…吟遊詩人さ。" en="MID_BOSS_挨拶会話_レヴィン"/>
+            <challenge jp="やれやれ、まいったな。" en="MID_BOSS_戦闘会話_レヴィン"/>
+            <recruit jp="あんたの部隊は美人が多いかい？" en="MID_BOSS_仲間会話_レヴィン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="38" name="Arvis">
+    <unit logId="38" name="Arvis" unit="2" level="20" sprite="576">
         <build class="65" asset="3" flaw="6" build="1" face="1" hair="3" voice="4" gender="0"/>
-        <skills skill1="39" skill2="40" skill3="68" skill4="77" skill5="79"/>
+        <items item1="106" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="52" str="23" mag="25" skl="28" spd="28" lck="8" def="26" res="25"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="68" skill5="79"/>
+        <text>
+            <name jp="アルヴィス" en="Arvis"/>
+            <greeting jp="さて、貴様の器はどの程度か…" en="MID_BOSS_挨拶会話_アルヴィス"/>
+            <challenge jp="ふっ、哀れなものどもよ。" en="MID_BOSS_戦闘会話_アルヴィス"/>
+            <recruit jp="ほう…その勇気はほめてやろう。" en="MID_BOSS_仲間会話_アルヴィス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="39" name="Sigurd">
+    <unit logId="39" name="Sigurd" unit="2" level="20" sprite="193">
         <build class="12" asset="7" flaw="3" build="1" face="0" hair="2" voice="4" gender="0"/>
-        <skills skill1="15" skill2="17" skill3="27" skill4="45" skill5="80"/>
+        <items item1="19" item2="55" item3="0" item4="0" item5="0"/>
+        <growth hp="43" str="26" mag="9" skl="26" spd="23" lck="20" def="20" res="10"/>
+        <weapon sword="90" lance="60" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="17"/>
+        <text>
+            <name jp="シグルド" en="Sigurd"/>
+            <greeting jp="私はグランベルの聖騎士シグルド。" en="MID_BOSS_挨拶会話_シグルド"/>
+            <challenge jp="戦争とは、残酷なものだ。" en="MID_BOSS_戦闘会話_シグルド"/>
+            <recruit jp="そうだ、きみがほしい。" en="MID_BOSS_仲間会話_シグルド"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="40" name="Fee">
+    <unit logId="40" name="Fee" unit="2" level="4" sprite="238">
         <build class="42" asset="5" flaw="1" build="1" face="3" hair="3" voice="4" gender="1"/>
+        <items item1="36" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="4" str="1" mag="254" skl="3" spd="2" lck="5" def="1" res="0"/>
+        <weapon sword="0" lance="15" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="5" skill2="29" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="フィー" en="Fee"/>
+            <greeting jp="わたし、フィーっていいます。" en="MID_BOSS_挨拶会話_フィー"/>
+            <challenge jp="つよいんだ。そうこなくっちゃ！" en="MID_BOSS_戦闘会話_フィー"/>
+            <recruit jp="がんばりましょうね、あいぼう！" en="MID_BOSS_仲間会話_フィー"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="41" name="Arthur">
+    <unit logId="41" name="Arthur" unit="2" level="9" sprite="527">
         <build class="54" asset="4" flaw="2" build="1" face="0" hair="3" voice="4" gender="0"/>
+        <items item1="113" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="8" str="5" mag="4" skl="8" spd="6" lck="4" def="8" res="1"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="15" staff="0"/>
         <skills skill1="3" skill2="32" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="アーサー" en="Arthur"/>
+            <greeting jp="別に急ぐ旅でもないし、何だい？" en="MID_BOSS_挨拶会話_アーサー"/>
+            <challenge jp="面白そうだな、一勝負といこうか。" en="MID_BOSS_戦闘会話_アーサー"/>
+            <recruit jp="よし、俺もしばらく手伝うよ。" en="MID_BOSS_仲間会話_アーサー"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="42" name="Ulster">
+    <unit logId="42" name="Ulster" unit="2" level="15" sprite="73">
         <build class="32" asset="1" flaw="8" build="1" face="0" hair="4" voice="4" gender="0"/>
-        <skills skill1="10" skill2="34" skill3="78" skill4="0" skill5="0"/>
+        <items item1="3" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="12" str="8" mag="254" skl="11" spd="5" lck="8" def="8" res="3"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="34" skill4="0" skill5="0"/>
+        <text>
+            <name jp="スカサハ" en="Ulster"/>
+            <greeting jp="おれはティルナノグのスカサハだ。" en="MID_BOSS_挨拶会話_スカサハ"/>
+            <challenge jp="おれ達だけで戦えると言えるのか？" en="MID_BOSS_戦闘会話_スカサハ"/>
+            <recruit jp="おれも一緒に行こう…" en="MID_BOSS_仲間会話_スカサハ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="43" name="Larcei">
+    <unit logId="43" name="Larcei" unit="2" level="5" sprite="107">
         <build class="37" asset="4" flaw="5" build="1" face="1" hair="4" voice="4" gender="1"/>
-        <skills skill1="10" skill2="23" skill3="73" skill4="78" skill5="0"/>
+        <items item1="4" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="22" str="10" mag="4" skl="18" spd="15" lck="11" def="9" res="5"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="23" skill5="0"/>
+        <text>
+            <name jp="ラクチェ" en="Larcei"/>
+            <greeting jp="私はラクチェ。剣士よ。" en="MID_BOSS_挨拶会話_ラクチェ"/>
+            <challenge jp="私…もう逃げるのはいやなの！" en="MID_BOSS_戦闘会話_ラクチェ"/>
+            <recruit jp="私も一緒に行きます！" en="MID_BOSS_仲間会話_ラクチェ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="44" name="Altena">
+    <unit logId="44" name="Altena" unit="2" level="8" sprite="326">
         <build class="48" asset="2" flaw="3" build="2" face="1" hair="4" voice="4" gender="1"/>
-        <skills skill1="2" skill2="23" skill3="29" skill4="75" skill5="0"/>
+        <items item1="49" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="32" str="17" mag="6" skl="15" spd="16" lck="6" def="22" res="4"/>
+        <weapon sword="0" lance="90" axe="15" bow="0" tome="0" staff="0"/>
+        <skills skill1="2" skill2="29" skill3="23" skill4="75" skill5="0"/>
+        <text>
+            <name jp="アルテナ" en="Altena"/>
+            <greeting jp="私はキュアンの娘、アルテナ。" en="MID_BOSS_挨拶会話_アルテナ"/>
+            <challenge jp="戦場にざれ言は無用だ！！" en="MID_BOSS_戦闘会話_アルテナ"/>
+            <recruit jp="どうか一員に加えていただきたい。" en="MID_BOSS_仲間会話_アルテナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="45" name="Ced">
+    <unit logId="45" name="Ced" unit="2" level="12" sprite="542">
         <build class="61" asset="8" flaw="4" build="1" face="0" hair="1" voice="4" gender="0"/>
-        <skills skill1="3" skill2="10" skill3="30" skill4="56" skill5="0"/>
+        <items item1="116" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="26" str="12" mag="14" skl="12" spd="17" lck="9" def="12" res="4"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="35"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="10" skill5="0"/>
+        <text>
+            <name jp="セティ" en="Ced"/>
+            <greeting jp="私はマギ団のセティだ。" en="MID_BOSS_挨拶会話_セティ"/>
+            <challenge jp="そうむざむざとやられはしないよ。" en="MID_BOSS_戦闘会話_セティ"/>
+            <recruit jp="どこまでもご一緒にまいります！" en="MID_BOSS_仲間会話_セティ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="46" name="Julia">
+    <unit logId="46" name="Julia" unit="2" level="14" sprite="556">
         <build class="62" asset="3" flaw="2" build="1" face="0" hair="0" voice="4" gender="1"/>
+        <items item1="118" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="19" str="1" mag="18" skl="14" spd="12" lck="1" def="4" res="17"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="60"/>
         <skills skill1="3" skill2="30" skill3="56" skill4="62" skill5="0"/>
+        <text>
+            <name jp="ユリア" en="Julia"/>
+            <greeting jp="え？　あなたは誰…？" en="MID_BOSS_挨拶会話_ユリア"/>
+            <challenge jp="わたしは戦う。逃げたりしないわ。" en="MID_BOSS_戦闘会話_ユリア"/>
+            <recruit jp="わたしも共に参ります。" en="MID_BOSS_仲間会話_ユリア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="47" name="Ares">
+    <unit logId="47" name="Ares" unit="2" level="18" sprite="587">
         <build class="63" asset="1" flaw="3" build="1" face="0" hair="3" voice="4" gender="0"/>
-        <skills skill1="24" skill2="39" skill3="40" skill4="77" skill5="85"/>
+        <items item1="20" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="32" str="27" mag="5" skl="25" spd="27" lck="12" def="22" res="14"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="15" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="24" skill4="85" skill5="77"/>
+        <text>
+            <name jp="アレス" en="Ares"/>
+            <greeting jp="俺は黒騎士アレス…" en="MID_BOSS_挨拶会話_アレス"/>
+            <challenge jp="ミストルティンは血をほしがる…" en="MID_BOSS_戦闘会話_アレス"/>
+            <recruit jp="わかった…しばらく様子をみよう。" en="MID_BOSS_仲間会話_アレス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="48" name="Julius">
+    <unit logId="48" name="Julius" unit="2" level="20" sprite="576">
         <build class="65" asset="3" flaw="6" build="1" face="1" hair="3" voice="4" gender="0"/>
-        <skills skill1="32" skill2="39" skill3="40" skill4="68" skill5="77"/>
+        <items item1="123" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="49" str="9" mag="26" skl="26" spd="25" lck="11" def="31" res="25"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="68" skill5="32"/>
+        <text>
+            <name jp="ユリウス" en="Julius"/>
+            <greeting jp="私はロプト一族の力を受け継ぐ者…" en="MID_BOSS_挨拶会話_ユリウス"/>
+            <challenge jp="ふふ…おまえごときに私は倒せぬ。" en="MID_BOSS_戦闘会話_ユリウス"/>
+            <recruit jp="ふっ…そうだな。考えてやろう。" en="MID_BOSS_仲間会話_ユリウス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="49" name="Seliph">
+    <unit logId="49" name="Seliph" unit="2" level="20" sprite="97">
         <build class="36" asset="2" flaw="5" build="1" face="0" hair="1" voice="4" gender="0"/>
-        <skills skill1="10" skill2="36" skill3="48" skill4="73" skill5="78"/>
+        <items item1="19" item2="34" item3="0" item4="0" item5="0"/>
+        <growth hp="49" str="24" mag="13" skl="25" spd="30" lck="36" def="21" res="14"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="36"/>
+        <text>
+            <name jp="セリス" en="Seliph"/>
+            <greeting jp="ぼくはセリス。解放軍を率いてる。" en="MID_BOSS_挨拶会話_セリス"/>
+            <challenge jp="ぼくは父上のように強くなるんだ！" en="MID_BOSS_戦闘会話_セリス"/>
+            <recruit jp="神の御心のおもむくままに…" en="MID_BOSS_仲間会話_セリス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="50" name="Nanna">
+    <unit logId="50" name="Nanna" unit="2" level="3" sprite="493">
         <build class="51" asset="6" flaw="2" build="1" face="0" hair="1" voice="4" gender="1"/>
+        <items item1="133" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="255" str="0" mag="0" skl="5" spd="2" lck="2" def="1" res="255"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="7" skill2="36" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ナンナ" en="Nanna"/>
+            <greeting jp="私はナンナ、ラケシスの子です。" en="MID_BOSS_挨拶会話_ナンナ"/>
+            <challenge jp="あなたは何を考えているの！" en="MID_BOSS_戦闘会話_ナンナ"/>
+            <recruit jp="私の力が必要なのですね？" en="MID_BOSS_仲間会話_ナンナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="51" name="Dagdar">
+    <unit logId="51" name="Dagdar" unit="2" level="1" sprite="289">
         <build class="25" asset="2" flaw="6" build="2" face="0" hair="0" voice="4" gender="0"/>
-        <skills skill1="26" skill2="31" skill3="83" skill4="0" skill5="0"/>
+        <items item1="66" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="12" str="2" mag="255" skl="7" spd="3" lck="1" def="6" res="253"/>
+        <weapon sword="0" lance="0" axe="35" bow="15" tome="0" staff="0"/>
+        <skills skill1="83" skill2="26" skill3="31" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ダグダ" en="Dagdar"/>
+            <greeting jp="わしは紫竜山のダグダだ。" en="MID_BOSS_挨拶会話_ダグダ"/>
+            <challenge jp="みんなまとめてかかってきやがれ！" en="MID_BOSS_戦闘会話_ダグダ"/>
+            <recruit jp="これからはわしが助けよう。" en="MID_BOSS_仲間会話_ダグダ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="52" name="Salem">
+    <unit logId="52" name="Salem" unit="2" level="14" sprite="570">
         <build class="56" asset="4" flaw="6" build="1" face="2" hair="3" voice="4" gender="0"/>
+        <items item1="120" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="10" str="254" mag="10" skl="8" spd="10" lck="3" def="3" res="1"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="0"/>
         <skills skill1="39" skill2="40" skill3="83" skill4="0" skill5="0"/>
+        <text>
+            <name jp="セイラム" en="Salem"/>
+            <greeting jp="私はかつてロプトの神官だった…" en="MID_BOSS_挨拶会話_セイラム"/>
+            <challenge jp="ここより去れ！" en="MID_BOSS_戦闘会話_セイラム"/>
+            <recruit jp="われらと志を同じくする者か？" en="MID_BOSS_仲間会話_セイラム"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="53" name="Olwen">
+    <unit logId="53" name="Olwen" unit="2" level="2" sprite="588">
         <build class="64" asset="2" flaw="7" build="1" face="1" hair="1" voice="4" gender="1"/>
+        <items item1="109" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="13" str="254" mag="14" skl="12" spd="14" lck="6" def="5" res="3"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="35" staff="0"/>
         <skills skill1="3" skill2="30" skill3="78" skill4="0" skill5="0"/>
+        <text>
+            <name jp="オルエン" en="Olwen"/>
+            <greeting jp="私はオルエンと申します。" en="MID_BOSS_挨拶会話_オルエン"/>
+            <challenge jp="何のために戦ってきたのかしら…" en="MID_BOSS_戦闘会話_オルエン"/>
+            <recruit jp="ご一緒させて下さいませんか？" en="MID_BOSS_仲間会話_オルエン"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="54" name="Eyvel">
+    <unit logId="54" name="Eyvel" unit="2" level="6" sprite="107">
         <build class="37" asset="5" flaw="1" build="2" face="1" hair="4" voice="4" gender="1"/>
-        <skills skill1="10" skill2="73" skill3="78" skill4="82" skill5="0"/>
+        <items item1="4" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="21" str="13" mag="7" skl="22" spd="19" lck="25" def="7" res="6"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="82" skill5="0"/>
+        <text>
+            <name jp="エーヴェル" en="Eyvel"/>
+            <greeting jp="私はエーヴェル。フィアナの長よ。" en="MID_BOSS_挨拶会話_エーヴェル"/>
+            <challenge jp="義勇軍の名に恥じない戦いを！" en="MID_BOSS_戦闘会話_エーヴェル"/>
+            <recruit jp="では、私はともに行きます。" en="MID_BOSS_仲間会話_エーヴェル"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="55" name="Finn">
+    <unit logId="55" name="Finn" unit="2" level="12" sprite="193">
         <build class="12" asset="5" flaw="3" build="1" face="1" hair="1" voice="4" gender="0"/>
+        <items item1="39" item2="57" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="17" mag="1" skl="19" spd="21" lck="25" def="15" res="7"/>
+        <weapon sword="35" lance="90" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="15" skill2="27" skill3="45" skill4="82" skill5="0"/>
+        <text>
+            <name jp="フィン" en="Finn"/>
+            <greeting jp="私はレンスターの騎士、フィン。" en="MID_BOSS_挨拶会話_フィン"/>
+            <challenge jp="では、お相手しよう！" en="MID_BOSS_戦闘会話_フィン"/>
+            <recruit jp="共に戦おうと言うのか…" en="MID_BOSS_仲間会話_フィン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="56" name="Saias">
+    <unit logId="56" name="Saias" unit="2" level="17" sprite="542">
         <build class="61" asset="3" flaw="6" build="1" face="0" hair="3" voice="4" gender="0"/>
-        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="63"/>
+        <items item1="105" item2="137" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="254" mag="15" skl="19" spd="11" lck="13" def="8" res="12"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="90"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="63"/>
+        <text>
+            <name jp="サイアス" en="Saias"/>
+            <greeting jp="これは失礼、サイアスと申します。" en="MID_BOSS_挨拶会話_サイアス"/>
+            <challenge jp="あなたでは私に勝てません…" en="MID_BOSS_戦闘会話_サイアス"/>
+            <recruit jp="私は最後までおそばにいましょう。" en="MID_BOSS_仲間会話_サイアス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="57" name="Mareeta">
+    <unit logId="57" name="Mareeta" unit="2" level="19" sprite="107">
         <build class="37" asset="5" flaw="2" build="1" face="3" hair="4" voice="4" gender="1"/>
-        <skills skill1="10" skill2="48" skill3="73" skill4="75" skill5="78"/>
+        <items item1="5" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="32" str="17" mag="0" skl="23" spd="23" lck="24" def="5" res="5"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="75"/>
+        <text>
+            <name jp="マリータ" en="Mareeta"/>
+            <greeting jp="私はフィアナのエーヴェルの娘！" en="MID_BOSS_挨拶会話_マリータ"/>
+            <challenge jp="あなたなんかに負けません！！" en="MID_BOSS_戦闘会話_マリータ"/>
+            <recruit jp="私も一緒に連れていってください！" en="MID_BOSS_仲間会話_マリータ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="58" name="Raydrik">
+    <unit logId="58" name="Raydrik" unit="2" level="20" sprite="170">
         <build class="16" asset="7" flaw="6" build="2" face="1" hair="2" voice="4" gender="0"/>
+        <items item1="61" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="45" str="24" mag="3" skl="24" spd="19" lck="11" def="23" res="15"/>
+        <weapon sword="0" lance="60" axe="60" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="80"/>
+        <text>
+            <name jp="レイドリック" en="Raydrik"/>
+            <greeting jp="ふんっ、このワシに何の用だ？" en="MID_BOSS_挨拶会話_レイドリック"/>
+            <challenge jp="死ぬのはきさまたちの方だ！！" en="MID_BOSS_戦闘会話_レイドリック"/>
+            <recruit jp="…共に戦ってやらんでもないぞ。" en="MID_BOSS_仲間会話_レイドリック"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="59" name="Leif">
+    <unit logId="59" name="Leif" unit="2" level="20" sprite="163">
         <build class="40" asset="5" flaw="4" build="1" face="0" hair="1" voice="4" gender="0"/>
-        <skills skill1="11" skill2="12" skill3="25" skill4="43" skill5="46"/>
+        <items item1="9" item2="32" item3="0" item4="0" item5="0"/>
+        <growth hp="46" str="28" mag="22" skl="27" spd="24" lck="31" def="25" res="10"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="12" skill2="11" skill3="25" skill4="46" skill5="43"/>
+        <text>
+            <name jp="リーフ" en="Leif"/>
+            <greeting jp="ぼくはレンスターのリーフだ。" en="MID_BOSS_挨拶会話_リーフ"/>
+            <challenge jp="ぼくが必ず倒してみせる！！" en="MID_BOSS_戦闘会話_リーフ"/>
+            <recruit jp="ともに戦えるなら、うれしい。" en="MID_BOSS_仲間会話_リーフ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="60" name="Wolt">
+    <unit logId="60" name="Wolt" unit="2" level="4" sprite="379">
         <build class="22" asset="4" flaw="7" build="1" face="0" hair="0" voice="4" gender="0"/>
+        <items item1="100" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="255" skl="251" spd="255" lck="255" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="35" tome="0" staff="0"/>
         <skills skill1="4" skill2="30" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ウォルト" en="Wolt"/>
+            <greeting jp="ぼくはフェレのウォルトです。" en="MID_BOSS_挨拶会話_ウォルト"/>
+            <challenge jp="負けてられない！" en="MID_BOSS_戦闘会話_ウォルト"/>
+            <recruit jp="おそばで学ばせてください。" en="MID_BOSS_仲間会話_ウォルト"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="61" name="Shanna">
+    <unit logId="61" name="Shanna" unit="2" level="10" sprite="238">
         <build class="42" asset="5" flaw="2" build="1" face="0" hair="1" voice="4" gender="1"/>
-        <skills skill1="5" skill2="25" skill3="42" skill4="0" skill5="0"/>
+        <items item1="36" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="4" str="5" mag="3" skl="6" spd="8" lck="6" def="3" res="2"/>
+        <weapon sword="0" lance="15" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="5" skill2="42" skill3="25" skill4="0" skill5="0"/>
+        <text>
+            <name jp="シャニー" en="Shanna"/>
+            <greeting jp="どうしたの？　あたしに何か用？" en="MID_BOSS_挨拶会話_シャニー"/>
+            <challenge jp="よーし、いっくぞーっ！" en="MID_BOSS_戦闘会話_シャニー"/>
+            <recruit jp="これからは一緒だね。" en="MID_BOSS_仲間会話_シャニー"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="62" name="Lugh">
+    <unit logId="62" name="Lugh" unit="2" level="16" sprite="527">
         <build class="54" asset="4" flaw="7" build="1" face="0" hair="1" voice="4" gender="0"/>
-        <skills skill1="3" skill2="11" skill3="30" skill4="0" skill5="0"/>
+        <items item1="103" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="12" str="4" mag="8" skl="9" spd="10" lck="8" def="6" res="6"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="0"/>
+        <skills skill1="3" skill2="30" skill3="11" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ルゥ" en="Lugh"/>
+            <greeting jp="ぼくはルゥ。リキアから来たんだ。" en="MID_BOSS_挨拶会話_ルゥ"/>
+            <challenge jp="ぼくの大事な人のために戦う！" en="MID_BOSS_戦闘会話_ルゥ"/>
+            <recruit jp="一緒に戦わせてください！！" en="MID_BOSS_仲間会話_ルゥ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="63" name="Raigh">
+    <unit logId="63" name="Raigh" unit="2" level="16" sprite="570">
         <build class="56" asset="4" flaw="6" build="1" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="11" skill2="39" skill3="40" skill4="0" skill5="0"/>
+        <items item1="120" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="15" str="2" mag="12" skl="10" spd="9" lck="6" def="5" res="1"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="11" skill4="0" skill5="0"/>
+        <text>
+            <name jp="レイ" en="Raigh"/>
+            <greeting jp="なんだよお前は？" en="MID_BOSS_挨拶会話_レイ"/>
+            <challenge jp="フフン。世の中、バカばっかりだ。" en="MID_BOSS_戦闘会話_レイ"/>
+            <recruit jp="一緒に行ってやるかな。" en="MID_BOSS_仲間会話_レイ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="64" name="Sophia">
+    <unit logId="64" name="Sophia" unit="2" level="3" sprite="578">
         <build class="66" asset="3" flaw="7" build="1" face="2" hair="2" voice="4" gender="1"/>
-        <skills skill1="38" skill2="39" skill3="40" skill4="0" skill5="0"/>
+        <items item1="121" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="13" str="254" mag="13" skl="7" spd="10" lck="5" def="4" res="17"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="38" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ソフィーヤ" en="Sophia"/>
+            <greeting jp="わたしは…ソフィーヤ…" en="MID_BOSS_挨拶会話_ソフィーヤ"/>
+            <challenge jp="悲しい…心が感じられます…" en="MID_BOSS_戦闘会話_ソフィーヤ"/>
+            <recruit jp="一緒に…行きましょう…" en="MID_BOSS_仲間会話_ソフィーヤ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="65" name="Cecilia">
+    <unit logId="65" name="Cecilia" unit="2" level="13" sprite="505">
         <build class="58" asset="4" flaw="1" build="1" face="0" hair="0" voice="4" gender="1"/>
-        <skills skill1="7" skill2="38" skill3="52" skill4="61" skill5="0"/>
+        <items item1="115" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="27" str="3" mag="24" skl="17" spd="17" lck="21" def="10" res="14"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="60" staff="35"/>
+        <skills skill1="7" skill2="38" skill3="61" skill4="52" skill5="0"/>
+        <text>
+            <name jp="セシリア" en="Cecilia"/>
+            <greeting jp="私はエトルリア王国のセシリア。" en="MID_BOSS_挨拶会話_セシリア"/>
+            <challenge jp="正念場ね！" en="MID_BOSS_戦闘会話_セシリア"/>
+            <recruit jp="そうね。考えてもいいわ。" en="MID_BOSS_仲間会話_セシリア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="66" name="Perceval">
+    <unit logId="66" name="Perceval" unit="2" level="18" sprite="193">
         <build class="12" asset="1" flaw="4" build="1" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="15" skill2="19" skill3="27" skill4="45" skill5="80"/>
+        <items item1="39" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="29" str="24" mag="1" skl="20" spd="23" lck="19" def="22" res="11"/>
+        <weapon sword="90" lance="90" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="19"/>
+        <text>
+            <name jp="パーシバル" en="Perceval"/>
+            <greeting jp="わが名はパーシバル。" en="MID_BOSS_挨拶会話_パーシバル"/>
+            <challenge jp="じっくり戦えば、勝機はある。" en="MID_BOSS_戦闘会話_パーシバル"/>
+            <recruit jp="私も助力させてもらう。" en="MID_BOSS_仲間会話_パーシバル"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="67" name="Lilina">
+    <unit logId="67" name="Lilina" unit="2" level="20" sprite="556">
         <build class="62" asset="3" flaw="4" build="1" face="3" hair="0" voice="4" gender="1"/>
-        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="75"/>
+        <items item1="105" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="4" mag="30" skl="24" spd="24" lck="25" def="8" res="16"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="35"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="75"/>
+        <text>
+            <name jp="リリーナ" en="Lilina"/>
+            <greeting jp="私はオスティアのリリーナよ。" en="MID_BOSS_挨拶会話_リリーナ"/>
+            <challenge jp="お父様、どうか私を見守っていて…" en="MID_BOSS_戦闘会話_リリーナ"/>
+            <recruit jp="私もいっしょに行きます！" en="MID_BOSS_仲間会話_リリーナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="68" name="Zephiel">
+    <unit logId="68" name="Zephiel" unit="2" level="20" sprite="170">
         <build class="16" asset="7" flaw="6" build="2" face="1" hair="0" voice="4" gender="0"/>
+        <items item1="42" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="44" str="27" mag="10" skl="27" spd="30" lck="21" def="23" res="29"/>
+        <weapon sword="0" lance="90" axe="60" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="86"/>
+        <text>
+            <name jp="ゼフィール" en="Zephiel"/>
+            <greeting jp="きさま、何用だ？" en="MID_BOSS_挨拶会話_ゼフィール"/>
+            <challenge jp="わしの行く道を邪魔させはせん！" en="MID_BOSS_戦闘会話_ゼフィール"/>
+            <recruit jp="わしに共に行けと言うのか…" en="MID_BOSS_仲間会話_ゼフィール"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="69" name="Roy">
+    <unit logId="69" name="Roy" unit="2" level="20" sprite="34">
         <build class="26" asset="4" flaw="2" build="1" face="0" hair="0" voice="4" gender="0"/>
-        <skills skill1="16" skill2="34" skill3="66" skill4="74" skill5="80"/>
+        <items item1="5" item2="30" item3="0" item4="0" item5="0"/>
+        <growth hp="39" str="24" mag="12" skl="23" spd="24" lck="25" def="18" res="11"/>
+        <weapon sword="90" lance="0" axe="15" bow="0" tome="0" staff="0"/>
+        <skills skill1="16" skill2="34" skill3="74" skill4="66" skill5="80"/>
+        <text>
+            <name jp="ロイ" en="Roy"/>
+            <greeting jp="フェレ侯の息子ロイといいます。" en="MID_BOSS_挨拶会話_ロイ"/>
+            <challenge jp="…受けて立つのは仕方ないよね。" en="MID_BOSS_戦闘会話_ロイ"/>
+            <recruit jp="わかった。ぼくも手伝おう。" en="MID_BOSS_仲間会話_ロイ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="70" name="Florina">
+    <unit logId="70" name="Florina" unit="2" level="3" sprite="238">
         <build class="42" asset="5" flaw="7" build="1" face="2" hair="2" voice="4" gender="1"/>
+        <items item1="40" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="255" skl="2" spd="0" lck="4" def="0" res="0"/>
+        <weapon sword="0" lance="15" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="5" skill2="44" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="フロリーナ" en="Florina"/>
+            <greeting jp="私…フロリーナです…" en="MID_BOSS_挨拶会話_フロリーナ"/>
+            <challenge jp="ごめんなさい…" en="MID_BOSS_戦闘会話_フロリーナ"/>
+            <recruit jp="お役に立てると思います！" en="MID_BOSS_仲間会話_フロリーナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="71" name="Nino">
+    <unit logId="71" name="Nino" unit="2" level="10" sprite="528">
         <build class="55" asset="5" flaw="1" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <items item1="103" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="8" str="255" mag="5" skl="8" spd="7" lck="9" def="2" res="4"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="15" staff="0"/>
         <skills skill1="3" skill2="30" skill3="33" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ニノ" en="Nino"/>
+            <greeting jp="あの…何か、ご用ですか？" en="MID_BOSS_挨拶会話_ニノ"/>
+            <challenge jp="負けない。一人前になるんだから…" en="MID_BOSS_戦闘会話_ニノ"/>
+            <recruit jp="仲間だって言ってくれてうれしい…" en="MID_BOSS_仲間会話_ニノ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="72" name="Serra">
+    <unit logId="72" name="Serra" unit="2" level="14" sprite="458">
         <build class="53" asset="6" flaw="1" build="1" face="3" hair="0" voice="4" gender="1"/>
-        <skills skill1="41" skill2="53" skill3="82" skill4="0" skill5="0"/>
+        <items item1="135" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="7" str="255" mag="6" skl="11" spd="11" lck="6" def="4" res="6"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="35"/>
+        <skills skill1="82" skill2="41" skill3="53" skill4="0" skill5="0"/>
+        <text>
+            <name jp="セーラ" en="Serra"/>
+            <greeting jp="私はセーラよ。よろしくね。" en="MID_BOSS_挨拶会話_セーラ"/>
+            <challenge jp="やっだー！　暴力はんたーい！" en="MID_BOSS_戦闘会話_セーラ"/>
+            <recruit jp="私も行きますってばーーー！" en="MID_BOSS_仲間会話_セーラ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="73" name="Matthew">
+    <unit logId="73" name="Matthew" unit="2" level="17" sprite="122">
         <build class="34" asset="5" flaw="2" build="1" face="0" hair="4" voice="4" gender="0"/>
-        <skills skill1="11" skill2="12" skill3="32" skill4="0" skill5="0"/>
+        <items item1="3" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="11" str="9" mag="0" skl="5" spd="10" lck="5" def="5" res="1"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="12" skill2="11" skill3="32" skill4="0" skill5="0"/>
+        <text>
+            <name jp="マシュー" en="Matthew"/>
+            <greeting jp="おれはマシュー、ケチな盗賊さ。" en="MID_BOSS_挨拶会話_マシュー"/>
+            <challenge jp="わーっ！　待った待った！" en="MID_BOSS_戦闘会話_マシュー"/>
+            <recruit jp="おれもお供しますよ。" en="MID_BOSS_仲間会話_マシュー"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="74" name="Karel">
+    <unit logId="74" name="Karel" unit="2" level="8" sprite="97">
         <build class="36" asset="4" flaw="7" build="1" face="1" hair="3" voice="4" gender="0"/>
-        <skills skill1="10" skill2="73" skill3="75" skill4="78" skill5="0"/>
+        <items item1="4" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="15" str="10" mag="1" skl="21" spd="18" lck="20" def="10" res="10"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="75" skill5="0"/>
+        <text>
+            <name jp="カレル" en="Karel"/>
+            <greeting jp="私はカレル。剣に生きる身だ。" en="MID_BOSS_挨拶会話_カレル"/>
+            <challenge jp="ふ…面白い。宴の始まりだな。" en="MID_BOSS_戦闘会話_カレル"/>
+            <recruit jp="良かろう、私はきみに加勢しよう。" en="MID_BOSS_仲間会話_カレル"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="75" name="Jaffar">
+    <unit logId="75" name="Jaffar" unit="2" level="15" sprite="148">
         <build class="38" asset="4" flaw="6" build="1" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="11" skill2="12" skill3="47" skill4="71" skill5="84"/>
+        <items item1="8" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="25" mag="1" skl="25" spd="26" lck="13" def="22" res="19"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="12" skill2="11" skill3="71" skill4="47" skill5="84"/>
+        <text>
+            <name jp="ジャファル" en="Jaffar"/>
+            <greeting jp="俺は、人だ。殺人道具じゃない…" en="MID_BOSS_挨拶会話_ジャファル"/>
+            <challenge jp="…行くぞ…" en="MID_BOSS_戦闘会話_ジャファル"/>
+            <recruit jp="…仲間だとか、甘い考えは持つな。" en="MID_BOSS_仲間会話_ジャファル"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="76" name="Lyn">
+    <unit logId="76" name="Lyn" unit="2" level="18" sprite="107">
         <build class="37" asset="5" flaw="7" build="1" face="0" hair="2" voice="4" gender="1"/>
-        <skills skill1="10" skill2="46" skill3="48" skill4="73" skill5="78"/>
+        <items item1="22" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="25" str="20" mag="8" skl="25" spd="23" lck="27" def="14" res="11"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="46"/>
+        <text>
+            <name jp="リン" en="Lyn"/>
+            <greeting jp="私はリン。ロルカ族の娘。" en="MID_BOSS_挨拶会話_リン"/>
+            <challenge jp="応戦するわよ！！" en="MID_BOSS_戦闘会話_リン"/>
+            <recruit jp="いっしょに行っちゃだめかな？" en="MID_BOSS_仲間会話_リン"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="77" name="Hector">
+    <unit logId="77" name="Hector" unit="2" level="20" sprite="170">
         <build class="16" asset="2" flaw="5" build="2" face="0" hair="2" voice="4" gender="0"/>
-        <skills skill1="6" skill2="28" skill3="50" skill4="60" skill5="79"/>
+        <items item1="73" item2="81" item3="0" item4="0" item5="0"/>
+        <growth hp="40" str="24" mag="1" skl="23" spd="27" lck="14" def="22" res="4"/>
+        <weapon sword="0" lance="0" axe="90" bow="0" tome="0" staff="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="50"/>
+        <text>
+            <name jp="ヘクトル" en="Hector"/>
+            <greeting jp="俺はヘクトル。オスティア侯弟だ。" en="MID_BOSS_挨拶会話_ヘクトル"/>
+            <challenge jp="めんどくせえことは後回しだ！" en="MID_BOSS_戦闘会話_ヘクトル"/>
+            <recruit jp="これからよろしく頼むぜ！" en="MID_BOSS_仲間会話_ヘクトル"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="78" name="Nergal">
+    <unit logId="78" name="Nergal" unit="2" level="20" sprite="576">
         <build class="65" asset="3" flaw="4" build="2" face="3" hair="4" voice="4" gender="0"/>
-        <skills skill1="39" skill2="40" skill3="68" skill4="77" skill5="85"/>
+        <items item1="123" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="52" str="17" mag="30" skl="23" spd="18" lck="16" def="23" res="27"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="68" skill5="85"/>
+        <text>
+            <name jp="ネルガル" en="Nergal"/>
+            <greeting jp="…私は、なぜこのような場所に…？" en="MID_BOSS_挨拶会話_ネルガル"/>
+            <challenge jp="いいぞ！　力を使いきれ！" en="MID_BOSS_戦闘会話_ネルガル"/>
+            <recruit jp="…運命に抗うことはできん。" en="MID_BOSS_仲間会話_ネルガル"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="79" name="Eliwood">
+    <unit logId="79" name="Eliwood" unit="2" level="20" sprite="193">
         <build class="12" asset="4" flaw="6" build="1" face="0" hair="4" voice="4" gender="0"/>
-        <skills skill1="15" skill2="27" skill3="45" skill4="48" skill5="80"/>
+        <items item1="5" item2="29" item3="0" item4="0" item5="0"/>
+        <growth hp="38" str="24" mag="9" skl="27" spd="27" lck="30" def="22" res="13"/>
+        <weapon sword="90" lance="60" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="48"/>
+        <text>
+            <name jp="エリウッド" en="Eliwood"/>
+            <greeting jp="僕はエリウッド。フェレ公子です。" en="MID_BOSS_挨拶会話_エリウッド"/>
+            <challenge jp="…戦は好きになれない。" en="MID_BOSS_戦闘会話_エリウッド"/>
+            <recruit jp="僕らも協力する。" en="MID_BOSS_仲間会話_エリウッド"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="80" name="Eirika">
+    <unit logId="80" name="Eirika" unit="2" level="5" sprite="728">
         <build class="33" asset="5" flaw="7" build="1" face="3" hair="0" voice="4" gender="1"/>
+        <items item1="33" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="254" lck="3" def="1" res="1"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="10" skill2="82" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="エイリーク" en="Eirika"/>
+            <greeting jp="申し遅れました。エイリークです。" en="MID_BOSS_挨拶会話_エイリーク"/>
+            <challenge jp="敵わぬまでも相手になりましょう。" en="MID_BOSS_戦闘会話_エイリーク"/>
+            <recruit jp="では共に参りましょう。" en="MID_BOSS_仲間会話_エイリーク"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="81" name="Amelia">
+    <unit logId="81" name="Amelia" unit="2" level="7" sprite="168">
         <build class="11" asset="6" flaw="8" build="1" face="3" hair="1" voice="4" gender="1"/>
+        <items item1="36" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="3" str="255" mag="0" skl="2" spd="4" lck="4" def="254" res="5"/>
+        <weapon sword="0" lance="15" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="53" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="アメリア" en="Amelia"/>
+            <greeting jp="あたしはアメリア。グラドの兵。" en="MID_BOSS_挨拶会話_アメリア"/>
+            <challenge jp="しょ…勝負したり…するんですか？" en="MID_BOSS_戦闘会話_アメリア"/>
+            <recruit jp="は、はいっ！　頑張りますっ！" en="MID_BOSS_仲間会話_アメリア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="82" name="Moulder">
+    <unit logId="82" name="Moulder" unit="2" level="14" sprite="449">
         <build class="52" asset="4" flaw="6" build="2" face="1" hair="0" voice="4" gender="0"/>
-        <skills skill1="1" skill2="41" skill3="82" skill4="0" skill5="0"/>
+        <items item1="135" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="13" str="6" mag="7" skl="12" spd="10" lck="3" def="4" res="6"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="35"/>
+        <skills skill1="82" skill2="41" skill3="1" skill4="0" skill5="0"/>
+        <text>
+            <name jp="モルダ" en="Moulder"/>
+            <greeting jp="ご用ですかな？" en="MID_BOSS_挨拶会話_モルダ"/>
+            <challenge jp="…あまり無茶はせぬように。" en="MID_BOSS_戦闘会話_モルダ"/>
+            <recruit jp="喜ばしいことですな。" en="MID_BOSS_仲間会話_モルダ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="83" name="Lute">
+    <unit logId="83" name="Lute" unit="2" level="17" sprite="528">
         <build class="55" asset="3" flaw="1" build="1" face="3" hair="4" voice="4" gender="1"/>
-        <skills skill1="3" skill2="13" skill3="30" skill4="0" skill5="0"/>
+        <items item1="104" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="11" str="255" mag="8" skl="7" spd="9" lck="11" def="2" res="7"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="0"/>
+        <skills skill1="3" skill2="30" skill3="13" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ルーテ" en="Lute"/>
+            <greeting jp="私はルーテ、稀代の魔道士です。" en="MID_BOSS_挨拶会話_ルーテ"/>
+            <challenge jp="私の魔道でた易く倒せるでしょう。" en="MID_BOSS_戦闘会話_ルーテ"/>
+            <recruit jp="私、優秀ですから。" en="MID_BOSS_仲間会話_ルーテ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="84" name="Marisa">
+    <unit logId="84" name="Marisa" unit="2" level="5" sprite="107">
         <build class="37" asset="5" flaw="2" build="1" face="3" hair="2" voice="4" gender="1"/>
-        <skills skill1="10" skill2="29" skill3="73" skill4="78" skill5="0"/>
+        <items item1="8" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="15" str="14" mag="9" skl="20" spd="17" lck="24" def="7" res="8"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="29" skill5="0"/>
+        <text>
+            <name jp="マリカ" en="Marisa"/>
+            <greeting jp="なに？" en="MID_BOSS_挨拶会話_マリカ"/>
+            <challenge jp="手合わせならいつでもする。" en="MID_BOSS_戦闘会話_マリカ"/>
+            <recruit jp="一緒に戦う。" en="MID_BOSS_仲間会話_マリカ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="85" name="Innes">
+    <unit logId="85" name="Innes" unit="2" level="12" sprite="401">
         <build class="30" asset="2" flaw="1" build="1" face="1" hair="0" voice="4" gender="0"/>
-        <skills skill1="4" skill2="9" skill3="19" skill4="33" skill5="0"/>
+        <items item1="101" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="25" str="18" mag="0" skl="16" spd="21" lck="21" def="10" res="12"/>
+        <weapon sword="0" lance="0" axe="0" bow="90" tome="0" staff="0"/>
+        <skills skill1="4" skill2="33" skill3="9" skill4="19" skill5="0"/>
+        <text>
+            <name jp="ヒーニアス" en="Innes"/>
+            <greeting jp="私はフレリア王子だ。" en="MID_BOSS_挨拶会話_ヒーニアス"/>
+            <challenge jp="その身をもって知るがいい！" en="MID_BOSS_戦闘会話_ヒーニアス"/>
+            <recruit jp="ふん、良かろう。" en="MID_BOSS_仲間会話_ヒーニアス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="86" name="L'Arachel">
+    <unit logId="86" name="L'Arachel" unit="2" level="18" sprite="479">
         <build class="60" asset="3" flaw="7" build="1" face="3" hair="2" voice="4" gender="1"/>
-        <skills skill1="7" skill2="38" skill3="43" skill4="59" skill5="61"/>
+        <items item1="67" item2="137" item3="0" item4="0" item5="0"/>
+        <growth hp="21" str="12" mag="17" skl="17" spd="21" lck="29" def="9" res="21"/>
+        <weapon sword="0" lance="0" axe="60" bow="0" tome="0" staff="90"/>
+        <skills skill1="7" skill2="38" skill3="59" skill4="43" skill5="61"/>
+        <text>
+            <name jp="ラーチェル" en="L'Arachel"/>
+            <greeting jp="私は、神の忠実なる僕ラーチェル。" en="MID_BOSS_挨拶会話_ラーチェル"/>
+            <challenge jp="成敗せよとの神のお導きですわね。" en="MID_BOSS_戦闘会話_ラーチェル"/>
+            <recruit jp="ぜひご一緒させていただきますわ。" en="MID_BOSS_仲間会話_ラーチェル"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="87" name="Seth">
+    <unit logId="87" name="Seth" unit="2" level="20" sprite="193">
         <build class="12" asset="1" flaw="6" build="2" face="3" hair="1" voice="4" gender="0"/>
-        <skills skill1="15" skill2="27" skill3="45" skill4="49" skill5="80"/>
+        <items item1="39" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="32" str="24" mag="5" skl="26" spd="22" lck="22" def="21" res="11"/>
+        <weapon sword="60" lance="90" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="49"/>
+        <text>
+            <name jp="ゼト" en="Seth"/>
+            <greeting jp="何者か？" en="MID_BOSS_挨拶会話_ゼト"/>
+            <challenge jp="これも我が使命…覚悟を。" en="MID_BOSS_戦闘会話_ゼト"/>
+            <recruit jp="では、参りましょう。" en="MID_BOSS_仲間会話_ゼト"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="88" name="Lyon">
+    <unit logId="88" name="Lyon" unit="2" level="20" sprite="576">
         <build class="65" asset="3" flaw="6" build="1" face="2" hair="3" voice="4" gender="0"/>
-        <skills skill1="39" skill2="40" skill3="52" skill4="68" skill5="77"/>
+        <items item1="123" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="34" str="24" mag="25" skl="19" spd="16" lck="2" def="25" res="27"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="68" skill5="52"/>
+        <text>
+            <name jp="リオン" en="Lyon"/>
+            <greeting jp="僕は、グラド皇子リオンだ。" en="MID_BOSS_挨拶会話_リオン"/>
+            <challenge jp="僕は…きみを…壊してしまう…" en="MID_BOSS_戦闘会話_リオン"/>
+            <recruit jp="僕はずっと君の味方だから。" en="MID_BOSS_仲間会話_リオン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="89" name="Ephraim">
+    <unit logId="89" name="Ephraim" unit="2" level="20" sprite="212">
         <build class="14" asset="2" flaw="8" build="1" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="15" skill2="19" skill3="20" skill4="27" skill5="75"/>
+        <items item1="39" item2="56" item3="0" item4="0" item5="0"/>
+        <growth hp="42" str="25" mag="1" skl="29" spd="27" lck="27" def="21" res="9"/>
+        <weapon sword="35" lance="90" axe="35" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="75" skill4="19" skill5="20"/>
+        <text>
+            <name jp="エフラム" en="Ephraim"/>
+            <greeting jp="俺はルネス王子エフラム。" en="MID_BOSS_挨拶会話_エフラム"/>
+            <challenge jp="俺は勝ち目のない戦いはしない。" en="MID_BOSS_戦闘会話_エフラム"/>
+            <recruit jp="その気があるなら、協力してくれ。" en="MID_BOSS_仲間会話_エフラム"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="90" name="Mist">
+    <unit logId="90" name="Mist" unit="2" level="1" sprite="458">
         <build class="53" asset="6" flaw="7" build="1" face="3" hair="1" voice="4" gender="1"/>
-        <skills skill1="3" skill2="82" skill3="0" skill4="0" skill5="0"/>
+        <items item1="133" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="253" str="255" mag="255" skl="2" spd="2" lck="254" def="1" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="82" skill2="3" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ミスト" en="Mist"/>
+            <greeting jp="あたしはミスト。アイクの妹よ。" en="MID_BOSS_挨拶会話_ミスト"/>
+            <challenge jp="できれば…争いたくないのに。" en="MID_BOSS_戦闘会話_ミスト"/>
+            <recruit jp="悪いやつを一緒にぶっとばそう！" en="MID_BOSS_仲間会話_ミスト"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="91" name="Soren">
+    <unit logId="91" name="Soren" unit="2" level="12" sprite="527">
         <build class="54" asset="3" flaw="2" build="1" face="0" hair="3" voice="4" gender="0"/>
-        <skills skill1="3" skill2="13" skill3="30" skill4="0" skill5="0"/>
+        <items item1="113" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="6" str="1" mag="7" skl="14" spd="10" lck="4" def="1" res="9"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="15" staff="0"/>
+        <skills skill1="3" skill2="30" skill3="13" skill4="0" skill5="0"/>
+        <text>
+            <name jp="セネリオ" en="Soren"/>
+            <greeting jp="われわれに何かご用でしょうか？" en="MID_BOSS_挨拶会話_セネリオ"/>
+            <challenge jp="戦闘は避けたいのですが…" en="MID_BOSS_戦闘会話_セネリオ"/>
+            <recruit jp="僕の居場所ではないのですが…" en="MID_BOSS_仲間会話_セネリオ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="92" name="Mia">
+    <unit logId="92" name="Mia" unit="2" level="14" sprite="83">
         <build class="33" asset="5" flaw="2" build="1" face="3" hair="1" voice="4" gender="1"/>
-        <skills skill1="10" skill2="33" skill3="78" skill4="0" skill5="0"/>
+        <items item1="3" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="6" str="5" mag="0" skl="6" spd="6" lck="8" def="4" res="2"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="33" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ワユ" en="Mia"/>
+            <greeting jp="あたしはワユ。クリミアの傭兵。" en="MID_BOSS_挨拶会話_ワユ"/>
+            <challenge jp="いいねぇ。そうこなくっちゃ！" en="MID_BOSS_戦闘会話_ワユ"/>
+            <recruit jp="あたしも加勢させてもらうよ。" en="MID_BOSS_仲間会話_ワユ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="93" name="Zihark">
+    <unit logId="93" name="Zihark" unit="2" level="19" sprite="73">
         <build class="32" asset="5" flaw="3" build="1" face="1" hair="3" voice="4" gender="0"/>
-        <skills skill1="10" skill2="29" skill3="78" skill4="0" skill5="0"/>
+        <items item1="8" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="14" str="11" mag="1" skl="11" spd="10" lck="6" def="8" res="0"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="29" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ツイハーク" en="Zihark"/>
+            <greeting jp="俺はトハ自警団のツイハークだ。" en="MID_BOSS_挨拶会話_ツイハーク"/>
+            <challenge jp="他人と剣を競うのは好きじゃない…" en="MID_BOSS_戦闘会話_ツイハーク"/>
+            <recruit jp="俺を…君たちの仲間にしてくれ。" en="MID_BOSS_仲間会話_ツイハーク"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="94" name="Titania">
+    <unit logId="94" name="Titania" unit="2" level="6" sprite="213">
         <build class="15" asset="4" flaw="3" build="2" face="0" hair="2" voice="4" gender="1"/>
+        <items item1="79" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="20" str="14" mag="11" skl="17" spd="18" lck="15" def="8" res="10"/>
+        <weapon sword="15" lance="35" axe="60" bow="0" tome="0" staff="0"/>
         <skills skill1="15" skill2="27" skill3="75" skill4="81" skill5="0"/>
+        <text>
+            <name jp="ティアマト" en="Titania"/>
+            <greeting jp="グレイル傭兵団副長ティアマトよ。" en="MID_BOSS_挨拶会話_ティアマト"/>
+            <challenge jp="相手になってあげるわ。" en="MID_BOSS_戦闘会話_ティアマト"/>
+            <recruit jp="共に、戦いましょう。" en="MID_BOSS_仲間会話_ティアマト"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="95" name="Elincia">
+    <unit logId="95" name="Elincia" unit="2" level="11" sprite="269">
         <build class="43" asset="3" flaw="1" build="1" face="0" hair="0" voice="4" gender="1"/>
-        <skills skill1="5" skill2="42" skill3="43" skill4="58" skill5="0"/>
+        <items item1="36" item2="136" item3="0" item4="0" item5="0"/>
+        <growth hp="21" str="5" mag="18" skl="12" spd="11" lck="21" def="6" res="11"/>
+        <weapon sword="0" lance="15" axe="0" bow="0" tome="0" staff="60"/>
+        <skills skill1="5" skill2="42" skill3="58" skill4="43" skill5="0"/>
+        <text>
+            <name jp="エリンシア" en="Elincia"/>
+            <greeting jp="私はクリミア王ラモンの娘です。" en="MID_BOSS_挨拶会話_エリンシア"/>
+            <challenge jp="とにかく、やってみます。" en="MID_BOSS_戦闘会話_エリンシア"/>
+            <recruit jp="私も戦列に加えてください。" en="MID_BOSS_仲間会話_エリンシア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="96" name="Geoffrey">
+    <unit logId="96" name="Geoffrey" unit="2" level="15" sprite="193">
         <build class="12" asset="5" flaw="6" build="1" face="1" hair="4" voice="4" gender="0"/>
-        <skills skill1="15" skill2="23" skill3="27" skill4="45" skill5="80"/>
+        <items item1="39" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="27" str="20" mag="8" skl="17" spd="15" lck="12" def="19" res="6"/>
+        <weapon sword="35" lance="90" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="23"/>
+        <text>
+            <name jp="ジョフレ" en="Geoffrey"/>
+            <greeting jp="私はクリミアの騎士、ジョフレだ。" en="MID_BOSS_挨拶会話_ジョフレ"/>
+            <challenge jp="クリミア万歳！" en="MID_BOSS_戦闘会話_ジョフレ"/>
+            <recruit jp="いいだろう。共に戦おう。" en="MID_BOSS_仲間会話_ジョフレ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="97" name="Lucia">
+    <unit logId="97" name="Lucia" unit="2" level="19" sprite="107">
         <build class="37" asset="4" flaw="7" build="1" face="1" hair="4" voice="4" gender="1"/>
-        <skills skill1="10" skill2="17" skill3="48" skill4="73" skill5="78"/>
+        <items item1="4" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="18" mag="10" skl="24" spd="24" lck="16" def="9" res="6"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="17"/>
+        <text>
+            <name jp="ルキノ" en="Lucia"/>
+            <greeting jp="私はクリミアの騎士、ルキノよ。" en="MID_BOSS_挨拶会話_ルキノ"/>
+            <challenge jp="今こそ、戦いの時！" en="MID_BOSS_戦闘会話_ルキノ"/>
+            <recruit jp="ええ、一緒に戦いましょう。" en="MID_BOSS_仲間会話_ルキノ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="98" name="Ashnard">
+    <unit logId="98" name="Ashnard" unit="2" level="20" sprite="325">
         <build class="47" asset="2" flaw="4" build="2" face="1" hair="2" voice="4" gender="0"/>
-        <skills skill1="2" skill2="23" skill3="29" skill4="43" skill5="64"/>
+        <items item1="62" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="51" str="29" mag="23" skl="28" spd="22" lck="6" def="27" res="25"/>
+        <weapon sword="0" lance="60" axe="90" bow="0" tome="0" staff="0"/>
+        <skills skill1="2" skill2="29" skill3="23" skill4="64" skill5="43"/>
+        <text>
+            <name jp="アシュナード" en="Ashnard"/>
+            <greeting jp="なんだ、貴様は…" en="MID_BOSS_挨拶会話_アシュナード"/>
+            <challenge jp="我を存分に楽しませてみせよ！" en="MID_BOSS_戦闘会話_アシュナード"/>
+            <recruit jp="フン、やむをえぬな…" en="MID_BOSS_仲間会話_アシュナード"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="99" name="Ike">
+    <unit logId="99" name="Ike" unit="2" level="20" sprite="34">
         <build class="26" asset="2" flaw="6" build="1" face="1" hair="4" voice="4" gender="0"/>
-        <skills skill1="16" skill2="34" skill3="66" skill4="72" skill5="74"/>
+        <items item1="23" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="51" str="29" mag="13" skl="27" spd="26" lck="28" def="24" res="14"/>
+        <weapon sword="90" lance="0" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="16" skill2="34" skill3="74" skill4="66" skill5="72"/>
+        <text>
+            <name jp="アイク" en="Ike"/>
+            <greeting jp="俺は、グレイル傭兵団のアイクだ。" en="MID_BOSS_挨拶会話_アイク"/>
+            <challenge jp="覚悟しろ！" en="MID_BOSS_戦闘会話_アイク"/>
+            <recruit jp="ならば、いっしょに戦おう。" en="MID_BOSS_仲間会話_アイク"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="100" name="Edward">
+    <unit logId="100" name="Edward" unit="2" level="4" sprite="73">
         <build class="32" asset="1" flaw="3" build="1" face="3" hair="4" voice="4" gender="0"/>
+        <items item1="2" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="252" str="1" mag="255" skl="2" spd="1" lck="4" def="1" res="0"/>
+        <weapon sword="15" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="10" skill2="31" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="エディ" en="Edward"/>
+            <greeting jp="おれはエディ。暁の団の一員だ。" en="MID_BOSS_挨拶会話_エディ"/>
+            <challenge jp="子供扱いすんなよ！" en="MID_BOSS_戦闘会話_エディ"/>
+            <recruit jp="いいぜ。一緒に行ってやる。" en="MID_BOSS_仲間会話_エディ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="101" name="Leonardo">
+    <unit logId="101" name="Leonardo" unit="2" level="7" sprite="379">
         <build class="22" asset="4" flaw="5" build="1" face="1" hair="0" voice="4" gender="0"/>
+        <items item1="83" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="4" str="2" mag="0" skl="2" spd="6" lck="4" def="1" res="5"/>
+        <weapon sword="0" lance="0" axe="0" bow="15" tome="0" staff="0"/>
         <skills skill1="4" skill2="15" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="レオナルド" en="Leonardo"/>
+            <greeting jp="いったい何の用？" en="MID_BOSS_挨拶会話_レオナルド"/>
+            <challenge jp="僕たちより、戦い慣れしてる…" en="MID_BOSS_戦闘会話_レオナルド"/>
+            <recruit jp="とにかく、がんばるよ。" en="MID_BOSS_仲間会話_レオナルド"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="102" name="Brom">
+    <unit logId="102" name="Brom" unit="2" level="14" sprite="167">
         <build class="10" asset="6" flaw="5" build="2" face="3" hair="4" voice="4" gender="0"/>
+        <items item1="37" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="12" str="7" mag="2" skl="11" spd="12" lck="14" def="7" res="8"/>
+        <weapon sword="0" lance="35" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="35" skill4="0" skill5="0"/>
+        <text>
+            <name jp="チャップ" en="Brom"/>
+            <greeting jp="なんじゃ、お前さんがたは…" en="MID_BOSS_挨拶会話_チャップ"/>
+            <challenge jp="なんとも…やりきれん話じゃ…" en="MID_BOSS_戦闘会話_チャップ"/>
+            <recruit jp="ちょっと手伝ってもええがのう。" en="MID_BOSS_仲間会話_チャップ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="103" name="Nephenee">
+    <unit logId="103" name="Nephenee" unit="2" level="18" sprite="168">
         <build class="11" asset="4" flaw="1" build="2" face="0" hair="3" voice="4" gender="1"/>
+        <items item1="37" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="18" str="7" mag="6" skl="15" spd="15" lck="11" def="6" res="13"/>
+        <weapon sword="0" lance="35" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="6" skill2="28" skill3="32" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ネフェニー" en="Nephenee"/>
+            <greeting jp="あの……なん、ですか？" en="MID_BOSS_挨拶会話_ネフェニー"/>
+            <challenge jp="怪我せんうちに逃げた方がええよ。" en="MID_BOSS_戦闘会話_ネフェニー"/>
+            <recruit jp="あたし……田舎もんじゃけど…" en="MID_BOSS_仲間会話_ネフェニー"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="104" name="Sanaki">
+    <unit logId="104" name="Sanaki" unit="2" level="5" sprite="556">
         <build class="62" asset="3" flaw="7" build="0" face="1" hair="1" voice="4" gender="1"/>
+        <items item1="104" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="10" str="254" mag="14" skl="13" spd="12" lck="24" def="6" res="17"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="35" staff="15"/>
         <skills skill1="3" skill2="30" skill3="56" skill4="75" skill5="0"/>
+        <text>
+            <name jp="サナキ" en="Sanaki"/>
+            <greeting jp="私はベグニオン神使、サナキじゃ。" en="MID_BOSS_挨拶会話_サナキ"/>
+            <challenge jp="…私は諦めぬ。" en="MID_BOSS_戦闘会話_サナキ"/>
+            <recruit jp="これよりそなたと共に戦おう。" en="MID_BOSS_仲間会話_サナキ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="105" name="Sigrun">
+    <unit logId="105" name="Sigrun" unit="2" level="12" sprite="269">
         <build class="43" asset="6" flaw="1" build="2" face="0" hair="2" voice="4" gender="1"/>
-        <skills skill1="5" skill2="41" skill3="42" skill4="58" skill5="0"/>
+        <items item1="38" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="29" str="18" mag="11" skl="21" spd="22" lck="22" def="17" res="18"/>
+        <weapon sword="0" lance="60" axe="0" bow="0" tome="0" staff="35"/>
+        <skills skill1="5" skill2="42" skill3="58" skill4="41" skill5="0"/>
+        <text>
+            <name jp="シグルーン" en="Sigrun"/>
+            <greeting jp="我こそは神使親衛隊長シグルーン！" en="MID_BOSS_挨拶会話_シグルーン"/>
+            <challenge jp="これより交戦に入ります！" en="MID_BOSS_戦闘会話_シグルーン"/>
+            <recruit jp="…これからは私がついております。" en="MID_BOSS_仲間会話_シグルーン"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="106" name="Sothe">
+    <unit logId="106" name="Sothe" unit="2" level="15" sprite="163">
         <build class="40" asset="4" flaw="1" build="1" face="3" hair="1" voice="4" gender="0"/>
-        <skills skill1="11" skill2="12" skill3="25" skill4="45" skill5="46"/>
+        <items item1="4" item2="9" item3="0" item4="0" item5="0"/>
+        <growth hp="25" str="20" mag="16" skl="23" spd="19" lck="13" def="21" res="4"/>
+        <weapon sword="60" lance="0" axe="0" bow="0" tome="0" staff="15"/>
+        <skills skill1="12" skill2="11" skill3="25" skill4="46" skill5="45"/>
+        <text>
+            <name jp="サザ" en="Sothe"/>
+            <greeting jp="俺は暁の団のサザ。" en="MID_BOSS_挨拶会話_サザ"/>
+            <challenge jp="…相手になってやる。" en="MID_BOSS_戦闘会話_サザ"/>
+            <recruit jp="妙な縁もあったもんだ。" en="MID_BOSS_仲間会話_サザ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="107" name="Black Knight">
+    <unit logId="107" name="Black Knight" unit="2" level="20" sprite="170">
         <build class="16" asset="2" flaw="4" build="1" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="6" skill2="28" skill3="60" skill4="75" skill5="79"/>
+        <items item1="39" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="44" str="24" mag="21" skl="33" spd="26" lck="17" def="24" res="24"/>
+        <weapon sword="0" lance="90" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="6" skill2="28" skill3="60" skill4="79" skill5="75"/>
+        <text>
+            <name jp="漆黒の騎士" en="Black Knight"/>
+            <greeting jp="私はデイン四駿の位を冠した者だ。" en="MID_BOSS_挨拶会話_漆黒の騎士"/>
+            <challenge jp="愚かな…では、くるがいい。" en="MID_BOSS_戦闘会話_漆黒の騎士"/>
+            <recruit jp="…私がそなたの盾となろう。" en="MID_BOSS_仲間会話_漆黒の騎士"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="108" name="Sephiran">
+    <unit logId="108" name="Sephiran" unit="2" level="20" sprite="542">
         <build class="61" asset="3" flaw="5" build="1" face="1" hair="1" voice="4" gender="0"/>
-        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="77"/>
+        <items item1="110" item2="138" item3="0" item4="0" item5="0"/>
+        <growth hp="51" str="13" mag="32" skl="35" spd="31" lck="36" def="24" res="34"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="90"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="77"/>
+        <text>
+            <name jp="セフェラン" en="Sephiran"/>
+            <greeting jp="私はセフェラン。過去を失った者…" en="MID_BOSS_挨拶会話_セフェラン"/>
+            <challenge jp="戦を避ける事はできないのですね。" en="MID_BOSS_戦闘会話_セフェラン"/>
+            <recruit jp="全てに絶望する私に共に戦えと…" en="MID_BOSS_仲間会話_セフェラン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="109" name="Micaiah">
+    <unit logId="109" name="Micaiah" unit="2" level="20" sprite="556">
         <build class="62" asset="3" flaw="7" build="1" face="0" hair="2" voice="4" gender="1"/>
-        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="59"/>
+        <items item1="127" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="28" str="5" mag="28" skl="30" spd="26" lck="34" def="16" res="25"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="60"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="59"/>
+        <text>
+            <name jp="ミカヤ" en="Micaiah"/>
+            <greeting jp="わたしはミカヤ。暁の団にいます。" en="MID_BOSS_挨拶会話_ミカヤ"/>
+            <challenge jp="等しく女神の導きあらんことを…" en="MID_BOSS_戦闘会話_ミカヤ"/>
+            <recruit jp="わかったわ。じゃあ行きましょう。" en="MID_BOSS_仲間会話_ミカヤ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="110" name="Camus">
+    <unit logId="110" name="Camus" unit="2" level="20" sprite="193">
         <build class="12" asset="5" flaw="6" build="1" face="1" hair="0" voice="4" gender="0"/>
+        <items item1="47" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="44" str="27" mag="18" skl="32" spd="30" lck="18" def="25" res="12"/>
+        <weapon sword="60" lance="90" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="84"/>
+        <text>
+            <name jp="カミュ" en="Camus"/>
+            <greeting jp="私がグルニアのカミュだ。" en="MID_BOSS_挨拶会話_カミュ"/>
+            <challenge jp="ふりかかる火の粉は払わねばな…" en="MID_BOSS_戦闘会話_カミュ"/>
+            <recruit jp="うむ…面白いかもしれぬな…" en="MID_BOSS_仲間会話_カミュ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="111" name="Travant">
+    <unit logId="111" name="Travant" unit="2" level="20" sprite="325">
         <build class="47" asset="7" flaw="8" build="2" face="0" hair="2" voice="4" gender="0"/>
-        <skills skill1="2" skill2="23" skill3="29" skill4="43" skill5="64"/>
+        <items item1="48" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="48" str="28" mag="3" skl="29" spd="26" lck="14" def="30" res="8"/>
+        <weapon sword="0" lance="90" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="2" skill2="29" skill3="23" skill4="64" skill5="43"/>
+        <text>
+            <name jp="トラバント" en="Travant"/>
+            <greeting jp="わしがトラバントだ。" en="MID_BOSS_挨拶会話_トラバント"/>
+            <challenge jp="手向かう者は容赦せぬ！" en="MID_BOSS_戦闘会話_トラバント"/>
+            <recruit jp="心配いらぬ。期待された分は働く。" en="MID_BOSS_仲間会話_トラバント"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="112" name="Ishtar">
+    <unit logId="112" name="Ishtar" unit="2" level="20" sprite="556">
         <build class="62" asset="4" flaw="6" build="2" face="0" hair="2" voice="4" gender="1"/>
-        <skills skill1="3" skill2="30" skill3="52" skill4="56" skill5="73"/>
+        <items item1="111" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="50" str="6" mag="31" skl="30" spd="30" lck="26" def="21" res="31"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="60"/>
+        <skills skill1="3" skill2="30" skill3="56" skill4="52" skill5="73"/>
+        <text>
+            <name jp="イシュタル" en="Ishtar"/>
+            <greeting jp="私は雷神イシュタル…" en="MID_BOSS_挨拶会話_イシュタル"/>
+            <challenge jp="もはや言うべき言葉はない。" en="MID_BOSS_戦闘会話_イシュタル"/>
+            <recruit jp="私に共に戦えというのか…" en="MID_BOSS_仲間会話_イシュタル"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="113" name="Narcian">
+    <unit logId="113" name="Narcian" unit="2" level="20" sprite="325">
         <build class="47" asset="2" flaw="6" build="1" face="2" hair="4" voice="4" gender="0"/>
-        <skills skill1="2" skill2="23" skill3="29" skill4="64" skill5="77"/>
+        <items item1="39" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="43" str="24" mag="1" skl="25" spd="28" lck="19" def="31" res="10"/>
+        <weapon sword="0" lance="90" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="2" skill2="29" skill3="23" skill4="64" skill5="77"/>
+        <text>
+            <name jp="ナーシェン" en="Narcian"/>
+            <greeting jp="お前たちに名乗る名などないねぇ。" en="MID_BOSS_挨拶会話_ナーシェン"/>
+            <challenge jp="私は強い…賢い…美しい…正しい！" en="MID_BOSS_戦闘会話_ナーシェン"/>
+            <recruit jp="私を仲間にねぇ…クックックッ…" en="MID_BOSS_仲間会話_ナーシェン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="114" name="Lloyd">
+    <unit logId="114" name="Lloyd" unit="2" level="20" sprite="97">
         <build class="36" asset="2" flaw="6" build="1" face="1" hair="4" voice="4" gender="0"/>
-        <skills skill1="10" skill2="47" skill3="48" skill4="73" skill5="78"/>
+        <items item1="5" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="38" str="21" mag="9" skl="32" spd="31" lck="11" def="16" res="13"/>
+        <weapon sword="90" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="10" skill2="78" skill3="73" skill4="48" skill5="47"/>
+        <text>
+            <name jp="ロイド" en="Lloyd"/>
+            <greeting jp="俺は黒い牙首領の息子ロイドだ。" en="MID_BOSS_挨拶会話_ロイド"/>
+            <challenge jp="【牙】の名において…裁きを下す。" en="MID_BOSS_戦闘会話_ロイド"/>
+            <recruit jp="仲間になれというのか…" en="MID_BOSS_仲間会話_ロイド"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="115" name="Linus">
+    <unit logId="115" name="Linus" unit="2" level="20" sprite="34">
         <build class="26" asset="4" flaw="6" build="2" face="1" hair="4" voice="4" gender="0"/>
-        <skills skill1="16" skill2="34" skill3="66" skill4="74" skill5="81"/>
+        <items item1="5" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="43" str="27" mag="4" skl="25" spd="23" lck="16" def="19" res="11"/>
+        <weapon sword="90" lance="0" axe="60" bow="0" tome="0" staff="0"/>
+        <skills skill1="16" skill2="34" skill3="74" skill4="66" skill5="81"/>
+        <text>
+            <name jp="ライナス" en="Linus"/>
+            <greeting jp="俺は黒い牙首領の息子ライナスだ。" en="MID_BOSS_挨拶会話_ライナス"/>
+            <challenge jp="お前をぶっ倒す！" en="MID_BOSS_戦闘会話_ライナス"/>
+            <recruit jp="一緒に戦えってかぁ！？" en="MID_BOSS_仲間会話_ライナス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="116" name="Ursula">
+    <unit logId="116" name="Ursula" unit="2" level="20" sprite="505">
         <build class="58" asset="3" flaw="7" build="2" face="0" hair="0" voice="4" gender="1"/>
-        <skills skill1="7" skill2="17" skill3="38" skill4="52" skill5="61"/>
+        <items item1="105" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="32" str="10" mag="26" skl="32" spd="31" lck="10" def="16" res="22"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="35"/>
+        <skills skill1="7" skill2="38" skill3="61" skill4="17" skill5="52"/>
+        <text>
+            <name jp="ウルスラ" en="Ursula"/>
+            <greeting jp="私はウルスラ。クズとは違うわ。" en="MID_BOSS_挨拶会話_ウルスラ"/>
+            <challenge jp="ね、あなた…死ぬのは、こわい？" en="MID_BOSS_戦闘会話_ウルスラ"/>
+            <recruit jp="仲間？　私には理解できない…" en="MID_BOSS_仲間会話_ウルスラ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="117" name="Selena">
+    <unit logId="117" name="Selena" unit="2" level="20" sprite="588">
         <build class="64" asset="8" flaw="6" build="2" face="0" hair="4" voice="4" gender="1"/>
-        <skills skill1="3" skill2="24" skill3="30" skill4="61" skill5="85"/>
+        <items item1="110" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="29" str="15" mag="26" skl="28" spd="31" lck="19" def="14" res="25"/>
+        <weapon sword="35" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="3" skill2="30" skill3="24" skill4="85" skill5="61"/>
+        <text>
+            <name jp="セライナ" en="Selena"/>
+            <greeting jp="私はセライナ。グラドの将軍だ。" en="MID_BOSS_挨拶会話_セライナ"/>
+            <challenge jp="どうかお覚悟を。" en="MID_BOSS_戦闘会話_セライナ"/>
+            <recruit jp="陛下に逆らう事にならねばよいが…" en="MID_BOSS_仲間会話_セライナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="118" name="Petrine">
+    <unit logId="118" name="Petrine" unit="2" level="20" sprite="194">
         <build class="13" asset="5" flaw="3" build="1" face="1" hair="4" voice="4" gender="1"/>
-        <skills skill1="15" skill2="27" skill3="45" skill4="49" skill5="80"/>
+        <items item1="39" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="35" str="23" mag="21" skl="30" spd="27" lck="11" def="22" res="20"/>
+        <weapon sword="60" lance="90" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="15" skill2="27" skill3="45" skill4="80" skill5="49"/>
+        <text>
+            <name jp="プラハ" en="Petrine"/>
+            <greeting jp="なんなんだい、おまえは！？" en="MID_BOSS_挨拶会話_プラハ"/>
+            <challenge jp="思ったより楽しめそうだねぇ。" en="MID_BOSS_戦闘会話_プラハ"/>
+            <recruit jp="いいだろう。のってやるよ。" en="MID_BOSS_仲間会話_プラハ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="119" name="Oliver">
+    <unit logId="119" name="Oliver" unit="2" level="20" sprite="576">
         <build class="65" asset="8" flaw="7" build="2" face="1" hair="4" voice="4" gender="0"/>
-        <skills skill1="39" skill2="40" skill3="68" skill4="75" skill5="77"/>
+        <items item1="122" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="51" str="21" mag="28" skl="20" spd="18" lck="31" def="19" res="30"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="90" staff="0"/>
+        <skills skill1="39" skill2="40" skill3="77" skill4="68" skill5="75"/>
+        <text>
+            <name jp="オリヴァー" en="Oliver"/>
+            <greeting jp="私は美の守護者オリヴァーじゃ。" en="MID_BOSS_挨拶会話_オリヴァー"/>
+            <challenge jp="さあ、かかって参れ！" en="MID_BOSS_戦闘会話_オリヴァー"/>
+            <recruit jp="私は常に美しき者の味方じゃ。" en="MID_BOSS_仲間会話_オリヴァー"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="120" name="Eldigan">
+    <unit logId="120" name="Eldigan" unit="2" level="0" sprite="193">
         <build class="12" asset="4" flaw="6" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="27" skill2="36" skill3="45" skill4="48" skill5="0"/>
+        <text>
+            <name jp="エルトシャン" en="Eldigan"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="我が名にかけて、力になろう。" en="MID_DLC_仲間会話_エルトシャン"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="201" name="Pr. Marth (DLC)">
+    <unit logId="201" name="Pr. Marth (DLC)" unit="2" level="0" sprite="731">
         <build class="77" asset="6" flaw="1" build="1" face="11" hair="0" voice="4" gender="0"/>
-        <skills skill1="14" skill2="36" skill3="88" skill4="0" skill5="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="14" skill2="36" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="マルス" en="Pr. Marth"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="みんなを救うため、共に行こう。" en="MID_DLC_仲間会話_マルス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="202" name="Roy (DLC)">
+    <unit logId="202" name="Roy (DLC)" unit="2" level="0" sprite="14">
         <build class="20" asset="4" flaw="2" build="1" face="16" hair="0" voice="4" gender="0"/>
-        <skills skill1="18" skill2="80" skill3="88" skill4="0" skill5="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="18" skill2="80" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ロイ" en="Roy"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="ぼくで良いのなら力を貸すよ。" en="MID_DLC_仲間会話_ロイ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="203" name="Micaiah (DLC)">
+    <unit logId="203" name="Micaiah (DLC)" unit="2" level="0" sprite="572">
         <build class="57" asset="3" flaw="7" build="1" face="24" hair="2" voice="4" gender="1"/>
-        <skills skill1="59" skill2="87" skill3="88" skill4="0" skill5="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="59" skill2="87" skill3="0" skill4="0" skill5="0"/>
+        <text>
+            <name jp="ミカヤ" en="Micaiah"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="不思議な縁ね…でも、いいわ。" en="MID_DLC_仲間会話_ミカヤ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="207" name="Leif (DLC)">
+    <unit logId="206" name="Eldigan (JP)" unit="2" level="0" sprite="193">
+        <build class="12" asset="4" flaw="6" build="1" face="0" hair="1" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
+        <skills skill1="27" skill2="36" skill3="45" skill4="48" skill5="0"/>
+        <text>
+            <name jp="エルトシャン" en="Eldigan"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="我が名にかけて、力になろう。" en="MID_DLC_仲間会話_エルトシャン"/>
+        </text>
+        <flags/>
+    </unit>
+    <unit logId="207" name="Leif (DLC)" unit="2" level="0" sprite="163">
         <build class="40" asset="5" flaw="4" build="1" face="56" hair="1" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="12" skill2="35" skill3="43" skill4="0" skill5="0"/>
+        <text>
+            <name jp="リーフ" en="Leif"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="どんな苦難でも耐えてみせる。" en="MID_DLC_仲間会話_リーフ"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="208" name="Alm (DLC)">
+    <unit logId="208" name="Alm (DLC)" unit="2" level="0" sprite="730">
         <build class="80" asset="2" flaw="5" build="1" face="67" hair="1" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="61" skill2="99" skill3="100" skill4="0" skill5="0"/>
+        <text>
+            <name jp="アルム" en="Alm"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="敵はぼくがひねりつぶしてやる。" en="MID_DLC_仲間会話_アルム"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="209" name="Seliph (DLC)">
+    <unit logId="209" name="Seliph (DLC)" unit="2" level="0" sprite="97">
         <build class="36" asset="2" flaw="5" build="1" face="72" hair="1" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="10" skill2="36" skill3="84" skill4="0" skill5="0"/>
+        <text>
+            <name jp="セリス" en="Seliph"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="我が剣は、あなたのために。" en="MID_DLC_仲間会話_セリス"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="210" name="Elincia (DLC)">
+    <unit logId="210" name="Elincia (DLC)" unit="2" level="0" sprite="269">
         <build class="43" asset="3" flaw="1" build="1" face="80" hair="0" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="17" skill2="36" skill3="43" skill4="58" skill5="0"/>
+        <text>
+            <name jp="エリンシア" en="Elincia"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="ぶっとばしてさしあげましょう！" en="MID_DLC_仲間会話_エリンシア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="211" name="Eirika (DLC)">
+    <unit logId="211" name="Eirika (DLC)" unit="2" level="0" sprite="0">
         <build class="81" asset="5" flaw="7" build="1" face="91" hair="0" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="53" skill2="82" skill3="101" skill4="102" skill5="0"/>
+        <text>
+            <name jp="エイリーク" en="Eirika"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="皆が、幸せになれるなら…" en="MID_DLC_仲間会話_エイリーク"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="212" name="Lyn (DLC)">
+    <unit logId="212" name="Lyn (DLC)" unit="2" level="0" sprite="107">
         <build class="37" asset="5" flaw="7" build="1" face="96" hair="2" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="10" skill2="31" skill3="46" skill4="73" skill5="0"/>
+        <text>
+            <name jp="リン" en="Lyn"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="見てて。もっと強くなってみせる。" en="MID_DLC_仲間会話_リン"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="213" name="Ephraim (DLC)">
+    <unit logId="213" name="Ephraim (DLC)" unit="2" level="0" sprite="212">
         <build class="14" asset="2" flaw="8" build="1" face="105" hair="1" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="27" skill2="44" skill3="45" skill4="75" skill5="86"/>
+        <text>
+            <name jp="エフラム" en="Ephraim"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="俺はこの槍で大陸一を目指すぞ。" en="MID_DLC_仲間会話_エフラム"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="214" name="Celica (DLC)">
+    <unit logId="214" name="Celica (DLC)" unit="2" level="0" sprite="556">
         <build class="62" asset="3" flaw="2" build="1" face="114" hair="0" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="17" skill2="20" skill3="52" skill4="80" skill5="82"/>
+        <text>
+            <name jp="セリカ" en="Celica"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="あなたの傷は私が癒します。" en="MID_DLC_仲間会話_セリカ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="215" name="Ike (DLC)">
+    <unit logId="215" name="Ike (DLC)" unit="2" level="0" sprite="34">
         <build class="26" asset="2" flaw="6" build="1" face="121" hair="4" voice="4" gender="0"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="34" skill2="66" skill3="72" skill4="74" skill5="75"/>
+        <text>
+            <name jp="アイク" en="Ike"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="俺は、死ぬまで前に進み続ける。" en="MID_DLC_仲間会話_アイク"/>
+        </text>
         <flags/>
     </unit>
-    <unit logId="216" name="Palla (DLC)">
+    <unit logId="216" name="Palla (DLC)" unit="2" level="0" sprite="269">
         <build class="43" asset="4" flaw="5" build="1" face="128" hair="0" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="55" skill2="58" skill3="74" skill4="81" skill5="84"/>
+        <text>
+            <name jp="パオラ" en="Palla"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="なんでも私に言ってくださいね。" en="MID_DLC_仲間会話_パオラ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="217" name="Catria (DLC)">
+    <unit logId="217" name="Catria (DLC)" unit="2" level="0" sprite="254">
         <build class="44" asset="5" flaw="1" build="1" face="136" hair="1" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="18" skill2="49" skill3="52" skill4="73" skill5="84"/>
+        <text>
+            <name jp="カチュア" en="Catria"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="与えられた任務は全うします。" en="MID_DLC_仲間会話_カチュア"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="218" name="Est (DLC)">
+    <unit logId="218" name="Est (DLC)" unit="2" level="0" sprite="238">
         <build class="42" asset="2" flaw="3" build="0" face="144" hair="2" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="14" skill2="35" skill3="53" skill4="75" skill5="84"/>
+        <text>
+            <name jp="エスト" en="Est"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="お姉ちゃんたちもいるのかな？" en="MID_DLC_仲間会話_エスト"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>
     </unit>
-    <unit logId="219" name="Katarina (DLC)">
+    <unit logId="219" name="Katarina (DLC)" unit="2" level="0" sprite="4">
         <build class="7" asset="3" flaw="6" build="1" face="155" hair="1" voice="4" gender="1"/>
+        <items item1="0" item2="0" item3="0" item4="0" item5="0"/>
+        <growth hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0"/>
+        <weapon sword="0" lance="0" axe="0" bow="0" tome="0" staff="0"/>
         <skills skill1="55" skill2="56" skill3="58" skill4="63" skill5="87"/>
+        <text>
+            <name jp="カタリナ" en="Katarina"/>
+            <greeting jp="" en=""/>
+            <challenge jp="" en=""/>
+            <recruit jp="私、軍師ですけど…良いんですか？" en="MID_DLC_仲間会話_カタリナ"/>
+        </text>
         <flags>
             <flag>0</flag>
         </flags>

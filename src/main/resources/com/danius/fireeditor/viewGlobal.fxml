@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox id="container" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danius.fireeditor.controllers.GlobalController">
 
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="787.0">
       <children>
-         <Button layoutX="505.0" layoutY="160.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="174.0" text="Full Support Log" />
-         <Button layoutX="482.0" layoutY="264.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="174.0" text="Change Save File Region" />
+         <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#changeRegion" prefHeight="49.0" prefWidth="174.0" text="Change Save File Region" />
+         <ListView fx:id="listViewUnit" layoutX="14.0" layoutY="29.0" prefHeight="354.0" prefWidth="134.0" />
+         <Label fx:id="lblUnitCount" layoutX="16.0" layoutY="7.0" prefHeight="18.0" prefWidth="133.0" text="Units" />
+         <Button fx:id="btnUp" layoutX="157.0" layoutY="324.0" mnemonicParsing="false" onAction="#orderUp" text="↑" />
+         <Button fx:id="btnDown" layoutX="157.0" layoutY="357.0" mnemonicParsing="false" onAction="#orderDown" text="↓" />
+         <Button layoutX="545.0" layoutY="259.0" mnemonicParsing="false" onAction="#unlockSupports" prefHeight="49.0" prefWidth="174.0" text="Unlock Full Support Log" />
+         <ImageView fx:id="imgBuild" fitHeight="128.0" fitWidth="128.0" layoutX="168.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@avatar_m/build_01_00.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="imgHairColor" fitHeight="128.0" fitWidth="128.0" layoutX="168.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@avatar_m/back_01_00.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="imgHair" fitHeight="128.0" fitWidth="128.0" layoutX="168.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@avatar_m/hair_01_00.png" />
+            </image>
+         </ImageView>
+         <Label fx:id="labelUnitName" layoutX="168.0" layoutY="12.0" prefHeight="27.0" prefWidth="201.0" text="Units">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="169.0" layoutY="185.0" prefHeight="38.0" prefWidth="202.0" text="Unit Editor not Available!&#10;Load a Chapter or Map file instead." />
+         <Spinner fx:id="spinRenown" editable="true" layoutX="553.0" layoutY="201.0" prefHeight="26.0" prefWidth="84.0" />
+         <AnchorPane layoutX="545.0" layoutY="83.0" prefHeight="80.0" prefWidth="190.0">
+            <children>
+               <CheckBox fx:id="check1" layoutX="7.0" layoutY="10.0" mnemonicParsing="false" text="Game Clear" />
+               <CheckBox fx:id="check2" layoutX="7.0" layoutY="33.0" mnemonicParsing="false" text="Lunatic+ Casual Classic" />
+               <CheckBox fx:id="check3" layoutX="7.0" layoutY="56.0" mnemonicParsing="false" text="Lunatic+ Casual Only" />
+            </children>
+         </AnchorPane>
+         <Label layoutX="555.0" layoutY="180.0" text="Renown" />
       </children>
     </AnchorPane>
 

@@ -65,7 +65,7 @@
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="4" class2="" class3=""/>
         <fClasses class1="5" class2="" class3=""/>
-        <skills skill1="23" skill2="0" skill3="0" skill4="0" skill5="0"/>
+        <skills skill1="13" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports>
             <support id="0" unit="4" type="0"/>
             <support id="1" unit="12" type="0"/>
@@ -126,7 +126,7 @@
         <modifiers hp="0" str="0" mag="0" skl="0" spd="0" lck="0" def="0" res="0" mov="0"/>
         <mClasses class1="4" class2="" class3=""/>
         <fClasses class1="5" class2="" class3=""/>
-        <skills skill1="23" skill2="0" skill3="0" skill4="0" skill5="0"/>
+        <skills skill1="13" skill2="0" skill3="0" skill4="0" skill5="0"/>
         <supports/>
         <flags>
             <flag>23</flag>

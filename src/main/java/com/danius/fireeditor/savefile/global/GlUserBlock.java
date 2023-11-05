@@ -6,7 +6,9 @@ import com.danius.fireeditor.util.Hex;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GlUserBlock {
 
@@ -77,16 +79,17 @@ public class GlUserBlock {
 
         System.out.println("Unit Gallery: " + unitCount1);
         System.out.println("Support Log: " + supportCount);
+        System.out.println("Global Flags: " + globalFlags());
     }
 
     /*
     0 0x1 ???
     1 0x2 Game Clear (Theater, Support Log, Unit Gallery)
     2 0x4 Lunatic+ Classic/Casual
-    3 0x8 Lunatic+ Casual Only
+    3 0x8 Lunatic+ Classic Only
     4 0x10 ???
     5 0x20 ???
-    6 0x40 ??? (Is enabled on 100% Global)
+    6 0x40 ???
     7 0x80 ???
 
     8  0x1 ???
@@ -102,6 +105,14 @@ public class GlUserBlock {
     public void setGlobalFlag(int bit, boolean set) {
         int point = 0x1;
         Hex.setBitFlag(rawBlock1, point, bit, set);
+    }
+
+    private List<Integer> globalFlags() {
+        List<Integer> flags = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            if (hasGlobalFlag(i)) flags.add(i);
+        }
+        return flags;
     }
 
     //0x5 Last Save Slot Used

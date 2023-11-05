@@ -34,6 +34,7 @@ public class Unit {
     //Additional blocks
     public ChildBlock rawChild; //Parent Data
     public LogBlock rawLog; //Logbook data
+    private int sprite = 0;
 
     public Unit() {
         this.rawBlock1 = new RawBlock1();
@@ -75,9 +76,17 @@ public class Unit {
         rawBlock1.setUnitId(value);
     }
 
+    public int getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(int sprite) {
+        this.sprite = sprite;
+    }
+
     /*
-    Initializes all the main blocks
-     */
+        Initializes all the main blocks
+         */
     private void splitBlocks(byte[] unitBytes) {
         try {
             this.rawBlock1 = new RawBlock1(Arrays.copyOfRange(unitBytes, 0x0, 0x1A));
@@ -284,7 +293,9 @@ public class Unit {
         //General Data
         unitDu.setUnitId(rawBlock1.unitId());
         unitDu.setUnitClass(rawBlock1.unitClass());
+        unitDu.setSprite(getSprite());
         unitDu.setLevel(rawBlock1.level());
+        unitDu.setMovement(rawBlock1.movement());
         unitDu.setHiddenLevel(rawFlags.hiddenLevel());
         unitDu.setHairColorFx(rawBlockEnd.getHairColorFx());
         for (int i = 0; i < 8; i++) unitDu.setGrowth(rawBlock1.growth()[i], i);

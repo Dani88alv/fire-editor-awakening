@@ -1,6 +1,7 @@
 package com.danius.fireeditor;
 
 import com.danius.fireeditor.controllers.CheatController;
+import com.danius.fireeditor.controllers.GlobalController;
 import com.danius.fireeditor.controllers.MainController;
 import com.danius.fireeditor.controllers.convoy.ConvoyController;
 import com.danius.fireeditor.controllers.unit.UnitController;
@@ -29,6 +30,7 @@ public class FireEditor extends Application {
     public static UserController userController;
     public static CheatController cheatController;
     public static MainController mainController;
+    public static GlobalController globalController;
 
     @Override
     public void start(Stage stage) throws IOException {

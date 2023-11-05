@@ -290,11 +290,10 @@ public class LogBlock {
         for (int i = 0; i < logString.length() - 2; i++) {
             if (logString.charAt(i) != '0') return false;
         }
-        int logId = getLogIdLastByte();
         //Checks the DLC IDs
         //for (int number : DLC_LOG_ID) if (number == logId) return true;
         //Checks the regular Einherjar IDs
-        return logId <= 120;
+        return true;
     }
 
     //Checks if the logbook ID matches the Einherjar IDs, including DLC units

@@ -157,6 +157,7 @@ public class Stats {
         unit.rawBlock1.setCurrentHp(maxStats[0]); //Updates the current HP to match out
         unit.rawBlock1.setLevelMax(); //Updates the level and experience
         unit.rawBlock2.setMaxWeaponExp(); //Sets the max weapon exp
+        unit.rawFlags.setHiddenLevel(200); //Hidden Level Cap
     }
 
     //Calculates the highest growth from a unit based on their class set
@@ -165,13 +166,16 @@ public class Stats {
         List<ClassModel> availableClasses = getClassesFromUnit(unit);
         int[] modifiers = calcModif(unit);
         int[] unitAddition = getUnitAddition(unit.rawBlock1.unitId()); //Hardcoded
-        //If it has logbook data, +2 on their asset, -2 flaw
+        //If it has logbook data, +2 on their asset
         if (unit.rawLog != null) {
             int asset = unit.rawLog.getAssetFlaw()[0];
             int flaw = unit.rawLog.getAssetFlaw()[1];
             //Asset/Flaw 0 is None, HP is 1
             if (asset != 0) unitAddition[asset - 1] += 2;
-            if (flaw != 0) unitAddition[flaw - 1] -= 2;
+            if (flaw != 0) {
+                if (flaw == 6) unitAddition[flaw - 1] -= 2;
+                else unitAddition[flaw - 1] -= 1;
+            }
         }
 
         //The growth is calculated
@@ -208,7 +212,10 @@ public class Stats {
             int flaw = unit.rawLog.getAssetFlaw()[1];
             //Asset/Flaw 0 is None, HP is 1
             if (asset != 0) unitAddition[asset - 1] += 2;
-            if (flaw != 0) unitAddition[flaw - 1] -= 2;
+            if (flaw != 0) {
+                if (flaw == 6) unitAddition[flaw - 1] -= 2;
+                else unitAddition[flaw - 1] -= 1;
+            }
         }
 
         for (int i = 0; i < growths.length; i++) {

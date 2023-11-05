@@ -18,8 +18,9 @@ import java.util.Objects;
 public class Portrait {
 
     public static Image[] setImage(Unit unit) {
-        int unitId = unit.getUnitId();
         Image[] sprites = new Image[3];
+        if (unit == null) return sprites;
+        int unitId = unit.getUnitId();
         try {
             boolean isPlayable = UnitDb.isUnitPlayable(unitId);
             //Outrealm Flag

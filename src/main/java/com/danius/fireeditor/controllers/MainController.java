@@ -86,6 +86,7 @@ public class MainController {
             //Chapter Save File
             if (isChapter) {
                 reloadChapter(fileBytes);
+                tabPane.getSelectionModel().select(tabUnit);
             }
             //Global Save File
             else {
@@ -110,7 +111,6 @@ public class MainController {
             tabGlobal.setDisable(true);
             FireEditor.convoyController.loadBlocks();
             FireEditor.userController.loadBlocks();
-            tabPane.getSelectionModel().select(tabUnit);
             FireEditor.global = null;
         } catch (Exception e) {
             throw new RuntimeException();
@@ -121,6 +121,7 @@ public class MainController {
         try {
             tabGlobal.setDisable(false);
             FireEditor.global = new Global(fileBytes);
+            FireEditor.globalController.loadFile();
             tabPane.getSelectionModel().select(tabGlobal);
             FireEditor.unitController.comboUnitGroup.setDisable(true);
             tabConvoy.setDisable(true);

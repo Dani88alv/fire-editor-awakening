@@ -125,8 +125,10 @@ public class UnitDu {
         //General Data
         unit.rawBlock1.setUnitId(getUnitId());
         unit.rawBlock1.setUnitClass(getUnitClass());
+        unit.setSprite(getSprite());
         unit.rawBlock1.setLevel(getLevel());
         unit.rawBlock1.setExp(0);
+        unit.rawBlock1.setMovement(getMovement());
         unit.rawFlags.setHiddenLevel(getHiddenLevel());
         unit.rawBlockEnd.setHairColorFx(getHairColorFx());
         //Flags
@@ -201,7 +203,13 @@ public class UnitDu {
         rawBlock1[0x5] = (byte) (value & 0xFF);
     }
 
-    //0x6 Unused Exp value?
+    public int getMovement() {
+        return rawBlock1[0x6] & 0xFF;
+    }
+
+    public void setMovement(int value) {
+        rawBlock1[0x6] = (byte) (value & 0xFF);
+    }
 
     public int getHiddenLevel() {
         return rawBlock1[0x7] & 0xFF;
@@ -218,7 +226,6 @@ public class UnitDu {
     public void setSprite(int value) {
         Hex.setByte2(rawBlock1, 0x8, value);
     }
-
 
     public Color getHairColorFx() {
         int pointer = 0xA;
@@ -259,7 +266,7 @@ public class UnitDu {
     }
 
     public int[] getWeaponExp() {
-        int[] exp = new int[5];
+        int[] exp = new int[6];
         int point = 0x1B;
         for (int i = 0; i < exp.length; i++) {
             exp[i] = rawBlock1[point + i] & 0xFF;
@@ -320,6 +327,7 @@ public class UnitDu {
             byteArrayOutputStream.write(rawChild);
             byteArrayOutputStream.write(rawSkill.bytes());
             byteArrayOutputStream.write(rawUnknown);
+            rawLog.removeFooter();
             byteArrayOutputStream.write(rawLog.getBytes());
         } catch (IOException e) {
             throw new RuntimeException(e);

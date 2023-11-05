@@ -426,6 +426,9 @@ public class UnitController {
             imgHair.setImage(null);
             imgHairColor.setImage(null);
             labelUnitName.setText("");
+        } else if (listViewUnit.getSelectionModel().getSelectedItem() != null) {
+            setImage();
+            labelUnitName.setText(listViewUnit.getSelectionModel().getSelectedItem().unitName());
         }
 
     }
