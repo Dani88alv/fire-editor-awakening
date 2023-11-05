@@ -185,15 +185,14 @@ public class LogBlock {
     }
 
     private void updateEinherjarRegion(boolean isWest) {
-        if (!isEinherjar() && !hasEinherjarId()) {
-            return;
+        if (isEinherjar() && hasEinherjarId()) {
+            //The text strings are updated to match the new region
+            EinherjarModel model = UnitDb.getEinherjar(getLogIdLastByte());
+            setName(model.getLanguageName(isWest));
+            setTextGreeting(model.getLanguageGreeting(isWest));
+            setTextChallenge(model.getLanguageChallenge(isWest));
+            setTextRecruit(model.getLanguageRecruit(isWest));
         }
-        //The text strings are updated to match the new region
-        EinherjarModel model = UnitDb.getEinherjar(getLogIdLastByte());
-        setName(model.getLanguageName(isWest));
-        setTextGreeting(model.getLanguageGreeting(isWest));
-        setTextChallenge(model.getLanguageChallenge(isWest));
-        setTextRecruit(model.getLanguageRecruit(isWest));
     }
 
 

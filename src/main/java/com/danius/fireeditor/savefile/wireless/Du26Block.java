@@ -2,10 +2,8 @@ package com.danius.fireeditor.savefile.wireless;
 
 import com.danius.fireeditor.savefile.Constants;
 import com.danius.fireeditor.util.Hex;
-import javafx.scene.control.Label;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,13 +47,46 @@ public class Du26Block {
                 (Arrays.copyOfRange(bytes, offset, offset + teamSize + DuTeam.HEADER_SIZE));
         offset += playerTeam.length();
         //SpotPass
-        this.rawSpotPass = Arrays.copyOfRange(bytes, offset, offset + 0x1E6);
+        this.rawSpotPass = Arrays.copyOfRange(bytes, offset, offset + 0x1C1);
         offset += rawSpotPass.length;
         //Extra Data
         this.rawExtra = Arrays.copyOfRange(bytes, offset, bytes.length);
+    }
 
-        //this.rawMain = Arrays.copyOfRange(bytes, 0x0, bytes.length - 0x98);
-        //this.rawEnd = Arrays.copyOfRange(bytes, bytes.length - 0x98, bytes.length);
+    /*
+    Double Duel
+    0x5 Bitflags Double Duel Unlock (useless, set after first match, nothing happens if unset)
+    0xD Bitflags Double Duel Beaten
+    0x15 Double Duel Scores (1 byte)
+     */
+    public boolean isDuelBeaten(int bit) {
+        int point = 0xD;
+        return Hex.hasBitFlag(rawExtra, point, bit);
+    }
+
+    public void setDuelBeaten(int bit, boolean set) {
+        int point = 0xD;
+        Hex.setBitFlag(rawExtra, point, bit, set);
+    }
+
+    public int getDuelScore(int slot) {
+        int point = 0x15;
+        return rawExtra[point + slot] & 0xFF;
+    }
+
+    public void setDuelScore(int slot, int value) {
+        int point = 0x15;
+        rawExtra[point + slot] = (byte) (value & 0xFF);
+    }
+
+    public int dlcTurn(int slot) {
+        int point = 0x56;
+        return rawExtra[point + slot] & 0xFF;
+    }
+
+    public void setDlcTurn(int slot, int value) {
+        int point = 0x56;
+        rawExtra[point + slot] = (byte) (value & 0xFF);
     }
 
     public static int teamSize(boolean isWest) {
@@ -93,18 +124,7 @@ public class Du26Block {
     }
 
 
-    public int dlcTurn(int slot) {
-        int point = 0x32;
-        return rawExtra[point + slot] & 0xFF;
-    }
-
-    public void setDlcTurn(int slot, int value) {
-        int point = 0x32;
-        rawExtra[point + slot] = (byte) (value & 0xFF);
-    }
-
-
-    public void addSpotpass() {
+    public void addSpotPass() {
         String path = Constants.RES_BLOCK + "rawSpotpassShort";
         byte[] blockSpot;
         try {
@@ -115,7 +135,7 @@ public class Du26Block {
 
         byte[] header = Hex.toByte("AD 55 0A 19 01");
         int offset = Hex.indexOf(rawSpotPass, header, 0x0, 3);
-        if (offset <= 0) return;
+        if (offset <= 0 || offset >= rawSpotPass.length || offset + blockSpot.length > rawSpotPass.length) return;
         System.arraycopy(blockSpot, 0, rawSpotPass, offset, blockSpot.length);
     }
 

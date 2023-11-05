@@ -134,7 +134,7 @@ public class CheatController {
         // Show the dialog and wait for a response
         alert.showAndWait().ifPresent(response -> {
             if (response == confirmButton) {
-                FireEditor.chapterFile.blockDu26.addSpotpass();
+                FireEditor.chapterFile.blockDu26.addSpotPass();
                 reload();
             } else if (response == cancelButton) {
                 return;

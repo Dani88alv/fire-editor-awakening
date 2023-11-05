@@ -95,4 +95,13 @@ public class MiscDb {
             "The Future Past 1", "The Future Past 2", "The Future Past 3",
             "Apotheosis"
     );
+
+    public static final List<String> doubleDuelNames = Arrays.asList(
+            "Kellam's Kettles", "Cherche's Fliers", "Maribelle's Mercy", "Frederick's Loyal",
+            "Sumia's Fliers", "Cordelia's Pride", "Sully's Riders", "Panne's Patrol",
+            "Nowi's Wyverns", "Basilio's Brashest", "Virion's Archest", "Lon'qu's Blades",
+            "Stahl's Horsemen", "Vaike's Victory", "Ricken's Chosen", "Henry's Spellslingers",
+            "Gaius's Sneak Attack", "Tharja's Curse", "Gregor's Swell Swords", "Say'ri's Ascension",
+            "Tiki's Wyverns", "Army of Shadow"
+    );
 }
