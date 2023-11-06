@@ -10,6 +10,7 @@ import com.danius.fireeditor.savefile.Chapter13;
 import com.danius.fireeditor.savefile.SaveFile;
 import com.danius.fireeditor.savefile.global.Global;
 import com.danius.fireeditor.util.Hex;
+import com.danius.fireeditor.util.ImageLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,6 +35,7 @@ public class FireEditor extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        ImageLoader.initialize();
         readTestFile("Chapter0");
         FXMLLoader fxmlLoader = new FXMLLoader(FireEditor.class.getResource("viewMain.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 750, 445);
@@ -97,7 +99,6 @@ public class FireEditor extends Application {
         if (filePathFile.exists()) {
             return filePathFile;  // Return the file if it exists
         } else {
-            //System.out.println("File path does not exist: " + filePathFile.getAbsolutePath());
             return null;  // Return null if the file path doesn't exist or is null
         }
     }

@@ -1,6 +1,5 @@
 package com.danius.fireeditor.util;
 
-import com.danius.fireeditor.FireEditor;
 import com.danius.fireeditor.data.ClassDb;
 import com.danius.fireeditor.data.UnitDb;
 import com.danius.fireeditor.savefile.Constants;
@@ -12,7 +11,6 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
-import java.io.File;
 import java.util.Objects;
 
 public class Portrait {
@@ -186,26 +184,10 @@ public class Portrait {
     }
 
     private static Image readImage(String filePath) {
-        //File imageFile = FireEditor.readResource(filePath);
-        try {
-            /*
-            if (imageFile != null && imageFile.exists()) {
-                // Load the image from the file
-                return new Image(imageFile.toURI().toString());
-            } else {
-
-             */
-                // Load the image from project resources if the file doesn't exist
-                return new Image(Objects.requireNonNull(
-                        Portrait.class.getResourceAsStream(Constants.RES + filePath)));
-            //}
-        } catch (Exception e) {
-            return getInvalid();
-        }
+        return ImageLoader.getImage(filePath);
     }
 
     private static Image einherjarPlaceholder() {
-        String path = "/com/danius/fireeditor/portrait/spotpass/placeholder.png";
-        return new Image(Objects.requireNonNull(Portrait.class.getResourceAsStream(path)));
+        return ImageLoader.getImage("portrait/spotpass/placeholder.png");
     }
 }

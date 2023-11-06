@@ -260,10 +260,10 @@ public class OtherController {
             move[i].getValueFactory().setValue(unit.rawBlockEnd.aiParam(3, i));
 
             switch (i) {
-                case 0 -> aiLabel[i].setText(nameAction().getOrDefault(unit.rawBlockEnd.aiType(i), "Unknown"));
-                case 1 -> aiLabel[i].setText(nameMission().getOrDefault(unit.rawBlockEnd.aiType(i), "Unknown"));
-                case 2 -> aiLabel[i].setText(nameAttack().getOrDefault(unit.rawBlockEnd.aiType(i), "Unknown"));
-                case 3 -> aiLabel[i].setText(nameMove().getOrDefault(unit.rawBlockEnd.aiType(i), "Unknown"));
+                case 0 -> aiLabel[i].setText(MiscDb.getAiAction(unit.rawBlockEnd.aiType(i)));
+                case 1 -> aiLabel[i].setText(MiscDb.getAiMission(unit.rawBlockEnd.aiType(i)));
+                case 2 -> aiLabel[i].setText(MiscDb.getAiAttack(unit.rawBlockEnd.aiType(i)));
+                case 3 -> aiLabel[i].setText(MiscDb.getAiMove(unit.rawBlockEnd.aiType(i)));
             }
         }
     }
@@ -274,10 +274,10 @@ public class OtherController {
             public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
                 unit.rawBlockEnd.setAiType(aiSlot, newValue);
                 switch (aiSlot) {
-                    case 0 -> label.setText(nameAction().getOrDefault(newValue, "Unknown"));
-                    case 1 -> label.setText(nameMission().getOrDefault(newValue, "Unknown"));
-                    case 2 -> label.setText(nameAttack().getOrDefault(newValue, "Unknown"));
-                    case 3 -> label.setText(nameMove().getOrDefault(newValue, "Unknown"));
+                    case 0 -> label.setText(MiscDb.getAiAction(newValue));
+                    case 1 -> label.setText(MiscDb.getAiMission(newValue));
+                    case 2 -> label.setText(MiscDb.getAiAttack(newValue));
+                    case 3 -> label.setText(MiscDb.getAiMove(newValue));
                 }
             }
         });
@@ -290,69 +290,6 @@ public class OtherController {
                 unit.rawBlockEnd.setAiParam(aiSlot, paramSlot, newValue);
             }
         });
-    }
-
-    private static HashMap<Integer, String> nameAction() {
-        HashMap<Integer, String> names = new HashMap<Integer, String>();
-        names.put(0x00, "AI_AC_Null");
-        names.put(0x01, "AI_AC_Everytime");
-        names.put(0x02, "AI_AC_AttackRange");
-        names.put(0x03, "AI_AC_AttackRangeExcludePerson");
-        names.put(0x04, "AI_AC_BandRange");
-        names.put(0x0A, "AI_AC_Turn");
-        names.put(0x0B, "AI_AC_FlagTrue");
-        names.put(0x0D, "AI_AC_TurnAttackRange");
-        names.put(0x0E, "AI_AC_TurnBandRange");
-        names.put(0x0F, "AI_AC_TurnAttackRangeHealRange");
-        names.put(0x10, "AI_AC_FlagTrueAttackRange");
-        names.put(0x14, "AI_AC_FlagTrueAttackRangeExcludePerson");
-        return names;
-    }
-
-    private static HashMap<Integer, String> nameMission() {
-        HashMap<Integer, String> names = new HashMap<Integer, String>();
-        names.put(0x00, "AI_MI_Null");
-        names.put(0x01, "AI_MI_Talk");
-        names.put(0x02, "AI_MI_Treasure");
-        names.put(0x03, "AI_MI_Village");
-        names.put(0x05, "AI_MI_EscapeSlow");
-        names.put(0x07, "AI_MI_X009Boss");
-        names.put(0x08, "AI_MI_X010Serena");
-        return names;
-    }
-
-    private static HashMap<Integer, String> nameAttack() {
-        HashMap<Integer, String> names = new HashMap<Integer, String>();
-        names.put(0x00, "AI_AT_Null");
-        names.put(0x01, "AI_AT_Attack");
-        names.put(0x02, "AI_AT_MustAttack");
-        names.put(0x03, "AI_AT_Heal");
-        names.put(0x04, "AI_AT_AttackToHeal");
-        names.put(0x05, "AI_AT_AttackToMustHeal");
-        names.put(0x06, "AI_AT_MustAttackToMustHeal");
-        names.put(0x09, "AI_AT_Person");
-        names.put(0x0A, "AI_AT_ExcludePerson");
-        names.put(0x0D, "AI_AT_X002Anna");
-        names.put(0x0E, "AI_AT_X017Enemy");
-        return names;
-    }
-
-    private static HashMap<Integer, String> nameMove() {
-        HashMap<Integer, String> names = new HashMap<Integer, String>();
-        names.put(0x00, "AI_MV_Null");
-        names.put(0x01, "AI_MV_NearestEnemy");
-        names.put(0x03, "AI_MV_NearestEnemyExcludePerson");
-        names.put(0x0A, "AI_MV_Person");
-        names.put(0x0C, "AI_MV_Position");
-        names.put(0x0E, "AI_MV_EscapeSlow");
-        names.put(0x0F, "AI_MV_TrasureToEscape");
-        names.put(0x10, "AI_MV_VillageToAttack");
-        names.put(0x11, "AI_MV_VillageNoThroughToAttack");
-        names.put(0x14, "AI_MV_Irregular");
-        names.put(0x15, "AI_MV_X009Boss");
-        names.put(0x16, "AI_MV_X010Serena");
-        names.put(0x17, "AI_MV_X017Enemy");
-        return names;
     }
 
 }

@@ -4,6 +4,7 @@ import com.danius.fireeditor.savefile.units.mainblock.RawSupport;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.danius.fireeditor.data.UnitDb.*;
@@ -104,4 +105,82 @@ public class MiscDb {
             "Gaius's Sneak Attack", "Tharja's Curse", "Gregor's Swell Swords", "Say'ri's Ascension",
             "Tiki's Wyverns", "Army of Shadow"
     );
+
+    public static String getAiAction(int id) {
+        String result = aiAction.get(id);
+        return result != null ? result : "Unknown";
+    }
+
+    public static String getAiMission(int id) {
+        String result = aiMission.get(id);
+        return result != null ? result : "Unknown";
+    }
+
+    public static String getAiAttack(int id) {
+        String result = aiAttack.get(id);
+        return result != null ? result : "Unknown";
+    }
+
+    public static String getAiMove(int id) {
+        String result = aiMove.get(id);
+        return result != null ? result : "Unknown";
+    }
+
+
+    private static final HashMap<Integer, String> aiAction = new HashMap<Integer, String>() {{
+        put(0x00, "AI_AC_Null");
+        put(0x01, "AI_AC_Everytime");
+        put(0x02, "AI_AC_AttackRange");
+        put(0x03, "AI_AC_AttackRangeExcludePerson");
+        put(0x04, "AI_AC_BandRange");
+        put(0x0A, "AI_AC_Turn");
+        put(0x0B, "AI_AC_FlagTrue");
+        put(0x0D, "AI_AC_TurnAttackRange");
+        put(0x0E, "AI_AC_TurnBandRange");
+        put(0x0F, "AI_AC_TurnAttackRangeHealRange");
+        put(0x10, "AI_AC_FlagTrueAttackRange");
+        put(0x14, "AI_AC_FlagTrueAttackRangeExcludePerson");
+    }};
+
+    private static final HashMap<Integer, String> aiMission = new HashMap<Integer, String>() {{
+        put(0x00, "AI_MI_Null");
+        put(0x01, "AI_MI_Talk");
+        put(0x02, "AI_MI_Treasure");
+        put(0x03, "AI_MI_Village");
+        put(0x05, "AI_MI_EscapeSlow");
+        put(0x07, "AI_MI_X009Boss");
+        put(0x08, "AI_MI_X010Serena");
+    }};
+
+    private static final HashMap<Integer, String> aiAttack = new HashMap<Integer, String>() {{
+        put(0x00, "AI_AT_Null");
+        put(0x01, "AI_AT_Attack");
+        put(0x02, "AI_AT_MustAttack");
+        put(0x03, "AI_AT_Heal");
+        put(0x04, "AI_AT_AttackToHeal");
+        put(0x05, "AI_AT_AttackToMustHeal");
+        put(0x06, "AI_AT_MustAttackToMustHeal");
+        put(0x09, "AI_AT_Person");
+        put(0x0A, "AI_AT_ExcludePerson");
+        put(0x0D, "AI_AT_X002Anna");
+        put(0x0E, "AI_AT_X017Enemy");
+    }};
+
+    private static final HashMap<Integer, String> aiMove = new HashMap<Integer, String>() {{
+        put(0x00, "AI_MV_Null");
+        put(0x01, "AI_MV_NearestEnemy");
+        put(0x03, "AI_MV_NearestEnemyExcludePerson");
+        put(0x0A, "AI_MV_Person");
+        put(0x0C, "AI_MV_Position");
+        put(0x0E, "AI_MV_EscapeSlow");
+        put(0x0F, "AI_MV_TrasureToEscape");
+        put(0x10, "AI_MV_VillageToAttack");
+        put(0x11, "AI_MV_VillageNoThroughToAttack");
+        put(0x14, "AI_MV_Irregular");
+        put(0x15, "AI_MV_X009Boss");
+        put(0x16, "AI_MV_X010Serena");
+        put(0x17, "AI_MV_X017Enemy");
+    }};
+
+
 }
