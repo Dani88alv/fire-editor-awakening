@@ -42,6 +42,11 @@
                                 <MenuItem mnemonicParsing="false" onAction="#exportComp" text="Save Compressed" />
                             </items>
                         </Menu>
+                  <Menu mnemonicParsing="false" onAction="#credits" text="About">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Credits" />
+                     </items>
+                  </Menu>
                     </menus>
                 </MenuBar>
             </children>

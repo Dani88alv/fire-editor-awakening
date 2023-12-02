@@ -8,6 +8,7 @@ import com.danius.fireeditor.savefile.global.Global;
 import com.danius.fireeditor.savefile.units.Unit;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.DragEvent;
@@ -255,8 +256,7 @@ public class MainController {
         if (FireEditor.chapterFile != null) {
             if (decomp) data = FireEditor.chapterFile.getBytes();
             else data = FireEditor.chapterFile.getBytesComp();
-        }
-        else if (FireEditor.global != null) {
+        } else if (FireEditor.global != null) {
             if (decomp) data = FireEditor.global.getBytes();
             else data = FireEditor.global.getBytesComp();
         }
@@ -278,5 +278,20 @@ public class MainController {
             event.acceptTransferModes(TransferMode.COPY);
         }
         event.consume();
+    }
+
+    @FXML
+    private void credits() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText(null);
+        alert.setContentText(
+                """
+                        Fire Emblem Awakening Save Editor made by Danius88.
+                        
+                        Source code:
+                        https://github.com/Dani88alv/fire-editor-awakening"""
+        );
+        alert.showAndWait();
     }
 }

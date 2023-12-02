@@ -72,7 +72,7 @@ public class GlobalController {
             listViewUnit.setItems(FXCollections.observableArrayList(global.glUnitBlock.unitList));
             listViewUnit.getSelectionModel().selectLast();
             listViewUnit.getSelectionModel().selectFirst();
-            lblUnitCount.setText("Avatars: " + global.glUnitBlock.unitList.size() + "/99");
+            lblUnitCount.setText("Logbook Avatars: " + global.glUnitBlock.unitList.size() + "/99");
             check1.setSelected(global.glUserBlock.hasGlobalFlag(1));
             check2.setSelected(global.glUserBlock.hasGlobalFlag(2));
             check3.setSelected(global.glUserBlock.hasGlobalFlag(3));
@@ -141,7 +141,7 @@ public class GlobalController {
         alert.setTitle("Change Region");
         alert.setHeaderText("Current region: " + originalRegion + "\n" +
                 "The save file will be changed to " + targetRegion);
-        alert.setContentText("Note: The name of the Einherjar Units from the Avatar Logbook will change.");
+        alert.setContentText("Note: The name of the Einherjar Units from the Avatar Logbook will be modified.");
         // Add Confirm and Cancel buttons
         ButtonType confirmButton = new ButtonType("Confirm");
         ButtonType cancelButton = new ButtonType("Cancel");
