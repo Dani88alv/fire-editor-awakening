@@ -142,6 +142,7 @@ public class ChapterDb {
 
                 chapterList.add(chapterModel);
             }
+            MAX_CHAPTER_COUNT = chapterList.size();
         } catch (IOException | JDOMException ex) {
             throw new RuntimeException(ex);
         }
